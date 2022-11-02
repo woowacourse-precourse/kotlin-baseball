@@ -9,17 +9,18 @@ fun main() {
 
 fun startBaseball() {
     while (true) {
-        val numberList = mutableListOf<Int>()
-        inputNumbers(numberList)
-
+        val computerNumbers = mutableListOf<Int>()
+        inputComputerNumbers(computerNumbers)
     }
 }
 
-fun inputNumbers(numberList: MutableList<Int>) {
-    while (numberList.size < 3) {
+
+
+fun inputComputerNumbers(numbers: MutableList<Int>) {
+    while (numbers.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!numberList.contains(randomNumber)) {
-            numberList.add(randomNumber)
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber)
         }
     }
 }
