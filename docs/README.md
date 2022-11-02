@@ -64,7 +64,7 @@
     - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 이용한다.
     - 결정된 랜덤숫자는 `.add`를 통해 `opponentNumber`에 추가하여 자리를 구별한다.
 
-### exceptionTest(input : String)
+### inputException(input : String)
 - 입력 문자가 옳바른지 확인한다.
     - 딱 3자리 정수여야한다.
     - 1부터 9로 서로 다른 숫자로 구성된다.
@@ -101,3 +101,6 @@
 - 사용자에게 재시작 의사를 입력받는다.
     - `1` -> `재시작` : true
     - `2` -> `종료` : false
+
+### restartException()
+- restartGame에서 `1`,`2` 이외의 대답을 할 경우 `IllegalArgumentException`을 발생시킨다.
