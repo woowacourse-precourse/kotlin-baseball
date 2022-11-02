@@ -8,12 +8,11 @@ fun main() {
     baseballGame.initGame()
     baseballGame.setOpponentNumber()
 
-    println(baseballGame.opponentNumber)
-
     val input = readLine()
     input?.let { exceptionTest(it) }
 
     baseballGame.compareNumber(input!!)
+
 }
 
 object baseballGame {
@@ -37,8 +36,16 @@ object baseballGame {
         for (number in opponentNumber) {
             if (input.contains(number.toString())) {
                 val digit = opponentNumber.indexOf(number)
-
+                matchDigit(digit, input)
             }
+        }
+    }
+
+    private fun matchDigit(digit: Int, input: String) {
+        val digitNumber = (opponentNumber[digit]+48).toChar()
+        when (input[digit] == digitNumber) {
+            true -> ballStrike[1]++
+            false -> ballStrike[0]++
         }
     }
 }
