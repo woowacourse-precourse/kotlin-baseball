@@ -20,7 +20,7 @@ object BaseballGameReferee {
         var ballCount = 0
 
         userInput.forEachIndexed { userIndex, userNum ->
-            ballCount+=Computer.randomNumbers.filterIndexed { computerIndex, _ -> computerIndex != userIndex }
+            ballCount += Computer.randomNumbers.filterIndexed { computerIndex, _ -> computerIndex != userIndex }
                 .filter { computerNum -> computerNum == userNum }.size
         }
         return ballCount
@@ -31,15 +31,29 @@ object BaseballGameReferee {
 
         when {
             userInput.length != 3 -> isValid = false
-            !isNumeric(userInput) -> isValid = false
+            !userInput.isNumeric() -> isValid = false
+            !userInput.hasOverlappedNumbers() -> isValid = false
+            userInput.contains('0') -> isValid = false
         }
+
         if (!isValid) {
             throw IllegalArgumentException("입력 오류입니다.")
         }
     }
 
-    fun isNumeric(userInput: String): Boolean {
-        return userInput.chars().allMatch { eachChar -> Character.isDigit(eachChar) }
+    private fun String.isNumeric(): Boolean {
+        return this.chars().allMatch { eachChar -> Character.isDigit(eachChar) }
     }
 
+    private fun String.hasOverlappedNumbers(): Boolean {
+        val usedNumberSet = mutableSetOf<Char>()
+
+        this.forEach { eachNum ->
+            if (usedNumberSet.contains(eachNum)){
+                return false
+            }
+            usedNumberSet.add(eachNum)
+        }
+        return true
+    }
 }
