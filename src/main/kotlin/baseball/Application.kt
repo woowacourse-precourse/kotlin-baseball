@@ -1,5 +1,11 @@
 package baseball
 
+const val START_GAME = "숫자 야구 게임을 시작합니다."
 fun main() {
-    TODO("프로그램 구현")
+    startGame()
+
+}
+
+fun startGame(){
+    println(START_GAME)
 }
