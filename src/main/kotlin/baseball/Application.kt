@@ -8,9 +8,12 @@ fun main() {
     baseballGame.initGame()
     baseballGame.setOpponentNumber()
 
+    println(baseballGame.opponentNumber)
+
     val input = readLine()
     input?.let { exceptionTest(it) }
 
+    baseballGame.compareNumber(input!!)
 }
 
 object baseballGame {
@@ -26,6 +29,15 @@ object baseballGame {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
             if (!opponentNumber.contains(randomNumber)) {
                 opponentNumber.add(randomNumber)
+            }
+        }
+    }
+
+    fun compareNumber(input: String) {
+        for (number in opponentNumber) {
+            if (input.contains(number.toString())) {
+                val digit = opponentNumber.indexOf(number)
+
             }
         }
     }
