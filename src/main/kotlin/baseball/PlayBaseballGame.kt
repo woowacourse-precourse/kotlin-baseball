@@ -8,9 +8,7 @@ class PlayBaseballGame {
     val playerNum = PlayerNumber().toListPlayerNumber
     val countStrike = countStrike(computerNum, playerNum)
     val countBall = countBall(computerNum, playerNum)
-
     init {
-        inputNumPrint()
         ballCountPrint(countBall)
         strikeCountPrint(countStrike)
     }
@@ -22,13 +20,14 @@ class PlayBaseballGame {
         if (strikeCount > 0) print("${strikeCount}스트라이크")
     }
 
-    private fun inputNumPrint(){
-        println("숫자를 입력해주세요 : ")
+    fun nothingPrint(ballCount: Int, strikeCount: Int){
+        if (ballCount == 0 && strikeCount == 0) print("낫싱")
     }
+
 
     fun countBall(computerNum: List<Int>, playerNum: List<Int>): Int {
         var ball = startBallCount
-        for (index in 0..playerNum.size) {
+        for (index in playerNum.indices) {
             if (playerNum[index] != computerNum[index] && computerNum.contains(playerNum[index])){
                 ball += 1
             }
@@ -38,7 +37,7 @@ class PlayBaseballGame {
 
     fun countStrike(computerNum: List<Int>, playerNum: List<Int>): Int {
         var strike = startStrikeCount
-        for (index in 0..playerNum.size) {
+        for (index in playerNum.indices) {
             if (playerNum[index] == computerNum[index]){
                 strike += 1
             }
