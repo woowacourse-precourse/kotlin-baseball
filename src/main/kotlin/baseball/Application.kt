@@ -20,3 +20,8 @@ fun generateComputerNumber(): List<Int> {
     }
     return computerNumber
 }
+
+fun printEnterNumber(){
+    print("숫자를 입력해주세요 : ")
+}
+
