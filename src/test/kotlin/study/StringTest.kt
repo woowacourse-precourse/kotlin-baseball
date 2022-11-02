@@ -1,6 +1,7 @@
 package study
 
 import baseball.getRandomNumber
+import baseball.getStrikeCount
 import baseball.isValidNumber
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -61,5 +62,11 @@ class StringTest {
         val number = getRandomNumber()
         val result = isValidNumber(number)
         assertThat(result).isEqualTo(true)
+    }
+
+    @Test
+    fun `스트라이크 개수 판별`() {
+        val result = getStrikeCount("123", "125")
+        assertThat(result).isEqualTo(2)
     }
 }

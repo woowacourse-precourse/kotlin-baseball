@@ -15,16 +15,10 @@ fun main() {
             throw IllegalStateException()
         }
 
-
-    } while (getStrikeCount() == 3)
+    } while (getStrikeCount(answer, input) < 3)
 }
 
 fun isValidNumber(n: String): Boolean = numberRegex.matches(n)
-
-fun getStrikeCount(): Int {
-    // TODO: 게임 종료 기능 구현
-    return 3
-}
 
 fun getRandomNumber(): String {
     val numbers = mutableListOf<Int>()
@@ -36,4 +30,15 @@ fun getRandomNumber(): String {
     }
 
     return numbers.joinToString("")
+}
+
+fun getStrikeCount(answer: String, input: String): Int {
+    var count = 0
+    for (i in 0 until 3) {
+        if (input[i] == answer[i]) {
+            count += 1
+        }
+    }
+
+    return count
 }
