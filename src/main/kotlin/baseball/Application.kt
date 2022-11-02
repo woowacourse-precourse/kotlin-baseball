@@ -5,18 +5,18 @@ import java.lang.IllegalArgumentException
 
 
 fun main() {
-    baseballGame.initGame()
-    baseballGame.setOpponentNumber()
+    BaseballGame.initGame()
+    BaseballGame.setOpponentNumber()
 
     val input = readLine()
     input?.let { exceptionTest(it) }
 
-    baseballGame.compareNumber(input!!)
+    BaseballGame.compareNumber(input!!)
 
 }
 
-object baseballGame {
-    var opponentNumber = mutableListOf<Int>()
+object BaseballGame {
+    private var opponentNumber = mutableListOf<Int>()
     var ballStrike = mutableListOf(0, 0)
 
     fun initGame() {
