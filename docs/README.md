@@ -82,7 +82,7 @@
         - 없으면 아무 행동도 하지 않고 다음 숫자로 넘어간다.
     - 만일 있다면 2차적으로, matchSeat()을 으로 넘어가 위치를 확인한다.
 
-### matchSeat(digit : Int, input : String)
+### matchDigit(digit : Int, input : String)
 - digit에 위치한 자릿수가 같은지 확인한다.
     - 일치하면 스트라이크 수를 1 증가시킨다.
     - 일치하지 않으면 볼 수를 1 증가시킨다.
