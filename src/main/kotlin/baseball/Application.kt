@@ -1,5 +1,18 @@
 package baseball
 
+
+fun Get_Cpu_Num (Target: List<Int>): Int {
+
+}
+
+fun Game_Start (Target: List<Int>): Int {
+
+}
+
+fun Compare_Num (Target: Int): Int {
+
+}
+
 fun main() {
-    TODO("프로그램 구현")
+    print("야구 시작")
 }
