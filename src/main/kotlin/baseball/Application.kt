@@ -14,6 +14,7 @@ fun main() {
 
         BaseballGame.compareNumber(input!!)
         BaseballGame.printResult()
+        BaseballGame.initResult()
     }
 }
 
@@ -62,6 +63,11 @@ object BaseballGame {
             print("낫싱")
         }
         println()
+    }
+
+    fun initResult(){
+        ballStrike[0]=0
+        ballStrike[1]=0
     }
 }
 
