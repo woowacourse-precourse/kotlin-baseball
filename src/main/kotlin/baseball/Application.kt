@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     baseballGame.initGame()
-
+    baseballGame.setOpponentNumber()
 }
 
 object baseballGame {
@@ -16,5 +16,12 @@ object baseballGame {
         opponentNumber.clear()
     }
 
-
+    fun setOpponentNumber() {
+        while (opponentNumber.size < 3) {
+            val randomNumber = Randoms.pickNumberInRange(1, 9)
+            if (!opponentNumber.contains(randomNumber)) {
+                opponentNumber.add(randomNumber)
+            }
+        }
+    }
 }
