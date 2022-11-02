@@ -3,17 +3,19 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.random.Random
 
 object Computer {
-    fun generateRandomNumber() : List<Int>{
-        val randomNumbers=ArrayList<Int>()
+    var randomNumbers=ArrayList<Int>()
 
-        while(randomNumbers.size<3){
-            val generatedNumber= Randoms.pickNumberInRange(1, 9)
+    fun generateNewRandomNumber(){
+        val generatedNumbers=ArrayList<Int>()
 
-            if(!randomNumbers.contains(generatedNumber)){
-                randomNumbers.add(generatedNumber)
+        while(generatedNumbers.size<3){
+            val eachNumber= Randoms.pickNumberInRange(1, 9)
+
+            if(!generatedNumbers.contains(eachNumber)){
+                generatedNumbers.add(eachNumber)
             }
         }
 
-        return randomNumbers.toList()
+        randomNumbers=generatedNumbers
     }
 }
