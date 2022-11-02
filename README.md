@@ -160,7 +160,7 @@ while (computer.size() < 3) {
 ## 기능 목록
 
 - [x] 잘못된 값 입력 시 `IllegalArgumentException` 발생
-- [ ] 임의의 수 3개 선택
+- [x] 임의의 수 3개 선택
 - [ ] 숫자 판단
     - [ ] 볼 판단
     - [ ] 스트라이크 판단
