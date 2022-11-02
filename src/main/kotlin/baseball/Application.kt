@@ -39,6 +39,7 @@ fun checkNumber( str: String, ans: List<Int> ): Int{
 }
 
 fun main() {
+    println("숫자 야구 게임을 시작합니다.")
 
     val computer = mutableListOf<Int>()     //사용자가 맞춰야 할 컴퓨터의 숫자이다
     while (computer.size < 3) {
@@ -46,5 +47,19 @@ fun main() {
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber)
         }
+    }
+
+    var regame = 0
+    while (regame != 2) {
+
+        var collect = 0   //정답을 맞췄는지 확인해줄 변수 -> 1이 되면 정답임!
+        while (collect != 1) {
+            println("숫자를 입력해주세요 : ")
+            val temp = readLine()!!
+            collect = checkNumber(temp, computer)
+        }
+
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     }
 }
