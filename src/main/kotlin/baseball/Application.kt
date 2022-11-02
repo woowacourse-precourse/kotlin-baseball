@@ -18,7 +18,8 @@ fun main() {
     } while (getStrikeCount(answer, input) < 3)
 }
 
-fun isValidNumber(n: String): Boolean = numberRegex.matches(n)
+fun isValidNumber(n: String): Boolean =
+    numberRegex.matches(n) && n.toSet().count() == 3
 
 fun getRandomNumber(): String {
     val numbers = mutableListOf<Int>()
