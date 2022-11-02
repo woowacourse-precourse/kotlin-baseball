@@ -5,28 +5,34 @@ import java.lang.IllegalArgumentException
 
 
 fun main() {
-    BaseballGame.initGame()
-    BaseballGame.setOpponentNumber()
-    while(true) {
-        print("숫자를 입력해주세요 : ")
-        val input = readLine()
-        input?.let { inputException(it) }
-
-        BaseballGame.compareNumber(input!!)
-        BaseballGame.printResult()
-
-        if(BaseballGame.ballStrike[1]==3){
-            break
-        }
-
-        BaseballGame.initResult()
-    }
-
+    do {
+        BaseballGame.playGame()
+    }while(restartGame())
 }
+
 
 object BaseballGame {
     private var opponentNumber = mutableListOf<Int>()
     var ballStrike = mutableListOf(0, 0)
+
+    fun playGame(){
+        initGame()
+        setOpponentNumber()
+        while(true) {
+            print("숫자를 입력해주세요 : ")
+            val input = readLine()
+            input?.let { inputException(it) }
+
+            compareNumber(input!!)
+            printResult()
+
+            if(ballStrike[1]==3){
+                break
+            }
+
+            initResult()
+        }
+    }
 
     fun initGame() {
         opponentNumber.clear()
