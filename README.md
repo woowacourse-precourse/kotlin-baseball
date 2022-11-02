@@ -154,3 +154,14 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 구현할 기능 정리
+1. 랜덤값 추출 - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+2. 사용자 값 입력 - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+   게임도중 사용자 값 입력은 맞출 때(3스트라이크)까지 반복됨
+3. 컴퓨터 데이터에 랜덤값 저장 (서로 다른 3자리의 수) - 게임 진행때마다 값이 변경되어야함
+4. 사용자 잘못된 값 입력했는지 비교 - 잘못 입력했을 시 IllegalArgumentException을 발생시킨 후 애플리케이션 종료
+5. 게임 시작 문구 출력 (최초 한번만)
+6. 게임 도중 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시, (하나도 없는 경우, 3개의 숫자를 모두 맞힐 경우 포함)
+7. 게임이 끝났을 때 새 게임을 할것인지 물어봄 (1==새 게임, 2==종료)
