@@ -21,7 +21,7 @@ fun startGame() {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine()
         if (isValidNumber(input).not()) {
-            throw IllegalStateException()
+            throw IllegalArgumentException()
         }
 
         val ballCount = getBallCount(answer, input)
