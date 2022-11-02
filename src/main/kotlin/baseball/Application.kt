@@ -42,8 +42,22 @@ fun errorcheck(checkword:String):Boolean {
     var number = checkword.toIntOrNull()
     if (number == null)
         return false
+    if(number>999||number<100)
+        return false
+    if(!checkoverlap(number))
+        return false
 
 
+    return true
+}
+
+fun checkoverlap(checkInt:Int):Boolean{
+    var first = checkInt/100
+    var second = (checkInt%100) / 10
+    var third = checkInt%10
+
+    if(first==second || second==third || first==third)
+        return false
 
     return true
 }
