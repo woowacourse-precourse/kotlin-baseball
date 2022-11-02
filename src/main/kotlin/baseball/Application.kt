@@ -32,6 +32,9 @@ fun getRandomNumber(): String {
     return numbers.joinToString("")
 }
 
+fun getBallCount(answer: String, input: String): Int =
+    input.count { answer.contains(it) } - getStrikeCount(answer, input)
+
 fun getStrikeCount(answer: String, input: String): Int {
     var count = 0
     for (i in 0 until 3) {
