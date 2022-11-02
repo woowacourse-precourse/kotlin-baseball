@@ -8,12 +8,13 @@ fun main() {
 }
 
 fun startBaseball() {
+    val computerNumbers = mutableListOf<Int>()
+    inputComputerNumbers(computerNumbers)
     while (true) {
-        val computerNumbers = mutableListOf<Int>()
-        inputComputerNumbers(computerNumbers)
         val userNumbers = inputUserNumbers()
         checkUserNumbers(userNumbers, computerNumbers)
     }
+
 }
 
 fun checkUserNumbers(
@@ -36,11 +37,13 @@ fun printUserCount(strikeCount: Int, ballCount: Int) {
     if (strikeCount == 3) {
         println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     } else if (strikeCount > 0 && ballCount == 0) {
-        println("$strikeCount 스트라이크")
+        println("${strikeCount}스트라이크")
     } else if (strikeCount == 0 && ballCount > 0) {
-        println("$ballCount 볼")
+        println("${ballCount}볼")
     } else if (strikeCount == 0 && ballCount == 0) {
         println("낫싱")
+    }else{
+        println("${ballCount}볼 ${strikeCount}스트라이크")
     }
 }
 
