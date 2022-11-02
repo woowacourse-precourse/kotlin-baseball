@@ -2,6 +2,18 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+fun randomNumber(): List<Int> {
+    val computer = mutableListOf<Int>()     //사용자가 맞춰야 할 컴퓨터의 숫자이다
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+
+    return computer
+}
+
 fun checkNumber(str: String, ans: List<Int>): Int {
     var strike = 0
     var ball = 0
@@ -9,8 +21,8 @@ fun checkNumber(str: String, ans: List<Int>): Int {
 
     for (elem in str) {       //사용자가 입력한 문자열을 한 글자씩 확인하며
         if (ans.contains(elem - '0'))        // ans 에 있는 숫자이면 일단 ball을 카운트 한다
-           ball++
-        if(ans[idx] == elem - '0'){     //ans의 해당 idx값과 동일하다면 ball이 아니라 strike다
+            ball++
+        if (ans[idx] == elem - '0') {     //ans의 해당 idx값과 동일하다면 ball이 아니라 strike다
             ball--
             strike++
         }
@@ -57,13 +69,7 @@ fun getString(): String {
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
 
-    val computer = mutableListOf<Int>()     //사용자가 맞춰야 할 컴퓨터의 숫자이다
-    while (computer.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1,9)
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber)
-        }
-    }
+    var computer = randomNumber()
 
     var regame = 0
     while (regame != 2) {
@@ -79,5 +85,7 @@ fun main() {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
         regame = readLine()!!.toInt()
+
+        computer = randomNumber()
     }
 }
