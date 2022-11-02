@@ -1,7 +1,9 @@
 package baseball
 
 class Constant {
-    val minRangeNum = 1
-    val maxRangeNum = 9
-    val numRange = 3
+    companion object {
+        const val minRangeNum = 1
+        const val maxRangeNum = 9
+        const val numRange = 3
+    }
 }
