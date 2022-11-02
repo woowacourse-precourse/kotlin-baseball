@@ -43,4 +43,22 @@ class BoogiWoogiTest {
         assertThat(BaseballGameReferee.calcStrikeCount(arrayListOf(1, 5, 4))).isEqualTo(3)
     }
 
+    @Test
+    fun `볼이된 숫자의 개수가 하나인 경우`(){
+        Computer.randomNumbers=arrayListOf(3, 5, 4)
+        assertThat(BaseballGameReferee.calcBallCount(arrayListOf(4, 5, 1))).isEqualTo(1)
+    }
+
+    @Test
+    fun `볼이된 숫자의 개수가 두개인 경우`(){
+        Computer.randomNumbers=arrayListOf(1, 5, 4)
+        assertThat(BaseballGameReferee.calcBallCount(arrayListOf(4, 2, 1))).isEqualTo(2)
+    }
+
+    @Test
+    fun `볼이된 숫자의 개수가 세개인 경우`(){
+        Computer.randomNumbers=arrayListOf(4, 5, 1)
+        assertThat(BaseballGameReferee.calcBallCount(arrayListOf(5, 1, 4))).isEqualTo(3)
+    }
+
 }
