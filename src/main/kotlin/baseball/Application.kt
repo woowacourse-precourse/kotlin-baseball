@@ -27,6 +27,7 @@ object BaseballGame {
             printResult()
 
             if (ballStrike[1] == 3) {
+                initResult()
                 break
             }
 
