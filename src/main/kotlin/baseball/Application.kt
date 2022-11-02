@@ -107,8 +107,8 @@ fun restartGame() : Boolean{
     val answer = readLine()
     answer?.let { restartException(it) }
     when(answer){
-        "1" -> true
-        "2" -> false
+        "1" -> return true
+        "2" -> return false
     }
     return true
 }
