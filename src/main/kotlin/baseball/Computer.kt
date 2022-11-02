@@ -5,7 +5,7 @@ import kotlin.random.Random
 object Computer {
     var randomNumbers=ArrayList<Int>()
 
-    fun generateNewRandomNumber(){
+    fun generateNewRandomNumbers(){
         val generatedNumbers=ArrayList<Int>()
 
         while(generatedNumbers.size<3){
