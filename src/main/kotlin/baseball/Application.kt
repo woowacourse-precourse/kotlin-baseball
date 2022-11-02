@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     var hitnumber= createthreenumber()
+    var check=1
 
     while(true){
         println("숫자 야구 게임을 시작합니다.")
@@ -14,10 +15,8 @@ fun main() {
             throw IllegalArgumentException()
             break
         }
-
-
-
-
+        if(judgementnumber(usernumber.toInt(),hitnumber))
+            break
     }
 
 }
@@ -60,4 +59,20 @@ fun checkoverlap(checkInt:Int):Boolean{
         return false
 
     return true
+}
+
+fun judgementnumber(usernumber:Int, computernumber:Int):Boolean{
+    var user_first = usernumber/100
+    var user_second = (usernumber%100)/10
+    var user_third = usernumber%10
+    var computer_first = computernumber/100
+    var computer_second = (computernumber%100)/10
+    var computer_third = computernumber%10
+
+    if(user_first==computer_first && user_second==computer_second && user_third==computer_third){
+        println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        return true//숫자 재지정 등으로 인하여 만드는 방법 다시 생각할 필요 있음.
+    }
+
+    return false//3스트라이크 이외는 false
 }
