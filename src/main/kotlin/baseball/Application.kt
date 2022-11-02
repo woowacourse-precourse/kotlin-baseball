@@ -8,10 +8,17 @@ private const val MAX_SIZE = 3
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
+    do {
+        startGame()
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    } while (Console.readLine() == "1")
+}
+
+fun startGame() {
     val answer = getRandomNumber()
 
     do {
-        println("숫자를 입력해주세요 : ")
+        print("숫자를 입력해주세요 : ")
         val input = Console.readLine()
         if (isValidNumber(input).not()) {
             throw IllegalStateException()
