@@ -7,12 +7,14 @@ import java.lang.IllegalArgumentException
 fun main() {
     BaseballGame.initGame()
     BaseballGame.setOpponentNumber()
+    while(true) {
+        print("숫자를 입력해주세요 : ")
+        val input = readLine()
+        input?.let { exceptionTest(it) }
 
-    val input = readLine()
-    input?.let { exceptionTest(it) }
-
-    BaseballGame.compareNumber(input!!)
-
+        BaseballGame.compareNumber(input!!)
+        BaseballGame.printResult()
+    }
 }
 
 object BaseballGame {
@@ -42,11 +44,24 @@ object BaseballGame {
     }
 
     private fun matchDigit(digit: Int, input: String) {
-        val digitNumber = (opponentNumber[digit]+48).toChar()
+        val digitNumber = (opponentNumber[digit] + 48).toChar()
         when (input[digit] == digitNumber) {
             true -> ballStrike[1]++
             false -> ballStrike[0]++
         }
+    }
+
+    fun printResult() {
+        if (ballStrike[0] > 0) {
+            print("${ballStrike[0]}볼 ")
+        }
+        if (ballStrike[1] > 0) {
+            print("${ballStrike[1]}스트라이크 ")
+        }
+        if (ballStrike[0] == 0 && ballStrike[1] == 0) {
+            print("낫싱")
+        }
+        println()
     }
 }
 
