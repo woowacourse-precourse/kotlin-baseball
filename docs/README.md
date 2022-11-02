@@ -56,8 +56,10 @@
 
 ## 기능 구현 목록
 ### initGame()
+- 랜덤 숫자가 담긴 `opponentNumber`를 `.clear()`로 비운다.
+
+### setOpponentNumber()
 - 게임 시작 시, 게임 초기화를 위해 호출된다.
-- 랜덤 숫자가 담길 `opponentNumber`를 비운다.
 - 랜덤한 상대방의 숫자를 정한다.
     - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 이용한다.
     - 결정된 랜덤숫자는 `.add`를 통해 `opponentNumber`에 추가하여 자리를 구별한다.
