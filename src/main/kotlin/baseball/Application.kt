@@ -1,16 +1,23 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 const val START_GAME = "숫자 야구 게임을 시작합니다."
 fun main() {
     startGame()
-
 }
 
 fun startGame() {
     println(START_GAME)
     val answer = pickRandomNumber()
+    while (true) {
+        val input = userInput()
+    }
+}
+
+fun userInput(): String {
+    return Console.readLine()
 }
 
 fun pickRandomNumber(): String {
