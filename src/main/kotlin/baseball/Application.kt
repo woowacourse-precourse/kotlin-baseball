@@ -7,22 +7,7 @@ fun processUserInput(): String? {
     return Console.readLine()
 }
 
-fun isNumeric(userInput: String): Boolean {
-    return userInput.chars().allMatch { eachChar -> Character.isDigit(eachChar) }
-}
 
-fun checkException(userInput: String) {
-    var isValid = true
-
-    when {
-        userInput.length != 3 -> isValid = false
-        !isNumeric(userInput) -> isValid = false
-    }
-
-    if (!isValid) {
-        throw IllegalArgumentException("입력 오류입니다.")
-    }
-}
 
 
 fun main() {
