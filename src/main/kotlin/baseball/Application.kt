@@ -1,5 +1,20 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
+
 fun main() {
-    TODO("프로그램 구현")
+    baseballGame.initGame()
+
+}
+
+object baseballGame {
+    var opponentNumber = mutableListOf<Int>()
+    var ballStrike = mutableListOf(0, 0)
+
+    fun initGame() {
+        opponentNumber.clear()
+    }
+
+
 }
