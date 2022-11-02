@@ -2,8 +2,26 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun randomNumber(): List<Int> {
-    val computer = mutableListOf<Int>()     //사용자가 맞춰야 할 컴퓨터의 숫자이다
+fun playGame() {    //게임을 실행하는 함수
+    var computer = randomNumber()
+    var regame = 0
+
+    checkNumber(computer)
+
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    regame = readLine()!!.toInt()
+
+    if (regame == 1)
+        playGame()
+    else if (regame == 2) {
+        println("게임을 종료합니다!")
+        return
+    }
+}
+
+fun randomNumber(): List<Int> {         //정답을 랜덤으로 생성하는 함수
+    val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computer.contains(randomNumber)) {
@@ -14,10 +32,11 @@ fun randomNumber(): List<Int> {
     return computer
 }
 
-fun checkNumber(str: String, ans: List<Int>): Int {
+fun checkNumber(ans: List<Int>){         //값을 입력받고 그에 맞는 결과를 출력해주는 함수
     var strike = 0
     var ball = 0
     var idx = 0
+    val str = getString()
 
     for (elem in str) {       //사용자가 입력한 문자열을 한 글자씩 확인하며
         if (ans.contains(elem - '0'))        // ans 에 있는 숫자이면 일단 ball을 카운트 한다
@@ -32,7 +51,7 @@ fun checkNumber(str: String, ans: List<Int>): Int {
 
     if (strike == 3) {     //3스트라이크 -> 정답!
         println("${strike}스트라이크")
-        return 1
+        return                              //답이 나오면 함수 종료
     } else if (strike == 0 && ball == 0) {
         println("낫싱")
     } else if (strike == 0) {
@@ -43,10 +62,10 @@ fun checkNumber(str: String, ans: List<Int>): Int {
         println("${ball}볼 ${strike}스트라이크")
     }
 
-    return 0
+    checkNumber(ans)      //답이 나오지 않으면 다시 실행
 }
 
-fun getString(): String {
+fun getString(): String {       //숫자를 입력받는 함수
 
     println("숫자를 입력해주세요 : ")
     val temp = readLine()
@@ -64,28 +83,6 @@ fun getString(): String {
     }
 
     return temp
-}
-
-fun playGame() {
-    var computer = randomNumber()
-    var regame = 0
-    var collect = 0   //정답을 맞췄는지 확인해줄 변수 -> 1이 되면 정답임!
-
-    while (collect != 1) {
-        val temp = getString()
-        collect = checkNumber(temp, computer)
-    }
-
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    regame = readLine()!!.toInt()
-
-    if (regame == 1)
-        playGame()
-    else if (regame == 2) {
-        println("게임을 종료합니다!")
-        return
-    }
 }
 
 fun main() {
