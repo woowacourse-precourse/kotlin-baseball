@@ -10,7 +10,7 @@ fun main() {
     while(true) {
         print("숫자를 입력해주세요 : ")
         val input = readLine()
-        input?.let { exceptionTest(it) }
+        input?.let { inputException(it) }
 
         BaseballGame.compareNumber(input!!)
         BaseballGame.printResult()
@@ -78,7 +78,7 @@ object BaseballGame {
 
 }
 
-fun exceptionTest(input: String) {
+fun inputException(input: String) {
     val regex = "[1-9][1-9][1-9]".toRegex()
     require(input.matches(regex)) {
         throw IllegalArgumentException()
