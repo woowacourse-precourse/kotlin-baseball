@@ -32,7 +32,7 @@ fun randomNumber(): List<Int> {         //정답을 랜덤으로 생성하는 �
     return computer
 }
 
-fun checkNumber(ans: List<Int>){         //값을 입력받고 그에 맞는 결과를 출력해주는 함수
+fun checkNumber(ans: List<Int>) {         //값을 입력받고 그에 맞는 결과를 출력해주는 함수
     var strike = 0
     var ball = 0
     var idx = 0
@@ -72,13 +72,11 @@ fun getString(): String {       //숫자를 입력받는 함수
 
     if (temp.isNullOrEmpty() || temp.length != 3) {        //숫자의 입력 형식이 옳은지 확인해준다
         throw IllegalArgumentException("잘못된 입력입니다")
-        temp = getString()
     }
 
     for (t in temp) {
         if (t !in '0'..'9') {
             throw IllegalArgumentException("잘못된 입력입니다")
-            temp = getString()
         }
     }
 
