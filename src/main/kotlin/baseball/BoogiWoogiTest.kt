@@ -21,7 +21,8 @@ class BoogiWoogiTest {
 
     @Test
     fun `컴퓨터가 발생시킨 임의의 숫자 리스트 크기가 3인지 확인`(){
-        assertThat(Computer.generateRandomNumber().size).isEqualTo(3)
+        Computer.generateNewRandomNumbers()
+        assertThat(Computer.randomNumbers.size).isEqualTo(3)
     }
 
 }
