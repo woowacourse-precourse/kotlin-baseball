@@ -7,18 +7,18 @@ import java.lang.IllegalArgumentException
 fun main() {
     do {
         BaseballGame.playGame()
-    }while(restartGame())
+    } while (restartGame())
 }
 
 
 object BaseballGame {
     private var opponentNumber = mutableListOf<Int>()
-    var ballStrike = mutableListOf(0, 0)
+    private var ballStrike = mutableListOf(0, 0)
 
-    fun playGame(){
+    fun playGame() {
         initGame()
         setOpponentNumber()
-        while(true) {
+        while (true) {
             print("숫자를 입력해주세요 : ")
             val input = readLine()
             input?.let { inputException(it) }
@@ -26,7 +26,7 @@ object BaseballGame {
             compareNumber(input!!)
             printResult()
 
-            if(ballStrike[1]==3){
+            if (ballStrike[1] == 3) {
                 break
             }
 
@@ -34,11 +34,11 @@ object BaseballGame {
         }
     }
 
-    fun initGame() {
+    private fun initGame() {
         opponentNumber.clear()
     }
 
-    fun setOpponentNumber() {
+    private fun setOpponentNumber() {
         while (opponentNumber.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
             if (!opponentNumber.contains(randomNumber)) {
@@ -47,7 +47,7 @@ object BaseballGame {
         }
     }
 
-    fun compareNumber(input: String) {
+    private fun compareNumber(input: String) {
         for (number in opponentNumber) {
             if (input.contains(number.toString())) {
                 val digit = opponentNumber.indexOf(number)
@@ -64,7 +64,7 @@ object BaseballGame {
         }
     }
 
-    fun printResult() {
+    private fun printResult() {
         if (ballStrike[0] > 0) {
             print("${ballStrike[0]}볼 ")
         }
@@ -77,9 +77,9 @@ object BaseballGame {
         println()
     }
 
-    fun initResult(){
-        ballStrike[0]=0
-        ballStrike[1]=0
+    private fun initResult() {
+        ballStrike[0] = 0
+        ballStrike[1] = 0
     }
 
 }
@@ -95,18 +95,18 @@ fun inputException(input: String) {
     }
 }
 
-fun restartException(answer : String){
-    require(answer == "1"||answer=="2"){
+fun restartException(answer: String) {
+    require(answer == "1" || answer == "2") {
         throw IllegalArgumentException()
     }
 }
 
-fun restartGame() : Boolean{
+fun restartGame(): Boolean {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val answer = readLine()
     answer?.let { restartException(it) }
-    when(answer){
+    when (answer) {
         "1" -> return true
         "2" -> return false
     }
