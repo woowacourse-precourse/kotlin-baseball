@@ -60,6 +60,7 @@ fun restartGameCheck() {
 }
 
 fun inputUserNumbers(): MutableList<Int> {
+    print("숫자를 입력해주세요 : ")
     val input = readLine()!!
     //예외 사항 : 정수 인지* , 길이가 3인지 , 중복된 숫자는 없는지
     val userNumbers = input.map {
