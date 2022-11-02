@@ -66,26 +66,29 @@ fun getString(): String {
     return temp
 }
 
+fun playGame() {
+    var computer = randomNumber()
+    var regame = 0
+    var collect = 0   //정답을 맞췄는지 확인해줄 변수 -> 1이 되면 정답임!
+
+    while (collect != 1) {
+        val temp = getString()
+        collect = checkNumber(temp, computer)
+    }
+
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    regame = readLine()!!.toInt()
+
+    if (regame == 1)
+        playGame()
+    else if (regame == 2) {
+        println("게임을 종료합니다!")
+        return
+    }
+}
+
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-
-    var computer = randomNumber()
-
-    var regame = 0
-    while (regame != 2) {
-
-        var collect = 0   //정답을 맞췄는지 확인해줄 변수 -> 1이 되면 정답임!
-        while (collect != 1) {
-            val temp = getString()
-
-            collect = checkNumber(temp, computer)
-        }
-
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-
-        regame = readLine()!!.toInt()
-
-        computer = randomNumber()
-    }
+    playGame()
 }
