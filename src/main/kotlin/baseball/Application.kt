@@ -10,5 +10,10 @@ package baseball
 // 7. 재시작 여부에 따라 다시 함수 실행
 
 fun main() {
+    print("숫자 야구 게임을 시작합니다.")
+    game()
+}
+
+fun game() {
 
 }
