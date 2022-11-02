@@ -12,25 +12,27 @@ fun startBaseball() {
     inputComputerNumbers(computerNumbers)
     while (true) {
         val userNumbers = inputUserNumbers()
-        checkUserNumbers(userNumbers, computerNumbers)
+        val gameComplete = checkUserNumbers(userNumbers, computerNumbers)
+        if (gameComplete) break
     }
-
+    restartGameCheck()
 }
 
 fun checkUserNumbers(
-    userNumbers: MutableList<Int>,
-    computerNumbers: MutableList<Int>
-) {
+    userNumbers: MutableList<Int>, computerNumbers: MutableList<Int>
+): Boolean {
     //strike check
     val strikeCount = userNumbers.filterIndexed { idx, userNum ->
         userNum == computerNumbers[idx]
     }.size
     // ball check
     val ballCount = userNumbers.filterIndexed { idx, userNum ->
-        computerNumbers.contains(userNum) &&
-                userNum != computerNumbers[idx]
+        computerNumbers.contains(userNum) && userNum != computerNumbers[idx]
     }.size
     printUserCount(strikeCount, ballCount)
+
+    if (strikeCount == 3) return true
+    return false
 }
 
 fun printUserCount(strikeCount: Int, ballCount: Int) {
@@ -44,6 +46,16 @@ fun printUserCount(strikeCount: Int, ballCount: Int) {
         println("낫싱")
     } else if (strikeCount > 0 && ballCount > 0) {
         println("${ballCount}볼 ${strikeCount}스트라이크")
+    }
+}
+
+fun restartGameCheck() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val number = readLine()?.toInt()
+    if (number == 1) {
+        startBaseball()
+    } else if (number != 2) {
+        throw IllegalArgumentException()
     }
 }
 
@@ -68,6 +80,7 @@ fun inputComputerNumbers(numbers: MutableList<Int>) {
             numbers.add(randomNumber)
         }
     }
+    println("computer : $numbers")
 }
 
 fun gameStartText() = println("숫자 야구 게임을 시작합니다.")
