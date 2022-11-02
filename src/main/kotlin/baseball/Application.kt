@@ -42,7 +42,7 @@ fun printUserCount(strikeCount: Int, ballCount: Int) {
         println("${ballCount}볼")
     } else if (strikeCount == 0 && ballCount == 0) {
         println("낫싱")
-    }else{
+    } else if (strikeCount > 0 && ballCount > 0) {
         println("${ballCount}볼 ${strikeCount}스트라이크")
     }
 }
