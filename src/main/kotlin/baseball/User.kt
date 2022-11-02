@@ -16,10 +16,10 @@ object User {
         return userInput.toBaseballNumbers()
     }
 
-    fun String.toBaseballNumbers() : ArrayList<Int>{
-        val guessedNumbers=ArrayList<Int>()
+    private fun String.toBaseballNumbers(): ArrayList<Int> {
+        val guessedNumbers = ArrayList<Int>()
 
-        this.forEach {  eachNum ->
+        this.forEach { eachNum ->
             guessedNumbers.add(Character.getNumericValue(eachNum))
         }
         return guessedNumbers

@@ -49,7 +49,7 @@ object BaseballGameReferee {
         val usedNumberSet = mutableSetOf<Char>()
 
         this.forEach { eachNum ->
-            if (usedNumberSet.contains(eachNum)){
+            if (usedNumberSet.contains(eachNum)) {
                 return false
             }
             usedNumberSet.add(eachNum)
