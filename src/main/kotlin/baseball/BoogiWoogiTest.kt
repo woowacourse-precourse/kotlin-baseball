@@ -13,6 +13,20 @@ class BoogiWoogiTest {
     }
 
     @Test
+    fun `사용자의 입력에 0이 포함된 숫자가 있는 경우 예외 발생`(){
+        assertThrows<IllegalArgumentException> {
+            BaseballGameReferee.checkException("103")
+        }
+    }
+
+    @Test
+    fun `사용자의 입력에 중복된 숫자가 있는 경우 예외 발생`(){
+        assertThrows<IllegalArgumentException> {
+            BaseballGameReferee.checkException("113")
+        }
+    }
+
+    @Test
     fun `사용자의 입력이 세자리가 아닌 경우 예외 발생`(){
         assertThrows<IllegalArgumentException> {
             BaseballGameReferee.checkException("7777")
