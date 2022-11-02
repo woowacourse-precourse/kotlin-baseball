@@ -2,7 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun getRandomNumber() :String { // 문자형으로 3자리 수 반환
+fun getRandomNumber() :String { // 랜덤으로 숫자를 뽑아 3자리 수 문자형으로 반환해주는 함수
     var randomNum=""
     var num =0
     while (randomNum.length<3){
