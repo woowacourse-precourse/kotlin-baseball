@@ -14,8 +14,14 @@ fun main() {
 
         BaseballGame.compareNumber(input!!)
         BaseballGame.printResult()
+
+        if(BaseballGame.ballStrike[1]==3){
+            break
+        }
+
         BaseballGame.initResult()
     }
+
 }
 
 object BaseballGame {
@@ -69,6 +75,7 @@ object BaseballGame {
         ballStrike[0]=0
         ballStrike[1]=0
     }
+
 }
 
 fun exceptionTest(input: String) {
@@ -81,3 +88,10 @@ fun exceptionTest(input: String) {
         throw IllegalArgumentException()
     }
 }
+
+fun restartException(answer : String){
+    require(answer == "1"||answer=="2"){
+        throw IllegalArgumentException()
+    }
+}
+
