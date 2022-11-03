@@ -30,7 +30,6 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `컴퓨터 숫자 테스트`() {
-
         val computerNumberTest = fun(): Boolean {
 
             // 컴퓨터 숫자 크기 테스트
@@ -51,6 +50,12 @@ class ApplicationTest : NsTest() {
         }
 
         assertTrue(computerNumberTest)
+    }
+
+    @Test
+    fun `게임 시작 문구 출력 테스트`() {
+        run()
+        assertThat(output()).contains("숫자 야구 게임을 시작합니다.")
     }
 
     override fun runMain() {
