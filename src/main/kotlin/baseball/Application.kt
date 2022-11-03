@@ -32,6 +32,13 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
 
     /** 랜덤한 숫자를 생성해 리스트에 저장 */
+    val listOfCreatedNumber = createRandomNumber()
+
+    /** 숫자 입력 문구 출력 */
+
+}
+
+fun createRandomNumber(): List<Int> {
     val listOfCreatedNumber: MutableList<Int> = mutableListOf()
     while (listOfCreatedNumber.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -39,4 +46,5 @@ fun main() {
             listOfCreatedNumber.add(randomNumber)
         }
     }
+    return listOfCreatedNumber.toList()
 }
