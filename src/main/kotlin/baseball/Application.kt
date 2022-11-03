@@ -18,6 +18,12 @@ fun main() {
 fun game() {
     var computer_num = computer_random_num()
 
+    print("숫자를 입력해주세요 : ")
+
+    var num = readLine()
+
+
+
 }
 
 fun computer_random_num(): MutableSet<Int> {
