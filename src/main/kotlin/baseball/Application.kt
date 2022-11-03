@@ -22,6 +22,16 @@ fun inputNum(): String {
 
     return userNum
 }
+fun checkInputValid(user_num: String): Boolean {
+    if (user_num.length != 3)
+        return false
+    for (i in user_num) {
+        if (!(i in '1'..'9')){
+            throw IllegalArgumentException("1 부터 9까지의 값을 입력해 주세요")
+            return false}
+    }
+    return true
+}
 
 fun main() {
 
