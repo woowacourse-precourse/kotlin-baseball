@@ -9,7 +9,7 @@ val Input_List = mutableListOf<Int>()
 //0 = S , 1 = B , 2 = Null
 var Compare_List = mutableListOf<Int>(0,0)
 
-val Result = mutableListOf<Int>()
+var Result = mutableListOf<Int>()
 var Cpu_Num = mutableListOf<Int>()
 
 //컴퓨터 숫자 선택
@@ -53,6 +53,14 @@ fun Compare_Exception (Compare_List : List<Int>): Boolean {
     return Compare_List[0] == 0 || Compare_List[1] == 0
 }
 
+fun Print_Result (Result_List : List<Int>) : String{
+    Result_List.forEach {
+        Result += it + "볼"
+    }
+
+    return Result.toString()
+}
+
 fun main() = with(Scanner(System.`in`)){
     print("숫자 야구 게임을 시작합니다.")
     while (true){
@@ -67,6 +75,6 @@ fun main() = with(Scanner(System.`in`)){
 
         Game_Start(Input_List)
 
-
+        Print_Result(Compare_List)
     }
 }
