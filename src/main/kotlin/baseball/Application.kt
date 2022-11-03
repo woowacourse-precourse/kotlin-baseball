@@ -15,10 +15,50 @@ fun getRandomNumber() :String { // 랜덤으로 숫자를 뽑아 3자리 수 문
 }
 
 fun inputNumber() : String{ // 잘못 입력했을 시 IllegalArgumentException을 발생시킨 후 애플리케이션 종료
+    /* 잘못 입력한경우
+    1. 같은 숫자 두번 이상 입력
+    2. 숫자 외 입력
+    */
     print("숫자를 입력해주세요 : ")
     var user = readLine()
     return user.toString()
 }
+
+fun ballOrStrike(randomNumber : String, inputNumber : String): String {
+    var answer = ""
+    var ball = "볼"
+    var ballcnt = 0
+    var strike = "스트라이크"
+    var strikecnt = 0
+    for (com in 0 until randomNumber.length){
+        for (user in 0 until inputNumber.length){
+            if(randomNumber[com]==inputNumber[user]){ // 같은 번호를 찾았을때
+                if(com==user){ // 인덱스 번호가 같다면
+                    strikecnt+=1
+                }
+                else if(com!=user) {
+                    ballcnt += 1
+                }
+            }
+        }
+    }
+
+    if (ballcnt==0 && strikecnt==0){ // 0볼 0 스트라이크(하나도 없는 경우)
+        answer="낫싱"
+    }
+    else{
+        if (ballcnt==0){ // 볼이 0개인 경우
+            answer=strikecnt.toString()+strike
+        }else if(strikecnt==0){ // 스트라이크 0개인 경우
+            answer=ballcnt.toString()+ball
+        }else{
+            answer=(ballcnt.toString()+ball)+" "+(strikecnt.toString()+strike)
+        }
+    }
+
+    return answer
+}
+
 
 fun startgame(){ //게임 시작 문구 출력 (최초 한번만 실행)
     println("숫자 야구 게임을 시작합니다.")
@@ -30,12 +70,15 @@ fun startgame(){ //게임 시작 문구 출력 (최초 한번만 실행)
 
 fun main() {
     var randomNumber = ""
+    var checkNum = ""
 
     startgame() // 최초 한번만 동작하므로 while문 밖 위치
 
     randomNumber=getRandomNumber() // 숫자가 무엇인지 보여줄 필요는 없으므로 메서드 호출만
     println(randomNumber) // 임시 확인용 후에 제거 예정
-    inputNumber()
+    checkNum=inputNumber() // 입력한 값을 담아서 보관
+    println(ballOrStrike(randomNumber, checkNum))
+
 
 
 }
