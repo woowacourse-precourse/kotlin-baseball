@@ -12,6 +12,8 @@ class Computer {
         createRandomNumber()
     }
 
+    fun getNumberOfComputer(): HashSet<Int> = numberOfComputer
+
     private fun createRandomNumber() {
         do {
             val randomNumber = Randoms.pickNumberInRange(MIN_OF_NUMBER, MAX_OF_NUMBER)

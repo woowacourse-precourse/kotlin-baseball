@@ -8,13 +8,24 @@ class Game(
     private val player: Player
 ): GameService {
 
+    private val numberOfComputer = computer.getNumberOfComputer()
+    private var gameState = GAME_ACTIVE_STATE
+    private var isActiveState =
+        gameState == GAME_ACTIVE_STATE
+
     override fun play() {
-        start()
+        println(START_GAME_MESSAGE)
+
+        do {
+            printInputMessage()
+
+            player.enterNumber()
+
+        } while (isActiveState)
     }
 
-    override fun start() {
-        println(START_GAME_MESSAGE)
-    }
+    private fun printInputMessage() = print(INPUT_MESSAGE)
+
 
     override fun end() {
         TODO("Not yet implemented")
