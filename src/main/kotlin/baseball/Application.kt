@@ -16,7 +16,9 @@ fun main() {
         println("낫싱")
     if (!isNothing) {
         val strike = checkStrike(userNumber, computerNumber)
-        println(strike)
+        val ball = checkBall(userNumber, computerNumber) - strike
+
+        println("$ball 볼 $strike 스트라이크")
     }
 
 
@@ -52,4 +54,13 @@ fun checkStrike(userNumber: List<Int>, computerNumber: MutableList<Int>): Int {
             countStrike++
 
     return countStrike
+}
+fun checkBall(userNumber: List<Int>, computerNumber: MutableList<Int>): Int {
+    var countBall = 0
+
+    for (num in userNumber.indices)
+        if (computerNumber.contains(userNumber[num]))
+            countBall++
+
+    return countBall
 }
