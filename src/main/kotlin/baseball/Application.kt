@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
@@ -28,9 +29,7 @@ fun k_Baseball(num : Int, comp : IntArray){
     while (result < 2) {
         if (str == 0 && ball == 0) str0_ball0()
         else if (str == 0) only_Ball(ball)
-        else if (str == 3) {
-
-        }
+        else if (str == 3) Clear()
         else if (ball == 0) only_Strike(str)
         else str_ball(str, ball)
     }
@@ -52,6 +51,10 @@ fun str_ball(str : Int, ball : Int){
     println("${ball}볼 ${str}스트라이크")
 }
 
-fun Clear(){
-
+fun Clear() : Int{
+    println("3스트라이크")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    var n : Int = readLine()!!.toInt()
+    return n
 }
