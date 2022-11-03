@@ -20,6 +20,11 @@ fun startgame(){ //게임 시작 문구 출력 (최초 한번만 실행)
 }
 
 fun main() {
+    var randomNumber = ""
+
     startgame()
-    getRandomNumber()
+    randomNumber=getRandomNumber() // 숫자가 무엇인지 보여줄 필요는 없으므로 메서드 호출만
+
+
+
 }
