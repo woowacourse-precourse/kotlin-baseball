@@ -85,9 +85,26 @@ private fun printResult(pair: Pair<Int, Int>): Boolean {
         Pair(0, 2) -> println("2스트라이크")
         Pair(0, 3) -> {
             println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            // TODO: 리턴 값 수정
-            return false
+            val num = getRestartOrFinishNum()
+            return isRestart(num)
         }
     }
     return true
+}
+
+private fun getRestartOrFinishNum(): Int {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return Console.readLine().toInt()
+}
+
+private fun isRestart(num: Int): Boolean {
+    return when (num) {
+        1 -> {
+            randomNum = makeRandomNumber()
+            true
+        }
+
+        2 -> false
+        else -> throw IllegalArgumentException("1 또는 2를 입력하세요.")
+    }
 }
