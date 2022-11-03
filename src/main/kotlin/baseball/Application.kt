@@ -44,7 +44,7 @@ fun makeFormattedResult(ball: Int, strike: Int): String {
         resultStringList.add("${strike}스트라이크")
     }
 
-    return if (resultStringList.size == 0){
+    return if (resultStringList.size == 0) {
         "낫싱"
     } else {
         return resultStringList.joinToString(" ")
@@ -57,11 +57,14 @@ fun findBallScore(input: String, answer: String): Int =
     (input.indices).filter { input[it] != answer[it] && input[it] in answer }.size
 
 fun generateRandomNumber(): String {
-    val randomNumberSet = mutableSetOf<Int>()
-    while (randomNumberSet.size != 3) {
-        randomNumberSet.add(Randoms.pickNumberInRange(1, 9))
+    val randomNumberList = mutableListOf<Int>()
+    while (randomNumberList.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (randomNumberList.contains(randomNumber).not()) {
+            randomNumberList.add(randomNumber)
+        }
     }
-    return randomNumberSet.joinToString("")
+    return randomNumberList.joinToString("")
 }
 
 fun checkInputNumberValid(input: String): Boolean {
