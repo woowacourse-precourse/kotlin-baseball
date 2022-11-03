@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 const val START_GAME = "숫자 야구 게임을 시작합니다."
+const val END_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 const val STRIKE = "스트라이크"
 const val BALL = "볼"
 const val NOTHING = "낫싱"
@@ -20,7 +21,15 @@ fun startGame() {
     while (true) {
         val input = userInput()
         checkHint(input, answer)
+        if (checkAnswer(input, answer)) {
+            break
+        }
     }
+    println(END_GAME)
+}
+
+fun checkAnswer(input: String, answer: String): Boolean {
+    return input == answer
 }
 
 fun checkHint(input: String, answer: String) {
