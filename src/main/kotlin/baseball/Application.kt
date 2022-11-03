@@ -32,4 +32,13 @@ fun throwThreeLetterException(input: List<Char>) {
     }
 }
 
+fun throwNonNumberException(input: List<Char>) {
+    val asciiCodeZero = 48
+    val asciiCodeNine = 57
+    input.forEach { char ->
+        if (char.code < asciiCodeZero || char.code > asciiCodeNine) {
+            throw IllegalArgumentException("숫자만 입력하세요")
+        }
+    }
+}
 
