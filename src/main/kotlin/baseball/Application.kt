@@ -34,15 +34,20 @@ fun inputNum(): String {
 }
 
 fun checkInputValid(user_num: String): Boolean {
+    var checkedNum = mutableListOf<Char>()
+    checkedNum.add(user_num[0])
     if (user_num.length != 3){
         throw IllegalArgumentException("3자리 값을 입력해 주세요")
         return false
     }
-    for (i in 0..user_num.length-2)
-        if(user_num[i]==user_num[i+1]) {
+    for (i in user_num.slice(1..2)) {
+        if (i in checkedNum) {
             throw IllegalArgumentException("서로 다른 숫자를 입력해 주세요")
             return false
         }
+        else
+            checkedNum.add(i)
+    }
     for (i in user_num) {
         if (i !in '1'..'9'){
             throw IllegalArgumentException("1 부터 9까지의 값을 입력해 주세요")
