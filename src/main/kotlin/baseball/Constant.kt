@@ -12,7 +12,7 @@ class Constant {
         const val newGameSwitch = "1"
         const val gameCloseSwitch = "2"
         const val inputNumberMessage = "숫자를 입력해주세요 : "
-        const val startGameMessage = "숫자 야구 게임을 시작합니다.\n"
+        const val startGameMessage = "숫자 야구 게임을 시작합니다."
         const val errorMessage = "잘못된 값을 입력했습니다 올바른 값을 입력해주세요."
         const val ballMessage = "볼"
         const val strikeMessage = "스트라이크"

@@ -10,28 +10,39 @@ import baseball.Constant.Companion.newGameSwitch
 
 //import camp.nextstep.edu.missionutils.Console.readLine
 
-class PlayBaseballGame(computerNum: MutableList<Int>) {
+class PlayBaseballGame(private val computerNum: MutableList<Int>) {
     private val playerNumCreate = PlayerNumberCreate()
-    val printObject = PrintMethod()
+    private val printObject = PrintMethod()
+    private val playerNum = playerNumCreate.playerNumber()
+    private val strike = countStrike(computerNum, playerNum)
+    private val ball = countBall(computerNum, playerNum)
 
     init {
-        printObject.printInputNum()
-        val playerNum = playerNumCreate.playerNumber()
-        val strike = countStrike(computerNum, playerNum)
-        val ball = countBall(computerNum, playerNum)
+        printHint()
+        checkAnswer()
+    }
+
+    private fun printHint() {
+        printObject.printInputMessage()
         printObject.printBallCount(ball, strike)
         printObject.printStrikeCount(strike)
         printObject.printNothing(ball, strike)
-        if (notAnswer(strike)) {
-            PlayBaseballGame(computerNum)
-        }
-        if (!notAnswer(strike)) {
+    }
+
+    private fun checkAnswer() {
+        if (isNotAnswer(strike)) PlayBaseballGame(this.computerNum)
+        if (isAnswer(strike)) {
             println(gameEndMessage)
             checkNewGame()
         }
     }
 
-    private fun notAnswer(strikeCount: Int): Boolean {
+
+    private fun isAnswer(strikeCount: Int): Boolean {
+        return strikeCount == numRange
+    }
+
+    private fun isNotAnswer(strikeCount: Int): Boolean {
         return strikeCount != numRange
     }
 

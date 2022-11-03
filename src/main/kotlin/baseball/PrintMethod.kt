@@ -7,10 +7,9 @@ import baseball.Constant.Companion.inputNumberMessage
 
 
 class PrintMethod {
-    fun printInputNum() {
+    fun printInputMessage() {
         println(inputNumberMessage)
     }
-
 
     fun printBallCount(ballCount: Int, strikeCount: Int) {
         if (ballCount > 0 && strikeCount > 0) print("$ballCount${ballMessage} ")
