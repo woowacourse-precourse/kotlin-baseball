@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console.readLine
 
 fun printStartMessage(){
     println("숫자 야구 게임을 시작합니다")
@@ -46,6 +47,23 @@ fun checkStrike( computer : MutableList<Int>, user : MutableList<Int> ) : Int {
     return strikeCount
 }
 
+fun printHintMessage(ball : Int, strike : Int){
+    if(ball == 0 && strike ==0){
+        println("낫싱")
+    }
+    if(ball == 0 && strike !=0){
+        println("${strike}스트라이크")
+    }
+    if(ball != 0 && strike ==0){
+        println("${ball}볼")
+    }
+    if(ball != 0 && strike !=0){
+        print("${ball}볼 ")
+        println("${strike}스트라이크")
+    }
+
+
+}
 
 fun main() {
     printStartMessage()
@@ -60,7 +78,5 @@ fun main() {
     var ball = checkBall(computer,user)
     var strike = checkStrike(computer,user)
 
-    println(ball)
-    println(strike)
-
+    printHintMessage(ball,strike)
 }
