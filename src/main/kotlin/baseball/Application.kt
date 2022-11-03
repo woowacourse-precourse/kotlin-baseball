@@ -26,3 +26,11 @@ private fun makeRandomNumber(): Int {
 private fun isThreeDigitNum(num: Int) = num in (100..999)
 
 private fun existZero(num: Int) = num.toString().contains('0')
+
+private fun isDifferentNum(num: Int): Boolean {
+    val set = mutableSetOf<Char>()
+    num.toString().map {
+        set.add(it)
+    }
+    return set.size == 3
+}
