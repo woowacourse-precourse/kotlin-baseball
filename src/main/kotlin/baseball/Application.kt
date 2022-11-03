@@ -50,3 +50,22 @@ private fun isDifferentNum(num: Int): Boolean {
     }
     return set.size == 3
 }
+
+private fun compareNumber(inputNum: Int): Pair<Int, Int> {
+    var ball = 0
+    var strike = 0
+
+    randomNum.toString().forEachIndexed { i, digitOne ->
+        inputNum.toString().forEachIndexed EXIT@{ j, digitTwo ->
+            if (i == j && digitOne == digitTwo) {
+                strike += 1
+                return@EXIT
+            } else if (i != j && digitOne == digitTwo) {
+                ball += 1
+                return@EXIT
+            }
+        }
+    }
+
+    return Pair(ball, strike)
+}
