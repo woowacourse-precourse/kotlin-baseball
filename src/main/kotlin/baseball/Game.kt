@@ -6,7 +6,7 @@ object Game {
     var input = ""
     fun gameStart(){
         while(true){
-            Console.readLine()
+            input = Console.readLine()
         }
     }
 }
