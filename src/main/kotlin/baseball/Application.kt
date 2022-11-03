@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms
 
 fun getRandomNumber() :String { // 랜덤으로 숫자를 뽑아 3자리 수 문자형으로 반환해주는 함수
@@ -18,6 +19,7 @@ fun inputNumber() : String{ // 잘못 입력했을 시 IllegalArgumentException�
     /* 잘못 입력한경우
     1. 같은 숫자 두번 이상 입력
     2. 숫자 외 입력
+    3. 길이가 3이 되지 않을때
     */
     print("숫자를 입력해주세요 : ")
     var user = readLine()
@@ -76,9 +78,13 @@ fun main() {
 
     randomNumber=getRandomNumber() // 숫자가 무엇인지 보여줄 필요는 없으므로 메서드 호출만
     println(randomNumber) // 임시 확인용 후에 제거 예정
+
+
     checkNum=inputNumber() // 입력한 값을 담아서 보관
     println(ballOrStrike(randomNumber, checkNum))
-
+    if (ballOrStrike(randomNumber, checkNum)=="3스트라이크"){
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    }
 
 
 }
