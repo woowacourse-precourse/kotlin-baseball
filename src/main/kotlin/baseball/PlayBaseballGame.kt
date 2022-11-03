@@ -1,12 +1,12 @@
 package baseball
 
-import baseball.Constant.Companion.numRange
 import baseball.Constant.Companion.startBallCount
 import baseball.Constant.Companion.startStrikeCount
 import baseball.Constant.Companion.errorMessage
 import baseball.Constant.Companion.gameCloseSwitch
 import baseball.Constant.Companion.gameEndMessage
 import baseball.Constant.Companion.newGameSwitch
+import baseball.Constant.Companion.numberRange
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
@@ -38,11 +38,11 @@ class PlayBaseballGame(private val computerNum: MutableList<Int>) {
 
 
     private fun isAnswer(strikeCount: Int): Boolean {
-        return strikeCount == numRange
+        return strikeCount == numberRange
     }
 
     private fun isNotAnswer(strikeCount: Int): Boolean {
-        return strikeCount != numRange
+        return strikeCount != numberRange
     }
 
     private fun newGameConstraint(newGame: String) {
@@ -52,8 +52,7 @@ class PlayBaseballGame(private val computerNum: MutableList<Int>) {
     }
 
     private fun checkNewGame() {
-        val newGame = readLine().toString()
-        println(newGame)
+        val newGame = readLine()
         newGameConstraint(newGame)
         if (newGame == newGameSwitch) PlayBaseballGame(ComputerNumberCreate().computerNumber)
     }

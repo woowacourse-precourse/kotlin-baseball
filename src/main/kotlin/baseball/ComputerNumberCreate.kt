@@ -2,7 +2,7 @@ package baseball
 
 import baseball.Constant.Companion.maxRangeNumber
 import baseball.Constant.Companion.minRangeNumber
-import baseball.Constant.Companion.numRange
+import baseball.Constant.Companion.numberRange
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 class ComputerNumberCreate() {
@@ -18,7 +18,7 @@ class ComputerNumberCreate() {
 
     private fun makeNum(): MutableList<Int> {
         val makeThreeNum = mutableListOf<Int>()
-        while (makeThreeNum.size < numRange) {
+        while (makeThreeNum.size < numberRange) {
             appendNum(randomNum(), makeThreeNum)
         }
         return makeThreeNum

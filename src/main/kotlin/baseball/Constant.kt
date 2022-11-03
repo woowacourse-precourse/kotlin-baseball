@@ -6,7 +6,7 @@ class Constant {
         const val maxRangeNumber = 9
         const val minRangeString = '1'
         const val maxRangeString = '9'
-        const val numRange = 3
+        const val numberRange = 3
         const val startBallCount = 0
         const val startStrikeCount = 0
         const val newGameSwitch = "1"

@@ -20,17 +20,20 @@ class PlayerNumberCreate {
     }
 
     private fun inputPlayerNumber(): String {
-        val inputNumber = readLine()
-        //println("inputnumber $inputNumber")
-        //constraint(inputNumber.toString())
-        //return "123"
-        return inputNumber.toString()
+        return readLine()
     }
 
     private fun constraint(inputString: String) {
-        if (!inputString.all { it in minRangeString..maxRangeString } || inputString.isEmpty() || inputString.length != 3) {
+        if (!inputString.all { it in minRangeString..maxRangeString }
+            || inputString.isEmpty()
+            || inputString.length != 3
+            || checkDuple(toList(inputString))) {
             throw IllegalArgumentException(errorMessage)
         }
+    }
+
+    private fun checkDuple(inputList: MutableList<Int>): Boolean {
+        return inputList.size != inputList.distinct().count()
     }
 
     private fun toList(playerNumber: String): MutableList<Int> {
