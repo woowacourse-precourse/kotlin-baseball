@@ -1,14 +1,14 @@
 package baseball
 
-import baseball.Constant.Companion.maxRangeNum
-import baseball.Constant.Companion.minRangeNum
+import baseball.Constant.Companion.maxRangeNumber
+import baseball.Constant.Companion.minRangeNumber
 import baseball.Constant.Companion.numRange
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 class ComputerNumberCreate() {
     val computerNumber = makeNum()
 
-    private fun randomNum() = pickNumberInRange(minRangeNum, maxRangeNum)
+    private fun randomNum() = pickNumberInRange(minRangeNumber, maxRangeNumber)
 
     private fun appendNum(randomNum:Int, numList:MutableList<Int>){
         if (!numList.contains(randomNum)) {
