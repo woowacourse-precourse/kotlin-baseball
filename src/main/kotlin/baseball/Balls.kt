@@ -13,4 +13,23 @@ class Balls {
         val balls = ballList.mapIndexed { index, c -> Ball(c.toInt(), index + 1) }
         this.balls = balls
     }
+
+    fun playGame(ballList : String) : List<String> {
+        val userInput = Balls(ballList)
+        val resultList = mutableListOf<String>()
+
+        balls.forEach {
+            val result = userInput.playGame(it)
+            resultList.add(result)
+        }
+        return resultList
+    }
+
+    fun playGame(ball : Ball) : String {
+        balls.forEach{
+            if(!it.playGame(ball).equals("Nothing"))
+                return it.playGame(ball)
+        }
+        return "Nothing"
+    }
 }
