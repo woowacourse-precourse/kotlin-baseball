@@ -21,7 +21,15 @@ fun generateComputerNumber(): List<Int> {
     return computerNumber
 }
 
-fun printEnterNumber(){
+fun printEnterNumber() {
     print("숫자를 입력해주세요 : ")
 }
+
+fun throwThreeLetterException(input: List<Char>) {
+    val numberOfDigits = 3
+    if (input.size != numberOfDigits) {
+        throw IllegalArgumentException("3개의 숫자를 입력하세요")
+    }
+}
+
 
