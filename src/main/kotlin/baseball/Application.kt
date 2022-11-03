@@ -76,7 +76,7 @@ fun gameRestart(): Int {
 
 fun main() {
     printStartMessage()
-    val computer = createComputerAnswer()
+    var computer = createComputerAnswer()
 
     println("정답$computer")
 
@@ -91,7 +91,7 @@ fun main() {
 
         if(strike ==3){
             strike = gameRestart()
-            val computer = createComputerAnswer()
+            computer = createComputerAnswer()
 
             println("정답$computer")
         }
