@@ -28,7 +28,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `3자리 숫자 예외 테스트`() {
+    fun `3자리 예외 테스트`() {
         val testCase1 = listOf('1', '2', '3', '4')
         val testCase2 = listOf<Char>()
         assertThrows<IllegalArgumentException> { throwThreeLetterException(testCase1) }
