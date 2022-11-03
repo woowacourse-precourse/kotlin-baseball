@@ -6,13 +6,15 @@ fun main() {
 }
 
 class Computer() {
-    private val computerNumbers = mutableListOf<Int>()
+    private val _computerNumbers = mutableListOf<Int>()
+    val computerNumbers: List<Int> get() = _computerNumbers
 
     fun createComputerNumbers() {
-        while (computerNumbers.size < 3) {
+        _computerNumbers.clear()
+        while (_computerNumbers.size < 3) {
             val randomNumber: Int = createNumberInRange()
             if (isNumberRepeated(randomNumber)) {
-                computerNumbers.add(randomNumber)
+                _computerNumbers.add(randomNumber)
             }
         }
     }
@@ -22,7 +24,7 @@ class Computer() {
     }
 
     private fun isNumberRepeated(randomNumber: Int): Boolean {
-        return (!computerNumbers.contains(randomNumber))
+        return (!_computerNumbers.contains(randomNumber))
     }
 }
 
