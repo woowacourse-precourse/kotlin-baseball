@@ -1,11 +1,12 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
-    TODO("프로그램 구현")
     /**
      * 기능목록
      * 1. 게임 시작 문구 출력
-     * 2. 랜덤 한 숫자를 생성해 리스트에 저장
+     * 2. 랜덤한 숫자를 생성해 리스트에 저장
      * 3. 숫자 입력 문구 출력
      * 4. 숫자 입력 받음
      * 5. 예외처리 및 프로그램 종료
@@ -19,4 +20,23 @@ fun main() {
      * 13. 재시작을 누르면 2번으로 복귀
      * 14. 종료를 누르면 프로그램 종료
      * */
+
+    /**
+     * 예외처리 리스트
+     * 1. 숫자로만 구성되어야 함
+     * 2. 길이는 3
+     * 3. 모두 다른 숫자여야 함
+     * */
+
+    /** 게임 시작 문구 출력 */
+    println("숫자 야구 게임을 시작합니다.")
+
+    /** 랜덤한 숫자를 생성해 리스트에 저장 */
+    val listOfCreatedNumber: MutableList<Int> = mutableListOf()
+    while (listOfCreatedNumber.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!listOfCreatedNumber.contains(randomNumber)) {
+            listOfCreatedNumber.add(randomNumber)
+        }
+    }
 }
