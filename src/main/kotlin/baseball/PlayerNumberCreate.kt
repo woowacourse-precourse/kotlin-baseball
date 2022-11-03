@@ -1,12 +1,18 @@
 package baseball
 
-//import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Console.readLine
 import baseball.Constant.Companion.errorMessage
 import baseball.Constant.Companion.maxRangeString
 import baseball.Constant.Companion.minRangeString
 
 
 class PlayerNumberCreate {
+    private val printObject = PrintMethod()
+
+    init {
+        printObject.printInputMessage()
+    }
+
     fun playerNumber(): MutableList<Int> {
         val playerNumber: String = inputPlayerNumber()
         constraint(playerNumber)

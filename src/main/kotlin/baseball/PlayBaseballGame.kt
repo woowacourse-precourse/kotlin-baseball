@@ -8,7 +8,7 @@ import baseball.Constant.Companion.gameCloseSwitch
 import baseball.Constant.Companion.gameEndMessage
 import baseball.Constant.Companion.newGameSwitch
 
-//import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Console.readLine
 
 class PlayBaseballGame(private val computerNum: MutableList<Int>) {
     private val playerNumCreate = PlayerNumberCreate()
@@ -23,7 +23,6 @@ class PlayBaseballGame(private val computerNum: MutableList<Int>) {
     }
 
     private fun printHint() {
-        printObject.printInputMessage()
         printObject.printBallCount(ball, strike)
         printObject.printStrikeCount(strike)
         printObject.printNothing(ball, strike)
@@ -53,8 +52,9 @@ class PlayBaseballGame(private val computerNum: MutableList<Int>) {
     }
 
     private fun checkNewGame() {
-        val newGame = readLine()
-        newGameConstraint(newGame.toString())
+        val newGame = readLine().toString()
+        println(newGame)
+        newGameConstraint(newGame)
         if (newGame == newGameSwitch) PlayBaseballGame(ComputerNumberCreate().computerNumber)
     }
 
