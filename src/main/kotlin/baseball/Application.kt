@@ -10,7 +10,8 @@ fun main() {
     print("숫자 야구 게임을 시작합니다.")
     randomNum = makeRandomNumber()
     while (true) {
-        inputAndCheckNum()
+        if (isRepeat()) continue
+        else break
     }
 }
 
@@ -25,7 +26,7 @@ private fun makeRandomNumber(): Int {
     return computer.joinToString("").toInt()
 }
 
-private fun inputAndCheckNum() {
+private fun isRepeat(): Boolean {
     val inputNum = getInputNumber()
     if (isRightInput(inputNum)) {
         // TODO: 다음 단계 구현
