@@ -27,6 +27,53 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `포맷팅 테스트`() {
+        val oneBallTwoStrike = "1볼 2스트라이크"
+        val fourBall = "4볼"
+        val threeStrike = "3스트라이크"
+        val noBallNoResult = "낫싱"
+
+        assertThat(makeFormattedResult(1, 2)).isEqualTo(oneBallTwoStrike)
+        assertThat(makeFormattedResult(4, 0)).isEqualTo(fourBall)
+        assertThat(makeFormattedResult(0, 3)).isEqualTo(threeStrike)
+        assertThat(makeFormattedResult(0, 0)).isEqualTo(noBallNoResult)
+    }
+
+    @Test
+    fun `스트라이크 테스트`() {
+        assertThat(findStrikeScore("123", "124")).isEqualTo(2)
+        assertThat(findStrikeScore("123", "123")).isEqualTo(3)
+        assertThat(findStrikeScore("123", "456")).isEqualTo(0)
+    }
+
+    @Test
+    fun `볼 테스트`() {
+        assertThat(findBallScore("123", "321")).isEqualTo(2)
+        assertThat(findBallScore("123", "123")).isEqualTo(0)
+        assertThat(findBallScore("123", "356")).isEqualTo(1)
+    }
+
+    @Test
+    fun `랜덤 값 생성 테스트`() {
+        val funResult = generateRandomNumber()
+        assertThat(funResult.length == 3 && funResult.toSet().size == 3).isEqualTo(true)
+    }
+
+    @Test
+    fun `인풋 값 체크 테스트`() {
+        assertThat(checkInputNumberValid("12")).isEqualTo(false)
+        assertThat(checkInputNumberValid("345")).isEqualTo(true)
+        assertThat(checkInputNumberValid("6789")).isEqualTo(false)
+    }
+
+    @Test
+    fun `엔딩 값 체크 테스트`() {
+        assertThat(checkEndingNumberValid("1")).isEqualTo(true)
+        assertThat(checkEndingNumberValid("2")).isEqualTo(true)
+        assertThat(checkEndingNumberValid("3")).isEqualTo(false)
+    }
+
     override fun runMain() {
         main()
     }
