@@ -43,7 +43,12 @@ fun makeFormattedResult(ball: Int, strike: Int): String {
     if (strike != 0) {
         resultStringList.add("${strike}스트라이크")
     }
-    return resultStringList.joinToString(" ")
+
+    return if (resultStringList.size == 0){
+        "낫싱"
+    } else {
+        return resultStringList.joinToString(" ")
+    }
 }
 
 fun findStrikeScore(input: String, answer: String): Int = (input.indices).filter { input[it] == answer[it] }.size
