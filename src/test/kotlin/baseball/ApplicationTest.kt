@@ -80,6 +80,32 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Nested
+    inner class ComputerTest {
+        private val computer = Computer()
+
+        @Test
+        fun `컴퓨터 난수 생성 - 3자리수 검사`() {
+            computer.createComputerNumbers()
+            assertThat(computer.computerNumbers).hasSize(3)
+        }
+
+        @Test
+        fun `컴퓨터 난수 생성 - 1~9범위 검사`() {
+            computer.createComputerNumbers()
+            println(computer.computerNumbers)
+            computer.computerNumbers.forEach() {
+                assertThat(it).isIn(1..9)
+            }
+        }
+
+        @Test
+        fun `컴퓨터 난수 생성 - 중복 검사`() {
+            computer.createComputerNumbers()
+            println(computer.computerNumbers)
+            assertThat(computer.computerNumbers).doesNotHaveDuplicates()
+        }
+    }
     override fun runMain() {
         main()
     }
