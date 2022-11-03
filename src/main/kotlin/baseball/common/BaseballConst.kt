@@ -1,8 +1,9 @@
 package baseball.common
 
 const val MAX_INPUT_SIZE = 3
-// const val START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다."
-// const val SUCCESS_GAME_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다 ! 게임 종료"
+const val MAX_NUMBER_SIZE = 3
+const val MIN_OF_NUMBER = 1
+const val MAX_OF_NUMBER = 9
 const val END_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
 const val INPUT_SIGN_MESSAGE = "숫자를 입력해주세요 : "
 const val OUTPUT_BALL_MESSAGE = "%d볼"
