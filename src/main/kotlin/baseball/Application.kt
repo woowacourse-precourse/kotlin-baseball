@@ -17,12 +17,13 @@ private fun printWelcomeMessage() {
 }
 
 private fun playNewBaseball() {
+    val numbers = getNumbers()
     while (true) {
-        val numbers = getNumbers()
-        TODO()
         printRequestForInputMessage()
         val userNumbers = getUserNumbers()
-        if (getBallCount() == 3) {
+        val strikeCount = getStrikeCount(numbers, userNumbers)
+        printBallCount(strikeCount)
+        if (strikeCount == 3) {
             printGameFinishedMessage()
             break
         }
@@ -73,12 +74,32 @@ private fun hasIllegalCharacter(char: Char): Boolean =
 
 private fun Char.toNumber() = this.code - '0'.code
 
-private fun getBallCount(): Int {
-    TODO()
+private fun getStrikeCount(numbers: List<Int>, userNumbers: List<Int>): Int {
+    var strikeCount = 0
+    userNumbers.forEach {
+        if (numbers.contains(it)) {
+            strikeCount++
+        }
+    }
+    return strikeCount
 }
 
 private fun printGameFinishedMessage() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+}
+
+private fun printBallCount(strikeCount: Int) {
+    if (strikeCount == 3) {
+        println("${strikeCount}스트라이크")
+        return
+    }
+    if (strikeCount in 1..2) {
+        println("${3 - strikeCount}볼 ${strikeCount}스트라이크")
+        return
+    }
+    if (strikeCount == 0) {
+        println("낫싱")
+    }
 }
 
 private fun getIntentForNewBaseball(): Boolean {
