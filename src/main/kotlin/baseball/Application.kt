@@ -48,10 +48,14 @@ fun checkStrike( computer : MutableList<Int>, user : MutableList<Int> ) : Int {
 }
 
 fun printHintMessage(ball : Int, strike : Int){
+    if(strike == 3){
+        println("3스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    }
     if(ball == 0 && strike ==0){
         println("낫싱")
     }
-    if(ball == 0 && strike !=0){
+    if(ball == 0 && strike !=0 && strike != 3){
         println("${strike}스트라이크")
     }
     if(ball != 0 && strike ==0){
@@ -62,18 +66,16 @@ fun printHintMessage(ball : Int, strike : Int){
         println("${strike}스트라이크")
     }
 
-
 }
 
 fun main() {
     printStartMessage()
     val computer = createComputerAnswer()
 
-    println(computer)
+    println("정답$computer")
 
     var user = inputUserNumber()
 
-    println(user)
 
     var ball = checkBall(computer,user)
     var strike = checkStrike(computer,user)
