@@ -14,4 +14,25 @@ class Ball {
         this.position = position
     }
 
+    fun playGame(user : Ball) : String {
+        when {
+            this.equals(user) -> {
+                return "Strike"
+            }
+
+            this.checkBall(user.number) -> {
+                return "Ball"
+            }
+
+            else -> return "Nothing"
+        }
+    }
+
+    fun checkBall(ballNum : Int) : Boolean = this.number == ballNum
+
+
+    override fun equals(other: Any?): Boolean {
+        if(other is Ball) return other.number == this.number && other.position == this.position
+        return false
+    }
 }
