@@ -1,14 +1,16 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.IllegalArgumentException
 
 var randomNum = 0
 
 fun main() {
     print("숫자 야구 게임을 시작합니다.")
     randomNum = makeRandomNumber()
-    while(true){
-        // TODO: 기능 구현하기
+    while (true) {
+        inputAndCheckNum()
     }
 }
 
@@ -21,6 +23,18 @@ private fun makeRandomNumber(): Int {
         }
     }
     return computer.joinToString("").toInt()
+}
+
+private fun inputAndCheckNum() {
+    val inputNum = getInputNumber()
+    if (isRightInput(inputNum)) {
+        // TODO: 다음 단계 구현
+    } else throw IllegalArgumentException("1~9 사이의 서로 다른 세자리 수를 입력하세요")
+}
+
+private fun getInputNumber(): Int {
+    print("숫자를 입력해주세요 : ")
+    return Console.readLine().toInt()
 }
 
 private fun isRightInput(num: Int) = isThreeDigitNum(num) && !existZero(num) && isDifferentNum(num)
