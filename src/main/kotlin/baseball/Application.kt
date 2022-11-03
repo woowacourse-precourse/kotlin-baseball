@@ -15,6 +15,8 @@ fun main() {
                 println("임시 1번내용")
                 var answernumber =answernumberselect()
                 println("")
+                var usernumber = userselectnumber()
+                println("")
             }
             2 -> {
                 println("게임을 종료합니다.")
@@ -35,5 +37,31 @@ fun answernumberselect(): MutableList<Int> {
         }
     }
     return computer
+}
 
+fun userselectnumber(): MutableList<Int> {
+    val usernumber = mutableListOf<Int>()
+    println("숫자를 입력해주세요 : ")
+    usernumber.add(readLine()!!.toInt())
+//    usernumber.add(readLine()!!.toInt())
+//    usernumber.add(readLine()!!.toInt())
+
+    var userNumStr = usernumber.joinToString("")
+    userNumStr = userNumStr.chunked(1).toString()
+    var userNumStrInt = mutableListOf<Int>()
+    println(userNumStr)
+
+    var firstnum = userNumStr[1].code
+    firstnum = Character.getNumericValue(firstnum)
+    userNumStrInt.add(firstnum)
+    var secondnum = userNumStr[4].code
+    secondnum = Character.getNumericValue(secondnum)
+    userNumStrInt.add(secondnum)
+    var thirdnum = userNumStr[7].code
+    thirdnum = Character.getNumericValue(thirdnum)
+    userNumStrInt.add(thirdnum)
+
+    print(userNumStrInt)
+
+    return userNumStrInt
 }
