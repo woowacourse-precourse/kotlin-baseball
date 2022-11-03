@@ -8,29 +8,33 @@ fun main() {
     while (true) {
         val robotAnswer = generateRandomNumber()
 
-        print("숫자를 입력해주세요 : ")
-        val playerInput = Console.readLine()
+        while(true) {
 
-        if (checkInputNumberValid(playerInput).not()) {
-            throw java.lang.IllegalArgumentException("Invalid Input")
-        }
+            print("숫자를 입력해주세요 : ")
+            val playerInput = Console.readLine()
 
-        val ballScore = findBallScore(playerInput, robotAnswer)
-        val strikeScore = findStrikeScore(playerInput, robotAnswer)
-        println(makeFormattedResult(ballScore, strikeScore))
-
-        if (strikeScore == 3) {
-            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-            val endingInput = Console.readLine()
-
-            if (checkEndingNumberValid(endingInput).not()) {
+            if (checkInputNumberValid(playerInput).not()) {
                 throw java.lang.IllegalArgumentException("Invalid Input")
             }
 
-            if (endingInput == "2") {
+            val ballScore = findBallScore(playerInput, robotAnswer)
+            val strikeScore = findStrikeScore(playerInput, robotAnswer)
+            println(makeFormattedResult(ballScore, strikeScore))
+
+            if(strikeScore == 3) {
+                println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
                 break
             }
+        }
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val endingInput = Console.readLine()
+
+        if (checkEndingNumberValid(endingInput).not()) {
+            throw java.lang.IllegalArgumentException("Invalid Input")
+        }
+
+        if (endingInput == "2") {
+            break
         }
     }
 }
