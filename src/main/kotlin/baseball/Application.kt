@@ -71,9 +71,15 @@ fun playBaseball(computerNumber: List<Int>, userNumber: List<Int>) {
 }
 
 fun countBallStrike(location: Int, number: Int, computerNumber: List<Int>): MutableList<Int> {
-    TODO()
+    val countResult: MutableList<Int> = mutableListOf(0, 0)
+    if (computerNumber.indexOf(number) == location) {
+        countResult[1] += 1
+    } else {
+        countResult[0] += 1
+    }
+    return countResult
 }
 
 fun printResult(countResult: MutableList<Int>) {
-    TODO()
+
 }
