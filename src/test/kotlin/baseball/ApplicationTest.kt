@@ -51,7 +51,7 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `Character 타입으로된 리스트를 Int로 바꿔서 유저 숫자를 얻는 기능 테스트`() {
-        val userNumber=getUserNumber(listOf('1','2','3'))
+        val userNumber= convertCharacterListToIntList(listOf('1','2','3'))
         assertThat(userNumber).isEqualTo(listOf(1,2,3))
     }
 
