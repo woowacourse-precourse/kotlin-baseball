@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val computer = createRandomNumber()
+    inputUserNumber()
 }
 
 fun createRandomNumber(): MutableList<Int> {
@@ -17,3 +18,10 @@ fun createRandomNumber(): MutableList<Int> {
     }
     return computer
 }
+
+fun inputUserNumber(){
+    println("숫자 야구 게임을 시작합니다.")
+    print("숫자를 입력해주세요 : ")
+    val user = readLine()
+}
+
