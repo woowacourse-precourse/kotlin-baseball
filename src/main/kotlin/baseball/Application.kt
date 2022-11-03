@@ -68,6 +68,12 @@ fun printHintMessage(ball : Int, strike : Int){
 
 }
 
+fun gameRestart(): Int {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return readLine().toInt() + 1
+
+}
+
 fun main() {
     printStartMessage()
     val computer = createComputerAnswer()
@@ -78,9 +84,16 @@ fun main() {
     var strike = 0
 
     while(strike != 3) {
-        var user = inputUserNumber()
+        val user = inputUserNumber()
         ball = checkBall(computer, user)
         strike = checkStrike(computer, user)
         printHintMessage(ball, strike)
+
+        if(strike ==3){
+            strike = gameRestart()
+            val computer = createComputerAnswer()
+
+            println("정답$computer")
+        }
     }
 }
