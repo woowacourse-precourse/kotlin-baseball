@@ -18,6 +18,7 @@ private fun printWelcomeMessage() {
 
 private fun playNewBaseball() {
     while (true) {
+        val numbers = getNumbers()
         TODO()
         printRequestForInputMessage()
         val userNumbers = getUserNumbers()
@@ -26,6 +27,17 @@ private fun playNewBaseball() {
             break
         }
     }
+}
+
+private fun getNumbers(): List<Int> {
+    val numbers = mutableListOf<Int>()
+    while (numbers.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber)
+        }
+    }
+    return numbers
 }
 
 private fun printRequestForInputMessage() {
