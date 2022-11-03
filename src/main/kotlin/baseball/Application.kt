@@ -10,8 +10,15 @@ fun main() {
 
     val userNumber: List<Int> = readUserNumber()
 
-    if (checkNothing(userNumber, computerNumber))
+    val isNothing = checkNothing(userNumber, computerNumber)
+
+    if (isNothing)
         println("낫싱")
+    if (!isNothing) {
+        val strike = checkStrike(userNumber, computerNumber)
+        println(strike)
+    }
+
 
 
 
@@ -34,4 +41,13 @@ fun checkNothing(userNumber: List<Int>, computerNumber: MutableList<Int>): Boole
         if (computerNumber.contains(userNumber[num]))
             return false
     return true
+}
+fun checkStrike(userNumber: List<Int>, computerNumber: MutableList<Int>): Int {
+    var countStrike = 0
+
+    for (num in userNumber.indices)
+        if (computerNumber[num] == userNumber[num])
+            countStrike++
+
+    return countStrike
 }
