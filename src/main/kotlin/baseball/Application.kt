@@ -12,10 +12,11 @@ fun main() {
             computer.add(randomNumber)
         }
     }
-
+    var num : Int = readLine()!!.toInt()
+    k_Baseball(num, computer)
 
 }
-fun k_Baseball(num : Int, comp : IntArray){
+fun k_Baseball(num : Int, comp : MutableList<Int>){
     val list = mutableListOf<Int>()
     var str = 0
     var ball = 0
