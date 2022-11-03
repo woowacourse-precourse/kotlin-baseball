@@ -1,6 +1,29 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
+}
+
+class Computer() {
+    private val computerNumbers = mutableListOf<Int>()
+
+    fun createComputerNumbers() {
+        while (computerNumbers.size < 3) {
+            val randomNumber: Int = createNumberInRange()
+            if (isNumberRepeated(randomNumber)) {
+                computerNumbers.add(randomNumber)
+            }
+        }
+    }
+
+    private fun createNumberInRange(): Int {
+        return Randoms.pickNumberInRange(1, 9)
+    }
+
+    private fun isNumberRepeated(randomNumber: Int): Boolean {
+        return (!computerNumbers.contains(randomNumber))
+    }
 }
 
 class Printer() {
