@@ -8,26 +8,23 @@ fun main() {
     //TODO("프로그램 구현")
 
     println("숫자 야구 게임을 시작합니다.")
-
-
+    var select = 1
     while (true)
     {
-        var select = readLine()?.toInt()
         when(select)
         {
             1 -> {
-                println("임시 1번내용")
                 var answernumber =answernumberselect()
-                println("")
-                var usernumber = userselectnumber()
-                println("")
-                var stcount = strikecalculate(usernumber,answernumber)
-                println("")
-                var blcount = ballcalculate(usernumber,answernumber)
-                println("")
-                println("${blcount}볼 ${stcount}스트라이크")
-                println("")
-
+//                println("")
+//                var usernumber = userselectnumber()
+//                println("")
+//                var stcount = strikecalculate(usernumber,answernumber)
+//                println("")
+//                var blcount = ballcalculate(usernumber,answernumber)
+//                println("")
+//                println("${blcount}볼 ${stcount}스트라이크")
+//                println("")
+                select = tonghap(answernumber)
             }
             2 -> {
                 println("게임을 종료합니다.")
@@ -35,6 +32,38 @@ fun main() {
             }
         }
     }
+}
+
+fun tonghap(anum: MutableList<Int>): Int
+{
+    var result = 0
+
+    while(true) {
+        println("숫자를 입력해주세요 : ")
+        var unum = userselectnumber()
+        var scount = strikecalculate(unum,anum)
+        var bcount = ballcalculate(unum,anum)
+
+
+            if (scount == 3) {
+                println("3스트라이크")
+                println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+                println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+                result = readLine()!!.toInt()
+                return result
+
+
+            }
+            else if (scount == 0 && bcount == 0)
+            {
+                println("낫싱")
+            }
+
+            else {
+                println("${bcount}볼 ${scount}스트라이크")
+            }
+    }
+
 }
 
 
@@ -52,11 +81,10 @@ fun answernumberselect(): MutableList<Int> {
 
 fun userselectnumber(): MutableList<Int> {
     val usernumber = mutableListOf<Int>()
-    println("숫자를 입력해주세요 : ")
     usernumber.add(readLine()!!.toInt())
 //    usernumber.add(readLine()!!.toInt())
 //    usernumber.add(readLine()!!.toInt())
-
+    var checknumber = mutableListOf<Int>()
     var userNumStr = usernumber.joinToString("")
     userNumStr = userNumStr.chunked(1).toString()
     var userNumStrInt = mutableListOf<Int>()
@@ -70,8 +98,6 @@ fun userselectnumber(): MutableList<Int> {
     var thirdnum = userNumStr[7].code
     thirdnum = Character.getNumericValue(thirdnum)
     userNumStrInt.add(thirdnum)
-
-    print(userNumStrInt)
 
     return userNumStrInt
 }
