@@ -4,10 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     printGameStart()
+
     val computerNumber = generateComputerNumber()
+    val userNumber = getUserNumber()
 }
 
-fun printGameStart(){
+fun printGameStart() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
@@ -20,4 +22,16 @@ fun generateComputerNumber(): List<Int> {
         }
     }
     return computerNumber
+}
+
+fun getUserNumber(): List<Int> {
+    print("숫자를 입력해주세요 : ")
+    val userInput = readLine()
+
+    val userNumber = mutableListOf<Int>()
+    userInput?.forEach { c ->
+        userNumber.add(Character.getNumericValue(c))
+    }
+
+    return userNumber
 }
