@@ -1,5 +1,8 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import camp.nextstep.edu.missionutils.Console.readLine
+
 // 기능 목록
 // 1. "숫자 야구 게임을 시작합니다." 출력, 게임 함수 실행
 // 2. 임의의 수 설정
@@ -55,7 +58,7 @@ fun game() {
 fun computerRandomNum(): List<Int> {
     val numSet = mutableSetOf<Int>()
     while (numSet.size<=2) {
-        numSet.add((1..9).random())
+        numSet.add(pickNumberInRange(1, 9))
     }
     return numSet.toList()
 }
