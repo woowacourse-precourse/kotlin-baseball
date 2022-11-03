@@ -4,12 +4,13 @@ import java.util.Scanner
 import kotlin.random.Random
 
 val Range = (1..9)
+
 val Input_List = mutableListOf<Int>()
 
 //0 = S , 1 = B , 2 = Null
 var Compare_List = mutableListOf<Int>(0,0)
 
-var Result = mutableListOf<Int>()
+var Result = ""
 var Cpu_Num = mutableListOf<Int>()
 
 //컴퓨터 숫자 선택
@@ -30,9 +31,9 @@ fun Game_Start (List: List<Int>): List<Int> {
     }
     if(Compare_Exception(Compare_List))
         //print("낫싱")
-        Result[3] = 1
+        Compare_List[2] = 1
 
-    return Result.toList()
+    return Compare_List.toList()
 }
 
 //비교 함수
@@ -40,6 +41,7 @@ fun Compare_Num (Cpu_Num: Int, Input_Num : Int, Cpu_idx : Int, Input_idx : Int):
     if (Cpu_Num == Input_Num || Cpu_idx == Input_idx)
         //S
         Compare_List[0]++
+
     else if (Cpu_Num == Input_Num || Cpu_idx != Input_idx)
         //B
         Compare_List[1]++
@@ -54,10 +56,16 @@ fun Compare_Exception (Compare_List : List<Int>): Boolean {
 }
 
 fun Print_Result (Result_List : List<Int>) : String{
-    Result_List.forEach {
-        Result += it + "볼"
-    }
+    if (Result_List[2] >= 1)
+        print("낫싱")
 
+    else if (Result_List[0] != 0 && Result_List[1] != 0)
+        Result = Result_List[0].toChar() + "스트라이크" + Result_List[1].toChar() + "볼"
+
+    else
+
+
+    }
     return Result.toString()
 }
 
