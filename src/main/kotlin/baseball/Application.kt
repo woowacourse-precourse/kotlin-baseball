@@ -24,3 +24,5 @@ private fun makeRandomNumber(): Int {
 }
 
 private fun isThreeDigitNum(num: Int) = num in (100..999)
+
+private fun existZero(num: Int) = num.toString().contains('0')
