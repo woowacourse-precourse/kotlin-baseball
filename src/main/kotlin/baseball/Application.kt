@@ -8,65 +8,66 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
 
     do {
-        val computerNumber = mutableListOf<Int>()
-        createComputerNumber(computerNumber)
-
+        val computerNumber = createComputerNumber()
         do {
-            val userNumber: List<Int> = readUserNumber()
+            val inputNumber: List<Int> = readUserNumber()
 
-            val isNothing = checkNothing(userNumber, computerNumber)
-            printResult(isNothing, userNumber, computerNumber)
+            val isNothing = checkNothing(inputNumber, computerNumber)
+            printResult(isNothing, inputNumber, computerNumber)
 
-        } while (computerNumber != userNumber)
+        } while (computerNumber != inputNumber)
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 
-        val isQuit = askQuit()
-
+        val isQuit = askQuitOrNot()
     } while (isQuit)
 
 
 }
-fun createComputerNumber(computerNumber: MutableList<Int>){
+fun createComputerNumber(): MutableList<Int>{
+    val computerNumber = mutableListOf<Int>()
     while (computerNumber.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computerNumber.contains(randomNumber))
             computerNumber.add(randomNumber)
     }
+    return computerNumber
 }
 fun readUserNumber(): List<Int> {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
     println(input)
+
     checkWrongInput(input)
+
     return input.map { it.digitToInt() }
 }
-fun checkNothing(userNumber: List<Int>, computerNumber: MutableList<Int>): Boolean {
-    for (num in userNumber.indices)
-        if (computerNumber.contains(userNumber[num]))
+fun checkNothing(inputNumber: List<Int>, computerNumber: MutableList<Int>): Boolean {
+    for (num in inputNumber.indices)
+        if (computerNumber.contains(inputNumber[num]))
             return false
     return true
 }
-fun checkStrike(userNumber: List<Int>, computerNumber: MutableList<Int>): Int {
+fun checkStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>): Int {
     var countStrike = 0
 
-    for (num in userNumber.indices)
-        if (computerNumber[num] == userNumber[num])
+    for (num in inputNumber.indices)
+        if (computerNumber[num] == inputNumber[num])
             countStrike++
 
     return countStrike
 }
-fun checkBall(userNumber: List<Int>, computerNumber: MutableList<Int>): Int {
+fun checkBall(inputNumber: List<Int>, computerNumber: MutableList<Int>): Int {
     var countBall = 0
 
-    for (num in userNumber.indices)
-        if (computerNumber.contains(userNumber[num]))
+    for (num in inputNumber.indices)
+        if (computerNumber.contains(inputNumber[num]))
             countBall++
 
     return countBall
 }
-fun printBallAndStrike(userNumber: List<Int>, computerNumber: MutableList<Int>){
-    val strike = checkStrike(userNumber, computerNumber)
-    val ball = checkBall(userNumber, computerNumber) - strike
+fun printBallAndStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>){
+    val strike = checkStrike(inputNumber, computerNumber)
+    val ball = checkBall(inputNumber, computerNumber) - strike
 
     if (ball != 0)
         print(ball.toString() + "볼 ")
@@ -80,7 +81,7 @@ fun printResult(isNothing: Boolean,userNumber: List<Int>, computerNumber: Mutabl
     if (!isNothing)
         printBallAndStrike(userNumber, computerNumber)
 }
-fun askQuit(): Boolean{
+fun askQuitOrNot(): Boolean{
     print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val answer = Console.readLine()
 
