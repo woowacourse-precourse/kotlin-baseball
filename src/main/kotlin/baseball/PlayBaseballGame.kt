@@ -10,14 +10,13 @@ import baseball.Constant.Companion.newGameSwitch
 
 //import camp.nextstep.edu.missionutils.Console.readLine
 
-class PlayBaseballGame(computerNum: MutableList<Int>){
+class PlayBaseballGame(computerNum: MutableList<Int>) {
     private val playerNumCreate = PlayerNumberCreate()
     val printObject = PrintMethod()
 
     init {
         printObject.printInputNum()
         val playerNum = playerNumCreate.playerNumber()
-        //print(playerNum)
         val strike = countStrike(computerNum, playerNum)
         val ball = countBall(computerNum, playerNum)
         printObject.printBallCount(ball, strike)
@@ -26,42 +25,42 @@ class PlayBaseballGame(computerNum: MutableList<Int>){
         if (notAnswer(strike)) {
             PlayBaseballGame(computerNum)
         }
-        if (!notAnswer(strike)){
+        if (!notAnswer(strike)) {
             println(gameEndMessage)
             checkNewGame()
         }
     }
 
-    fun notAnswer(strikeCount: Int): Boolean{
+    private fun notAnswer(strikeCount: Int): Boolean {
         return strikeCount != numRange
     }
-    fun newGameConstraint(newGame: String) {
+
+    private fun newGameConstraint(newGame: String) {
         if (newGame != newGameSwitch && newGame != gameCloseSwitch) {
             throw IllegalArgumentException(errorMessage)
         }
     }
-    fun checkNewGame(){
+
+    private fun checkNewGame() {
         val newGame = readLine()
-        //println("newGame$newGame")
         newGameConstraint(newGame.toString())
         if (newGame == newGameSwitch) PlayBaseballGame(ComputerNumberCreate().computerNumber)
-        //if (newGame == gameCloseSwitch) finish()
     }
 
-    fun countBall(computerNum: List<Int>, playerNum: List<Int>): Int {
+    private fun countBall(computerNum: List<Int>, playerNum: List<Int>): Int {
         var ball = startBallCount
         for (index in playerNum.indices) {
-            if (playerNum[index] != computerNum[index] && computerNum.contains(playerNum[index])){
+            if (playerNum[index] != computerNum[index] && computerNum.contains(playerNum[index])) {
                 ball += 1
             }
         }
         return ball
     }
 
-    fun countStrike(computerNum: List<Int>, playerNum: List<Int>): Int {
+    private fun countStrike(computerNum: List<Int>, playerNum: List<Int>): Int {
         var strike = startStrikeCount
         for (index in playerNum.indices) {
-            if (playerNum[index] == computerNum[index]){
+            if (playerNum[index] == computerNum[index]) {
                 strike += 1
             }
         }

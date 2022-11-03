@@ -6,7 +6,6 @@ import baseball.Constant.Companion.maxRangeString
 import baseball.Constant.Companion.minRangeString
 
 
-
 class PlayerNumberCreate {
     fun playerNumber(): MutableList<Int> {
         val playerNumber: String = inputPlayerNumber()
@@ -23,7 +22,7 @@ class PlayerNumberCreate {
     }
 
     private fun constraint(inputString: String) {
-        if (!inputString.all { it in minRangeString..maxRangeString} || inputString.isEmpty() || inputString.length != 3) {
+        if (!inputString.all { it in minRangeString..maxRangeString } || inputString.isEmpty() || inputString.length != 3) {
             throw IllegalArgumentException(errorMessage)
         }
     }

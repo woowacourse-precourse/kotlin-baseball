@@ -10,11 +10,12 @@ class ComputerNumberCreate() {
 
     private fun randomNum() = pickNumberInRange(minRangeNumber, maxRangeNumber)
 
-    private fun appendNum(randomNum:Int, numList:MutableList<Int>){
+    private fun appendNum(randomNum: Int, numList: MutableList<Int>) {
         if (!numList.contains(randomNum)) {
             numList.add(randomNum)
         }
     }
+
     private fun makeNum(): MutableList<Int> {
         val makeThreeNum = mutableListOf<Int>()
         while (makeThreeNum.size < numRange) {
