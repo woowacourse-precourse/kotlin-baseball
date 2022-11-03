@@ -1,7 +1,7 @@
 package utils
 
 import camp.nextstep.edu.missionutils.Randoms
-import computer.Computer
+import domain.Computer
 
 object RandomGenerator {
     fun create(): Computer {
