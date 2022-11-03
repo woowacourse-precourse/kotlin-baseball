@@ -29,7 +29,9 @@ private fun makeRandomNumber(): Int {
 private fun isRepeat(): Boolean {
     val inputNum = getInputNumber()
     if (isRightInput(inputNum)) {
-        // TODO: 다음 단계 구현
+        val (ball, strike) = compareNumber(inputNum)
+        // TODO: 리턴 값 수정
+        return true
     } else throw IllegalArgumentException("1~9 사이의 서로 다른 세자리 수를 입력하세요")
 }
 
