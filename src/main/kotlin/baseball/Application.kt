@@ -9,7 +9,7 @@ fun main() {
 
     while(true){
         println("숫자 야구 게임을 시작합니다.")
-        println("숫자를 입력해주세요 : ")
+        print("숫자를 입력해주세요 : ")
         var usernumber = readLine()!!.toString()
         if(!errorcheck(usernumber)){//에러발생시 에러 던지고 종료
             throw IllegalArgumentException()
