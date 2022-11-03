@@ -23,6 +23,8 @@ private fun makeRandomNumber(): Int {
     return computer.joinToString("").toInt()
 }
 
+private fun isRightInput(num: Int) = isThreeDigitNum(num) && !existZero(num) && isDifferentNum(num)
+
 private fun isThreeDigitNum(num: Int) = num in (100..999)
 
 private fun existZero(num: Int) = num.toString().contains('0')
