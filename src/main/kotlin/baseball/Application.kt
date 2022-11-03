@@ -29,7 +29,7 @@ private fun makeRandomNumber(): Int {
 private fun isRepeat(): Boolean {
     val inputNum = getInputNumber()
     if (isRightInput(inputNum)) {
-        val (ball, strike) = compareNumber(inputNum)
+        val (ball, strike) = getBallAndStrike(inputNum)
         // TODO: 리턴 값 수정
         return true
     } else throw IllegalArgumentException("1~9 사이의 서로 다른 세자리 수를 입력하세요")
@@ -54,7 +54,7 @@ private fun isDifferentNum(num: Int): Boolean {
     return set.size == 3
 }
 
-private fun compareNumber(inputNum: Int): Pair<Int, Int> {
+private fun getBallAndStrike(inputNum: Int): Pair<Int, Int> {
     var ball = 0
     var strike = 0
 
