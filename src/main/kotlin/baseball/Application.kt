@@ -17,8 +17,14 @@ fun createComputerAnswer(){
     println(computer)
 }
 
+fun inputUserNumber(){
+    print("숫자를 입력해주세요 : ")
+    val number = readLine()
+    println(number)
+}
+
 fun main() {
     printStartMessage()
     createComputerAnswer()
-
+    inputUserNumber()
 }
