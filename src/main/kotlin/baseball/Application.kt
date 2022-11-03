@@ -22,6 +22,7 @@ private fun getComputerNumber(): String {
 private fun startNewGame() {
     val computerNumber = getComputerNumber()
     val inputString = getUserPredictionNumber()
+    validateInputString(inputString, false)
 }
 
 private fun getUserPredictionNumber(): String {
