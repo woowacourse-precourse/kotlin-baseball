@@ -1,27 +1,66 @@
 package baseball
 
+import baseball.Constant.Companion.ballMessage
+import baseball.Constant.Companion.numRange
 import baseball.Constant.Companion.startBallCount
 import baseball.Constant.Companion.startStrikeCount
+import baseball.Constant.Companion.errorMessage
+import baseball.Constant.Companion.gameCloseSwitch
+import baseball.Constant.Companion.gameEndMessage
+import baseball.Constant.Companion.inputNumberMessage
+import baseball.Constant.Companion.newGameSwitch
+import baseball.Constant.Companion.nothingMessage
+import baseball.Constant.Companion.strikeMessage
+import camp.nextstep.edu.missionutils.Console.readLine
 
 class PlayBaseballGame {
-    val computerNum = ComputerNumberCreate().computerNumber
-    val playerNum = PlayerNumber().toListPlayerNumber
-    val countStrike = countStrike(computerNum, playerNum)
-    val countBall = countBall(computerNum, playerNum)
+    private val computerNum = ComputerNumberCreate().computerNumber
+    private val playerNumCreate = PlayerNumberCreate()
+
     init {
-        ballCountPrint(countBall)
-        strikeCountPrint(countStrike)
-    }
-    fun ballCountPrint(ballCount:Int){
-        if (ballCount > 0) print("${ballCount}볼 ")
+        printInputNum()
+        val playerNum = playerNumCreate.playerNumber()
+        val strike = countStrike(computerNum, playerNum)
+        val ball = countBall(computerNum, playerNum)
+        printBallCount(ball)
+        printStrikeCount(strike)
+        printNothing(ball, strike)
+        if (checkRestartGame(strike)) {
+            PlayBaseballGame()
+        }
+        println(gameEndMessage)
+        checkNewGame()
     }
 
-    fun strikeCountPrint(strikeCount:Int){
-        if (strikeCount > 0) print("${strikeCount}스트라이크")
+    fun newGameConstraint(newGame: String) {
+        if (newGame != newGameSwitch && newGame != gameCloseSwitch) {
+            throw IllegalArgumentException(errorMessage)
+        }
+    }
+    fun checkNewGame(){
+        val newGame = readLine()
+        newGameConstraint(newGame)
+        if (newGame == newGameSwitch) PlayBaseballGame()
     }
 
-    fun nothingPrint(ballCount: Int, strikeCount: Int){
-        if (ballCount == 0 && strikeCount == 0) print("낫싱")
+    private fun printInputNum(){
+        print(inputNumberMessage)
+    }
+
+    fun checkRestartGame(strikeCount: Int): Boolean{
+        return strikeCount != numRange
+    }
+
+    fun printBallCount(ballCount:Int){
+        if (ballCount > 0) print("$ballCount" + ballMessage)
+    }
+
+    fun printStrikeCount(strikeCount:Int){
+        if (strikeCount > 0) print("$strikeCount" + strikeMessage)
+    }
+
+    fun printNothing(ballCount: Int, strikeCount: Int){
+        if (ballCount == 0 && strikeCount == 0) print(nothingMessage)
     }
 
 
