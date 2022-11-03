@@ -10,7 +10,8 @@ class Balls {
             throw IllegalArgumentException("입력한 숫자야구 길이가 3보다 깁니다.")
         }
 
-        val balls = ballList.mapIndexed { index, c -> Ball(c.toInt(), index + 1) }
+        val balls = ballList.mapIndexed { index, c -> Ball(c.toInt() - '0'.toInt(), index + 1) }
+        println(balls)
         this.balls = balls
     }
 
