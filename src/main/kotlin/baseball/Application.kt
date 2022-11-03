@@ -43,8 +43,16 @@ fun throwNonNumberException(input: List<Char>) {
 }
 
 fun throwDuplicateNumberException(input: List<Char>) {
-    if(input.distinct()!=input){
+    if (input.distinct() != input) {
         throw IllegalArgumentException("서로 다른수를 입력해주세요")
     }
 }
+
+fun checkAllException(input: List<Char>){
+    throwThreeLetterException(input)
+    throwNonNumberException(input)
+    throwDuplicateNumberException(input)
+}
+
+
 
