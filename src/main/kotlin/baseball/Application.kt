@@ -5,21 +5,31 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
 
+    println("숫자 야구 게임을 시작합니다.")
+
     val computerNumber = mutableListOf<Int>()
     createComputerNumber(computerNumber)
 
-    val userNumber: List<Int> = readUserNumber()
 
-    val isNothing = checkNothing(userNumber, computerNumber)
+    do {
+        val userNumber: List<Int> = readUserNumber()
 
-    if (isNothing)
-        println("낫싱")
-    if (!isNothing) {
-        val strike = checkStrike(userNumber, computerNumber)
-        val ball = checkBall(userNumber, computerNumber) - strike
+        val isNothing = checkNothing(userNumber, computerNumber)
 
-        println("$ball 볼 $strike 스트라이크")
-    }
+        if (isNothing)
+            println("낫싱")
+        if (!isNothing) {
+            val strike = checkStrike(userNumber, computerNumber)
+            val ball = checkBall(userNumber, computerNumber) - strike
+
+            if (ball != 0)
+                print(ball.toString() + "볼 ")
+            if (strike != 0)
+                print(strike.toString() + "스트라이크")
+            println()
+        }
+    } while (computerNumber != userNumber)
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 
 
 
