@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    val computer = createRandomNumber()
+    val computerNumber = createRandomNumber()
+    print(computerNumber)
     val userNumber = inputUserNumber()
+    playBaseball(computerNumber, userNumber)
 }
 
 fun createRandomNumber(): MutableList<Int> {
@@ -58,3 +60,20 @@ fun isNumber(user:String): Boolean {
     }
 }
 
+fun playBaseball(computerNumber: List<Int>, userNumber: List<Int>) {
+    var countResult: MutableList<Int> = mutableListOf()
+    for (i in userNumber) {
+        if (computerNumber.contains(i)) {
+            countResult = countBallStrike(userNumber.indexOf(i), i, computerNumber)
+        }
+    }
+    printResult(countResult)
+}
+
+fun countBallStrike(location: Int, number: Int, computerNumber: List<Int>): MutableList<Int> {
+    TODO()
+}
+
+fun printResult(countResult: MutableList<Int>) {
+    TODO()
+}
