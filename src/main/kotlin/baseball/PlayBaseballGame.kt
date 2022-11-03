@@ -1,37 +1,40 @@
 package baseball
 
-import baseball.Constant.Companion.ballMessage
 import baseball.Constant.Companion.numRange
 import baseball.Constant.Companion.startBallCount
 import baseball.Constant.Companion.startStrikeCount
 import baseball.Constant.Companion.errorMessage
 import baseball.Constant.Companion.gameCloseSwitch
 import baseball.Constant.Companion.gameEndMessage
-import baseball.Constant.Companion.inputNumberMessage
 import baseball.Constant.Companion.newGameSwitch
-import baseball.Constant.Companion.nothingMessage
-import baseball.Constant.Companion.strikeMessage
-import camp.nextstep.edu.missionutils.Console.readLine
 
-class PlayBaseballGame {
-    private val computerNum = ComputerNumberCreate().computerNumber
+//import camp.nextstep.edu.missionutils.Console.readLine
+
+class PlayBaseballGame(computerNum: MutableList<Int>){
     private val playerNumCreate = PlayerNumberCreate()
+    val printObject = PrintMethod()
 
     init {
-        printInputNum()
+        printObject.printInputNum()
         val playerNum = playerNumCreate.playerNumber()
+        //print(playerNum)
         val strike = countStrike(computerNum, playerNum)
         val ball = countBall(computerNum, playerNum)
-        printBallCount(ball)
-        printStrikeCount(strike)
-        printNothing(ball, strike)
-        if (checkRestartGame(strike)) {
-            PlayBaseballGame()
+        printObject.printBallCount(ball, strike)
+        printObject.printStrikeCount(strike)
+        printObject.printNothing(ball, strike)
+        if (notAnswer(strike)) {
+            PlayBaseballGame(computerNum)
         }
-        println(gameEndMessage)
-        checkNewGame()
+        if (!notAnswer(strike)){
+            println(gameEndMessage)
+            checkNewGame()
+        }
     }
 
+    fun notAnswer(strikeCount: Int): Boolean{
+        return strikeCount != numRange
+    }
     fun newGameConstraint(newGame: String) {
         if (newGame != newGameSwitch && newGame != gameCloseSwitch) {
             throw IllegalArgumentException(errorMessage)
@@ -39,30 +42,11 @@ class PlayBaseballGame {
     }
     fun checkNewGame(){
         val newGame = readLine()
-        newGameConstraint(newGame)
-        if (newGame == newGameSwitch) PlayBaseballGame()
+        //println("newGame$newGame")
+        newGameConstraint(newGame.toString())
+        if (newGame == newGameSwitch) PlayBaseballGame(ComputerNumberCreate().computerNumber)
+        //if (newGame == gameCloseSwitch) finish()
     }
-
-    private fun printInputNum(){
-        print(inputNumberMessage)
-    }
-
-    fun checkRestartGame(strikeCount: Int): Boolean{
-        return strikeCount != numRange
-    }
-
-    fun printBallCount(ballCount:Int){
-        if (ballCount > 0) print("$ballCount" + ballMessage)
-    }
-
-    fun printStrikeCount(strikeCount:Int){
-        if (strikeCount > 0) print("$strikeCount" + strikeMessage)
-    }
-
-    fun printNothing(ballCount: Int, strikeCount: Int){
-        if (ballCount == 0 && strikeCount == 0) print(nothingMessage)
-    }
-
 
     fun countBall(computerNum: List<Int>, playerNum: List<Int>): Int {
         var ball = startBallCount
