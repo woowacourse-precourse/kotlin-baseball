@@ -62,6 +62,13 @@ class ApplicationTest : NsTest() {
         assertThat(countBall(userNumber,computerNumber)).isEqualTo(2)
     }
 
+    @Test
+    fun `스트라이크 개수 반환 테스트`() {
+        val userNumber= listOf(1,2,3)
+        val computerNumber= listOf(1,3,4)
+        assertThat(countStrike(userNumber,computerNumber)).isEqualTo(1)
+    }
+
     override fun runMain() {
         main()
     }
