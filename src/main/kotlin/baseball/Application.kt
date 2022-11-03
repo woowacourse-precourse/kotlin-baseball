@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
     printWelcomeMessage()
 
@@ -36,8 +38,28 @@ private fun getUserNumbers(): List<Int> {
 }
 
 private fun parseInputString(inputString: String?): List<Int> {
-    TODO()
+    val numbers = mutableListOf<Int>()
+    inputString?.forEach {
+        if (hasIllegalCharacter(it)) {
+            throw IllegalArgumentException("Character in InputString is out of range")
+        }
+        val number = it.toNumber()
+        if (numbers.contains(number)) {
+            throw IllegalArgumentException("Duplicated numbers")
+        }
+        numbers.add(number)
+    } ?: throw IllegalArgumentException("InputString is null")
+
+    if (numbers.size != 3) {
+        throw IllegalArgumentException("Numbers.size not 3")
+    }
+    return numbers
 }
+
+private fun hasIllegalCharacter(char: Char): Boolean =
+    char.code < '1'.code || char.code > '9'.code
+
+private fun Char.toNumber() = this.code - '0'.code
 
 private fun getBallCount(): Int {
     TODO()
