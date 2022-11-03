@@ -2,9 +2,11 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+var randomNum = 0
+
 fun main() {
-    val randomNumber = makeRandomNumber()
     print("숫자 야구 게임을 시작합니다.")
+    randomNum = makeRandomNumber()
     while(true){
         // TODO: 기능 구현하기
     }
