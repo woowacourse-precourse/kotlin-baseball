@@ -6,32 +6,43 @@ package baseball
 // 3. "숫자를 입력해주세요:" 출력 후, 3자리 숫자 입력 받기.
 // 4. 숫자가 서로 다른 3자리 수가 아니거나 각 자릿수에 0이 있으면, IllegalArgumentException 발생 후 종료
 // 5. 입력 받은 숫자와 임의의 수 3개를 비교하는 함수를 이용해 비교하고 결과 출력
-// 6. 5번 기능 반복
-// 7. 임의의 수와 입력 받은 수가 일치하면 기능 종료 및 재시작 여부 확인
+// 6. 3개의 숫자 다 맞출 때까지 반복 후 게임 종료
+// 7. 재시작 여부 확인
 // 8. 재시작 여부에 따라 다시 함수 실행
 
 fun main() {
-    println("숫자 야구 게임을 시작합니다.")
+    print("숫자 야구 게임을 시작합니다.")
+
     game()
+
 }
 
 fun game() {
     val computerNum = computerRandomNum()
 
-    print("숫자를 입력해주세요 : ")
-    val inputNum = readLine()!!
+    while (true) {
+        print("\n숫자를 입력해주세요 : ")
 
-    rightInput(inputNum)
+        val inputNum = readLine()!!
+        rightInput(inputNum)
 
-    val strikeBall = compare(computerNum, inputNum.toInt())
+        val strikeBall = compare(computerNum, inputNum.toInt())
 
-    if (strikeBall[1] > 0) {
-        print("${strikeBall[1]}볼 ")
+        if (strikeBall[1] > 0) {
+            print("${strikeBall[1]}볼 ")
+        }
+        if (strikeBall[0] > 0) {
+            print("${strikeBall[0]}스트라이크")
+        }
+        if (strikeBall[0] == 0 && strikeBall[1] == 0) {
+            print("낫싱")
+        }
+
+        if (strikeBall[0] == 3) {
+            println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            break
+        }
     }
-    if (strikeBall[0] > 0) {
-        print("${strikeBall[0]}스트라이크")
-    }
-
 }
 
 fun computerRandomNum(): List<Int> {
@@ -45,7 +56,7 @@ fun computerRandomNum(): List<Int> {
 fun rightInput(inputStr: String) {
     val inputSet = mutableSetOf<Char>()
 
-    for (i in 0 until inputStr.length) {
+    for (i in inputStr.indices) {
         if (inputStr[i] != '0') {
             inputSet.add(inputStr[i])
         }
