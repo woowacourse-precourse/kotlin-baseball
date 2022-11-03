@@ -6,6 +6,21 @@ fun main() {
 
 }
 
+fun makeFormattedResult(ball: Int, strike: Int): String = "${ball}볼 ${strike}스트라이크"
+
+fun findStrikeScore(input: String, answer: String): Int = (input.indices).filter { input[it] == answer[it] }.size
+
+
+fun findBallScore(input: String, answer: String): Int =
+    (input.indices).filter { input[it] != answer[it] && input[it] in answer }.size
+
+fun matchAnswer(input: String, answer: String): String {
+    val ballValue = findBallScore(input, answer)
+    val strikeValue = findStrikeScore(input, answer)
+
+    return makeFormattedResult(ballValue, strikeValue)
+}
+
 fun generateRandomNumber(): String {
     val randomNumberSet = mutableSetOf<Int>()
     while (randomNumberSet.size != 3) {
