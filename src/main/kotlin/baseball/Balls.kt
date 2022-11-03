@@ -15,15 +15,15 @@ class Balls {
         this.balls = balls
     }
 
-    fun playGame(ballList : String) : List<String> {
+    fun playGame(ballList : String) : GameResult {
         val userInput = Balls(ballList)
-        val resultList = mutableListOf<String>()
+        val gameResult = GameResult()
 
         balls.forEach {
             val result = userInput.playGame(it)
-            resultList.add(result)
+            gameResult.setResult(result)
         }
-        return resultList
+        return gameResult
     }
 
     fun playGame(ball : Ball) : String {
