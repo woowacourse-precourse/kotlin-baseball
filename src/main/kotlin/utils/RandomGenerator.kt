@@ -1,15 +1,15 @@
 package utils
 
 import camp.nextstep.edu.missionutils.Randoms
-import computer.ComputerNumbers
+import computer.Computer
 
 object RandomGenerator {
-    fun create(): ComputerNumbers {
+    fun create(): Computer {
         val computers = linkedSetOf<Int>()
         while (computers.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
             computers.add(randomNumber)
         }
-        return ComputerNumbers(computers.toList())
+        return Computer(computers.toList())
     }
 }
