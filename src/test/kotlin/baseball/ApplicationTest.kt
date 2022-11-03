@@ -55,6 +55,13 @@ class ApplicationTest : NsTest() {
         assertThat(userNumber).isEqualTo(listOf(1,2,3))
     }
 
+    @Test
+    fun `볼 개수 반환 테스트`() {
+        val userNumber= listOf(1,2,3)
+        val computerNumber= listOf(2,3,4)
+        assertThat(countBall(userNumber,computerNumber)).isEqualTo(2)
+    }
+
     override fun runMain() {
         main()
     }
