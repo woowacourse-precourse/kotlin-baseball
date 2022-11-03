@@ -53,6 +53,15 @@ fun ballOrStrike(randNum:MutableList<Int>, inputNum : String){
     else if(strike == 3)
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
+fun gameEnd(){
+    val option : Int = 0
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    camp.nextstep.edu.missionutils.Console.readLine()
+    if (option !in 1 .. 2)
+        throw IllegalArgumentException("1 부터 2까지의 값을 입력해 주세요")
+    else if(option == 1)
+        gameStart()
+}
 fun main() {
     gameStart()
     val randNum = strikeRandNumCreate()
