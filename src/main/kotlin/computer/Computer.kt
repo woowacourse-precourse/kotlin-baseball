@@ -1,7 +1,7 @@
 package computer
 
 class Computer(
-    private val computer: List<Int> = listOf()
+    private val numbers: List<Int> = listOf()
 ) {
 
 }
