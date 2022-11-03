@@ -7,7 +7,7 @@ import java.lang.IllegalArgumentException
 var randomNum = 0
 
 fun main() {
-    print("숫자 야구 게임을 시작합니다.")
+    println("숫자 야구 게임을 시작합니다.")
     randomNum = makeRandomNumber()
     while (true) {
         if (isRepeat()) continue
