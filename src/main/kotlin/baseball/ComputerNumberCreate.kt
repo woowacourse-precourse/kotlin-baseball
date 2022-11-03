@@ -6,20 +6,20 @@ import baseball.Constant.Companion.numberRange
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 class ComputerNumberCreate() {
-    val computerNumber = makeNum()
+    val computerNumber = makeNumber()
 
-    private fun randomNum() = pickNumberInRange(minRangeNumber, maxRangeNumber) // 1 ~ 9 랜덤 숫자 생성
+    private fun randomNumber() = pickNumberInRange(minRangeNumber, maxRangeNumber) // 1 ~ 9 랜덤 숫자 생성
 
-    private fun appendNum(randomNum: Int, numList: MutableList<Int>) {
-        if (!numList.contains(randomNum)) { // 중복된 숫자가 아니면 add
-            numList.add(randomNum)
+    private fun appendNumber(randomNumber: Int, numberList: MutableList<Int>) {
+        if (!numberList.contains(randomNumber)) { // 중복된 숫자가 아니면 add
+            numberList.add(randomNumber)
         }
     }
 
-    private fun makeNum(): MutableList<Int> {
+    private fun makeNumber(): MutableList<Int> {
         val computerNumber = mutableListOf<Int>()
         while (computerNumber.size < numberRange) {
-            appendNum(randomNum(), computerNumber)
+            appendNumber(randomNumber(), computerNumber)
         }
         return computerNumber
     }
