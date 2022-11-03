@@ -81,3 +81,6 @@ fun countStrike(userNumber: List<Int>, computerNumber: List<Int>): Int {
 
 fun getFinalNumberOfBallBySubtractStrikeFromBall(ball: Int, strike: Int) = ball - strike
 
+fun isThreeStrike(strike: Int): Boolean {
+    return strike == 3
+}
