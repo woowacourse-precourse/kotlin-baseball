@@ -43,6 +43,12 @@ class ApplicationTest : NsTest() {
         assertThrows<IllegalArgumentException> { throwNonNumberException(testCase2) }
     }
 
+    @Test
+    fun `중복 예외 테스트`() {
+        val testCase1 = listOf('1', '1', '3')
+        assertThrows<IllegalArgumentException> { throwDuplicateNumberException(testCase1) }
+    }
+
     override fun runMain() {
         main()
     }
