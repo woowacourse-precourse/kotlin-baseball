@@ -21,9 +21,9 @@ private fun playNewBaseball() {
     while (true) {
         printRequestForInputMessage()
         val userNumbers = getUserNumbers()
-        val strikeCount = getStrikeCount(numbers, userNumbers)
-        printBallCount(strikeCount)
-        if (strikeCount == 3) {
+        val ballCount: List<Int> = getBallCount(numbers, userNumbers)
+        printBallCount(ballCount)
+        if (ballCount[1] == 3) {
             printGameFinishedMessage()
             break
         }
@@ -74,31 +74,42 @@ private fun hasIllegalCharacter(char: Char): Boolean =
 
 private fun Char.toNumber() = this.code - '0'.code
 
-private fun getStrikeCount(numbers: List<Int>, userNumbers: List<Int>): Int {
-    var strikeCount = 0
-    userNumbers.forEach {
-        if (numbers.contains(it)) {
-            strikeCount++
+private fun getBallCount(numbers: List<Int>, userNumbers: List<Int>): List<Int> {
+    val ballCount = mutableListOf<Int>(0, 0)
+    userNumbers.forEachIndexed { index, userNumber ->
+        if (numbers[index] == userNumbers[index]) {
+            ballCount[1]++
+            return@forEachIndexed
+        }
+        if (numbers.contains(userNumber)) {
+            ballCount[0]++
         }
     }
-    return strikeCount
+    return ballCount
 }
 
 private fun printGameFinishedMessage() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
-private fun printBallCount(strikeCount: Int) {
-    if (strikeCount == 3) {
-        println("${strikeCount}스트라이크")
+private fun printBallCount(ballCount: List<Int>) {
+    val ball = ballCount[0]
+    val strike = ballCount[1]
+    if (ball != 0 && strike != 0) {
+        println("${ball}볼 ${strike}스트라이크")
         return
     }
-    if (strikeCount in 1..2) {
-        println("${3 - strikeCount}볼 ${strikeCount}스트라이크")
+    if (ball != 0) {
+        println("${ball}볼")
         return
     }
-    if (strikeCount == 0) {
+    if (strike != 0) {
+        println("${strike}스트라이크")
+        return
+    }
+    if (ball == 0 && strike == 0) {
         println("낫싱")
+        return
     }
 }
 
