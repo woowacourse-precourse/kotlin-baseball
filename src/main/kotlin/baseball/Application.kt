@@ -22,3 +22,5 @@ private fun makeRandomNumber(): Int {
     }
     return computer.joinToString("").toInt()
 }
+
+private fun isThreeDigitNum(num: Int) = num in (100..999)
