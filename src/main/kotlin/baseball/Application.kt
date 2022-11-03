@@ -49,7 +49,7 @@ fun throwDuplicateNumberException(input: List<Char>) {
     }
 }
 
-fun checkAllException(input: List<Char>){
+fun checkAllException(input: List<Char>) {
     throwThreeLetterException(input)
     throwNonNumberException(input)
     throwDuplicateNumberException(input)
@@ -57,7 +57,7 @@ fun checkAllException(input: List<Char>){
 
 fun getInputListFromKeyboard() = Console.readLine().toList()
 
-fun getUserNumber(input: List<Char>): List<Int> {
+fun convertCharacterListToIntList(input: List<Char>): List<Int> {
     return input.map { char ->
         char.digitToInt()
     }
