@@ -34,7 +34,9 @@ fun createComputerNumber(computerNumber: MutableList<Int>){
 }
 fun readUserNumber(): List<Int> {
     print("숫자를 입력해주세요 : ")
-    return Console.readLine().map { it.digitToInt() }
+    val input = Console.readLine()
+    println(input)
+    return input.map { it.digitToInt() }
 }
 fun checkNothing(userNumber: List<Int>, computerNumber: MutableList<Int>): Boolean {
     for (num in userNumber.indices)
