@@ -3,15 +3,6 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import camp.nextstep.edu.missionutils.Console.readLine
 
-// 기능 목록
-// 1. "숫자 야구 게임을 시작합니다." 출력, 게임 함수 실행
-// 2. 임의의 수 설정
-// 3. "숫자를 입력해주세요:" 출력 후, 3자리 숫자 입력 받기.
-// 4. 숫자가 서로 다른 3자리 수가 아니거나 각 자릿수에 0이 있으면, IllegalArgumentException 발생 후 종료
-// 5. 입력 받은 숫자와 임의의 수 3개를 비교하는 함수를 이용해 비교하고 결과 출력
-// 6. 3개의 숫자 다 맞출 때까지 반복 후 게임 종료
-// 7. 재시작 여부 확인 후 게임 재시작 또는 종료
-
 fun main() {
     print("숫자 야구 게임을 시작합니다.")
 
