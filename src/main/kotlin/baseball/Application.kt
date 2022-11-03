@@ -7,33 +7,22 @@ fun main() {
 
     println("숫자 야구 게임을 시작합니다.")
 
-    val computerNumber = mutableListOf<Int>()
-    createComputerNumber(computerNumber)
-
-
     do {
-        val userNumber: List<Int> = readUserNumber()
+        val computerNumber = mutableListOf<Int>()
+        createComputerNumber(computerNumber)
 
-        val isNothing = checkNothing(userNumber, computerNumber)
+        do {
+            val userNumber: List<Int> = readUserNumber()
 
-        if (isNothing)
-            println("낫싱")
-        if (!isNothing) {
-            val strike = checkStrike(userNumber, computerNumber)
-            val ball = checkBall(userNumber, computerNumber) - strike
+            val isNothing = checkNothing(userNumber, computerNumber)
+            printResult(isNothing, userNumber, computerNumber)
 
-            if (ball != 0)
-                print(ball.toString() + "볼 ")
-            if (strike != 0)
-                print(strike.toString() + "스트라이크")
-            println()
-        }
-    } while (computerNumber != userNumber)
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        } while (computerNumber != userNumber)
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 
+        val isQuit = askQuit()
 
-
-
+    } while (isQuit)
 
 
 }
@@ -73,4 +62,28 @@ fun checkBall(userNumber: List<Int>, computerNumber: MutableList<Int>): Int {
             countBall++
 
     return countBall
+}
+fun printBallAndStrike(userNumber: List<Int>, computerNumber: MutableList<Int>){
+    val strike = checkStrike(userNumber, computerNumber)
+    val ball = checkBall(userNumber, computerNumber) - strike
+
+    if (ball != 0)
+        print(ball.toString() + "볼 ")
+    if (strike != 0)
+        print(strike.toString() + "스트라이크")
+    println()
+}
+fun printResult(isNothing: Boolean,userNumber: List<Int>, computerNumber: MutableList<Int>){
+    if (isNothing)
+        println("낫싱")
+    if (!isNothing)
+        printBallAndStrike(userNumber, computerNumber)
+}
+fun askQuit(): Boolean{
+    print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val answer = Console.readLine()
+
+    if (answer == "1")
+        return true
+    return false
 }
