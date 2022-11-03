@@ -35,6 +35,14 @@ class ApplicationTest : NsTest() {
         assertThrows<IllegalArgumentException> { throwThreeLetterException(testCase2) }
     }
 
+    @Test
+    fun `숫자 예외 테스트`() {
+        val testCase1 = listOf('a', 'b', 'c')
+        val testCase2 = listOf('가',']','.')
+        assertThrows<IllegalArgumentException> { throwNonNumberException(testCase1) }
+        assertThrows<IllegalArgumentException> { throwNonNumberException(testCase2) }
+    }
+
     override fun runMain() {
         main()
     }
