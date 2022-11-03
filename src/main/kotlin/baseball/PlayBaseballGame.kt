@@ -36,7 +36,6 @@ class PlayBaseballGame(private val computerNum: MutableList<Int>) {
         }
     }
 
-
     private fun isAnswer(strikeCount: Int): Boolean {
         return strikeCount == numberRange
     }
