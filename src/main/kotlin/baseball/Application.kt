@@ -37,6 +37,7 @@ fun readUserNumber(): List<Int> {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
     println(input)
+    checkWrongInput(input)
     return input.map { it.digitToInt() }
 }
 fun checkNothing(userNumber: List<Int>, computerNumber: MutableList<Int>): Boolean {
@@ -83,7 +84,21 @@ fun askQuit(): Boolean{
     print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val answer = Console.readLine()
 
+    if (!( (answer == "1") || (answer == "2") ))
+        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+
     if (answer == "1")
         return true
     return false
+}
+fun checkWrongInput(input: String) {
+    if (input.length != 3)
+        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+
+    if (!input.all { Character.isDigit(it) })
+        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+
+    for (num in 0 until input.length-1)
+        if (input.substring(num+1, input.length).contains(input[num]))
+            throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 }
