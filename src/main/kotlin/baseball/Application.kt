@@ -17,11 +17,26 @@ private fun printWelcomeMessage() {
 private fun playNewBaseball() {
     while (true) {
         TODO()
+        printRequestForInputMessage()
+        val userNumbers = getUserNumbers()
         if (getBallCount() == 3) {
             printGameFinishedMessage()
             break
         }
     }
+}
+
+private fun printRequestForInputMessage() {
+    print("숫자를 입력해주세요 : ")
+}
+
+private fun getUserNumbers(): List<Int> {
+    val inputString = readLine()
+    return parseInputString(inputString)
+}
+
+private fun parseInputString(inputString: String?): List<Int> {
+    TODO()
 }
 
 private fun getBallCount(): Int {
