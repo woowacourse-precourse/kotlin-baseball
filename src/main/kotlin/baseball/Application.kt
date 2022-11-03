@@ -5,8 +5,7 @@ import java.util.*
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    val computerNumber = getComputerNumber()
-
+    startNewGame()
 }
 
 private fun getComputerNumber(): String {
@@ -18,6 +17,19 @@ private fun getComputerNumber(): String {
         }
     }
     return computer.joinToString("")
+}
+
+private fun startNewGame() {
+    val computerNumber = getComputerNumber()
+    val inputString = getUserPredictionNumber()
+}
+
+private fun getUserPredictionNumber(): String {
+    print("숫자를 입력해주세요 : ")
+    val inputString = Console.readLine()
+    println(inputString)
+
+    return inputString
 }
 
 private fun validateInputString(inputString: String, isNewGameCheckInputString: Boolean) {
