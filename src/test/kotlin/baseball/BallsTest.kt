@@ -35,4 +35,20 @@ class BallsTest {
         val result = "Nothing"
         assertThat(com.playGame(ball)).isEqualTo(result)
     }
+
+    @Test
+    fun playGame() {
+        var userInput = "123"
+        assertThat(com.playGame(userInput).strike).isEqualTo(3)
+        assertThat(com.playGame(userInput).ball).isEqualTo(0)
+
+        userInput = "456"
+        assertThat(com.playGame(userInput).strike).isEqualTo(0)
+        assertThat(com.playGame(userInput).ball).isEqualTo(0)
+
+        userInput = "132"
+        assertThat(com.playGame(userInput).strike).isEqualTo(1)
+        assertThat(com.playGame(userInput).ball).isEqualTo(2)
+
+    }
 }
