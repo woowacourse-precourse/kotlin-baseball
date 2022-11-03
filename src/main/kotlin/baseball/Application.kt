@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 const val START_GAME = "숫자 야구 게임을 시작합니다."
+const val STRIKE = "스트라이크"
+const val BALL = "볼"
+const val NOTHING = "낫싱"
 const val DIGIT_END = 2
 const val DIGIT_START = 0
 fun main() {
@@ -16,14 +19,13 @@ fun startGame() {
     println(answer)
     while (true) {
         val input = userInput()
-        println(checkHint(input, answer))
+        checkHint(input, answer)
     }
 }
 
 fun checkHint(input: String, answer: String) {
     var ballCount = 0
     var strikeCount = 0
-
     for (index in DIGIT_START..DIGIT_END) {
         if (answer.contains(input[index]) && input[index] == answer[index]) {
             strikeCount++
@@ -32,8 +34,22 @@ fun checkHint(input: String, answer: String) {
             ballCount++
         }
     }
-    println("$ballCount $strikeCount")
+    printHint(ballCount, strikeCount)
+}
 
+fun printHint(ballCount: Int, strikeCount: Int) {
+    if (strikeCount == 0 && ballCount == 0) {
+        println(NOTHING)
+    }
+    if (strikeCount > 0 && ballCount == 0) {
+        println("$strikeCount$STRIKE")
+    }
+    if (strikeCount == 0 && ballCount > 0) {
+        println("$ballCount$BALL")
+    }
+    if (strikeCount > 0 && ballCount > 0) {
+        println("$ballCount$BALL $strikeCount$STRIKE")
+    }
 }
 
 fun userInput(): String {
