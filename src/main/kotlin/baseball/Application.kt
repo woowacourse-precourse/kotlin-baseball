@@ -15,6 +15,13 @@ fun strikeRandNumCreate(): MutableList<Int> {
     }
     return computer
 }
+fun inputNum(): String {
+    print("숫자를 입력해주세요 : ")
+    val userNum = camp.nextstep.edu.missionutils.Console.readLine()
+    checkInputValid(userNum)
+
+    return userNum
+}
 
 fun main() {
 
