@@ -79,4 +79,5 @@ fun countStrike(userNumber: List<Int>, computerNumber: List<Int>): Int {
     return strike
 }
 
+fun getFinalNumberOfBallBySubtractStrikeFromBall(ball: Int, strike: Int) = ball - strike
 
