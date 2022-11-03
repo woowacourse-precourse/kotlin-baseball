@@ -5,7 +5,6 @@ import baseball.Constant.Companion.errorMessage
 import baseball.Constant.Companion.maxRangeString
 import baseball.Constant.Companion.minRangeString
 
-
 class PlayerNumberCreate {
     private val printObject = PrintMethod()
 
@@ -15,17 +14,14 @@ class PlayerNumberCreate {
 
     fun playerNumber(): MutableList<Int> {
         val playerNumber: String = inputPlayerNumber()
-        constraint(playerNumber)
-        return toList(playerNumber)
+        constraint(playerNumber) // 예외처리
+        return toList(playerNumber) // List 형태로 반환
     }
 
-    private fun inputPlayerNumber(): String {
-        return readLine()
-    }
+    private fun inputPlayerNumber(): String = readLine()
 
     private fun constraint(inputString: String) {
         if (!inputString.all { it in minRangeString..maxRangeString }
-            || inputString.isEmpty()
             || inputString.length != 3
             || checkDuple(toList(inputString))) {
             throw IllegalArgumentException(errorMessage)
