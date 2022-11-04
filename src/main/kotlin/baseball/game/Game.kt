@@ -44,6 +44,23 @@ class Game(
         }
     }
 
+    private fun printBallState() {
+        var strikeCount = 0
+        var ballCount = 0
+        var outCount = 0
+
+        ballStates.forEach { ballState ->
+            when(ballState) {
+                BallState.STRIKE -> strikeCount++
+                BallState.BALL -> ballCount++
+                BallState.OUT -> outCount++
+            }
+        }
+
+        if (outCount == ballStates.size) {
+            println(OUTPUT_NOTHING_MESSAGE)
+        }
+    }
 
     private fun printMessage(message: String) { print(message) }
 
