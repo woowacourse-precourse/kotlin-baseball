@@ -10,7 +10,7 @@ enum class Score {
     BALL
 }
 
-fun determineScore(randomNumber: String, userNumber: String, index: Int): Score {
+fun compareNumber(randomNumber: String, userNumber: String, index: Int): Score {
     if (randomNumber[index] == userNumber[index])
         return Score.STRIKE
     else if (randomNumber.contains(userNumber[index]))
