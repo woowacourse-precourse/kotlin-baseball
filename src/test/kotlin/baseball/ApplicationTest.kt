@@ -28,8 +28,29 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `resultNum 입력 테스트`(){
-        assertThat(getResultNum() in 100 .. 999)
+    fun `resultNum 범위 테스트`(){
+        var start = 0
+        var end = 0
+        repeat(RESULT_NUM_RANGE) {
+            start = start * 10 + 1
+            end = end * 10 + 9
+        }
+        assertThat(getResultRange() == Pair(start,end))
+    }
+
+    @Test
+    fun `range validation 테스트`(){
+        if(RESULT_NUM_RANGE in 1 .. 9){
+            assertThat(validateRange())
+        }else{
+            assertThrows<IllegalArgumentException> { validateRange() }
+        }
+    }
+
+    @Test
+    fun `resultNum range validation 테스트`(){
+        val (start, end ) = getResultRange()
+        assertThat(getResultNum() in start .. end)
     }
 
     override fun runMain() {

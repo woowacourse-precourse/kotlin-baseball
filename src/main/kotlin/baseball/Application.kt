@@ -11,16 +11,37 @@ import camp.nextstep.edu.missionutils.Randoms
 
 const val RESULT_NUM_RANGE = 3
 
-fun getResultNum(): Int{
+fun validateRange() {
+    if(RESULT_NUM_RANGE !in 1 .. 9) throw IllegalArgumentException()
+}
+
+fun getResultNum(): Int {
+
+    validateRange()
+
+    val (start, end) = getResultRange()
+    val resultNum = Randoms.pickNumberInRange(start, end)
+
+    validateNumInRange(resultNum)
+
+    return resultNum
+}
+
+fun getResultRange(): Pair<Int, Int> {
     var start = 0
     var end = 0
-    repeat (RESULT_NUM_RANGE){
-        start = start*10+1
-        end = end*10+9
+    repeat(RESULT_NUM_RANGE) {
+        start = start * 10 + 1
+        end = end * 10 + 9
     }
-    return Randoms.pickNumberInRange(start,end)
+    return Pair(start, end)
+}
+
+fun validateNumInRange(num: Int) {
+    val (start, end) = getResultRange()
+    if(num !in start..end) throw IllegalArgumentException()
 }
 
 fun main() {
-
+    val resultNum = getResultNum()
 }
