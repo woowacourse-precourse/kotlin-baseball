@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 const val INPUT_LENGTH_STANDARD = 3
 const val GAME_CLEAR = 3
 const val USER_WANT_PLAY_AGAIN = 1
@@ -14,4 +16,8 @@ fun main() {
 private fun startGameAtFirst() {
     println("숫자 야구 게임을 시작합니다.")
 
+}
+
+private fun getEachRandomNumber(): Int {
+    return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
 }
