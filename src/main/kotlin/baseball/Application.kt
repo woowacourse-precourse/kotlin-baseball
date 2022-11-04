@@ -33,7 +33,7 @@ fun startGame() {
 
 fun restartGame() {
     println(RESTART_GAME)
-    when (userInput()) {
+    when (Console.readLine()) {
         RESTART -> startGame()
         END -> return
         else -> throw IllegalArgumentException()
