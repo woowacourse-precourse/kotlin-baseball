@@ -10,6 +10,15 @@ enum class Score {
     BALL
 }
 
+fun determineScore(randomNumber: String, userNumber: String): List<Int> {
+    val scores = mutableListOf(0, 0, 0)
+    for (i in 0..2) {
+        val score = compareNumber(randomNumber, userNumber, i)
+        scores[score.ordinal] += 1
+    }
+    return scores
+}
+
 fun compareNumber(randomNumber: String, userNumber: String, index: Int): Score {
     if (randomNumber[index] == userNumber[index])
         return Score.STRIKE
