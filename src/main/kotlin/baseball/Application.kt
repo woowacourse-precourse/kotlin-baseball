@@ -87,3 +87,14 @@ fun printResult(countResult: MutableList<Int>) {
         else -> println(countResult[0].toString() + "볼 " + countResult[1].toString() + "스트라이크")
     }
 }
+
+fun checkUserNumber(): List<Int> {
+    val user = inputUserNumber()
+    print(user)
+    var userNumber:List<Int> = listOf(0,0,0)
+    if(isNumber(user)){
+        userNumber = checkNumber(user)
+    }
+    print(userNumber)
+    return userNumber
+}
