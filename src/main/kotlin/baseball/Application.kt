@@ -26,7 +26,6 @@ fun exitGame(strike: Int): Boolean {
 fun processGame() {
     println("숫자 야구 게임을 시작합니다.")
     var randomNumber = generateRandomNumber()
-    println(randomNumber)
     while (true) {
         print("숫자를 입력해주세요 : ")
         val userNumber = getUserInput(false)
@@ -35,7 +34,7 @@ fun processGame() {
         println(formattedScore)
         if (exitGame(scores[Score.STRIKE.ordinal]))
             break
-        else
+        else if (scores[Score.STRIKE.ordinal] == 3)
             randomNumber = generateRandomNumber()
     }
 }
@@ -69,13 +68,14 @@ fun compareNumber(randomNumber: String, userNumber: String, index: Int): Score {
 }
 
 fun generateRandomNumber(): String {
-    val numbers = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
     val randomNumber = StringBuilder()
-    for (i in 0..2) {
-        val index = Randoms.pickNumberInRange(1, numbers.size - 1)
-        randomNumber.append(numbers[index])
-        numbers.removeAt(index)
+    while (randomNumber.length < 3) {
+        val generatedNumber = Randoms.pickNumberInRange(1, 9)
+        if (!randomNumber.contains(generatedNumber.toChar())) {
+            randomNumber.append(generatedNumber)
+        }
     }
+    println(randomNumber)
     return randomNumber.toString()
 }
 
