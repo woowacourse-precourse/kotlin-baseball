@@ -26,7 +26,27 @@ fun setComputerNum() : List<Int>{
 
 fun compareUserNumAndComputerNum(computer : List<Int>){
     var userNum = getNum()
-    println(userNum)
+    var ballCount = 0
+    var strikeCount = 0
+
+    userNum.forEach{
+        if(computer.contains(it))
+            ballCount++
+    }
+
+    for(i in 0..2){
+        if(computer[i] == userNum[i])
+            strikeCount++
+    }
+
+    ballCount -= strikeCount
+
+//    println("computer : $computer")
+//    println("user : $userNum")
+//    println("s : $strikeCount b : $ballCount")
+
+//    compareUserNumAndComputerNum(computer)
+
 }
 
 fun getNum() : List<Int>{
