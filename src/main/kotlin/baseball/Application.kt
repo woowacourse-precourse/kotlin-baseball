@@ -18,9 +18,9 @@ fun comRandomNum() : String {
     return computer
 }
 
-fun inputUserNum() {
+fun inputUserNum() : String? {
     print("숫자를 입력해주세요 : ")
-    val userNum = readLine()
+    return readLine()
 }
 
 fun compareUserAndCom(com : String, user : String) {
@@ -29,13 +29,15 @@ fun compareUserAndCom(com : String, user : String) {
     printResult(comBalls.playGame(user))
 }
 
-fun printResult(gameResult : GameResult) {
+fun printResult(gameResult : GameResult) : String{
 
+    var result = ""
     when {
-        gameResult.strike == 0 && gameResult.ball == 0 -> println("낫싱")
-        gameResult.strike == 0 -> println("${gameResult.ball}볼")
-        gameResult.ball == 0 -> println("${gameResult.strike}스트라이크")
-        else -> println("${gameResult.ball}볼 ${gameResult.strike}스트라이크")
+        gameResult.strike == 0 && gameResult.ball == 0 -> result = "낫싱"
+        gameResult.strike == 0 -> result = "${gameResult.ball}볼"
+        gameResult.ball == 0 -> result = "${gameResult.strike}스트라이크"
+        else -> result = "${gameResult.ball}볼 ${gameResult.strike}스트라이크"
     }
-
+    return result
 }
+
