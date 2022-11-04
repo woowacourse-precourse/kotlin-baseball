@@ -81,5 +81,11 @@ fun countBallStrike(location: Int, number: Int, computerNumber: List<Int>): Muta
 }
 
 fun printResult(countResult: MutableList<Int>) {
-
+    when {
+        countResult[0] == 0 && countResult[1] == 0 -> println("낫싱")
+        countResult[1] == 3 -> println("3개의 숫자를 모두 맞히셨습니다!")
+        countResult[0] == 0 && countResult[1] != 0 -> println(countResult[1].toString() + "스트라이크")
+        countResult[0] != 0 && countResult[1] == 0 -> println(countResult[0].toString() + "볼")
+        else -> println(countResult[0].toString() + "볼 " + countResult[1].toString() + "스트라이크")
+    }
 }
