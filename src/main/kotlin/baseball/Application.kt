@@ -46,8 +46,6 @@ fun isNumber(user:String): Boolean {
         user.toInt()
         true
     } catch (e: NumberFormatException) {
-        println("문자는 포함할 수 없습니다. 다시 입력해주세요.")
-        inputUserNumber()
         false
     }
 }
@@ -90,6 +88,4 @@ fun checkUserNumber(): List<Int> {
     } else{
         throw IllegalArgumentException()
     }
-    print(userNumber)
-    return userNumber
 }
