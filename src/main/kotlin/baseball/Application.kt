@@ -104,8 +104,6 @@ fun printStrike(strike: Int) {
 
 fun getRestartNumberFromKeyboard() = Console.readLine()
 
-fun throwInvalidRestartNumber(input: String) {
-    if (!(input == "1" || input == "2")) {
-        throw java.lang.IllegalArgumentException("1,2 중 하나를 입력해주세요")
-    }
+fun reStart(input: String){
+   if (input=="1") run { main() }
 }
