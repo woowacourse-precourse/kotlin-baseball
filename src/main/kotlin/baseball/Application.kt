@@ -26,43 +26,6 @@ fun printEnterNumber() {
     print("숫자를 입력해주세요 : ")
 }
 
-fun throwThreeLetterException(input: List<Char>) {
-    val numberOfDigits = 3
-    if (input.size != numberOfDigits) {
-        throw IllegalArgumentException("3개의 숫자를 입력하세요")
-    }
-}
-
-fun throwNonNumberException(input: List<Char>) {
-    val asciiCodeZero = 48
-    val asciiCodeNine = 57
-    input.forEach { char ->
-        if (char.code < asciiCodeZero || char.code > asciiCodeNine) {
-            throw IllegalArgumentException("숫자만 입력하세요")
-        }
-    }
-}
-
-fun throwDuplicateNumberException(input: List<Char>) {
-    if (input.distinct() != input) {
-        throw IllegalArgumentException("서로 다른수를 입력해주세요")
-    }
-}
-
-fun checkAllException(input: List<Char>) {
-    throwThreeLetterException(input)
-    throwNonNumberException(input)
-    throwDuplicateNumberException(input)
-}
-
-fun getInputListFromKeyboard() = Console.readLine().toList()
-
-fun convertCharacterListToIntList(input: List<Char>): List<Int> {
-    return input.map { char ->
-        char.digitToInt()
-    }
-}
-
 fun countBall(userNumber: List<Int>, computerNumber: List<Int>): Int {
     var ball = 0
     userNumber.forEach { num ->
@@ -101,8 +64,6 @@ fun printBall(ball: Int) {
 fun printStrike(strike: Int) {
     if (strike != 0) print("${strike}스트라이크")
 }
-
-fun getRestartNumberFromKeyboard() = Console.readLine()
 
 fun reStart(input: String){
    if (input=="1") run { main() }
