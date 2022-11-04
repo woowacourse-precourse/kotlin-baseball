@@ -18,7 +18,28 @@ class Computer {
     fun compareGuessAndAnswer(userGuess: List<Int>): Boolean {
         val strikeCount = countStrike(userGuess)
         val ballCount = countBall(userGuess)
-        TODO()
+        val result = StringBuilder()
+        if (strikeCount == 3) {
+            result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println(result.toString())
+            return false
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            result.append("낫싱")
+            println(result.toString())
+            return true
+        }
+        if (ballCount > 0) {
+            result.append(ballCount).append("볼")
+            if (strikeCount > 0) {
+                result.append(' ')
+            }
+        }
+        if (strikeCount > 0) {
+            result.append(strikeCount).append("스트라이크")
+        }
+        println(result.toString())
+        return true
     }
 
     fun countStrike(userGuess: List<Int>): Int {
