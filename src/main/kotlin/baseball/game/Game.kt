@@ -16,6 +16,7 @@ class Game(
     private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
     private val inputValidator = InputValidator()
 
+    /** 컴퓨터의 숫자 정보를 가져오는 함수 **/
     private fun getTargetNumber(): String = computer.numberOfComputer
 
     override fun start() {
