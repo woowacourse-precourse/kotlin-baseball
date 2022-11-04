@@ -1,6 +1,6 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.*
 
 fun main() {
     /**
@@ -31,11 +31,28 @@ fun main() {
     /** 게임 시작 문구 출력 */
     println("숫자 야구 게임을 시작합니다.")
 
-    /** 랜덤한 숫자를 생성해 리스트에 저장 */
-    val listOfCreatedNumber = createRandomNumber()
+    var flag = 1
 
-    /** 숫자 입력 문구 출력 */
+    while (true) {
+        if (flag == 1) {
+            /** 랜덤한 숫자를 생성해 리스트에 저장 */
+            val listOfCreatedNumber = createRandomNumber()
+            flag += 1
+        }
+        if (flag == 2) {
+            /** 숫자 입력 문구 출력 */
+            print("숫자를 입력해주세요 : ")
+            val inputNumber = Console.readLine()
+            validateNumber(inputNumber)
+            validateLength(inputNumber)
 
+            val listOfInputNumber: MutableList<Int> = mutableListOf(3)
+
+            for (i in 0..2) {
+                listOfInputNumber.add(inputNumber[i].digitToInt())
+            }
+        }
+    }
 }
 
 fun createRandomNumber(): List<Int> {
@@ -47,4 +64,20 @@ fun createRandomNumber(): List<Int> {
         }
     }
     return listOfCreatedNumber.toList()
+}
+
+fun validateNumber(inputNumber: String) {
+    val regexNumber = Regex("^[0-9]$")
+
+    if (!regexNumber.matches(inputNumber)) {
+        throw IllegalArgumentException("입력한 문자열이 숫자가 아닙니다.")
+    }
+}
+
+fun validateLength(inputNumber: String) {
+    val regexLength = Regex("^{3}$")
+
+    if (!regexLength.matches(inputNumber)) {
+        throw IllegalArgumentException("입력한 문자열의 길이가 3이 아닙니다.")
+    }
 }
