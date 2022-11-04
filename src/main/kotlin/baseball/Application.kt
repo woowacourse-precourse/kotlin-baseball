@@ -14,7 +14,7 @@ fun exitGame(strike: Int): Boolean {
     if (strike == 3) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        val flag = getUserInput()
+        val flag = getUserInput(true)
         if (flag == "1")
             return false
         else if (flag == "2")
@@ -28,7 +28,7 @@ fun processGame() {
     val randomNumber = generateRandomNumber()
     while (true) {
         print("숫자를 입력해주세요 : ")
-        val userNumber = getUserInput()
+        val userNumber = getUserInput(false)
         val scores = determineScore(randomNumber, userNumber)
         val formattedScore = formatScore(scores)
         println(formattedScore)
@@ -76,10 +76,14 @@ fun generateRandomNumber(): String {
     return randomNumber.toString()
 }
 
-fun getUserInput(): String {
+fun getUserInput(mode: Boolean): String {
     val input = Console.readLine()
-    if (input == "1" || input == "2")
-        return input
+    if (input == "1" || input == "2") {
+        if (mode)
+            return input
+        else if (!mode)
+            throw IllegalArgumentException()
+    }
     if (input.length != 3)
         throw IllegalArgumentException()
     if (!input.all { char -> char.isDigit() })
