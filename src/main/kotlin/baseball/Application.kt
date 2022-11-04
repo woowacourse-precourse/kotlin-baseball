@@ -22,3 +22,20 @@ fun inputUserNum() {
     print("숫자를 입력해주세요 : ")
     val userNum = readLine()
 }
+
+fun playGame(com : String, user : String) {
+    val comBalls = Balls(com)
+
+    printResult(comBalls.playGame(user))
+}
+
+fun printResult(gameResult : GameResult) {
+
+    when {
+        gameResult.strike == 0 && gameResult.ball == 0 -> println("낫싱")
+        gameResult.strike == 0 -> println("${gameResult.ball}볼")
+        gameResult.ball == 0 -> println("${gameResult.strike}스트라이크")
+        else -> println("${gameResult.ball}볼 ${gameResult.strike}스트라이크")
+    }
+
+}
