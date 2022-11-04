@@ -9,6 +9,7 @@ fun main() {
     print("숫자를 입력해주세요 : ")
     val userInput = readLine()!!
     println(userInput)
+    userWrongTypeAnswer(userInput)
 }
 
 fun randomNum(): String {
@@ -21,4 +22,11 @@ fun randomNum(): String {
     }
     return computer
 
+}
+fun userWrongTypeAnswer(userAnswer: String) {
+    try {
+        Integer.parseInt(userAnswer)
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("게임 종료")
+    }
 }
