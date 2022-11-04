@@ -17,14 +17,14 @@ class Game(
         println(START_GAME_MESSAGE)
 
         do {
-            printInputMessage()
+            print(START_GAME_MESSAGE)
 
             player.enterNumber()
 
         } while (isActiveState)
     }
 
-    private fun printInputMessage() = print(INPUT_MESSAGE)
+    private fun print(message: String) { print(message) }
 
 
     override fun end() {
