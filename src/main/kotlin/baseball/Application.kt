@@ -2,12 +2,23 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import java.lang.StringBuilder
+import kotlin.text.StringBuilder
 
 enum class Score {
     NOTHING,
     STRIKE,
     BALL
+}
+
+fun formatScore(scores: List<Int>): String {
+    val formattedScore = StringBuilder()
+    if (scores[Score.BALL.ordinal] != 0)
+        formattedScore.append("${scores[Score.BALL.ordinal]}볼")
+    if (scores[Score.STRIKE.ordinal] != 0)
+        formattedScore.append("${scores[Score.BALL.ordinal]}스트라이크")
+    if (scores[Score.NOTHING.ordinal] != 0)
+        return "낫싱"
+    return formattedScore.toString()
 }
 
 fun determineScore(randomNumber: String, userNumber: String): List<Int> {
