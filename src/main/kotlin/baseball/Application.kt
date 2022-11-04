@@ -21,9 +21,10 @@ fun main() {
             computerNum = computerNum.plus(it)
         }
 
-        while (true) {
+        var playerNum = ""
+        while (playerNum != computerNum) {
             print("숫자를 입력해주세요 : ")
-            var playerNum = Console.readLine()
+            playerNum = Console.readLine()
         }
     }
 
