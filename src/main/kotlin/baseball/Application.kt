@@ -7,7 +7,7 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
     val computerNumber = createRandomNumber()
     print(computerNumber)
-    val userNumber = inputUserNumber()
+    val userNumber = checkUserNumber()
     playBaseball(computerNumber, userNumber)
 }
 
@@ -22,31 +22,27 @@ fun createRandomNumber(): MutableList<Int> {
     return computer
 }
 
-fun inputUserNumber(): List<Int> {
+fun inputUserNumber(): String {
     print("숫자를 입력해주세요 : ")
-    val user = readLine().toString()
-    if(isNumber(user)){
-       return checkNumber(user)
-    }
-    return checkNumber(user)
+    return readLine().toString()
 }
 
 fun checkNumber(user:String): List<Int> {
     val userNumber = user.map{ it.code - '0'.code }
+    print(userNumber)
 
-    if(userNumber.size != 3){
+    return if(userNumber.size != 3){
         println("3자리 숫자만 입력 가능합니다. 다시 입력해주세요.")
-        inputUserNumber()
-    }
-    else if(userNumber.contains(0)){
+        checkUserNumber()
+    } else if(userNumber.contains(0)){
         println("0은 포함할 수 없습니다. 다시 입력해주세요.")
-        inputUserNumber()
-    }
-    else if(userNumber.size != userNumber.distinct().count()){
+        checkUserNumber()
+    } else if(userNumber.size != userNumber.distinct().count()){
         println("숫자를 중복할 수 없습니다. 다시 입력해주세요.")
-        inputUserNumber()
+        checkUserNumber()
+    } else{
+        userNumber
     }
-    return userNumber
 }
 
 fun isNumber(user:String): Boolean {
