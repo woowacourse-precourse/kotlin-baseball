@@ -3,6 +3,7 @@ package baseball
 import baseball.Constant.Companion.startBallCount
 import baseball.Constant.Companion.startStrikeCount
 import baseball.Constant.Companion.errorMessage
+import baseball.Constant.Companion.gameCloseMessage
 import baseball.Constant.Companion.gameCloseSwitch
 import baseball.Constant.Companion.gameEndMessage
 import baseball.Constant.Companion.newGameSwitch
@@ -11,9 +12,8 @@ import baseball.Constant.Companion.numberRange
 import camp.nextstep.edu.missionutils.Console.readLine
 
 class PlayBaseballGame(private val computerNum: MutableList<Int>) {
-    private val playerNumCreate = PlayerNumberCreate()
+    private val playerNum = PlayerNumberCreate().playerNumber()
     private val printObject = PrintMethod()
-    private val playerNum = playerNumCreate.playerNumber()
     private val strike = countStrike(computerNum, playerNum)
     private val ball = countBall(computerNum, playerNum)
 
@@ -54,6 +54,7 @@ class PlayBaseballGame(private val computerNum: MutableList<Int>) {
         val newGame = readLine()
         newGameConstraint(newGame)
         if (newGame == newGameSwitch) PlayBaseballGame(ComputerNumberCreate().computerNumber)
+        if (newGame == gameCloseSwitch) println(gameCloseMessage)
     }
 
     private fun countBall(computerNum: List<Int>, playerNum: List<Int>): Int {
