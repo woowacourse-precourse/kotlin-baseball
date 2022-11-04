@@ -8,11 +8,11 @@ class Application(
     private val presenter: Presenter
 ) {
     fun baseballApp() {
-        println("숫자 야구 게임을 시작합니다.")
-        presenter.setComputerValue()
+        startMessage()
+        presenter.setRandomComputerValue()
         while (true) {
-            val numOfUser = inputUserValue()
-            presenter.setUserValue(numOfUser)
+            val numberOfUser = inputUserValue()
+            presenter.setUserValue(numberOfUser)
             val userValue = presenter.getUserValue()
             val computerValue = presenter.getComputerValue()
             val strike = presenter.countStrike(userValue, computerValue)
@@ -26,7 +26,7 @@ class Application(
                 return
             }
             if(restart == 1) {
-                presenter.setComputerValue()
+                presenter.setRandomComputerValue()
             }
         }
     }

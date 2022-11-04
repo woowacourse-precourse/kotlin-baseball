@@ -21,6 +21,8 @@ fun isComplete(complete: Boolean) {
 
 fun endMessage() = println("게임 종료")
 
+fun startMessage() = println("숫자 야구 게임을 시작합니다.")
+
 private fun isNothing(strike: Int, ball: Int):Boolean {
     if (strike == 0 && ball == 0) {
         return true

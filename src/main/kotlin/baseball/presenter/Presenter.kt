@@ -9,7 +9,7 @@ class Presenter(
 
     fun setUserValue(num: List<Int>) = datasource.setUserValue(num)
 
-    fun setComputerValue() {
+    fun setRandomComputerValue() {
         val num = getRandomNumber()
         datasource.setComputerValue(num)
     }
