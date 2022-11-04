@@ -28,12 +28,25 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 테스트 길이`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
 
+    @Test
+    fun `예외 테스트 숫자` () {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a12") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 중복` () {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("113") }
+        }
+    }
 
     override fun runMain() {
         main()
