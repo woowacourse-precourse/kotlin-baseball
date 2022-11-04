@@ -16,7 +16,7 @@ object Game {
     }
     private fun checkInputValueException(inputValue: String) : Boolean{
         var checkExceptionFlag = false
-        if(!checkInputLengthThree(inputValue) || !checkInputLengthThree(inputValue)){
+        if(!checkInputLengthThree(inputValue) || !checkInputValueIsNumber(inputValue)){
             checkExceptionFlag = true
         }
         return checkExceptionFlag
