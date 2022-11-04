@@ -1,11 +1,12 @@
 package baseball
 
 fun main() {
+    printGameStart()
     val computerNumbers = ComputerNumber().getRandomNumbers()
     if (!isNumberException(computerNumbers)) {
         throw IllegalArgumentException()
     }
-
+    printInputNumber()
     val playerNumbers = PlayerNumber().inputPlayerNumber()
     if (!isNumberException(playerNumbers)) {
         throw IllegalArgumentException()
@@ -15,9 +16,22 @@ fun main() {
     val strike = baseBall.getStrikeCount()
     val ball = baseBall.getBallCount()
     getResultMessage(ball, strike)
-
+    printGameOver()
     PlayerNumber().exitGame()
 
+}
+
+fun printGameStart() {
+    println("숫자 야구 게임을 시작합니다.")
+}
+
+fun printInputNumber() {
+    print("숫자를 입력해주세요 : ")
+}
+
+fun printGameOver() {
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
 
 fun getResultMessage(ball: Int, strike: Int) {
