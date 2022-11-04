@@ -66,7 +66,9 @@ fun printHint(ballCount: Int, strikeCount: Int) {
 fun userInput(): String {
     print(INPUT)
     val input = Console.readLine()
-    val numbers = input.toCharArray().toSet()
+    val numbers = input.toCharArray().filter { number ->
+        number in '1'..'9'
+    }
     when (numbers.size) {
         DIGIT_LENGTH -> return input
         else -> throw IllegalArgumentException()
