@@ -14,8 +14,8 @@ const val STRIKE = "스트라이크"
 const val BALL = "볼"
 const val NOTHING = "낫싱"
 const val DIGIT_LENGTH = 3
-const val DIGIT_END = 2
-const val DIGIT_START = 0
+const val START_RANDOM_NUMBER_RANGE = 1
+const val END_RANDOM_NUMBER_RANGE = 9
 fun main() {
     println(START_GAME)
     startGame()
@@ -23,20 +23,17 @@ fun main() {
 
 fun startGame() {
     val answer = pickRandomNumber()
-    println(answer)
-    while (true) {
+    do {
         val input = userInput()
         checkHint(input, answer)
-        if (checkAnswer(input, answer)) {
-            break
-        }
-    }
+    } while (!checkAnswer(input, answer))
     println(END_GAME)
     restartGame()
 }
-fun restartGame(){
+
+fun restartGame() {
     println(RESTART_GAME)
-    when (userInput()){
+    when (userInput()) {
         RESTART -> startGame()
         END -> return
         else -> throw IllegalArgumentException()
@@ -48,47 +45,38 @@ fun checkAnswer(input: String, answer: String): Boolean {
 }
 
 fun checkHint(input: String, answer: String) {
-    var ballCount = 0
-    var strikeCount = 0
-    for (index in DIGIT_START..DIGIT_END) {
-        if (answer.contains(input[index]) && input[index] == answer[index]) {
-            strikeCount++
-        }
-        if (answer.contains(input[index]) && input[index] != answer[index]) {
-            ballCount++
-        }
-    }
+    val strikeCount = input.filterIndexed { index, element ->
+        answer.contains(element) && element == answer[index]
+    }.length
+    val ballCount = input.filterIndexed { index, element ->
+        answer.contains(element) && element != answer[index]
+    }.length
     printHint(ballCount, strikeCount)
 }
 
 fun printHint(ballCount: Int, strikeCount: Int) {
-    if (strikeCount == 0 && ballCount == 0) {
-        println(NOTHING)
-    }
-    if (strikeCount > 0 && ballCount == 0) {
-        println("$strikeCount$STRIKE")
-    }
-    if (strikeCount == 0 && ballCount > 0) {
-        println("$ballCount$BALL")
-    }
-    if (strikeCount > 0 && ballCount > 0) {
-        println("$ballCount$BALL $strikeCount$STRIKE")
+    when {
+        strikeCount == 0 && ballCount == 0 -> println(NOTHING)
+        strikeCount > 0 && ballCount == 0 -> println("$strikeCount$STRIKE")
+        strikeCount == 0 && ballCount > 0 -> println("$ballCount$BALL")
+        strikeCount > 0 && ballCount > 0 -> println("$ballCount$BALL $strikeCount$STRIKE")
     }
 }
 
 fun userInput(): String {
     print(INPUT)
     val input = Console.readLine()
-    if(input.length != DIGIT_LENGTH){
-        throw IllegalArgumentException()
+    val numbers = input.toCharArray().toSet()
+    when (numbers.size) {
+        DIGIT_LENGTH -> return input
+        else -> throw IllegalArgumentException()
     }
-    return Console.readLine()
 }
 
 fun pickRandomNumber(): String {
     val computerNumber = mutableListOf<Int>()
-    while (computerNumber.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
+    while (computerNumber.size < DIGIT_LENGTH) {
+        val randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER_RANGE, END_RANDOM_NUMBER_RANGE)
         if (!computerNumber.contains(randomNumber)) {
             computerNumber.add(randomNumber)
         }
