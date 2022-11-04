@@ -6,7 +6,7 @@ import utils.Constants.DIGIT_LENGTH
 import utils.Constants.MAX_DIGIT
 import utils.Constants.MIN_DIGIT
 
-object RandomGenerator {
+object ComputerFactory {
     fun create(): Computer {
         val computers = linkedSetOf<Int>()
         while (computers.size < DIGIT_LENGTH) {
