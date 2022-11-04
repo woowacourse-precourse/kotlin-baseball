@@ -12,9 +12,11 @@ class Game(
 ): GameService {
 
     private var gameStateCode = GAME_ACTIVE_CODE
-    private val numberOfComputer: String = computer.numberOfComputer
+    private var numberOfComputer: String = getTargetNumber()
     private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
     private val inputValidator = InputValidator()
+
+    private fun getTargetNumber(): String = computer.numberOfComputer
 
     override fun start() {
         printMessage(message = START_GAME_MESSAGE)
@@ -117,6 +119,7 @@ class Game(
 
     override fun restart() {
         computer.recreateRandomNumber()
+        numberOfComputer = getTargetNumber()
         println(numberOfComputer)
     }
 
