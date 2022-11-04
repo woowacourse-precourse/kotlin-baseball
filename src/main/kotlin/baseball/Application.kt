@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     gameStartText()
@@ -51,7 +52,12 @@ fun printUserCount(strikeCount: Int, ballCount: Int) {
 
 fun restartGameCheck() {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    val number = readLine()?.toInt()
+    val number = try {
+        Console.readLine().toInt()
+    } catch (e: Exception) {
+        throw IllegalArgumentException()
+    }
+
     if (number == 1) {
         startBaseball()
     } else if (number != 2) {
@@ -61,7 +67,7 @@ fun restartGameCheck() {
 
 fun inputUserNumbers(): MutableList<Int> {
     print("숫자를 입력해주세요 : ")
-    val input = readLine()!!
+    val input = Console.readLine()
     //예외 사항 : 정수 인지* , 길이가 3인지 , 중복된 숫자는 없는지
     val userNumbers = input.map {
         it.digitToInt()
