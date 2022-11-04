@@ -90,14 +90,22 @@ fun printThreeStrike() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
-fun printNothing(ball: Int,strike: Int){
-    if(ball==0 && strike==0) print("낫싱")
+fun printNothing(ball: Int, strike: Int) {
+    if (ball == 0 && strike == 0) print("낫싱")
 }
 
-fun printBall(ball: Int){
-    if(ball!=0) print("${ball}볼 ")
+fun printBall(ball: Int) {
+    if (ball != 0) print("${ball}볼 ")
 }
 
-fun printStrike(strike: Int){
-    if (strike!=0) print("${strike}스트라이크")
+fun printStrike(strike: Int) {
+    if (strike != 0) print("${strike}스트라이크")
+}
+
+fun getRestartNumberFromKeyboard() = Console.readLine()
+
+fun throwInvalidRestartNumber(input: String) {
+    if (!(input == "1" || input == "2")) {
+        throw java.lang.IllegalArgumentException("1,2 중 하나를 입력해주세요")
+    }
 }
