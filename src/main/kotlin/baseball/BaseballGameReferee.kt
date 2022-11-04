@@ -1,7 +1,7 @@
 package baseball
 
 object BaseballGameReferee {
-    fun decideEachTurn(userInput: Int) {
+    fun decideEachTurn(userInput: ArrayList<Int>) {
 
     }
 
