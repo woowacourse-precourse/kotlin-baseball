@@ -32,4 +32,13 @@ class BaseBallGameTest {
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("중복되는 숫자가 존재합니다.")
     }
+
+    @Test
+    fun `입력 받은 값이 1부터 9까지 수 인가?`() {
+        val playerNumber = "102"
+
+        assertThatThrownBy { Player(playerNumber) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("입력 포맷이 일치하지 않습니다. 1부터 9까지 수만 입력해주세요.")
+    }
 }
