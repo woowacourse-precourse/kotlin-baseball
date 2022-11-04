@@ -1,11 +1,11 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Console
+import baseball.view.InputView
 
 class PlayerNumber {
     fun inputPlayerNumber(): List<Int> {
-        val inputPlayer = Console.readLine()
-        val playerNumbers = PlayerNumber().convertStringToList(inputPlayer)
+        val startNumber = InputView().startPlayerNumber()
+        val playerNumbers = PlayerNumber().convertStringToList(startNumber)
         if (!isNumberException(playerNumbers)) {
             throw IllegalArgumentException()
         }
@@ -16,12 +16,8 @@ class PlayerNumber {
         return inputPlayer.toCharArray().map { num -> num - '0' }
     }
 
-    fun inputExitNumber(): String {
-        return Console.readLine()
-    }
-
     fun exitGame(): Boolean {
-        val endNumber = inputExitNumber()
+        val endNumber = InputView().startPlayerNumber()
         if (endNumber == "1") {
             return false
         }
