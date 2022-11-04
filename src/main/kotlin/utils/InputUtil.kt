@@ -2,10 +2,18 @@ package utils
 
 import camp.nextstep.edu.missionutils.Console
 import domain.Player
+import utils.Constants.DIGIT_LENGTH
+import utils.Constants.DUPLICATED_DIGIT_EXCEPTION
+import utils.Constants.ENTER_NUMBER_TEXT
+import utils.Constants.LENGTH_MISMATCH_EXCEPTION
+import utils.Constants.MAX_DIGIT
+import utils.Constants.MIN_DIGIT
+import utils.Constants.NON_DIGIT_EXCEPTION
+import utils.Constants.OUT_OF_RANGE_EXCEPTION
 
 object InputUtil {
     fun enterAnswer(): Player {
-        print("숫자를 입력해주세요 : ")
+        print(ENTER_NUMBER_TEXT)
 
         val playerInput = Console.readLine()
         validateLengthOrException(playerInput)
@@ -22,22 +30,22 @@ object InputUtil {
     }
 
     private fun validateLengthOrException(answer: String) {
-        if (answer.length != 3) throw IllegalArgumentException("입력값의 길이가 3이 아닙니다.")
+        if (answer.length != DIGIT_LENGTH) throw IllegalArgumentException(LENGTH_MISMATCH_EXCEPTION)
     }
 
     private fun validateDigitOrException(ch: Char): Int {
-        val digit = ch.digitToIntOrNull() ?: throw IllegalArgumentException("입력값이 숫자가 아닙니다.")
+        val digit = ch.digitToIntOrNull() ?: throw IllegalArgumentException(NON_DIGIT_EXCEPTION)
         validateRangeOrException(digit)
 
         return digit
     }
 
     private fun validateRangeOrException(digit: Int) {
-        if (digit !in 1 until 10) throw IllegalArgumentException("입력값이 올바른 범위가 아닙니다.")
+        if (digit !in MIN_DIGIT..MAX_DIGIT) throw IllegalArgumentException(OUT_OF_RANGE_EXCEPTION)
     }
 
     private fun validateDuplicatedOrException(inputs: Set<Int>) {
-        if (inputs.size != 3) throw IllegalArgumentException("중복된 숫자가 존재합니다.")
+        if (inputs.size != DIGIT_LENGTH) throw IllegalArgumentException(DUPLICATED_DIGIT_EXCEPTION)
     }
 
 }
