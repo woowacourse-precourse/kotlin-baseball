@@ -41,4 +41,5 @@ private fun checkNumberIsContained(number: Int?, numberList: List<Int>): Boolean
 
 private fun getUserInput() {
     print("숫자를 입력해주세요 : ")
+    val input = Console.readLine()
 }
