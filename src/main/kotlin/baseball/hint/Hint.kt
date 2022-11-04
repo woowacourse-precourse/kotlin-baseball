@@ -22,6 +22,6 @@ abstract class Hint(
 
     protected fun plusBall() = ball++
 
-    protected fun provideStrikeAndBall(): Pair<Int, Int> = Pair(strike, ball)
+    internal fun provideStrikeAndBall(): Pair<Int, Int> = Pair(strike, ball)
 
 }
