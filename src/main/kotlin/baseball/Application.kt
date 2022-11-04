@@ -1,6 +1,5 @@
 package baseball
 
-import com.sun.net.httpserver.Authenticator.Retry
 import java.util.Scanner
 
 val Range = (1..9)
@@ -15,9 +14,16 @@ var Result = ""
 var Cpu_Num = mutableListOf<Int>()
 
 //예외 확인 함수
-fun Check_Exception (): Boolean {
+fun Check_Exception(Input: String): Boolean {
+    var token = Input.chunked(1)
 
-    return false
+    if (token.size < 3) {
+        throw IllegalArgumentException(" runException(\"1234\")")
+        return false
+    }
+    else
+        return true
+
 }
 
 fun Split_Input (Input :String) :List<Int>{
@@ -125,6 +131,8 @@ fun main() = with(Scanner(System.`in`)){
 
         //사용자 입력
         println(Input)
+
+        if (Check_Exception(Input))
 
         Split_Input(Input)
 
