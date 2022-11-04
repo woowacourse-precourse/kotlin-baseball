@@ -3,7 +3,7 @@ package baseball
 class Exception {
     companion object {
         const val NUMBER_OF_DIGITS = 3
-        const val ASCII_CODE_ONE = 48
+        const val ASCII_CODE_ONE = 49
         const val ASCII_CODE_NINE = 57
         const val RESTART = 1
         const val END = 2
