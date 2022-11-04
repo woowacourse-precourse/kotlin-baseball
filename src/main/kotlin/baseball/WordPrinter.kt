@@ -7,19 +7,9 @@ import java.io.OutputStreamWriter
 object WordPrinter {
     lateinit var screen: BufferedWriter
 
-    fun printEachTurn(strikeCount: Int, ballCount: Int) {
-        when {
-            strikeCount == 3 -> {
-                printStrikeCount(strikeCount)
-                printGameEnd()
-            }
-            strikeCount + ballCount == 0 -> printNothing()
-            else -> {
-                printStrikeCount(strikeCount)
-                printBallCount(ballCount)
-            }
-        }
-
+    fun printNewLine(){
+        screen.write("\n")
+        screen.flush()
     }
 
     fun printGameStart() {
@@ -35,7 +25,7 @@ object WordPrinter {
     }
 
     fun printStrikeCount(strikeCount: Int) {
-        screen.write("${strikeCount}스트라이크\n")
+        screen.write("${strikeCount}스트라이크 ")
         screen.flush()
     }
 
