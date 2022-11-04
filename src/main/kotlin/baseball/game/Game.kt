@@ -8,7 +8,7 @@ import baseball.game.validator.InputValidator
 class Game(
     private val computer: Computer,
     private val player: Player,
-): GameService, InputValidator() {
+): GameService {
 
     private var gameState = GAME_ACTIVE_STATE
     private var isActiveState =
@@ -16,6 +16,7 @@ class Game(
 
     private val numberOfComputer: String = computer.numberOfComputer
     private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
+    private val inputValidator = InputValidator()
 
     override fun play() {
         println(START_GAME_MESSAGE)
@@ -25,7 +26,7 @@ class Game(
             print(INPUT_MESSAGE)
 
             val numberOfPlayer = player.enterNumber()
-            checkInputValid(input = numberOfPlayer)
+            inputValidator.validateInput(input = numberOfPlayer)
 
             checkBallStrike(numberOfComputer = numberOfComputer, numberOfPlayer = numberOfPlayer)
 
