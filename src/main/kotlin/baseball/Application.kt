@@ -57,6 +57,12 @@ fun calculationSocre(computerNumber: List<Int>, userNumber: List<Int>) {
         }
     }
     printResult(resultList)
+    if(resultList[1]==3){
+        chooseReplay()
+    }
+    else{
+        againinput(computerNumber)
+    }
 }
 
 fun countBallStrike(location: Int, number: Int, computerNumber: List<Int>): MutableList<Int> {
@@ -96,4 +102,12 @@ fun playBaseball(){
 fun againinput(computerNumber: List<Int>){
     val userNumber = checkUserNumber()
     calculationSocre(computerNumber, userNumber)
+}
+
+fun chooseReplay(){
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    when(readLine().toString()){
+        "1"->playBaseball()
+    }
 }
