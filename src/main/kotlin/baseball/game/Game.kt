@@ -11,9 +11,6 @@ class Game(
 ): GameService {
 
     private var gameState = GAME_ACTIVE_STATE
-    private var isActiveState =
-        gameState == GAME_ACTIVE_STATE
-
     private val numberOfComputer: String = computer.numberOfComputer
     private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
     private val inputValidator = InputValidator()
@@ -26,12 +23,15 @@ class Game(
             print(INPUT_MESSAGE)
 
             val numberOfPlayer = player.enterNumber()
-            inputValidator.validateInput(input = numberOfPlayer)
+            inputValidator.validateGameInput(input = numberOfPlayer)
 
             checkBallStrike(numberOfComputer = numberOfComputer, numberOfPlayer = numberOfPlayer)
 
-        } while (isActiveState)
+        } while (isActiveState())
     }
+
+    private fun isActiveState() =
+        gameState == GAME_ACTIVE_STATE
 
     private fun checkBallStrike(numberOfComputer: String, numberOfPlayer: String) {
 
@@ -85,6 +85,11 @@ class Game(
     private fun successGame() {
         println(SUCCESS_GAME_MESSAGE)
         println(END_GAME_MESSAGE)
+
+        val endNumber = player.enterNumber()
+        inputValidator.validateEndInput(input = endNumber)
+
+        gameState = endNumber.toInt()
     }
 
     private fun printMessage(message: String) { print(message) }

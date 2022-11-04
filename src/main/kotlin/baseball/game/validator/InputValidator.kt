@@ -3,7 +3,7 @@ package baseball.game.validator
 import baseball.common.MAX_NUMBER_SIZE
 
 class InputValidator {
-    fun validateInput(input: String) {
+    fun validateGameInput(input: String) {
         (isDigit(input = input) && isCorrectLength(input = input) && isNoDuplicate(input = input)).let { isCorrectInput ->
             if (!isCorrectInput) throw java.lang.IllegalArgumentException()
         }
