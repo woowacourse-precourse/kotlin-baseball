@@ -41,7 +41,7 @@ object WordPrinter {
     }
 
     fun printNothing() {
-        screen.write("낫싱")
+        screen.write("낫싱\n")
         screen.flush()
     }
 
