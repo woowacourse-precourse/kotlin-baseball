@@ -8,8 +8,3 @@ const val RESTART_STATE = 1
 const val END_STATE = 2
 
 const val END_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-
-const val OUTPUT_BALL_MESSAGE = "%d볼"
-const val OUTPUT_STRIKE_MESSAGE = "%d스트라이크"
-const val OUTPUT_BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크"
-const val OUTPUT_NOTHING_MESSAGE = "낫싱"

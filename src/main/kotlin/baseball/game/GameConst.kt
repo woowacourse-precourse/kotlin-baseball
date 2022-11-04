@@ -5,3 +5,8 @@ const val SUCCESS_GAME_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다 !
 const val GAME_ACTIVE_STATE = 1
 
 const val INPUT_MESSAGE = "숫자를 입력해주세요 : "
+
+const val OUTPUT_BALL_MESSAGE = "%d볼"
+const val OUTPUT_STRIKE_MESSAGE = "%d스트라이크"
+const val OUTPUT_BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크"
+const val OUTPUT_NOTHING_MESSAGE = "낫싱"

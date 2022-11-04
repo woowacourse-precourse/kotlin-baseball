@@ -6,19 +6,19 @@ import baseball.common.MIN_OF_NUMBER
 import camp.nextstep.edu.missionutils.Randoms
 
 class Computer {
-    private val numberOfComputer = hashSetOf<Int>()
+    private val _numberOfComputer = hashSetOf<Int>()
+    val numberOfComputer: HashSet<Int>
+        get() = _numberOfComputer
 
     init {
         createRandomNumber()
     }
 
-    fun getNumberOfComputer(): HashSet<Int> = numberOfComputer
-
     private fun createRandomNumber() {
         do {
             val randomNumber = Randoms.pickNumberInRange(MIN_OF_NUMBER, MAX_OF_NUMBER)
 
-            numberOfComputer.add(randomNumber)
-        } while (numberOfComputer.size < MAX_NUMBER_SIZE)
+            _numberOfComputer.add(randomNumber)
+        } while (_numberOfComputer.size < MAX_NUMBER_SIZE)
     }
 }
