@@ -20,4 +20,12 @@ object Game {
         }
         return checkFlag
     }
+
+    private fun checkInputLengthThree(inputValue : String): Boolean{
+        var checkFlag = false
+        if(inputValue.length==3){
+            checkFlag = true
+        }
+        return checkFlag
+    }
 }
