@@ -32,3 +32,25 @@ fun checkInputElement(input: String): Boolean {
     return true
 }
 
+fun checkInputType(input: String): List<Int> {
+    var list = emptyList<Int>()
+    runCatching {
+        input.toInt()
+    }.onFailure {
+        throw IllegalArgumentException("1 ~ 9 사이의 수만 입력이 가능합니다.")
+    }.onSuccess {
+        list = intToList(it)
+    }
+    return list
+}
+
+fun intToList(input: Int): List<Int> {
+    val list = mutableListOf<Int>()
+    var num = input
+    list.add(num/100)
+    num %= 100
+    list.add(num/10)
+    num %= 10
+    list.add(num / 1)
+    return list
+}
