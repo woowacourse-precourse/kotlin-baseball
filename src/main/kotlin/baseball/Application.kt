@@ -73,7 +73,7 @@ fun countBall(userNumber: List<Int>, computerNumber: List<Int>): Int {
 
 fun countStrike(userNumber: List<Int>, computerNumber: List<Int>): Int {
     var strike = 0
-    for (index in 0 until userNumber.size) {
+    for (index in userNumber.indices) {
         if (userNumber[index] == computerNumber[index]) strike++
     }
     return strike
@@ -86,5 +86,18 @@ fun isThreeStrike(strike: Int): Boolean {
 }
 
 fun printThreeStrike() {
+    println("3스트라이크")
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+}
+
+fun printNothing(ball: Int,strike: Int){
+    if(ball==0 && strike==0) print("낫싱")
+}
+
+fun printBall(ball: Int){
+    if(ball!=0) print("${ball}볼 ")
+}
+
+fun printStrike(strike: Int){
+    if (strike!=0) print("${strike}스트라이크")
 }
