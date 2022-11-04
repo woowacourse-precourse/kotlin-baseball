@@ -1,6 +1,11 @@
 package baseball
 
 fun main() {
+    val computerNumbers = ComputerNumber().getRandomNumbers()
+    if (!isNumberException(computerNumbers)) {
+        throw IllegalArgumentException()
+    }
+
     val playerNumbers = PlayerNumber().inputPlayerNumber()
     if (!isNumberException(playerNumbers)) {
         throw IllegalArgumentException()
