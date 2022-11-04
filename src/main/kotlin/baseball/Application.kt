@@ -5,9 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     var computer: String = ""
-    computer = randomNum()
+    var gameStatus: Int = 0 // 0: 게임 시작전, 1: 게임 시작(중), 2: 게임 종료
 
-    while (true) {
+    while (gameStatus != 2) {
+        if (gameStatus == 0) {
+            computer = randomNum()
+            gameStatus = 1
+        }
         print("숫자를 입력해주세요 : ")
         val userInput = readLine()!!
         println(userInput)
@@ -16,7 +20,7 @@ fun main() {
         println(userAnswerCount(computer, userInput))
         if (userCorrectAnswer(computer, userInput)) {
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            break
+            gameStatus = if (!gameRestart()) 2 else 0
         }
     }
 }
@@ -69,4 +73,22 @@ fun userAnswerCountPrint(score: MutableList<Int>): String {
 
 fun userCorrectAnswer(answer: String, userAnswer: String): Boolean {
     return answer == userAnswer
+}
+
+fun gameRestart(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return when (val userChoice = readLine()) {
+        "1" -> {
+            println(userChoice)
+            true
+        }
+
+        "2" -> {
+            println("게임종료")
+            false
+        }
+
+        else -> throw IllegalArgumentException("게임 종료")
+
+    }
 }
