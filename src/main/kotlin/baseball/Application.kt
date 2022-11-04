@@ -10,6 +10,7 @@ fun main() {
     val userInput = readLine()!!
     println(userInput)
     userWrongTypeAnswer(userInput)
+    userWrongSizeAnswer(userInput)
 }
 
 fun randomNum(): String {
@@ -21,7 +22,6 @@ fun randomNum(): String {
         }
     }
     return computer
-
 }
 fun userWrongTypeAnswer(userAnswer: String) {
     try {
@@ -29,4 +29,7 @@ fun userWrongTypeAnswer(userAnswer: String) {
     } catch (e: NumberFormatException) {
         throw IllegalArgumentException("게임 종료")
     }
+}
+fun userWrongSizeAnswer(userAnswer: String) {
+    if (userAnswer.length != 3) throw IllegalArgumentException("게임 종료")
 }
