@@ -29,17 +29,13 @@ fun inputUserNumber(): String {
 
 fun checkNumber(user:String): List<Int> {
     val userNumber = user.map{ it.code - '0'.code }
-    print(userNumber)
 
     return if(userNumber.size != 3){
-        println("3자리 숫자만 입력 가능합니다. 다시 입력해주세요.")
-        checkUserNumber()
+        throw IllegalArgumentException()
     } else if(userNumber.contains(0)){
-        println("0은 포함할 수 없습니다. 다시 입력해주세요.")
-        checkUserNumber()
+        throw IllegalArgumentException()
     } else if(userNumber.size != userNumber.distinct().count()){
-        println("숫자를 중복할 수 없습니다. 다시 입력해주세요.")
-        checkUserNumber()
+        throw IllegalArgumentException()
     } else{
         userNumber
     }
@@ -81,7 +77,6 @@ fun countBallStrike(location: Int, number: Int, computerNumber: List<Int>): Muta
 fun printResult(countResult: MutableList<Int>) {
     when {
         countResult[0] == 0 && countResult[1] == 0 -> println("낫싱")
-        countResult[1] == 3 -> println("3개의 숫자를 모두 맞히셨습니다!")
         countResult[0] == 0 && countResult[1] != 0 -> println(countResult[1].toString() + "스트라이크")
         countResult[0] != 0 && countResult[1] == 0 -> println(countResult[0].toString() + "볼")
         else -> println(countResult[0].toString() + "볼 " + countResult[1].toString() + "스트라이크")
@@ -90,10 +85,10 @@ fun printResult(countResult: MutableList<Int>) {
 
 fun checkUserNumber(): List<Int> {
     val user = inputUserNumber()
-    print(user)
-    var userNumber:List<Int> = listOf(0,0,0)
-    if(isNumber(user)){
-        userNumber = checkNumber(user)
+    return if(isNumber(user)){
+        checkNumber(user)
+    } else{
+        throw IllegalArgumentException()
     }
     print(userNumber)
     return userNumber
