@@ -14,11 +14,12 @@ class Game(
     private var isActiveState =
         gameState == GAME_ACTIVE_STATE
 
-    private val numberOfComputer = computer.numberOfComputer.toString()
+    private val numberOfComputer: String = computer.numberOfComputer
     private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
 
     override fun play() {
         println(START_GAME_MESSAGE)
+        println(numberOfComputer)
 
         do {
             print(INPUT_MESSAGE)
@@ -34,31 +35,44 @@ class Game(
     private fun checkBallStrike(numberOfComputer: String, numberOfPlayer: String) {
 
         numberOfComputer.forEachIndexed { cIdx, computerNum ->
-            if (computerNum == numberOfPlayer[cIdx]) { // 스트라이크
+            if (computerNum == numberOfPlayer[cIdx]) { // Strike
                 ballStates[cIdx] = BallState.STRIKE
             }
-            else if (numberOfPlayer.contains(computerNum)) {
+            else if (numberOfPlayer.contains(computerNum)) { // Ball
                 ballStates[cIdx] = BallState.BALL
             }
-            ballStates[cIdx] = BallState.OUT
+            else {
+                ballStates[cIdx] = BallState.OUT
+            }
         }
+
+        printBallState()
     }
 
     private fun printBallState() {
-        var strikeCount = 0
         var ballCount = 0
+        var strikeCount = 0
         var outCount = 0
 
         ballStates.forEach { ballState ->
             when(ballState) {
-                BallState.STRIKE -> strikeCount++
                 BallState.BALL -> ballCount++
+                BallState.STRIKE -> strikeCount++
                 BallState.OUT -> outCount++
             }
         }
 
         if (outCount == ballStates.size) {
             println(OUTPUT_NOTHING_MESSAGE)
+        }
+        if (strikeCount != 0 && ballCount != 0) {
+            println(OUTPUT_BALL_STRIKE_MESSAGE.format(ballCount, strikeCount))
+        }
+        if (strikeCount != 0 && ballCount == 0) {
+            println(OUTPUT_STRIKE_MESSAGE.format(strikeCount))
+        }
+        if (strikeCount == 0 && ballCount != 0) {
+            println(OUTPUT_BALL_MESSAGE.format(ballCount))
         }
     }
 

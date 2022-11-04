@@ -7,8 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Computer {
     private val _numberOfComputer = hashSetOf<Int>()
-    val numberOfComputer: HashSet<Int>
-        get() = _numberOfComputer
+    val numberOfComputer: String
+        get() = _numberOfComputer.joinToString("")
 
     init {
         createRandomNumber()

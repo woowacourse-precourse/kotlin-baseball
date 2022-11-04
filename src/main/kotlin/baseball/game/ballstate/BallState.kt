@@ -1,5 +1,5 @@
 package baseball.game.ballstate
 
 enum class BallState {
-    STRIKE, BALL, OUT
+    BALL, STRIKE, OUT
 }
