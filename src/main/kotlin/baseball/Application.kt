@@ -75,7 +75,6 @@ fun generateRandomNumber(): String {
             randomNumber.append(generatedNumber)
         }
     }
-    println(randomNumber)
     return randomNumber.toString()
 }
 
