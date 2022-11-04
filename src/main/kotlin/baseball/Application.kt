@@ -34,3 +34,36 @@ private fun separateNumberIntoDigit(inputNum: String): List<Int>{
 
     return listOf(firstNum,secondNum,thirdNum)
 }
+
+private fun countStrikeAndBall(computerNum:List<Int>, inputNum: List<Int>): List<Int>{
+    var strike = 0
+    var ball = 0
+
+    if(computerNum.contains(inputNum[0])){
+        if(computerNum[0]==inputNum[0]){
+            strike += 1
+        }
+        if(computerNum[0]!=inputNum[0]){
+            ball += 1
+        }
+    }
+
+    if(computerNum.contains(inputNum[1])){
+        if(computerNum[1]==inputNum[1]){
+            strike += 1
+        }
+        if(computerNum[1]!=inputNum[1]){
+            ball += 1
+        }
+    }
+
+    if(computerNum.contains(inputNum[2])){
+        if(computerNum[2]==inputNum[2]){
+            strike += 1
+        }
+        if(computerNum[2]!=inputNum[2]){
+            ball += 1
+        }
+    }
+    return listOf(strike, ball)
+}
