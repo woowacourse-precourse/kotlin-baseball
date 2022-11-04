@@ -42,15 +42,23 @@ fun main() {
         if (flag == 2) {
             /** 숫자 입력 문구 출력 */
             print("숫자를 입력해주세요 : ")
+
+            /** 숫자 입력 받음 */
             val inputNumber = Console.readLine()
+
+            /** 예외처리 및 프로그램 종료 */
             validateNumber(inputNumber)
             validateLength(inputNumber)
+            validateRepeat(inputNumber)
 
+            /** 입력 받은 숫자를 잘라서 리스트에 보관 */
             val listOfInputNumber: MutableList<Int> = mutableListOf(3)
-
             for (i in 0..2) {
                 listOfInputNumber.add(inputNumber[i].digitToInt())
             }
+
+            /** 생성한 숫자와 입력받은 숫자가 동일한 숫자를 포함하고 있는지 확인 */
+
         }
     }
 }
@@ -80,4 +88,17 @@ fun validateLength(inputNumber: String) {
     if (!regexLength.matches(inputNumber)) {
         throw IllegalArgumentException("입력한 문자열의 길이가 3이 아닙니다.")
     }
+}
+
+fun validateRepeat(inputNumber: String) {
+    if ((inputNumber[0] == inputNumber[1]) or
+        (inputNumber[1] == inputNumber[2]) or
+        (inputNumber[0] == inputNumber[2])
+    ) {
+        throw java.lang.IllegalArgumentException("입력한 문자열에 중복이 있습니다.")
+    }
+}
+
+fun checkBothNumbers(listOfCreatedNumber: List<Int>, listOfInputNumber: List<Int>) {
+
 }
