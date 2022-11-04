@@ -1,5 +1,6 @@
 package baseball
 
+import baseball.domain.Player
 import baseball.resources.*
 import baseball.view.InputView
 import baseball.view.OutputView
@@ -11,20 +12,15 @@ class BaseballGame {
 
     fun run() {
         outputView.getMessageNewLine(GAME_START)
-        try {
-            do {
-                outputView.getMessage(REQUEST_PLAYER_NUMBER)
-                playGame()
-            } while (false)
-        }catch (e : IllegalArgumentException) {
-            println("${e.message} 은/는 올바른 입력 형식이 압니다.")
-        }
+        do {
+            outputView.getMessage(REQUEST_PLAYER_NUMBER)
+            playGame()
+        } while (false)
     }
 
-    @Throws(IllegalArgumentException::class)
     private fun playGame() {
         do {
-            val playerNumber = inputView.getPlayerNumber().toInt()
-        }while (false)
+            val player = Player(inputView.getPlayerNumber())
+        } while (false)
     }
 }
