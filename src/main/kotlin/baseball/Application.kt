@@ -53,6 +53,9 @@ private fun checkInputRegex(input: String) {
     if (!checkInputIsNumber(input)) {
         throw IllegalArgumentException()
     }
+    if (input.length != INPUT_LENGTH_STANDARD) {
+        throw IllegalArgumentException()
+    }
 }
 
 private fun checkInputIsNumber(number: String): Boolean {
