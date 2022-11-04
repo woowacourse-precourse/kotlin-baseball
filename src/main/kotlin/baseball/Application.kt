@@ -66,8 +66,14 @@ fun compareNumber(randomNumber: String, userNumber: String, index: Int): Score {
 }
 
 fun generateRandomNumber(): String {
-    val randomNum = Randoms.pickUniqueNumbersInRange(1, 9, 3)
-    return randomNum.toString()
+    val numbers = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val randomNumber = StringBuilder()
+    for (i in 0..2) {
+        val index = Randoms.pickNumberInRange(1, numbers.size - 1)
+        randomNumber.append(numbers[index])
+        numbers.removeAt(index)
+    }
+    return randomNumber.toString()
 }
 
 fun getUserInput(): String {
