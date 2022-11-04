@@ -12,7 +12,7 @@
       - `낫싱`
     - [ ] 게임 재시작 or 게임 종료 문구
       - `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
-    - [ ] 사용자 입력 받은 값 문
+    - [x] 사용자 입력 받은 값 문
   - ### Business Logic
     - [ ] Computer 랜덤 숫자 만들기 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 만들기
     - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생
@@ -30,6 +30,7 @@
 
 ## Input (Player)
   - 사용자가 원하는 값 넣기 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
-    - [ ] 사용자가 원하는 서로 다른 3자리의 수 입력 받기 (ex. 123, 345)
+    - [x] 사용자가 원하는 서로 다른 3자리의 수 입력 받기 (ex. 123, 345)
+    - [x] 문자가 들어갔을 경우, `IllegalArgumentException` 발생
   - [ ] 사용자가 게임이 끝난 경우 재시작/종료를 입력 받기 (ex. 1, 2)
 
