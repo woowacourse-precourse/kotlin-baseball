@@ -25,6 +25,9 @@ fun main() {
         while (playerNum != computerNum) {
             print("숫자를 입력해주세요 : ")
             playerNum = Console.readLine()
+            if (playerNum.length != 3) {
+                throw IllegalArgumentException("세자리 수를 입력해주세요.")
+            }
         }
     }
 
