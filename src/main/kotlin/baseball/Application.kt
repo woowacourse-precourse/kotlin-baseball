@@ -3,18 +3,17 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-
     val computerNumList = computerNum()
     println("숫자 야구 게임을 시작합니다.")
 
-    ballCount(readNum(), computerNumList)
-
+    for (i in 0..99) {
+        ballCount(readNum(), computerNumList)
+    }
 
 }
 
 fun readNum(): MutableList<String> {
         print("숫자를 입력하세요 : ")
-        val computerNumList = computerNum()
         val number = readLine()!!
         val numberArray = number.split("") as MutableList<String>
         val newArray = mutableListOf<String>()
@@ -31,7 +30,8 @@ fun readNum(): MutableList<String> {
             }
             newArray.add(numberArray[i])
         }
-       return newArray
+    println(newArray)
+    return newArray
 }
 
 fun computerNum(): MutableList<String> {
@@ -42,10 +42,11 @@ fun computerNum(): MutableList<String> {
             computer.add(randomNumber)
         }
     }
+    println(computer)
     return computer
 }
 
-fun ballCount(playerList: MutableList<String>, computerList: MutableList<String>){
+fun ballCount(playerList: MutableList<String>, computerList: MutableList<String>): Int {
 
     var ball = 0
     var strike = 0
@@ -54,23 +55,27 @@ fun ballCount(playerList: MutableList<String>, computerList: MutableList<String>
         if (playerList[i] == computerList[i]) {
             strike++
         }
-        else if (playerList[i].contains(computerList[i])) {
+        else if ((playerList[i] == computerList[0] || playerList[i] == computerList[1] || playerList[i] == computerList[2]) && playerList[i] != computerList[i]) {
+            //contains 사용해봤는데 ball이 안들어감. 일단 이렇게 구현부터 해놓고 리팩토링때 다시 해보기
+            //playerList[i].contains(computerList[i])
             ball++
         }
     }
 
+//    println("볼 개수는 ${ball}개")
+//    println("스트라이크 개수는 ${strike}개")
 
-    if (strike == 0 && ball == 0) {
-        println("낫싱")
-    }
-    else if (ball == 0) {
-        println("${strike}스트라이크")
-    }
-    else if (strike == 0) {
+
+    if (ball in 1..3 && strike == 0) {
         println("${ball}볼")
     }
-    else println("${strike}스트라이크 ${ball}볼")
+    else if (strike in 1..3 && ball == 0) {
+        println("${strike}스트라이크")
+    }
+    else if (ball in 1..3 && strike in 1..3) {
+        println("${strike}스트라이크 ${ball}볼")
+    }
+    else println("낫싱")
 
-
-//    return strike.toString()
+    return strike
 }
