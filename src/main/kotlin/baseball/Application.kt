@@ -4,6 +4,20 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.lang.StringBuilder
 
+enum class Score {
+    NOTHING,
+    STRIKE,
+    BALL
+}
+
+fun determineScore(randomNumber: String, userNumber: String, index: Int): Score {
+    if (randomNumber[index] == userNumber[index])
+        return Score.STRIKE
+    else if (randomNumber.contains(userNumber[index]))
+        return Score.BALL
+    return Score.NOTHING
+}
+
 fun generateRandomNumber(): String {
     val randomNum = Randoms.pickUniqueNumbersInRange(1, 9, 3)
     return randomNum.toString()
