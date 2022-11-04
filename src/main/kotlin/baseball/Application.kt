@@ -50,7 +50,7 @@ fun isNumber(user:String): Boolean {
     }
 }
 
-fun playBaseball(computerNumber: List<Int>, userNumber: List<Int>) {
+fun calculationSocre(computerNumber: List<Int>, userNumber: List<Int>) {
     var resultList:MutableList<Int> = mutableListOf(0,0)
     var countResult: MutableList<Int>
     for (number in userNumber) {
