@@ -10,12 +10,12 @@ class Game(
     private val player: Player,
 ): GameService {
 
-    private var gameState = GAME_ACTIVE_STATE
+    private var gameStateCode = GAME_ACTIVE_CODE
     private val numberOfComputer: String = computer.numberOfComputer
     private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
     private val inputValidator = InputValidator()
 
-    override fun play() {
+    override fun start() {
         println(START_GAME_MESSAGE)
         println(numberOfComputer)
 
@@ -27,11 +27,11 @@ class Game(
 
             checkBallStrike(numberOfComputer = numberOfComputer, numberOfPlayer = numberOfPlayer)
 
-        } while (isActiveState())
+        } while (isActiveGameState())
     }
 
-    private fun isActiveState() =
-        gameState == GAME_ACTIVE_STATE
+    /** 게임이 활성화 상태인지 판단하는 함수 **/
+    private fun isActiveGameState(): Boolean = gameStateCode != END_CODE
 
     private fun checkBallStrike(numberOfComputer: String, numberOfPlayer: String) {
 
@@ -56,17 +56,7 @@ class Game(
     }
 
     private fun printBallState() {
-        var ballCount = 0
-        var strikeCount = 0
-        var outCount = 0
-
-        ballStates.forEach { ballState ->
-            when (ballState) {
-                BallState.BALL -> ballCount++
-                BallState.STRIKE -> strikeCount++
-                BallState.OUT -> outCount++
-            }
-        }
+        val (ballCount, strikeCount, outCount) = calcBallState()
 
         if (outCount == ballStates.size) {
             println(OUTPUT_NOTHING_MESSAGE)
@@ -82,20 +72,48 @@ class Game(
         }
     }
 
+    private fun calcBallState(): Triple<Int, Int, Int> {
+        var ballCount = 0
+        var strikeCount = 0
+        var outCount = 0
+
+        ballStates.forEach { ballState ->
+            when (ballState) {
+                BallState.BALL -> ballCount++
+                BallState.STRIKE -> strikeCount++
+                BallState.OUT -> outCount++
+            }
+        }
+        return Triple(ballCount, strikeCount, outCount)
+    }
+
     private fun successGame() {
         println(SUCCESS_GAME_MESSAGE)
-        println(END_GAME_MESSAGE)
+        println(CONTINUE_GAME_MESSAGE)
 
         val endNumber = player.enterNumber()
         inputValidator.validateEndInput(input = endNumber)
 
-        gameState = endNumber.toInt()
+        gameStateCode = endNumber.toInt()
+        restartOrEndGame()
+    }
+
+    private fun restartOrEndGame() {
+        when (gameStateCode) {
+            RESTART_CODE -> restart()
+            END_CODE -> end()
+        }
     }
 
     private fun printMessage(message: String) { print(message) }
 
+    override fun restart() {
+        computer.recreateRandomNumber()
+        println(numberOfComputer)
+    }
     override fun end() {
-        TODO("Not yet implemented")
+        println(END_GAME_MESSAGE)
+        return
     }
 
 }
