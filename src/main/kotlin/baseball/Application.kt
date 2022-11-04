@@ -47,7 +47,7 @@ fun isNumber(user: String): Boolean {
     }
 }
 
-fun calculationSocre(computerNumber: List<Int>, userNumber: List<Int>) {
+fun calculationScore(computerNumber: List<Int>, userNumber: List<Int>) {
     var resultList: MutableList<Int> = mutableListOf(0, 0)
     var countResult: MutableList<Int>
     for (number in userNumber) {
@@ -95,12 +95,12 @@ fun checkUserNumber(): List<Int> {
 fun playBaseball() {
     val computerNumber = createRandomNumber()
     val userNumber = checkUserNumber()
-    calculationSocre(computerNumber, userNumber)
+    calculationScore(computerNumber, userNumber)
 }
 
 fun againInput(computerNumber: List<Int>) {
     val userNumber = checkUserNumber()
-    calculationSocre(computerNumber, userNumber)
+    calculationScore(computerNumber, userNumber)
 }
 
 fun chooseReplay() {
