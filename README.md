@@ -162,3 +162,4 @@ while (computer.size() < 3) {
 4. 입력받은 숫자 중 스트라이크의 개수 판단 : countStrike → return Int
 5. 볼과 스트라이크의 결과를 출력하는 기능 : printResult
 6. 게임 종료를 판단하는 기능 : isGameOver → return Boolean
+7. 예외 처리(잘못된 값을 입력한 경우)
