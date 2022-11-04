@@ -16,6 +16,11 @@ fun main() {
             }
         }
 
+        var computerNum = ""
+        computerNumList.forEach {
+            computerNum = computerNum.plus(it)
+        }
+
         while (true) {
             print("숫자를 입력해주세요 : ")
             var playerNum = Console.readLine()
