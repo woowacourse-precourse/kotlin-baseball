@@ -18,3 +18,10 @@ private fun createComputerNum() : List<Int> {
 
     return computerNum
 }
+private fun isInputNumeric(input:String){
+    val regex = "[1-9][1-9][1-9]".toRegex()
+
+    if(!input.matches(regex)){
+        throw IllegalArgumentException("세 자리의 숫자만 입력가능합니다")
+    }
+}
