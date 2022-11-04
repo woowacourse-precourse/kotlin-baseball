@@ -1,17 +1,32 @@
 package baseball
 
+import com.sun.net.httpserver.Authenticator.Retry
 import java.util.Scanner
-import kotlin.random.Random
 
 val Range = (1..9)
 
-val Input_List = mutableListOf<Int>()
+var Input = ""
+var Input_List = mutableListOf<Int>()
 
 //0 = S , 1 = B , 2 = Null
 var Compare_List = mutableListOf<Int>(0,0)
 
 var Result = ""
 var Cpu_Num = mutableListOf<Int>()
+
+//예외 확인 함수
+fun Check_Exception (): Boolean {
+
+    return false
+}
+
+fun Split_Input (Input :String) :List<Int>{
+    var token = Input.chunked(1)
+    for (i in 0..2)
+        Input_List[i] = token[i].toInt()
+
+    return Input_List.toList()
+}
 
 //컴퓨터 숫자 선택
 fun Get_Cpu_Num (): List<Int> {
@@ -29,6 +44,7 @@ fun Get_Cpu_Num (): List<Int> {
 
 //게임 시작 하나한 비교
 fun Game_Start (List: List<Int>): List<Int> {
+
     List.forEach {i ->
         for (j in 0..3) {
             Compare_Num(List[i], Input_List[j],i,j)
@@ -64,26 +80,60 @@ fun Print_Result (Result_List : List<Int>) : String{
     if (Result_List[2] >= 1)
         print("낫싱")
 
-    else if (Result_List[0] != 0 && Result_List[1] != 0)
-        Result = Result_List[0].toChar() + "스트라이크" + Result_List[1].toChar() + "볼"
+    else if (Result_List[1] != 0){
+        Result += Result_List[1].toChar() + "볼"
+        print(Result)
+    }
+
+    else if (Result_List[0] > 0 && Result_List[0] < 3){
+        Result += Result_List[0].toChar() + "스트라이크"
+        print(Result)
+    }
+
+    else if (Result_List[0] == 3)
+        Result = "3스트라이크 \n 3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 
     return Result.toString()
 }
 
+fun Check_Game_End(): Boolean {
+    val Try = 0
+    var R_try = false
+
+    print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    println(Try)
+
+    if (Try == 1)
+        R_try = false
+
+    else if (Try == 2)
+        R_try = true
+
+    return R_try
+}
+
 fun main() = with(Scanner(System.`in`)){
+    var Retry = true
+
     print("숫자 야구 게임을 시작합니다.")
-    while (true){
-        print("숫자를 입력해주세요 :")
+    while (Retry){
 
         //상대방 번호 설정
         Get_Cpu_Num()
 
+        print("숫자를 입력해주세요 :")
+
         //사용자 입력
-        for (i in 0..3)
-            println(Input_List[i])
+        println(Input)
+
+        Split_Input(Input)
 
         Game_Start(Input_List)
 
         Print_Result(Compare_List)
+
+        if (Result == "3스트라이크")
+            Retry = Check_Game_End()
+
     }
 }
