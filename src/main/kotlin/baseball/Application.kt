@@ -17,6 +17,7 @@ fun main() {
         println(userInput)
         userWrongTypeAnswer(userInput)
         userWrongSizeAnswer(userInput)
+        userWrongDuplicationAnswer(userInput)
         println(userAnswerCount(computer, userInput))
         if (userCorrectAnswer(computer, userInput)) {
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
@@ -46,6 +47,12 @@ fun userWrongTypeAnswer(userAnswer: String) {
 
 fun userWrongSizeAnswer(userAnswer: String) {
     if (userAnswer.length != 3) throw IllegalArgumentException("게임 종료")
+}
+
+fun userWrongDuplicationAnswer(userAnswer: String) {
+    userAnswer.forEach { it ->
+        if (userAnswer.count { c -> c == it } > 1) throw IllegalArgumentException("게임 종료")
+    }
 }
 
 fun userAnswerCount(answer: String, userAnswer: String): String {
