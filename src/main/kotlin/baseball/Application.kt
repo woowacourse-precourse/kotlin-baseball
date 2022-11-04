@@ -2,6 +2,8 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.IllegalArgumentException
+import java.util.regex.Pattern
 
 const val INPUT_LENGTH_STANDARD = 3
 const val GAME_CLEAR = 3
@@ -42,4 +44,17 @@ private fun checkNumberIsContained(number: Int?, numberList: List<Int>): Boolean
 private fun getUserInput() {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
+    checkInputRegex(input)
+}
+
+private fun checkInputRegex(input: String) {
+    val inputToList = input.split("").filter { it != "" }
+
+    if (!checkInputIsNumber(input)) {
+        throw IllegalArgumentException()
+    }
+}
+
+private fun checkInputIsNumber(number: String): Boolean {
+    return Pattern.matches("^[1-9]*$", number)
 }
