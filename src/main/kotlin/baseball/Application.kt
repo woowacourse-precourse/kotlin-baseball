@@ -9,6 +9,7 @@ fun main() {
 
 fun baseballGameStart(){
     val computerNum = setComputerNum()
+    compareUserNumAndComputerNum(computerNum)
 }
 
 fun setComputerNum() : List<Int>{
@@ -21,4 +22,21 @@ fun setComputerNum() : List<Int>{
     }
 
     return computer
+}
+
+fun compareUserNumAndComputerNum(computer : List<Int>){
+    var userNum = getNum()
+}
+
+fun getNum() : List<Int>{
+    print("숫자를 입력해주세요 : ")
+    var userNum = readLine()!!.toInt()
+    val userNumList = mutableListOf<Int>()
+
+    while(userNum != 0){
+        userNumList.add(userNum % 10)
+        userNum /= 10
+    }
+
+    return userNumList.reversed()
 }
