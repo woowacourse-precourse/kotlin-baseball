@@ -10,8 +10,9 @@ class Application(
         val start = true
         while (start) {
             val numOfUser = inputUserValue()
-            presenter.setUserValue()
-//            val numOfComputer =
+            presenter.setUserValue(numOfUser)
+            presenter.setComputerValue()
+
         }
     }
 }

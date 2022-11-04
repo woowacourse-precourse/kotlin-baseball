@@ -29,4 +29,17 @@ class Presenter(
         return computer
     }
 
+    fun countStrike(user: List<Int>, computer: List<Int>): Int {
+        var strike = 0
+        for (i in 0 until 3) {
+            if (isSame(user[i], computer[i])) {
+                strike++
+            }
+        }
+        return strike
+    }
+
+
+
+    private fun isSame(user: Int, computer: Int) = user == computer
 }
