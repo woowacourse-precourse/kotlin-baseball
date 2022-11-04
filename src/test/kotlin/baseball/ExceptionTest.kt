@@ -8,23 +8,23 @@ class ExceptionTest {
 
     @Test
     fun `3자리 예외 테스트`() {
-        val testCase1 = listOf('1', '2', '3', '4')
-        val testCase2 = listOf<Char>()
+        val testCase1 = "1234"
+        val testCase2 = ""
         assertThrows<IllegalArgumentException> { exception.throwThreeLetterException(testCase1) }
         assertThrows<IllegalArgumentException> { exception.throwThreeLetterException(testCase2) }
     }
 
     @Test
     fun `자연수 예외 테스트`() {
-        val testCase1 = listOf('a', 'b', 'c')
-        val testCase2 = listOf('가',']','.')
+        val testCase1 = "abc"
+        val testCase2 = "012"
         assertThrows<IllegalArgumentException> { exception.throwNonNaturalNumberException(testCase1) }
         assertThrows<IllegalArgumentException> { exception.throwNonNaturalNumberException(testCase2) }
     }
 
     @Test
     fun `중복 예외 테스트`() {
-        val testCase1 = listOf('1', '1', '3')
+        val testCase1 = "113"
         assertThrows<IllegalArgumentException> { exception.throwDuplicateNumberException(testCase1) }
     }
 

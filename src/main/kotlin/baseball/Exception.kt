@@ -9,13 +9,13 @@ class Exception {
         const val END = 2
     }
 
-    fun throwThreeLetterException(input: List<Char>) {
-        if (input.size != NUMBER_OF_DIGITS) {
+    fun throwThreeLetterException(input: String) {
+        if (input.length != NUMBER_OF_DIGITS) {
             throw IllegalArgumentException("3개의 숫자를 입력하세요")
         }
     }
 
-    fun throwNonNaturalNumberException(input: List<Char>) {
+    fun throwNonNaturalNumberException(input: String) {
         input.forEach { char ->
             if (char.code < ASCII_CODE_ONE || char.code > ASCII_CODE_NINE) {
                 throw IllegalArgumentException("숫자만 입력하세요")
@@ -23,15 +23,16 @@ class Exception {
         }
     }
 
-    fun throwDuplicateNumberException(input: List<Char>) {
-        if (input.distinct() != input) {
+    fun throwDuplicateNumberException(input: String) {
+        val inputList=input.toList()
+        if (inputList.distinct() != inputList) {
             throw IllegalArgumentException("서로 다른수를 입력해주세요")
         }
     }
 
-    fun checkAllException(input: List<Char>) {
+    fun checkAllException(input: String) {
         throwThreeLetterException(input)
-        throwNonNumberException(input)
+        throwNonNaturalNumberException(input)
         throwDuplicateNumberException(input)
     }
 
