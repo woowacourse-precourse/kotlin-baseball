@@ -23,7 +23,7 @@ fun inputUserNum() {
     val userNum = readLine()
 }
 
-fun playGame(com : String, user : String) {
+fun compareUserAndCom(com : String, user : String) {
     val comBalls = Balls(com)
 
     printResult(comBalls.playGame(user))
