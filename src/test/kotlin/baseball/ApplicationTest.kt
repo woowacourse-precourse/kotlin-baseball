@@ -30,21 +30,20 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `컴퓨터 숫자 테스트`() {
+        val computerNumber = generateComputerNumber()
         val computerNumberTest = fun(): Boolean {
-
             // 컴퓨터 숫자 크기 테스트
-            if (generateComputerNumber().size != 3) return false
+            if (computerNumber.size != 3) return false
 
             // 컴퓨터 숫자 범위 테스트
-            for (i in generateComputerNumber().indices) {
-                if (generateComputerNumber()[i] !in 1..9) {
+            computerNumber.forEach { i ->
+                if (i !in 1..9) {
                     return false
                 }
             }
 
             // 컴퓨터 숫자 중복 테스트
-            val computerNumberSet = generateComputerNumber().toSet()
-            if (computerNumberSet.size != 3) return false
+            if (computerNumber.distinct() != computerNumber) return false
 
             return true
         }
