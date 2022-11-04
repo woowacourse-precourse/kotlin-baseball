@@ -24,21 +24,21 @@ fun inputUserNumber(): String {
     return readLine().toString()
 }
 
-fun checkNumber(user:String): List<Int> {
-    val userNumber = user.map{ it.code - '0'.code }
+fun checkNumber(user: String): List<Int> {
+    val userNumber = user.map { it.code - '0'.code }
 
-    return if(userNumber.size != 3){
+    return if (userNumber.size != 3) {
         throw IllegalArgumentException()
-    } else if(userNumber.contains(0)){
+    } else if (userNumber.contains(0)) {
         throw IllegalArgumentException()
-    } else if(userNumber.size != userNumber.distinct().count()){
+    } else if (userNumber.size != userNumber.distinct().count()) {
         throw IllegalArgumentException()
-    } else{
+    } else {
         userNumber
     }
 }
 
-fun isNumber(user:String): Boolean {
+fun isNumber(user: String): Boolean {
     return try {
         user.toInt()
         true
@@ -48,19 +48,18 @@ fun isNumber(user:String): Boolean {
 }
 
 fun calculationSocre(computerNumber: List<Int>, userNumber: List<Int>) {
-    var resultList:MutableList<Int> = mutableListOf(0,0)
+    var resultList: MutableList<Int> = mutableListOf(0, 0)
     var countResult: MutableList<Int>
     for (number in userNumber) {
         if (computerNumber.contains(number)) {
             countResult = countBallStrike(userNumber.indexOf(number), number, computerNumber)
-            resultList = resultList.zip(countResult){ a, b-> a+b} as MutableList<Int>
+            resultList = resultList.zip(countResult) { a, b -> a + b } as MutableList<Int>
         }
     }
     printResult(resultList)
-    if(resultList[1]==3){
+    if (resultList[1] == 3) {
         chooseReplay()
-    }
-    else{
+    } else {
         againinput(computerNumber)
     }
 }
@@ -86,28 +85,28 @@ fun printResult(countResult: MutableList<Int>) {
 
 fun checkUserNumber(): List<Int> {
     val user = inputUserNumber()
-    return if(isNumber(user)){
+    return if (isNumber(user)) {
         checkNumber(user)
-    } else{
+    } else {
         throw IllegalArgumentException()
     }
 }
 
-fun playBaseball(){
+fun playBaseball() {
     val computerNumber = createRandomNumber()
     val userNumber = checkUserNumber()
     calculationSocre(computerNumber, userNumber)
 }
 
-fun againinput(computerNumber: List<Int>){
+fun againinput(computerNumber: List<Int>) {
     val userNumber = checkUserNumber()
     calculationSocre(computerNumber, userNumber)
 }
 
-fun chooseReplay(){
+fun chooseReplay() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    when(readLine().toString()){
-        "1"->playBaseball()
+    when (readLine().toString()) {
+        "1" -> playBaseball()
     }
 }
