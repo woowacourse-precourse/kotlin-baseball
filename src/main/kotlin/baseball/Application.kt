@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 const val INPUT_LENGTH_STANDARD = 3
@@ -11,6 +12,7 @@ const val MAX_NUMBER = 9
 
 fun main() {
     startGameAtFirst()
+    getUserInput()
 }
 
 private fun startGameAtFirst() {
@@ -35,4 +37,8 @@ private fun getEachRandomNumber(): Int {
 
 private fun checkNumberIsContained(number: Int?, numberList: List<Int>): Boolean {
     return numberList.contains(number)
+}
+
+private fun getUserInput() {
+    print("숫자를 입력해주세요 : ")
 }
