@@ -43,6 +43,22 @@ fun main() {
                 }
             }
         }
+
+        if (ball == 0) {
+            if (strike == 0)
+                println("낫싱")
+            else
+                println("${strike}스트라이크")
+        }
+
+        if (strike == 0) {
+            if (ball != 0) {
+                println("${ball}볼")
+            }
+        }
+
+        if (ball != 0 && strike != 0)
+            println("${ball}볼 ${strike}스트라이크")
     }
 
 }
