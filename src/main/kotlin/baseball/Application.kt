@@ -31,17 +31,28 @@ fun startGame() {
     restartGame()
 }
 
-fun restartGame() {
-    println(RESTART_GAME)
-    when (Console.readLine()) {
-        RESTART -> startGame()
-        END -> return
-        else -> throw IllegalArgumentException()
+fun pickRandomNumber(): String {
+    val computerNumber = mutableListOf<Int>()
+    while (computerNumber.size < DIGIT_LENGTH) {
+        val randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER_RANGE, END_RANDOM_NUMBER_RANGE)
+        if (!computerNumber.contains(randomNumber)) {
+            computerNumber.add(randomNumber)
+        }
     }
+    return computerNumber.joinToString("")
 }
 
-fun checkAnswer(input: String, answer: String): Boolean {
-    return input == answer
+fun userInput(): String {
+    print(INPUT)
+    val input = Console.readLine()
+    val numbers = input.toCharArray().filter { number ->
+        number in '1'..'9'
+    }
+    return when (numbers.size) {
+        DIGIT_LENGTH -> input
+
+        else -> throw IllegalArgumentException()
+    }
 }
 
 fun checkHint(input: String, answer: String) {
@@ -57,31 +68,26 @@ fun checkHint(input: String, answer: String) {
 fun printHint(ballCount: Int, strikeCount: Int) {
     when {
         strikeCount == 0 && ballCount == 0 -> println(NOTHING)
+
         strikeCount > 0 && ballCount == 0 -> println("$strikeCount$STRIKE")
+
         strikeCount == 0 && ballCount > 0 -> println("$ballCount$BALL")
+
         strikeCount > 0 && ballCount > 0 -> println("$ballCount$BALL $strikeCount$STRIKE")
     }
 }
 
-fun userInput(): String {
-    print(INPUT)
-    val input = Console.readLine()
-    val numbers = input.toCharArray().filter { number ->
-        number in '1'..'9'
-    }
-    when (numbers.size) {
-        DIGIT_LENGTH -> return input
-        else -> throw IllegalArgumentException()
-    }
+fun checkAnswer(input: String, answer: String): Boolean {
+    return input == answer
 }
 
-fun pickRandomNumber(): String {
-    val computerNumber = mutableListOf<Int>()
-    while (computerNumber.size < DIGIT_LENGTH) {
-        val randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER_RANGE, END_RANDOM_NUMBER_RANGE)
-        if (!computerNumber.contains(randomNumber)) {
-            computerNumber.add(randomNumber)
-        }
+fun restartGame() {
+    println(RESTART_GAME)
+    when (Console.readLine()) {
+        RESTART -> startGame()
+
+        END -> return
+
+        else -> throw IllegalArgumentException()
     }
-    return computerNumber.joinToString("")
 }
