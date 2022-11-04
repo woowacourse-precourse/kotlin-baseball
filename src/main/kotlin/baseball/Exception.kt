@@ -1,18 +1,23 @@
 package baseball
 
 class Exception {
+    companion object {
+        const val NUMBER_OF_DIGITS = 3
+        const val ASCII_CODE_ONE = 48
+        const val ASCII_CODE_NINE = 57
+        const val RESTART = 1
+        const val END = 2
+    }
+
     fun throwThreeLetterException(input: List<Char>) {
-        val numberOfDigits = 3
-        if (input.size != numberOfDigits) {
+        if (input.size != NUMBER_OF_DIGITS) {
             throw IllegalArgumentException("3개의 숫자를 입력하세요")
         }
     }
 
-    fun throwNonNumberException(input: List<Char>) {
-        val asciiCodeZero = 48
-        val asciiCodeNine = 57
+    fun throwNonNaturalNumberException(input: List<Char>) {
         input.forEach { char ->
-            if (char.code < asciiCodeZero || char.code > asciiCodeNine) {
+            if (char.code < ASCII_CODE_ONE || char.code > ASCII_CODE_NINE) {
                 throw IllegalArgumentException("숫자만 입력하세요")
             }
         }
@@ -31,7 +36,7 @@ class Exception {
     }
 
     fun throwInvalidRestartNumber(input: String) {
-        if (!(input == "1" || input == "2")) {
+        if (!(input == "$RESTART" || input == "$END")) {
             throw java.lang.IllegalArgumentException("1,2 중 하나를 입력해주세요")
         }
     }

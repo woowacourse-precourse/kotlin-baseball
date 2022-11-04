@@ -18,8 +18,8 @@ class ExceptionTest {
     fun `숫자 예외 테스트`() {
         val testCase1 = listOf('a', 'b', 'c')
         val testCase2 = listOf('가',']','.')
-        assertThrows<IllegalArgumentException> { exception.throwNonNumberException(testCase1) }
-        assertThrows<IllegalArgumentException> { exception.throwNonNumberException(testCase2) }
+        assertThrows<IllegalArgumentException> { exception.throwNonNaturalNumberException(testCase1) }
+        assertThrows<IllegalArgumentException> { exception.throwNonNaturalNumberException(testCase2) }
     }
 
     @Test
