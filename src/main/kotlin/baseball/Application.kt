@@ -10,6 +10,19 @@ enum class Score {
     BALL
 }
 
+fun exitGame(strike: Int): Boolean {
+    if (strike == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val flag = getUserInput()
+        if (flag == "1")
+            return false
+        else if (flag == "2")
+            return true
+    }
+    return false
+}
+
 fun formatScore(scores: List<Int>): String {
     val formattedScore = StringBuilder()
     if (scores[Score.BALL.ordinal] != 0)
