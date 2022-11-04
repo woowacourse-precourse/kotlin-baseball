@@ -60,7 +60,7 @@ fun calculationSocre(computerNumber: List<Int>, userNumber: List<Int>) {
     if (resultList[1] == 3) {
         chooseReplay()
     } else {
-        againinput(computerNumber)
+        againInput(computerNumber)
     }
 }
 
@@ -98,7 +98,7 @@ fun playBaseball() {
     calculationSocre(computerNumber, userNumber)
 }
 
-fun againinput(computerNumber: List<Int>) {
+fun againInput(computerNumber: List<Int>) {
     val userNumber = checkUserNumber()
     calculationSocre(computerNumber, userNumber)
 }
