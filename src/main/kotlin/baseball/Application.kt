@@ -11,10 +11,9 @@ fun main() {
     var select = 1
     while (true)
     {
-        when(select)
+        if (select == 1)
         {
-            1 -> {
-                var answernumber =answernumberselect()
+            var answernumber =answernumberselect()
 //                println("")
 //                var usernumber = userselectnumber()
 //                println("")
@@ -24,12 +23,16 @@ fun main() {
 //                println("")
 //                println("${blcount}볼 ${stcount}스트라이크")
 //                println("")
-                select = tonghap(answernumber)
-            }
-            2 -> {
-                println("게임을 종료합니다.")
-                break
-            }
+            select = tonghap(answernumber)
+        }
+        else if (select == 2)
+        {
+            println("게임을 종료합니다.")
+            break
+        }
+        else
+        {
+            throw IllegalArgumentException()
         }
     }
 }
@@ -43,7 +46,6 @@ fun tonghap(anum: MutableList<Int>): Int
         var unum = userselectnumber()
         var scount = strikecalculate(unum,anum)
         var bcount = ballcalculate(unum,anum)
-
 
             if (scount == 3) {
                 println("3스트라이크")
@@ -59,8 +61,16 @@ fun tonghap(anum: MutableList<Int>): Int
                 println("낫싱")
             }
 
-            else {
+            else if(scount > 0 && bcount > 0 ){
                 println("${bcount}볼 ${scount}스트라이크")
+            }
+            else if (scount > 0 && bcount == 0)
+            {
+                println("${scount}스트라이크")
+            }
+            else if (scount == 0 && bcount > 0)
+            {
+                println("${bcount}볼")
             }
     }
 
@@ -81,26 +91,59 @@ fun answernumberselect(): MutableList<Int> {
 
 fun userselectnumber(): MutableList<Int> {
     val usernumber = mutableListOf<Int>()
-    usernumber.add(readLine()!!.toInt())
-//    usernumber.add(readLine()!!.toInt())
-//    usernumber.add(readLine()!!.toInt())
-    var checknumber = mutableListOf<Int>()
-    var userNumStr = usernumber.joinToString("")
-    userNumStr = userNumStr.chunked(1).toString()
+    var check = 1
     var userNumStrInt = mutableListOf<Int>()
+    var userNumStr = mutableListOf<Int>()
+//    var firstnum = 0
+//    var secondnum = 0
+//    var thirdnum = 0
+    while(true)
+    {
+        usernumber.add(readLine()!!.toInt())
+        var userNumStr = usernumber.joinToString("")
+        userNumStr = userNumStr.chunked(1).toString()
 
-    var firstnum = userNumStr[1].code
-    firstnum = Character.getNumericValue(firstnum)
-    userNumStrInt.add(firstnum)
-    var secondnum = userNumStr[4].code
-    secondnum = Character.getNumericValue(secondnum)
-    userNumStrInt.add(secondnum)
-    var thirdnum = userNumStr[7].code
-    thirdnum = Character.getNumericValue(thirdnum)
-    userNumStrInt.add(thirdnum)
+        var firstnum = userNumStr[1].code
+        firstnum = Character.getNumericValue(firstnum)
+        userNumStrInt.add(firstnum)
+        var secondnum = userNumStr[4].code
+        secondnum = Character.getNumericValue(secondnum)
+        userNumStrInt.add(secondnum)
+        var thirdnum = userNumStr[7].code
+        thirdnum = Character.getNumericValue(thirdnum)
+        userNumStrInt.add(thirdnum)
+        println("")
+
+        if (userNumStrInt[0] == userNumStrInt[1] || userNumStrInt[0] == userNumStrInt[2] || userNumStrInt[1] == userNumStrInt[2])
+        {
+//            println("다시 입력해주세요 :")
+//            userNumStr = userNumStr.removeRange(0..userNumStr.length-1)
+//            userNumStrInt.removeAll(1..9)
+//            usernumber.remove(usernumber[0])
+//            continue
+            throw IllegalArgumentException()
+        }
+
+        if (userNumStr.length == 9)
+        {
+            break
+        }
+        else
+        {
+//            println("다시 입력해주세요 :")
+//            userNumStr = userNumStr.removeRange(0..userNumStr.length-1)
+//            userNumStrInt.removeAll(1..9)
+//            usernumber.removeAll(1..9)
+//            usernumber.remove(usernumber[0])
+//            continue
+            throw IllegalArgumentException()
+        }
+
+    }
 
     return userNumStrInt
 }
+
 
 fun strikecalculate(a: MutableList<Int>,b:MutableList<Int>):Int
 {
