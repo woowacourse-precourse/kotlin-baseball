@@ -24,7 +24,7 @@ class Exception {
     }
 
     fun throwDuplicateNumberException(input: String) {
-        val inputList=input.toList()
+        val inputList = input.toList()
         if (inputList.distinct() != inputList) {
             throw IllegalArgumentException("서로 다른수를 입력해주세요")
         }

@@ -2,7 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Computer() {
+class Computer {
     lateinit var number: List<Int>
 
     fun generateComputerNumber(): List<Int> {
@@ -16,7 +16,7 @@ class Computer() {
         return computerNumber
     }
 
-    companion object{
+    companion object {
         const val NUMBER_OF_DIGITS = 3
     }
 }
