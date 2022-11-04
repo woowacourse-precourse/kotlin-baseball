@@ -9,20 +9,28 @@ class Application(
 ) {
     fun baseballApp() {
         println("숫자 야구 게임을 시작합니다.")
-        val start = true
-        while (start) {
+        presenter.setComputerValue()
+        while (true) {
             val numOfUser = inputUserValue()
             presenter.setUserValue(numOfUser)
-            presenter.setComputerValue()
             val userValue = presenter.getUserValue()
             val computerValue = presenter.getComputerValue()
             val strike = presenter.countStrike(userValue, computerValue)
             val ball = presenter.countBall(userValue, computerValue)
             resultReturn(strike, ball)
+            val complete = strike == 3
+            isComplete(complete)
+            val restart = restart(complete)
+            if(restart == 2) {
+                endMessage()
+                return
+            }
+            if(restart == 1) {
+                presenter.setComputerValue()
+            }
         }
     }
 }
-
 
 fun main() {
     val dataBase = DataBase()

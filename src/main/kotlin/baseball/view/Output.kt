@@ -6,12 +6,20 @@ fun resultReturn(strike: Int, ball: Int) {
         return
     }
     if(ball != 0) {
-        println("${ball}볼")
+        print("${ball}볼 ")
     }
     if(strike != 0) {
         println("${strike}스트라이크")
     }
 }
+
+fun isComplete(complete: Boolean) {
+    if(complete) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    }
+}
+
+fun endMessage() = println("게임 종료")
 
 private fun isNothing(strike: Int, ball: Int):Boolean {
     if (strike == 0 && ball == 0) {
@@ -19,4 +27,5 @@ private fun isNothing(strike: Int, ball: Int):Boolean {
     }
     return false
 }
+
 

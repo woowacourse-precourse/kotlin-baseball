@@ -4,7 +4,17 @@ import camp.nextstep.edu.missionutils.Console
 
 fun inputUserValue(): List<Int> {
     print("숫자를 입력해주세요 :")
-    return checkInput(Console.readLine())
+    val input = Console.readLine()
+    return checkInput(input)
+}
+
+fun restart(complete: Boolean): Int {
+    if(complete) {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val input = Console.readLine().toInt()
+        return input
+    }
+    return 0
 }
 
 fun checkInput(input: String): List<Int> {

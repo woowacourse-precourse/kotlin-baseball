@@ -55,4 +55,5 @@ class Presenter(
     }
 
     private fun isSame(user: Int, computer: Int) = user == computer
+
 }
