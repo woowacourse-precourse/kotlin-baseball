@@ -39,7 +39,20 @@ class Presenter(
         return strike
     }
 
-
+    fun countBall(users: List<Int>, computers: List<Int>): Int {
+        var ball = 0
+        val checkBall = { i: Int, userNumber: Int, j: Int, computerNumber: Int ->
+            if (i != j && userNumber == computerNumber) {
+                ball++
+            }
+        }
+        users.forEachIndexed { i, user ->
+            computers.forEachIndexed { j, computer ->
+                checkBall(i, user, j, computer)
+            }
+        }
+        return ball
+    }
 
     private fun isSame(user: Int, computer: Int) = user == computer
 }

@@ -1,5 +1,7 @@
 package baseball.view
 
+import baseball.model.database.DataBase
+import baseball.model.datasource.Datasource
 import baseball.presenter.Presenter
 
 class Application(
@@ -12,15 +14,21 @@ class Application(
             val numOfUser = inputUserValue()
             presenter.setUserValue(numOfUser)
             presenter.setComputerValue()
-
+            val userValue = presenter.getUserValue()
+            val computerValue = presenter.getComputerValue()
+            val strike = presenter.countStrike(userValue, computerValue)
+            val ball = presenter.countBall(userValue, computerValue)
+            resultReturn(strike, ball)
         }
     }
 }
 
 
 fun main() {
-
-    val app = Application()
+    val dataBase = DataBase()
+    val datasource = Datasource(dataBase)
+    val presenter = Presenter(datasource)
+    val app = Application(presenter)
 
     app.baseballApp()
 }
