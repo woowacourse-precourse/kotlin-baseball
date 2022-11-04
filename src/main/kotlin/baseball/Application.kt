@@ -17,8 +17,8 @@ var Cpu_Num = mutableListOf<Int>()
 fun Check_Exception(Input: String): Boolean {
     var token = Input.chunked(1)
 
-    if (token.size < 3) {
-        throw IllegalArgumentException(" runException(\"1234\")")
+    if (token.size != 3) {
+        throw IllegalArgumentException()
         return false
     }
     else
@@ -36,14 +36,20 @@ fun Split_Input (Input :String) :List<Int>{
 
 //컴퓨터 숫자 선택
 fun Get_Cpu_Num (): List<Int> {
-    val Set = HashSet<Int>()
+    val Set = mutableListOf<Int>()
+//    val Set = HashSet<Int>()
 
-    while (Set.size < 5) {
-        var d = Range.random()
-        Set.add(d.toInt())
+//    while (Set.size < 5) {
+//        var d = Range.random()
+//        Set.add(d.toInt())
+//    }
+//
+//    Cpu_Num.toCollection(sortedSetOf())
+
+    while (Set.size < 3){
+        Set.add(Range.random())
     }
-
-    Cpu_Num.toCollection(sortedSetOf())
+    print(Cpu_Num)
 
     return Cpu_Num.toList()
 }
@@ -121,7 +127,7 @@ fun Check_Game_End(): Boolean {
 fun main() = with(Scanner(System.`in`)){
     var Retry = true
 
-    print("숫자 야구 게임을 시작합니다.")
+    print("숫자 야구 게임을 시작합니다. \n")
     while (Retry){
 
         //상대방 번호 설정
