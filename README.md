@@ -14,7 +14,7 @@
       - `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
     - [x] 사용자 입력 받은 값 문
   - ### Business Logic
-    - [ ] Computer 랜덤 숫자 만들기 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 만들기
+    - [x] Computer 랜덤 숫자 만들기 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 만들기
     - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생
       - [x] 입력 받은 값이 숫자(1~9)인가?
       - [x] 입력 받은 값이 세 자리 숫자인가?

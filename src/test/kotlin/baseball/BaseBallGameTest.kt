@@ -1,6 +1,8 @@
 package baseball
 
+import baseball.domain.Computer
 import baseball.domain.Player
+import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import java.lang.IllegalArgumentException
@@ -40,5 +42,21 @@ class BaseBallGameTest {
         assertThatThrownBy { Player(playerNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("입력 포맷이 일치하지 않습니다. 1부터 9까지 수만 입력해주세요.")
+    }
+
+    @Test
+    fun `컴퓨터 랜덤 값이 0을 포함 했는가?`() {
+        val computer = Computer()
+        val computerNumber = computer.number
+
+        Assertions.assertThat(computer.validateIfContainsZero(computerNumber)).isTrue
+    }
+
+    @Test
+    fun `컴퓨터 랜덤 값이 중복되는 수가 있는가?`() {
+        val computer = Computer()
+        val computerNumber = computer.number
+
+        Assertions.assertThat(computer.validateIfContainsDuplicates(computerNumber)).isTrue
     }
 }
