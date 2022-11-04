@@ -2,6 +2,12 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.StringBuilder
+
+fun generateRandomNumber(): String {
+    val randomNum = Randoms.pickUniqueNumbersInRange(1, 9, 3)
+    return randomNum.toString()
+}
 
 fun getUserInput(): String {
     val input = Console.readLine()
