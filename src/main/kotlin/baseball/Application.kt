@@ -11,6 +11,10 @@ fun main() {
         throw IllegalArgumentException()
     }
 
+    val baseBall = BaseBall(computerNumbers, playerNumbers)
+    val strike = baseBall.getStrikeCount()
+    val ball = baseBall.getBallCount()
+
     PlayerNumber().exitGame()
 
 }
