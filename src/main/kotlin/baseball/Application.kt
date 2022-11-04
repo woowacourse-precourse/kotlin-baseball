@@ -2,25 +2,25 @@ package baseball
 
 fun main() {
     printGameStart()
-    val computerNumbers = ComputerNumber().getRandomNumbers()
-    if (!isNumberException(computerNumbers)) {
-        throw IllegalArgumentException()
-    }
 
     do {
-        printInputNumber()
-        val playerNumbers = PlayerNumber().inputPlayerNumber()
-        if (!isNumberException(playerNumbers)) {
+        val computerNumbers = ComputerNumber().getRandomNumbers()
+        if (!isNumberException(computerNumbers)) {
             throw IllegalArgumentException()
         }
-
-        val baseBall = BaseBall(computerNumbers, playerNumbers)
-        val strike = baseBall.getStrikeCount()
-        val ball = baseBall.getBallCount()
-        getResultMessage(ball, strike)
-    } while (!isThreeStrike(strike))
-    printGameOver()
-    PlayerNumber().exitGame()
+        do {
+            printInputNumber()
+            val playerNumbers = PlayerNumber().inputPlayerNumber()
+            if (!isNumberException(playerNumbers)) {
+                throw IllegalArgumentException()
+            }
+            val baseBall = BaseBall(computerNumbers, playerNumbers)
+            val strike = baseBall.getStrikeCount()
+            val ball = baseBall.getBallCount()
+            getResultMessage(ball, strike)
+        } while (!isThreeStrike(strike))
+        printGameOver()
+    } while (!PlayerNumber().exitGame())
 
 }
 
