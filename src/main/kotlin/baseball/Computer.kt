@@ -17,6 +17,7 @@ class Computer {
 
     fun compareGuessAndAnswer(userGuess: List<Int>): Boolean {
         val strikeCount = countStrike(userGuess)
+        val ballCount = countBall(userGuess)
         TODO()
     }
 
@@ -28,5 +29,16 @@ class Computer {
             }
         }
         return strikeCount
+    }
+
+    fun countBall(userGuess: List<Int>): Int {
+        var ballCount = 0
+        for (index in 0..2) {
+            if (answer[index] == userGuess[index]) continue
+            if (answer.contains(userGuess[index])) {
+                ballCount++
+            }
+        }
+        return ballCount
     }
 }
