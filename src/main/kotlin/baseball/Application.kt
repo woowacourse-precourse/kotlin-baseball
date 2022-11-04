@@ -17,3 +17,8 @@ fun comRandomNum() : String {
     }
     return computer
 }
+
+fun inputUserNum() {
+    print("숫자를 입력해주세요 : ")
+    val userNum = readLine()
+}
