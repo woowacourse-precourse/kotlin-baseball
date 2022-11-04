@@ -80,6 +80,12 @@ class ApplicationTest : NsTest() {
         assertThat(strike).isEqualTo(1)
     }
 
+    @Test
+    fun `입력값 1,2 예외 테스트`() {
+        val input="12"
+        assertThrows<IllegalArgumentException> { throwInvalidRestartNumber(input) }
+    }
+
 
     override fun runMain() {
         main()
