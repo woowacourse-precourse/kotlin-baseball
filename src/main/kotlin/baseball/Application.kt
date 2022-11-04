@@ -16,6 +16,7 @@ fun startGame(){
         val inputNumber = camp.nextstep.edu.missionutils.Console.readLine()
         val ballCount = countBall(computerNumber, inputNumber)
         val strikeCount = countStrike(computerNumber, inputNumber)
+    printResult(strikeCount, ballCount)
 //    }
 }
 
@@ -52,5 +53,18 @@ fun countStrike(computerNumber: String, inputNumber: String): Int{
     }
     return strikeCnt
 }
-fun printResult(){}
+fun printResult(strikeCnt: Int, ballCnt: Int){
+    if(strikeCnt == 0 && ballCnt == 0){
+        println("낫싱")
+    }
+    else if(strikeCnt == 0){
+        println(ballCnt.toString() + "볼")
+    }
+    else if(ballCnt == 0){
+        println(strikeCnt.toString() + "스트라이크")
+    }
+    else{
+        println(ballCnt.toString() + "볼 " + strikeCnt.toString() + "스트라이크")
+    }
+}
 fun isGameOver(){}
