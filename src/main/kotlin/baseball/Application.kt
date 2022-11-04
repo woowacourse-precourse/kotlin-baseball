@@ -23,6 +23,20 @@ fun exitGame(strike: Int): Boolean {
     return false
 }
 
+fun processGame() {
+    println("숫자 야구 게임을 시작합니다.")
+    val randomNumber = generateRandomNumber()
+    while (true) {
+        print("숫자를 입력해주세요 : ")
+        val userNumber = getUserInput()
+        val scores = determineScore(randomNumber, userNumber)
+        val formattedScore = formatScore(scores)
+        println(formattedScore)
+        if (exitGame(scores[Score.STRIKE.ordinal]))
+            break
+    }
+}
+
 fun formatScore(scores: List<Int>): String {
     val formattedScore = StringBuilder()
     if (scores[Score.BALL.ordinal] != 0)
