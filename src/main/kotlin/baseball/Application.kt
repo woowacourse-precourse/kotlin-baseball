@@ -92,3 +92,8 @@ fun playBaseball(){
     val userNumber = checkUserNumber()
     calculationSocre(computerNumber, userNumber)
 }
+
+fun againinput(computerNumber: List<Int>){
+    val userNumber = checkUserNumber()
+    calculationSocre(computerNumber, userNumber)
+}
