@@ -15,9 +15,14 @@ var Cpu_Num = mutableListOf<Int>()
 
 //컴퓨터 숫자 선택
 fun Get_Cpu_Num (): List<Int> {
+    val Set = HashSet<Int>()
 
-    for (i in 0..3)
-        Cpu_Num = mutableListOf(Range.random())
+    while (Set.size < 5) {
+        var d = Range.random()
+        Set.add(d.toInt())
+    }
+
+    Cpu_Num.toCollection(sortedSetOf())
 
     return Cpu_Num.toList()
 }
@@ -62,10 +67,6 @@ fun Print_Result (Result_List : List<Int>) : String{
     else if (Result_List[0] != 0 && Result_List[1] != 0)
         Result = Result_List[0].toChar() + "스트라이크" + Result_List[1].toChar() + "볼"
 
-    else
-
-
-    }
     return Result.toString()
 }
 
