@@ -48,13 +48,13 @@ private fun checkNumberIsContained(type: String, number: Int?, numberList: List<
     return mReturn
 }
 
-private fun getUserInput() {
+private fun getUserInput(): List<Int> {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
-    checkInputRegex(input)
+    return checkInputRegex(input)
 }
 
-private fun checkInputRegex(input: String) {
+private fun checkInputRegex(input: String): List<Int> {
     val inputToList = input.split("").filter { it != "" }
 
     if (!checkInputIsNumber(input)) {
@@ -67,6 +67,7 @@ private fun checkInputRegex(input: String) {
         print("contain")
         throw IllegalArgumentException()
     }
+    return convertStringListToIntList(inputToList)
 }
 
 private fun checkInputIsNumber(number: String): Boolean {
