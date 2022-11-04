@@ -109,6 +109,9 @@ fun checkWrongInput(input: String) {
     if (!input.all { Character.isDigit(it) })
         throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 
+    if (input.contains("0"))
+        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+
     for (num in 0 until input.length - 1)
         if (input.substring(num + 1, input.length).contains(input[num]))
             throw IllegalArgumentException("잘못된 값을 입력했습니다.")
