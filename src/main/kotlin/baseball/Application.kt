@@ -61,13 +61,15 @@ fun isNumber(user:String): Boolean {
 }
 
 fun playBaseball(computerNumber: List<Int>, userNumber: List<Int>) {
-    var countResult: MutableList<Int> = mutableListOf()
-    for (i in userNumber) {
-        if (computerNumber.contains(i)) {
-            countResult = countBallStrike(userNumber.indexOf(i), i, computerNumber)
+    var resultList:MutableList<Int> = mutableListOf(0,0)
+    var countResult: MutableList<Int>
+    for (number in userNumber) {
+        if (computerNumber.contains(number)) {
+            countResult = countBallStrike(userNumber.indexOf(number), number, computerNumber)
+            resultList = resultList.zip(countResult){ a, b-> a+b} as MutableList<Int>
         }
     }
-    printResult(countResult)
+    printResult(resultList)
 }
 
 fun countBallStrike(location: Int, number: Int, computerNumber: List<Int>): MutableList<Int> {
