@@ -23,7 +23,8 @@ fun main() {
 
 
 }
-fun createComputerNumber(): MutableList<Int>{
+
+fun createComputerNumber(): MutableList<Int> {
     val computerNumber = mutableListOf<Int>()
     while (computerNumber.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -32,6 +33,7 @@ fun createComputerNumber(): MutableList<Int>{
     }
     return computerNumber
 }
+
 fun readUserNumber(): List<Int> {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
@@ -41,12 +43,14 @@ fun readUserNumber(): List<Int> {
 
     return input.map { it.digitToInt() }
 }
+
 fun checkNothing(inputNumber: List<Int>, computerNumber: MutableList<Int>): Boolean {
     for (num in inputNumber.indices)
         if (computerNumber.contains(inputNumber[num]))
             return false
     return true
 }
+
 fun checkStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>): Int {
     var countStrike = 0
 
@@ -56,6 +60,7 @@ fun checkStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>): Int {
 
     return countStrike
 }
+
 fun checkBall(inputNumber: List<Int>, computerNumber: MutableList<Int>): Int {
     var countBall = 0
 
@@ -65,7 +70,8 @@ fun checkBall(inputNumber: List<Int>, computerNumber: MutableList<Int>): Int {
 
     return countBall
 }
-fun printBallAndStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>){
+
+fun printBallAndStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>) {
     val strike = checkStrike(inputNumber, computerNumber)
     val ball = checkBall(inputNumber, computerNumber) - strike
 
@@ -75,23 +81,27 @@ fun printBallAndStrike(inputNumber: List<Int>, computerNumber: MutableList<Int>)
         print(strike.toString() + "스트라이크")
     println()
 }
-fun printResult(isNothing: Boolean,userNumber: List<Int>, computerNumber: MutableList<Int>){
+
+fun printResult(isNothing: Boolean, userNumber: List<Int>, computerNumber: MutableList<Int>) {
     if (isNothing)
         println("낫싱")
     if (!isNothing)
         printBallAndStrike(userNumber, computerNumber)
 }
-fun askQuitOrNot(): Boolean{
-    print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    val answer = Console.readLine()
 
-    if (!( (answer == "1") || (answer == "2") ))
+fun askQuitOrNot(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val answer = Console.readLine()
+    println(answer)
+
+    if (!((answer == "1") || (answer == "2")))
         throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 
     if (answer == "1")
         return true
     return false
 }
+
 fun checkWrongInput(input: String) {
     if (input.length != 3)
         throw IllegalArgumentException("잘못된 값을 입력했습니다.")
@@ -99,7 +109,7 @@ fun checkWrongInput(input: String) {
     if (!input.all { Character.isDigit(it) })
         throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 
-    for (num in 0 until input.length-1)
-        if (input.substring(num+1, input.length).contains(input[num]))
+    for (num in 0 until input.length - 1)
+        if (input.substring(num + 1, input.length).contains(input[num]))
             throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 }
