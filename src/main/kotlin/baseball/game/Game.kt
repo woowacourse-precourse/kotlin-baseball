@@ -46,7 +46,12 @@ class Game(
             }
         }
 
-        printBallState()
+        if (ballStates.all { ballState -> ballState == BallState.STRIKE }) {
+            successGame()
+        }
+        else {
+            printBallState()
+        }
     }
 
     private fun printBallState() {
@@ -55,7 +60,7 @@ class Game(
         var outCount = 0
 
         ballStates.forEach { ballState ->
-            when(ballState) {
+            when (ballState) {
                 BallState.BALL -> ballCount++
                 BallState.STRIKE -> strikeCount++
                 BallState.OUT -> outCount++
@@ -76,10 +81,15 @@ class Game(
         }
     }
 
-    private fun printMessage(message: String) { print(message) }
+    private fun successGame() {
+        println(SUCCESS_GAME_MESSAGE)
+        println(END_GAME_MESSAGE)
+    }
 
+    private fun printMessage(message: String) { print(message) }
 
     override fun end() {
         TODO("Not yet implemented")
     }
+
 }
