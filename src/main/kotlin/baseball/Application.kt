@@ -5,6 +5,9 @@ fun main() {
     if (!isNumberException(playerNumbers)) {
         throw IllegalArgumentException()
     }
+
+    PlayerNumber().exitGame()
+
 }
 
 fun isNumberException(number: List<Int>): Boolean {
