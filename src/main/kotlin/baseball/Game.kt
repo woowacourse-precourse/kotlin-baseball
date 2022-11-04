@@ -8,6 +8,10 @@ object Game {
         Computer.getCorrectRandomNumber()
         while(true){
             input = Console.readLine()
+            if(checkInputValueException(input)){
+                break
+                throw IllegalArgumentException()
+            }
         }
     }
     private fun checkInputValueException(inputValue: String) : Boolean{
