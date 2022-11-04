@@ -5,10 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    val computerNumber = createRandomNumber()
-    print(computerNumber)
-    val userNumber = checkUserNumber()
-    playBaseball(computerNumber, userNumber)
+    playBaseball()
 }
 
 fun createRandomNumber(): MutableList<Int> {
@@ -88,4 +85,10 @@ fun checkUserNumber(): List<Int> {
     } else{
         throw IllegalArgumentException()
     }
+}
+
+fun playBaseball(){
+    val computerNumber = createRandomNumber()
+    val userNumber = checkUserNumber()
+    calculationSocre(computerNumber, userNumber)
 }
