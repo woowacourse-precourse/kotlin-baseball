@@ -21,7 +21,14 @@ fun createComputerAnswer() : MutableList<Int> {
 fun inputUserNumber(): MutableList<Int> {
     print("숫자를 입력해주세요 : ")
     val input = readLine()
-    return input!!.map { it.toString().toInt() }.toMutableList()
+    var numbers =  input!!
+        .map { it.toString()
+            .toInt() }
+        .toMutableList()
+    if (numbers.count() != 3){
+        throw IllegalArgumentException("3자리 수만 입력 가능합니다.")
+    }
+    return numbers
 }
 
 fun checkBall( computer : MutableList<Int>, user : MutableList<Int> ) : Int {
@@ -70,15 +77,19 @@ fun printHintMessage(ball : Int, strike : Int){
 
 fun gameRestart(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    return readLine().toInt() + 1
-
+    var input = readLine().toInt() + 1
+    if ( 2 > input || input > 3){
+        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+    }
+    if (input == 3){
+        println("게임 종료")
+    }
+    return input
 }
 
 fun main() {
     printStartMessage()
     var computer = createComputerAnswer()
-
-    println("정답$computer")
 
     var ball = 0
     var strike = 0
@@ -92,8 +103,6 @@ fun main() {
         if(strike ==3){
             strike = gameRestart()
             computer = createComputerAnswer()
-
-            println("정답$computer")
         }
     }
 }
