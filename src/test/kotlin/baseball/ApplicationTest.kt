@@ -9,6 +9,13 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
+    fun `난수 생성 테스트`() {
+        val createList = createRandomNumber()
+        assertThat(createList).hasSize(3)
+        print(createList.toString())
+    }
+
+    @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
             {
@@ -26,6 +33,7 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
+
 
     override fun runMain() {
         main()
