@@ -10,6 +10,13 @@ object Game {
             input = Console.readLine()
         }
     }
+    private fun checkInputValueException(inputValue: String) : Boolean{
+        var checkExceptionFlag = false
+        if(!checkInputLengthThree(inputValue) || !checkInputLengthThree(inputValue)){
+            checkExceptionFlag = true
+        }
+        return checkExceptionFlag
+    }
 
     private fun checkInputValueIsNumber(inputValue : String) : Boolean{
         var checkFlag = false
