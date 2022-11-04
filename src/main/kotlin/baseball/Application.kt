@@ -25,3 +25,12 @@ private fun isInputNumeric(input:String){
         throw IllegalArgumentException("세 자리의 숫자만 입력가능합니다")
     }
 }
+
+private fun separateNumberIntoDigit(inputNum: String): List<Int>{
+    val inputNumberList = inputNum.toList()
+    val firstNum = inputNumberList[0].toString().toInt()
+    val secondNum = inputNumberList[1].toString().toInt()
+    val thirdNum = inputNumberList[2].toString().toInt()
+
+    return listOf(firstNum,secondNum,thirdNum)
+}
