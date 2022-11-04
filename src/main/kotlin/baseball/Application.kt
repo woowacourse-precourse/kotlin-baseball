@@ -27,7 +27,7 @@ private fun getRandomNumberList() {
     val randomList = mutableListOf<Int>()
     while (randomList.size < INPUT_LENGTH_STANDARD) {
         val newRandomNum = getEachRandomNumber()
-        if (!checkNumberIsContained(newRandomNum, randomList)) {
+        if (!checkNumberIsContained("Rand",newRandomNum, randomList)) {
             randomList.add(newRandomNum)
         }
     }
@@ -37,8 +37,15 @@ private fun getEachRandomNumber(): Int {
     return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
 }
 
-private fun checkNumberIsContained(number: Int?, numberList: List<Int>): Boolean {
-    return numberList.contains(number)
+private fun checkNumberIsContained(type: String, number: Int?, numberList: List<Int>): Boolean {
+    var mReturn = false
+    if (type == "User") {
+        mReturn = numberList.distinct().size == numberList.size //Set 사용 검토!
+    }
+    if (type == "Rand") {
+        mReturn = numberList.contains(number)
+    }
+    return mReturn
 }
 
 private fun getUserInput() {
@@ -56,8 +63,16 @@ private fun checkInputRegex(input: String) {
     if (input.length != INPUT_LENGTH_STANDARD) {
         throw IllegalArgumentException()
     }
+    if (!checkNumberIsContained("User", null, convertStringListToIntList(inputToList))) {
+        print("contain")
+        throw IllegalArgumentException()
+    }
 }
 
 private fun checkInputIsNumber(number: String): Boolean {
     return Pattern.matches("^[1-9]*$", number)
+}
+
+private fun convertStringListToIntList(targetList: List<String>): List<Int> {
+    return targetList.map { it.toInt() }
 }
