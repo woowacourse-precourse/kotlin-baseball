@@ -18,6 +18,14 @@ private fun startGameAtFirst() {
 
 }
 
+private fun getRandomNumberList() {
+    val randomList = mutableListOf<Int>()
+    while (randomList.size < INPUT_LENGTH_STANDARD) {
+        val newRandomNum = getEachRandomNumber()
+        randomList.add(newRandomNum)
+    }
+}
+
 private fun getEachRandomNumber(): Int {
     return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
 }
