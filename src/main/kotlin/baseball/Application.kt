@@ -26,11 +26,19 @@ fun setComputerNum() : List<Int>{
 
 fun compareUserNumAndComputerNum(computer : List<Int>){
     var userNum = getNum()
+    println(userNum)
 }
 
 fun getNum() : List<Int>{
     print("숫자를 입력해주세요 : ")
-    var userNum = readLine()!!.toInt()
+    var tempNum = readLine()!!
+    var userNum : Int
+
+    if(isInValidNum(tempNum))
+        throw IllegalArgumentException("Error")
+    else
+        userNum = tempNum.toInt()
+
     val userNumList = mutableListOf<Int>()
 
     while(userNum != 0){
@@ -39,4 +47,12 @@ fun getNum() : List<Int>{
     }
 
     return userNumList.reversed()
+}
+
+fun isInValidNum(userNum : String) : Boolean{
+    val regex = Regex("^[0-9]{3}\$")
+    if(regex.matches(userNum))
+        return false
+
+    return true
 }
