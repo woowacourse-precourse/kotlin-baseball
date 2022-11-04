@@ -27,8 +27,8 @@ class Game(
             val numberOfPlayer = player.enterNumber()
             inputValidator.validateGameInput(input = numberOfPlayer)
 
+            // 볼 or 스트라이크 체크
             checkBallStrike(numberOfComputer = numberOfComputer, numberOfPlayer = numberOfPlayer)
-
         } while (isActiveGameState())
     }
 
@@ -89,8 +89,14 @@ class Game(
         return Triple(ballCount, strikeCount, outCount)
     }
 
+    /** 게임 성공 후의 일을 처리하는 함수 **/
     private fun successGame() {
         printMessage(message = SUCCESS_GAME_MESSAGE.format(MAX_NUMBER_SIZE)) // 숫자를 모두 맞혔음을 출력한다.
+        askContinueGame()
+    }
+
+    /** 게임을 계속 진행할 지 여부를 묻는 함수 **/
+    private fun askContinueGame() {
         printMessage(message = CONTINUE_GAME_MESSAGE) // 재시작 및 종료 여부를 묻는다.
 
         val endNumber = player.enterNumber()
