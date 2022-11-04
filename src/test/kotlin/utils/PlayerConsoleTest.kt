@@ -2,10 +2,10 @@ package utils
 
 import org.junit.jupiter.api.*
 
-import utils.InputUtil.enterAnswer
+import utils.PlayerConsole.enterAnswer
 import java.io.ByteArrayInputStream
 
-internal class InputUtilTest {
+internal class PlayerConsoleTest {
     @Nested
     inner class InputLengthTest {
         @DisplayName("입력값 길이 1")

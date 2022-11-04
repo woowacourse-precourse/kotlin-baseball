@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import utils.InputUtil
+import utils.PlayerConsole
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
@@ -26,7 +26,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 2, 3))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()
@@ -42,7 +42,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 3, 2))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()
@@ -58,7 +58,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 3, 2))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()
@@ -74,7 +74,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 3, 2))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()
@@ -90,7 +90,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 3, 2))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()
@@ -106,7 +106,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 3, 2))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()
@@ -122,7 +122,7 @@ internal class BaseballHintTest {
         System.setOut(PrintStream(outputStreamCaptor))
 
         val computer = Computer(listOf(1, 3, 2))
-        val player = InputUtil.enterAnswer()
+        val player = PlayerConsole.enterAnswer()
 
         val baseballHint: Hint = BaseballHint(computer, player)
         baseballHint.print()

@@ -11,7 +11,7 @@ import utils.Constants.MIN_DIGIT
 import utils.Constants.NON_DIGIT_EXCEPTION
 import utils.Constants.OUT_OF_RANGE_EXCEPTION
 
-object InputUtil {
+object PlayerConsole {
     fun enterAnswer(): Player {
         print(ENTER_NUMBER_TEXT)
 
