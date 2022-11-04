@@ -42,7 +42,7 @@ fun formatScore(scores: List<Int>): String {
     if (scores[Score.BALL.ordinal] != 0)
         formattedScore.append("${scores[Score.BALL.ordinal]}볼")
     if (scores[Score.STRIKE.ordinal] != 0)
-        formattedScore.append("${scores[Score.BALL.ordinal]}스트라이크")
+        formattedScore.append("${scores[Score.STRIKE.ordinal]}스트라이크")
     if (scores[Score.NOTHING.ordinal] != 0)
         return "낫싱"
     return formattedScore.toString()
