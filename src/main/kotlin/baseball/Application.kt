@@ -1,7 +1,5 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms
-
 /* 기능 목록
 * 입력 예외 처리
 * 게임 구현
