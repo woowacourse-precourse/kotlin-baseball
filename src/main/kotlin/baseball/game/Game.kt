@@ -1,5 +1,6 @@
 package baseball.game
 
+import baseball.common.MAX_NUMBER_SIZE
 import baseball.computer.Computer
 import baseball.game.ballstate.BallState
 import baseball.player.Player
@@ -16,12 +17,13 @@ class Game(
     private val inputValidator = InputValidator()
 
     override fun start() {
-        println(START_GAME_MESSAGE)
+        printMessage(message = START_GAME_MESSAGE)
         println(numberOfComputer)
 
         do {
-            print(INPUT_MESSAGE)
+            printMessage(message = INPUT_MESSAGE)
 
+            // 사용자가 숫자 입력
             val numberOfPlayer = player.enterNumber()
             inputValidator.validateGameInput(input = numberOfPlayer)
 
@@ -59,16 +61,16 @@ class Game(
         val (ballCount, strikeCount, outCount) = calcBallState()
 
         if (outCount == ballStates.size) {
-            println(OUTPUT_NOTHING_MESSAGE)
+            printMessage(message = OUTPUT_NOTHING_MESSAGE)
         }
         if (strikeCount != 0 && ballCount != 0) {
-            println(OUTPUT_BALL_STRIKE_MESSAGE.format(ballCount, strikeCount))
+            printMessage(message = OUTPUT_BALL_STRIKE_MESSAGE.format(ballCount, strikeCount))
         }
         if (strikeCount != 0 && ballCount == 0) {
-            println(OUTPUT_STRIKE_MESSAGE.format(strikeCount))
+            printMessage(message = OUTPUT_STRIKE_MESSAGE.format(strikeCount))
         }
         if (strikeCount == 0 && ballCount != 0) {
-            println(OUTPUT_BALL_MESSAGE.format(ballCount))
+            printMessage(OUTPUT_BALL_MESSAGE.format(ballCount))
         }
     }
 
@@ -88,8 +90,8 @@ class Game(
     }
 
     private fun successGame() {
-        println(SUCCESS_GAME_MESSAGE)
-        println(CONTINUE_GAME_MESSAGE)
+        printMessage(message = SUCCESS_GAME_MESSAGE.format(MAX_NUMBER_SIZE)) // 숫자를 모두 맞혔음을 출력한다.
+        printMessage(message = CONTINUE_GAME_MESSAGE) // 재시작 및 종료 여부를 묻는다.
 
         val endNumber = player.enterNumber()
         inputValidator.validateEndInput(input = endNumber)
@@ -111,8 +113,9 @@ class Game(
         computer.recreateRandomNumber()
         println(numberOfComputer)
     }
+
     override fun end() {
-        println(END_GAME_MESSAGE)
+        printMessage(message = END_GAME_MESSAGE)
         return
     }
 
