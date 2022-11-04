@@ -27,6 +27,11 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `resultNum 입력 테스트`(){
+        assertThat(getResultNum() in 100 .. 999)
+    }
+
     override fun runMain() {
         main()
     }
