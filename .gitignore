@@ -23,6 +23,8 @@ build/
 *.iml
 *.ipr
 out/
+### .class 파일은 굳이 git으로 관리할 필요가 없다 - 1주차 피드백 ###
+*.class
 
 ### NetBeans ###
 /nbproject/private/
@@ -33,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
