@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class Player {
 
-    fun enterNumber() {
-        Console.readLine()
+    fun enterNumber(): String {
+        return Console.readLine()
     }
 }

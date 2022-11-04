@@ -12,9 +12,8 @@ class InputValidator {
     }
 
     private fun isDigit(input: String): Boolean {
-        return input.all {
-            it.isDigit()
-            it.code != 48
+        return input.all { eachChar ->
+            eachChar.isDigit() && eachChar.code != 48
         }
     }
 
