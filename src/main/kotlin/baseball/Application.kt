@@ -36,6 +36,11 @@ class BaseballGame(computer: String) {
                 println("${ball(userInput)}볼")
             }
 
+            // 오답이 2개, 스트라이크 1개일 때
+            if (strike(userInput) == 1) {
+                println("${strike(userInput)}스트라이크")
+            }
+
             // 3스트라이크인지 확인
             if (strike(userInput) == 3) {
                 println("${strike(userInput)}스트라이크")
