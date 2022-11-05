@@ -10,7 +10,9 @@ fun main() {
     do {
         val computerNumber = createComputerNumber()
         do {
-            val inputNumber: List<Int> = readUserNumber()
+            print("숫자를 입력해주세요 : ")
+            val input = Console.readLine()
+            val inputNumber: List<Int> = stringInputToList(input)
 
             val isNothing = checkNothing(inputNumber, computerNumber)
             printResult(isNothing, inputNumber, computerNumber)
@@ -18,7 +20,9 @@ fun main() {
         } while (computerNumber != inputNumber)
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 
-        val isQuit = askQuitOrNot()
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val answer = Console.readLine()
+        val isQuit = askQuitOrNot(answer)
     } while (isQuit)
 
 }
@@ -33,9 +37,7 @@ fun createComputerNumber(): MutableList<Int> {
     return computerNumber
 }
 
-fun readUserNumber(): List<Int> {
-    print("숫자를 입력해주세요 : ")
-    val input = Console.readLine()
+fun stringInputToList(input: String): List<Int> {
     println(input)
 
     checkException(input)
@@ -88,9 +90,7 @@ fun printResult(isNothing: Boolean, userNumber: List<Int>, computerNumber: Mutab
         printBallAndStrike(userNumber, computerNumber)
 }
 
-fun askQuitOrNot(): Boolean {
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    val answer = Console.readLine()
+fun askQuitOrNot(answer: String): Boolean {
     println(answer)
 
     if (!((answer == "1") || (answer == "2")))
