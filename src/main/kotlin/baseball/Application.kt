@@ -13,8 +13,11 @@ fun main() {
     makeRandomNumber()
 
     while (true) {
-        if (isRepeat()) continue
-        else break
+        when (isRepeat()) {
+            RESTART -> continue
+            FINISH -> break
+            else -> throw IllegalArgumentException("1 또는 2를 입력하세요.")
+        }
     }
 }
 
@@ -29,7 +32,7 @@ private fun makeRandomNumber() {
     randomNum = computer.joinToString("").toInt()
 }
 
-private fun isRepeat(): Boolean {
+private fun isRepeat(): Int {
     val inputNum = inputGuessNumber()
     if (isRightInput(inputNum)) {
         val (ball, strike) = getBallAndStrike(inputNum)
@@ -71,7 +74,7 @@ private fun getBallAndStrike(inputNum: Int): Pair<Int, Int> {
     return Pair(ball, strike)
 }
 
-private fun printResult(pair: Pair<Int, Int>): Boolean {
+private fun printResult(pair: Pair<Int, Int>): Int {
     when (pair) {
         Pair(1, 0) -> println("1볼")
         Pair(1, 1) -> println("1볼 1스트라이크")
@@ -84,26 +87,15 @@ private fun printResult(pair: Pair<Int, Int>): Boolean {
         Pair(0, 2) -> println("2스트라이크")
         Pair(0, 3) -> {
             println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            val num = inputRestartOrFinishNum()
-            return isRestart(num)
+            return inputRestartOrFinishNum()
         }
     }
-    return true
+    return RESTART
 }
 
 private fun inputRestartOrFinishNum(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    return Console.readLine().toInt()
-}
-
-private fun isRestart(num: Int): Boolean {
-    return when (num) {
-        RESTART -> {
-            makeRandomNumber()
-            true
-        }
-
-        FINISH -> false
-        else -> throw IllegalArgumentException("1 또는 2를 입력하세요.")
-    }
+    val num = Console.readLine().toInt()
+    if (num == RESTART) makeRandomNumber()
+    return num
 }
