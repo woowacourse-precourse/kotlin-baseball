@@ -17,7 +17,7 @@ fun playNumberBaseball() {
             break
         }
 
-        var ballCount = countBallAndStrike(userInputNumber, answerNumber)
+        var ballCount = getBallCount(userInputNumber, answerNumber)
 
     } while (true)
 }
@@ -33,7 +33,7 @@ fun createRandomAnswerNumber(): Int {
     return randomNumbers[0] * 100 + randomNumbers[1] * 10 + randomNumbers[2]
 }
 
-fun countBallAndStrike(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
+fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
     var strike = 0
     var ball = 0
     for (index in answerNumber.indices) {
