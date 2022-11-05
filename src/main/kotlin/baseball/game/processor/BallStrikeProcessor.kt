@@ -10,7 +10,8 @@ import baseball.game.ballstate.BallState
 class BallStrikeProcessor {
     private val ballStates = MutableList(MAX_NUMBER_SIZE) { BallState.OUT }
 
-    fun checkBallStrike(numberOfComputer: String, numberOfPlayer: String) {
+    /** 숫자를 비교해서 볼, 스트라이크로 처리하는 함수 **/
+    fun processBallStrike(numberOfComputer: String, numberOfPlayer: String) {
 
         numberOfComputer.forEachIndexed { cIdx, computerNum ->
             if (computerNum == numberOfPlayer[cIdx]) { // Strike
@@ -29,7 +30,7 @@ class BallStrikeProcessor {
         ballStates.all { ballState -> ballState == BallState.STRIKE }
 
     fun makeBallStateMessage(): String {
-        val (ballCount, strikeCount, outCount) = calcBallState()
+        val (ballCount, strikeCount, outCount) = countBallState()
         var message = ""
 
         if (outCount == ballStates.size) {
@@ -52,7 +53,8 @@ class BallStrikeProcessor {
         ballStates.replaceAll { BallState.OUT }
     }
 
-    private fun calcBallState(): Triple<Int, Int, Int> {
+    /** 볼, 스트라이크, 아웃의 개수를 세는 함수 **/
+    private fun countBallState(): Triple<Int, Int, Int> {
         var ballCount = 0
         var strikeCount = 0
         var outCount = 0
@@ -67,5 +69,4 @@ class BallStrikeProcessor {
 
         return Triple(ballCount, strikeCount, outCount)
     }
-
 }
