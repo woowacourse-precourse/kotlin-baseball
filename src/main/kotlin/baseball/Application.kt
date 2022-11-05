@@ -27,6 +27,10 @@ fun listConverter(inputString: String): MutableList<Char> {
     return inputString.toMutableList()
 }
 
+fun mapConverter(inputList: MutableList<Char>): Map<Char, Int> {
+    return inputList.mapIndexed { index, c -> c to index }.toMap()
+}
+
 fun listChecker(inputList: MutableList<Char>): Boolean {
     if (inputList.size !in 1..3) {
         return false
