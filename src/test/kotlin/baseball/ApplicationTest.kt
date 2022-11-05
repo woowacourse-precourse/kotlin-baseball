@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -24,6 +25,29 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Test
+    fun `난수 자릿수 테스트`() {
+        assertEquals(getComputerNumbers().size, 3)
+    }
+
+    @Test
+    fun `난수 범위 확인 테스트`(){
+        val list: List<Int> = getComputerNumbers()
+
+        for (i in 0..2) {
+            assertThat(list[i]).isBetween(0, 9)
+        }
+    }
+
+    @Test
+    fun `난수 중복 테스트`() {
+        val list: List<Int> = getComputerNumbers()
+
+        for (i in 0..2) {
+            assertEquals(list.count { it == list[i] }, 1)
         }
     }
 
