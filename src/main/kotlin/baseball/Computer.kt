@@ -18,16 +18,20 @@ object Computer {
     }
 
     fun compareInputWithCorrectNumber(inputValue: String) {
-        for (i in 0 until correctNumber.size) {
-            if (inputValue.contains(correctNumber[i].toString())) {
-                if (inputValue[i].digitToInt() == correctNumber[i]) {
-                    strike++
-                } else {
-                    ball++
-                }
-            }
+        for (inputIndex in 0 until correctNumber.size) {
+            countScore(inputValue, inputIndex)
         }
         printCurrentScore()
+    }
+
+    private fun countScore(inputValue: String, inputIndex: Int) {
+        if (inputValue.contains(correctNumber[inputIndex].toString())) {
+            if (inputValue[inputIndex].digitToInt() == correctNumber[inputIndex]) {
+                strike++
+            } else {
+                ball++
+            }
+        }
     }
 
     fun printCurrentScore() {
