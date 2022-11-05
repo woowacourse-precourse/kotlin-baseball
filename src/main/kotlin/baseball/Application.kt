@@ -8,6 +8,7 @@ fun main() {
 
     while(true) {
         playGame()
+        if(!isContinue()) break
     }
 }
 
@@ -73,4 +74,10 @@ fun printState(state: Array<Int>) {
     if(state[0] != 0) print("${state[0]}볼 ")
     if(state[1] != 0) print("${state[1]}스트라이크")
     println()
+}
+
+fun isContinue(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val command = Console.readLine().toInt()
+    return (command != 2)
 }
