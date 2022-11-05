@@ -1,7 +1,7 @@
 package baseball.hint
 
-import domain.Computer
-import domain.Player
+import model.Computer
+import model.Player
 import utils.Constants.DIGIT_LENGTH
 import utils.Constants.NO_BALL
 import utils.Constants.NO_STRIKE

@@ -1,7 +1,7 @@
 package baseball.hint
 
-import domain.Computer
-import domain.Player
+import model.Computer
+import model.Player
 
 abstract class Hint(
     protected val computer: Computer,

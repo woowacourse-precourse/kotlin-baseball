@@ -1,4 +1,4 @@
-package domain
+package model
 
 import utils.Constants
 import utils.ExceptionHandler.validateDuplicatedOrException

@@ -1,7 +1,7 @@
 package utils
 
 import camp.nextstep.edu.missionutils.Randoms
-import domain.Computer
+import model.Computer
 import utils.Constants.DIGIT_LENGTH
 import utils.Constants.MAX_DIGIT
 import utils.Constants.MIN_DIGIT

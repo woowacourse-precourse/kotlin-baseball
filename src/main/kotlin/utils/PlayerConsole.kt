@@ -1,7 +1,7 @@
 package utils
 
 import camp.nextstep.edu.missionutils.Console
-import domain.Player
+import model.Player
 import utils.Constants.ENTER_NUMBER_TEXT
 import utils.Constants.RESTART_ASKING_TEXT
 import utils.ExceptionHandler.validateDigitOrException
