@@ -101,4 +101,21 @@ class FunctionTest {
         }
     }
 
+    @Test
+    fun `점수 문자열화 검사 1`() {
+        val result = formatScore(listOf(0, 1, 1))
+        assertThat(result).isEqualTo("1볼 1스트라이크")
+    }
+
+    @Test
+    fun `점수 문자열화 검사 2`() {
+        val result = formatScore(listOf(1, 0, 0))
+        assertThat(result).isEqualTo("낫싱")
+    }
+
+    @Test
+    fun `점수 문자열화 검사 3`() {
+        val result = formatScore(listOf(0, 3, 0))
+        assertThat(result).isEqualTo("3스트라이크")
+    }
 }
