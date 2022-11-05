@@ -51,6 +51,30 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자 입력 자릿수 테스트`() {
+        assertEquals(getPlayerNumbers().size, 3)
+    }
+
+    @Test
+    fun `사용자 입력 번위 확인 테스트`(){
+        val list: List<Int> = getPlayerNumbers()
+
+        for (i in 0..2) {
+            assertThat(list[i]).isBetween(0, 9)
+        }
+    }
+
+    @Test
+    fun `사용자 입력 중복 테스트`() {
+        val list: List<Int> = getPlayerNumbers()
+
+        for (i in 0..2) {
+            assertEquals(list.count { it == list[i] }, 1)
+        }
+    }
+
+
     override fun runMain() {
         main()
     }
