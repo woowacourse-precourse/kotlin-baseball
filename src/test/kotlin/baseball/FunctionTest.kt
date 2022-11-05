@@ -1,12 +1,15 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.test.Assertions
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.io.ByteArrayInputStream
 import java.lang.IllegalArgumentException
 
-class FunctionTest {
+class FunctionTest : NsTest() {
     @Test
     fun `잘못된 자리수 입력`() {
         assertThrows<IllegalArgumentException>() {
@@ -133,5 +136,21 @@ class FunctionTest {
         System.setIn(input.byteInputStream());
         val result = exitGame(3)
         assertThat(result).isEqualTo(true)
+    }
+
+    @Test
+    fun `게임 프로세스 검사`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("246", "286", "268", "1", "364", "569", "382", "2")
+                assertThat(output())
+                    .contains("1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "낫싱", "1스트라이크", "3스트라이크", "게임 종료")
+            },
+            2, 6, 8, 3, 8, 2
+        )
+    }
+
+    override fun runMain() {
+        main()
     }
 }
