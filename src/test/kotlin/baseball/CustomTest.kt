@@ -37,4 +37,16 @@ class CustomTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("604") }
         }
     }
+
+    @Test
+    fun `바로 통과 후 재시작 안할 경우`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("523", "2")
+                assertThat(output())
+                    .contains("3스트라이크")
+            },
+            5, 2, 3
+        )
+    }
 }
