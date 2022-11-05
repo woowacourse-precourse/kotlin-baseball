@@ -11,10 +11,11 @@ class User {
     }
 
     fun compareWithAnswer(answerArr: IntArray): IntArray{
-        var resultArr = IntArray(2){0}
+        var resultArr = IntArray(2)
         resultArr[0] = countStrike(answerArr)
         resultArr[1] = countBall(answerArr)
 
         return resultArr
     }
+
 }
