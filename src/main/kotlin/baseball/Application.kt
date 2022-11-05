@@ -17,7 +17,8 @@ fun playNumberBaseball() {
             break
         }
 
-        var ballCount = getBallCount(userInputNumber, answerNumber)
+        val ballCount = getBallCount(userInputNumber, answerNumber)
+        printBallCount(ballCount)
 
     } while (true)
 }
@@ -47,4 +48,22 @@ fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> 
     }
 
     return Pair(ball, strike)
+}
+
+fun printBallCount(ballCount: Pair<Int, Int>) {
+    val ball = ballCount.first
+    val strike = ballCount.second
+    if (ball == 0 && strike == 0){
+        println("낫싱")
+        return
+    }
+    if (ball == 0){
+        println("${strike}스트라이크")
+        return
+    }
+    if(strike == 0){
+        println("${ball}볼")
+        return
+    }
+    println("${ball}볼 ${strike}스트라이크")
 }
