@@ -26,10 +26,10 @@ object ExceptionHandler {
 
     fun validateRestartCode(code: String) {
         validateLengthOrException(code, Constants.RESTART_LENGTH)
-        validateIsRestartCode(code)
+        validateRestartCodeCategory(code)
     }
 
-    fun validateIsRestartCode(code: String) {
+    fun validateRestartCodeCategory(code: String) {
         if (code != Constants.YES_RESTART && code != Constants.NO_RESTART) throw IllegalArgumentException(Constants.WRONG_FORMAT_EXCEPTION)
     }
 }
