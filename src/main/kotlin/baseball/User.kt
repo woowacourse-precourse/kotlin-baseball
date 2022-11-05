@@ -18,8 +18,10 @@ class User {
         if (guessInput.size != 3) {
             return true
         }
-        if (guessInput.contains(0)) {
-            return true
+        guessInput.forEach {
+            if (it !in 1..9) {
+                return true
+            }
         }
         if (guessInput.toSet().size != 3) {
             return true
