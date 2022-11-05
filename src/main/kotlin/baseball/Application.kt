@@ -5,15 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val targetNumber = createNumber()
-    startGame()
     val inputNumber = enterNumber()
 }
 
-fun startGame() {
-    println("숫자 야구 게임을 시작합니다.")
-}
-
 fun createNumber(): String {
+    println("숫자 야구 게임을 시작합니다.")
     val numberList = mutableListOf<Int>()
     while (numberList.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -23,7 +19,6 @@ fun createNumber(): String {
     }
     return numberList.joinToString("")
 }
-
 
 fun enterNumber(): String {
     print("숫자를 입력해주세요: ")
