@@ -73,4 +73,16 @@ class CustomTest : NsTest() {
             3, 2, 5
         )
     }
+
+    @Test
+    fun `바로 통과 후 재시작에 2자리 숫자 넣어보기 `() {
+        Assertions.assertRandomNumberInRangeTest(
+            {
+                run("325", "22", "2")
+                org.assertj.core.api.Assertions.assertThat(output())
+                    .contains("3스트라이크")
+            },
+            3, 2, 5
+        )
+    }
 }
