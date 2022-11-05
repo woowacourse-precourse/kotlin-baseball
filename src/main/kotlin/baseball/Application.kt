@@ -1,5 +1,6 @@
 package baseball
 
-fun main() {
+class main() {
+
 
 }
