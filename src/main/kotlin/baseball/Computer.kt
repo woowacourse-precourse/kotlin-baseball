@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 object Computer {
     var strike = 0
     var ball = 0
-    val correctNumber = mutableListOf<Int>()
+    private val correctNumber = mutableListOf<Int>()
     fun getCorrectRandomNumber() {
         correctNumber.clear()
         while (correctNumber.size < 3) {
@@ -34,7 +34,7 @@ object Computer {
         }
     }
 
-    fun printCurrentScore() {
+    private fun printCurrentScore() {
         if (strike == 0 && ball == 0) {
             println("낫싱")
         } else if (strike == 0 && ball > 0) {
@@ -51,7 +51,7 @@ object Computer {
         ball = 0
     }
 
-    fun gameOver() {
+    private fun gameOver() {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         var input = Console.readLine()

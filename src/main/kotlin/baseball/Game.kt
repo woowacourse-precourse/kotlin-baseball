@@ -3,7 +3,7 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 
 object Game {
-    var input = ""
+    private var input = ""
     var gameStop = false
     fun gameStart() {
         println("숫자 야구 게임을 시작합니다.")
