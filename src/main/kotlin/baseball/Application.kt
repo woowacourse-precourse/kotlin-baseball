@@ -47,6 +47,7 @@ fun main() {
         }
     }
 }
+
 fun RandomNumMaker(): String {
     var computer = mutableListOf<Int>()
     while (computer.size < 3) {
