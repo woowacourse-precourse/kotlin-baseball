@@ -18,4 +18,14 @@ class CorrectAnswerTest {
         assertThat(3).isEqualTo(checkBall)
     }
 
+    @Test
+    fun `모두 오답일 때 낫싱을 반환`() {
+        val round = BaseballGame("123")
+        val checkStrike = round.strike("456")
+        val checkBall = round.ball("456")
+        assertThat(0).isEqualTo(checkStrike)
+        assertThat(0).isEqualTo(checkBall)
+
+    }
+
 }
