@@ -6,7 +6,7 @@ fun printStart() {
 }
 
 fun printNothing() {
-    TODO("v1이 없다면 낫싱 출력하는 함수 구현")
+    println("낫싱")
 }
 
 fun printEnd() {
