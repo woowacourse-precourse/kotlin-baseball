@@ -10,6 +10,10 @@ fun printNothing() {
     println("낫싱")
 }
 
+fun printReport(balls:Int, strike: Int) {
+    println("{$balls}볼 {$strike}스트라이크")
+}
+
 fun printEnd() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
@@ -42,29 +46,22 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
     return true
 }
 
-fun equalChecker(v2: Int): Boolean {
-    if (v2 == 3) {
-        return true
-    }
-    return false
-}
-
-fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Int {
-    return playerSet.intersect(computerSet).size
+fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Set<Char> {
+    return playerSet.intersect(computerSet)
 }
 
 fun equalCounter(
-    playerMap: HashMap<Char, Int>,
-    computerMap: HashMap<Char, Int>,
+    playerMap: Map<Char, Int>,
+    computerMap: Map<Char, Int>,
     intersectSet: Set<Char>
-): Boolean {
-
+): Int {
+    var counter = 0
     intersectSet.forEach { c ->
         if (playerMap.getValue(c) == computerMap.getValue(c)) {
-            return true
+            counter++
         }
     }
-    TODO("맵에서 공통 원소의 value가 같은지 확인(스트라이크)하는 함수 구현")
+    return counter
 }
 
 fun getRandomNumList(): MutableList<Char> {
@@ -82,6 +79,7 @@ fun main() {
     printStart()
     var maxDeep = 0
     val computer = getRandomNumList()
+    println(computer.joinToString(separator = ""))
 
     do {
         val player = listConverter(getInput())
@@ -89,13 +87,31 @@ fun main() {
             throw IllegalArgumentException()
         }
 
+        val playerSet = setConverter(player)
+        val computerSet = setConverter(computer)
         val playerMap = mapConverter(player)
         val computerMap = mapConverter(computer)
 
-        val playerSet = mutableSetOf<Char>()
-        val computerSet = mutableSetOf<Char>()
+        val commonSet = intersectCounter(playerSet, computerSet)
+        val v1 = commonSet.size
 
-        TODO("입력 받은 후 맵과 셋으로 변경하는 알고리즘 추가")
+        if (v1 < 1) {
+            printNothing()
+            continue
+        }
+
+        val v2 = equalCounter(playerMap, computerMap, commonSet)
+
+        var balls = 0
+
+        if (v1 - v2 > 0) { balls = v1 }
+
+        if (v2 == 3) {
+            printEnd()
+            printContinue()
+            maxDeep = 0
+        }
+        else { printReport(balls, v2) }
 
         maxDeep++
     } while (maxDeep < 20)
