@@ -23,4 +23,11 @@ class CustomTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("6547") }
         }
     }
+
+    @Test
+    fun `중복문자 포함시 에러 반환여부 체크`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("644") }
+        }
+    }
 }
