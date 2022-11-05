@@ -37,6 +37,7 @@ fun main() {
             println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
             restart = readLine()!!.toInt()
             case += 1
+            pcnum = RandomNumMaker()
         }
         if (restart == 2) {
             println("게임 종료")
@@ -54,7 +55,7 @@ fun RandomNumMaker(): String {
             computer.add(randomNumber)
         }
     }
-    return computer.toString()
+    return "${computer[0]}${computer[1]}${computer[2]}"
 }
 
 fun NumInput(): String {
