@@ -13,12 +13,12 @@ const val MIN_NUMBER = 1
 const val MAX_NUMBER = 9
 
 fun main() {
-    startGameAtFirst()
+    println("숫자 야구 게임을 시작합니다.")
+    startGame()
 
 }
 
-private fun startGameAtFirst() {
-    println("숫자 야구 게임을 시작합니다.")
+private fun startGame() {
     val answerList = getRandomNumberList()
     checkBallAndStrike(getUserInput(), answerList)
 }
