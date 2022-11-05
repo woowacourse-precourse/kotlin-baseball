@@ -32,6 +32,7 @@ fun getPlayerNumbers(): List<Int> {
     val readNumber: String = Console.readLine()
     var readList: MutableList<Int> = mutableListOf()
 
+    checkPlayerInput(readNumber)
     for (num in readNumber) {
         readList.add(num - '0')
     }
@@ -39,3 +40,16 @@ fun getPlayerNumbers(): List<Int> {
     return readList
 }
 
+fun checkPlayerInput(str: String) {
+    if (str.length != 3){
+        throw IllegalArgumentException("길이가 3이 아닙니다.")
+    }
+    for (x in str) {
+        if (x !in '0'..'9') {
+            throw IllegalArgumentException("범위를 벗어난 숫자입니다.")
+        }
+        if (str.count{it == x} != 1){
+            throw IllegalArgumentException("중복된 숫자가 존재합니다.")
+        }
+    }
+}
