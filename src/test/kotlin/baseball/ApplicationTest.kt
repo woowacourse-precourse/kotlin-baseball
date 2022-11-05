@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -30,7 +29,7 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `난수 자릿수 테스트`() {
-        assertEquals(getComputerNumbers().size, 3)
+        assertThat(getComputerNumbers().size).isEqualTo(3)
     }
 
     @Test
@@ -47,13 +46,13 @@ class ApplicationTest : NsTest() {
         val list: List<Int> = getComputerNumbers()
 
         for (i in 0..2) {
-            assertEquals(list.count { it == list[i] }, 1)
+            assertThat(list.count { it == list[i] }).isEqualTo(1)
         }
     }
 
     @Test
     fun `사용자 입력 자릿수 테스트`() {
-        assertEquals(getPlayerNumbers().size, 3)
+        assertThat(getPlayerNumbers().size).isEqualTo(3)
     }
 
     @Test
@@ -70,10 +69,9 @@ class ApplicationTest : NsTest() {
         val list: List<Int> = getPlayerNumbers()
 
         for (i in 0..2) {
-            assertEquals(list.count { it == list[i] }, 1)
+            assertThat(list.count { it == list[i] }).isEqualTo(1)
         }
     }
-
 
     override fun runMain() {
         main()
