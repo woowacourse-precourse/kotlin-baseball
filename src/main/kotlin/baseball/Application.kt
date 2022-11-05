@@ -35,9 +35,14 @@ fun isCorrectNumber(player: String): Boolean {
         return false
     // 2. 1-9의 범위를 벗어난 숫자가 아닐 경우 false
     for (c in player) {
-        if (c < '1' || c > '9')
+        if (c < '0' || c > '9')
             return false
     }
+    // 3. 서로 다른 수를 입력하지 않았을 경우 (=중복된 수를 입력할 경우) false
+    if (player[0] == player[1] || player[0] == player[1] ||
+        player[1] == player[2]
+    )
+        return false
 
     return true
 }
