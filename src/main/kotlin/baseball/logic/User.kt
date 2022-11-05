@@ -29,4 +29,15 @@ class User {
         return cntStrike
     }
 
+    private fun countBall(answerArr: IntArray): Int{
+        var cntBall = 0
+        for(i in 0 until 3){
+            for(j in 0 until 3){
+                if(answerArr[i] == this.number[j])
+                    cntBall++
+            }
+        }
+
+        return cntBall
+    }
 }
