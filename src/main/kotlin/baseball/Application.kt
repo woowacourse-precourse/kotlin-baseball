@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.lang.IllegalArgumentException
 
+const val RESTART = 1
+const val FINISH = 2
 var randomNum = 0
 
 fun main() {
@@ -96,12 +98,12 @@ private fun inputRestartOrFinishNum(): Int {
 
 private fun isRestart(num: Int): Boolean {
     return when (num) {
-        1 -> {
+        RESTART -> {
             makeRandomNumber()
             true
         }
 
-        2 -> false
+        FINISH -> false
         else -> throw IllegalArgumentException("1 또는 2를 입력하세요.")
     }
 }
