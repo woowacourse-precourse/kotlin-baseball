@@ -20,7 +20,11 @@ fun main() {
 
 private fun startGame() {
     val answerList = getRandomNumberList()
-    checkBallAndStrike(getUserInput(), answerList)
+    while(true) {
+        if(checkBallAndStrike(getUserInput(), answerList)) {
+            break
+        }
+    }
 }
 
 private fun getRandomNumberList(): List<Int> {
