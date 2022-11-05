@@ -21,12 +21,20 @@ class BaseballGame(computer: String) {
             if (userInput.length > 3) {
                 throw IllegalArgumentException("잘못된 값을 입력했습니다.")
             }
+
             // 예외상황 확인
             checkException(userInput)
+
             // 3볼인지 확인
             checkThreeBall(userInput)
+
             // 모두 오답인지 확인
             checkNothing(userInput)
+
+            // 오답이 2개, 볼이 1개일 때
+            if (ball(userInput) == 1) {
+                println("${ball(userInput)}볼")
+            }
 
             // 3스트라이크인지 확인
             if (strike(userInput) == 3) {
