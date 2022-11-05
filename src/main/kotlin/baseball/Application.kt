@@ -93,7 +93,23 @@ fun baseballGame(userInputList: MutableList<Int>, computer: MutableList<Int>) : 
 
 
 fun main() {
+    //TODO("프로그램 구현")
     println("숫자 야구 게임을 시작합니다.")
-    val computer = generateRandomNumber()
-    var userInputList = receiveUserInput()
+
+    // 여기서 while값 하나 넣고 flag에 따라 게임 계속 할건지 말건지 판단
+    do {
+        val computer = generateRandomNumber()
+        var correct = false
+        var keepPlaying = 1
+
+        do {
+            var userInputList = receiveUserInput()
+            correct = baseballGame(userInputList, computer)
+        } while (correct != true)
+
+        // 숫자를 다 맞췄다면,
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        keepPlaying = readLine()!!.toInt()
+    } while (keepPlaying != 2)
+
 }
