@@ -54,7 +54,7 @@
     - userInputList의 입력받기
     - fun baseballGame 실행
     - exit 조건: fun baseballGame이 true값을 리턴했을 때
-    4. inner do while문을 exit하고, 유저에게 게임을 새로 시작할건지 입력 받음
+    4. outer do while: 유저에게 게임을 새로 시작할건지 입력 받음
     - keepPlaying = readLine()!!.toInt()
     - keepPlaying이 2라면 exit
     
