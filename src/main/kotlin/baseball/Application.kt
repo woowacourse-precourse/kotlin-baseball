@@ -33,16 +33,14 @@ fun printEnd(): Boolean {
 
 fun askContinue(): Boolean {
     val inputNum = readLine()
-    return if (inputNum.length == 1 && inputNum == "1") {
-        true
+    if (inputNum.length == 1 && inputNum == "1") {
+        return true
     }
     else if (inputNum.length == 1 && inputNum == "2") {
-        false
-    }
-    else {
-        askChecker()
+        return false
     }
 
+    throw IllegalArgumentException()
 }
 
 fun getInput(): String {
@@ -67,23 +65,6 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
         return false
     }
     return true
-}
-
-fun askChecker(): Boolean {
-    var inputNum = ""
-    var left = 5
-    do {
-        println("잘못 입력하셨습니다. 다시 시도하세요. 남은 시도 횟수($left)")
-        inputNum = readLine()
-        if (inputNum.length == 1 && inputNum == "1") {
-            return true
-        }
-        else {
-            left--
-        }
-    } while (left > 0)
-    println("오류 횟수가 너무 많습니다. 프로그램이 강제 종료됩니다.")
-    return false
 }
 
 fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Set<Char> {
