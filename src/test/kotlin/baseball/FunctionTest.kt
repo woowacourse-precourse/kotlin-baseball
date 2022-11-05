@@ -118,4 +118,20 @@ class FunctionTest {
         val result = formatScore(listOf(0, 3, 0))
         assertThat(result).isEqualTo("3스트라이크")
     }
+
+    @Test
+    fun `게임 종료 검사 1`() {
+        val input = "1";
+        System.setIn(input.byteInputStream());
+        val result = exitGame(3)
+        assertThat(result).isEqualTo(false)
+    }
+
+    @Test
+    fun `게임 종료 검사 2`() {
+        val input = "2";
+        System.setIn(input.byteInputStream());
+        val result = exitGame(3)
+        assertThat(result).isEqualTo(true)
+    }
 }
