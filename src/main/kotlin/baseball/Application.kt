@@ -2,6 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import org.assertj.core.api.Assertions
 import kotlin.text.StringBuilder
 
 enum class Score {
@@ -86,10 +87,19 @@ fun getUserInput(mode: Boolean): String {
         else if (!mode)
             throw IllegalArgumentException()
     }
+
     if (input.length != 3)
         throw IllegalArgumentException()
+
     if (!input.all { char -> char.isDigit() })
         throw IllegalArgumentException()
+
+    for (i in input.indices) {
+        val testNumber = input.removeRange(i, i + 1)
+        if(testNumber.contains(input[i]))
+            throw IllegalArgumentException()
+    }
+
     return input
 }
 
