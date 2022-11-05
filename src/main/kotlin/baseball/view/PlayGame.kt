@@ -1,9 +1,15 @@
 package baseball.view
 
+import baseball.logic.CheckInputException
+
 class PlayGame {
+    val checkInputException = CheckInputException()
+
     fun getUserNum(): Int{
         print("숫자를 입력해주세요 : ")
-        return readLine()!!.toInt()
+        val input = readLine()!!
+        checkInputException.inputExceptionChecker(input)
+        return input.toInt()
     }
 
     fun printResult(resultArr: IntArray){
