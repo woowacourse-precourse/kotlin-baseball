@@ -82,25 +82,24 @@ private fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
         }
     }
 
-    if(strike == 3){
-        message = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-        print(message)
-        return true
+    if (ball >= 1) {
+        message = "${ball}볼 "
     }
 
-    if(ball >= 1){
-        message = "${ball}볼"
-    }
-
-    if(strike >= 1){
+    if (strike >= 1) {
         message += "${strike}스트라이크"
     }
 
-    if(ball == 0 && strike == 0){
+    if (ball == 0 && strike == 0) {
         message = "낫싱"
     }
 
     println(message)
+
+    if (strike == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        return true
+    }
 
     return false
 }
