@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
@@ -9,6 +10,8 @@ fun main() {
 
 fun playNumberBaseball() {
     val answerNumber = createRandomAnswerNumber()
+    print("숫자를 입력해주세요 : ")
+    val userInputNumber = Console.readLine().toInt()
 }
 
 fun createRandomAnswerNumber(): Int {
