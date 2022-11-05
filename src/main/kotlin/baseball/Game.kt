@@ -9,8 +9,7 @@ object Game {
         while(true){
             input = Console.readLine()
             if(checkInputValueException(input)){
-                break
-                throw IllegalArgumentException()
+                require(false)
             }
         }
     }
