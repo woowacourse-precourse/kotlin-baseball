@@ -45,6 +45,9 @@ class BaseballGame(computer: String) {
         // 스트라이크 1개
         if (strike(userInput) == 1) return println("${strike(userInput)}스트라이크")
 
+        // 스트라이크 2개
+        if (strike(userInput) == 2) return println("${strike(userInput)}스트라이크")
+
     }
 
     private fun checkBall(userInput: String) {
