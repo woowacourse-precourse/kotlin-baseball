@@ -104,7 +104,7 @@ fun getRandomNumList(): MutableList<Char> {
 fun main() {
     printStart()
     var maxDeep = 0
-    val computer = getRandomNumList()
+    var computer = getRandomNumList()
     var continueChecker: Boolean
     println("옵저버 모드: ${computer.joinToString(separator = "")}")
     do {
@@ -133,6 +133,7 @@ fun main() {
 
         if (v2 == 3) {
             continueChecker = printEnd()
+            computer = getRandomNumList()
             maxDeep = 0
         } else {
             printReport(balls, v2)
