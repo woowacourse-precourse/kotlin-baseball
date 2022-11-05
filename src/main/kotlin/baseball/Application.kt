@@ -25,6 +25,8 @@ fun playGame() {
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
             break
         }
+
+        printState(compareResult)
     }
 }
 
@@ -65,3 +67,10 @@ fun isCondition(index: Int, num: Int, computerNum: List<Int>): Int =
     if(computerNum.contains(num) && computerNum.indexOf(num) == index) 2
     else if(computerNum.contains(num) && computerNum.indexOf(num) != index) 1
     else 0
+
+fun printState(state: Array<Int>) {
+    if(state[0] == 0 && state[1] == 0) print("낫싱")
+    if(state[0] != 0) print("${state[0]}볼 ")
+    if(state[1] != 0) print("${state[1]}스트라이크")
+    println()
+}
