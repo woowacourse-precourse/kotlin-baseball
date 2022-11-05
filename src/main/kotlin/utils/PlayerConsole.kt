@@ -9,14 +9,19 @@ import utils.Constants.LENGTH_MISMATCH_EXCEPTION
 import utils.Constants.MAX_DIGIT
 import utils.Constants.MIN_DIGIT
 import utils.Constants.NON_DIGIT_EXCEPTION
+import utils.Constants.NO_RESTART
 import utils.Constants.OUT_OF_RANGE_EXCEPTION
+import utils.Constants.RESTART_ASKING_TEXT
+import utils.Constants.RESTART_LENGTH
+import utils.Constants.WRONG_FORMAT_EXCEPTION
+import utils.Constants.YES_RESTART
 
 object PlayerConsole {
     fun enterAnswer(): Player {
         print(ENTER_NUMBER_TEXT)
 
         val playerInput = Console.readLine()
-        validateLengthOrException(playerInput)
+        validateLengthOrException(playerInput, DIGIT_LENGTH)
 
         val answers = linkedSetOf<Int>()
         playerInput.forEach { ch ->
@@ -29,8 +34,8 @@ object PlayerConsole {
         return Player(answers.toList())
     }
 
-    private fun validateLengthOrException(answer: String) {
-        if (answer.length != DIGIT_LENGTH) throw IllegalArgumentException(LENGTH_MISMATCH_EXCEPTION)
+    private fun validateLengthOrException(answer: String, expectedLength: Int) {
+        if (answer.length != expectedLength) throw IllegalArgumentException(LENGTH_MISMATCH_EXCEPTION)
     }
 
     private fun validateDigitOrException(ch: Char): Int {
