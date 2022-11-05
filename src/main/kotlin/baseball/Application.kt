@@ -1,7 +1,7 @@
 package baseball
 
 fun printStart() {
-    TODO("게임 시작 문구를 출력하는 함수 구현")
+    println("숫자 야구 게임을 시작합니다.")
 }
 
 fun printNothing() {
