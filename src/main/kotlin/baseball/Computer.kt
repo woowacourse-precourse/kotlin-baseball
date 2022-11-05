@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 object Computer {
@@ -17,8 +18,8 @@ object Computer {
     }
     fun compareInputWithCorrectNumber(inputValue : String){
         for(i in 0 until correctNumber.size){
-            if(inputValue.contains(correctNumber[i].toChar())){
-                if(inputValue[i]== correctNumber[i].toChar()){
+            if(inputValue.contains(correctNumber[i].toString())){
+                if(inputValue[i].digitToInt()== correctNumber[i]){
                     strike++
                 }
                 else{

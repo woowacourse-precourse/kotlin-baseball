@@ -13,6 +13,7 @@ object Game {
             if (checkInputValueException(input)) {
                 require(false)
             }
+            Computer.compareInputWithCorrectNumber(input)
         }
     }
 
