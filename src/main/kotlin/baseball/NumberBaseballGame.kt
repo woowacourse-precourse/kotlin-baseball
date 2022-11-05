@@ -4,6 +4,11 @@ class NumberBaseballGame {
     private var strike = 0
     private var ball = 0
 
+    fun resetScore() {
+        strike = 0
+        ball = 0
+    }
+
     fun calculateScore(computer: List<Int>, player: List<Int>) {
         computer.forEachIndexed { i, computerNumber ->
             player.forEachIndexed { j, playerNumber ->

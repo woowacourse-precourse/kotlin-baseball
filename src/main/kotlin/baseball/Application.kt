@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val computer = mutableListOf<Int>()
     val game = NumberBaseballGame()
+    val exit = false
 
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -16,9 +17,12 @@ fun main() {
 
     println("숫자 야구 게임을 시작합니다.")
 
-    print("숫자를 입력해주세요 : ")
-    val player = Console.readLine().map { it.digitToInt() }
+    while (!exit) {
+        print("숫자를 입력해주세요 : ")
+        val player = Console.readLine().map { it.digitToInt() }
 
-    game.calculateScore(computer, player)
-    game.printResult()
+        game.resetScore()
+        game.calculateScore(computer, player)
+        game.printResult()
+    }
 }
