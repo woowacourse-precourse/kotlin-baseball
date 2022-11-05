@@ -25,8 +25,11 @@ fun listConverter(inputString: String): MutableList<Char> {
     return inputString.toMutableList()
 }
 
-fun listChecker(inputList: ArrayList<String>): Boolean {
-    TODO("입력받은 수가 올바른지 검사하는 함수 구현")
+fun listChecker(inputList: MutableList<Char>): Boolean {
+    if (inputList.size !in 1..3) {
+        return false
+    }
+    return true
 }
 
 fun equalChecker(v2: Int): Boolean {
