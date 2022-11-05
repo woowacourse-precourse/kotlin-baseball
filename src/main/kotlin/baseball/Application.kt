@@ -11,17 +11,40 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun generateRandomNumber() : MutableList<Int> {
     val computer: MutableList<Int> = mutableListOf()
-    while (computer.size < 3) {
+    while ( computer.size < 3 ) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber)
         }
     }
-    println(computer)
+
     return computer
 }
 
+fun receiveUserInput() : MutableList<Int> {
+    print("숫자를 입력해주세요 : ")
+    val userInput = readLine()!!.toInt()
+
+    // userInput을 분리해 리스트로 저장한다
+    val userInputList: MutableList<Int> = mutableListOf()
+    // 100의 자리
+    val hundredth = userInput - userInput % 100
+    // 10의 자리
+    val tenth = userInput - hundredth - userInput % 10
+    // 1의 자리
+    val oneth = userInput - hundredth - tenth
+
+    userInputList.add(hundredth / 100)
+    userInputList.add(tenth / 10)
+    userInputList.add(oneth)
+
+    return userInputList
+}
+
+
 
 fun main() {
-    //TODO("프로그램 구현")
+    println("숫자 야구 게임을 시작합니다.")
+    val computer = generateRandomNumber()
+    var userInputList = receiveUserInput()
 }
