@@ -63,12 +63,12 @@ fun equalCounter(
     TODO("맵에서 공통 원소의 value가 같은지 확인(스트라이크)하는 함수 구현")
 }
 
-fun getRandomNumList(): MutableList<Int> {
-    val computer = mutableListOf<Int>()
+fun getRandomNumList(): MutableList<Char> {
+    val computer = mutableListOf<Char>()
     while (computer.size < 3) {
         val randomNumber = pickNumberInRange(1, 9)
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber)
+        if (!computer.contains(randomNumber.toChar())) {
+            computer.add(randomNumber.toChar())
         }
     }
     return computer
@@ -85,8 +85,8 @@ fun main() {
             throw IllegalArgumentException()
         }
 
-        val playerMap = HashMap<Char, Int>()
-        val computerMap = HashMap<Char, Int>()
+        val playerMap = mapConverter(player)
+        val computerMap = mapConverter(computer)
 
         val playerSet = mutableSetOf<Char>()
         val computerSet = mutableSetOf<Char>()
