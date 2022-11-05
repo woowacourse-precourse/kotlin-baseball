@@ -12,4 +12,4 @@
 
 # 예외 처리
 
-입력값 예외 처리 기준: Pattern.matches
+입력값 예외 처리: Pattern.matches

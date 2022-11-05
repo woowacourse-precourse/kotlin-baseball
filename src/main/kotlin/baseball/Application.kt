@@ -8,10 +8,20 @@ fun main() {
 
     val computer : List<Int> = setRandomNumber()
     val player = mutableListOf<Int>()
+    var clear = false
+    var exit = false
 
-    printStartMessage()
-    getPlayerNumber(player)
-    println(player)
+    while(!exit) {
+        printStartMessage()
+        println(computer)
+        while(!clear) {
+            getPlayerNumber(player)
+            clear = compareNumber(computer, player)
+        }
+        exit = getReplaySignal()
+    }
+
+    print("게임을 종료합니다.")
 }
 
 fun printStartMessage() {
@@ -34,7 +44,8 @@ fun getPlayerNumber(player: MutableList<Int>){
     val input = readLine()!!
 
     // 예외 처리
-    if (!Pattern.matches("^[1-9]{3}$", input) || input.toCharArray().size != input.toCharArray().distinct().count()){
+    if (!Pattern.matches("^[1-9]{3}$", input)
+        || input.toCharArray().size != input.toCharArray().distinct().count()){
         throw IllegalArgumentException("서로 다른 수로 이루어진 세 자리 정수를 입력해 주세요.")
     }
 
@@ -46,6 +57,72 @@ fun getPlayerNumber(player: MutableList<Int>){
         num %= div
         div /= 10
     }
+}
+
+fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
+    var strike = 0
+    var ball = 0
+    var message = ""
+
+    for(i in 0 until 3){
+        for(j in 0 until 3){
+            if(player[i] == computer[j]){
+                if(i == j){
+                    ball += 1
+                }
+                else {
+                    strike += 1
+                }
+            }
+        }
+    }
+
+    if(strike == 3){
+        message = "3스트라이크 \n 3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+        println(message)
+        return true
+    }
+
+    if(ball >= 1){
+        message = "$ball 볼 "
+    }
+
+    if(strike >= 1){
+        message += "$strike 스트라이크"
+    }
+
+    if(ball == 0 && strike == 0){
+        message = "낫싱"
+    }
+
+    println(message)
+
+    return false
+}
+
+fun getReplaySignal() : Boolean{
+    var input = ""
+
+    while(true) {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        input = readLine()!!
+        // 예외 처리
+        if (!Pattern.matches("^[1-2]{1}$", input)) {
+            println("1과 2 중 하나를 입력해 주세요.")
+            continue
+        }
+        break
+    }
+
+    if(input.toInt() == 1) {
+        input = "true"
+    }
+
+    if(input.toInt() == 2){
+        input = "false"
+    }
+
+    return input.toBoolean()
 }
 
 
