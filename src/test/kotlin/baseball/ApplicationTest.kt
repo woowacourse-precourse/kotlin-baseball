@@ -73,6 +73,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `스트라이크 판정 확인 테스트`() {
+        val computer: List<Int> = listOf(1, 2, 3)
+        val player: List<Int> = listOf(1, 2, 3)
+
+        assertThat(checkStrike(computer, player)).isEqualTo(false)
+    }
+
     override fun runMain() {
         main()
     }
