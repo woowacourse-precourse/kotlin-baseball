@@ -21,8 +21,10 @@ private fun getComputerNumber(): String {
 
 private fun startNewGame() {
     val computerNumber = getComputerNumber()
-    val inputString = getUserPredictionNumber()
-    validateInputString(inputString, false)
+    do {
+        val inputString = getUserPredictionNumber()
+        validateInputString(inputString, false)
+    } while (isUserAnswerWrong(computerNumber, inputString))
 }
 
 private fun getUserPredictionNumber(): String {
@@ -79,3 +81,21 @@ private fun isNotInteger(string: String): Boolean {
 }
 
 private fun containsZeroDigit(string: String): Boolean = string.contains("0")
+private fun isUserAnswerWrong(computerNumber: String, inputNumber: String): Boolean {
+    var ballCount = 0
+    var strikeCount = 0
+
+    for (inputNum in inputNumber) {
+        if (computerNumber.contains(inputNum))
+            ballCount++
+    }
+
+    for (i in 0 until 3) {
+        if (computerNumber[i] == inputNumber[i]) {
+            ballCount--
+            strikeCount++
+        }
+    }
+
+    return true
+}
