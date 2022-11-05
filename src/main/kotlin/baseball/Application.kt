@@ -47,15 +47,10 @@ fun compareUserAndCom(com : String, user : String) : Int {
     return 0
 }
 
-fun printResult(gameResult : GameResult) : String{
-
-    var result = ""
-    when {
-        gameResult.strike == 0 && gameResult.ball == 0 -> result = "낫싱"
-        gameResult.strike == 0 -> result = "${gameResult.ball}볼"
-        gameResult.ball == 0 -> result = "${gameResult.strike}스트라이크"
-        else -> result = "${gameResult.ball}볼 ${gameResult.strike}스트라이크"
-    }
-    return result
+fun printResult(gameResult : GameResult) : String = when {
+        gameResult.strike == 0 && gameResult.ball == 0 -> "낫싱"
+        gameResult.strike == 0 -> "${gameResult.ball}볼"
+        gameResult.ball == 0 -> "${gameResult.strike}스트라이크"
+        else -> "${gameResult.ball}볼 ${gameResult.strike}스트라이크"
 }
 
