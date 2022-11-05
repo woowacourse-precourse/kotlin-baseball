@@ -34,6 +34,16 @@ object PlayerConsole {
         return Player(answers.toList())
     }
 
+    fun enterRestart(): String {
+        println(RESTART_ASKING_TEXT)
+
+        val restartCode = Console.readLine()
+        restartCode
+        validateRestartCode(restartCode)
+
+        return restartCode
+    }
+
     private fun validateLengthOrException(answer: String, expectedLength: Int) {
         if (answer.length != expectedLength) throw IllegalArgumentException(LENGTH_MISMATCH_EXCEPTION)
     }
@@ -53,4 +63,12 @@ object PlayerConsole {
         if (inputs.size != DIGIT_LENGTH) throw IllegalArgumentException(DUPLICATED_DIGIT_EXCEPTION)
     }
 
+    private fun validateRestartCode(code: String) {
+        validateLengthOrException(code, RESTART_LENGTH)
+        validateIsRestartCode(code)
+    }
+
+    private fun validateIsRestartCode(code: String) {
+        if (code != YES_RESTART && code != NO_RESTART) throw IllegalArgumentException(WRONG_FORMAT_EXCEPTION)
+    }
 }
