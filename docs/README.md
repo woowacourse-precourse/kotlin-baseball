@@ -26,6 +26,7 @@
 3. 함수 - 5개
     | 함수명 | 매개변수 | 리턴타입 | 용도 |
     | --- | --- | --- | --- |
+    | createOpponentData |  | String | 상대방 숫자 생성 후 return |
     | isNegativeNumber | String inputData | Boolean | 입력값 음수인지 check |
     | isNotThreeDigits | String inputData | Boolean | 입력값 3자리수인지 check |
     | isNotInteger | String inputData | Boolean | 입력값 정수인지 check |
