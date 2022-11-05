@@ -17,7 +17,7 @@ var Cpu_Num = mutableListOf<Int>()
 fun Check_Exception(Input: String): Boolean {
     var token = Input.chunked(1)
 
-    if (token.size != 3) {
+    if (token.size > 3 || token.size < 3) {
         throw IllegalArgumentException()
         return false
     }
@@ -49,6 +49,7 @@ fun Get_Cpu_Num (): List<Int> {
     while (Set.size < 3){
         Set.add(Range.random())
     }
+    Cpu_Num = Set
     print(Cpu_Num)
 
     return Cpu_Num.toList()
