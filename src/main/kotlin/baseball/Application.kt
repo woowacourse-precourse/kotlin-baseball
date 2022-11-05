@@ -21,8 +21,8 @@ fun getInput(): String {
     return readLine()
 }
 
-fun listConverter(inputString: String): ArrayList<String> {
-    TODO("각 문자열을 리스트로 변환하는 함수 구현")
+fun listConverter(inputString: String): MutableList<Char> {
+    return inputString.toMutableList()
 }
 
 fun listChecker(inputList: ArrayList<String>): Boolean {
