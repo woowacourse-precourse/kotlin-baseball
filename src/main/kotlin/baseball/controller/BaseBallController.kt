@@ -13,9 +13,6 @@ class BaseBallController {
         OutputView().printGameStart()
         do {
             val computerNumbers = ComputerNumber().getRandomNumbers()
-            if (!Validations.isNumberException(computerNumbers)) {
-                throw IllegalArgumentException()
-            }
             progressGame(computerNumbers)
             OutputView().printGameOver()
         } while (!exitGame())
