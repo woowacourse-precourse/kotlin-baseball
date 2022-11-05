@@ -1,24 +1,21 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
-import java.util.*
 
 fun main() {
-
     // 시작
-    while(true){
+    while (true) {
         // 랜덤 숫자 3개 받아오기
         val computer = randomThreeNumber()
 
         // 게임 진행
         val finish = gameStart(computer)
 
-
+        // 게임 시작 or 종료
+        if (finish) break
     }
-
-
-
 }
+
 
 // 게임 시작
 private fun gameStart(computer: String): Boolean {
@@ -32,6 +29,8 @@ private fun gameStart(computer: String): Boolean {
         // 사용자 넘버 결과 출력
         println(userNumberCheckResult(ball, strike))
 
+        //  스트라이크 3개면 종료
+        if (strike == 3) return true
     }
 }
 
@@ -43,7 +42,7 @@ private fun userNumberCheckResult(ball: Int, strike: Int): String {
     if (ball != 0) resultArray.add("${ball}볼")
     if (strike != 0) resultArray.add("${strike}스트라이크")
     // 예외
-    if (resultArray.size  == 0) throw IllegalArgumentException("undefined error")
+    if (resultArray.size == 0) throw IllegalArgumentException("undefined error")
 
     return resultArray.joinToString(" ")
 }
