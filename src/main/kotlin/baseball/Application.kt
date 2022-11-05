@@ -1,11 +1,9 @@
 package baseball
 
-import sun.jvm.hotspot.runtime.PerfMemory.end
-
 
 fun main() {
 
-    BaseballGame(computer = "123").start()
+    BaseballGame(computer = "123").startGame()
 
 }
 
@@ -13,13 +11,18 @@ class BaseballGame(computer: String) {
     private val computerInput: String = computer
 
 
-    fun start() {
+    fun startGame() {
 
         println("숫자 야구 게임을 시작합니다.")
         while (true) {
             print("숫자를 입력해주세요 : ")
             val userInput: String = readLine()!!
 
+            if (userInput.length > 3) {
+                throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+            }
+            // 예외상황 확인
+            checkException(userInput)
             // 3볼인지 확인
             checkThreeBall(userInput)
             // 모두 오답인지 확인
@@ -37,6 +40,12 @@ class BaseballGame(computer: String) {
         }
     }
 
+    fun checkException(userInput: String) {
+        if (userInput.length > 3) {
+            throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+        }
+
+    }
 
 
     private fun checkNothing(userInput: String) {
