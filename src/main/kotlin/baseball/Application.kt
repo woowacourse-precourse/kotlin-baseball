@@ -20,4 +20,5 @@ fun main() {
     val player = Console.readLine().map { it.digitToInt() }
 
     game.calculateScore(computer, player)
+    game.printResult()
 }
