@@ -42,6 +42,27 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `문자열이 1 ~ 9에 포함된 문자로만 이루어져 있는지 확인하는 기능 예외 테스트`() {
+        val oneToNineOnlyVerifier = OneToNineOnlyVerifier()
+
+        assertSimpleTest {
+            assertThat(oneToNineOnlyVerifier.verify("123"))
+
+            assertThrows<IllegalArgumentException> {
+                oneToNineOnlyVerifier.verify(
+                    "120"
+                )
+            }
+
+            assertThrows<IllegalArgumentException> {
+                oneToNineOnlyVerifier.verify(
+                    "12a"
+                )
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
