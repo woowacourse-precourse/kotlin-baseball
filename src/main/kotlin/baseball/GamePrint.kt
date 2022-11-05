@@ -5,13 +5,19 @@ class GamePrint {
         println("숫자 야구 게임을 시작합니다.")
     }
     fun inputNum(){
-        print("숫자를 입력해주세요 :")
+        print("숫자를 입력해주세요 : ")
     }
     fun result(){
-        if(ballCount > 0)
-            print("${ballCount}볼 ")
-        if(strikeCount > 0)
-            print("${strikeCount}스트라이크 ")
+        if(ballCnt > 0){
+            print("${ballCnt}볼 ")
+        }
+        if(strikeCnt > 0){
+            print("${strikeCnt}스트라이크 ")
+        }
+        if(strikeCnt + ballCnt == 0){
+            print("낫싱")
+        }
+        println()
     }
     fun answer(){
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
