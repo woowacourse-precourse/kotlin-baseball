@@ -33,7 +33,10 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
 }
 
 fun equalChecker(v2: Int): Boolean {
-    TODO("v2 == 3 확인하는 함수")
+    if (v2 == 3) {
+        return true
+    }
+    return false
 }
 
 fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Int {
