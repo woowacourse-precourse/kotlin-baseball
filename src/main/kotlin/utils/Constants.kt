@@ -24,4 +24,7 @@ object Constants {
     const val RESTART_LENGTH = 1
     const val YES_RESTART = "1"
     const val NO_RESTART = "2"
+
+    const val NO_STRIKE = 0
+    const val NO_BALL = 0
 }

@@ -2,6 +2,9 @@ package baseball.hint
 
 import domain.Computer
 import domain.Player
+import utils.Constants.DIGIT_LENGTH
+import utils.Constants.NO_BALL
+import utils.Constants.NO_STRIKE
 
 class BaseballHint(
     computer: Computer,
@@ -11,15 +14,16 @@ class BaseballHint(
     override fun print() {
         val (strike, ball) = provideStrikeAndBall()
         when {
-            (strike != 0 && ball != 0) -> println("${ball}볼 ${strike}스트라이크")
-            (strike != 0 && ball == 0) -> println("${strike}스트라이크")
-            (strike == 0 && ball != 0) -> println("${ball}볼")
-            (strike == 0 && ball == 0) -> println("낫싱")
+            (strike != NO_STRIKE && ball != NO_BALL) -> println("${ball}볼 ${strike}스트라이크")
+            (strike != NO_STRIKE && ball == NO_BALL) -> println("${strike}스트라이크")
+            (strike == NO_STRIKE && ball != NO_BALL) -> println("${ball}볼")
+            (strike == NO_STRIKE && ball == NO_BALL) -> println("낫싱")
         }
     }
 
     override fun calculate() {
-        (0 until 3).forEach { index ->
+        val startIndex = 0
+        (startIndex until DIGIT_LENGTH).forEach { index ->
             compare(index)
         }
     }
