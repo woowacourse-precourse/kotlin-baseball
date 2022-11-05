@@ -1,5 +1,6 @@
 package baseball
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 fun printStart() {
     println("숫자 야구 게임을 시작합니다.")
@@ -57,8 +58,38 @@ fun equalCounter(
     TODO("맵에서 공통 원소의 value가 같은지 확인(스트라이크)하는 함수 구현")
 }
 
-
+fun getRandomNumList(): MutableList<Int> {
+    val computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer
+}
 
 fun main() {
-    TODO("프로그램 구현")
+    printStart()
+    var maxDeep = 0
+    val computer = getRandomNumList()
+
+    do {
+        val player = listConverter(getInput())
+        if (!listChecker(player)) {
+            throw IllegalArgumentException()
+        }
+
+        val playerMap = HashMap<Char, Int>()
+        val computerMap = HashMap<Char, Int>()
+
+        val playerSet = mutableSetOf<Char>()
+        val computerSet = mutableSetOf<Char>()
+
+        TODO("입력 받은 후 맵과 셋으로 변경하는 알고리즘 추가")
+
+        maxDeep++
+    } while (maxDeep < 20)
+
+
 }
