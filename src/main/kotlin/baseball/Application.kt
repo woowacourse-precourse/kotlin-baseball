@@ -67,9 +67,10 @@ fun equalCounter(
 fun getRandomNumList(): MutableList<Char> {
     val computer = mutableListOf<Char>()
     while (computer.size < 3) {
-        val randomNumber = pickNumberInRange(1, 9)
-        if (!computer.contains(randomNumber.toChar())) {
-            computer.add(randomNumber.toChar())
+        val randomNumber = Character.forDigit(pickNumberInRange(1, 9), 10)
+
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
         }
     }
     return computer
