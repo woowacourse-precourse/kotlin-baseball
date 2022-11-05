@@ -2,6 +2,7 @@ package baseball
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class CorrectAnswerTest {
     @Test
@@ -18,6 +19,14 @@ class CorrectAnswerTest {
     fun `모두 오답일 때 낫싱을 반환`() {
         assertCheck("123", "456", 0, 0)
 
+    }
+
+    @Test
+    fun `사용자가 잘못된 값을 입력했을 때 IllegalArgumentException 반환`() {
+        assertThrows<IllegalArgumentException>("잘못된 값을 입력했습니다.") {
+            BaseballGame("123")
+                .checkException("1234")
+        }
     }
 
 
