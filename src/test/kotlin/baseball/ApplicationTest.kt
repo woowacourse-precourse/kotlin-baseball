@@ -78,6 +78,23 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `문자열이 선택지 안에 있는지 확인하는 기능 예외 테스트`() {
+        val validChoiceVerifier = ValidChoiceVerifier(listOf("1", "2"))
+
+        assertSimpleTest {
+            assertThat(validChoiceVerifier.verify("1"))
+
+            assertThat(validChoiceVerifier.verify("2"))
+
+            assertThrows<IllegalArgumentException> {
+                validChoiceVerifier.verify(
+                    "3"
+                )
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
