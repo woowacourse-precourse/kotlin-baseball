@@ -13,9 +13,20 @@ class User {
     fun compareWithAnswer(answerArr: IntArray): IntArray{
         var resultArr = IntArray(2)
         resultArr[0] = countStrike(answerArr)
-        resultArr[1] = countBall(answerArr)
+        resultArr[1] = countBall(answerArr) - resultArr[0]
 
         return resultArr
+    }
+
+    private fun countStrike(answerArr: IntArray): Int{
+        var cntStrike = 0
+
+        for(i in 0 until 3){
+            if(answerArr[i] == this.number[i])
+                cntStrike++
+        }
+
+        return cntStrike
     }
 
 }
