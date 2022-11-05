@@ -1,7 +1,5 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -22,53 +20,57 @@ class FunctionTest : NsTest() {
     }
 
     @Test
-    fun `여러 가지 경우의 결과`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("123", "712", "738", "478", "768", "879", "876", "2")
-                assertThat(output())
-                    .contains("낫싱", "1볼", "2볼", "1볼 1스트라이크", "3볼", "2스트라이크", "3스트라이크", "게임 종료")
-            },
-            8, 7, 6
-        )
+    fun `문자열 입력값 리스트로 변환`() {
+        val input = stringInputToList("123")
+        assertThat(input).containsExactly(1, 2, 3)
+    }
+
+    @Test
+    fun `낫싱 테스트`() {
+        val userNum = listOf<Int>(1, 2, 3)
+        val computerNum = mutableListOf<Int>(4, 5, 6)
+        assertThat(checkNothing(userNum, computerNum))
+    }
+
+    @Test
+    fun `스트라이크 테스트`() {
+        val userNum = listOf<Int>(1, 2, 3)
+        val computerNum = mutableListOf<Int>(1, 5, 3)
+        val strike = checkStrike(userNum, computerNum)
+        assertThat(strike).isEqualTo(2)
+    }
+
+    @Test
+    fun `볼 테스트`() {
+        val userNum = listOf<Int>(1, 2, 3)
+        val computerNum = mutableListOf<Int>(2, 3, 1)
+        val ball = checkBall(userNum, computerNum)
+        assertThat(ball).isEqualTo(3)
     }
 
     @Test
     fun `재시작 예외 테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                assertThrows<IllegalArgumentException> { run("123", "231", "12") }
-            },
-            2, 3, 1
-        )
+        assertThrows<IllegalArgumentException> { askQuitOrNot("12") }
     }
 
     @Test
     fun `입력값 길이가 3이 아닌 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("98") }
-        }
+        assertThrows<IllegalArgumentException> { checkException("98") }
     }
 
     @Test
     fun `입력값이 숫자가 아닌 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1ab") }
-        }
+        assertThrows<IllegalArgumentException> { checkException("1ab") }
     }
 
     @Test
     fun `입력값에 0이 들어가는 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("803") }
-        }
+        assertThrows<IllegalArgumentException> { checkException("803") }
     }
 
     @Test
     fun `입력값에 중복값이 들어가는 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("141") }
-        }
+        assertThrows<IllegalArgumentException> { checkException("141") }
     }
 
     override fun runMain() {
