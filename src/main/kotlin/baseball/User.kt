@@ -29,7 +29,19 @@ class User {
 
     fun getRestartOrNotInput(): Int {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        return Console.readLine().toInt()
+        val input = Console.readLine()
+        if (isRestartInputException(input)) {
+            throw IllegalArgumentException("잘못된 입력입니다.")
+        }
+        return input.toInt()
+    }
+
+    fun isRestartInputException(restartInput: String): Boolean {
+        val integerInput = restartInput.toIntOrNull()
+        if (integerInput == 1 || integerInput == 2) {
+            return false
+        }
+        return true
     }
 
 }
