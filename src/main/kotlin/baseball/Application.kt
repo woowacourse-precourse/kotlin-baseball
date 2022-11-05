@@ -13,9 +13,7 @@ fun main() {
             print("숫자를 입력해주세요 : ")
             val playerInput = Console.readLine()
 
-            if (checkInputNumberValid(playerInput).not()) {
-                throw java.lang.IllegalArgumentException("Invalid Input")
-            }
+            checkInputNumberValid(playerInput)
 
             val ballScore = findBallScore(playerInput, robotAnswer)
             val strikeScore = findStrikeScore(playerInput, robotAnswer)
@@ -29,9 +27,7 @@ fun main() {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         val endingInput = Console.readLine()
 
-        if (checkEndingNumberValid(endingInput).not()) {
-            throw java.lang.IllegalArgumentException("Invalid Input")
-        }
+        checkEndingNumberValid(endingInput)
 
         if (endingInput == "2") {
             break
@@ -71,9 +67,15 @@ fun generateRandomNumber(): String {
     return randomNumberList.joinToString("")
 }
 
-fun checkInputNumberValid(input: String): Boolean {
+fun checkInputNumberValid(input: String) {
     val inputNumberSet = input.toSet()
-    return Regex("[1-9]{3}").matches(input) && inputNumberSet.size == 3
+    if ((Regex("[1-9]{3}").matches(input) && inputNumberSet.size == 3).not()){
+        throw java.lang.IllegalArgumentException("Invalid Input")
+    }
 }
 
-fun checkEndingNumberValid(input: String): Boolean = input == "1" || input == "2"
+fun checkEndingNumberValid(input: String) {
+    if ((input == "1" || input == "2").not()){
+        throw java.lang.IllegalArgumentException("Invalid Input")
+    }
+}
