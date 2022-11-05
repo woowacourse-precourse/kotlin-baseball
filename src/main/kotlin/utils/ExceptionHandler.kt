@@ -1,5 +1,7 @@
 package utils
 
+import utils.Constants.DIGIT_LENGTH
+
 object ExceptionHandler {
     fun validateLengthOrException(answer: String, expectedLength: Int) {
         if (answer.length != expectedLength) throw IllegalArgumentException(Constants.LENGTH_MISMATCH_EXCEPTION)
@@ -20,8 +22,11 @@ object ExceptionHandler {
         if (digit !in Constants.MIN_DIGIT..Constants.MAX_DIGIT) throw IllegalArgumentException(Constants.OUT_OF_RANGE_EXCEPTION)
     }
 
-    fun validateDuplicatedOrException(inputs: Set<Int>) {
-        if (inputs.size != Constants.DIGIT_LENGTH) throw IllegalArgumentException(Constants.DUPLICATED_DIGIT_EXCEPTION)
+    fun validateDuplicatedOrException(myNumbers: List<Int>, otherNumbers: List<Int>) {
+        val startIndex = 0
+        for (i in startIndex until DIGIT_LENGTH) {
+            if (myNumbers[i] != otherNumbers[i]) throw IllegalArgumentException(Constants.DUPLICATED_DIGIT_EXCEPTION)
+        }
     }
 
     fun validateRestartCode(code: String) {
