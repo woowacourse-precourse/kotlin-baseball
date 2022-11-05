@@ -15,10 +15,10 @@ fun main() {
         var clear = false
 
         printStartMessage()
-        //println(computer)
+        println("computer: $computer")
         while(!clear) {
             getPlayerNumber(player)
-            //println(player)
+            println("player: $player")
             clear = compareNumber(computer, player)
         }
         exit = getReplaySignal()
@@ -57,6 +57,7 @@ private fun getPlayerNumber(player: MutableList<Int>){
     var div = 100
 
     player.clear()
+
     for(i in 0 until 3){
         player.add(num / div)
         num %= div
@@ -65,22 +66,10 @@ private fun getPlayerNumber(player: MutableList<Int>){
 }
 
 private fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
-    var strike = 0
-    var ball = 0
+    val strike = getStrikeCount(computer, player)
+    val ball = getBallCount(computer, player) - strike
     var message = ""
 
-    for(i in 0 until 3){
-        for(j in 0 until 3){
-            if(player[i] == computer[j]){
-                if(i != j){
-                    ball += 1
-                }
-                else {
-                    strike += 1
-                }
-            }
-        }
-    }
 
     if (ball >= 1) {
         message = "${ball}볼 "
@@ -102,6 +91,29 @@ private fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
     }
 
     return false
+}
+private fun getBallCount(computer: List<Int>, player: List<Int>) : Int {
+    var ball = 0
+
+    for(i in 0 until 3){
+        if(computer.contains(player[i])){
+            ball += 1
+        }
+    }
+
+    return ball
+}
+
+private fun getStrikeCount(computer: List<Int>, player: List<Int>) : Int{
+    var strike = 0
+
+    for(i in 0 until 3) {
+        if(computer[i] == player[i]){
+            strike += 1
+        }
+    }
+
+    return strike
 }
 
 private fun getReplaySignal() : Boolean{
