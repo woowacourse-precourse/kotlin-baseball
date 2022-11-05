@@ -21,3 +21,4 @@
  - gameStart function - 게임초기화 함수
  - comparison function - 비교 함수
  - userNumToList function - 유저넘버리스트 함수
+ - userInput function - 유저입력 함수
