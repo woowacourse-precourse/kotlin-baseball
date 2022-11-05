@@ -64,6 +64,10 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
     if (inputList.size !in 1..3) {
         return false
     }
+    if (setConverter(inputList).size != 3) {
+        return false
+    }
+
     return true
 }
 
@@ -101,7 +105,7 @@ fun main() {
     printStart()
     var maxDeep = 0
     val computer = getRandomNumList()
-    var continueChecker = false
+    var continueChecker: Boolean
     println("옵저버 모드: ${computer.joinToString(separator = "")}")
     do {
         continueChecker = true
@@ -130,8 +134,9 @@ fun main() {
         if (v2 == 3) {
             continueChecker = printEnd()
             maxDeep = 0
+        } else {
+            printReport(balls, v2)
         }
-        else { printReport(balls, v2) }
 
         maxDeep++
     } while (maxDeep < 20 && continueChecker)
