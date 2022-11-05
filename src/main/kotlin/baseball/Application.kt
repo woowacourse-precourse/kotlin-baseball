@@ -14,15 +14,6 @@ fun main() {
         if (select == 1)
         {
             var answernumber =answernumberselect()
-//                println("")
-//                var usernumber = userselectnumber()
-//                println("")
-//                var stcount = strikecalculate(usernumber,answernumber)
-//                println("")
-//                var blcount = ballcalculate(usernumber,answernumber)
-//                println("")
-//                println("${blcount}볼 ${stcount}스트라이크")
-//                println("")
             select = tonghap(answernumber)
         }
         else if (select == 2)
@@ -94,9 +85,7 @@ fun userselectnumber(): MutableList<Int> {
     var check = 1
     var userNumStrInt = mutableListOf<Int>()
     var userNumStr = mutableListOf<Int>()
-//    var firstnum = 0
-//    var secondnum = 0
-//    var thirdnum = 0
+
     while(true)
     {
         usernumber.add(readLine()!!.toInt())
