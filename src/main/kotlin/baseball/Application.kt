@@ -7,8 +7,9 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
     while (true) {
         val robotAnswer = generateRandomNumber()
+        var isDone = false
 
-        while(true) {
+        while (isDone.not()) {
 
             print("숫자를 입력해주세요 : ")
             val playerInput = Console.readLine()
@@ -17,13 +18,9 @@ fun main() {
 
             val ballScore = findBallScore(playerInput, robotAnswer)
             val strikeScore = findStrikeScore(playerInput, robotAnswer)
-            println(makeFormattedResult(ballScore, strikeScore))
-
-            if(strikeScore == 3) {
-                println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-                break
-            }
+            isDone = computeScoreAndGetGameState(ballScore, strikeScore)
         }
+
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         val endingInput = Console.readLine()
 
@@ -32,6 +29,16 @@ fun main() {
         if (endingInput == "2") {
             break
         }
+    }
+}
+
+fun computeScoreAndGetGameState(ballScore: Int, strikeScore: Int): Boolean {
+    println(makeFormattedResult(ballScore, strikeScore))
+    return if (strikeScore == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        true
+    } else {
+        false
     }
 }
 
@@ -69,13 +76,13 @@ fun generateRandomNumber(): String {
 
 fun checkInputNumberValid(input: String) {
     val inputNumberSet = input.toSet()
-    if ((Regex("[1-9]{3}").matches(input) && inputNumberSet.size == 3).not()){
+    if ((Regex("[1-9]{3}").matches(input) && inputNumberSet.size == 3).not()) {
         throw java.lang.IllegalArgumentException("Invalid Input")
     }
 }
 
 fun checkEndingNumberValid(input: String) {
-    if ((input == "1" || input == "2").not()){
+    if ((input == "1" || input == "2").not()) {
         throw java.lang.IllegalArgumentException("Invalid Input")
     }
 }
