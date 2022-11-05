@@ -8,6 +8,7 @@ class GameLogic {
 
     private var ballCount = 0
     private var strikeCount = 0
+
     fun gameStart(){
         while (comNumber.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -36,5 +37,8 @@ class GameLogic {
             userList.add(0,inputNum)
         }
         return userList
+    }
+    fun userInput() {
+        var inputNumber = readLine()!!.toIntOrNull()
     }
 }
