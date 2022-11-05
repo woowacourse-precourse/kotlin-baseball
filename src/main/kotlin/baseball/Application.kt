@@ -22,6 +22,7 @@ private fun startGame() {
     val answerList = getRandomNumberList()
     while(true) {
         if(checkBallAndStrike(getUserInput(), answerList)) {
+            checkWantPlayAgain()
             break
         }
     }
@@ -130,5 +131,24 @@ private fun printResult(strikeCount: Int, ballCount: Int) {
     }
     if (strikeCount == 0 && ballCount in 1..INPUT_LENGTH_STANDARD) {
         println("${ballCount}볼")
+    }
+}
+
+private fun checkWantPlayAgain() {
+    var userInput: String
+    while (true) {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        userInput = Console.readLine()
+        if (!checkInputIsNumber(userInput)) {
+            println("잘못된 값이 입력되었습니다. 다시 입력해주세요.")
+            return
+        }
+        if (userInput.toInt() in USER_WANT_PLAY_AGAIN..USER_DONT_WANT_PLAY_AGAIN) {
+            break
+        }
+        println("잘못된 값이 입력되었습니다. 다시 입력해주세요.")
+    }
+    if (userInput.toInt() == USER_WANT_PLAY_AGAIN) {
+        startGame()
     }
 }
