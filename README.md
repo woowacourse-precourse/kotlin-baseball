@@ -1,5 +1,69 @@
 # 미션 - 숫자 야구
 
+## 구현할 기능 목록
+
+- **fun generateRandomNumber** : Random 라이브러리를 활용해 세자리 수의 숫자 생성
+  - Parameters: None
+  - Return: 
+  ```
+  computer: MutableList<Int>
+  ```
+  - Do: Ramdoms.pickNumberInRange(1, 9)를 활용해 
+
+- **fun receiveUserInput** : readLine 라이브러리 활용해 유저로부터 세자리 수를 입력 받아, 각 자릿수 분리
+  - Parameters: None
+  - Return:
+  ```
+  userInputList: MutableList<Int>
+  ```
+  - Do: Int형태로 유저로부터 세자리 수를 입력 받아 각 자릿수를 분리한 리스트 형태로 분리
+
+- **fun baseballGame** : 유저의 입력값 (userInputList)와 컴퓨터의 값 (computer)의 값이 일치하는지 판별
+  - Parameters: 
+  ```
+  userInputList: MutableList<Int>
+  computer: MutableList<Int>
+  ```
+  - Return:
+    - 유저의 값과 컴퓨터의 값이 일치하는지 판별
+    - 맞으면 true 아닐시 false
+    - default: false
+  ```
+  correct: Boolean 
+  
+  ```
+  - Do:
+    1. for (i in 0..2) 루프로 **스트라이크** 갯수 판별
+    - 스트라이크가 3개라면 true값 리턴
+    - 아니라면, 볼 갯수 판별
+    2. **볼** 갯수 판별
+    - userInputList[i] in computer 활용
+    - false값 리턴
+    3. **낫싱** 판별
+    - 스트라이크와 볼 갯수가 0이라면 낫싱
+    - false값 리턴
+
+- **fun main**: 전체 프로그램 실행
+  - Parameters: None
+  - Return: None
+  - Do:
+    1. fun generateRandomNumber 실행
+    - computer: MutableList<Int> 생성
+    2. outer do while문 생성 
+    3. inner do while문 생성
+    - userInputList의 입력받기
+    - fun baseballGame 실행
+    - exit 조건: fun baseballGame이 true값을 리턴했을 때
+    4. inner do while문을 exit하고, 유저에게 게임을 새로 시작할건지 입력 받음
+    - keepPlaying = readLine()!!.toInt()
+    - keepPlaying이 2라면 exit
+    
+## 예외처리
+  - 유저가 같은 값을 입력하지 않게 방지
+    - 잘못된 값을 입력했을 경우 `IllegalArgumentException`을 발생
+
+
+  
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -154,3 +218,5 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 구현할 기능 목록
