@@ -1,8 +1,10 @@
 package baseball
 
+import baseball.model.BaseBall
 import org.junit.jupiter.api.Test
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
 
 class NumberTest : NsTest() {
@@ -32,6 +34,20 @@ class NumberTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("112") }
         }
+    }
+
+    @Test
+    fun `스트라이크 개수 확인 테스트`() {
+        val computerNumbers = listOf(1, 3, 5)
+        val playerNumbers = listOf(2, 3, 5)
+        assertThat(BaseBall(computerNumbers, playerNumbers).getStrikeCount()).isEqualTo(2)
+    }
+
+    @Test
+    fun `볼 개수 확인 테스트`() {
+        val computerNumbers = listOf(1, 3, 5)
+        val playerNumbers = listOf(2, 5, 3)
+        assertThat(BaseBall(computerNumbers, playerNumbers).getBallCount()).isEqualTo(2)
     }
 
     override fun runMain() {
