@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
@@ -32,7 +33,7 @@ class ApplicationTest : NsTest() {
         val stringLengthVerifier = StringLengthVerifier(3)
 
         assertSimpleTest {
-            assertThat(stringLengthVerifier.verify("123"))
+            assertDoesNotThrow { stringLengthVerifier.verify("123") }
 
             assertThrows<IllegalArgumentException> {
                 stringLengthVerifier.verify(
@@ -47,7 +48,7 @@ class ApplicationTest : NsTest() {
         val oneToNineOnlyVerifier = OneToNineOnlyVerifier()
 
         assertSimpleTest {
-            assertThat(oneToNineOnlyVerifier.verify("123"))
+            assertDoesNotThrow { oneToNineOnlyVerifier.verify("123") }
 
             assertThrows<IllegalArgumentException> {
                 oneToNineOnlyVerifier.verify(
@@ -68,7 +69,7 @@ class ApplicationTest : NsTest() {
         val noSameCharacterVerifier = NoSameCharacterVerifier()
 
         assertSimpleTest {
-            assertThat(noSameCharacterVerifier.verify("123"))
+            assertDoesNotThrow { noSameCharacterVerifier.verify("123") }
 
             assertThrows<IllegalArgumentException> {
                 noSameCharacterVerifier.verify(
@@ -83,9 +84,9 @@ class ApplicationTest : NsTest() {
         val validChoiceVerifier = ValidChoiceVerifier(listOf("1", "2"))
 
         assertSimpleTest {
-            assertThat(validChoiceVerifier.verify("1"))
+            assertDoesNotThrow { validChoiceVerifier.verify("1") }
 
-            assertThat(validChoiceVerifier.verify("2"))
+            assertDoesNotThrow { validChoiceVerifier.verify("2") }
 
             assertThrows<IllegalArgumentException> {
                 validChoiceVerifier.verify(
