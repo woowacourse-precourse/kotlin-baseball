@@ -20,6 +20,11 @@ fun playGame() {
         exception(userNum)
 
         val compareResult = compareNum(userNum, computerNum)
+        if(compareResult[1] == 3) {
+            println("3스트라이크")
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            break
+        }
     }
 }
 
