@@ -32,12 +32,33 @@ fun userInput() : MutableList<Int> {
     }
     return user
 }
+
+fun compareNumber(userNumberList : List<Int>, comNumberList : List<Int>) : MutableList<Int> {
+    val checkNumber : MutableList<Int> = mutableListOf()
+
+    for(i in userNumberList.indices) {
+        if(userNumberList[i] == comNumberList[i]) {
+            checkNumber.add(1)
+        } else if(userNumberList[i] in comNumberList && userNumberList[i] != comNumberList[i]) {
+            checkNumber.add(0)
+        } else {
+            checkNumber.add(-1)
+        }
+    }
+    return checkNumber
+}
+
+
+
 fun main() {
-    val comNumbers = comInput()
     val userNumbers = userInput()
+    val comNumbers = comInput()
+
+
 
     println("com : $comNumbers")
     println("user : $userNumbers")
+    println(compareNumber(userNumbers, comNumbers))
 //    while(true) {
 //        var gameStartControl = readLine()!!.toInt()
 //
