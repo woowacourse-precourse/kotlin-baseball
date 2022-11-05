@@ -30,4 +30,11 @@ class CustomTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("644") }
         }
     }
+
+    @Test
+    fun `0 포함시 에러 반환여부 체크`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("604") }
+        }
+    }
 }
