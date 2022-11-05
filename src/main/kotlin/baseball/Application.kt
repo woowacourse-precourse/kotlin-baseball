@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    var flag = 1
+    var flag: Boolean = true
     var computer: List<Int>
-    var person: List<Int>
+    var player: List<Int>
 
     computer = getComputerNumbers()
-    while (flag == 1) {
-        person = getPlayerNumbers()
-        flag = 0
+    while (flag) {
+        player = getPlayerNumbers()
+        flag = checkStrike(computer, player)
     }
 }
 
@@ -52,4 +52,22 @@ fun checkPlayerInput(str: String) {
             throw IllegalArgumentException("중복된 숫자가 존재합니다.")
         }
     }
+}
+
+fun checkStrike(computer: List<Int>, player: List<Int>): Boolean {
+    var ball: Int = 0
+    var strike: Int = 0
+
+    for (i in player.indices) {
+        if (player[i] !in computer)
+            continue
+        if (player[i] == computer[i])
+            strike++
+        else
+            ball
+    }
+
+    if (strike == 3)
+        return true
+    return false
 }
