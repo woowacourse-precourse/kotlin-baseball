@@ -36,7 +36,11 @@ private fun isRepeat(): Int {
     val inputNum = inputGuessNumber()
     if (isRightInput(inputNum)) {
         val (ball, strike) = getBallAndStrike(inputNum)
-        return printResult((Pair(ball, strike)))
+        printResult((Pair(ball, strike)))
+        if (strike == 3) {
+            return inputRestartOrFinishNum()
+        }
+        return RESTART
     } else throw IllegalArgumentException("1~9 사이의 서로 다른 세자리 수를 입력하세요")
 }
 
@@ -74,7 +78,7 @@ private fun getBallAndStrike(inputNum: Int): Pair<Int, Int> {
     return Pair(ball, strike)
 }
 
-private fun printResult(pair: Pair<Int, Int>): Int {
+private fun printResult(pair: Pair<Int, Int>) {
     when (pair) {
         Pair(1, 0) -> println("1볼")
         Pair(1, 1) -> println("1볼 1스트라이크")
@@ -85,12 +89,8 @@ private fun printResult(pair: Pair<Int, Int>): Int {
         Pair(0, 0) -> println("낫싱")
         Pair(0, 1) -> println("1스트라이크")
         Pair(0, 2) -> println("2스트라이크")
-        Pair(0, 3) -> {
-            println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            return inputRestartOrFinishNum()
-        }
+        Pair(0, 3) -> println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
-    return RESTART
 }
 
 private fun inputRestartOrFinishNum(): Int {
