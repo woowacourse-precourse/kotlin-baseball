@@ -28,7 +28,6 @@ class BaseballGame : Game {
 
         do {
             val player = PlayerConsole.enterAnswer()
-            player.validate(computer)
 
             val hint: Hint = BaseballHint(computer, player)
             hint.print()

@@ -22,11 +22,9 @@ object ExceptionHandler {
         if (digit !in Constants.MIN_DIGIT..Constants.MAX_DIGIT) throw IllegalArgumentException(Constants.OUT_OF_RANGE_EXCEPTION)
     }
 
-    fun validateDuplicatedOrException(myNumbers: List<Int>, otherNumbers: List<Int>) {
-        val startIndex = 0
-        for (i in startIndex until DIGIT_LENGTH) {
-            if (myNumbers[i] != otherNumbers[i]) throw IllegalArgumentException(Constants.DUPLICATED_DIGIT_EXCEPTION)
-        }
+    fun validateDuplicatedOrException(numbers: List<Int>) {
+        val notDuplicatedNumbers = numbers.toSet()
+        if (notDuplicatedNumbers.size != DIGIT_LENGTH) throw IllegalArgumentException(Constants.DUPLICATED_DIGIT_EXCEPTION)
     }
 
     fun validateRestartCode(code: String) {

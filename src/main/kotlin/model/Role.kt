@@ -7,9 +7,14 @@ import utils.ExceptionHandler.validateListLengthOrException
 abstract class Role(
     internal val numbers: List<Int>
 ) {
-    fun validate(other: Role) {
+
+    init {
+        validate()
+    }
+
+    fun validate() {
         validateListLengthOrException(numbers, Constants.DIGIT_LENGTH)
-        validateDuplicatedOrException(numbers, other.numbers)
+        validateDuplicatedOrException(numbers)
     }
 
     fun find(index: Int): Int = numbers[index]
