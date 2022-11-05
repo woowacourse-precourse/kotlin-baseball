@@ -20,7 +20,7 @@ fun main() {
 private fun startGameAtFirst() {
     println("숫자 야구 게임을 시작합니다.")
     val answerList = getRandomNumberList()
-    getUserInput()
+    checkBallAndStrike(getUserInput(), answerList)
 }
 
 private fun getRandomNumberList(): List<Int> {
@@ -77,4 +77,11 @@ private fun checkInputIsNumber(number: String): Boolean {
 
 private fun convertStringListToIntList(targetList: List<String>): List<Int> {
     return targetList.map { it.toInt() }
+}
+
+private fun checkBallAndStrike(userInputList: List<Int>, answerList: List<Int>): Boolean {
+    var strikeCount = 0
+    var ballCount = 0
+
+    return strikeCount == GAME_CLEAR
 }
