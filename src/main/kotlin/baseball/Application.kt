@@ -18,6 +18,7 @@ fun main() {
         }
 
         val strikeNum = getStrikeNum(computer, player)
+        val ballNum = getBallNum(computer, player, strikeNum)
     }
 }
 
@@ -61,6 +62,12 @@ fun getStrikeNum(computer: List<Int>, player: String): Int {
 }
 
 
-fun getBallNum(computer: List<Int>, player: String): Int {
-    TODO()
+fun getBallNum(computer: List<Int>, player: String, strikeNum: Int): Int {
+    var ballNum = 0
+    for(playerCharacter in player) {
+        val playerNumber = playerCharacter - '0'
+        if (computer.contains(playerNumber))
+            ballNum++
+    }
+    return ballNum - strikeNum
 }
