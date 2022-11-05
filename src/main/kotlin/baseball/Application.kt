@@ -8,7 +8,9 @@ fun main() {
     var computer: List<Int>
     var player: List<Int>
 
+    println("숫자 야구 게임을 시작합니다.")
     computer = getComputerNumbers()
+    println(computer)
     while (flag) {
         player = getPlayerNumbers()
         flag = checkStrike(computer, player)
@@ -29,6 +31,7 @@ fun getComputerNumbers(): List<Int> {
 }
 
 fun getPlayerNumbers(): List<Int> {
+    print("숫자를 입력해주세요 : ")
     val readNumber: String = Console.readLine()
     var readList: MutableList<Int> = mutableListOf()
 
@@ -64,10 +67,27 @@ fun checkStrike(computer: List<Int>, player: List<Int>): Boolean {
         if (player[i] == computer[i])
             strike++
         else
-            ball
+            ball++
     }
+    printResult(ball, strike)
 
     if (strike == 3)
-        return true
-    return false
+        return false
+    return true
+}
+
+fun printResult(ball: Int, strike: Int) {
+    if (ball > 0) {
+        when (strike) {
+            0 -> println("${ball}볼")
+            else -> println("${ball}볼 ${strike}스트라이크")
+        }
+    }
+    if (ball == 0) {
+        when (strike) {
+            0 -> println("낫싱")
+            3 -> println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            else -> println("${strike}스트라이크")
+        }
+    }
 }
