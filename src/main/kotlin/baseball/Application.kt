@@ -17,6 +17,7 @@ fun playGame() {
     while (true) {
         print("숫자를 입력해주세요 : ")
         val userNum = Console.readLine().toCharArray()
+        exception(userNum)
     }
 }
 
@@ -30,4 +31,12 @@ fun randomComputerNum(): MutableList<Int> {
     }
 
     return computerNum
+}
+
+fun exception(userNum: CharArray) {
+    if(userNum.size != 3) throw IllegalArgumentException("3자리 정수를 입력하세요.")
+
+    userNum.forEach {
+        if(it.digitToInt() !in 1 .. 9) throw IllegalArgumentException("1~9사이의 정수만 사용하세요.")
+    }
 }
