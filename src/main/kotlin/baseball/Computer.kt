@@ -7,7 +7,7 @@ object Computer {
     var strike = 0
     var ball = 0
     val correctNumber = mutableListOf<Int>()
-    fun getCorrectRandomNumber(){
+    fun getCorrectRandomNumber() {
         correctNumber.clear()
         while (correctNumber.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -16,13 +16,13 @@ object Computer {
             }
         }
     }
-    fun compareInputWithCorrectNumber(inputValue : String){
-        for(i in 0 until correctNumber.size){
-            if(inputValue.contains(correctNumber[i].toString())){
-                if(inputValue[i].digitToInt()== correctNumber[i]){
+
+    fun compareInputWithCorrectNumber(inputValue: String) {
+        for (i in 0 until correctNumber.size) {
+            if (inputValue.contains(correctNumber[i].toString())) {
+                if (inputValue[i].digitToInt() == correctNumber[i]) {
                     strike++
-                }
-                else{
+                } else {
                     ball++
                 }
             }
@@ -30,38 +30,33 @@ object Computer {
         printCurrentScore()
     }
 
-    fun printCurrentScore(){
-        if(strike==0 && ball==0){
+    fun printCurrentScore() {
+        if (strike == 0 && ball == 0) {
             println("낫싱")
-        }
-        else if(strike==0 && ball>0){
+        } else if (strike == 0 && ball > 0) {
             println("${ball}볼")
-        }
-        else if(strike>0 && ball==0){
+        } else if (strike > 0 && ball == 0) {
             println("${strike}스트라이크")
-            if(strike==3){
+            if (strike == 3) {
                 gameOver()
             }
-        }
-        else if(strike>0 && ball>0){
+        } else if (strike > 0 && ball > 0) {
             println("${ball}볼 ${strike}스트라이크")
         }
-        strike=0
-        ball=0
+        strike = 0
+        ball = 0
     }
 
-    fun gameOver(){
+    fun gameOver() {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         var input = Console.readLine()
-        if(input=="1"){
+        if (input == "1") {
             getCorrectRandomNumber()
-        }
-        else if(input=="2"){
+        } else if (input == "2") {
             println("게임종료")
-            Game.gameStop=true
-        }
-        else if(input!="1" && input!="2"){
+            Game.gameStop = true
+        } else if (input != "1" && input != "2") {
             require(false)
         }
     }
