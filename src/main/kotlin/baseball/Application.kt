@@ -46,6 +46,16 @@ fun main() {
         }
     }
 }
+fun RandomNumMaker(): String {
+    var computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer.toString()
+}
 
 fun NumInput(): String {
     print("숫자를 입력해주세요 : ")
