@@ -2,7 +2,7 @@ package baseball.game
 
 import baseball.common.MAX_NUMBER_SIZE
 import baseball.computer.Computer
-import baseball.game.ballstate.BallState
+import baseball.game.processor.BallStrikeProcessor
 import baseball.player.Player
 import baseball.game.validator.InputValidator
 
@@ -10,20 +10,13 @@ class Game(
     private val computer: Computer,
     private val player: Player,
 ): GameService {
+
     private val inputValidator = InputValidator()
-    private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
-
+    private val ballStrikeProcessor = BallStrikeProcessor()
     private var gameStateCode = GAME_ACTIVE_CODE
-    private var numberOfComputer: String = computer.numberOfComputer
-
-    /** 컴퓨터의 숫자 정보를 새로 업데이트 하는 함수 **/
-    private fun updateNumberOfComputer() {
-        numberOfComputer = computer.numberOfComputer
-    }
 
     override fun start() {
         printMessage(message = START_GAME_MESSAGE)
-        println(numberOfComputer)
 
         do {
             printMessage(message = INPUT_MESSAGE)
@@ -32,66 +25,23 @@ class Game(
             val numberOfPlayer = player.enterNumber()
             inputValidator.validateGameInput(input = numberOfPlayer)
 
-            // 볼 or 스트라이크 체크
-            checkBallStrike(numberOfComputer = numberOfComputer, numberOfPlayer = numberOfPlayer)
+            // 볼 or 스트라이크 체크 후 결과 판단
+            ballStrikeProcessor.checkBallStrike(numberOfComputer = computer.numberOfComputer, numberOfPlayer = numberOfPlayer)
+            assessResult()
         } while (isActiveGameState())
     }
 
     /** 게임이 활성화 상태인지 판단하는 함수 **/
     private fun isActiveGameState(): Boolean = gameStateCode != END_CODE
 
-    private fun checkBallStrike(numberOfComputer: String, numberOfPlayer: String) {
-
-        numberOfComputer.forEachIndexed { cIdx, computerNum ->
-            if (computerNum == numberOfPlayer[cIdx]) { // Strike
-                ballStates[cIdx] = BallState.STRIKE
-            }
-            else if (numberOfPlayer.contains(computerNum)) { // Ball
-                ballStates[cIdx] = BallState.BALL
-            }
-            else {
-                ballStates[cIdx] = BallState.OUT
-            }
-        }
-
-        if (ballStates.all { ballState -> ballState == BallState.STRIKE }) {
+    /** 게임 결과를 판단하는 함수 **/
+    private fun assessResult() {
+        if (ballStrikeProcessor.isAllStrike()) {
             successGame()
         }
         else {
-            printBallState()
+            printMessage(message = ballStrikeProcessor.makeBallStateMessage())
         }
-    }
-
-    private fun printBallState() {
-        val (ballCount, strikeCount, outCount) = calcBallState()
-
-        if (outCount == ballStates.size) {
-            printMessage(message = OUTPUT_NOTHING_MESSAGE)
-        }
-        if (strikeCount != 0 && ballCount != 0) {
-            printMessage(message = OUTPUT_BALL_STRIKE_MESSAGE.format(ballCount, strikeCount))
-        }
-        if (strikeCount != 0 && ballCount == 0) {
-            printMessage(message = OUTPUT_STRIKE_MESSAGE.format(strikeCount))
-        }
-        if (strikeCount == 0 && ballCount != 0) {
-            printMessage(OUTPUT_BALL_MESSAGE.format(ballCount))
-        }
-    }
-
-    private fun calcBallState(): Triple<Int, Int, Int> {
-        var ballCount = 0
-        var strikeCount = 0
-        var outCount = 0
-
-        ballStates.forEach { ballState ->
-            when (ballState) {
-                BallState.BALL -> ballCount++
-                BallState.STRIKE -> strikeCount++
-                BallState.OUT -> outCount++
-            }
-        }
-        return Triple(ballCount, strikeCount, outCount)
     }
 
     /** 게임 성공 후의 일을 처리하는 함수 **/
@@ -100,7 +50,6 @@ class Game(
         askContinueGame()
     }
 
-    /** 게임을 계속 진행할 지 여부를 묻는 함수 **/
     private fun askContinueGame() {
         printMessage(message = CONTINUE_GAME_MESSAGE) // 재시작 및 종료 여부를 묻는다.
 
@@ -118,12 +67,9 @@ class Game(
         }
     }
 
-    private fun printMessage(message: String) { print(message) }
-
     override fun restart() {
         computer.recreateRandomNumber()
-        updateNumberOfComputer()
-        println(numberOfComputer)
+        ballStrikeProcessor.initBallState()
     }
 
     override fun end() {
@@ -131,4 +77,5 @@ class Game(
         return
     }
 
+    private fun printMessage(message: String) { print(message) }
 }
