@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.IllegalArgumentException
 
 fun main() {
     var restart = 1
@@ -18,6 +19,9 @@ fun startGame(computerNumber: ArrayList<Int>) {
     while (!SUCCESS) {
         print("숫자를 입력해주세요 : ")
         val userInput = readLine()?.toMutableList()
+
+        checkAvailableUserInput(userInput!!)
+
         val strikeAndBall = checkNumber(computerNumber,userInput!!)
 
         if (strikeAndBall[0] == 3) {
@@ -40,6 +44,15 @@ fun startGame(computerNumber: ArrayList<Int>) {
     }
 }
 
+fun checkAvailableUserInput(userInput: MutableList<Char>) {
+    if (userInput.size != 3) {
+        throw IllegalArgumentException()
+    }
+    else if (userInput.distinct().count() != userInput.size) {
+        throw IllegalArgumentException()
+    }
+}
+
 fun checkReStart() : Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val restart = readLine()?.toInt()
@@ -58,7 +71,6 @@ fun checkNumber(computerNumber: ArrayList<Int>, userInput: MutableList<Char>): A
             strikeAndBall[1]++
         }
     }
-
     return strikeAndBall
 }
 
@@ -71,5 +83,6 @@ fun createComputerNumber(): ArrayList<Int> {
         }
     }
     println("숫자 야구 게임을 시작합니다.$computerNumber")
+
     return computerNumber
 }
