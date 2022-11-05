@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val targetNumber = createNumber()
     startGame()
-    val inputNumber = enterNumber(Console.readLine().trim())
+    val inputNumber = enterNumber()
 }
 
 fun startGame() {
@@ -25,10 +25,11 @@ fun createNumber(): String {
 }
 
 
-fun enterNumber(input: String): String {
+fun enterNumber(): String {
     print("숫자를 입력해주세요: ")
-    if (input.length != 3 || !input.all { it.isDigit() } || input.isBlank()) {
-        throw IllegalArgumentException("올바르지 않은 입력값입니다.")
+    return Console.readLine().trim().apply {
+        if (length != 3 || !all { it.isDigit() } || isBlank()) {
+            throw IllegalArgumentException("올바르지 않은 입력값입니다.")
+        }
     }
-    return input
 }
