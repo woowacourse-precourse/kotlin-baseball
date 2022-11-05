@@ -1,5 +1,6 @@
 package baseball.controller
 
+import baseball.Constants
 import baseball.model.BaseBall
 import baseball.model.ComputerNumber
 import baseball.model.PlayerNumber
@@ -35,25 +36,25 @@ class BaseBallController {
 
     fun exitGame(): Boolean {
         val endNumber = InputView().endPlayerNumber()
-        if (endNumber == "1") {
+        if (endNumber == Constants.RESTART) {
             return false
         }
-        if (endNumber == "2") {
+        if (endNumber == Constants.QUIT) {
             return true
         }
         throw IllegalArgumentException()
     }
 
     fun isThreeStrike(strike: Int): Boolean {
-        return strike == 3
+        return strike == Constants.NUMBER_LENGTH
     }
 
     fun isNumberException(number: List<Int>): Boolean {
-        return number.size == 3 && isOneToNine(number) && isNotDuplicate(number)
+        return number.size == Constants.NUMBER_LENGTH && isOneToNine(number) && isNotDuplicate(number)
     }
 
     fun isOneToNine(number: List<Int>): Boolean {
-        return number.all { num -> num >= 1 && num <= 9 }
+        return number.all { num -> num >= Constants.MIN_NUMBER && num <= Constants.MAX_NUMBER }
     }
 
     fun isNotDuplicate(number: List<Int>): Boolean {
