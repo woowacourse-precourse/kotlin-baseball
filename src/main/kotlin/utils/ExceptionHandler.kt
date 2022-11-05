@@ -5,6 +5,10 @@ object ExceptionHandler {
         if (answer.length != expectedLength) throw IllegalArgumentException(Constants.LENGTH_MISMATCH_EXCEPTION)
     }
 
+    fun <E> validateListLengthOrException(list: List<E>, expectedLength: Int) {
+        if (list.size != expectedLength) throw IllegalArgumentException(Constants.LENGTH_MISMATCH_EXCEPTION)
+    }
+
     fun validateDigitOrException(ch: Char): Int {
         val digit = ch.digitToIntOrNull() ?: throw IllegalArgumentException(Constants.NON_DIGIT_EXCEPTION)
         validateRangeOrException(digit)
