@@ -1,7 +1,7 @@
 package domain
 
 abstract class Role(
-    private val numbers: List<Int> = listOf()
+    private val numbers: List<Int>
 ) {
     fun find(index: Int): Int = numbers[index]
     fun contains(number: Int): Boolean = numbers.contains(number)
