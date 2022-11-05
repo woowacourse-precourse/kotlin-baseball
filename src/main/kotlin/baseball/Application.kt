@@ -87,6 +87,7 @@ private fun checkBallAndStrike(userInputList: List<Int>, answerList: List<Int>):
         ballCount += checkBallCount(userInputList[userInputPosition], userInputPosition, answerList)
         strikeCount += checkStrikeCount(userInputList[userInputPosition], userInputPosition, answerList)
     }
+    printResult(strikeCount, ballCount)
     return strikeCount == GAME_CLEAR
 }
 
@@ -106,4 +107,24 @@ private fun checkStrikeCount(userInputEach: Int, userInputPosition: Int, answerL
         }
     }
     return 0
+}
+
+private fun printResult(strikeCount: Int, ballCount: Int) {
+    if (strikeCount == 0 && ballCount == 0) {
+        println("낫싱")
+    }
+    if (strikeCount == GAME_CLEAR) {
+        println("${strikeCount}스트라이크")
+        print("${strikeCount}개의 숫자를 모두 맞히셨습니다! ")
+        println("게임 종료")
+    }
+    if (strikeCount in 1 until INPUT_LENGTH_STANDARD && ballCount in 1 until INPUT_LENGTH_STANDARD) {
+        println("${ballCount}볼 ${strikeCount}스트라이크")
+    }
+    if (strikeCount in 1 until INPUT_LENGTH_STANDARD && ballCount == 0) {
+        println("${strikeCount}스트라이크")
+    }
+    if (strikeCount == 0 && ballCount in 1..INPUT_LENGTH_STANDARD) {
+        println("${ballCount}볼")
+    }
 }
