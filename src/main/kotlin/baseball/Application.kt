@@ -1,10 +1,11 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun inputNumber(): String? {//숫자 입력
     print("숫자를 입력해주세요 : ")
-    val inputNumber = readLine()//string
+    val inputNumber = Console.readLine()//String
 
     return inputNumber
 }
