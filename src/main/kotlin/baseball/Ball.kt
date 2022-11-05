@@ -30,8 +30,8 @@ class Ball {
     fun checkBall(ballNum : Int) : Boolean = this.number == ballNum
 
 
-    override fun equals(other: Any?): Boolean {
-        if(other is Ball) return other.number == this.number && other.position == this.position
-        return false
+    override fun equals(other: Any?): Boolean = when(other) {
+        is Ball -> other.number == this.number && other.position == this.position
+        else -> false
     }
 }
