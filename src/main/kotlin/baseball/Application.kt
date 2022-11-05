@@ -49,20 +49,23 @@ fun compareNumber(userNumberList : List<Int>, comNumberList : List<Int>) : Mutab
 }
 
 fun checkBallCount(ballCheckList: MutableList<Int>): MutableList<Int> {
+    val checkCount : MutableList<Int> = mutableListOf(0, 0, 0)
 
     ballCheckList.forEach {
-        when (it) {
-            0 -> ballCheckList[0]++
-            1 -> ballCheckList[1]++
-             else -> ballCheckList[2]++
+        when(it) {
+            0 -> checkCount[0]++
+            1 -> checkCount[1]++
+            else -> checkCount[2]++
         }
     }
-    return ballCheckList
+    return checkCount
 }
 
 fun main() {
     val userNumbers = userInput()
-    val comNumbers = comInput()
+//    val comNumbers = comInput()
+
+    val comNumbers : MutableList<Int> = mutableListOf(3, 5, 6)
 
     val gameResult = compareNumber(userNumbers, comNumbers)
 
