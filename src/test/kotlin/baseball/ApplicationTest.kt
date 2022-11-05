@@ -63,6 +63,21 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `문자열 속 문자가 모두 다른 문자인지 확인하는 기능 예외 테스트`() {
+        val noSameCharacterVerifier = NoSameCharacterVerifier()
+
+        assertSimpleTest {
+            assertThat(noSameCharacterVerifier.verify("123"))
+
+            assertThrows<IllegalArgumentException> {
+                noSameCharacterVerifier.verify(
+                    "122"
+                )
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
