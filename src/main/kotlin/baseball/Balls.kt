@@ -30,10 +30,8 @@ class Balls {
     }
 
     fun playGame(ball : Ball) : String {
-        balls.forEach{
-            if(!it.playGame(ball).equals("Nothing"))
-                return it.playGame(ball)
-        }
+        balls.filterNot { it.playGame(ball).equals("Nothing") }
+            .forEach{ return it.playGame(ball) }
         return "Nothing"
     }
 }
