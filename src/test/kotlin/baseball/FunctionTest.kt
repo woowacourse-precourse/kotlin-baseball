@@ -42,6 +42,15 @@ class FunctionTest : NsTest() {
     }
 
     @Test
+    fun `유저 중복 문자 입력 검사`() {
+        assertThrows<IllegalArgumentException>() {
+            val input = "133";
+            System.setIn(input.byteInputStream());
+            getUserInput(false)
+        }
+    }
+
+    @Test
     fun `게임 재시작 입력`() {
         val input = "1";
         System.setIn(input.byteInputStream());
