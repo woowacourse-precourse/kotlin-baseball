@@ -4,51 +4,58 @@ import camp.nextstep.edu.missionutils.Console
 
 object Game {
     var input = ""
-    fun gameStart(){
+    fun gameStart() {
         println("숫자 야구 게임을 시작합니다.")
         Computer.getCorrectRandomNumber()
-        while(true){
+        while (true) {
             print("숫자를 입력해주세요 : ")
             input = Console.readLine()
-            if(checkInputValueException(input)){
+            if (checkInputValueException(input)) {
                 require(false)
             }
         }
     }
-    private fun checkInputValueException(inputValue: String) : Boolean{
+
+    private fun checkInputValueException(inputValue: String): Boolean {
         var checkExceptionFlag = false
-        if(!checkInputLengthThree(inputValue) || !checkInputValueIsNumber(inputValue) || !checkInputDuplication(inputValue)){
+        if (!checkInputLengthThree(inputValue) || !checkInputValueIsNumber(inputValue) || !checkInputDuplication(
+                inputValue
+            )
+        ) {
             checkExceptionFlag = true
         }
         return checkExceptionFlag
     }
 
-    private fun checkInputValueIsNumber(inputValue : String) : Boolean{
+    private fun checkInputValueIsNumber(inputValue: String): Boolean {
         var checkFlag = false
-        inputValue.forEach {
-            if(it.code in 49..57){
+        for (splitString in inputValue) {
+
+            if (splitString.isDigit()) {
                 checkFlag = true
+            } else if (!splitString.isDigit()) {
+                checkFlag = false
+                break
             }
         }
         return checkFlag
     }
 
-    private fun checkInputLengthThree(inputValue : String): Boolean{
+    private fun checkInputLengthThree(inputValue: String): Boolean {
         var checkFlag = false
-        if(inputValue.length==3){
+        if (inputValue.length == 3) {
             checkFlag = true
         }
         return checkFlag
     }
 
-    private fun checkInputDuplication(inputValue : String) : Boolean{
+    private fun checkInputDuplication(inputValue: String): Boolean {
         var checkFlag = false
-        for(stringSplit in inputValue){
-            val splitCount = inputValue.count{it==stringSplit}
-            if(splitCount<=1){
-                checkFlag=true
-            }
-            else{
+        for (stringSplit in inputValue) {
+            val splitCount = inputValue.count { it == stringSplit }
+            if (splitCount <= 1) {
+                checkFlag = true
+            } else {
                 checkFlag = false
                 break
             }
