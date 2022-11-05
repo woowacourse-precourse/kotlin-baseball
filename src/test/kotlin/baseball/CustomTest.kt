@@ -40,13 +40,25 @@ class CustomTest : NsTest() {
 
     @Test
     fun `바로 통과 후 재시작 안할 경우`() {
-        assertRandomNumberInRangeTest(
+        Assertions.assertRandomNumberInRangeTest(
             {
                 run("523", "2")
-                assertThat(output())
+                org.assertj.core.api.Assertions.assertThat(output())
                     .contains("3스트라이크")
             },
             5, 2, 3
+        )
+    }
+
+    @Test
+    fun `바로 통과 후 재시작 할 경우`() {
+        Assertions.assertRandomNumberInRangeTest(
+            {
+                run("523", "1", "123", "2")
+                org.assertj.core.api.Assertions.assertThat(output())
+                    .contains("3스트라이크")
+            },
+            5, 2, 3, 1, 2, 3
         )
     }
 }
