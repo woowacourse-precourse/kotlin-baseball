@@ -40,7 +40,17 @@ fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Int {
     return playerSet.intersect(computerSet).size
 }
 
-fun equalCounter(): Boolean {
+fun equalCounter(
+    playerMap: HashMap<Char, Int>,
+    computerMap: HashMap<Char, Int>,
+    intersectSet: Set<Char>
+): Boolean {
+
+    intersectSet.forEach { c ->
+        if (playerMap.getValue(c) == computerMap.getValue(c)) {
+            return true
+        }
+    }
     TODO("맵에서 공통 원소의 value가 같은지 확인(스트라이크)하는 함수 구현")
 }
 
