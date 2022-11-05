@@ -17,6 +17,6 @@
  - answer function - 정답 함수
  - gameProgress function - 게임진행 함수
 
-### Logic class - 로직 클래스
+### GameLogic class - 게임로직 클래스
  - init function - 초기화 함수
  - Comparison function - 비교 함수
