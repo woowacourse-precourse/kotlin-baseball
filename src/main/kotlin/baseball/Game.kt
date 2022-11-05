@@ -8,7 +8,7 @@ object Game {
         println("숫자 야구 게임을 시작합니다.")
         Computer.getCorrectRandomNumber()
         while(true){
-
+            print("숫자를 입력해주세요 : ")
             input = Console.readLine()
             if(checkInputValueException(input)){
                 require(false)
