@@ -82,18 +82,26 @@ fun gameResult(checkCount : MutableList<Int>) : String {
 }
 
 fun main() {
-    val userNumbers = userInput()
-//    val comNumbers = comInput()
+    var retryFlag = true
+    println("숫자 야구 게임을 시작합니다.")
+    var comNumbers = comInput()
 
-    val comNumbers : MutableList<Int> = mutableListOf(3, 5, 6)
+    while(retryFlag) {
+        val userNumbers = userInput()
+        val gameProgress = checkBallCount(compareNumber(userNumbers, comNumbers))
 
-    val gameTest = checkBallCount(compareNumber(userNumbers, comNumbers))
+        println(gameResult(gameProgress))
 
-    println("com : $comNumbers")
-    println("user : $userNumbers")
+        if(gameResult(gameProgress).contains("3스트라이크")) {
+            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            val retry = Console.readLine()!!.toInt()
 
-    println(gameTest)
-
-    println(gameResult(gameTest))
-
+            if(retry == 2) retryFlag = false
+            else if(retry == 1) {
+                comNumbers = comInput()
+                continue
+            }
+            else throw IllegalArgumentException()
+        }
+    }
 }
