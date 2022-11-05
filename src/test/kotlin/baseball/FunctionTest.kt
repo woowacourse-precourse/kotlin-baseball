@@ -49,6 +49,23 @@ class FunctionTest : NsTest() {
     }
 
     @Test
+    fun `스트라이크와 볼 출력 테스트`() {
+        val userNum = listOf<Int>(1, 2, 3)
+        val computerNum = mutableListOf<Int>(8, 2, 1)
+        printBallAndStrike(userNum, computerNum)
+        assertThat(output()).contains("1볼 1스트라이크")
+    }
+
+    @Test
+    fun `낫싱 출력 테스트`() {
+        val userNum = listOf<Int>(1, 2, 3)
+        val computerNum = mutableListOf<Int>(4, 5, 6)
+        val isNothing = checkNothing(userNum, computerNum)
+        printResult(isNothing, userNum, computerNum)
+        assertThat(output()).contains("낫싱")
+    }
+
+    @Test
     fun `재시작 예외 테스트`() {
         assertThrows<IllegalArgumentException> { askQuitOrNot("12") }
     }
