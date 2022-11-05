@@ -1,4 +1,4 @@
-package baseball
+package baseball.model
 
 class BaseBall(
     val computerNumbers : List<Int>,
