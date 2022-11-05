@@ -1,9 +1,17 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val targetNumber: String = createNumber()
+    val targetNumber = createNumber()
+    startGame()
+    val inputNumber = checkValidation(Console.readLine().trim())
+}
+
+fun startGame() {
+    println("숫자 야구 게임을 시작합니다.")
+    print("숫자를 입력해주세요 : ")
 }
 
 fun createNumber(): String {
@@ -15,4 +23,12 @@ fun createNumber(): String {
         }
     }
     return numberList.joinToString("")
+}
+
+
+fun checkValidation(input: String): String {
+    if (input.length != 3 || !input.all { it.isDigit() } || input.isBlank()) {
+        throw IllegalArgumentException("올바르지 않은 입력값입니다.")
+    }
+    return input
 }
