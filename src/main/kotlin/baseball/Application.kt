@@ -18,6 +18,8 @@ fun playGame() {
         print("숫자를 입력해주세요 : ")
         val userNum = Console.readLine().toCharArray()
         exception(userNum)
+
+        val compareResult = compareNum(userNum, computerNum)
     }
 }
 
@@ -40,3 +42,21 @@ fun exception(userNum: CharArray) {
         if(it.digitToInt() !in 1 .. 9) throw IllegalArgumentException("1~9사이의 정수만 사용하세요.")
     }
 }
+
+fun compareNum(userNum: CharArray, computerNum: List<Int>): Array<Int> {
+    val sbn = Array(2) { 0 }
+
+    userNum.forEachIndexed { idx, num ->
+        when (isCondition(idx, num.digitToInt(), computerNum)) {
+            1 -> sbn[0]++
+            2 -> sbn[1]++
+        }
+    }
+
+    return sbn
+}
+
+fun isCondition(index: Int, num: Int, computerNum: List<Int>): Int =
+    if(computerNum.contains(num) && computerNum.indexOf(num) == index) 2
+    else if(computerNum.contains(num) && computerNum.indexOf(num) != index) 1
+    else 0
