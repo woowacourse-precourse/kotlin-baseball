@@ -22,24 +22,12 @@ class BaseballGame(computer: String) {
                 throw IllegalArgumentException("잘못된 값을 입력했습니다.")
             }
 
-            // 예외상황 확인
+
             checkException(userInput)
-
-            // 3볼인지 확인
-            checkThreeBall(userInput)
-
-            // 모두 오답인지 확인
+            checkStrike(userInput)
+            checkBall(userInput)
             checkNothing(userInput)
 
-            // 오답이 2개, 볼이 1개일 때
-            if (ball(userInput) == 1) {
-                println("${ball(userInput)}볼")
-            }
-
-            // 오답이 2개, 스트라이크 1개일 때
-            if (strike(userInput) == 1) {
-                println("${strike(userInput)}스트라이크")
-            }
 
             // 3스트라이크인지 확인
             if (strike(userInput) == 3) {
@@ -53,6 +41,23 @@ class BaseballGame(computer: String) {
         }
     }
 
+    private fun checkStrike(userInput: String) {
+        // 스트라이크 1개
+        if (strike(userInput) == 1) return println("${strike(userInput)}스트라이크")
+
+    }
+
+    private fun checkBall(userInput: String) {
+        // 볼 1개
+        if (ball(userInput) == 1) return println("${ball(userInput)}볼")
+
+        // 볼 2개
+        if (ball(userInput) == 2) return println("${ball(userInput)}볼")
+
+        // 볼 3개
+        if (ball(userInput) == 3) return println("${ball(userInput)}볼")
+    }
+
     fun checkException(userInput: String) {
         if (userInput.length > 3) {
             throw IllegalArgumentException("잘못된 값을 입력했습니다.")
@@ -63,10 +68,6 @@ class BaseballGame(computer: String) {
 
     private fun checkNothing(userInput: String) {
         if (strike(userInput) == 0 && ball(userInput) == 0) return println("낫싱")
-    }
-
-    private fun checkThreeBall(userInput: String) {
-        if (ball(userInput) == 3) return println("${ball(userInput)}볼")
     }
 
 
