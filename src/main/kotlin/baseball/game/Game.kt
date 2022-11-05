@@ -35,11 +35,10 @@ class Game (
 
     /** 게임 결과를 판단하는 함수 **/
     private fun assessResult() {
+        printMessage(message = ballStrikeProcessor.makeBallStateMessage())
+
         if (ballStrikeProcessor.isAllStrike()) {
             successGame()
-        }
-        else {
-            printMessage(message = ballStrikeProcessor.makeBallStateMessage())
         }
     }
 
