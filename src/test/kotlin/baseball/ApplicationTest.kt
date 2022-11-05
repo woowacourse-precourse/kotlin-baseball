@@ -27,6 +27,21 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `문자열 길이 예외 테스트`() {
+        val stringLengthVerifier = StringLengthVerifier(3)
+
+        assertSimpleTest {
+            assertThat(stringLengthVerifier.verify("123"))
+
+            assertThrows<IllegalArgumentException> {
+                stringLengthVerifier.verify(
+                    "1234"
+                )
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
