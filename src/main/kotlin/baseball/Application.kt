@@ -3,16 +3,22 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val computerNumber = createComputerNumber()
-    startGame(computerNumber)
+    var restart = 1
+
+    while (restart == 1) {
+        val computerNumber = createComputerNumber()
+        startGame(computerNumber)
+
+        restart = checkReStart()
+    }
 }
 
 fun startGame(computerNumber: ArrayList<Int>) {
     var SUCCESS = false
     while (!SUCCESS) {
         print("숫자를 입력해주세요 : ")
-        var userInput = readLine()?.toMutableList()
-        val strikeAndBall = checkNumber(computerNumber,userInput)
+        val userInput = readLine()?.toMutableList()
+        val strikeAndBall = checkNumber(computerNumber,userInput!!)
 
         if (strikeAndBall[0] == 3) {
             println("${strikeAndBall[0]}스트라이크")
@@ -22,10 +28,10 @@ fun startGame(computerNumber: ArrayList<Int>) {
         else if (strikeAndBall[0] != 0 && strikeAndBall[1] != 0) {
             println("${strikeAndBall[1]}볼 " + "${strikeAndBall[0]}스트라이크")
         }
-        else if (strikeAndBall[0]!=0) {
+        else if (strikeAndBall[0] != 0) {
             println("${strikeAndBall[0]}스트라이크")
         }
-        else if (strikeAndBall[1]!=0) {
+        else if (strikeAndBall[1] != 0) {
             println("${strikeAndBall[1]}볼")
         }
         else {
@@ -34,15 +40,21 @@ fun startGame(computerNumber: ArrayList<Int>) {
     }
 }
 
-fun checkNumber(computerNumber: ArrayList<Int>, userInput: MutableList<Char>?): Array<Int> {
+fun checkReStart() : Int {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val restart = readLine()?.toInt()
+
+    return restart!!
+}
+fun checkNumber(computerNumber: ArrayList<Int>, userInput: MutableList<Char>): Array<Int> {
     // strikeAndBall[0] -> 스트라이크, strikeAndBall[1] -> 볼
-    var strikeAndBall = Array<Int>(2) {0}
+    val strikeAndBall = Array(2) {0}
 
     for (i in 0 until 3) {
-        if (computerNumber[i] == userInput!![i].digitToInt()) {
+        if (computerNumber[i] == userInput[i].digitToInt()) {
             strikeAndBall[0]++
         }
-        else if (computerNumber.contains(userInput!![i].digitToInt())) {
+        else if (computerNumber.contains(userInput[i].digitToInt())) {
             strikeAndBall[1]++
         }
     }
