@@ -97,5 +97,26 @@ private fun isUserAnswerWrong(computerNumber: String, inputNumber: String): Bool
         }
     }
 
+    return isWrongNumber(ballCount, strikeCount)
+}
+
+private fun isWrongNumber(ballCount: Int, strikeCount: Int): Boolean {
+    if (strikeCount == 3) {
+        println("3스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        return false
+    }
+    if (ballCount == 0 && strikeCount == 0) {
+        println("낫싱")
+        return true
+    }
+
+    if (ballCount == 0)
+        println("${strikeCount}스트라이크")
+    if (strikeCount == 0)
+        println("${ballCount}볼")
+    if (ballCount != 0 && strikeCount != 0)
+        println("${ballCount}볼 ${strikeCount}스트라이크")
     return true
 }
