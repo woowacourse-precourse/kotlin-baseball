@@ -2,12 +2,17 @@ package baseball
 
 class Ball {
 
+    companion object {
+        const val MINNUM = 1
+        const val MAXNUM = 9
+    }
+
     var number : Int
     var position : Int
 
     constructor(number: Int, position: Int) {
 
-        if(number < 1 || number > 9) {
+        if(number < MINNUM || number > MAXNUM) {
             throw IllegalArgumentException("1에서 9사이의 숫자여야 합니다.")
         }
         this.number = number
