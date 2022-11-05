@@ -15,13 +15,8 @@ abstract class Hint(
     }
 
     abstract fun print()
-
     protected abstract fun calculate()
-
     protected fun plusStrike() = strike++
-
     protected fun plusBall() = ball++
-
     internal fun provideStrikeAndBall(): Pair<Int, Int> = Pair(strike, ball)
-
 }

@@ -34,5 +34,4 @@ class BaseballHint(
             computer.contains(player.find(index)) -> plusBall()
         }
     }
-
 }
