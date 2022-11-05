@@ -8,13 +8,13 @@ class User {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine()
         val guessNumbers = input.toList().map { it.code.plus(-48) }
-        if (isException(guessNumbers)) {
+        if (isGuessInputException(guessNumbers)) {
             throw IllegalArgumentException("잘못된 입력입니다.")
         }
         return guessNumbers
     }
 
-    fun isException(guessInput: List<Int>): Boolean {
+    fun isGuessInputException(guessInput: List<Int>): Boolean {
         if (guessInput.size != 3) {
             return true
         }
