@@ -14,7 +14,7 @@ fun printEnd() {
 }
 
 fun printContinue() {
-    TODO("새로 게임을 하려는지 문구 출력 및 입력 받는 함수 구현")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
 
 fun getInput(): String {
