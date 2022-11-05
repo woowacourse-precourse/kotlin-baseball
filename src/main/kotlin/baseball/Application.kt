@@ -14,23 +14,24 @@ const val MAX_NUMBER = 9
 
 fun main() {
     startGameAtFirst()
-    getUserInput()
+
 }
 
 private fun startGameAtFirst() {
     println("숫자 야구 게임을 시작합니다.")
     val answerList = getRandomNumberList()
-
+    getUserInput()
 }
 
-private fun getRandomNumberList() {
+private fun getRandomNumberList(): List<Int> {
     val randomList = mutableListOf<Int>()
     while (randomList.size < INPUT_LENGTH_STANDARD) {
         val newRandomNum = getEachRandomNumber()
-        if (!checkNumberIsContained("Rand",newRandomNum, randomList)) {
+        if (!checkNumberIsContained("Rand", newRandomNum, randomList)) {
             randomList.add(newRandomNum)
         }
     }
+    return randomList
 }
 
 private fun getEachRandomNumber(): Int {
