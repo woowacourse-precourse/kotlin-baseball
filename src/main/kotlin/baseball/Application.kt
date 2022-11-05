@@ -55,20 +55,16 @@ private fun isDifferentNum(num: Int): Boolean {
 }
 
 private fun getBallAndStrike(inputNum: Int): Pair<Int, Int> {
-    var ball = 0
+    val set = mutableSetOf<Int>()
     var strike = 0
 
-    randomNum.toString().forEachIndexed { i, digitOne ->
-        inputNum.toString().forEachIndexed EXIT@{ j, digitTwo ->
-            if (i == j && digitOne == digitTwo) {
-                strike += 1
-                return@EXIT
-            } else if (i != j && digitOne == digitTwo) {
-                ball += 1
-                return@EXIT
-            }
-        }
+    inputNum.toString().map { set.add(it.toString().toInt()) }
+    randomNum.toString().map { set.add(it.toString().toInt()) }
+    (0..2).forEach {
+        if (inputNum.toString()[it] == randomNum.toString()[it])
+            strike += 1
     }
+    val ball = 6 - set.size - strike
 
     return Pair(ball, strike)
 }
