@@ -20,3 +20,4 @@
 ### GameLogic class - 게임로직 클래스
  - gameStart function - 게임초기화 함수
  - comparison function - 비교 함수
+ - userNumToList function - 유저넘버리스트 함수
