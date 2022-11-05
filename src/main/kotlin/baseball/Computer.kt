@@ -4,13 +4,18 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 object Computer {
+    const val INPUT_MAX_SIZE = 3
+    const val INPUT_MAX_VALUE = 9
+    const val INPUT_MIN_VALUE = 1
+    const val INPUT_GAME_RESTART = "1"
+    const val INPUT_GAME_STOP = "2"
     var strike = 0
     var ball = 0
     private val correctNumber = mutableListOf<Int>()
     fun getCorrectRandomNumber() {
         correctNumber.clear()
-        while (correctNumber.size < 3) {
-            val randomNumber = Randoms.pickNumberInRange(1, 9)
+        while (correctNumber.size < INPUT_MAX_SIZE) {
+            val randomNumber = Randoms.pickNumberInRange(INPUT_MIN_VALUE, INPUT_MAX_VALUE)
             if (!correctNumber.contains(randomNumber)) {
                 correctNumber.add(randomNumber)
             }
@@ -55,9 +60,9 @@ object Computer {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         var input = Console.readLine()
-        if (input == "1") {
+        if (input == INPUT_GAME_RESTART) {
             getCorrectRandomNumber()
-        } else if (input == "2") {
+        } else if (input == INPUT_GAME_STOP) {
             println("게임종료")
             Game.gameStop = true
         } else if (input != "1" && input != "2") {

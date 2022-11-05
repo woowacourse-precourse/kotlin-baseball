@@ -48,7 +48,7 @@ object Game {
 
     private fun checkInputLengthThree(inputValue: String): Boolean {
         var checkFlag = false
-        if (inputValue.length == 3) {
+        if (inputValue.length == Computer.INPUT_MAX_SIZE) {
             checkFlag = true
         }
         return checkFlag
