@@ -69,4 +69,21 @@ class FunctionTest {
         val result = compareNumber(randomNumber, userNumber, 0)
         assertThat(result).isEqualTo(Score.NOTHING)
     }
+
+    @Test
+    fun `점수 결정 1`() {
+        val randomNumber = "641";
+        val userNumber = "246";
+        val result = determineScore(randomNumber, userNumber)
+        assertThat(result).containsExactly(1, 1, 1)
+    }
+
+    @Test
+    fun `점수 결정 2`() {
+        val randomNumber = "531";
+        val userNumber = "741";
+        val result = determineScore(randomNumber, userNumber)
+        assertThat(result).containsExactly(2, 1, 0)
+    }
+
 }
