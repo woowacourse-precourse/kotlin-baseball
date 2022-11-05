@@ -7,14 +7,15 @@ class Ball {
         const val MAXNUM = 9
     }
 
-    var number : Int
-    var position : Int
+    val number : Int
+    val position : Int
 
     constructor(number: Int, position: Int) {
 
         if(number < MINNUM || number > MAXNUM) {
             throw IllegalArgumentException("1에서 9사이의 숫자여야 합니다.")
         }
+
         this.number = number
         this.position = position
     }
