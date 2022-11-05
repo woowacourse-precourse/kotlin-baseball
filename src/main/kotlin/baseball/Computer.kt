@@ -29,6 +29,7 @@ object Computer {
         }
         printCurrentScore()
     }
+
     fun printCurrentScore(){
         if(strike==0 && ball==0){
             println("낫싱")
@@ -39,7 +40,7 @@ object Computer {
         else if(strike>0 && ball==0){
             println("${strike}스트라이크")
             if(strike==3){
-                //게임 오버
+                gameOver()
             }
         }
         else if(strike>0 && ball>0){
@@ -47,5 +48,20 @@ object Computer {
         }
         strike=0
         ball=0
+    }
+
+    fun gameOver(){
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        var input = Console.readLine()
+        if(input=="1"){
+            getCorrectRandomNumber()
+        }
+        else if(input=="2"){
+            println("게임종료")
+        }
+        else if(input!="1" && input!="2"){
+            require(false)
+        }
     }
 }
