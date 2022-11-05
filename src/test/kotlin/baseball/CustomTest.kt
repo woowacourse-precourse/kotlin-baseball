@@ -16,4 +16,11 @@ class CustomTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("6r4") }
         }
     }
+
+    @Test
+    fun `길이 3이상 입력시 에러 반환여부 체크`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("6547") }
+        }
+    }
 }
