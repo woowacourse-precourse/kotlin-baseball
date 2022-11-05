@@ -22,9 +22,6 @@ class BaseBallController {
         do {
             OutputView().printInputNumber()
             val playerNumbers = PlayerNumber().inputPlayerNumber()
-            if (!Validations.isNumberException(playerNumbers)) {
-                throw IllegalArgumentException()
-            }
             val baseBall = BaseBall(computerNumbers, playerNumbers)
             val strike = baseBall.getStrikeCount()
             val ball = baseBall.getBallCount()
