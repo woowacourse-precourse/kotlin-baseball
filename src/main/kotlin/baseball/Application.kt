@@ -71,7 +71,7 @@ fun generateRandomNumber(): String {
     val randomNumber = StringBuilder()
     while (randomNumber.length < 3) {
         val generatedNumber = Randoms.pickNumberInRange(1, 9)
-        if (!randomNumber.contains(generatedNumber.toChar())) {
+        if (randomNumber.isEmpty() || randomNumber.indexOf(generatedNumber.toString()) == -1) {
             randomNumber.append(generatedNumber)
         }
     }
