@@ -13,7 +13,7 @@ fun main() {
     makeRandomNumber()
 
     while (true) {
-        when (isRepeat()) {
+        when (solution()) {
             RESTART -> continue
             FINISH -> break
             else -> throw IllegalArgumentException("1 또는 2를 입력하세요.")
@@ -32,7 +32,7 @@ private fun makeRandomNumber() {
     randomNum = computer.joinToString("").toInt()
 }
 
-private fun isRepeat(): Int {
+private fun solution(): Int {
     val inputNum = inputGuessNumber()
     if (isRightInput(inputNum)) {
         val (ball, strike) = getBallAndStrike(inputNum)
