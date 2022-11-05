@@ -21,7 +21,6 @@ fun main() {
         val isQuit = askQuitOrNot()
     } while (isQuit)
 
-
 }
 
 fun createComputerNumber(): MutableList<Int> {
@@ -39,7 +38,7 @@ fun readUserNumber(): List<Int> {
     val input = Console.readLine()
     println(input)
 
-    checkWrongInput(input)
+    checkException(input)
 
     return input.map { it.digitToInt() }
 }
@@ -102,7 +101,7 @@ fun askQuitOrNot(): Boolean {
     return false
 }
 
-fun checkWrongInput(input: String) {
+fun checkException(input: String) {
     if (input.length != 3)
         throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 
