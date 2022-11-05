@@ -7,8 +7,24 @@ class User {
     fun getGuessInput(): List<Int> {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine()
-        // TODO 예외 사항 체크
-        return input.toList().map { it.code.plus(-48) }
+        val guessNumbers = input.toList().map { it.code.plus(-48) }
+        if (isException(guessNumbers)) {
+            throw IllegalArgumentException("잘못된 입력입니다.")
+        }
+        return guessNumbers
+    }
+
+    fun isException(guessInput: List<Int>): Boolean {
+        if (guessInput.size != 3) {
+            return true
+        }
+        if (guessInput.contains(0)) {
+            return true
+        }
+        if (guessInput.toSet().size != 3) {
+            return true
+        }
+        return false
     }
 
     fun getRestartOrNotInput(): Int {
