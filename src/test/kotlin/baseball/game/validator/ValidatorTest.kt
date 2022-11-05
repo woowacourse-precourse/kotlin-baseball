@@ -34,4 +34,25 @@ class ValidatorTest {
             assertThrows<IllegalArgumentException> { inputValidator.validateGameInput("12c") }
         }
     }
+
+    @Test
+    fun `종료 여부 입력이 숫자가 아니면 예외 발생`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { inputValidator.validateEndInput("a") }
+        }
+    }
+
+    @Test
+    fun `종료 여부 입력이 1자리 숫자가 아니면 예외 발생`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { inputValidator.validateEndInput("12") }
+        }
+    }
+
+    @Test
+    fun `종료 여부 입력이 1 또는 2가 아니면 예외 발생`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { inputValidator.validateEndInput("3") }
+        }
+    }
 }
