@@ -39,6 +39,12 @@ class CorrectAnswerTest {
         assertCheck("123", "783", 1, 0)
     }
 
+    @Test
+    fun `오답 1개, 볼 2개일 때 볼 2개 반환`() {
+        assertCheck("123", "412", 0, 2)
+    }
+
+
 
     private fun assertCheck(
         computerInput: String,
