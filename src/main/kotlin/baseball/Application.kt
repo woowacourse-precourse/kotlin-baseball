@@ -36,8 +36,8 @@ fun equalChecker(v2: Int): Boolean {
     TODO("v2 == 3 확인하는 함수")
 }
 
-fun intersectCounter(): Boolean {
-    TODO("셋에서 공통 원소가 있는지 확인(볼/스트라이크)하는 함수 구현")
+fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Int {
+    return playerSet.intersect(computerSet).size
 }
 
 fun equalCounter(): Boolean {
