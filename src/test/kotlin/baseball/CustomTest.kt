@@ -85,4 +85,16 @@ class CustomTest : NsTest() {
             3, 2, 5
         )
     }
+
+    @Test
+    fun `2볼 1스트라이크 후 통과 - 재시작 X `() {
+        Assertions.assertRandomNumberInRangeTest(
+            {
+                run("523", "325", "2")
+                org.assertj.core.api.Assertions.assertThat(output())
+                    .contains("2볼 1스트라이크", "3스트라이크")
+            },
+            3, 2, 5
+        )
+    }
 }
