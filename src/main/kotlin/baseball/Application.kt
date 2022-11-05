@@ -9,9 +9,17 @@ fun main() {
 }
 
 fun playNumberBaseball() {
-    val answerNumber = createRandomAnswerNumber()
-    print("숫자를 입력해주세요 : ")
-    val userInputNumber = Console.readLine().toInt()
+    val answerNumber = createRandomAnswerNumber().toString()
+    do {
+        print("숫자를 입력해주세요 : ")
+        val userInputNumber = Console.readLine()
+        if (userInputNumber == answerNumber) {
+            break
+        }
+
+        var ballCount = countBallAndStrike(userInputNumber, answerNumber)
+
+    } while (true)
 }
 
 fun createRandomAnswerNumber(): Int {
@@ -23,4 +31,20 @@ fun createRandomAnswerNumber(): Int {
         }
     }
     return randomNumbers[0] * 100 + randomNumbers[1] * 10 + randomNumbers[2]
+}
+
+fun countBallAndStrike(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
+    var strike = 0
+    var ball = 0
+    for (index in answerNumber.indices) {
+        if (answerNumber[index] == userInputNumber[index]) {
+            strike++
+            continue
+        }
+        if (answerNumber.contains(userInputNumber[index])) {
+            ball++
+        }
+    }
+
+    return Pair(ball, strike)
 }
