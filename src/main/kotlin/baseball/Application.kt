@@ -62,9 +62,7 @@ fun checkBallCount(ballCheckList: MutableList<Int>): MutableList<Int> {
 }
 
 fun gameResult(checkCount : MutableList<Int>) : String {
-    var gameResultMessage = ""
-
-    gameResultMessage = if(checkCount[1] == 3) {
+    val gameResultMessage = if(checkCount[1] == 3) {
         "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
     }
     else if(checkCount[2] == 3) {
