@@ -16,6 +16,8 @@ fun main() {
         if (!isCorrectNumber(player)) {
             throw IllegalArgumentException()
         }
+
+        val strikeNum = getStrikeNum(computer, player)
     }
 }
 
@@ -45,4 +47,20 @@ fun isCorrectNumber(player: String): Boolean {
         return false
 
     return true
+}
+
+fun getStrikeNum(computer: List<Int>, player: String): Int {
+    var strikeNum = 0
+    for(i in computer.indices) {
+        val computerNumber = computer[i]
+        val playerNumber = player[i] - '0'
+        if(computerNumber == playerNumber)
+            strikeNum++
+    }
+    return strikeNum
+}
+
+
+fun getBallNum(computer: List<Int>, player: String): Int {
+    TODO()
 }
