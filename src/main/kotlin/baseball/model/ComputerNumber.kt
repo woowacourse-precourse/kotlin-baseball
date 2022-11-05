@@ -9,10 +9,14 @@ class ComputerNumber {
             val randomNumber = pickRandomNumber()
             computer.add(randomNumber)
         }
-        return computer.toList()
+        return convertSetToList(computer)
     }
 
     private fun pickRandomNumber(): Int {
         return Randoms.pickNumberInRange(1, 9)
+    }
+
+    private fun convertSetToList(computer: Set<Int>): List<Int> {
+        return computer.toList()
     }
 }
