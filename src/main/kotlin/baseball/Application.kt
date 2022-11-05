@@ -64,67 +64,67 @@ fun getPlayerNumber(player: MutableList<Int>){
     }
 }
 
-fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
+fun compareNumber(computer: List<Int>, player: List<Int>) : Boolean{
     var strike = 0
     var ball = 0
     var message = ""
 
-    for(i in 0 until 3){
-        for(j in 0 until 3){
-            if(player[i] == computer[j]){
-                if(i != j){
+    for (i in 0 until 3) {
+        for (j in 0 until 3) {
+            if (player[i] == computer[j]) {
+                if (i != j) {
                     ball += 1
-                }
-                else {
+                } else {
                     strike += 1
                 }
             }
         }
     }
 
-    if(strike == 3){
-        message = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-        println(message)
-        return true
+    if (ball >= 1) {
+        message = "${ball}볼 "
+
     }
 
-    if(ball >= 1){
-        message = "$ball 볼 "
+    if (strike >= 1) {
+        message += "${strike}스트라이크"
     }
 
-    if(strike >= 1){
-        message += "$strike 스트라이크"
-    }
-
-    if(ball == 0 && strike == 0){
+    if (ball == 0 && strike == 0) {
         message = "낫싱"
     }
 
     println(message)
 
+    if (strike == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        return true
+    }
+
     return false
 }
 
-fun getReplaySignal() : Boolean{
-    var input = ""
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    fun getReplaySignal(): Boolean {
+        var input = ""
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
-    while(true) {
-        input = readLine()!!
-        // 예외 처리
-        if (!Pattern.matches("^[1-2]{1}$", input)) {
-            println("1과 2 중 하나를 입력해 주세요.")
-            continue
+        while (true) {
+            input = readLine()!!
+            // 예외 처리
+            if (!Pattern.matches("^[1-2]{1}$", input)) {
+                println("1과 2 중 하나를 입력해 주세요.")
+                continue
+            }
+            break
         }
-        break
+
+        when (input.toInt()) {
+            1 -> input = "false"
+            2 -> input = "true"
+        }
+
+        return input.toBoolean()
     }
 
-    when(input.toInt()){
-        1 -> input = "false"
-        2 -> input = "true"
-    }
-
-    return input.toBoolean()
-}
 
 
