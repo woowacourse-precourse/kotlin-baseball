@@ -1,18 +1,14 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.system.exitProcess
 
 fun main() {
-    val computerNumList = computerNum()
     println("숫자 야구 게임을 시작합니다.")
-
-    for (i in 0..99) {
-        ballCount(readNum(), computerNumList)
-    }
-
+    startGame()
 }
 
-fun readNum(): MutableList<String> {
+fun readNum(): MutableList<String> { // 사용자가 숫자를 입력받는 함수
         print("숫자를 입력하세요 : ")
         val number = readLine()!!
         val numberArray = number.split("") as MutableList<String>
@@ -30,11 +26,10 @@ fun readNum(): MutableList<String> {
             }
             newArray.add(numberArray[i])
         }
-    println(newArray)
     return newArray
 }
 
-fun computerNum(): MutableList<String> {
+fun computerNum(): MutableList<String> { // 컴퓨터가 랜덤으로 숫자를 정하는 함수
     val computer = mutableListOf<String>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9).toString()
@@ -42,12 +37,11 @@ fun computerNum(): MutableList<String> {
             computer.add(randomNumber)
         }
     }
-    println(computer)
     return computer
 }
 
-fun ballCount(playerList: MutableList<String>, computerList: MutableList<String>): Int {
-
+fun ballCount(playerList: MutableList<String>, computerList: MutableList<String>) {
+    // 스트라이크, 볼의 개수를 세고 출력해주는 함수
     var ball = 0
     var strike = 0
 
@@ -62,20 +56,42 @@ fun ballCount(playerList: MutableList<String>, computerList: MutableList<String>
         }
     }
 
-//    println("볼 개수는 ${ball}개")
-//    println("스트라이크 개수는 ${strike}개")
-
-
     if (ball in 1..3 && strike == 0) {
         println("${ball}볼")
     }
-    else if (strike in 1..3 && ball == 0) {
+    else if (strike in 1..2 && ball == 0) {
         println("${strike}스트라이크")
+
     }
-    else if (ball in 1..3 && strike in 1..3) {
+    else if (ball in 1..3 && strike in 1..2) {
         println("${strike}스트라이크 ${ball}볼")
     }
+    else if (strike == 3 && ball == 0) {
+        println("${strike}스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        reStartExit()
+    }
     else println("낫싱")
+}
 
-    return strike
+fun reStartExit() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
+    val reStart = readLine()!!.toInt()
+    when (reStart) {
+        1 -> {
+            startGame()
+        }
+        2 -> {
+            exitProcess(0)
+        }
+        else -> throw IllegalArgumentException()
+    }
+}
+
+fun startGame() {
+    val computerNumList = computerNum()
+    for (i in 0..100) {
+        //배열이 서로 같아질때 까지 반복해야되는데, 안되서 이걸로 대체함
+        ballCount(readNum(), computerNumList)
+    }
 }
