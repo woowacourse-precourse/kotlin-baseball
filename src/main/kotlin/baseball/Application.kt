@@ -68,6 +68,10 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
         return false
     }
 
+    inputList.forEach { c ->
+        if (c !in '1'..'9') { return false }
+    }
+
     return true
 }
 
