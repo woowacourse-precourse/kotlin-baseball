@@ -1,11 +1,16 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.acosh
 
 fun main() {
     showStartMessage()
 
-    baseballGameStart()
+    var gameFlag = true
+    while (gameFlag) {
+        baseballGameStart()
+        gameFlag = baseballGameEnd()
+    }
 }
 
 fun baseballGameStart() {
@@ -49,10 +54,12 @@ fun compareUserNumAndComputerNum(computer: List<Int>) {
     else if (ballCount != 0 && strikeCount != 0)
         println("${ballCount}볼 ${strikeCount}스트라이크")
 
-    if (strikeCount == 3)
-        baseballGameEnd()
-    else
+    println(computer)
+
+    if (strikeCount != 3) {
         compareUserNumAndComputerNum(computer)
+    }
+
 
 }
 
@@ -77,34 +84,36 @@ fun getNum(): List<Int> {
 }
 
 fun isInValidNum(userNum: String): Boolean {
-    val regex = Regex("^[0-9]{3}\$")
+    val regex = Regex("^[1-9]{3}\$")
     if (regex.matches(userNum))
         return false
 
     return true
 }
 
-fun baseballGameEnd() {
+fun baseballGameEnd(): Boolean {
     showEndMessage()
 
-    when (readLine()!!.toInt()) {
+    return when (readLine()!!.toInt()) {
         1 -> {
-            baseballGameStart()
+            true
         }
+
         2 -> {
-            System.exit(-1)
+            false
         }
+
         else -> {
             throw IllegalArgumentException("Error")
         }
     }
 }
 
-fun showStartMessage(){
+fun showStartMessage() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
-fun showEndMessage(){
+fun showEndMessage() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
