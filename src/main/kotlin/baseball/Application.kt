@@ -1,4 +1,5 @@
 package baseball
+import camp.nextstep.edu.missionutils.Console.readLine
 
 fun printStart() {
     println("숫자 야구 게임을 시작합니다.")
@@ -17,7 +18,7 @@ fun printContinue() {
 }
 
 fun getInput(): String {
-    TODO("수를 문자열로 입력받는 함수 구현")
+    return readLine()
 }
 
 fun listConverter(inputString: String): ArrayList<String> {
