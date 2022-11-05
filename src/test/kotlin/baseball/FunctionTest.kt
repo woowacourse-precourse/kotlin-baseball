@@ -45,4 +45,28 @@ class FunctionTest {
         val result = getUserInput(true)
         assertThat(result).contains("1")
     }
+
+    @Test
+    fun `스트라이크 검출`() {
+        val randomNumber = "135";
+        val userNumber = "132";
+        val result = compareNumber(randomNumber, userNumber, 0)
+        assertThat(result).isEqualTo(Score.STRIKE)
+    }
+
+    @Test
+    fun `볼 검출`() {
+        val randomNumber = "246";
+        val userNumber = "421";
+        val result = compareNumber(randomNumber, userNumber, 1)
+        assertThat(result).isEqualTo(Score.BALL)
+    }
+
+    @Test
+    fun `낫싱 검출`() {
+        val randomNumber = "135";
+        val userNumber = "246";
+        val result = compareNumber(randomNumber, userNumber, 0)
+        assertThat(result).isEqualTo(Score.NOTHING)
+    }
 }
