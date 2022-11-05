@@ -59,6 +59,7 @@ object Computer {
         }
         else if(input=="2"){
             println("게임종료")
+            Game.gameStop=true
         }
         else if(input!="1" && input!="2"){
             require(false)
