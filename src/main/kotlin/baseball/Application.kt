@@ -2,13 +2,10 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
-import camp.nextstep.edu.missionutils.test.Assertions
-import org.junit.jupiter.api.function.Executable
-import org.mockito.ArgumentMatchers
-import org.mockito.MockedStatic.Verification
 
 fun main() {
     var computer = getComputerRandomNumber()
+    println(computer)
     println("숫자 야구 게임을 시작합니다.")
     while (true) {
         print("숫자를 입력해주세요 : ")
@@ -98,12 +95,16 @@ fun printBallNStrike(strikeNum: Int, ballNum: Int): Pair<Boolean, List<Int>?> {
     return isGameOver
 }
 
+// 게임을 완전히 종료할 것인지(2) 재시작할 것인지(1), 그리고 재시작 한다면 새로운 컴퓨터 랜덤 숫자를 만들어서 보내준다.
 fun choiceGameOver(): Pair<Boolean, List<Int>?> {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     return when (Console.readLine()) {
         "1" -> Pair(false, getComputerRandomNumber())
         "2" -> Pair(true, null)
-        else -> throw IllegalArgumentException()
+        else ->  {
+            Pair(true, null)
+            throw IllegalArgumentException()
+        }
     }
 }
