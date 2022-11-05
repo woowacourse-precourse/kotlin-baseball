@@ -83,5 +83,17 @@ private fun checkBallAndStrike(userInputList: List<Int>, answerList: List<Int>):
     var strikeCount = 0
     var ballCount = 0
 
+    for (userInputPosition in userInputList.indices) {
+        ballCount += checkBallCount(userInputList[userInputPosition], userInputPosition, answerList)
+    }
     return strikeCount == GAME_CLEAR
+}
+
+private fun checkBallCount(userInputEach: Int, userInputPosition: Int, answerList: List<Int>): Int {
+    for (answerPosition in answerList.indices) {
+        if (answerList[answerPosition] == userInputEach && userInputPosition != answerPosition) {
+            return 1
+        }
+    }
+    return 0
 }
