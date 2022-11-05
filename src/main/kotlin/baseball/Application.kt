@@ -2,6 +2,11 @@ package baseball
 
 import camp.nextstep.edu.missionutils.*
 
+const val RESTART = 0
+const val END = 2
+const val INPUT_RESTART = 1
+const val IN_GAME = 3
+
 fun main() {
     /**
      * 기능목록
@@ -31,16 +36,16 @@ fun main() {
     /** 게임 시작 문구 출력 */
     println("숫자 야구 게임을 시작합니다.")
 
-    var gameStatusFlag = 3
+    var gameStatusFlag = IN_GAME
     var listOfCreatedNumber = createRandomNumber()
 
     while (true) {
-        if (gameStatusFlag == 0) {
+        if (gameStatusFlag == RESTART) {
             /** 랜덤한 숫자를 생성해 리스트에 저장 */
             listOfCreatedNumber = createRandomNumber()
-            gameStatusFlag = 3
+            gameStatusFlag = IN_GAME
         }
-        if (gameStatusFlag == 3) {
+        if (gameStatusFlag == IN_GAME) {
             /** 숫자 입력 문구 출력 */
             print("숫자를 입력해주세요 : ")
 
@@ -68,18 +73,25 @@ fun main() {
             /** 확인 결과 출력 */
             println(resultOfCheckBothNumbers)
 
-
+            /**
+             * 확인 결과가 3스트라이크 아닐경우 3번으로 돌아감
+             * 3스트라이크면 게임종료 텍스트 출력 및 게임 재시작 혹은 종료 출력
+             * 예외처리 및 프로그램 종료
+             * 재시작을 누르면 2번으로 복귀
+             * 종료를 누르면 프로그램 종료
+             * */
             gameStatusFlag = checkGameStatus(resultOfCheckBothNumbers)
         }
-        if (gameStatusFlag == 2) {
+        if (gameStatusFlag == END) {
             break
         }
-        if (gameStatusFlag == 1) {
-            gameStatusFlag = 0
+        if (gameStatusFlag == INPUT_RESTART) {
+            gameStatusFlag = RESTART
         }
     }
     println("게임 종료")
 }
+
 fun checkGameStatus(resultOfCheckBothNumbers: String): Int {
     if (resultOfCheckBothNumbers == "3스트라이크") {
         println("3개의 숫자를 모두 맞히셨습니다. 게임 종료")
@@ -158,7 +170,7 @@ fun checkBothNumbers(listOfCreatedNumber: List<Int>, listOfInputNumber: List<Int
     }
     if ((strike != 0) and (ball == 0)) {
         result += strike.toString() + "스트라이크"
-        return  result
+        return result
     }
     result += ball.toString() + "볼" + " " + strike.toString() + "스트라이크"
     return result
