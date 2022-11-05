@@ -31,5 +31,4 @@ class InputValidator {
 
     private fun isCorrectRange(input: String): Boolean =
         input.toInt() in RESTART_CODE..END_CODE
-
 }
