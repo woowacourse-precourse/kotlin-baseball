@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
+
     baseballGameStart()
 }
 
@@ -20,12 +21,11 @@ fun setComputerNum(): List<Int> {
             computer.add(randomNumber)
         }
     }
-
     return computer
 }
 
 fun compareUserNumAndComputerNum(computer: List<Int>) {
-    var userNum = getNum()
+    val userNum = getNum()
     var ballCount = 0
     var strikeCount = 0
 
@@ -33,16 +33,12 @@ fun compareUserNumAndComputerNum(computer: List<Int>) {
         if (computer.contains(it))
             ballCount++
     }
-
     for (i in 0..2) {
         if (computer[i] == userNum[i])
             strikeCount++
     }
 
     ballCount -= strikeCount
-
-    println("computer : $computer")
-    println("user : $userNum")
 
     if (ballCount == 0 && strikeCount == 0)
         println("낫싱")
@@ -62,7 +58,7 @@ fun compareUserNumAndComputerNum(computer: List<Int>) {
 
 fun getNum(): List<Int> {
     print("숫자를 입력해주세요 : ")
-    var tempNum = readLine()!!
+    val tempNum = readLine()!!
     var userNum: Int
 
     if (isInValidNum(tempNum))
@@ -88,16 +84,19 @@ fun isInValidNum(userNum: String): Boolean {
     return true
 }
 
-fun baseballGameEnd(){
+fun baseballGameEnd() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    var inputNum = readLine()!!.toInt()
 
-    if(inputNum == 1){
-        baseballGameStart()
-    }else if(inputNum == 2){
-        System.exit(-1)
-    }else
-        throw IllegalArgumentException("Error")
-
+    when (readLine()!!.toInt()) {
+        1 -> {
+            baseballGameStart()
+        }
+        2 -> {
+            System.exit(-1)
+        }
+        else -> {
+            throw IllegalArgumentException("Error")
+        }
+    }
 }
