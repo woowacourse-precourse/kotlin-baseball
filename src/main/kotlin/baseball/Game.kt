@@ -20,6 +20,10 @@ class Game {
     }
 
     private fun isRestart(): Boolean {
-        TODO("유저 입력 받아서 true/false 리턴")
+        val userInput = user.getRestartOrNotInput()
+        if (userInput == 1) {
+            return true
+        }
+        return false
     }
 }

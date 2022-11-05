@@ -10,4 +10,10 @@ class User {
         // TODO 예외 사항 체크
         return input.toList().map { it.code.plus(-48) }
     }
+
+    fun getRestartOrNotInput(): Int {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        return Console.readLine().toInt()
+    }
+
 }
