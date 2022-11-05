@@ -10,7 +10,7 @@ fun printNothing() {
 }
 
 fun printEnd() {
-    TODO("v2 == 3 이라면 게임 종료 출력하는 함수 구현")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
 fun printContinue() {
