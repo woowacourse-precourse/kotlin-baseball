@@ -86,4 +86,19 @@ class FunctionTest {
         assertThat(result).containsExactly(2, 1, 0)
     }
 
+    @Test
+    fun `컴퓨터가 생성한 수의 길이 검사`() {
+        val randomNumber = generateRandomNumber()
+        assertThat(randomNumber).hasSize(3)
+    }
+
+    @Test
+    fun `컴퓨터가 생성한 수의 중복 검사`() {
+        val randomNumber = generateRandomNumber()
+        for (i in randomNumber.indices) {
+            val testNumber = randomNumber.removeRange(i, i + 1)
+            assertThat(testNumber).doesNotContain(randomNumber[i].toString())
+        }
+    }
+
 }
