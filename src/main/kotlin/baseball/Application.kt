@@ -28,14 +28,14 @@ private fun makeRandomNumber() {
 }
 
 private fun isRepeat(): Boolean {
-    val inputNum = getInputNumber()
+    val inputNum = inputGuessNumber()
     if (isRightInput(inputNum)) {
         val (ball, strike) = getBallAndStrike(inputNum)
         return printResult((Pair(ball, strike)))
     } else throw IllegalArgumentException("1~9 사이의 서로 다른 세자리 수를 입력하세요")
 }
 
-private fun getInputNumber(): Int {
+private fun inputGuessNumber(): Int {
     print("숫자를 입력해주세요 : ")
     return Console.readLine().toInt()
 }
@@ -86,14 +86,14 @@ private fun printResult(pair: Pair<Int, Int>): Boolean {
         Pair(0, 2) -> println("2스트라이크")
         Pair(0, 3) -> {
             println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            val num = getRestartOrFinishNum()
+            val num = inputRestartOrFinishNum()
             return isRestart(num)
         }
     }
     return true
 }
 
-private fun getRestartOrFinishNum(): Int {
+private fun inputRestartOrFinishNum(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     return Console.readLine().toInt()
 }
