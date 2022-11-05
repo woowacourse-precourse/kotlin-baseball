@@ -11,15 +11,38 @@ fun printNothing() {
 }
 
 fun printReport(balls:Int, strike: Int) {
-    println("{$balls}볼 {$strike}스트라이크")
+    if (balls > 0 && strike > 0) {
+        println("${balls}볼 ${strike}스트라이크")
+    }
+    else if (balls > 0 && strike == 0) {
+        println("${balls}볼")
+    }
+    else if (balls == 0 && strike > 0) {
+        println("${strike}스트라이크")
+    }
+    else {
+        println("ERROR!!")
+    }
 }
 
-fun printEnd() {
+fun printEnd(): Boolean {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return askContinue()
 }
 
-fun printContinue() {
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+fun askContinue(): Boolean {
+    val inputNum = readLine()
+    return if (inputNum.length == 1 && inputNum == "1") {
+        true
+    }
+    else if (inputNum.length == 1 && inputNum == "2") {
+        false
+    }
+    else {
+        askChecker()
+    }
+
 }
 
 fun getInput(): String {
@@ -44,6 +67,23 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
         return false
     }
     return true
+}
+
+fun askChecker(): Boolean {
+    var inputNum = ""
+    var left = 5
+    do {
+        println("잘못 입력하셨습니다. 다시 시도하세요. 남은 시도 횟수($left)")
+        inputNum = readLine()
+        if (inputNum.length == 1 && inputNum == "1") {
+            return true
+        }
+        else {
+            left--
+        }
+    } while (left > 0)
+    println("오류 횟수가 너무 많습니다. 프로그램이 강제 종료됩니다.")
+    return false
 }
 
 fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Set<Char> {
@@ -80,9 +120,10 @@ fun main() {
     printStart()
     var maxDeep = 0
     val computer = getRandomNumList()
-    println(computer.joinToString(separator = ""))
-
+    var continueChecker = false
+    println("옵저버 모드: ${computer.joinToString(separator = "")}")
     do {
+        continueChecker = true
         val player = listConverter(getInput())
         if (!listChecker(player)) {
             throw IllegalArgumentException()
@@ -98,24 +139,21 @@ fun main() {
 
         if (v1 < 1) {
             printNothing()
+            maxDeep++
             continue
         }
 
         val v2 = equalCounter(playerMap, computerMap, commonSet)
-
-        var balls = 0
-
-        if (v1 - v2 > 0) { balls = v1 }
+        val balls = if (v1 - v2 > 0) { v1 - v2 } else 0
 
         if (v2 == 3) {
-            printEnd()
-            printContinue()
+            continueChecker = printEnd()
             maxDeep = 0
         }
         else { printReport(balls, v2) }
 
         maxDeep++
-    } while (maxDeep < 20)
+    } while (maxDeep < 20 && continueChecker)
 
 
 }
