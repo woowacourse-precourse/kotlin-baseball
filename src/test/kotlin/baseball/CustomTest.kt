@@ -61,4 +61,16 @@ class CustomTest : NsTest() {
             5, 2, 3, 1, 2, 3
         )
     }
+
+    @Test
+    fun `통과 후 재시작에 문자열 넣어보기 `() {
+        Assertions.assertRandomNumberInRangeTest(
+            {
+                run("325", "ㄱ", "2")
+                org.assertj.core.api.Assertions.assertThat(output())
+                    .contains("3스트라이크")
+            },
+            3, 2, 5
+        )
+    }
 }
