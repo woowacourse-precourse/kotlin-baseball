@@ -17,7 +17,7 @@ object Game {
     }
     private fun checkInputValueException(inputValue: String) : Boolean{
         var checkExceptionFlag = false
-        if(!checkInputLengthThree(inputValue) || !checkInputValueIsNumber(inputValue)){
+        if(!checkInputLengthThree(inputValue) || !checkInputValueIsNumber(inputValue) || !checkInputDuplication(inputValue)){
             checkExceptionFlag = true
         }
         return checkExceptionFlag
@@ -37,6 +37,21 @@ object Game {
         var checkFlag = false
         if(inputValue.length==3){
             checkFlag = true
+        }
+        return checkFlag
+    }
+
+    private fun checkInputDuplication(inputValue : String) : Boolean{
+        var checkFlag = false
+        for(stringSplit in inputValue){
+            val splitCount = inputValue.count{it==stringSplit}
+            if(splitCount<=1){
+                checkFlag=true
+            }
+            else{
+                checkFlag = false
+                break
+            }
         }
         return checkFlag
     }
