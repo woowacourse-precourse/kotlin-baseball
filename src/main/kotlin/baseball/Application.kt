@@ -61,30 +61,39 @@ fun checkBallCount(ballCheckList: MutableList<Int>): MutableList<Int> {
     return checkCount
 }
 
+fun gameResult(checkCount : MutableList<Int>) : String {
+    var gameResultMessage = ""
+
+    gameResultMessage = if(checkCount[1] == 3) {
+        "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+    }
+    else if(checkCount[2] == 3) {
+        "낫싱"
+    } else {
+        if(checkCount[0] != 0 && checkCount[1] == 0) {
+            checkCount[0].toString() + "볼"
+        } else if(checkCount[0] == 0 && checkCount[1] != 0) {
+            checkCount[1].toString() + "스트라이크"
+        } else {
+            checkCount[0].toString() + "볼 " + checkCount[1].toString() + "스트라이크"
+        }
+    }
+    return gameResultMessage
+}
+
 fun main() {
     val userNumbers = userInput()
 //    val comNumbers = comInput()
 
     val comNumbers : MutableList<Int> = mutableListOf(3, 5, 6)
 
-    val gameResult = compareNumber(userNumbers, comNumbers)
+    val gameTest = checkBallCount(compareNumber(userNumbers, comNumbers))
 
     println("com : $comNumbers")
     println("user : $userNumbers")
 
-    println(gameResult)
+    println(gameTest)
 
-    println(checkBallCount(gameResult))
-//
-//    while(true) {
-//        var gameStartControl = readLine()!!.toInt()
-//
-//        if(gameStartControl == 1) {
-//            continue
-//        } else if (gameStartControl == 0){
-//            break
-//        } else { println("다시 입력해 주세요") }
-//    }
-
+    println(gameResult(gameTest))
 
 }
