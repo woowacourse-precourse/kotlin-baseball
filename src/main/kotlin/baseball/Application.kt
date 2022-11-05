@@ -81,11 +81,12 @@ fun baseballGame(userInputList: MutableList<Int>, computer: MutableList<Int>) : 
     }
     else {
         if ( ball != 0 ) {
-            print("$ball 볼 ")
+            print("$ball"+"볼 ")
         }
         if ( strike != 0 ){
-            println("$strike 스트라이크")
+            print("$strike"+"스트라이크")
         }
+        print("\n")
     }
     return correct
 }
