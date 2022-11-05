@@ -19,11 +19,7 @@ class Computer {
         val strikeCount = countStrike(userGuess)
         val ballCount = countBall(userGuess)
         val result = StringBuilder()
-        if (strikeCount == 3) {
-            result.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            println(result.toString())
-            return false
-        }
+
         if (ballCount == 0 && strikeCount == 0) {
             result.append("낫싱")
             println(result.toString())
@@ -37,6 +33,11 @@ class Computer {
         }
         if (strikeCount > 0) {
             result.append(strikeCount).append("스트라이크")
+        }
+        if (strikeCount==3){
+            result.append('\n').append("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println(result.toString())
+            return false
         }
         println(result.toString())
         return true
