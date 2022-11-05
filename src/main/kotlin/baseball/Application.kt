@@ -8,14 +8,15 @@ var randomNum = 0
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    randomNum = makeRandomNumber()
+    makeRandomNumber()
+
     while (true) {
         if (isRepeat()) continue
         else break
     }
 }
 
-private fun makeRandomNumber(): Int {
+private fun makeRandomNumber() {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -23,7 +24,7 @@ private fun makeRandomNumber(): Int {
             computer.add(randomNumber)
         }
     }
-    return computer.joinToString("").toInt()
+    randomNum = computer.joinToString("").toInt()
 }
 
 private fun isRepeat(): Boolean {
@@ -100,7 +101,7 @@ private fun getRestartOrFinishNum(): Int {
 private fun isRestart(num: Int): Boolean {
     return when (num) {
         1 -> {
-            randomNum = makeRandomNumber()
+            makeRandomNumber()
             true
         }
 
