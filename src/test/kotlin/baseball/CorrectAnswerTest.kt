@@ -44,6 +44,10 @@ class CorrectAnswerTest {
         assertCheck("123", "412", 0, 2)
     }
 
+    @Test
+    fun `오답 1개, 스트라이크 2개일 때 스트라이크 2개 반환`() {
+        assertCheck("123", "423", 2, 0)
+    }
 
 
     private fun assertCheck(
