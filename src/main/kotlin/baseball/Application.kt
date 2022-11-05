@@ -69,25 +69,28 @@ fun checkStrike(computer: List<Int>, player: List<Int>): Boolean {
         else
             ball++
     }
-    printResult(ball, strike)
+    println(getResultString(ball, strike))
 
     if (strike == 3)
         return false
     return true
 }
 
-fun printResult(ball: Int, strike: Int) {
+fun getResultString(ball: Int, strike: Int): String {
+    var str: String = ""
+
     if (ball > 0) {
-        when (strike) {
-            0 -> println("${ball}볼")
-            else -> println("${ball}볼 ${strike}스트라이크")
+        str = when (strike) {
+            0 -> "${ball}볼"
+            else -> "${ball}볼 ${strike}스트라이크"
         }
     }
     if (ball == 0) {
-        when (strike) {
-            0 -> println("낫싱")
-            3 -> println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            else -> println("${strike}스트라이크")
+        str = when (strike) {
+            0 -> "낫싱"
+            3 -> "3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+            else -> "${strike}스트라이크"
         }
     }
+    return str
 }
