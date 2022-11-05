@@ -15,10 +15,10 @@ fun main() {
         var clear = false
 
         printStartMessage()
-        println(computer)
+        //println(computer)
         while(!clear) {
             getPlayerNumber(player)
-            println(player)
+            //println(player)
             clear = compareNumber(computer, player)
         }
         exit = getReplaySignal()
@@ -28,11 +28,11 @@ fun main() {
 }
 
 
-fun printStartMessage() {
+private fun printStartMessage() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
-fun setRandomNumber() : List<Int>{
+private fun setRandomNumber() : List<Int>{
     val com : MutableSet<Int> = mutableSetOf() // LinkedHashSet 생성: 순서O 중복X
 
     while(com.size < 3) {
@@ -43,7 +43,7 @@ fun setRandomNumber() : List<Int>{
     return com.toList()
 }
 
-fun getPlayerNumber(player: MutableList<Int>){
+private fun getPlayerNumber(player: MutableList<Int>){
     print("숫자를 입력해 주세요: ")
     val input = readLine()!!
 
@@ -64,7 +64,7 @@ fun getPlayerNumber(player: MutableList<Int>){
     }
 }
 
-fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
+private fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
     var strike = 0
     var ball = 0
     var message = ""
@@ -84,16 +84,16 @@ fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
 
     if(strike == 3){
         message = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-        println(message)
+        print(message)
         return true
     }
 
     if(ball >= 1){
-        message = "$ball 볼 "
+        message = "${ball}볼"
     }
 
     if(strike >= 1){
-        message += "$strike 스트라이크"
+        message += "${strike}스트라이크"
     }
 
     if(ball == 0 && strike == 0){
@@ -105,7 +105,7 @@ fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
     return false
 }
 
-fun getReplaySignal() : Boolean{
+private fun getReplaySignal() : Boolean{
     var input = ""
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
