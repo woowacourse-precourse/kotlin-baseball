@@ -1,13 +1,16 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import org.mockito.internal.matchers.Null
 
+var ballCnt = 0
+var strikeCnt = 0
 class GameLogic {
     private val comNumber = mutableListOf<Int>()
     private val userNumber = mutableListOf<Int>()
 
-    private var ballCount = 0
-    private var strikeCount = 0
+    private var inputNumber = ""
+    var number = 0
 
     fun gameStart(){
         while (comNumber.size < 3) {
@@ -18,27 +21,30 @@ class GameLogic {
         }
     }
     fun comparison() : Unit{
-        val resultList = mutableListOf<Int>()
+        strikeCnt = 0
+        ballCnt = 0
+        println("userNumber : $userNumber comNumber : $comNumber")
         for (i in 0 until userNumber.size) {
             if(userNumber[i]==comNumber[i]){
-                strikeCount += 1
+                strikeCnt += 1
             } else if(userNumber[i] in comNumber){
-                ballCount += 1
+                ballCnt += 1
             }
         }
     }
     fun userNumToList(num : Int) : List<Int>{
-        val userList = mutableListOf<Int>()
+        userNumber.clear()
         var quotient = num
         var inputNum = 0
         while(quotient != 0){
-            inputNum = quotient/10
-            quotient %= 10
-            userList.add(0,inputNum)
+            inputNum = quotient%10
+            quotient /= 10
+            userNumber.add(0,inputNum)
         }
-        return userList
+        return userNumber
     }
-    fun userInput() {
-        var inputNumber = readLine()!!.toIntOrNull()
+    fun userInput() : Unit{
+        inputNumber = readln()
+        number = inputNumber.toInt()
     }
 }
