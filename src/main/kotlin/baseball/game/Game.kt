@@ -10,14 +10,16 @@ class Game(
     private val computer: Computer,
     private val player: Player,
 ): GameService {
+    private val inputValidator = InputValidator()
+    private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
 
     private var gameStateCode = GAME_ACTIVE_CODE
-    private var numberOfComputer: String = getTargetNumber()
-    private val ballStates = mutableListOf(BallState.OUT, BallState.OUT, BallState.OUT)
-    private val inputValidator = InputValidator()
+    private var numberOfComputer: String = computer.numberOfComputer
 
-    /** 컴퓨터의 숫자 정보를 가져오는 함수 **/
-    private fun getTargetNumber(): String = computer.numberOfComputer
+    /** 컴퓨터의 숫자 정보를 새로 업데이트 하는 함수 **/
+    private fun updateNumberOfComputer() {
+        numberOfComputer = computer.numberOfComputer
+    }
 
     override fun start() {
         printMessage(message = START_GAME_MESSAGE)
@@ -120,7 +122,7 @@ class Game(
 
     override fun restart() {
         computer.recreateRandomNumber()
-        numberOfComputer = getTargetNumber()
+        updateNumberOfComputer()
         println(numberOfComputer)
     }
 
