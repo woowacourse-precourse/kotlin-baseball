@@ -27,7 +27,7 @@
         * isOneOrTwo(): 입력값이 1과 2 사이에 있는지 판단해주는 함수
       
 3. BaseballGame: 컴퓨터 값과 유저의 값을 비교하고 판단하는 등 게임을 진행하는 클래스
-    * startGame(): 게임을 진행하는 함수
+    * processGame(): 게임을 진행하는 함수
        * inputUserNumber(): 사용자로부터 입력을 받고, ThrowException 객체를 통해 예외 처리를 하는 함수
        * createUserNumberList(): 사용자로부터 입력 받은 숫자를 쪼개어 순서대로 리스트에 넣고 리스트를 반환하는 함수
        
@@ -35,7 +35,8 @@
            * compareDigitOfSameNumber() 사용자의 숫자 값이 컴퓨터 값 리스트에 포함되어 있을 때 각각의 index 를 비교하여 일치하면 스트라이크, 불일치하면 볼에 1씩 더해주는 함수
            * decideResultString(): 결과를 string 형태로 바꿔주는 함수
       
-   
+4. Application: 게임을 실행하는 클래스
+    * startGame(): 게임을 시작하는 함수
 
 
 
