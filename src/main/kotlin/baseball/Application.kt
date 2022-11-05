@@ -7,17 +7,43 @@ fun main() {
     var mynum = ""
     var strikecount = 0
     var ballcount = 0
+    var restart = 1
+    var case = 0
 
     println("숫자 야구 게임을 시작합니다.")
 
     while (true) {
-        pcnum = "135"
+        if (case == 0) {
+            pcnum = "135"
+        } else if (case == 1) {
+            pcnum = "589"
+        }
 
         mynum = NumInput()
         strikecount = StrikeBallCount(pcnum, mynum)[0]
         ballcount = StrikeBallCount(pcnum, mynum)[1]
-        println(strikecount)
-        println(ballcount)
+
+        if (ballcount == 0 && strikecount == 0)
+            println("낫싱")
+        if (strikecount == 0 && ballcount >= 1)
+            println("${ballcount}볼")
+        if (ballcount == 0 && strikecount >= 1)
+            println("${strikecount}스트라이크")
+        if (ballcount in 1..2 && strikecount in 1..2)
+            println("${ballcount}볼 ${strikecount}스트라이크")
+
+        if (strikecount == 3) {
+            println("세개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            restart = readLine()!!.toInt()
+            case += 1
+        }
+        if (restart == 2) {
+            println("게임 종료")
+            break
+        } else if (restart != 1) {
+            throw IllegalArgumentException("Error(잘못된 수 입력!)")
+        }
     }
 }
 
