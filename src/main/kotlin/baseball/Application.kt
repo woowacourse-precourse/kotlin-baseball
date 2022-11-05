@@ -70,7 +70,6 @@ private fun compareNumber(computer: List<Int>, player: List<Int>): Boolean{
     val ball = getBallCount(computer, player) - strike
     var message = ""
 
-
     if (ball >= 1) {
         message = "${ball}볼 "
     }
@@ -120,22 +119,23 @@ private fun getReplaySignal() : Boolean{
     var input = ""
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
-    while(true) {
-        input = readLine()!!
-        // 예외 처리
-        if (!Pattern.matches("^[1-2]{1}$", input)) {
-            println("1과 2 중 하나를 입력해 주세요.")
-            continue
+        while (true) {
+            input = readLine()!!
+            // 예외 처리
+            if (!Pattern.matches("^[1-2]{1}$", input)) {
+                println("1과 2 중 하나를 입력해 주세요.")
+                continue
+            }
+            break
         }
-        break
-    }
 
-    when(input.toInt()){
-        1 -> input = "false"
-        2 -> input = "true"
-    }
+        when (input.toInt()) {
+            1 -> input = "false"
+            2 -> input = "true"
+        }
 
-    return input.toBoolean()
+        return input.toBoolean()
 }
+
 
 
