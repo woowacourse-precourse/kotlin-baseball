@@ -108,6 +108,33 @@ class MyTest : NsTest() {
             .doesNotContain("게임 종료")
     }
 
+    @Nested
+    inner class `게임 재시작 입력 예외 검사` {
+        @Test
+        fun case1() {
+            Assertions.assertRandomNumberInRangeTest(
+                {
+                    assertThrows<IllegalArgumentException> {
+                        run("123", "3")
+                    }
+                },
+                1, 2, 3
+            )
+        }
+
+        @Test
+        fun case2() {
+            Assertions.assertRandomNumberInRangeTest(
+                {
+                    assertThrows<IllegalArgumentException> {
+                        run("123", "a")
+                    }
+                },
+                1, 2, 3
+            )
+        }
+    }
+
     override fun runMain() {
         main()
     }
