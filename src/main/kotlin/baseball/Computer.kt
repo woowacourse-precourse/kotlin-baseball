@@ -7,7 +7,7 @@ class Computer {
     /**
      * 컴퓨터의 랜덤한 숫자를 정해주고 리스트에 넣어 반환해주는 함수
      */
-    fun addComputerNumberToList(): MutableList<Int> {
+    fun getComputerNumberList(): MutableList<Int> {
         val computerNumber = mutableListOf<Int>()
         while (computerNumber.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
