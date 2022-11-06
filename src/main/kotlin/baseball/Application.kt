@@ -10,6 +10,7 @@ fun main() {
     result["스트라이크"] = 0
     result["볼"] = 0
     result.replace("스트라이크",findStrike(computer,user))
+    result.replace("볼",findBall(computer,user)- result["스트라이크"]!!)
 }
 
 fun randomThreeNumber():MutableList<Int>{
@@ -20,7 +21,7 @@ fun randomThreeNumber():MutableList<Int>{
             computer.add(randomNumber)
         }
     }
-//    print(computer)
+    print(computer)
     return computer
 }
 
@@ -44,11 +45,21 @@ fun inputErrorCheck(userInputMutableList:List<Int>){
 }
 
 fun findStrike(computer:List<Int>,user:List<Int>):Int{
-    var count = 0
+    var strikeCount = 0
     for(index in 0..2){
         if(computer[index]==user[index])
-            count++
+            strikeCount++
     }
-//    print(count)
-    return count
+    print(strikeCount)
+    return strikeCount
+}
+
+fun findBall(computer: List<Int>, user:List<Int>):Int{
+    var ballCount = 0
+    for (index in 0..2){
+        if(user[index] in computer)
+            ballCount++
+    }
+    print(ballCount)
+    return ballCount
 }
