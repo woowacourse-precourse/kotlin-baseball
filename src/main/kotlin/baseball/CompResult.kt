@@ -18,7 +18,19 @@ class CompResult(computers: List<Int>, users: List<Int>) {
     }
 
     override fun toString(): String {
-        return super.toString()
+        if (result[BALL_IDX] == 0 && result[STRIKE_IDX] == 0) {
+            return NOTHING
+        }
+        
+        var str = ""
+        if (result[BALL_IDX] != 0) {
+            str += "${result[BALL_IDX]}${BALL} "
+        }
+        if (result[STRIKE_IDX] != 0) {
+            str += "${result[STRIKE_IDX]}${STRIKE}"
+        }
+
+        return str
     }
 
     companion object {
@@ -26,5 +38,6 @@ class CompResult(computers: List<Int>, users: List<Int>) {
         private const val STRIKE_IDX = 1
         private const val BALL = "볼"
         private const val STRIKE = "스트라이크"
+        private const val NOTHING = "낫싱"
     }
 }
