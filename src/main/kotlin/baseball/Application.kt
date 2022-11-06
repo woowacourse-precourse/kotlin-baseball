@@ -13,24 +13,20 @@ fun comInput(): MutableList<Int> {
 }
 
 fun userInput() : MutableList<Int> {
+    print("숫자를 입력해주세요 : ")
     val user = mutableListOf<Int>()
+    val userNumber = Console.readLine()!!
 
-    while(user.size < 3) {
-        print("숫자를 입력해주세요 : ")
-        val userNumber = Console.readLine()!!
-
-        if(userNumber.length == 3) {
-            for(i in userNumber.indices) {
-                if(userNumber[i] - '0' in 1..9) {
-                    user.add(userNumber[i] - '0')
-                }
-            }
-        } else {
-            throw IllegalArgumentException()
-        }
-
-    }
+    if(checkUserInput(userNumber)) userNumber.forEach { user.add(it - '0') }
     return user
+}
+
+fun checkUserInput(userInput : String) : Boolean {
+    val checkRange = userInput.all{(it - '0') in 1 .. 9}
+    val inputLength = userInput.toList().distinct().size
+
+    if(userInput.length == 3 && inputLength == userInput.length && checkRange) return true
+    else throw IllegalArgumentException()
 }
 
 fun compareNumber(userNumberList : List<Int>, comNumberList : List<Int>) : MutableList<Int> {
