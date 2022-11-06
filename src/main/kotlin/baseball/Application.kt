@@ -21,6 +21,12 @@ fun playNumberBaseball() {
         printBallCount(ballCount)
 
     } while (true)
+    println("3스트라이크")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    if (isRestart()) {
+        playNumberBaseball()
+    }
 }
 
 fun createRandomAnswerNumber(): Int {
@@ -53,17 +59,29 @@ fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> 
 fun printBallCount(ballCount: Pair<Int, Int>) {
     val ball = ballCount.first
     val strike = ballCount.second
-    if (ball == 0 && strike == 0){
+    if (ball == 0 && strike == 0) {
         println("낫싱")
         return
     }
-    if (ball == 0){
+    if (ball == 0) {
         println("${strike}스트라이크")
         return
     }
-    if(strike == 0){
+    if (strike == 0) {
         println("${ball}볼")
         return
     }
     println("${ball}볼 ${strike}스트라이크")
+}
+
+fun isRestart(): Boolean {
+    val userInput = Console.readLine()
+
+    if (userInput == "1") {
+        return true
+    }
+    if (userInput == "2") {
+        return false
+    }
+    return false
 }
