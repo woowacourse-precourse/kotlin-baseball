@@ -40,3 +40,6 @@ fun changeIntToMutableListInt(input: Int): MutableList<Int>{
     return output
 }
 
+fun isInputAnswer(computerNum: Int): Boolean{
+
+}
