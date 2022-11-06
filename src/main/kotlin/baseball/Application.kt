@@ -1,8 +1,13 @@
 package baseball
 
 fun main() {
+    doGame()
+}
+
+fun doGame() {
     var number = Number()
     var result = Result()
+
     println("숫자 야구 게임을 시작합니다.")
 
     while (result.chooseGameNum == 1) {
