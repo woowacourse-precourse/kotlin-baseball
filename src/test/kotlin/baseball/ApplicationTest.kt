@@ -8,6 +8,16 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+
+    @Test
+    fun `생성된 숫자가 1부터 9사이의 중복없는 3자리 숫자인지 검사`() {
+        val digits = generateRandomThreeDigits()
+        assertThat(digits)
+            .hasSize(3)
+            .allMatch { it in 1..9 }
+            .isEqualTo(digits.distinct())
+    }
+
     @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
