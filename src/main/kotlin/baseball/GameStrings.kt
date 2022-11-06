@@ -1,11 +1,11 @@
 package baseball
 
 class GameStrings {
-    val startText = "숫자 야구 게임을 시작합니다."
-    val correctText = "3스트라이크\n" +
+    val GAME_START_TEXT = "숫자 야구 게임을 시작합니다."
+    val CORRECT_TEXT = "3스트라이크\n" +
             "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
             "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-    val typeNumText = "숫자를 입력해주세요 : "
+    val REQUEST_INPUT_TEXT = "숫자를 입력해주세요 : "
 
 
     fun printStrikeAndBallCount(strikeCount: Int, ballCount: Int) {

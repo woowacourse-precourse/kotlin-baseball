@@ -66,13 +66,13 @@ fun playGame() {
     lateinit var playerAnswer: PlayersAnswer
 
     while (true) {
-        print(gameStrings.typeNumText)
+        print(gameStrings.REQUEST_INPUT_TEXT)
         playerAnswer = PlayersAnswer(readln())
 
         val (strikeCount, ballCount) = countBallAndStrike(playerAnswer)
 
         if (strikeCount == 3) {
-            println(gameStrings.correctText)
+            println(gameStrings.CORRECT_TEXT)
             return
         } else {
             gameStrings.printStrikeAndBallCount(strikeCount, ballCount)
@@ -85,7 +85,7 @@ fun playGame() {
 fun main() {
     lateinit var newGameOrEnd: NewGameOrEnd
 
-    println(gameStrings.startText)
+    println(gameStrings.GAME_START_TEXT)
     do {
         prepareNewGame()
         playGame()
