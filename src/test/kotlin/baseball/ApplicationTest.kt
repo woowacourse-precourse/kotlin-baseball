@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
@@ -62,16 +63,28 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `인풋 값 체크 테스트`() {
-        assertThat(checkInputNumberValid("12")).isEqualTo(false)
-        assertThat(checkInputNumberValid("345")).isEqualTo(true)
-        assertThat(checkInputNumberValid("6789")).isEqualTo(false)
+        assertThrows<IllegalArgumentException> {
+            checkInputNumberValid("12")
+        }
+        assertDoesNotThrow {
+            checkInputNumberValid("345")
+        }
+        assertThrows<IllegalArgumentException> {
+            checkInputNumberValid("6789")
+        }
     }
 
     @Test
     fun `엔딩 값 체크 테스트`() {
-        assertThat(checkEndingNumberValid("1")).isEqualTo(true)
-        assertThat(checkEndingNumberValid("2")).isEqualTo(true)
-        assertThat(checkEndingNumberValid("3")).isEqualTo(false)
+        assertDoesNotThrow {
+            checkEndingNumberValid("1")
+        }
+        assertDoesNotThrow {
+            checkEndingNumberValid("2")
+        }
+        assertThrows<IllegalArgumentException> {
+            checkEndingNumberValid("3")
+        }
     }
 
     override fun runMain() {
