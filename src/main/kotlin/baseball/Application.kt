@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
@@ -8,27 +9,13 @@ fun main() {
 
 fun startGame(){
     println("숫자 야구 게임을 시작합니다.")
-    val computerNumber = makeNumber()
-    print(computerNumber)
-
-//    while(true){
-        print("숫자를 입력해주세요 : ")
-        val inputNumber = camp.nextstep.edu.missionutils.Console.readLine()
-        val ballCount = countBall(computerNumber, inputNumber)
-        val strikeCount = countStrike(computerNumber, inputNumber)
-    printResult(strikeCount, ballCount)
-//    }
+    val computerList = makeNumber()
+    println(computerList.toString())
 }
 
-fun makeNumber(): String{
-    var computer = ""
-    while (computer.length < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9).toString()
-        if (!computer.contains(randomNumber)) {
-            computer += randomNumber
-        }
-    }
-    return computer
+fun makeNumber(): List<Int>{
+    val computerList = Randoms.pickUniqueNumbersInRange(1, 9, 3)
+    return computerList
 }
 
 fun countBall(computerNumber: String, inputNumber: String): Int{
