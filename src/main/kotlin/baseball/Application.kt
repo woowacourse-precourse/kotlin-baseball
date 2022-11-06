@@ -3,12 +3,14 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
-fun inputNumber(): String? {//숫자 입력
+var strikeCount = 0
+var ballCount = 0
+fun inputNumber(): String {//숫자 입력
     print("숫자를 입력해주세요 : ")
     val inputNumber = Console.readLine()//String
-    checkThreeNumber(inputNumber!!)
+    checkThreeNumber(inputNumber)
     checkNumber(inputNumber)
-    checkSameNumber(inputNumber!!)
+    checkSameNumber(inputNumber)
     return inputNumber
 }
 fun createRandomNumber(): String{ //랜덤 숫자 생성
@@ -42,6 +44,27 @@ fun checkNumber(inputNumber : String){//입력된 값이 1~9 가 아닐때
         if(49 > temp.toInt() || 57 < temp.toInt()) return callException()
     }
 }
+fun isContainNumber(inputNumber : String, randomNumber : String){
+    var count = 0
+    for(i in inputNumber.indices){
+        when(randomNumber.contains(inputNumber[i])){
+            true -> isDigitNumber(inputNumber[i], randomNumber, i)
+            false -> count += 1
+        }
+    }
+    if(count == 3) return println("낫싱")
+    //3자리 숫자에 포함 미포함
+}
+fun isDigitNumber(inputNumber : Char, randomNumber : String, index : Int){
+    if(inputNumber == randomNumber[index]){
+        strikeCount += 1
+    } else if(inputNumber != randomNumber[index]){
+        ballCount += 1
+    }
+    //자리수가 같은지 다른지
+}
+
 fun main() {
-    println(inputNumber())
+    val randomNumber = createRandomNumber()
+    isContainNumber(inputNumber(), randomNumber)
 }
