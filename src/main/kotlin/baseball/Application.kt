@@ -5,38 +5,49 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
 
+    println("숫자 야구 게임을 시작합니다.")
     BaseballGame(getComputerInput())
-        .startGame()
-
+        .mainGame()
 }
 
+
 class BaseballGame(computer: String) {
-    private val computerInput: String = computer
+    private val computerInput: String = getComputerInput()
 
+    fun mainGame() {
+        var start = true
+        while (start) {
+            val userInput = makeUserInput()
+            val gameOver = (strike(userInput) == 3)
 
-    fun startGame() {
-        println("숫자 야구 게임을 시작합니다.")
-        while (true) {
-            print("숫자를 입력해주세요 : ")
-            val userInput: String = readLine()!!
-
-            // 예외처리
-            checkException(userInput)
-            // 조건 반환
             checkCriteria(userInput)
 
-            // 3스트라이크인지 확인
-            if (strike(userInput) == 3) {
-                println("${strike(userInput)}스트라이크")
-                println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-                println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
-                val inputNumber: String = readLine()!!
-                if (inputNumber == "1") continue
-                if (inputNumber == "2") break
+            if (gameOver) {
+                start = playAgain(userInput)
             }
         }
     }
 
+    fun makeUserInput(): String {
+        print("숫자를 입력해주세요 : ")
+        val userInput = readLine()!!
+
+        if (userInput.length > 3) {
+            throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+        }
+        return userInput
+    }
+
+    private fun playAgain(userInput: String): Boolean {
+        println("${strike(userInput)}스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
+        val inputNumber: String = readLine()!!
+        if (inputNumber == "1") {
+            return true
+        }
+        return false
+    }
 
 
     private fun checkCriteria(userInput: String) {
@@ -63,15 +74,6 @@ class BaseballGame(computer: String) {
         }
     }
 
-
-    fun checkException(userInput: String) {
-        if (userInput.length > 3) {
-            throw IllegalArgumentException("잘못된 값을 입력했습니다.")
-        }
-
-    }
-
-
     fun strike(user: String): Int {
         val userInput: String = user
         var strikeCount = 0
@@ -90,17 +92,16 @@ class BaseballGame(computer: String) {
         }
         return ballCount
     }
-
-
 }
 
-    fun getComputerInput(): String {
-        val computer = mutableListOf<Int>()
-        while (computer.size < 3) {
-            val randomNumber = Randoms.pickNumberInRange(1, 9)
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber)
-            }
+fun getComputerInput(): String {
+    val computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
         }
-        return computer.joinToString("")
     }
+    return computer.joinToString("")
+}
+
