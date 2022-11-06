@@ -45,7 +45,7 @@ class User {
         return input.toInt()
     }
 
-    fun isRestartInputException(restartInput: String): Boolean {
+    private fun isRestartInputException(restartInput: String): Boolean {
         val integerInput = restartInput.toIntOrNull()
         if (integerInput == RESTART_CODE || integerInput == EXIT_CODE) {
             return false

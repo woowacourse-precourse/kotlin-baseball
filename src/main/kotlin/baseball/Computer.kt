@@ -51,7 +51,7 @@ class Computer {
         return true
     }
 
-    fun countStrike(userGuess: List<Int>): Int {
+    private fun countStrike(userGuess: List<Int>): Int {
         var strikeCount = 0
         for (index in 0 until ANSWER_COUNT) {
             if (answer[index] == userGuess[index]) {
@@ -61,7 +61,7 @@ class Computer {
         return strikeCount
     }
 
-    fun countBall(userGuess: List<Int>): Int {
+    private fun countBall(userGuess: List<Int>): Int {
         var ballCount = 0
         for (index in 0 until ANSWER_COUNT) {
             if (answer[index] == userGuess[index]) continue
