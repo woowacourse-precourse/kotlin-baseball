@@ -66,25 +66,42 @@ fun startgame(){ //게임 시작 문구 출력 (최초 한번만 실행)
     println("숫자 야구 게임을 시작합니다.")
 }
 
-
+fun askRegame(){ // 게임을 새로 시작할것인지 묻는 메서드
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+}
 
 
 
 fun main() {
     var randomNumber = ""
     var checkNum = ""
+    var flag = true // 플래그
+    var restart = 0
 
     startgame() // 최초 한번만 동작하므로 while문 밖 위치
-
     randomNumber=getRandomNumber() // 숫자가 무엇인지 보여줄 필요는 없으므로 메서드 호출만
     println(randomNumber) // 임시 확인용 후에 제거 예정
+    while (true){
+        if (flag==false){
+            break
+        }
+        checkNum=inputNumber() // 입력한 값을 담아서 보관
+        println(ballOrStrike(randomNumber, checkNum))
+        if (ballOrStrike(randomNumber, checkNum)=="3스트라이크"){
+            askRegame()
+            restart=readLine().toInt()
+            if (restart==1){ // 새로 시작
+                randomNumber=getRandomNumber()
+            }else if (restart==2){ // 종료
+                flag=false
+            }
+        }
 
 
-    checkNum=inputNumber() // 입력한 값을 담아서 보관
-    println(ballOrStrike(randomNumber, checkNum))
-    if (ballOrStrike(randomNumber, checkNum)=="3스트라이크"){
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
+
+
 
 
 }
