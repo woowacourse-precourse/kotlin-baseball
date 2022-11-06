@@ -100,6 +100,9 @@ class TerminateDevice {
             throw EXCEPTION
         }
     }
+    fun isTerminated(): Boolean{
+        return userInput == EXIT
+    }
 }
 
 fun main() {
