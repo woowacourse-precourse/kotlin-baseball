@@ -9,6 +9,7 @@ fun main() {
         do {
             print("숫자를 입력해주세요 : ")
             val playerInput = Console.readLine()
+            checkValidInput(playerInput)
 
 
 fun make3RandomNumber(): MutableList<Int> {
@@ -21,4 +22,19 @@ fun make3RandomNumber(): MutableList<Int> {
     }
     return computer
 }
+
+fun checkValidInput(input: String) {
+    if (input.length != 3) {
+        throw IllegalArgumentException("잘못된 값 입력")
+    }
+    if (input.toSet().size != 3) {
+        throw IllegalArgumentException("잘못된 값 입력")
+    }
+    for (i in input) {
+        if (((i - '0') < 1) or ((i - '0') > 9)) {
+            throw IllegalArgumentException("잘못된 값 입력")
+        }
+    }
+}
+
 }
