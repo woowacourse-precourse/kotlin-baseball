@@ -17,4 +17,7 @@ fun pickRandomNums(){
     }
 }
 
-
+fun inputNum(): String {
+    val inputNum: String = Console.readLine()
+    return inputNum
+}
