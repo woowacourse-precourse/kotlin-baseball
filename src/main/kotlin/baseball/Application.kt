@@ -3,6 +3,8 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
+const val NEW_GAME = 1
+const val EXIT = 2
 val EXCEPTION = IllegalArgumentException()
 
 class InputDevice {
@@ -81,6 +83,22 @@ class GameDevice {
     }
     fun isOver(): Boolean {
         return numberOfStrikes == 3
+    }
+}
+
+class TerminateDevice {
+    private var userInput = 0
+    private fun getInput() {
+
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 ${NEW_GAME}, 종료하려면 ${EXIT}를 입력하세요")
+        val input = Console.readLine().toInt()
+        if (input == NEW_GAME || input == EXIT) {
+            userInput = input
+        }
+        else {
+            throw EXCEPTION
+        }
     }
 }
 
