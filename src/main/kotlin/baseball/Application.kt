@@ -8,6 +8,10 @@ val EXCEPTION = IllegalArgumentException()
 class InputDevice {
     var userNumber = MutableList(3) {0}
 
+    fun execute() {
+        initVariable()
+        getInput()
+    }
     private fun getInput() {
         println("숫자를 입력해주세요: ")
         val input = Console.readLine()
