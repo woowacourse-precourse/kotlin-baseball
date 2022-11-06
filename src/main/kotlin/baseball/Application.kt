@@ -58,6 +58,17 @@ class GameDevice {
             }
         }
     }
+    private fun printResult() {
+        if (numberOfBalls != 0 && numberOfStrikes != 0) {
+            println("${numberOfBalls}볼 ${numberOfStrikes}스트라이크")
+        } else if (numberOfBalls != 0) {
+            println("${numberOfBalls}볼")
+        } else if (numberOfStrikes != 0) {
+            println("${numberOfStrikes}스트라이크")
+        } else {
+            println("낫싱")
+        }
+    }
 }
 
 fun main() {
