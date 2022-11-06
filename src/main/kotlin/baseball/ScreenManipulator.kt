@@ -14,6 +14,7 @@ object ScreenManipulator {
             strikeCount + ballCount == 0 -> printNothing()
             strikeCount == 3 -> {
                 printStrikeCount(strikeCount)
+                printNewLine()
                 printGameEnd()
             }
             strikeCount in 1..2 -> printStrikeCount(strikeCount)
@@ -21,20 +22,19 @@ object ScreenManipulator {
         printNewLine()
     }
 
-    private fun printNewLine() {
-        screen.write("\n")
-        screen.flush()
-    }
-
     fun printGameStart() {
         screen = BufferedWriter(OutputStreamWriter(System.`out`))
         screen.write("숫자 야구 게임을 시작합니다.\n")
         screen.flush()
-        printRequestUserInput()
     }
 
-    private fun printRequestUserInput() {
+    fun printRequestUserInput() {
         screen.write("숫자를 입력해주세요 : ")
+        screen.flush()
+    }
+
+    private fun printNewLine() {
+        screen.write("\n")
         screen.flush()
     }
 
@@ -55,7 +55,7 @@ object ScreenManipulator {
     }
 
     private fun printNothing() {
-        screen.write("낫싱\n")
+        screen.write("낫싱")
         screen.flush()
     }
 

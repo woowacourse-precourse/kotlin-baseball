@@ -5,6 +5,7 @@ class BaseballGameProcessor(private val user: User, private val computer: Comput
         ScreenManipulator.printGameStart()
 
         while (true) {
+            ScreenManipulator.printRequestUserInput()
             val userInput = user.guessNumbers()
 
             if (!Validator.checkIsValid(userInput)) {
