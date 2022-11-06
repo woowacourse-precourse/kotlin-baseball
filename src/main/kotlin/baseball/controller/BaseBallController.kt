@@ -21,7 +21,8 @@ class BaseBallController {
     private fun processGame(computerNumbers: List<Int>) {
         do {
             OutputView().printInputNumber()
-            val playerNumbers = PlayerNumber().inputPlayerNumber()
+            val startNumber = InputView().startPlayerNumber()
+            val playerNumbers = PlayerNumber().inputPlayerNumber(startNumber)
             val baseBall = BaseBall(computerNumbers, playerNumbers)
             val strike = baseBall.getStrikeCount()
             val ball = baseBall.getBallCount()
