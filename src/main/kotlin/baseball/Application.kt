@@ -1,5 +1,12 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    val baseballGame =
+        BaseballGame(ComputerNumbers(RandomNumberGenerator.nDigitMap(BaseballSetting.DIGIT_NUMBER.number)))
+
+    try {
+        baseballGame.start()
+    } catch (exception: IllegalArgumentException){
+        BaseballString.ILLEGAL_ARGUMENT.print()
+    }
 }
