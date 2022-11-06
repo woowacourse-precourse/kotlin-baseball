@@ -42,7 +42,7 @@ fun rightInputCheck(num: String) {
         throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
     }
     // 추가적인 예외처리, 서로 다른 수를 사용자가 입력하지 않은 경우 방지
-    for(i in num.indices-1){
+    for(i in 0 until (num.length)-1){
         if (num[i] == num[i+1]) {
             throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
         }
@@ -71,38 +71,40 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
     }
     if (numForNothing == 3) {
         println("낫싱")
-    } else { // 스트라이크 -> 볼
-        val avoidList = mutableListOf<Int>(0,1,2)
-        var ballNum = 0
-        var strikeNum = 0
-        for (i in inputNum.indices) { // 스트라이크부터 먼저 체크하고 제거하기
-            if (inputNum[i].toString() == computerNum[i]) {
-                strikeNum += 1
-                avoidList.remove(i)
+        return true
+    }
+
+    // 스트라이크 -> 볼
+    val avoidList = mutableListOf<Int>(0,1,2)
+    var ballNum = 0
+    var strikeNum = 0
+    for (i in inputNum.indices) { // 스트라이크부터 먼저 체크하고 제거하기
+        if (inputNum[i].toString() == computerNum[i]) {
+            strikeNum += 1
+            avoidList.remove(i)
 //                println("avoidList: $avoidList")
 //                println("strikeNum: $strikeNum")
 //                        computerNum.removeAt(i)
 //                        inputNum.replace("${inputNum[i]}", "")
-            }
         }
-        for (j in avoidList) { // 남은 것에서 볼 체크하기
-            if (computerNum.contains(inputNum[j].toString())) {
-                ballNum += 1
+    }
+    for (j in avoidList) { // 남은 것에서 볼 체크하기
+        if (computerNum.contains(inputNum[j].toString())) {
+            ballNum += 1
 //                println("ballNum: $ballNum")
-            }
         }
+    }
 
-        // print
-        if (strikeNum != 0 && ballNum != 0) {
-            println("${ballNum}볼 ${strikeNum}스트라이크")
+    // print
+    if (strikeNum != 0 && ballNum != 0) {
+        println("${ballNum}볼 ${strikeNum}스트라이크")
 //                    return "${ballNum}볼 ${strikeNum}스트라이크"
-        } else if (strikeNum == 0 && ballNum != 0) {
-            println("${ballNum}볼")
+    } else if (strikeNum == 0 && ballNum != 0) {
+        println("${ballNum}볼")
 //                    return "${ballNum}볼"
-        } else {
-            println("${strikeNum}스트라이크")
+    } else {
+        println("${strikeNum}스트라이크")
 //                    return "${strikeNum}스트라이크"
-        }
     }
 
     // return "낫싱"
