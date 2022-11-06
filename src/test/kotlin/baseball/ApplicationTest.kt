@@ -42,6 +42,21 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("444") }
         }
     }
+    @Test
+    fun `게임종료 후 예외 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                assertThrows<IllegalArgumentException> { runException("516", "3") }
+            },
+            5, 1, 6
+        )
+        assertRandomNumberInRangeTest(
+            {
+                assertThrows<IllegalArgumentException> { runException("516", "4") }
+            },
+            5, 1, 6
+        )
+    }
 
     override fun runMain() {
         main()
