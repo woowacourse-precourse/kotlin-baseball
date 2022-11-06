@@ -44,6 +44,11 @@ class InputDevice {
 class GameDevice {
     private var numberOfStrikes = 0
     private var numberOfBalls = 0
+
+    private fun initVariable() {
+        numberOfBalls = 0
+        numberOfStrikes = 0
+    }
     private fun calculateResult(userNumber: List<Int>, computerNumber: List<Int>) {
         val appeared = MutableList(10) {false}
         for(c in computerNumber) {
