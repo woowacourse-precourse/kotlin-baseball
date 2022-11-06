@@ -3,46 +3,7 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 
 object BaseballGameReferee {
-    fun processBaseballGame() {
-        Computer.generateNewRandomNumbers()
-        WordPrinter.printGameStart()
-
-        while (true) {
-            val guessedNumbers = User.guessNumber() ?: return
-            lateinit var curGameStatus: GameStatus
-
-            try {
-                val (strikeCount, ballCount) = arrayOf(calcStrikeCount(guessedNumbers), calcBallCount(guessedNumbers))
-                curGameStatus = decideEachTurn(strikeCount, ballCount)
-            } catch (e: IllegalArgumentException) {
-                e.printStackTrace()
-                return
-            }
-            when (curGameStatus) {
-                GameStatus.TERMINATE -> break
-                GameStatus.NEW_GAME -> Computer.generateNewRandomNumbers()
-                else -> continue
-            }
-        }
-    }
-
-    private fun manipulateScreen(strikeCount: Int, ballCount: Int) {
-        if (ballCount > 0) {
-            WordPrinter.printBallCount(ballCount)
-        }
-
-        when {
-            strikeCount + ballCount == 0 -> WordPrinter.printNothing()
-            strikeCount == 3 -> {
-                WordPrinter.printStrikeCount(strikeCount)
-                WordPrinter.printGameEnd()
-            }
-            strikeCount in 1..2 -> WordPrinter.printStrikeCount(strikeCount)
-        }
-        WordPrinter.printNewLine()
-    }
-
-    private fun decideEachTurn(strikeCount: Int, ballCount: Int): GameStatus {
+    fun decideEachTurn(strikeCount: Int, ballCount: Int): GameStatus {
         manipulateScreen(strikeCount, ballCount)
 
         if (strikeCount == 3) {
@@ -50,17 +11,6 @@ object BaseballGameReferee {
         }
 
         return GameStatus.CONTINUE
-    }
-
-    private fun checkPlayAgain(): GameStatus {
-        return when (Console.readLine()) {
-            "1" -> GameStatus.NEW_GAME
-            "2" -> {
-                WordPrinter.screenClose()
-                GameStatus.TERMINATE
-            }
-            else -> throw IllegalArgumentException("잘못된 입력입니다.")
-        }
     }
 
     fun calcStrikeCount(userInput: ArrayList<Int>): Int {
@@ -84,7 +34,7 @@ object BaseballGameReferee {
         return ballCount
     }
 
-    fun checkException(userInput: String) {
+    fun checkIsValid(userInput: String): Boolean {
         var isValid = true
 
         when {
@@ -95,8 +45,35 @@ object BaseballGameReferee {
         }
 
         if (!isValid) {
-            throw IllegalArgumentException("입력 오류입니다.")
+            return false
         }
+        return true
+    }
+
+    private fun checkPlayAgain(): GameStatus {
+        return when (Console.readLine()) {
+            "1" -> GameStatus.NEW_GAME
+            "2" -> {
+                ScreenManipulator.screenClose()
+                GameStatus.TERMINATE
+            }
+            else -> return GameStatus.ERROR
+        }
+    }
+
+    private fun manipulateScreen(strikeCount: Int, ballCount: Int) {
+        if (ballCount > 0) {
+            ScreenManipulator.printBallCount(ballCount)
+        }
+        when {
+            strikeCount + ballCount == 0 -> ScreenManipulator.printNothing()
+            strikeCount == 3 -> {
+                ScreenManipulator.printStrikeCount(strikeCount)
+                ScreenManipulator.printGameEnd()
+            }
+            strikeCount in 1..2 -> ScreenManipulator.printStrikeCount(strikeCount)
+        }
+        ScreenManipulator.printNewLine()
     }
 
     private fun String.isNumeric(): Boolean {
