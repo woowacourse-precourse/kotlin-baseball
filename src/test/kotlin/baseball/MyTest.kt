@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertFalse
 
 class MyTest : NsTest() {
 
@@ -104,7 +105,7 @@ class MyTest : NsTest() {
 
     @Test
     fun `정답이 아닐 때 false 반환, 게임 종료 문구 출력 안하는지 검사`() {
-        assertThat(checkCorrectAnswer("2스트라이크")).isEqualTo(false)
+        assertFalse(checkCorrectAnswer("2스트라이크"))
         assertThat(output())
             .doesNotContain("게임 종료")
     }
