@@ -84,11 +84,11 @@ fun resultOutput(strikeCount: Int, ballCount: Int): Int {
     if(strikeCount==0&&ballCount==0)
         println("낫싱")
     else if(strikeCount==0)
-        println("($ballCount)볼")
+        println("${ballCount}볼")
     else if(ballCount==0)
-        println("($strikeCount)스트라이크")
+        println("${strikeCount}스트라이크")
     else
-        println("($strikeCount)스트라이크 ($ballCount)볼")
+        println("${strikeCount}스트라이크 ${ballCount}볼")
 
     if(strikeCount==3)
         return 1
