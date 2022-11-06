@@ -70,15 +70,14 @@ class BaseballGame {
      * 출력할 string 을 조건에 따라 결정하는 함수
      */
     private fun decideResultString(resultMap: MutableMap<String, Int>, wrongCount: Int): String{
-        var string = ""
-        if (wrongCount == 3)
-            string = "낫싱"
+        val string = if (wrongCount == 3)
+            "낫싱"
         else if (resultMap["스트라이크"] == 0)
-            string = "${resultMap["볼"]}볼"
+            "${resultMap["볼"]}볼"
         else if (resultMap["볼"] == 0)
-            string = "${resultMap["스트라이크"]}스트라이크"
+            "${resultMap["스트라이크"]}스트라이크"
         else{
-            string = "${resultMap["볼"]}볼 ${resultMap["스트라이크"]}스트라이크"
+            "${resultMap["볼"]}볼 ${resultMap["스트라이크"]}스트라이크"
         }
         return string
     }
