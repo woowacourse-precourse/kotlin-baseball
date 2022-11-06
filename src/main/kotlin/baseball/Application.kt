@@ -59,6 +59,19 @@ fun checkStrike(userInputNumber: String,
     return strike
 }
 
+//ball 수
+fun checkBall(
+        userInputNumber: String,
+        computerRandomNumber: String,
+        strike: Int): Int {
+    var ball = 0
+    for (userInputNumberWord in userInputNumber)
+        if (computerRandomNumber.contains(userInputNumberWord)) ball++
+
+    ball -= strike
+    return ball
+}
+
 fun checkInputMessagePatten(standard: String, checkOverlap: MutableList<String>) {
     val pattern: Pattern = Pattern.compile(standard)
 
