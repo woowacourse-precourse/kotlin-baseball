@@ -67,6 +67,32 @@ class MyTest : NsTest() {
         }
     }
 
+    @Nested
+    inner class `게임 결과 검사` {
+        @Test
+        fun case1() {
+            val result = getGameResult(listOf(1, 2, 3), listOf(4, 5, 6))
+            assertThat(result).isEqualTo("낫싱")
+        }
+
+        @Test
+        fun case2() {
+            val result = getGameResult(listOf(1, 2, 3), listOf(3, 4, 5))
+            assertThat(result).isEqualTo("1볼")
+        }
+
+        @Test
+        fun case3() {
+            val result = getGameResult(listOf(1, 2, 3), listOf(1, 2, 5))
+            assertThat(result).isEqualTo("2스트라이크")
+        }
+
+        @Test
+        fun case4() {
+            val result = getGameResult(listOf(1, 2, 3), listOf(1, 3, 2))
+            assertThat(result).isEqualTo("2볼 1스트라이크")
+        }
+    }
     override fun runMain() {
         main()
     }
