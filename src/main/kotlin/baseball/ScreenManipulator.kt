@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter
 object ScreenManipulator {
     lateinit var screen: BufferedWriter
 
-    fun printNewLine(){
+    fun printNewLine() {
         screen.write("\n")
         screen.flush()
     }

@@ -1,7 +1,8 @@
 package baseball
+
 /** ball과 strike의 개수를 세어주는 class **/
 object BSCounter {
-    fun calcStrikeCount(computerNumbers:List<Int> ,userNumbers: List<Int>): Int {
+    fun calcStrikeCount(computerNumbers: List<Int>, userNumbers: List<Int>): Int {
         var strikeCount = 0
 
         userNumbers.forEachIndexed { index, eachNum ->
@@ -12,7 +13,7 @@ object BSCounter {
         return strikeCount
     }
 
-    fun calcBallCount(computerNumbers:List<Int> ,userNumbers: List<Int>): Int {
+    fun calcBallCount(computerNumbers: List<Int>, userNumbers: List<Int>): Int {
         var ballCount = 0
 
         userNumbers.forEachIndexed { userNumberIndex, userNum ->

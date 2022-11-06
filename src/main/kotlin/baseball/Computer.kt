@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.random.Random
 
 class Computer {
-    lateinit var randomNumbers:List<Int>
+    lateinit var randomNumbers: List<Int>
+
     init {
         generateNewRandomNumbers()
     }
