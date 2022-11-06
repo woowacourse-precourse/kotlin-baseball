@@ -101,6 +101,13 @@ class MyTest : NsTest() {
             .contains("게임 종료")
     }
 
+    @Test
+    fun `정답이 아닐 때 false 반환, 게임 종료 문구 출력 안하는지 검사`() {
+        assertThat(checkCorrectAnswer("2스트라이크")).isEqualTo(false)
+        assertThat(output())
+            .doesNotContain("게임 종료")
+    }
+
     override fun runMain() {
         main()
     }
