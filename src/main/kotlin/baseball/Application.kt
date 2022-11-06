@@ -2,13 +2,14 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+import java.util.stream.Collectors.toList
 
 // 경기 진행 함수
 fun startGame() {
     val computerNum = randomNumber()
     while(true){
         var playerNum = randomNumberInput()
-        var result = checkResult(computerNum, playerNum)
+        var result = checkResult()
         if (result == 1) break
     }
 }
@@ -50,24 +51,24 @@ fun exceptionHandling(player: String) {
 
 
 // 결과 확인 기능
-fun checkResult(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int {
-    var strikeCount = checkStrike()
-    var ballCount = checkBall()
-    return resultOutput(strikeCount, ballCount)
+fun checkResult(): Int {
+    checkStrike()
+    checkBall()
+    resultOutput()
 
 }
 // 스트라이크 확인 기능
-fun checkStrike(): Int {
+fun checkStrike() {
 
 }
 
 // 볼 확인 기능
-fun checkBall(): Int {
+fun checkBall() {
 
 }
 
 // 비교 결과 출력 기능
-fun resultOutput(strikeCount: Int, ballCount: Int): Int {
+fun resultOutput() {
 
 }
 
