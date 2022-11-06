@@ -18,4 +18,15 @@ class BaseBallGame {
         playBaseballGame(computer)
     }
 
+    private fun playBaseballGame(computer: Computer){
+        while(true) {
+            user.numberFormatting(playGame.getUserNum())
+            val resultArr = user.compareWithAnswer(computer.number)
+            if(resultArr[0] == 3)
+                if(!endBaseballGame())
+                    break
+            playGame.printResult(resultArr)
+        }
+    }
+
 }
