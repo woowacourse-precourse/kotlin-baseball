@@ -2,10 +2,6 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-private const val NOTHING_MESSAGE = "낫싱"
-private const val BALL_MESSAGE = "볼"
-private const val STRIKE_MESSAGE = "스트라이크"
-private const val CORRECT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 const val ANSWER_COUNT = 3
 const val MIN_NUMBER = 1
 const val MAX_NUMBER = 9
@@ -26,28 +22,27 @@ class Computer {
     fun compareGuessAndAnswer(userGuess: List<Int>): Boolean {
         val strikeCount = countStrike(userGuess)
         val ballCount = countBall(userGuess)
-        val result = StringBuilder()
 
+        if (strikeCount == ANSWER_COUNT){
+            UserView.printCorrectFinishGame()
+            return false
+        }
         if (ballCount == 0 && strikeCount == 0) {
-            result.append(NOTHING_MESSAGE)
-            println(result.toString())
+            UserView.printNothing()
+            return true
+        }
+        if (ballCount > 0 && strikeCount > 0){
+            UserView.printBallAndStrike(ballCount, strikeCount)
             return true
         }
         if (ballCount > 0) {
-            result.append(ballCount).append(BALL_MESSAGE)
-            if (strikeCount > 0) {
-                result.append(' ')
-            }
+            UserView.printBall(ballCount)
+            return true
         }
         if (strikeCount > 0) {
-            result.append(strikeCount).append(STRIKE_MESSAGE)
+            UserView.printStrike(strikeCount)
+            return true
         }
-        if (strikeCount == ANSWER_COUNT) {
-            result.append('\n').append(CORRECT_MESSAGE)
-            println(result.toString())
-            return false
-        }
-        println(result.toString())
         return true
     }
 
