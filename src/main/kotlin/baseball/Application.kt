@@ -17,24 +17,20 @@ fun generateRandomThreeDigits(): List<Int> {
     return digits
 }
 
-fun validatePlayInput(input: String): Boolean {
+fun validatePlayInput(input: String) {
     val nums = input.toList()
 
-    // 3자리 여부
-    if (nums.size != 3) return false
-
-    // 1~9 사이의 숫자 여부
-    if (nums.any { it !in '1'..'9' }) return false
-
-    // 중복 여부
-    if (nums.distinct() != nums) return false
-
-    return true
+    if (nums.size != 3 ||
+        nums.any { it !in '1'..'9' } ||
+        nums.distinct() != nums) {
+        throw IllegalArgumentException("1부터 9사이의 수로 이루어진 중복 없는 수를 입력해주세요 ")
+    }
 }
 
-fun validateEndInput(input: String): Boolean {
-    if (input == "1" || input == "2") return true
-    return false
+fun validateEndInput(input: String) {
+    if (!(input == "1" || input == "2")) {
+        throw IllegalArgumentException("1 혹은 2를 입력해야합니다.")
+    }
 }
 
 fun splitUserInput(input: String) =

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -20,13 +21,29 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `사용자 입력이 1부터 9사이의 중복없는 3자리 숫자인지 검사`() {
-        val inputs = listOf("246", "135", "1", "597", "589", "2", "024", "201", "안녕", "hi")
-        val expects = listOf(true, true, false, true, true, false, false, false, false, false)
+        val inputs = listOf("246", "135", "1", "597", "589", "2", "024", "201", "안녕", "hi", "")
+        val expects = listOf(true, true, false, true, true, false, false, false, false, false, false)
 
         for (idx in inputs.indices) {
-            val validationResult = validateUserInput(inputs[idx])
-            assertThat(validationResult)
-                .isEqualTo(expects[idx])
+            try {
+                validatePlayInput(inputs[idx])
+            } catch (e: IllegalArgumentException) {
+                assertThat(expects[idx]).isFalse
+            }
+        }
+    }
+
+    @Test
+    fun `게임 종료 여부 판단 사용자 입력이 1 혹은 2 인지 검사`() {
+        val inputs = listOf("246", "135", "1", "597", "589", "2", "024", "201", "안녕", "hi", "")
+        val expects = listOf(false, false, true, false, false, true, false, false, false, false, false)
+
+        for (idx in inputs.indices) {
+            try {
+                validateEndInput(inputs[idx])
+            } catch (e: IllegalArgumentException) {
+                assertThat(expects[idx]).isFalse
+            }
         }
     }
 
