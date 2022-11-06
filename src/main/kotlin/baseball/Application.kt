@@ -58,7 +58,12 @@ fun checkResult(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int
 }
 // 스트라이크 확인 기능
 fun checkStrike(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int {
-
+    var strikeCount = 0
+    for(i in 0..2){
+        if(computerNum[i]==playerNum[i])
+            strikeCount++
+    }
+    return strikeCount
 }
 
 // 볼 확인 기능
