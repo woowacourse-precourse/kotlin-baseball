@@ -66,6 +66,7 @@ fun isDigitNumber(inputNumber : Char, randomNumber : String, index : Int){
 }
 fun printHint(){
     when {
+        strikeCount == 3 -> endGame()
         ballCount == 0 && strikeCount > 0 -> println("${strikeCount}스트라이크")
         strikeCount == 0 && ballCount > 0 -> println("${ballCount}볼")
         ballCount > 0 && strikeCount > 0 -> println("${ballCount}볼 ${strikeCount}스트라이크")
@@ -93,6 +94,22 @@ fun restartGame(){
         inputNumber = inputNumber()
         isContainNumber(inputNumber, randomNumber)
         printHint()
+    }
+}
+fun endGame(){
+    println("3스트라이크")
+    strikeCount = 0
+    val endMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+    val restartGameMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+    println(endMessage)
+    println(restartGameMessage)
+    when(readLine()){
+        "1" -> restartGame()
+        "2" -> {
+            println("게임 종료")
+            isEnd = 1
+            return
+        }
     }
 }
 fun main() {
