@@ -3,7 +3,8 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val randomValue = createRandomValue()
+    println("숫자 야구 게임을 시작합니다.")
+    var randomValue = createRandomValue()
     while (true) {
         val inputValue = createInputValue()
         if (!isValid(inputValue))
@@ -11,10 +12,9 @@ fun main() {
 
         val compared = compareNumber(randomValue, inputValue)
         printResult(compared)
-
-        // 3strike일때 게임종료하고 새로운 숫자 입력받기
-        // 새로운 숫자가 1 또는 2인지 확인
-
+        val isExit = isExit(compared)
+        if (isExit < 0) break
+        if (isExit > 0) randomValue = createRandomValue()
     }
 }
 
@@ -30,6 +30,7 @@ fun createRandomValue(): List<Int> {
 }
 
 fun createInputValue(): List<Int>{
+    print("숫자를 입력해주세요: ")
     val input = readLine()
     val isDigitOnly = input!!.all {
         it.isDigit() && it.digitToInt() > 0
@@ -77,4 +78,19 @@ fun isValid(inputValue: List<Int>): Boolean{
 
     val listSize = inputValue.distinct().size
     return (listSize == 3)
+}
+
+fun isExit(compared: Pair<Int, Int>): Int{
+    val isThreeStrike = (compared.second == 3)
+    if (!isThreeStrike) return 0
+
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
+
+    var continueInput = ""
+    continueInput = readLine()!!
+
+    if (continueInput == "1") return 1
+    if (continueInput == "2") return -1
+    throw IllegalArgumentException("입력 오류")
 }
