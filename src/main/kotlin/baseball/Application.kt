@@ -13,6 +13,8 @@ fun main() {
             val gameResult = getGameResult(playerInput.map { it.digitToInt() }, computerNumber)
             println(gameResult)
         } while (!checkCorrectAnswer(gameResult))
+    } while (askRestart())
+}
 
 
 fun make3RandomNumber(): MutableList<Int> {
@@ -71,4 +73,10 @@ fun checkCorrectAnswer(gameResult: String): Boolean {
     return false
 }
 
+fun askRestart(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val answer = Console.readLine()
+    if (answer == "1") return true
+    if (answer == "2") return false
+    throw IllegalArgumentException("잘못된 값 입력")
 }
