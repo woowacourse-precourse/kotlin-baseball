@@ -10,6 +10,7 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
     while (true) {
 
+
     }
 }
 
@@ -30,13 +31,13 @@ fun createComputerRandomNumber(): String {
 fun inputUserNumber(): String {
     print("숫자를 입력해주세요 : ")
     val userInputNumber = Console.readLine()
-    //여기부터커밋
     checkInputUserNumber(userInputNumber)
     return userInputNumber.toString()
 }
 
 fun checkInputUserNumber(userInputNumber: String?) {
     val checkOverlapInputNumber = mutableListOf<String>()
+    val inputNumberStandard = "^[1-9]*$"
 
     //중복체크
     userInputNumber ?: throw IllegalArgumentException()
@@ -47,3 +48,12 @@ fun checkInputUserNumber(userInputNumber: String?) {
 
 }
 
+
+fun checkInputMessagePatten(standard: String, checkOverlap: MutableList<String>) {
+    val pattern: Pattern = Pattern.compile(standard)
+
+    for (inputNum in checkOverlap) {
+        val matcher: Matcher = pattern.matcher(inputNum)
+        if (matcher.find().toString() == "false") throw IllegalArgumentException()
+    }
+}
