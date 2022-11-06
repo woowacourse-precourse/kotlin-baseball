@@ -2,10 +2,14 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.sin
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
+    subMain()
+//    println("result: $result")
+}
+
+fun subMain(){
     print("숫자를 입력해주세요 : ")
     var input = inputNum()
     rightInputCheck(input)
@@ -17,7 +21,6 @@ fun main() {
         rightInputCheck(input)
         result = checkStrikeBallNothing(input, computerNum)
     }
-//    println("result: $result")
 }
 
 fun pickRandomNums(): MutableList<String> {
@@ -47,6 +50,8 @@ fun rightInputCheck(num: String) {
             throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
         }
     }
+    if (num[0] == num[2])
+        throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
 //    println("length check success")
 }
 
@@ -118,7 +123,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
 fun gameRestartCheck(selectionNum: String){
     when (selectionNum) {
         "1" -> {
-            main()
+            subMain()
         }
         "2" -> {
             throw SecurityException()
