@@ -13,7 +13,7 @@ fun isDuplicate(s: String): Boolean {
 fun userInput(): String {
     val userNumber = Console.readLine()
     if (userNumber.length != 3 || userNumber.contains("0") || !isNumber(userNumber) || !isDuplicate(userNumber)) {
-        throw IllegalAccessException()
+        throw IllegalArgumentException()
     }
     return userNumber
 }
