@@ -33,5 +33,4 @@ class BaseballGameProcessor(private val user: User, private val computer: Comput
 
         return guessedNumbers.toList()
     }
-
 }
