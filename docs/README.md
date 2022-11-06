@@ -20,7 +20,7 @@ Kotlin 1.6.20
 ### ✅ TerminateDevice 
 ✅️️️ Read user input (new game or exit) \
 ✅️️ Check termination condition
-### 🚧 GameManager
+### ✅ GameManager
 ✅ Make random number \
 ✅️ Execute one game \
 ◻️ Execute multiple game
