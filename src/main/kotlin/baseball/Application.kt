@@ -14,23 +14,32 @@ fun startGame() {
 
 // 서로 다른 임의의 수 3개 선택 기능
 fun randomNumber(): MutableList<Int> {
-    val computer = mutableListOf<Int>()
-    while (computer.size < 3) {
+    val computerNum = mutableListOf<Int>()
+    while (computerNum.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber)
+        if (!computerNum.contains(randomNumber)) {
+            computerNum.add(randomNumber)
         }
     }
-    return computer
+    return computerNum
 }
 
 // 서로 다른 3개의 숫자 입력받는 기능
 fun randomNumberInput(): MutableList<Int> {
-    exceptionHandling()
+    print("숫자를 입력해주세요 : ")
+    var player: String = readLine()!!
+    var playerNum = mutableListOf<Int>()
+    if(exceptionHandling(player)){
+        playerNum[0] = player[0].digitToInt()
+        playerNum[1] = player[1].digitToInt()
+        playerNum[2] = player[2].digitToInt()
+    }
+    return playerNum
+
 }
 
 // 잘못된 값을 입력할 경우 예외 처리 기능
-fun exceptionHandling() {
+fun exceptionHandling(player: String): Boolean {
 
 }
 
