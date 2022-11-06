@@ -5,7 +5,7 @@ class BaseballGame {
         val computerNumberList = Computer().addComputerNumberToList()
         while (true) {
             println("숫자를 입력해주세요: ")
-            val userNumber = inputUserNumber()
+            val userNumber = getUserNumber()
             val userNumberList = addUserNumberToList(userNumber)
             println(getResultString(computerNumberList, userNumberList))
             if (getResultString(computerNumberList, userNumberList) == "3스트라이크") {
@@ -18,7 +18,7 @@ class BaseballGame {
     /**
      * 사용자로부터 입력을 받고, ThrowException 객체를 통해 예외 처리를 하는 함수
      */
-    private fun inputUserNumber(): Int{
+    private fun getUserNumber(): Int{
         val input = readLine()
         ThrowException().throwExceptionForUserNumber(input)
         return input?.toInt()!!
