@@ -9,6 +9,18 @@ fun main() {
     TODO("프로그램 구현")
 }
 
+fun continueGame(): Boolean {
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val input = Console.readLine().toInt()
+    if (input == 1) {
+        return true
+    }
+    if (input == 2) {
+        return false
+    }
+    throw IllegalArgumentException()
+}
+
 fun determineResult(computerNumber: MutableList<Int>, userNumber: MutableList<Int>): String {
     val total = countTotal(computerNumber, userNumber)
     val strike = countStrike(computerNumber, userNumber)
