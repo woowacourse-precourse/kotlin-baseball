@@ -17,9 +17,9 @@ Kotlin 1.6.20
 ✅️️ Calculate the number of balls & strikes \
 ✅️ Check termination condition \
 ✅ Print the number of balls & strikes 
-### ◻️ TerminateDevice 
-◻️ Read user input (new game or exit) \
-◻️ Check termination condition
+### 🚧 TerminateDevice 
+✅️️️ Read user input (new game or exit) \
+✅️️ Check termination condition
 ### ◻️ GameManager
 ◻️ Execute one game \
 ◻️ Execute multiple game
