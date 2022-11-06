@@ -76,4 +76,28 @@ class GameControllerTest {
         val ball = GameController.getBallCount(computer, user)
         assertThat(ball).isEqualTo(3)
     }
+
+    @Test
+    fun `스트라이크 결과 출력 확인`() {
+        val message = GameController.resultMessage(2, 0)
+        assertThat(message).isEqualTo("2스트라이크")
+    }
+
+    @Test
+    fun `볼 결과 출력 확인`() {
+        val message = GameController.resultMessage(0, 1)
+        assertThat(message).isEqualTo("1볼")
+    }
+
+    @Test
+    fun `스트라이크 & 볼 결과 출력 확인`() {
+        val message = GameController.resultMessage(1, 1)
+        assertThat(message).isEqualTo("1볼 1스트라이크")
+    }
+
+    @Test
+    fun `하나도 없는 결과 출력 확인`() {
+        val message = GameController.resultMessage(0, 0)
+        assertThat(message).isEqualTo("낫싱")
+    }
 }
