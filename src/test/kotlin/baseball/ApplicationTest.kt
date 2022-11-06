@@ -30,4 +30,15 @@ class ApplicationTest : NsTest() {
     override fun runMain() {
         main()
     }
+
+    @Test
+    fun `setComputerNumTest`() {
+        assertRandomNumberInRangeTest(
+            {
+                val computerNum = setComputerNum()
+                assertThat(computerNum).isEqualTo(mutableListOf<Int>(1,3,5))
+            },
+            1,3,5
+        )
+    }
 }
