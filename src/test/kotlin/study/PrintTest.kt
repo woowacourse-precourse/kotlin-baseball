@@ -11,10 +11,9 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-val outputStreamCaptor = ByteArrayOutputStream()
-val standardOut = System.out
-
 class PrintTest {
+    private val outputStreamCaptor = ByteArrayOutputStream()
+    private val standardOut = System.out
 
     @Test
     fun `printReport 반환 확인_음수`() {
@@ -30,8 +29,7 @@ class PrintTest {
     fun `printReport 반환 확인_3스트라이크`() {
         assertEquals(true, printReport(0, 3))
     }
-
-
+    
     @BeforeEach
     fun setUp() {
         System.setOut(PrintStream(outputStreamCaptor))
@@ -50,16 +48,12 @@ class PrintTest {
 
     @Test
     fun `printNothing 낫싱 문구 출력`() {
-        // 전체 실행으로는 문제 발생
-        // 개별 실행시 문제 없음
         printNothing()
         assertEquals("낫싱", outputStreamCaptor.toString().trim())
     }
 
     @Test
     fun `printEnd 3스트라이크 문구 출력`() {
-        // 전체 실행으로는 문제 발생
-        // 개별 실행시 문제 없음
         printEnd()
         assertEquals("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
             outputStreamCaptor.toString().trim())
