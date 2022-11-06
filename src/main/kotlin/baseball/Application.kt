@@ -67,4 +67,16 @@ fun main() {
         }
         user_number = input_number() // 입력 갱신
     }
+
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
+    user_number = input_number() // 입력 갱신
+
+    if ( user_number == "1"){ // 1일경우 다시시작
+        main()
+    }
+    else { // 2일경우 종료
+        println("게임 종료")
+    }
 }
