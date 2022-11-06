@@ -27,3 +27,18 @@ fun createInputValue(): List<Int>{
         .map { it.digitToIntOrNull() }
         .filterNotNull()
 }
+
+fun compareNumber(
+    computer: List<Int>,
+    user: List<Int>
+): Pair<Int, Int> {
+    var ball = 0
+    var strike = 0
+    computer.onEachIndexed { index, num ->
+        if (num == user[index])
+            strike += 1
+        else if (user.contains(num))
+            ball += 1
+    }
+    return Pair(ball, strike)
+}
