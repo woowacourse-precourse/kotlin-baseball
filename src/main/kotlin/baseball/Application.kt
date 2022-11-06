@@ -63,27 +63,37 @@ fun gameResult(checkCount : MutableList<Int>) : String {
     return gameResultMessage
 }
 
+fun checkRetry() : Boolean {
+    return when (Console.readLine()!!.toInt()) {
+        1 -> true
+        2 -> false
+        else -> throw IllegalArgumentException()
+    }
+}
+
+
+var comNumbers : MutableList<Int> = mutableListOf()
+
+fun gameControl(comNumber: MutableList<Int>): Boolean {
+    val userNumbers = userInput()
+    val gameProgress = checkBallCount(compareNumber(userNumbers, comNumber))
+
+    println(gameResult(gameProgress))
+
+    if (gameResult(gameProgress).contains("3스트라이크")) {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
+        if (!checkRetry()) return false
+        else comNumbers = comInput()
+    }
+    return true
+
+}
+
 fun main() {
-    var retryFlag = true
     println("숫자 야구 게임을 시작합니다.")
-    var comNumbers = comInput()
-
-    while(retryFlag) {
-        val userNumbers = userInput()
-        val gameProgress = checkBallCount(compareNumber(userNumbers, comNumbers))
-
-        println(gameResult(gameProgress))
-
-        if(gameResult(gameProgress).contains("3스트라이크")) {
-            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-            val retry = Console.readLine()!!.toInt()
-
-            if(retry == 2) retryFlag = false
-            else if(retry == 1) {
-                comNumbers = comInput()
-                continue
-            }
-            else throw IllegalArgumentException()
-        }
+    comNumbers = comInput()
+    while(true) {
+        if(!gameControl(comNumbers)) break
     }
 }
