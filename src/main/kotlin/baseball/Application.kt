@@ -7,7 +7,14 @@ fun main() {
 }
 
 fun generateRandomThreeDigits(): List<Int> {
-    TODO("임의의 3자리 자연수 생성")
+    val digits = mutableListOf<Int>()
+    while (digits.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!digits.contains(randomNumber)) {
+            digits.add(randomNumber)
+        }
+    }
+    return digits
 }
 
 fun validateUserInput(input: String): Boolean {
