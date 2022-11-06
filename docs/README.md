@@ -28,5 +28,5 @@ Kotlin 1.6.20
 ✅️️️ Complete main function
 ### 🚧 Test
 ✅️️️ Test long game \
-◻️ Test invalid user input(3 numbers) \
-◻️ Test invalid user input(after the game over. (ex - 3,4))
+✅️ Test invalid user input(3 numbers) \
+✅ Test invalid user input(after the game over. (ex - 3,4))
