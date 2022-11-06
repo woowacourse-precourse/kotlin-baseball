@@ -85,6 +85,16 @@ fun startGame(){
         printHint()
     }
 }
+fun restartGame(){
+    val randomNumber = createRandomNumber()
+    println(randomNumber)
+    var inputNumber: String
+    while(isEnd == 0){
+        inputNumber = inputNumber()
+        isContainNumber(inputNumber, randomNumber)
+        printHint()
+    }
+}
 fun main() {
     startGame()
 }
