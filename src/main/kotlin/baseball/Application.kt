@@ -31,6 +31,12 @@ fun isNotInteger(inputData: String): Boolean {
     return false
 }
 
+fun isGameOver(inputResult: List<Int>): Boolean {
+    val strikeCount = inputResult[1]
+
+    return strikeCount == 3
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
