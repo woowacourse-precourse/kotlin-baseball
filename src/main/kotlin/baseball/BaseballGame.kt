@@ -27,7 +27,7 @@ class BaseballGame {
     /**
      * 유저의 숫자를 리스트에 넣어주고 반환하는 함수수
      */
-   private fun getUserNumberList(inputNumber: Int): MutableList<Int> {
+   fun getUserNumberList(inputNumber: Int): MutableList<Int> {
         val userNumberList = mutableListOf<Int>()
         var inputNumber = inputNumber
         userNumberList.add(inputNumber / 100)
@@ -41,7 +41,7 @@ class BaseballGame {
     /**
      * 결과를 판단하고, 그 결과를 string 으로 반환하는 함수
      */
-    private fun getResultString(computerNumberList: MutableList<Int>, userNumberList: MutableList<Int>): String{
+    fun getResultString(computerNumberList: MutableList<Int>, userNumberList: MutableList<Int>): String{
         val resultMap = mutableMapOf("볼" to 0, "스트라이크" to 0)
         var wrongCount = 0
         for (index in userNumberList.indices){
