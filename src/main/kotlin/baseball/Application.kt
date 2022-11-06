@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 var strikeCount = 0
 var ballCount = 0
+var isEnd = 0
 fun inputNumber(): String {//숫자 입력
     print("숫자를 입력해주세요 : ")
     val inputNumber = Console.readLine()//String
@@ -63,8 +64,27 @@ fun isDigitNumber(inputNumber : Char, randomNumber : String, index : Int){
     }
     //자리수가 같은지 다른지
 }
-
-fun main() {
+fun printHint(){
+    when {
+        ballCount == 0 && strikeCount > 0 -> println("${strikeCount}스트라이크")
+        strikeCount == 0 && ballCount > 0 -> println("${ballCount}볼")
+        ballCount > 0 && strikeCount > 0 -> println("${ballCount}볼 ${strikeCount}스트라이크")
+    }
+    ballCount = 0
+    strikeCount = 0
+}
+fun startGame(){
     val randomNumber = createRandomNumber()
-    isContainNumber(inputNumber(), randomNumber)
+    println(randomNumber)
+    val startGameMessage = "숫자 야구 게임을 시작합니다."
+    println(startGameMessage)
+    var inputNumber: String
+    while(isEnd == 0){
+        inputNumber = inputNumber()
+        isContainNumber(inputNumber, randomNumber)
+        printHint()
+    }
+}
+fun main() {
+    startGame()
 }
