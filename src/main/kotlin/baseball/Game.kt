@@ -12,13 +12,17 @@ object Game {
             if (gameStop) {
                 break
             }
-            print("숫자를 입력해주세요 : ")
-            input = Console.readLine()
-            if (checkInputValueException(input)) {
-                require(false)
-            }
-            Computer.compareInputWithCorrectNumber(input)
+            processInput()
         }
+    }
+
+    private fun processInput(){
+        print("숫자를 입력해주세요 : ")
+        input = Console.readLine()
+        if (checkInputValueException(input)) {
+            require(false)
+        }
+        Computer.compareInputWithCorrectNumber(input)
     }
 
     private fun checkInputValueException(inputValue: String): Boolean {
