@@ -3,8 +3,11 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 import kotlin.random.Random
 
-object Computer {
-    var randomNumbers = ArrayList<Int>()
+class Computer {
+    lateinit var randomNumbers:List<Int>
+    init {
+        generateNewRandomNumbers()
+    }
 
     fun generateNewRandomNumbers() {
         val generatedNumbers = ArrayList<Int>()
@@ -17,6 +20,6 @@ object Computer {
             }
         }
         println(generatedNumbers)
-        randomNumbers = generatedNumbers
+        randomNumbers = generatedNumbers.toList()
     }
 }
