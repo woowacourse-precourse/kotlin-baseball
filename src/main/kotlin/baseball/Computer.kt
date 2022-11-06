@@ -52,6 +52,10 @@ object Computer {
         } else if (strike > 0 && ball > 0) {
             println("${ball}볼 ${strike}스트라이크")
         }
+        resetScore()
+    }
+
+    private fun resetScore(){
         strike = 0
         ball = 0
     }
