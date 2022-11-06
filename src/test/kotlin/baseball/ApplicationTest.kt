@@ -96,6 +96,35 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자 입력값 유효성 검사`() {
+        val inputValidator = InputValidator(
+            listOf(
+                StringLengthVerifier(3),
+                OneToNineOnlyVerifier(),
+                NoSameCharacterVerifier(),
+            )
+        )
+        assertDoesNotThrow { inputValidator.validate("369") }
+        assertThrows<IllegalArgumentException> { inputValidator.validate("12") }
+        assertThrows<IllegalArgumentException> { inputValidator.validate("101") }
+        assertThrows<IllegalArgumentException> { inputValidator.validate("abc") }
+        assertThrows<IllegalArgumentException> { inputValidator.validate("111") }
+
+        val choiceValidator = InputValidator(
+            listOf(
+                StringLengthVerifier(1),
+                ValidChoiceVerifier(listOf("1", "2")),
+            )
+        )
+        assertDoesNotThrow { choiceValidator.validate("1") }
+        assertDoesNotThrow { choiceValidator.validate("2") }
+        assertThrows<IllegalArgumentException> { choiceValidator.validate("12") }
+        assertThrows<IllegalArgumentException> { choiceValidator.validate("01") }
+        assertThrows<IllegalArgumentException> { choiceValidator.validate("0") }
+        assertThrows<IllegalArgumentException> { choiceValidator.validate("3") }
+    }
+
     override fun runMain() {
         main()
     }
