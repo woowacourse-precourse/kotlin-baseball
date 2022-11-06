@@ -6,7 +6,22 @@ import java.io.OutputStreamWriter
 object ScreenManipulator {
     lateinit var screen: BufferedWriter
 
-    fun printNewLine() {
+    fun manipulateScreen(strikeCount: Int, ballCount: Int) {
+        if (ballCount > 0) {
+            printBallCount(ballCount)
+        }
+        when {
+            strikeCount + ballCount == 0 -> printNothing()
+            strikeCount == 3 -> {
+                printStrikeCount(strikeCount)
+                printGameEnd()
+            }
+            strikeCount in 1..2 -> printStrikeCount(strikeCount)
+        }
+        printNewLine()
+    }
+
+    private fun printNewLine() {
         screen.write("\n")
         screen.flush()
     }
@@ -23,23 +38,23 @@ object ScreenManipulator {
         screen.flush()
     }
 
-    fun printStrikeCount(strikeCount: Int) {
+    private fun printStrikeCount(strikeCount: Int) {
         screen.write("${strikeCount}스트라이크 ")
         screen.flush()
     }
 
-    fun printBallCount(ballCount: Int) {
+    private fun printBallCount(ballCount: Int) {
         screen.write("${ballCount}볼 ")
         screen.flush()
     }
 
-    fun printGameEnd() {
+    private fun printGameEnd() {
         screen.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         screen.flush()
     }
 
-    fun printNothing() {
+    private fun printNothing() {
         screen.write("낫싱\n")
         screen.flush()
     }

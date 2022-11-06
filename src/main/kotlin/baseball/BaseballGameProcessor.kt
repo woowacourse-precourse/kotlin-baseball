@@ -15,7 +15,8 @@ class BaseballGameProcessor(private val user: User, private val computer: Comput
             val (strikeCount, ballCount) = arrayOf(BallStrikeCounter.calcStrikeCount(computer.randomNumbers, guessedNumbers),
                 BallStrikeCounter.calcBallCount(computer.randomNumbers, guessedNumbers))
 
-            when (BaseballGameReferee.decideEachTurn(strikeCount, ballCount)) {
+            ScreenManipulator.manipulateScreen(strikeCount, ballCount)
+            when (BaseballGameReferee.decideEachTurn(strikeCount)) {
                 GameStatus.TERMINATE -> break
                 GameStatus.NEW_GAME -> computer.generateNewRandomNumbers()
                 GameStatus.ERROR -> throw IllegalArgumentException("입력 오류입니다.")
