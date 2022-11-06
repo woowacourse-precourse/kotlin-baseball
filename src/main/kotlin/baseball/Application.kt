@@ -1,6 +1,5 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     startGame()
@@ -13,7 +12,6 @@ fun startGame(){
             println("게임 종료.")
             break
         }
-
     }
 }
 

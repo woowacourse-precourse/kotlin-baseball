@@ -10,7 +10,6 @@ class ThrowException {
             throw IllegalArgumentException("입력한 값이 숫자가 아닙니다.")
         else if (!isOneOrTwo(input))
             throw IllegalArgumentException("입력한 수가 올바른 값이 아닙니다")
-
     }
 
     /**
@@ -60,7 +59,6 @@ class ThrowException {
         numberList.add(userNumber)
         return numberList.distinct().size == 3 // 리스트에서 중복을 제거하고 난 size가 3이면 true
     }
-
 
     /**
      * 입력한 숫자가 1과 2 인지 판단하는 함수
