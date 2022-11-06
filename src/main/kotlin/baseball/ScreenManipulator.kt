@@ -1,10 +1,9 @@
 package baseball
 
-import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 
-object WordPrinter {
+object ScreenManipulator {
     lateinit var screen: BufferedWriter
 
     fun printNewLine(){
@@ -48,5 +47,4 @@ object WordPrinter {
     fun screenClose() {
         screen.close()
     }
-
 }
