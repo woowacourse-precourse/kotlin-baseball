@@ -25,12 +25,23 @@ fun getUserInput(): MutableList<Int> {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
 
+    exceptionHandling(input)
     input.forEach {
         userNumber.add(it - '0')
     }
     return userNumber
 }
 
+fun exceptionHandling(input: String) {
+    if (input.length != 3 || checkSameNumber(input)) {
+        throw IllegalArgumentException()
+    }
+    try {
+        input.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
+    }
+}
 fun checkSameNumber(input: String): Boolean {
     val userNumber = mutableListOf<Int>()
     userNumber.add(input[0] - '0')
