@@ -23,14 +23,16 @@
     + 잘못된 값을 입력 받을 경우 'IllegalArgumentException'을 발생시키라고 명시되어 있다.
     + 잘못된 값이라 함은 입력받은 3자리 수가 음수인 경우 / 3자리가 아닌 경우 / 정수가 아닌 경우가 있다.
 
-3. 함수 - 5개
+3. 함수 - 8개
     | 함수명 | 매개변수 | 리턴타입 | 용도 |
     | --- | --- | --- | --- |
     | createOpponentData |  | String | 상대방 숫자 생성 후 return |
     | isNegativeNumber | String inputData | Boolean | 입력값 음수인지 check |
     | isNotThreeDigits | String inputData | Boolean | 입력값 3자리수인지 check |
     | isNotInteger | String inputData | Boolean | 입력값 정수인지 check |
+    | isGameOver | List<Int> | Boolean | strike 개수 3개인지 check |
     | compareData | String opponentData, String inputData | List<Int> | 상대방 숫자와 입력값 비교 후 결과 return |
+    | gameResultString | List<Int> | String | 게임 결과 String return |
     | continueGame | String inputContinue | Boolean | 게임 종료 후 입력 된 숫자 확인하여 게임 continue(true) / exit(false) return |
 
     + compareData return List<Int> -> ball / strike 2개를 카운트한 List
