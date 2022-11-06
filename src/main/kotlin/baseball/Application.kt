@@ -4,10 +4,15 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 fun main() {
-    val computer = randomList()
+    val computer = randomThreeNumber()
+    val user = playerThreeNumber()
+    val result = hashMapOf<String,Int>()
+    result["스트라이크"] = 0
+    result["볼"] = 0
+    result.replace("스트라이크",findStrike(computer,user))
 }
 
-fun randomList():MutableList<Int>{
+fun randomThreeNumber():MutableList<Int>{
     val computer = mutableListOf<Int>()
     while(computer.size<3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -15,6 +20,7 @@ fun randomList():MutableList<Int>{
             computer.add(randomNumber)
         }
     }
+//    print(computer)
     return computer
 }
 
@@ -22,7 +28,7 @@ fun playerThreeNumber():MutableList<Int>{
     val playerInput = Console.readLine()
     val playerInputMutableList = playerInput.map {it.toString().toInt()}.toMutableList()
     inputErrorCheck(playerInputMutableList)
-    print(playerInputMutableList)
+//    print(playerInputMutableList)
     return playerInputMutableList
 }
 
@@ -37,3 +43,12 @@ fun inputErrorCheck(userInputMutableList:List<Int>){
         }
 }
 
+fun findStrike(computer:List<Int>,user:List<Int>):Int{
+    var count = 0
+    for(index in 0..2){
+        if(computer[index]==user[index])
+            count++
+    }
+//    print(count)
+    return count
+}

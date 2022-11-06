@@ -12,7 +12,6 @@
 
 
 3. 입력한 수와 랜덤 수를 각 자리마다 비교하여 개수 생성
-   - comparison() : 두 수를 비교하여 같으면 TRUE 아니면 FALSE 반환
    - findStrike() : 각 자리의 수를 서로 비교하여 같으면 TRUE , 같지 않으면 FALSE
    - findBall() : 스트라이크가 아니면 나머지 자리에 존재하는지 확인 후 같으면 TRUE, 같지 않으면 FALSE
    - resultInsert() : 스트라이크나 볼의 결과를 result 리스트에 삽입
