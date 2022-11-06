@@ -1,22 +1,30 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms
-// import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms // API 임포트
 
 fun make_number(): String { // 숫자생성
     val basic_list = mutableListOf<Int>()
     
     while (basic_list.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
+
         if (!basic_list.contains(randomNumber)) {
             basic_list.add(randomNumber)
         }
     }
     
-    return basic_list.toString() // input_number이 string이니 일단 맞춰주는걸로
+    return basic_list.joinToString("")
 }
 
-fun referee(computer : String, user : String): String { // 심판
+fun input_number() : String { // 숫자입력
+    val input_number = readLine()
+
+    println("숫자를 입력해주세요 : "+input_number)
+
+    return input_number.toString()
+}
+
+fun referee(computer: String, user: String): String { // 심판
     val answer : String // answer = "" 오류 발생
     var ball = 0
     var strike = 0
@@ -24,16 +32,14 @@ fun referee(computer : String, user : String): String { // 심판
     for (i in 0 until user.length){ // 계산 파트
         if (user[i] == computer[i]) {
             strike += 1
-        }
-        else if (user[i] in computer) {
+        } else if (user[i] in computer) {
             ball += 1
         }
     }
 
     if (ball==0 && strike==0){ // 심판 선언 파트
         answer="낫싱"
-    }
-    else{
+    } else{
         if (ball == 0){
             answer=strike.toString()+"스트라이크"
         }else if(strike == 0){
@@ -43,15 +49,22 @@ fun referee(computer : String, user : String): String { // 심판
         }
     }
 
+    println(answer) // 판정 출력
+
     return answer
 }
 fun main() {
-    print("숫자를 입력해주세요 : ")
-    val input_number = readLine()
-    val computer_number = make_number()
+    var user_number = input_number() // 숫자 입력
+    val computer_number = make_number() // 숫자 생성
 
-    if (input_number!!.length > 3) // 예외 처리
+    if (user_number.length > 3) { // 예외 처리
         throw IllegalArgumentException() // throw??
+    }
 
-    println(referee(computer_number, input_number))
+    while (true) {
+        if (referee(computer_number, user_number) == "3스트라이크") { // 게임 종료시 루프 탈출
+            break
+        }
+        user_number = input_number() // 입력 갱신
+    }
 }
