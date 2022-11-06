@@ -12,7 +12,8 @@ object BaseballGameReferee {
             lateinit var curGameStatus: GameStatus
 
             try {
-                curGameStatus = decideEachTurn(guessedNumbers)
+                val (strikeCount, ballCount) = arrayOf(calcStrikeCount(guessedNumbers), calcBallCount(guessedNumbers))
+                curGameStatus = decideEachTurn(strikeCount, ballCount)
             } catch (e: IllegalArgumentException) {
                 e.printStackTrace()
                 return
@@ -25,15 +26,29 @@ object BaseballGameReferee {
         }
     }
 
-    private fun decideEachTurn(userInput: ArrayList<Int>): GameStatus {
-        val (strikeCount, ballCount) = arrayOf(calcStrikeCount(userInput), calcBallCount(userInput))
-
-        if (strikeCount + ballCount == 0) {
-            WordPrinter.printNothing()
-            return GameStatus.CONTINUE
+    private fun manipulateScreen(strikeCount: Int, ballCount: Int) {
+        if (ballCount > 0) {
+            WordPrinter.printBallCount(ballCount)
         }
 
+        when {
+            strikeCount + ballCount == 0 -> WordPrinter.printNothing()
+            strikeCount == 3 -> {
+                WordPrinter.printStrikeCount(strikeCount)
+                WordPrinter.printGameEnd()
+            }
+            strikeCount in 1..2 -> WordPrinter.printStrikeCount(strikeCount)
+        }
         WordPrinter.printNewLine()
+    }
+
+    private fun decideEachTurn(strikeCount: Int, ballCount: Int): GameStatus {
+        manipulateScreen(strikeCount, ballCount)
+
+        if (strikeCount == 3) {
+            return checkPlayAgain()
+        }
+
         return GameStatus.CONTINUE
     }
 
