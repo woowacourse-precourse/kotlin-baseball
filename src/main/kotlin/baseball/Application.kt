@@ -19,9 +19,16 @@ fun readInputString(): String {
 
 }
 
-fun validateInputString(inputNumbers: String, stringLengthToSpecify: Int) {
+fun validateInputString(inputNumbers: String, stringLengthToSpecify: Int):MutableList<Int> {
+    val verifiedNumbers = mutableListOf<Int>()
     require(inputNumbers.length == stringLengthToSpecify) { "한 자릿수를 지정한 갯수만큼 입력해주세요." }
-    inputNumbers.map { number -> requireNotNull(number.digitToIntOrNull()) { "잘못된 값이 입력되어 애플리케이션이 종료됩니다." } }
+    inputNumbers.map { number ->
+        requireNotNull(number.digitToIntOrNull()) { "잘못된 값이 입력되어 애플리케이션이 종료됩니다." }
+        verifiedNumbers.add(number.digitToInt())
+    }
+    return verifiedNumbers
 }
+
+
 
 
