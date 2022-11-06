@@ -114,7 +114,13 @@ class TerminateDevice {
 }
 
 class GameManager {
-
+    fun playGames() {
+        val terminateDevice = TerminateDevice()
+        while(!terminateDevice.isTerminated()) {
+            playGame()
+            terminateDevice.execute()
+        }
+    }
     private fun playGame() {
         println("숫자 야구 게임을 시작합니다.")
         val computerNumber = makeComputerNumber()
