@@ -47,4 +47,19 @@ fun getGameResult(playerNumber: List<Int>, computerNumber: List<Int>): String {
     return "${ballStrikeCount[0]}볼 ${ballStrikeCount[1]}스트라이크"
 }
 
+fun countBallStrike(playerNumber: List<Int>, computerNumber: List<Int>): List<Int> {
+    var ballCount = 0
+    var strikeCount = 0
+    for (playerNum in playerNumber) {
+        if (computerNumber.indexOf(playerNum) == playerNumber.indexOf(playerNum)) {
+            strikeCount += 1
+            continue
+        }
+        if (computerNumber.contains(playerNum)) {
+            ballCount += 1
+        }
+    }
+    return listOf(ballCount, strikeCount)
+}
+
 }
