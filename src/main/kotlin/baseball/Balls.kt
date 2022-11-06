@@ -29,9 +29,9 @@ class Balls {
         return gameResult
     }
 
-    fun playGame(ball : Ball) : String {
-        balls.filterNot { it.playGame(ball).equals("Nothing") }
+    fun playGame(ball : Ball) : Result {
+        balls.filterNot { it.playGame(ball).equals(Result.NOTHING) }
             .forEach{ return it.playGame(ball) }
-        return "Nothing"
+        return Result.NOTHING
     }
 }
