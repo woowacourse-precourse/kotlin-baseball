@@ -50,6 +50,14 @@ fun checkInputUserNumber(userInputNumber: String?) {
 
 }
 
+fun checkStrike(userInputNumber: String,
+                computerRandomNumber: String): Int {
+    var strike = 0
+    for (index in userInputNumber.indices)
+        if (userInputNumber[index] == computerRandomNumber[index]) strike++
+
+    return strike
+}
 
 fun checkInputMessagePatten(standard: String, checkOverlap: MutableList<String>) {
     val pattern: Pattern = Pattern.compile(standard)
