@@ -30,6 +30,8 @@ fun createComputerRandomNumber(): String {
 fun inputUserNumber(): String {
     print("숫자를 입력해주세요 : ")
     val userInputNumber = Console.readLine()
+    //여기부터커밋
+    checkInputUserNumber(userInputNumber)
     return userInputNumber.toString()
 }
 
