@@ -24,7 +24,10 @@ class CompResult(computers: List<Int>, users: List<Int>) {
 
         var str = ""
         if (result[BALL_IDX] != 0) {
-            str += "${result[BALL_IDX]}${BALL} "
+            str += "${result[BALL_IDX]}${BALL}"
+            if (result[STRIKE_IDX] != 0) {
+                str += " "
+            }
         }
         if (result[STRIKE_IDX] != 0) {
             str += "${result[STRIKE_IDX]}${STRIKE}"
