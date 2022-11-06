@@ -47,9 +47,8 @@ object BaseballGameReferee {
 
         if (!isValid) {
             ScreenManipulator.screenClose()
-            return false
         }
-        return true
+        return isValid
     }
 
     private fun checkPlayAgain(): GameStatus {

@@ -5,7 +5,12 @@ fun processBaseballGame() {
     ScreenManipulator.printGameStart()
 
     while (true) {
-        val guessedNumbers = User.guessNumber() ?: throw IllegalArgumentException("입력 오류입니다.")
+        val userInput = User.guessNumbers()
+
+        if(!BaseballGameReferee.checkIsValid(userInput)){
+            throw java.lang.IllegalArgumentException("입력 오류입니다.")
+        }
+        val guessedNumbers = User.toBaseballNumbers(userInput)
         val (strikeCount, ballCount) = arrayOf(BaseballGameReferee.calcStrikeCount(guessedNumbers),
             BaseballGameReferee.calcBallCount(guessedNumbers))
 
