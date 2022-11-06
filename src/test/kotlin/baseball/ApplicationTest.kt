@@ -41,4 +41,10 @@ class ApplicationTest : NsTest() {
             1,3,5
         )
     }
+
+    @Test
+    fun `changeIntToMutableListInt` () {
+        val input = 135
+        assertThat(baseball.changeIntToMutableListInt(input)).isEqualTo(mutableListOf(1,3,5))
+    }
 }
