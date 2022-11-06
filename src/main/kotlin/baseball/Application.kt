@@ -3,14 +3,33 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-
+    //6. 2~5과정을 반복 만약 스트라이크 3개가 나오면 재시작 또는 종료
+    printStart()
     var computer = generateComputer()
-    var inputNum = getInputFormUser()
+    var input = 1
+    val running = 1
+    var inputNum: Int = 0
     var user = mutableListOf<Int>()
-    verificationNumver(inputNum)
-    user = intToList(inputNum)
-    printResult(countingStrikeBall(computer, user))
+    var countStrikeball = mutableListOf<Int>()
+    while (input == running) {
+        print("숫자를 입력해주세요 : ")
+        inputNum = getInputFormUser()
+        verificationNumver(inputNum)
+        user = intToList(inputNum)
+        countStrikeball = countingStrikeBall(computer, user)
+        printResult(countStrikeball)
+        if (countStrikeball[0] == 3) {
+            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            input = getInputFormUser()
+            verificationQuitNumver(input)
+            computer = generateComputer()
+        }
+    }
 
+}
+
+fun printStart(): Unit {
+    println("숫자 야구 게임을 시작합니다.")
 }
 
 fun generateComputer(): List<Int> {
@@ -26,7 +45,6 @@ fun generateComputer(): List<Int> {
 }
 
 fun getInputFormUser(): Int {
-    print("숫자를 입력해주세요 : ")
     var inputNumber = readLine()!!.toInt()
     return inputNumber
 }
@@ -37,7 +55,7 @@ fun verificationNumver(inputNum: Int): Unit {
     }
 }
 
-fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): List<Int> {
+fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): MutableList<Int> {
     var result = mutableListOf<Int>(0, 0) //첫번째 인덱스는 스트라이크 두번째 인덱스는 볼
 
     for (i in 0..2) {
@@ -99,5 +117,11 @@ fun printResult(count: List<Int>): Unit {
     }
     if (strike == 0 && ball == 0) {
         println("낫싱")
+    }
+}
+
+fun verificationQuitNumver(quitNum : Int) :Unit {
+    if(quitNum !in 1..2 ) {
+        throw IllegalArgumentException("User entered an incorrect value")
     }
 }
