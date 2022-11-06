@@ -4,13 +4,19 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 fun main() {
+    playBaseBall()
+}
+
+fun playBaseBall(){
     val computer = randomThreeNumber()
-    val user = playerThreeNumber()
     val result = hashMapOf<String,Int>()
     result["스트라이크"] = 0
     result["볼"] = 0
-    result.replace("스트라이크",findStrike(computer,user))
-    result.replace("볼",findBall(computer,user)- result["스트라이크"]!!)
+    while(result["스트라이크"]!=3) {
+        val user = playerThreeNumber()
+        result.replace("스트라이크", findStrike(computer, user))
+        result.replace("볼", findBall(computer, user) - result["스트라이크"]!!)
+    }
 }
 
 fun randomThreeNumber():MutableList<Int>{

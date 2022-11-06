@@ -1,7 +1,7 @@
 ## 기능목록 작성
 1. 1~9 까지 서로 다른 수로 이루어진 3자리 수를 랜덤으로 생성 (컴퓨터의 수)
    - 랜덤 값 추출 : camp.nextstep.edu.missionutils.Randoms 의 pickNumberInRange()
-
+   
 
 2. 서로 다른 3자리 수의 숫자를 입력받기
    - 사용자 입력받기 : camp.nextstep.edu.missionutils.Console 라이브러리의 readLine()
@@ -24,6 +24,8 @@
    - 사용자 입력받기 : camp.nextstep.edu.missionutils.Console 라이브러리의 readLine()
    - 잘못된 입력일 경우 : IllegalArgumentException 발생 후 애플리케이션 종료
       - 1이나 2가 아닌 입력
+   - 정상 입력일 경우 : main 에서 playBaseBall() 함수 실행
+     - playBaseBall() : 게임을 시작하는 함수
 
  
     
