@@ -29,4 +29,14 @@ class BaseBallGame {
         }
     }
 
+    private fun endBaseballGame(): Boolean {
+        endGame.printEndGameMessage()
+
+        val playAgainFlag = endGame.printAskPlayAgainMessage()
+        if(playAgainFlag == 1)
+            startBaseballGame(false)
+        else (playAgainFlag == 2)
+        return false
+    }
+
 }
