@@ -8,10 +8,9 @@ fun main() {
     var inputNum = getInputFormUser()
     var user = mutableListOf<Int>()
     verificationNumver(inputNum)
-    user = intToList(inputNum) as MutableList<Int>
-    countingStrikeBall(computer, user)
+    user = intToList(inputNum)
+    printResult(countingStrikeBall(computer, user))
 
-//6. 2~5과정을 반복 만약 스트라이크 3개가 나오면 종료
 }
 
 fun generateComputer(): List<Int> {
@@ -38,7 +37,6 @@ fun verificationNumver(inputNum: Int): Unit {
     }
 }
 
-//4. 값에서 볼, 스트라이크 개수 구하기
 fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): List<Int> {
     var result = mutableListOf<Int>(0, 0) //첫번째 인덱스는 스트라이크 두번째 인덱스는 볼
 
@@ -72,7 +70,7 @@ fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): List<Int> {
     return result
 }
 
-fun intToList(num: Int): List<Int> {
+fun intToList(num: Int): MutableList<Int> {
     var num: Int = num
     var result = mutableListOf<Int>(0, 0, 0)
     var index: Int = 2
@@ -82,4 +80,24 @@ fun intToList(num: Int): List<Int> {
         index--
     }
     return result
+}
+
+//5. 구한 값을 통해 결과 출력
+fun printResult(count: List<Int>): Unit {
+    val strike: Int = count[0]
+    val ball: Int = count[1]
+    if (strike > 0 || ball > 0) {
+        if (ball != 0) {
+            print(ball.toString() + "볼 ")
+        }
+        if (strike != 0) {
+            println(strike.toString() + "스트라이크")
+        }
+    }
+    if (strike == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    }
+    if (strike == 0 && ball == 0) {
+        println("낫싱")
+    }
 }
