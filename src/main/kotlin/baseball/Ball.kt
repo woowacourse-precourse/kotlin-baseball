@@ -20,10 +20,10 @@ class Ball {
         this.position = position
     }
 
-    fun playGame(user : Ball) : String = when {
-            this.equals(user) -> "Strike"
-            this.checkBall(user.number) -> "Ball"
-            else ->"Nothing"
+    fun playGame(user : Ball) : Result = when {
+            this.equals(user) -> Result.STRIKE
+            this.checkBall(user.number) -> Result.BALL
+            else -> Result.NOTHING
         }
 
 
