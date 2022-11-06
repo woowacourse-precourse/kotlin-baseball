@@ -18,11 +18,9 @@ class ComputerNumber {
         return computerNumbers
     }
 
-    private fun pickRandomNumber(): Int {
-        return Randoms.pickNumberInRange(1, 9)
-    }
+    private fun pickRandomNumber(): Int =
+        Randoms.pickNumberInRange(1, 9)
 
-    private fun convertSetToList(computer: Set<Int>): List<Int> {
-        return computer.toList()
-    }
+    private fun convertSetToList(computer: Set<Int>): List<Int> =
+        computer.toList()
 }

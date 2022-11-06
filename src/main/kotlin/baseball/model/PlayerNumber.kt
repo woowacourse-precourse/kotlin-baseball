@@ -13,7 +13,6 @@ class PlayerNumber {
         return playerNumbers
     }
 
-    private fun convertStringToList(inputPlayer: String): List<Int> {
-        return inputPlayer.toCharArray().map { num -> num - '0' }
-    }
+    private fun convertStringToList(inputPlayer: String): List<Int> =
+        inputPlayer.toCharArray().map { num -> num - '0' }
 }
