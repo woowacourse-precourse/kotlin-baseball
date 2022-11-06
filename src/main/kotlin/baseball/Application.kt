@@ -5,6 +5,11 @@ import java.lang.IllegalArgumentException
 val EXCEPTION = IllegalArgumentException()
 
 class InputDevice {
+    var userNumber = MutableList(3) {0}
+
+    private fun initVariable() {
+        userNumber = MutableList(3) {0}
+    }
     private fun isValidInput(input: String) {
         // input should be length 3
         if(input.length != 3) throw EXCEPTION
@@ -22,7 +27,6 @@ class InputDevice {
         }
     }
 }
-
 fun main() {
     TODO("프로그램 구현")
 }
