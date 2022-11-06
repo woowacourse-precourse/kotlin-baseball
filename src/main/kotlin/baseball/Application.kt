@@ -88,6 +88,10 @@ class GameDevice {
 
 class TerminateDevice {
     private var userInput = 0
+    fun execute() {
+        initVariable()
+        getInput()
+    }
     private fun initVariable() {
         userInput = 0
     }
