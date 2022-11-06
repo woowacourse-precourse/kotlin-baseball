@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.system.exitProcess
 
 var randomGeneratedNumber: String = ""
 fun main() {
@@ -23,14 +24,19 @@ fun generateRandomNumber() {
 fun printGuidelinePhraseAndWaitForInput() {
     print("숫자를 입력해주세요 : ")
     val userInput = readln().trim()
-    if (!userInput.isException()) {
-        TODO("결과 출력 기능")
-    } else {
-        TODO("예외 처리 로직")
+    try {
+        if (userInput.isNotException()) {
+            printGameResult(userInput.gameResult())
+        } else {
+            throw IllegalArgumentException()
+        }
+    } catch (ex: IllegalArgumentException) {
+        println("예외가 발생되어 프로그램을 종료합니다.")
+        exitProcess(0)
     }
 }
 
-fun String.isException(): Boolean {
+fun String.isNotException(): Boolean {
     return if (this.isEmpty() || this.length > 3) {
         false
     } else this.all { Character.isDigit(it) } && this.length == 3
@@ -48,6 +54,40 @@ fun String.gameResult(): GameResultType {
         countBallAndStrike(this, randomGeneratedNumber).first,
         countBallAndStrike(this, randomGeneratedNumber).second
     )
+}
+
+fun printGameResult(
+    resultType: GameResultType
+) {
+    when (resultType) {
+        is GameResultType.NormalResult -> printNormalResult(resultType.ball, resultType.strike)
+        is GameResultType.NothingResult -> printNothingResult()
+        is GameResultType.CorrectResult -> printCorrectResult()
+    }
+}
+
+fun printNormalResult(
+    ballNumber: Int,
+    strikeNumber: Int
+) {
+    if (ballNumber != 0 && strikeNumber != 0) {
+        println("${ballNumber}볼 ${strikeNumber}스트라이크")
+    } else {
+        if (ballNumber == 0) {
+            println("${strikeNumber}스트라이크")
+        } else if (strikeNumber == 0) {
+            println("${ballNumber}볼")
+        }
+    }
+}
+
+fun printNothingResult() {
+    println("낫싱")
+}
+
+fun printCorrectResult() {
+    println("3스트라이크")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
 fun countBallAndStrike(userInput: String, answer: String): Pair<Int, Int> {
