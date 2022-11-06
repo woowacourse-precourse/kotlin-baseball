@@ -30,13 +30,10 @@ class BaseballGame {
    private fun addUserNumberToList(inputNumber: Int): MutableList<Int> {
         val userNumberList = mutableListOf<Int>()
         var inputNumber = inputNumber
-
         userNumberList.add(inputNumber / 100)
         inputNumber %= 100
-
         userNumberList.add(inputNumber / 10)
         inputNumber %= 10
-
         userNumberList.add(inputNumber / 1)
         return userNumberList
     }
@@ -81,6 +78,4 @@ class BaseballGame {
         }
         return string
     }
-
-
 }
