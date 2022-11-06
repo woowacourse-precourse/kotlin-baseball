@@ -37,6 +37,18 @@ fun isGameOver(inputResult: List<Int>): Boolean {
     return strikeCount == 3
 }
 
+fun compareData(opponentData: String, inputData: String):List<Int> {
+    var ballCount = 0
+    var strikeCount = 0
+
+    for(index in opponentData.indices) {
+        if(opponentData[index] == inputData[index]) strikeCount++
+        else if(opponentData.contains(inputData[index])) ballCount++
+    }
+
+    return listOf(ballCount, strikeCount)
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
