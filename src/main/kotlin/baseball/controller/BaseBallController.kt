@@ -13,12 +13,12 @@ class BaseBallController {
         OutputView().printGameStart()
         do {
             val computerNumbers = ComputerNumber().getRandomNumbers()
-            progressGame(computerNumbers)
+            processGame(computerNumbers)
             OutputView().printGameOver()
         } while (!exitGame())
     }
 
-    private fun progressGame(computerNumbers: List<Int>) {
+    private fun processGame(computerNumbers: List<Int>) {
         do {
             OutputView().printInputNumber()
             val playerNumbers = PlayerNumber().inputPlayerNumber()
