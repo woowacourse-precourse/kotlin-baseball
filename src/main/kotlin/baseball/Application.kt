@@ -69,6 +69,9 @@ class GameDevice {
             println("낫싱")
         }
     }
+    fun isOver(): Boolean {
+        return numberOfStrikes == 3
+    }
 }
 
 fun main() {
