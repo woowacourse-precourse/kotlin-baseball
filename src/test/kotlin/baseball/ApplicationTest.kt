@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
+@Suppress("NonAsciiCharacters")
 class ApplicationTest : NsTest() {
 
     @Test
@@ -71,14 +72,16 @@ class ApplicationTest : NsTest() {
             listOf(1, 4, 5),
             listOf(6, 7, 1),
             listOf(2, 1, 6),
-            listOf(7, 1, 3)
+            listOf(7, 1, 3),
+            listOf(2, 9, 5)
         )
         val expects = listOf(
             "1볼 1스트라이크",
             "1볼",
             "2볼",
             "1스트라이크",
-            "3스트라이크"
+            "3스트라이크",
+            "낫싱"
         )
 
         for (idx in users.indices) {
