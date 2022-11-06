@@ -22,7 +22,18 @@ fun generateRandomNumber() {
 
 fun printGuidelinePhraseAndWaitForInput() {
     print("숫자를 입력해주세요 : ")
-    val userInput = readln()
+    val userInput = readln().trim()
+    if (!userInput.isException()) {
+        TODO("결과 출력 기능")
+    } else {
+        TODO("예외 처리 로직")
+    }
+}
+
+fun String.isException(): Boolean {
+    return if (this.isEmpty() || this.length > 3) {
+        false
+    } else this.all { Character.isDigit(it) } && this.length == 3
 }
 
 fun String.gameResult(): GameResultType {
