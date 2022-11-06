@@ -49,7 +49,7 @@ class BaseballGame {
         var wrongCount = 0
         for (index in userNumberList.indices){
             if (computerNumberList.indexOf(userNumberList[index]) != -1)
-                compareDigitOfSameNumber(computerNumberList.indexOf(userNumberList[index]), index, resultMap)
+                setResult(computerNumberList.indexOf(userNumberList[index]), index, resultMap)
             else
                 wrongCount++
         }
@@ -59,7 +59,7 @@ class BaseballGame {
     /**
      * 각 숫자의 자릿수를 비교하여 결과에 따라 스트라이크, 볼에 1씩 추가해주는 함수
      */
-    private fun compareDigitOfSameNumber(indexOfComputerNumber: Int, indexOfUserNumber: Int, resultMap: MutableMap<String, Int>){
+    private fun setResult(indexOfComputerNumber: Int, indexOfUserNumber: Int, resultMap: MutableMap<String, Int>){
         if (indexOfComputerNumber == indexOfUserNumber)
             resultMap["스트라이크"] = resultMap["스트라이크"]?.plus(1)!!
         else
