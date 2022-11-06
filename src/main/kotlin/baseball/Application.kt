@@ -44,24 +44,22 @@ fun checkBallCount(ballCheckList: MutableList<Int>): MutableList<Int> {
     val checkCount : MutableList<Int> = mutableListOf(0, 0, 0)
 
     ballCheckList.forEach {
-        when(it) {
-            0 -> checkCount[0]++
-            1 -> checkCount[1]++
-            else -> checkCount[2]++
-        }
+        if(it == 0) checkCount[0]++
+        if(it == 1) checkCount[1]++
+        if(it == -1) checkCount[2]++
     }
     return checkCount
 }
 
 fun gameResult(checkCount : MutableList<Int>) : String {
     val gameResultMessage =
-        if(checkCount[1] == 3) { "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료" }
-        else if(checkCount[2] == 3) { "낫싱" }
-        else {
-            if(checkCount[0] != 0 && checkCount[1] == 0) { checkCount[0].toString() + "볼" }
-            else if(checkCount[0] == 0 && checkCount[1] != 0) { checkCount[1].toString() + "스트라이크" }
-            else { checkCount[0].toString() + "볼 " + checkCount[1].toString() + "스트라이크" }
-        }
+    if(checkCount[1] == 3) "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+    else if(checkCount[2] == 3) "낫싱"
+    else {
+        if(checkCount[0] != 0 && checkCount[1] == 0) checkCount[0].toString() + "볼"
+        else if(checkCount[0] == 0 && checkCount[1] != 0) checkCount[1].toString() + "스트라이크"
+        else checkCount[0].toString() + "볼 " + checkCount[1].toString() + "스트라이크"
+    }
     return gameResultMessage
 }
 
