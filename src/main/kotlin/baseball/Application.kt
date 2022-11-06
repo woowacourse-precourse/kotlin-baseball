@@ -27,7 +27,7 @@ fun randomThreeNumber():MutableList<Int>{
             computer.add(randomNumber)
         }
     }
-    print(computer)
+    println(computer)
     return computer
 }
 
@@ -69,3 +69,4 @@ fun findBall(computer: List<Int>, user:List<Int>):Int{
     print(ballCount)
     return ballCount
 }
+

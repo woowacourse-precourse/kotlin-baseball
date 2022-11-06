@@ -14,8 +14,7 @@
 3. 입력한 수와 랜덤 수를 각 자리마다 비교하여 개수 생성
    - findStrike() : 각 자리의 수를 서로 비교하여 같으면 TRUE , 같지 않으면 FALSE
    - findBall() : 스트라이크가 아니면 나머지 자리에 존재하는지 확인 후 같으면 TRUE, 같지 않으면 FALSE
-   - resultInsert() : 스트라이크나 볼의 결과를 result 리스트에 삽입
-   - resultPrint() : result 리스트에서 스트라이크, 볼의 개수를 세고 출력
+   - printResult() : result 리스트에서 스트라이크, 볼의 개수를 세고 출력
    - allStrike() : 숫자를 모두 맞추었는지 확인하고 TRUE, FALSE 반환
       - allStrike가 TRUE면 게임 종료 FALSE면 계속 진행
 
