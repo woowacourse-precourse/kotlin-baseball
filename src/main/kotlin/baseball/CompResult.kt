@@ -21,7 +21,7 @@ class CompResult(computers: List<Int>, users: List<Int>) {
         if (result[BALL_IDX] == 0 && result[STRIKE_IDX] == 0) {
             return NOTHING
         }
-        
+
         var str = ""
         if (result[BALL_IDX] != 0) {
             str += "${result[BALL_IDX]}${BALL} "
@@ -32,6 +32,8 @@ class CompResult(computers: List<Int>, users: List<Int>) {
 
         return str
     }
+
+    fun allMatched() = result[STRIKE_IDX] == 3
 
     companion object {
         private const val BALL_IDX = 0
