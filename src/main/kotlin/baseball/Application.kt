@@ -11,13 +11,7 @@ fun main() {
         var computerNum = getComputerNum()
         var playerNum = ""
         while (playerNum != computerNum) {
-            print("숫자를 입력해주세요 : ")
-            playerNum = Console.readLine()
-            if (playerNum.length != 3) {
-                throw IllegalArgumentException("세자리 수를 입력해주세요.")
-            }
-
-
+            playerNum = getPlayerNum()
             var ball = 0
             var strike = 0
 
@@ -70,4 +64,13 @@ fun getComputerNum(): String {
     }
 
     return computerNum
+}
+
+fun getPlayerNum(): String {
+    print("숫자를 입력해주세요 : ")
+    var playerNum = Console.readLine()
+    if (playerNum.length != 3) {
+        throw IllegalArgumentException("세자리 수를 입력해주세요.")
+    }
+    return playerNum
 }
