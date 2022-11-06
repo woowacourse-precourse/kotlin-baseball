@@ -37,7 +37,7 @@
       
 4. Application: 게임을 실행하는 클래스
     * startGame(): 게임을 시작하는 함수
-       * inputNumberForRestartGame(): 재시작 혹은 종료를 위한 값을 입력받고 ThrowException 객체를 통해 예외 처리를 한 후 반환하는 함수
+       * inputNumberForRestartGame(): 재시작 혹은 종료를 위한 값을 입력받고 ThrowException 객체를 통해 예외 처리를 한 후 입력값을 반환하는 함수
            
 
 
