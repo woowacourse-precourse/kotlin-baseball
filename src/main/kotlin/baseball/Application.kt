@@ -59,32 +59,35 @@ fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): MutableList<In
     var result = mutableListOf<Int>(0, 0) //첫번째 인덱스는 스트라이크 두번째 인덱스는 볼
 
     for (i in 0..2) {
-        if (computer[i].equals(inputNum[0])) {
-            if (i == 0) {                                   //리팩토링 필요 들여쓰기 초과
-                result[0]++
-            }
-            if (i != 0) {
-                result[1]++
-            }
-        }
-        if (computer[i].equals(inputNum[1])) {
-            if (i == 1) {
-                result[0]++
-            }
-            if (i != 1) {
-                result[1]++
-            }
-        }
-        if (computer[i].equals(inputNum[2])) {
-            if (i == 2) {
-                result[0]++
-            }
-            if (i != 2) {
-                result[1]++
-            }
-        }
+        result[0] += increaseStrike(computer,i,inputNum)
+
+        result[1] += increaseBall(computer,i,inputNum)
     }
 
+    return result
+}
+
+fun increaseStrike(computer: List<Int>, comIndex: Int, inputNum: List<Int>): Int {
+    var result = 0
+    if (computer[comIndex].equals(inputNum[comIndex])) {
+        result++
+    }
+    return result
+}
+
+fun increaseBall(computer: List<Int>, comIndex: Int, inputNum: List<Int>): Int {
+    var result = 0
+    if (computer[comIndex].equals(inputNum[0]) && comIndex != 0) {
+        result++
+    }
+
+    if (computer[comIndex].equals(inputNum[1]) && comIndex != 1) {
+        result++
+    }
+
+    if (computer[comIndex].equals(inputNum[2]) && comIndex != 2) {
+        result++
+    }
     return result
 }
 
@@ -121,8 +124,8 @@ fun printResult(count: List<Int>): Unit {
     }
 }
 
-fun verificationQuitNumver(quitNum : Int) :Unit {
-    if(quitNum !in 1..2 ) {
+fun verificationQuitNumver(quitNum: Int): Unit {
+    if (quitNum !in 1..2) {
         throw IllegalArgumentException("User entered an incorrect value")
     }
 }
