@@ -57,6 +57,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
         pickRandomNumsResult += pickRandomNum
     }
     if(pickRandomNumsResult == inputNum) {
+        println("3스트라이크")
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         gameRestartCheck(inputNum())
@@ -71,6 +72,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
     }
     if (numForNothing == 3) {
         println("낫싱")
+        print("숫자를 입력해주세요 : ")
         return true
     }
 
