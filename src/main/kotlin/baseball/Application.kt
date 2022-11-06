@@ -18,7 +18,18 @@ fun generateRandomThreeDigits(): List<Int> {
 }
 
 fun validateUserInput(input: String): Boolean {
-    TODO("유저 입력 검사")
+    val nums = input.toList()
+
+    // 3자리 여부
+    if (nums.size != 3) return false
+
+    // 1~9 사이의 숫자 여부
+    if (nums.any { it !in '1'..'9' }) return false
+
+    // 중복 여부
+    if (nums.distinct() != nums) return false
+
+    return true
 }
 
 fun splitUserInput(input: String): List<Int> {
