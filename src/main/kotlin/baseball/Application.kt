@@ -1,6 +1,10 @@
 package baseball
 
-class main() {
+import baseball.controller.BaseballController
 
 
+
+fun main() {
+    val a = BaseballController()
+    a.startGame()
 }

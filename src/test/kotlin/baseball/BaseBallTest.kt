@@ -15,6 +15,7 @@ class BaseBallTest {
      private var usernumber = UserNumber()
      private var check = ExceptionCheck()
 
+
 //    @Test
 //    fun 컴퓨터_숫자_검증() {
 //        computernumber.setComputerNumber()
