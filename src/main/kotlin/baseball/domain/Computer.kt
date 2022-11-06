@@ -1,29 +1,20 @@
 package baseball.domain
 
-import camp.nextstep.edu.missionutils.Randoms
+import baseball.resources.*
+import baseball.util.RandomGenerate
 
 class Computer {
-    private lateinit var _number: String
+    private var _number: String = NULL
     val number: String get() = _number
+    private val randomGenerate = RandomGenerate()
 
-    init {
-        makeRandomNumbers()
-    }
+    fun makeRandomNumbers() {
+        _number = NULL
+        val set = mutableSetOf<String>()
 
-    private fun makeRandomNumbers() {
-        do {
-            this._number = Randoms.pickNumberInRange(111, 999).toString()
-        } while (validateNumbers(_number))
-    }
-
-    private fun validateNumbers(_number: String): Boolean {
-        return validateIfContainsZero(_number) || validateIfContainsDuplicates(_number)
-    }
-
-    fun validateIfContainsDuplicates(_number: String): Boolean {
-        return _number.toSet().size != 3
-    }
-    fun validateIfContainsZero(_number: String): Boolean {
-        return _number.any { it == '0' }
+        while (set.size < 3) {
+            set.add(randomGenerate.generate())
+        }
+        set.forEach { _number = number.plus(it) }
     }
 }
