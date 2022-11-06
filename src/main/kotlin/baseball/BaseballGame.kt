@@ -45,7 +45,7 @@ class BaseballGame {
      * 결과를 판단하고, 그 결과를 string 으로 반환하는 함수
      */
     private fun getResultString(computerNumberList: MutableList<Int>, userNumberList: MutableList<Int>): String{
-        var resultMap = mutableMapOf("볼" to 0, "스트라이크" to 0)
+        val resultMap = mutableMapOf("볼" to 0, "스트라이크" to 0)
         var wrongCount = 0
         for (index in userNumberList.indices){
             if (computerNumberList.indexOf(userNumberList[index]) != -1)
