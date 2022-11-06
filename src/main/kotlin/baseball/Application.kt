@@ -9,6 +9,23 @@ fun main() {
     TODO("프로그램 구현")
 }
 
+fun determineResult(computerNumber: MutableList<Int>, userNumber: MutableList<Int>): String {
+    val total = countTotal(computerNumber, userNumber)
+    val strike = countStrike(computerNumber, userNumber)
+    val ball = total - strike
+
+    if (total == 0) {
+        return "낫싱"
+    }
+    if (strike == 0) {
+        return "${ball}볼"
+    }
+    if (ball == 0) {
+        return "${strike}스트라이크"
+    }
+    return "${ball}볼 ${strike}스트라이크"
+}
+
 fun countStrike(computerNumber: MutableList<Int>, userNumber: MutableList<Int>): Int {
     var count = 0
     for (idx in 0 until computerNumber.size) {
