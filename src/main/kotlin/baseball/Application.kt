@@ -12,22 +12,15 @@ class BaseballGame(computer: String) {
 
 
     fun startGame() {
-
         println("숫자 야구 게임을 시작합니다.")
         while (true) {
             print("숫자를 입력해주세요 : ")
             val userInput: String = readLine()!!
 
-            if (userInput.length > 3) {
-                throw IllegalArgumentException("잘못된 값을 입력했습니다.")
-            }
-
-
+            // 예외처리
             checkException(userInput)
-            checkStrike(userInput)
-            checkBall(userInput)
-            checkNothing(userInput)
-
+            // 조건 반환
+            checkCriteria(userInput)
 
             // 3스트라이크인지 확인
             if (strike(userInput) == 3) {
@@ -41,36 +34,33 @@ class BaseballGame(computer: String) {
         }
     }
 
-    private fun checkStrike(userInput: String) {
-        // 스트라이크 1개
-        if (strike(userInput) == 1) return println("${strike(userInput)}스트라이크")
+    private fun checkCriteria(userInput: String) {
+        when (ball(userInput)) {
+            0 -> {
+                if (strike(userInput) == 0) return println("낫싱")
+                if (strike(userInput) == 1) return println("${strike(userInput)}스트라이크")
+                if (strike(userInput) == 2) return println("${strike(userInput)}스트라이크")
+            }
 
-        // 스트라이크 2개
-        if (strike(userInput) == 2) return println("${strike(userInput)}스트라이크")
+            1 -> {
+                if (strike(userInput) == 0) return println("${ball(userInput)}볼")
 
+            }
+
+            2 -> {
+                if (strike(userInput) == 0) return println("${ball(userInput)}볼")
+            }
+
+            3 -> println("${ball(userInput)}볼")
+        }
     }
 
-    private fun checkBall(userInput: String) {
-        // 볼 1개
-        if (ball(userInput) == 1) return println("${ball(userInput)}볼")
-
-        // 볼 2개
-        if (ball(userInput) == 2) return println("${ball(userInput)}볼")
-
-        // 볼 3개
-        if (ball(userInput) == 3) return println("${ball(userInput)}볼")
-    }
 
     fun checkException(userInput: String) {
         if (userInput.length > 3) {
             throw IllegalArgumentException("잘못된 값을 입력했습니다.")
         }
 
-    }
-
-
-    private fun checkNothing(userInput: String) {
-        if (strike(userInput) == 0 && ball(userInput) == 0) return println("낫싱")
     }
 
 
