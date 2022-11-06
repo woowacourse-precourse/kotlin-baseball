@@ -9,14 +9,13 @@ fun main() {
 //    println("result: $result")
 }
 
-fun subMain(){
+fun subMain() {
     print("숫자를 입력해주세요 : ")
     var input = inputNum()
     rightInputCheck(input)
     val computerNum = pickRandomNums()
     var result = checkStrikeBallNothing(input, computerNum)
-    while(result)
-    {
+    while (result) {
         input = inputNum()
         rightInputCheck(input)
         result = checkStrikeBallNothing(input, computerNum)
@@ -41,12 +40,12 @@ fun inputNum(): String {
 }
 
 fun rightInputCheck(num: String) {
-    if (num.length != 3){
+    if (num.length != 3) {
         throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
     }
     // 추가적인 예외처리, 서로 다른 수를 사용자가 입력하지 않은 경우 방지
-    for(i in 0 until (num.length)-1){
-        if (num[i] == num[i+1]) {
+    for (i in 0 until (num.length) - 1) {
+        if (num[i] == num[i + 1]) {
             throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
         }
     }
@@ -61,7 +60,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
     for (pickRandomNum in computerNum) {
         pickRandomNumsResult += pickRandomNum
     }
-    if(pickRandomNumsResult == inputNum) {
+    if (pickRandomNumsResult == inputNum) {
         println("3스트라이크")
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
@@ -82,7 +81,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
     }
 
     // 스트라이크 -> 볼
-    val avoidList = mutableListOf<Int>(0,1,2)
+    val avoidList = mutableListOf<Int>(0, 1, 2)
     var ballNum = 0
     var strikeNum = 0
     for (i in inputNum.indices) { // 스트라이크부터 먼저 체크하고 제거하기
@@ -120,7 +119,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
     return true
 }
 
-fun gameRestartCheck(selectionNum: String){
+fun gameRestartCheck(selectionNum: String) {
     when (selectionNum) {
         "1" -> {
             subMain()
