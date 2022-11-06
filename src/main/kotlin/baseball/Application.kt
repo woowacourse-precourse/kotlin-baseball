@@ -33,13 +33,9 @@ fun compareNumber(userNumberList : List<Int>, comNumberList : List<Int>) : Mutab
     val checkNumber : MutableList<Int> = mutableListOf()
 
     for(i in userNumberList.indices) {
-        if(userNumberList[i] == comNumberList[i]) {
-            checkNumber.add(1)
-        } else if(userNumberList[i] in comNumberList && userNumberList[i] != comNumberList[i]) {
-            checkNumber.add(0)
-        } else {
-            checkNumber.add(-1)
-        }
+        if(userNumberList[i] == comNumberList[i]) checkNumber.add(1)
+        else if(userNumberList[i] in comNumberList && userNumberList[i] != comNumberList[i]) checkNumber.add(0)
+        else checkNumber.add(-1)
     }
     return checkNumber
 }
@@ -58,20 +54,14 @@ fun checkBallCount(ballCheckList: MutableList<Int>): MutableList<Int> {
 }
 
 fun gameResult(checkCount : MutableList<Int>) : String {
-    val gameResultMessage = if(checkCount[1] == 3) {
-        "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-    }
-    else if(checkCount[2] == 3) {
-        "낫싱"
-    } else {
-        if(checkCount[0] != 0 && checkCount[1] == 0) {
-            checkCount[0].toString() + "볼"
-        } else if(checkCount[0] == 0 && checkCount[1] != 0) {
-            checkCount[1].toString() + "스트라이크"
-        } else {
-            checkCount[0].toString() + "볼 " + checkCount[1].toString() + "스트라이크"
+    val gameResultMessage =
+        if(checkCount[1] == 3) { "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료" }
+        else if(checkCount[2] == 3) { "낫싱" }
+        else {
+            if(checkCount[0] != 0 && checkCount[1] == 0) { checkCount[0].toString() + "볼" }
+            else if(checkCount[0] == 0 && checkCount[1] != 0) { checkCount[1].toString() + "스트라이크" }
+            else { checkCount[0].toString() + "볼 " + checkCount[1].toString() + "스트라이크" }
         }
-    }
     return gameResultMessage
 }
 
