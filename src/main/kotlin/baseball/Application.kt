@@ -88,6 +88,9 @@ class GameDevice {
 
 class TerminateDevice {
     private var userInput = 0
+    private fun initVariable() {
+        userInput = 0
+    }
     private fun getInput() {
 
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
