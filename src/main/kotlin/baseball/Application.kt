@@ -14,15 +14,11 @@ var Result = ""
 var Cpu_Num = mutableListOf<Int>()
 
 //예외 확인 함수
-fun Check_Exception(Input: String): Boolean {
+fun Check_Exception(Input: String) {
     var token = Input.chunked(1)
 
-    if (token.size > 3 || token.size < 3) {
+    if (token.size != 3)
         throw IllegalArgumentException()
-        return false
-    }
-    else
-        return true
 
 }
 
@@ -60,7 +56,7 @@ fun Game_Start (List: List<Int>): List<Int> {
 
     List.forEach {i ->
         for (j in 0..3) {
-            Compare_Num(List[i], Input_List[j],i,j)
+            Compare_Num(List[i], Cpu_Num[j],i,j)
         }
     }
     if(Compare_Exception(Compare_List))
@@ -132,14 +128,16 @@ fun main() = with(Scanner(System.`in`)){
     while (Retry){
 
         //상대방 번호 설정
-        Get_Cpu_Num()
+        //Get_Cpu_Num()
 
         print("숫자를 입력해주세요 :")
+
+        Cpu_Num = Split_Input("589") as MutableList<Int>
 
         //사용자 입력
         println(Input)
 
-        if (Check_Exception(Input))
+        Check_Exception(Input)
 
         Split_Input(Input)
 
