@@ -1,16 +1,23 @@
 package baseball.domain
 
+import baseball.resources.*
 class Player {
     private var _number = String()
-    val number : String get() = _number
+    val number: String get() = _number
 
-    fun saveIfValid(number : String) {
+    fun saveIfValid(number: String) {
         require(number.all { Character.isDigit(it) }) {
-            "문자가 섞인 입력 값입니다."
+            INPUT_VALUE_WITH_MIXED_CHARACTERS
         }
-        require(number.length == 3) { "세 자리 숫자가 아닙니다." }
-        require(number.toSet().size == 3) { "중복되는 숫자가 존재합니다." }
-        require(number.all { it != '0' }) { "입력 포맷이 일치하지 않습니다. 1부터 9까지 수만 입력해주세요." }
+        require(number.length == RULE_NUMBER_SIZE) {
+            INPUT_VALUE_NOT_THREE_DIGITS
+        }
+        require(number.toSet().size == RULE_NUMBER_SIZE) {
+            INPUT_VALUE_DUPLICATES
+        }
+        require(number.all { it.digitToInt() != ZERO }) {
+            INPUT_VALUE_IF_CONTAINS_ZERO
+        }
 
         save(number)
     }

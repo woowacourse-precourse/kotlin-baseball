@@ -12,7 +12,7 @@ class Computer {
         _number = NULL
         val set = mutableSetOf<String>()
 
-        while (set.size < 3) {
+        while (set.size < RULE_NUMBER_SIZE) {
             set.add(randomGenerate.generate())
         }
         set.forEach { _number = number.plus(it) }
