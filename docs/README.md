@@ -6,8 +6,9 @@
 2. 서로 다른 3자리 수의 숫자를 입력받기
    - 사용자 입력받기 : camp.nextstep.edu.missionutils.Console 라이브러리의 readLine()
    - 잘못된 입력일 경우 : IllegalArgumentException 발생 후 애플리케이션 종료
-      - 3자리가 아닌 수 입력
-      - 중복되는 수 입력
+     - 1~9 숫자가 아닌 경우
+     - 3자리가 아닌 수 입력
+     - 중복되는 수 입력
 
 
 3. 입력한 수와 랜덤 수를 각 자리마다 비교하여 개수 생성
@@ -24,6 +25,6 @@
    - 사용자 입력받기 : camp.nextstep.edu.missionutils.Console 라이브러리의 readLine()
    - 잘못된 입력일 경우 : IllegalArgumentException 발생 후 애플리케이션 종료
       - 1이나 2가 아닌 입력
->>>>>>> 5a33125 (Docs : 기능목록 작성)
+
  
     
