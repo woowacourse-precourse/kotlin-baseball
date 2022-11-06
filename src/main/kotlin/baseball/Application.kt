@@ -11,7 +11,7 @@ fun main() {
 }
 
 fun pickRandomNums(): MutableList<Char> {
-    val computer = mutableListOf<Char>()
+    val computer = mutableListOf<Char>() //Changed Int to Char for better compare
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9).toChar()
         if (!computer.contains(randomNumber)) {
