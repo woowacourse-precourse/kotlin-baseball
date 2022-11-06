@@ -68,7 +68,15 @@ fun checkStrike(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int
 
 // 볼 확인 기능
 fun checkBall(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int {
-
+    var ballCount = 0
+    for(i in 0..2){
+        for(j in 0..2){
+            if(i==j)continue
+            if(computerNum[i]==playerNum[j])
+                ballCount++
+        }
+    }
+    return ballCount
 }
 
 // 비교 결과 출력 기능
