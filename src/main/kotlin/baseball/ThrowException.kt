@@ -30,7 +30,7 @@ class ThrowException {
     /**
      * 입력한 값이 숫자인지 확인해주는 함수
      */
-    fun isNumber(input: String?): Boolean{
+    private fun isNumber(input: String?): Boolean{
         try {
             input?.toInt()!!
         }
@@ -43,14 +43,14 @@ class ThrowException {
     /**
      * 3자릿수 인지 확인해주는 함수
      */
-    fun hasThreeDigits(inputNumber: String?): Boolean{
+    private fun hasThreeDigits(inputNumber: String?): Boolean{
         return inputNumber?.toInt()!! in 100..999
     }
 
     /**
      * 중복된 자릿수가 있는지 확인해주는 함수
      */
-    fun hasDistinctDigits(inputNumber: String?): Boolean{
+    private fun hasDistinctDigits(inputNumber: String?): Boolean{
         var userNumber = inputNumber?.toInt()!! // 전달받은 숫자값
         var eachDigit: Int
         val numberList = mutableListOf<Int>() // 각 자릿수를 저장할 리스트
@@ -67,7 +67,7 @@ class ThrowException {
     /**
      * 입력한 숫자가 1과 2 인지 판단하는 함수
      */
-    fun isOneOrTwo(input: String?): Boolean{
+    private fun isOneOrTwo(input: String?): Boolean{
         return input?.toInt()!! in 1..2
     }
 }
