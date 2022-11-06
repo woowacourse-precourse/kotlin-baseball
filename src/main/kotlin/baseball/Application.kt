@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import java.lang.IllegalArgumentException
 
 const val NEW_GAME = 1
@@ -109,6 +110,17 @@ class TerminateDevice {
     }
     fun isTerminated(): Boolean{
         return userInput == EXIT
+    }
+}
+
+class GameManager {
+    private fun makeComputerNumber(): List<Int> {
+        val computerNumber = mutableListOf<Int>()
+        while (computerNumber.size < 3) {
+            val randomNumber = Randoms.pickNumberInRange(1, 9)
+            if (!computerNumber.contains(randomNumber)) computerNumber.add(randomNumber)
+        }
+        return computerNumber
     }
 }
 
