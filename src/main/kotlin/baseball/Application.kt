@@ -3,7 +3,12 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 fun main() {
-    TODO("프로그램 구현")
+    var gameStart = 1
+    while(gameStart == 1){
+        val computerNum = setComputerNum()
+        Play(computerNum)
+        finishGame()
+    }
 }
 
 fun setComputerNum(): MutableList<Int>{
@@ -82,11 +87,20 @@ fun printResult(ball:Int, strike:Int):String{
     return output
 }
 
-fun is3Strikes(): Int {
+fun finishGame(): Int {
     println(
         "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
     )
     val input = Console.readLine()
     return isInputError(input, 1,2)
+}
+
+fun Play(computerNum: MutableList<Int>){
+    var isStrike = false
+    while(!isStrike){
+        val input = Console.readLine()
+        val playerInput = inputNum(input)
+        isStrike = isInputAnswer(computerNum, playerInput)
+    }
 }
