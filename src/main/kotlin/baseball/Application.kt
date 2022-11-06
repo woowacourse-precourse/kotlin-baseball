@@ -1,22 +1,21 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
-import kotlin.system.exitProcess
 
 var ball = 0
 var strike = 0
 var chooseGameNum = 1
 
 fun main() {
+    var number = Number()
     chooseGameNum = 1
     println("숫자 야구 게임을 시작합니다.")
 
     while (chooseGameNum == 1) {
-        var computerNum = getComputerNum()
+        var computerNum = number.getComputerNum()
         var playerNum = ""
         while (playerNum != computerNum) {
-            playerNum = getPlayerNum()
+            playerNum = number.getPlayerNum()
             getScore(computerNum, playerNum)
             printResult(ball, strike)
         }
@@ -24,30 +23,6 @@ fun main() {
     }
 }
 
-fun getComputerNum(): String {
-    val computerNumList = mutableListOf<Int>()
-    var computerNum = ""
-
-    while (computerNumList.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computerNumList.contains(randomNumber)) {
-            computerNumList.add(randomNumber)
-        }
-    }
-
-    computerNumList.forEach {
-        computerNum = computerNum.plus(it)
-    }
-
-    return computerNum
-}
-
-fun getPlayerNum(): String {
-    print("숫자를 입력해주세요 : ")
-    var playerNum = Console.readLine()
-    checkNum(playerNum)
-    return playerNum
-}
 
 fun getScore(computerNum: String, playerNum: String) {
     ball = 0
