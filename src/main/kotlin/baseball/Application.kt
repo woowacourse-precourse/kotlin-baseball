@@ -18,6 +18,10 @@ fun isNegativeNumber(inputData: String): Boolean {
     return inputData.toInt() < 0
 }
 
+fun isNotThreeDigits(inputData: String): Boolean {
+    return inputData.length != 3
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
