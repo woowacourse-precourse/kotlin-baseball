@@ -10,8 +10,8 @@ Kotlin 1.6.20
 
 ---
 ##  MileStones and Progress
-### 🚧️ InputDevice 
-◻️ Read user input \
+### ️✅ InputDevice 
+️✅️ Read user input \
 ️✅ Detect invalid input
 ### ◻️ GameDevice
 ◻️ Calculate the number of balls & strikes \
