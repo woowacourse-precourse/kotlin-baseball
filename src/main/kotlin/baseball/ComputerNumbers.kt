@@ -1,11 +1,9 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms
-
 class ComputerNumbers {
-    private val computerNumbers: List<Int>
+    private val computerNumberList: List<Int>
     init {
-        computerNumbers = generate()
+        computerNumberList = generate()
     }
 
     private fun generate():List<Int>{
