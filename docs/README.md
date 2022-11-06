@@ -20,3 +20,16 @@
 1. IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 
 
+## 기능 구현 리스트
+1. main()
+- 게임이 흘러가는 main 함수
+2. setComputerNum(): Int
+- 컴퓨터가 자신의 수를 정하는 함수
+3. isInputAnswer(input: Int): Boolean
+- 사용자의 입력을 받고 컴퓨터의 수와 비교하여 결과를 출력해주고 정답이면 true 반환, 오답이면 false 반환
+
+4. is3Strikes()
+- 3스트라이크일 경우 게임 종료 및 새로운 게임시작을 입력받는 함수
+
+5. isInputError(input: Int)
+- 사용자의 입력이 잘못된 형식인지 검사하고 잘못되었을 경우 IllegalArgumentExceptionn을 발생시킨 후 종료
