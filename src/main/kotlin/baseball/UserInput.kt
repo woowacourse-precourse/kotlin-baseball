@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 fun inputUserNumber(): MutableList<Int> {
     print("숫자를 입력해주세요 : ")
-    val input = Console.readLine()
+    var input = Console.readLine()
     var numbers = input!!
         .map {
             it.toString()
