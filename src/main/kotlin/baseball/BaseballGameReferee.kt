@@ -33,19 +33,6 @@ object BaseballGameReferee {
             return GameStatus.CONTINUE
         }
 
-        when {
-            strikeCount == 3 -> {
-                WordPrinter.printStrikeCount(strikeCount)
-                WordPrinter.printGameEnd()
-                return checkPlayAgain()
-            }
-            ballCount > 0 && strikeCount > 0 -> {
-                WordPrinter.printBallCount(ballCount)
-                WordPrinter.printStrikeCount(strikeCount)
-            }
-            ballCount > 0 -> WordPrinter.printBallCount(ballCount)
-            strikeCount > 0 -> WordPrinter.printStrikeCount(strikeCount)
-        }
         WordPrinter.printNewLine()
         return GameStatus.CONTINUE
     }
@@ -72,9 +59,9 @@ object BaseballGameReferee {
     fun calcBallCount(userInput: ArrayList<Int>): Int {
         var ballCount = 0
 
-        userInput.forEachIndexed { userIndex, userNum ->
-            ballCount += Computer.randomNumbers.filterIndexed { computerIndex, _ -> computerIndex != userIndex }
-                .filter { computerNum -> computerNum == userNum }.size
+        userInput.forEachIndexed { userNumberIndex, userNum ->
+            ballCount += Computer.randomNumbers.filterIndexed { computerNumberIndex, _ -> computerNumberIndex != userNumberIndex }
+                .filter { computerNumber -> computerNumber == userNum }.size
         }
         return ballCount
     }
