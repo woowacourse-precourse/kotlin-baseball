@@ -5,17 +5,17 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     var hitnumber= createthreenumber()
-    var check=0
+
+    println("숫자 야구 게임을 시작합니다.")
 
     while(true){
-        println("숫자 야구 게임을 시작합니다.")
         print("숫자를 입력해주세요 : ")
         var usernumber = readLine()!!.toString()
         if(!errorcheck(usernumber)){//에러발생시 에러 던지고 종료
             throw IllegalArgumentException()
             break
         }
-        check=judgementnumber(usernumber.toInt(),hitnumber)
+        var check=judgementnumber(usernumber.toInt(),hitnumber)
 
         if(check==-1){
             throw IllegalArgumentException()
