@@ -9,6 +9,7 @@ fun main() {
     val userNumber = getUserNumber()
 
     val result = compareNumber(computerNumber, userNumber)
+    printResult(result)
 }
 
 fun printGameStart() {
@@ -76,4 +77,14 @@ fun calcStrike(computerNumber: Int, userNumber: Int): Boolean {
 fun calcBall(computerNumber: List<Int>, userNumber: Int): Int {
     if (computerNumber.contains(userNumber)) return 1
     return 0
+}
+
+fun printResult(result: List<Int>) {
+    when {
+        result[0] == 0 && result[1] == 0 -> println("낫싱")
+        result[0] == 3 -> println("3스트라이크")
+        result[0] == 0 -> println("${result[1]}볼")
+        result[1] == 0 -> println("${result[0]}스트라이크")
+        else -> println("${result[1]}볼 ${result[0]}스트라이크")
+    }
 }
