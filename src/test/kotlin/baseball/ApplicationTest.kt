@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+
 
 class ApplicationTest : NsTest() {
     @Test
@@ -55,7 +57,7 @@ class ApplicationTest : NsTest() {
         }
         assertThat(inputNum("135")).isEqualTo(mutableListOf(1,3,5))
     }
-    
+
     @Test
     fun `isInputAnswerTest`() {
         val computerNum = mutableListOf(1,3,5)
@@ -63,5 +65,13 @@ class ApplicationTest : NsTest() {
         val playerInput2 = mutableListOf(2,4,6)
         assertThat(isInputAnswer(computerNum, playerInput)).isEqualTo(true)
         assertThat(isInputAnswer(computerNum, playerInput2)).isEqualTo(false)
+    }
+
+    @Test
+    fun `printResultTest`() {
+        assertThat(printResult(3,0)).isEqualTo("3볼")
+        assertThat(printResult(0,0)).isEqualTo("낫싱")
+        assertThat(printResult(1,1)).isEqualTo("1볼 1스트라이크")
+        assertThat(printResult(0,3)).isEqualTo("3스트라이크")
     }
 }

@@ -33,5 +33,5 @@
 - 사용자의 입력을 인자로 받고 잘못된 형식인지 검사하고 잘못되었을 경우 IllegalArgumentExceptionn을 발생시킨 후 종료, 그렇지 않을 경우 input값을 MutableList<Int>로 변환 후 반환
 6. changeIntToMutableListInt(input: Int): MutableList<Int>
 - int값의 각 자리 숫자를 MutableList<Int>로 변환하는 기능
-7. printResult(ball:Int, strinke: Int)
-- 볼과 스트라이크를 인자로 받아서 사용자에게 출력을 해주는 기능
+7. printResult(ball:Int, strinke: Int):String
+- 볼과 스트라이크를 인자로 받아서 사용자에게 출력을 할 스트링을 반환하는 기능

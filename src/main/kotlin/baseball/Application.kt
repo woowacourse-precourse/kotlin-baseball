@@ -55,9 +55,26 @@ fun isInputAnswer(computerNum: MutableList<Int>, playerInput: MutableList<Int>):
     }
     ball -= strike
 
-    //printResult(ball, strike)
+    println(printResult(ball, strike))
     if(strike==3){
         return true
     }
     return false
+}
+
+fun printResult(ball:Int, strike:Int):String{
+    var output:String =""
+    if (ball>0 && strike==0){
+        output = "${ball}볼"
+    }
+    if (ball==0 && strike>0){
+        output = "${strike}스트라이크"
+    }
+    if (ball>0 && strike>0){
+        output = "${ball}볼 ${strike}스트라이크"
+    }
+    if (ball==0 && strike ==0){
+        output = "낫싱"
+    }
+    return output
 }
