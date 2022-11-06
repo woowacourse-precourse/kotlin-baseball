@@ -5,10 +5,10 @@ class GameResult {
     var strike : Int = 0
     var ball : Int = 0
 
-    fun setResult(result  : String) {
+    fun setResult(result  : Result) {
         when(result) {
-            "Strike" -> strike++
-            "Ball" -> ball++
+            Result.STRIKE -> strike++
+            Result.BALL -> ball++
         }
     }
 }
