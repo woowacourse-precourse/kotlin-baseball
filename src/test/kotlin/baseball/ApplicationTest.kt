@@ -73,11 +73,11 @@ class ApplicationTest : NsTest() {
             listOf(2, 1, 6),
             listOf(7, 1, 3))
         val expects = listOf(
-            "1볼 1스트라이크\n",
-            "1볼\n",
-            "2볼\n",
-            "1스트라이크\n",
-            "3스트라이크\n")
+            "1볼 1스트라이크",
+            "1볼",
+            "2볼",
+            "1스트라이크",
+            "3스트라이크")
 
         for (idx in users.indices) {
             val result = CompResult(computer, users[idx])
