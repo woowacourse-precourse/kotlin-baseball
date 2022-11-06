@@ -93,6 +93,14 @@ class MyTest : NsTest() {
             assertThat(result).isEqualTo("2볼 1스트라이크")
         }
     }
+
+    @Test
+    fun `정답일때 true 반환, 게임 종료 문구 출력하는지 검사`() {
+        assertThat(checkCorrectAnswer("3스트라이크")).isEqualTo(true)
+        assertThat(output())
+            .contains("게임 종료")
+    }
+
     override fun runMain() {
         main()
     }
