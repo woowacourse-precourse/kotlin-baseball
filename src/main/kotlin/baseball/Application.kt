@@ -17,7 +17,7 @@ fun generateRandomThreeDigits(): List<Int> {
     return digits
 }
 
-fun validateUserInput(input: String): Boolean {
+fun validatePlayInput(input: String): Boolean {
     val nums = input.toList()
 
     // 3자리 여부
@@ -30,6 +30,11 @@ fun validateUserInput(input: String): Boolean {
     if (nums.distinct() != nums) return false
 
     return true
+}
+
+fun validateEndInput(input: String): Boolean {
+    if (input == "1" || input == "2") return true
+    return false
 }
 
 fun splitUserInput(input: String) =
