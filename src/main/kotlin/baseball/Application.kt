@@ -36,7 +36,7 @@ fun printGuidelinePhraseAndWaitForInput() {
     print("숫자를 입력해주세요 : ")
     val userInput = readln().trim()
     try {
-        if (userInput.isNotException()) {
+        if (userInput.isNotException(ExceptionType.GameException)) {
             printGameResult(userInput.gameResult())
         } else {
             throw IllegalArgumentException()
@@ -55,10 +55,22 @@ fun printExceptionPhraseAndQuitProcess() {
     exitProcess(0)
 }
 
-fun String.isNotException(): Boolean {
-    return if (this.isEmpty() || this.length > 3) {
-        false
-    } else this.all { Character.isDigit(it) } && this.length == 3
+fun String.isNotException(
+    exceptionType: ExceptionType
+): Boolean {
+    return when (exceptionType) {
+        is ExceptionType.GameException -> {
+            if (this.isEmpty() || this.length > 3) {
+                false
+            } else this.all { Character.isDigit(it) } && this.length == 3
+        }
+
+        is ExceptionType.RetryException -> {
+            if (this.isEmpty() || this.length > 1) {
+                false
+            } else this.all { Character.isDigit(it) } && this.length == 1 && (this == "1" || this == "2")
+        }
+    }
 }
 
 fun String.gameResult(): GameResultType {
@@ -83,8 +95,28 @@ fun printGameResult(
         is GameResultType.NothingResult -> printNothingResult()
         is GameResultType.CorrectResult -> {
             printCorrectResult()
-            TODO("게임 종료 후 다시 시작하거나 종료할지에 대한 판단 기능 로직 추가")
+            askRetry()
         }
+    }
+}
+
+fun askRetry() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val userInput = readln().trim()
+    try {
+        if (userInput.isNotException(ExceptionType.RetryException)) {
+            when (userInput) {
+                "1" -> startBaseballGame()
+                "2" -> {
+                    println("게임을 종료합니다.")
+                    exitProcess(0)
+                }
+            }
+        } else {
+            throw IllegalArgumentException()
+        }
+    } catch (ex: IllegalArgumentException) {
+        printExceptionPhraseAndQuitProcess()
     }
 }
 
@@ -138,4 +170,9 @@ sealed class GameResultType {
     object NothingResult : GameResultType()
 
     object CorrectResult : GameResultType()
+}
+
+sealed class ExceptionType {
+    object GameException : ExceptionType()
+    object RetryException : ExceptionType()
 }
