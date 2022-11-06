@@ -109,8 +109,9 @@ fun printResult(count: List<Int>): Unit {
             print(ball.toString() + "볼 ")
         }
         if (strike != 0) {
-            println(strike.toString() + "스트라이크")
+            print(strike.toString() + "스트라이크")
         }
+        println()
     }
     if (strike == 3) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
