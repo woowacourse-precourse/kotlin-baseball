@@ -1,11 +1,13 @@
 package baseball
 
+private const val START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다."
+
 class Game {
     private val computer = Computer()
     private val user = User()
 
     init {
-        println("숫자 야구 게임을 시작합니다.")
+        println(START_GAME_MESSAGE)
     }
 
     fun start() {
