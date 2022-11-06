@@ -114,6 +114,17 @@ class TerminateDevice {
 }
 
 class GameManager {
+
+    private fun playGame() {
+        println("숫자 야구 게임을 시작합니다.")
+        val computerNumber = makeComputerNumber()
+        val inputDevice = InputDevice()
+        val gameDevice = GameDevice()
+        while(!gameDevice.isOver()) {
+            inputDevice.execute()
+            gameDevice.execute(inputDevice.userNumber, computerNumber)
+        }
+    }
     private fun makeComputerNumber(): List<Int> {
         val computerNumber = mutableListOf<Int>()
         while (computerNumber.size < 3) {
