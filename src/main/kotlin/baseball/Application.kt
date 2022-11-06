@@ -14,7 +14,7 @@ fun main() {
         if (select == 1)
         {
             var answernumber =answernumberselect()
-            select = tonghap(answernumber)
+            select = union(answernumber)
         }
         else if (select == 2)
         {
@@ -28,7 +28,7 @@ fun main() {
     }
 }
 
-fun tonghap(anum: MutableList<Int>): Int
+fun union(anum: MutableList<Int>): Int
 {
     var result = 0
 
@@ -82,9 +82,7 @@ fun answernumberselect(): MutableList<Int> {
 
 fun userselectnumber(): MutableList<Int> {
     val usernumber = mutableListOf<Int>()
-    var check = 1
     var userNumStrInt = mutableListOf<Int>()
-    var userNumStr = mutableListOf<Int>()
 
     while(true)
     {
@@ -105,11 +103,7 @@ fun userselectnumber(): MutableList<Int> {
 
         if (userNumStrInt[0] == userNumStrInt[1] || userNumStrInt[0] == userNumStrInt[2] || userNumStrInt[1] == userNumStrInt[2])
         {
-//            println("다시 입력해주세요 :")
-//            userNumStr = userNumStr.removeRange(0..userNumStr.length-1)
-//            userNumStrInt.removeAll(1..9)
-//            usernumber.remove(usernumber[0])
-//            continue
+
             throw IllegalArgumentException()
         }
 
@@ -119,12 +113,6 @@ fun userselectnumber(): MutableList<Int> {
         }
         else
         {
-//            println("다시 입력해주세요 :")
-//            userNumStr = userNumStr.removeRange(0..userNumStr.length-1)
-//            userNumStrInt.removeAll(1..9)
-//            usernumber.removeAll(1..9)
-//            usernumber.remove(usernumber[0])
-//            continue
             throw IllegalArgumentException()
         }
 
