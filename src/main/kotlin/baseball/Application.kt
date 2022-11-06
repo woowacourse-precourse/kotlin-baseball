@@ -57,9 +57,9 @@ fun checkException(userInput: List<Char>?) {
 }
 
 fun compareNumber(computerNumber: List<Int>, userNumber: List<Int>): List<Int> {
-    var result = mutableListOf<Int>(0,0)
-    for(i in userNumber.indices) {
-        if(calcStrike(computerNumber[i], userNumber[i])) {
+    val result = mutableListOf<Int>(0, 0)
+    for (i in userNumber.indices) {
+        if (calcStrike(computerNumber[i], userNumber[i])) {
             result[0]++
         } else {
             result[1] += calcBall(computerNumber, userNumber[i])
@@ -68,12 +68,12 @@ fun compareNumber(computerNumber: List<Int>, userNumber: List<Int>): List<Int> {
     return result
 }
 
-fun calcStrike(computerNumber: Int, userNumber: Int): Boolean{
-    if(computerNumber == userNumber) return true
+fun calcStrike(computerNumber: Int, userNumber: Int): Boolean {
+    if (computerNumber == userNumber) return true
     return false
 }
 
-fun calcBall(computerNumber: List<Int>, userNumber: Int): Int{
-    if(computerNumber.contains(userNumber)) return 1
+fun calcBall(computerNumber: List<Int>, userNumber: Int): Int {
+    if (computerNumber.contains(userNumber)) return 1
     return 0
 }
