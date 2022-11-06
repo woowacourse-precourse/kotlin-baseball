@@ -18,7 +18,7 @@ object ScreenManipulator {
         printRequestUserInput()
     }
 
-    fun printRequestUserInput() {
+    private fun printRequestUserInput() {
         screen.write("숫자를 입력해주세요 : ")
         screen.flush()
     }
