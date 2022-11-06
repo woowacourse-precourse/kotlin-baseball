@@ -24,8 +24,8 @@ Kotlin 1.6.20
 ✅ Make random number \
 ✅️ Execute one game \
 ✅️️ Execute multiple game
-### ◻️ main function
-◻️ Complete main function
+### 🚧 main function
+✅️️️ Complete main function
 ### ◻️ Test
 ◻️ Test long game \
 ◻️ Test invalid user input(3 numbers) \
