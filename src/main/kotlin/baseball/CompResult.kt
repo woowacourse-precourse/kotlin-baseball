@@ -30,7 +30,7 @@ class CompResult(computers: List<Int>, users: List<Int>) {
             str += "${result[STRIKE_IDX]}${STRIKE}"
         }
 
-        return str
+        return str + "\n"
     }
 
     fun allMatched() = result[STRIKE_IDX] == 3
