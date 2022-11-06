@@ -11,6 +11,7 @@ fun main() {
             val playerInput = Console.readLine()
             checkValidInput(playerInput)
             val gameResult = getGameResult(playerInput.map { it.digitToInt() }, computerNumber)
+            println(gameResult)
 
 
 fun make3RandomNumber(): MutableList<Int> {
