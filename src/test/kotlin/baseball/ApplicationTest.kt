@@ -21,6 +21,19 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `긴 하나의 게임`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("135", "486", "753", "196", "413", "415", "136", "356", "156", "516", "2")
+                assertThat(output())
+                    .contains("2볼", "1스트라이크", "1볼", "1볼 1스트라이크", "1스트라이크", "1볼 1스트라이크", "1볼 1스트라이크",
+                        "1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "게임 종료")
+            },
+            5, 1, 6
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
