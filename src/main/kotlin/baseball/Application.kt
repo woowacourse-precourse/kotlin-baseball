@@ -40,6 +40,24 @@ fun changeIntToMutableListInt(input: Int): MutableList<Int>{
     return output
 }
 
-fun isInputAnswer(computerNum: Int): Boolean{
+fun isInputAnswer(computerNum: MutableList<Int>, playerInput: MutableList<Int>): Boolean{
+    var ball = 0
+    var strike = 0
+    for (digit in 0..2){
+        if (computerNum[digit] == playerInput[digit] ){
+            strike++
+        }
+    }
+    for (digit in 0..2){
+        if(computerNum.contains(playerInput[digit])){
+            ball++
+        }
+    }
+    ball -= strike
 
+    //printResult(ball, strike)
+    if(strike==3){
+        return true
+    }
+    return false
 }

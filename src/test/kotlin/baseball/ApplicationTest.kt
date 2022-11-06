@@ -55,4 +55,13 @@ class ApplicationTest : NsTest() {
         }
         assertThat(inputNum("135")).isEqualTo(mutableListOf(1,3,5))
     }
+    
+    @Test
+    fun `isInputAnswerTest`() {
+        val computerNum = mutableListOf(1,3,5)
+        val playerInput = mutableListOf(1,3,5)
+        val playerInput2 = mutableListOf(2,4,6)
+        assertThat(isInputAnswer(computerNum, playerInput)).isEqualTo(true)
+        assertThat(isInputAnswer(computerNum, playerInput2)).isEqualTo(false)
+    }
 }
