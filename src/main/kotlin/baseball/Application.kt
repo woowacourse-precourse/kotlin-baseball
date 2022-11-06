@@ -14,6 +14,10 @@ fun createOpponentData(): String {
     return opponentData
 }
 
+fun isNegativeNumber(inputData: String): Boolean {
+    return inputData.toInt() < 0
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
