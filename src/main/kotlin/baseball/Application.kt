@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 val EXCEPTION = IllegalArgumentException()
@@ -7,6 +8,14 @@ val EXCEPTION = IllegalArgumentException()
 class InputDevice {
     var userNumber = MutableList(3) {0}
 
+    private fun getInput() {
+        println("숫자를 입력해주세요: ")
+        val input = Console.readLine()
+        isValidInput(input)
+        for(index in 0..2) {
+            userNumber[index] = input[index].digitToInt()
+        }
+    }
     private fun initVariable() {
         userNumber = MutableList(3) {0}
     }
