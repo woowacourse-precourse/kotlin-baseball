@@ -45,6 +45,11 @@ class GameDevice {
     private var numberOfStrikes = 0
     private var numberOfBalls = 0
 
+    fun execute(userNumber: List<Int>, computerNumber: List<Int>) {
+        initVariable()
+        calculateResult(userNumber, computerNumber)
+        printResult()
+    }
     private fun initVariable() {
         numberOfBalls = 0
         numberOfStrikes = 0
