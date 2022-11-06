@@ -54,4 +54,10 @@ class MyTest {
         val result = countTotal(mutableListOf(2, 1, 3), mutableListOf(1, 2, 3))
         Assertions.assertThat(result).isEqualTo(3)
     }
+
+    @Test
+    fun `스트라이크인 경우의 수만 반환`() {
+        val result = countStrike(mutableListOf(2, 1, 3), mutableListOf(1, 2, 3))
+        Assertions.assertThat(result).isEqualTo(1)
+    }
 }
