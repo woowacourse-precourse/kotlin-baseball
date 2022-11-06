@@ -1,6 +1,8 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
+import java.util.stream.Collectors.toList
 
 // 경기 진행 함수
 fun startGame() {
@@ -29,19 +31,16 @@ fun randomNumberInput(): MutableList<Int> {
     print("숫자를 입력해주세요 : ")
     var player: String = readLine()!!
     var playerNum = mutableListOf<Int>()
-    if(exceptionHandling(player)){
-        playerNum[0] = player[0].digitToInt()
-        playerNum[1] = player[1].digitToInt()
-        playerNum[2] = player[2].digitToInt()
-    }
+    exceptionHandling(player)
+    for (i in 0..2)
+        playerNum.add(player[i].digitToInt())
     return playerNum
-
 }
 
 // 잘못된 값을 입력할 경우 예외 처리 기능
-fun exceptionHandling(player: String): Boolean {
-
+fun exceptionHandling(player: String) {
 }
+
 
 // 결과 확인 기능
 fun checkResult(): Int {
