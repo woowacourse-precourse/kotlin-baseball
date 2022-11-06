@@ -1,5 +1,13 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    while (true) {
+        val game = Game()
+        if (game.playBaseball()) {
+            break
+        }
+    }
 }
+
+
+
