@@ -55,7 +55,7 @@ object Computer {
         resetScore()
     }
 
-    private fun resetScore(){
+    private fun resetScore() {
         strike = 0
         ball = 0
     }

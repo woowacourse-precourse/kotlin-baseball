@@ -16,7 +16,7 @@ object Game {
         }
     }
 
-    private fun processInput(){
+    private fun processInput() {
         print("숫자를 입력해주세요 : ")
         input = Console.readLine()
         if (checkInputValueException(input)) {
