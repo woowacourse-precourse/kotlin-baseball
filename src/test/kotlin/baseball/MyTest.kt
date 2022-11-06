@@ -48,4 +48,10 @@ class MyTest {
         }
         org.junit.jupiter.api.Assertions.assertEquals(assertThrows.message, null)
     }
+
+    @Test
+    fun `볼과 스트라이크 모두 합한 수`() {
+        val result = countTotal(mutableListOf(2, 1, 3), mutableListOf(1, 2, 3))
+        Assertions.assertThat(result).isEqualTo(3)
+    }
 }
