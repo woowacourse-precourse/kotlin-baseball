@@ -2,6 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.sin
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
@@ -13,9 +14,10 @@ fun main() {
     while(result)
     {
         input = inputNum()
+        rightInputCheck(input)
         result = checkStrikeBallNothing(input, computerNum)
     }
-    println("result: $result")
+//    println("result: $result")
 }
 
 fun pickRandomNums(): MutableList<String> {
@@ -37,9 +39,15 @@ fun inputNum(): String {
 
 fun rightInputCheck(num: String) {
     if (num.length != 3){
-        throw IllegalArgumentException("세자리 숫자를 말씀해주세요.")
+        throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
     }
-    println("length check success")
+    // 추가적인 예외처리, 서로 다른 수를 사용자가 입력하지 않은 경우 방지
+    for(i in num.indices-1){
+        if (num[i] == num[i+1]) {
+            throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
+        }
+    }
+//    println("length check success")
 }
 
 fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): Boolean {
@@ -71,8 +79,8 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
             if (inputNum[i].toString() == computerNum[i]) {
                 strikeNum += 1
                 avoidList.remove(i)
-                println("avoidList: $avoidList")
-                println("strikeNum: $strikeNum")
+//                println("avoidList: $avoidList")
+//                println("strikeNum: $strikeNum")
 //                        computerNum.removeAt(i)
 //                        inputNum.replace("${inputNum[i]}", "")
             }
@@ -80,7 +88,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
         for (j in avoidList) { // 남은 것에서 볼 체크하기
             if (computerNum.contains(inputNum[j].toString())) {
                 ballNum += 1
-                println("ballNum: $ballNum")
+//                println("ballNum: $ballNum")
             }
         }
 
