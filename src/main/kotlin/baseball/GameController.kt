@@ -1,6 +1,7 @@
 package baseball
 
 import util.Exceptions
+import util.Messages
 
 
 object GameController {
@@ -35,4 +36,18 @@ object GameController {
         }
         return ball
     }
+
+    // 결과에 따라 출력
+    fun resultMessage(strike: Int, ball: Int): String {
+        return if (strike == 0 && ball == 0) {
+            Messages.NOTHING
+        } else if (strike == 0) {
+            "$ball" + Messages.BALL
+        } else if (ball == 0) {
+            "$strike" + Messages.STRIKE
+        } else {
+            "$ball" + Messages.BALL + " $strike" + Messages.STRIKE
+        }
+    }
+
 }
