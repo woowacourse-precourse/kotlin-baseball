@@ -21,7 +21,7 @@ fun main() {
         var mynum: String? = readLine()
         if (mynum!!.length != 3)
             throw IllegalArgumentException("오류발생 종료")
-        if (mynum.toList().distinct().count() != 3)
+        if (mynum.toSet().count() != 3)
             throw IllegalArgumentException("오류발생 종료")
         if (mynum.contains('0'))
             throw IllegalArgumentException("오류발생 종료")
