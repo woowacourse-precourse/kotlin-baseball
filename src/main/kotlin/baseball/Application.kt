@@ -1,9 +1,12 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 
 fun main() {
 
-    BaseballGame(computer = "123").startGame()
+    BaseballGame(getComputerInput())
+        .startGame()
 
 }
 
@@ -33,6 +36,8 @@ class BaseballGame(computer: String) {
             }
         }
     }
+
+
 
     private fun checkCriteria(userInput: String) {
         when (ball(userInput)) {
@@ -73,7 +78,6 @@ class BaseballGame(computer: String) {
         for (index in userInput.indices) {
             if (computerInput[index] == user[index]) strikeCount++
         }
-
         return strikeCount
 
     }
@@ -90,3 +94,13 @@ class BaseballGame(computer: String) {
 
 }
 
+    fun getComputerInput(): String {
+        val computer = mutableListOf<Int>()
+        while (computer.size < 3) {
+            val randomNumber = Randoms.pickNumberInRange(1, 9)
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber)
+            }
+        }
+        return computer.joinToString("")
+    }
