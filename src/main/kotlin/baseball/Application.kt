@@ -40,6 +40,26 @@ class InputDevice {
         }
     }
 }
+
+class GameDevice {
+    private var numberOfStrikes = 0
+    private var numberOfBalls = 0
+    private fun calculateResult(userNumber: List<Int>, computerNumber: List<Int>) {
+        val appeared = MutableList(10) {false}
+        for(c in computerNumber) {
+            appeared[c] = true
+        }
+        for (i in 0..2) {
+            if (computerNumber[i] == userNumber[i]) {
+                numberOfStrikes += 1
+            }
+            else if(appeared[userNumber[i]]) {
+                numberOfBalls += 1
+            }
+        }
+    }
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
