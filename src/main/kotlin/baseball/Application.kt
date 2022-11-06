@@ -31,9 +31,17 @@ fun printGuidelinePhraseAndWaitForInput() {
             throw IllegalArgumentException()
         }
     } catch (ex: IllegalArgumentException) {
-        println("예외가 발생되어 프로그램을 종료합니다.")
-        exitProcess(0)
+        printExceptionPhraseAndQuitProcess()
     }
+}
+
+fun printGameStartPhrase() {
+    println("숫자 야구 게임을 시작합니다.")
+}
+
+fun printExceptionPhraseAndQuitProcess() {
+    println("예외가 발생되어 프로그램을 종료합니다.")
+    exitProcess(0)
 }
 
 fun String.isNotException(): Boolean {
