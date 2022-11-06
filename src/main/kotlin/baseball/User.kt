@@ -6,14 +6,12 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.CharacterAction
 object User {
     fun guessNumber(): ArrayList<Int>? {
         val userInput = Console.readLine()
+        val isValid = BaseballGameReferee.checkIsValid(userInput)
 
-        try {
-            BaseballGameReferee.checkException(userInput)
-        } catch (error: IllegalArgumentException) {
-            error.printStackTrace()
-            return null
-        }
-        return userInput.toBaseballNumbers()
+        return if(isValid)
+            userInput.toBaseballNumbers()
+        else
+            null
     }
 
     private fun String.toBaseballNumbers(): ArrayList<Int> {
@@ -24,5 +22,4 @@ object User {
         }
         return guessedNumbers
     }
-
 }
