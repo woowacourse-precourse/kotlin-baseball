@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -73,5 +72,15 @@ class ApplicationTest : NsTest() {
         assertThat(printResult(0,0)).isEqualTo("낫싱")
         assertThat(printResult(1,1)).isEqualTo("1볼 1스트라이크")
         assertThat(printResult(0,3)).isEqualTo("3스트라이크")
+    }
+
+    @Test
+    fun `isInputErrorTest` (){
+        assertThat(isInputError("483",0,999)).isEqualTo(483)
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { isInputError("1234",0,999) }
+            assertThrows<IllegalArgumentException> { isInputError("abcd",0,999) }
+
+        }
     }
 }

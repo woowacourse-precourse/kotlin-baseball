@@ -18,15 +18,18 @@ fun setComputerNum(): MutableList<Int>{
 }
 
 fun inputNum(stringInput: String): MutableList<Int>{
-    val input = stringInput.toIntOrNull()
+    val input = isInputError(stringInput, 0, 999)
     var playerInput = mutableListOf<Int>()
-    if (input == null || !(input in 0..999)){
-        throw IllegalArgumentException("0~999의 값을 입력하지 않으셨습니다.")
-    }
-    if (input in 0..999){
-       playerInput = changeIntToMutableListInt(input)
-    }
+    playerInput = changeIntToMutableListInt(input)
     return playerInput
+}
+
+fun isInputError(stringInput: String, startRange:Int, endRange:Int): Int{
+    val input = stringInput.toIntOrNull()
+    if (input == null || !(input in startRange..endRange)){
+        throw IllegalArgumentException("${startRange}~${endRange} 값을 입력하지 않으셨습니다.")
+    }
+    return input
 }
 
 fun changeIntToMutableListInt(input: Int): MutableList<Int>{
@@ -78,3 +81,12 @@ fun printResult(ball:Int, strike:Int):String{
     }
     return output
 }
+
+//fun is3Strikes(): Int {
+//    println(
+//        "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+//                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+//    )
+//    val input = Console.readLine()
+//    return isInputError(input, 1,2)
+//}

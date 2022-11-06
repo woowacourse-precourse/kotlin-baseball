@@ -27,11 +27,13 @@
 - 컴퓨터가 자신의 수를 정하는 함수
 3. isInputAnswer(computerNum: MutableList<Int>): Boolean
 - 사용자의 입력을 받고 컴퓨터의 수와 비교하여 결과를 출력해주고 정답이면 true 반환, 오답이면 false 반환
-4. is3Strikes()
+4. is3Strikes() : Int
 - 3스트라이크일 경우 게임 종료 및 새로운 게임시작을 입력받는 함수
 5. inputNum(stringInput: String) : MutableList<Int>
-- 사용자의 입력을 인자로 받고 잘못된 형식인지 검사하고 잘못되었을 경우 IllegalArgumentExceptionn을 발생시킨 후 종료, 그렇지 않을 경우 input값을 MutableList<Int>로 변환 후 반환
+- 사용자의 입력을 인자로 받고 input값을 MutableList<Int>로 변환 후 반환
 6. changeIntToMutableListInt(input: Int): MutableList<Int>
 - int값의 각 자리 숫자를 MutableList<Int>로 변환하는 기능
 7. printResult(ball:Int, strinke: Int):String
 - 볼과 스트라이크를 인자로 받아서 사용자에게 출력을 할 스트링을 반환하는 기능
+8. isInputError(stringInput:String, startRange:Int, endRange:Int)
+- 스트링으로 입력받은 값을 정수로 바꾸고 만약 바꾸지 못하거나 원하는 범위안에 없다면 IllegalArgumentExceptionn을 발생시킨 후 종료, 그렇지 않은 경우 int로 반환
