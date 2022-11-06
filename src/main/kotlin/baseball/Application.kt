@@ -10,7 +10,7 @@ fun printNothing() {
     println("낫싱")
 }
 
-fun printReport(balls:Int, strike: Int) {
+fun printReport(balls:Int, strike: Int): Boolean {
     if (balls > 0 && strike > 0) {
         println("${balls}볼 ${strike}스트라이크")
     }
@@ -19,16 +19,18 @@ fun printReport(balls:Int, strike: Int) {
     }
     else if (balls == 0 && strike > 0) {
         println("${strike}스트라이크")
+
+        if (strike == 3) {
+            printEnd()
+            return true
+        }
     }
-    else {
-        println("ERROR!!")
-    }
+    return false
 }
 
-fun printEnd(): Boolean {
+fun printEnd() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    return askContinue()
 }
 
 fun askContinue(): Boolean {
@@ -109,10 +111,8 @@ fun main() {
     printStart()
     var maxDeep = 0
     var computer = getRandomNumList()
-    var continueChecker: Boolean
-    println("옵저버 모드: ${computer.joinToString(separator = "")}")
+
     do {
-        continueChecker = true
         val player = listConverter(getInput())
         if (!listChecker(player)) {
             throw IllegalArgumentException()
@@ -135,16 +135,21 @@ fun main() {
         val v2 = equalCounter(playerMap, computerMap, commonSet)
         val balls = if (v1 - v2 > 0) { v1 - v2 } else 0
 
-        if (v2 == 3) {
-            continueChecker = printEnd()
+        val reportBool = printReport(balls, v2)
+        var continueBool = false
+        if (reportBool) {
+            continueBool = askContinue()
+        }
+
+        if (reportBool && continueBool) {
+            maxDeep = -1
             computer = getRandomNumList()
-            maxDeep = 0
-        } else {
-            printReport(balls, v2)
+        }
+        else if (reportBool && !continueBool) {
+            break
         }
 
         maxDeep++
-    } while (maxDeep < 20 && continueChecker)
-
+    } while (maxDeep < 20)
 
 }
