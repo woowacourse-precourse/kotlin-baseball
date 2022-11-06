@@ -1,7 +1,5 @@
 package baseball
 
-var ball = 0
-var strike = 0
 var chooseGameNum = 1
 
 fun main() {
@@ -16,7 +14,7 @@ fun main() {
         while (playerNum != computerNum) {
             playerNum = number.getPlayerNum()
             result.getScore(computerNum, playerNum)
-            result.printResult(ball, strike)
+            result.printResult(result.ball, result.strike)
         }
         result.gameAgainOrExit()
     }

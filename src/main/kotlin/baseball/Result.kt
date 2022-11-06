@@ -3,6 +3,9 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 
 class Result {
+    var ball = 0
+    var strike = 0
+
     fun getScore(computerNum: String, playerNum: String) {
         ball = 0
         strike = 0
