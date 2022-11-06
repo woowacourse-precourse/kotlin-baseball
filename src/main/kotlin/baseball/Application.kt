@@ -44,6 +44,8 @@ fun checkInputUserNumber(userInputNumber: String?) {
 
     for (userInputNumberWord in userInputNumber) checkOverlapInputNumber.add(userInputNumberWord.toString())
 
+    checkInputMessagePatten(inputNumberStandard, checkOverlapInputNumber)
+
     if (checkOverlapInputNumber.distinct().size != 3) throw IllegalArgumentException()
 
 }
