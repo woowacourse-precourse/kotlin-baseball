@@ -21,3 +21,7 @@ fun addComputerNumber(randomNumber: Int, computerNumber: MutableList<Int>) {
         computerNumber.add(randomNumber)
     }
 }
+
+fun printFirstStartMessage() {
+    println("숫자 야구 게임을 시작합니다.")
+}
