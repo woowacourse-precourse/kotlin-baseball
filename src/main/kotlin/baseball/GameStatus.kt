@@ -1,5 +1,5 @@
 package baseball
 
 enum class GameStatus {
-    CONTINUE, NEW_GAME, TERMINATE
+    CONTINUE, NEW_GAME, TERMINATE, ERROR
 }
