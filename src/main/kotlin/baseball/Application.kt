@@ -4,9 +4,18 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val computerNumber = randomNumber()
-    val userNumber = getUserInput()
-    TODO("프로그램 구현")
+    println("숫자 야구 게임을 시작합니다.")
+    var flag = true
+    while (flag) {
+        val computerNumber = randomNumber()
+        var result = ""
+        while (result != "3스트라이크") {
+            val userNumber = getUserInput()
+            result = determineResult(computerNumber, userNumber)
+            println(result)
+        }
+        flag = continueGame()
+    }
 }
 
 fun continueGame(): Boolean {
