@@ -49,6 +49,8 @@ class BaseballGame(computer: String) {
 
             2 -> {
                 if (strike(userInput) == 0) return println("${ball(userInput)}볼")
+                if (strike(userInput) == 1) return println("${ball(userInput)}볼 ${strike(userInput)}스트라이크")
+
             }
 
             3 -> println("${ball(userInput)}볼")
