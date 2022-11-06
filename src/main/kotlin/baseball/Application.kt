@@ -8,19 +8,7 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
 
     while (chooseGameNum == 1) {
-        val computerNumList = mutableListOf<Int>()
-        while (computerNumList.size < 3) {
-            val randomNumber = Randoms.pickNumberInRange(1, 9)
-            if (!computerNumList.contains(randomNumber)) {
-                computerNumList.add(randomNumber)
-            }
-        }
-
-        var computerNum = ""
-        computerNumList.forEach {
-            computerNum = computerNum.plus(it)
-        }
-
+        var computerNum = getComputerNum()
         var playerNum = ""
         while (playerNum != computerNum) {
             print("숫자를 입력해주세요 : ")
@@ -61,8 +49,25 @@ fun main() {
                 println("${ball}볼 ${strike}스트라이크")
         }
 
-
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         chooseGameNum = Console.readLine().toInt()
     }
+}
+
+fun getComputerNum(): String {
+    val computerNumList = mutableListOf<Int>()
+    var computerNum = ""
+
+    while (computerNumList.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computerNumList.contains(randomNumber)) {
+            computerNumList.add(randomNumber)
+        }
+    }
+
+    computerNumList.forEach {
+        computerNum = computerNum.plus(it)
+    }
+
+    return computerNum
 }
