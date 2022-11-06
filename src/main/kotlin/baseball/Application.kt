@@ -1,9 +1,35 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    TODO("프로그램 구현")
+    println("숫자 야구 게임을 시작합니다.")
+
+    while (true) {
+        val computer = generateRandomThreeDigits()
+
+        var matched = false
+        while (!matched) {
+            print("숫자를 입력해주세요 : ")
+            val user = Console.readLine()
+            validatePlayInput(user)
+
+            val compResult = CompResult(computer, splitUserInput(user))
+            println(compResult.toString())
+
+            matched = compResult.allMatched()
+        }
+
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val gameEnd = Console.readLine()
+        validateEndInput(gameEnd)
+
+        if (gameEnd == "2") {
+            break
+        }
+    }
 }
 
 fun generateRandomThreeDigits(): List<Int> {
