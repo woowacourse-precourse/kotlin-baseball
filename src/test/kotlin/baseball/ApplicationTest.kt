@@ -125,6 +125,16 @@ class ApplicationTest : NsTest() {
         assertThrows<IllegalArgumentException> { choiceValidator.validate("3") }
     }
 
+    @Test
+    fun `게임 시작 안내`() {
+        val guide = Guide()
+
+        guide.start()
+
+        assertThat(output())
+            .contains("숫자 야구 게임을 시작합니다.")
+    }
+
     override fun runMain() {
         main()
     }
