@@ -42,8 +42,7 @@ BUILD SUCCESSFUL in 0s
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
 - 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
-  숫자에 대한
-  결과를 출력한다.
+  숫자에 대한 결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
@@ -148,9 +147,42 @@ while (computer.size() < 3) {
 
 ## ✏️ 과제 진행 요구 사항
 
-- 미션은 [kotlin-baseball](https://github.com/woowacourse-precourse/kotlin-baseball) 저장소를 Fork & Clone해
-  시작한다.
+- 미션은 [kotlin-baseball](https://github.com/woowacourse-precourse/kotlin-baseball) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
-    - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
+  - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+---
+##📋     기능 목록
+
+- 게임 실행(class:Game)
+  - 게임 첫 실행이라면
+    - 숫자 게임을 시작하는 안내 메시지 콘솔창에 출력하기
+  - 숫자 입력 안내 메시지 콘솔창에 출력하기
+  - 사용자에게 입력값 받기(class:UserNumber)
+    - 사용자 입력값의 유효성 검사하기(class:InputValidator)
+      - 문자를 정수형으로 바꿀 수 없거나
+      - 입력값의 길이가 3이 아니거나
+      - 중복된 값이 있거나
+      - 입력값에 0이 포함되었다면<br>
+    ▶ IllegalArgumentException을 발생시킨 후 애플리케이션 종료<br>
+        
+  - 사용자의 입력값과 컴퓨터 랜덤값으로 스트라이크 판정하기(class:Judgement)
+    - 컴퓨터 랜덤값이 사용자의 입력값 중에 하나를 포함하고 있다면
+      - 사용자 입력값 중에 하나의 인덱스값과 컴퓨터 랜덤값의 인덱스 값이 같을 경우
+        - 스트라이크++
+      - 사용자 입력값 중에 하나의 인덱스값과 컴퓨터 랜덤값의 인덱스 값이 다를 경우
+        - 볼++
+        
+  - 스트라이크 판정 결과 콘솔창에 출력하기(ConsoleMessage)
+    - 3스트라이크가 아니라면
+      - 스트라이크 판정 결과 콘솔 창에 출력하기
+      - 다시 사용자에게 입력값 받기
+    - 3스트라이크라면 
+      - 게임 성공 문구 출력하기
+      - 게임 재시작을 원한다면 1, 게임 종료를 원한다면 2를 입력하라는 안내 문구 출력
+      - 사용자에게 입력값 받기
+        - 사용자 입력값의 유효성 검사하기(class:InputValidator)
+        - 게임을 재시작하거나 게임 종료
