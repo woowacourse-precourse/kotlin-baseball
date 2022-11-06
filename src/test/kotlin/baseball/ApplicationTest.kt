@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -80,7 +79,7 @@ class ApplicationTest : NsTest() {
             "3스트라이크")
 
         for (idx in users.indices) {
-            val result = CompResult(computer, users[idx])
+            val result = Result(computer, users[idx])
             assertThat(result.toString())
                 .isEqualTo(expects[idx])
         }

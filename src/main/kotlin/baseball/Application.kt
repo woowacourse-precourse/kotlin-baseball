@@ -15,10 +15,10 @@ fun main() {
             val user = Console.readLine()
             validatePlayInput(user)
 
-            val compResult = CompResult(computer, splitUserInput(user))
-            println(compResult.toString())
+            val result = Result(computer, splitUserInput(user))
+            println(result.toString())
 
-            matched = compResult.allMatched()
+            matched = result.allMatched()
         }
 
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +

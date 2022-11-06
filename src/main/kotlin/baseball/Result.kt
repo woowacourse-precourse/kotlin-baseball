@@ -1,6 +1,6 @@
 package baseball
 
-class CompResult(computers: List<Int>, users: List<Int>) {
+class Result(computers: List<Int>, users: List<Int>) {
     private val result = compare(computers, users)
 
     private fun compare(computers: List<Int>, users: List<Int>): IntArray {
