@@ -1,0 +1,28 @@
+package baseball
+
+class GameStrings {
+    val startText = "숫자 야구 게임을 시작합니다."
+    val correctText = "3스트라이크\n" +
+            "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+    val typeNumText = "숫자를 입력해주세요 : "
+
+
+    fun printStrikeAndBallCount(strikeCount: Int, ballCount: Int) {
+        val strikeAndBall = mutableListOf<String>()
+        if (ballCount > 0) {
+            strikeAndBall.add("${ballCount}볼")
+        }
+        if (strikeCount > 0) {
+            strikeAndBall.add("${strikeCount}스트라이크")
+        }
+
+
+        if (strikeAndBall.isEmpty()) {
+            println("낫싱")
+            return
+        }
+
+        println(strikeAndBall.joinToString(" "))
+    }
+}
