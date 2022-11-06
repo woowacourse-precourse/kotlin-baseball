@@ -23,7 +23,7 @@ Kotlin 1.6.20
 ### ✅ GameManager
 ✅ Make random number \
 ✅️ Execute one game \
-◻️ Execute multiple game
+✅️️ Execute multiple game
 ### ◻️ main function
 ◻️ Complete main function
 ### ◻️ Test
