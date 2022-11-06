@@ -1,4 +1,4 @@
-package baseball
+package baseball.src
 
 
 fun printHintMessage(ball: Int, strike: Int) {

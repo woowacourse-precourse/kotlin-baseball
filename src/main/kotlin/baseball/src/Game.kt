@@ -1,4 +1,4 @@
-package baseball
+package baseball.src
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
