@@ -16,6 +16,7 @@ fun playBaseBall(){
         val user = playerThreeNumber()
         result.replace("스트라이크", findStrike(computer, user))
         result.replace("볼", findBall(computer, user) - result["스트라이크"]!!)
+        printResult(result)
     }
 }
 
@@ -70,3 +71,12 @@ fun findBall(computer: List<Int>, user:List<Int>):Int{
     return ballCount
 }
 
+fun printResult(result:HashMap<String,Int>){
+    if(result["볼"] == 0 && result["스트라이크"] == 0)
+        print("낫싱")
+    if(result["볼"] != 0)
+        print("${result["볼"]}볼 ")
+    if(result["스트라이크"]!= 0)
+        print("${result["스트라이크"]}스트라이크")
+    println("")
+}
