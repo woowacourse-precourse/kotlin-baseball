@@ -20,12 +20,29 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `사용자 입력이 1부터 9사이의 중복없는 3자리 숫자인지 검사`() {
-        val inputs = listOf("246", "135", "1", "597", "589", "2", "024", "201")
-        val expects = listOf(true, true, false, true, true, false, false, false)
+        val inputs = listOf("246", "135", "1", "597", "589", "2", "024", "201", "안녕", "hi")
+        val expects = listOf(true, true, false, true, true, false, false, false, false, false)
 
         for (idx in inputs.indices) {
             val validationResult = validateUserInput(inputs[idx])
             assertThat(validationResult)
+                .isEqualTo(expects[idx])
+        }
+    }
+
+    @Test
+    fun `사용자 입력 숫자 각 자릿수 분리`() {
+        val inputs = listOf("246", "135", "597", "589")
+        val expects = listOf(
+            listOf(2, 4, 6),
+            listOf(1, 3, 5),
+            listOf(5, 9, 7),
+            listOf(5, 8, 9)
+        )
+
+        for (idx in inputs.indices) {
+            val digits = splitUserInput(inputs[idx])
+            assertThat(digits)
                 .isEqualTo(expects[idx])
         }
     }
