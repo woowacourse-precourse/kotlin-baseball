@@ -55,7 +55,10 @@ object BaseballGameReferee {
     private fun checkPlayAgain(): GameStatus {
         return when (Console.readLine()) {
             "1" -> GameStatus.NEW_GAME
-            "2" -> GameStatus.TERMINATE
+            "2" -> {
+                WordPrinter.screenClose()
+                GameStatus.TERMINATE
+            }
             else -> throw IllegalArgumentException("잘못된 입력입니다.")
         }
     }
