@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms
 
 object Computer {
     const val INPUT_MAX_SIZE = 3
-    const val INPUT_MAX_VALUE = 9
-    const val INPUT_MIN_VALUE = 1
-    const val INPUT_GAME_RESTART = "1"
-    const val INPUT_GAME_STOP = "2"
-    var strike = 0
-    var ball = 0
+    private const val INPUT_MAX_VALUE = 9
+    private const val INPUT_MIN_VALUE = 1
+    private const val INPUT_GAME_RESTART = "1"
+    private const val INPUT_GAME_STOP = "2"
+    private var strike = 0
+    private var ball = 0
     private val correctNumber = mutableListOf<Int>()
     fun getCorrectRandomNumber() {
         correctNumber.clear()
