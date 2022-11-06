@@ -10,7 +10,7 @@ fun printNothing() {
     println("낫싱")
 }
 
-fun printReport(balls:Int, strike: Int): Boolean {
+fun printReport(balls: Int = 0, strike: Int = 0): Boolean {
     if (balls > 0 && strike > 0) {
         println("${balls}볼 ${strike}스트라이크")
     } else if (balls > 0 && strike == 0) {
@@ -47,9 +47,10 @@ fun getInput(): String {
     return readLine()
 }
 
-fun mapConverter(inputList: MutableList<Char>) = inputList.mapIndexed { index, c -> c to index }.toMap()
+fun mapConverter(inputList: MutableList<Char> = mutableListOf()) =
+    inputList.mapIndexed { index, c -> c to index }.toMap()
 
-fun listChecker(inputList: MutableList<Char>): Boolean {
+fun listChecker(inputList: MutableList<Char> = mutableListOf()): Boolean {
     if (inputList.size !in 1..3) return false
     if (inputList.toSet().size != 3) return false
 
@@ -61,9 +62,9 @@ fun listChecker(inputList: MutableList<Char>): Boolean {
 }
 
 fun equalCounter(
-    playerMap: Map<Char, Int>,
-    computerMap: Map<Char, Int>,
-    intersectSet: Set<Char>
+    playerMap: Map<Char, Int> = mapOf(),
+    computerMap: Map<Char, Int> = mapOf(),
+    intersectSet: Set<Char> = setOf(),
 ): Int {
     var counter = 0
     intersectSet.forEach { c ->
