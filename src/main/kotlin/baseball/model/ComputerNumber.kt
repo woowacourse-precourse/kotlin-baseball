@@ -7,15 +7,19 @@ import camp.nextstep.edu.missionutils.Randoms
 class ComputerNumber {
     fun getRandomNumbers(): List<Int> {
         val computer = mutableSetOf<Int>()
-        while (computer.size < Constants.NUMBER_LENGTH) {
-            val randomNumber = pickRandomNumber()
-            computer.add(randomNumber)
-        }
+        completeRandomNumberSelection(computer)
         val computerNumbers = convertSetToList(computer)
         if (!Validations.isNumberException(computerNumbers)) {
             throw IllegalArgumentException()
         }
         return computerNumbers
+    }
+
+    private fun completeRandomNumberSelection(computer: MutableSet<Int>) {
+        while (computer.size < Constants.NUMBER_LENGTH) {
+            val randomNumber = pickRandomNumber()
+            computer.add(randomNumber)
+        }
     }
 
     private fun pickRandomNumber(): Int =
