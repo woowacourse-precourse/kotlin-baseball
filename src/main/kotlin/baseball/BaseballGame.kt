@@ -2,11 +2,11 @@ package baseball
 
 class BaseballGame {
     fun processGame() {
-        val computerNumberList = Computer().addComputerNumberToList()
+        val computerNumberList = Computer().getComputerNumberList()
         while (true) {
             println("숫자를 입력해주세요: ")
             val userNumber = getUserNumber()
-            val userNumberList = addUserNumberToList(userNumber)
+            val userNumberList = getUserNumberList(userNumber)
             println(getResultString(computerNumberList, userNumberList))
             if (getResultString(computerNumberList, userNumberList) == "3스트라이크") {
                 println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
@@ -27,7 +27,7 @@ class BaseballGame {
     /**
      * 유저의 숫자를 리스트에 넣어주고 반환하는 함수수
      */
-   private fun addUserNumberToList(inputNumber: Int): MutableList<Int> {
+   private fun getUserNumberList(inputNumber: Int): MutableList<Int> {
         val userNumberList = mutableListOf<Int>()
         var inputNumber = inputNumber
         userNumberList.add(inputNumber / 100)
