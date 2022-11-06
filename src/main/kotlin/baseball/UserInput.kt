@@ -12,19 +12,19 @@ fun inputUserNumber(): MutableList<Int> {
                 .toInt()
         }
         .toMutableList()
-    validate_3digit(numbers)
-    validate_Number9to1(numbers)
+    checkUnCorrectLength(numbers)
+    checkUnCorrectNumber(numbers)
 
     return numbers
 }
 
-fun validate_3digit(numbers: MutableList<Int>) {
+fun checkUnCorrectLength(numbers: MutableList<Int>) {
     if (numbers.count() != 3) {
         throw IllegalArgumentException("3자리 수만 입력 가능합니다.")
     }
 }
 
-fun validate_Number9to1(numbers: MutableList<Int>) {
+fun checkUnCorrectNumber(numbers: MutableList<Int>) {
     for (number in numbers) {
         if (number > 9 || number < 1) {
             throw IllegalArgumentException("1에서 9까지의 수만 입력 가능합니다.")
