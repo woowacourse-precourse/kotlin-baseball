@@ -1,6 +1,6 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import camp.nextstep.edu.missionutils.Randoms
 
 // 경기 진행 함수
 fun startGame() {
@@ -8,8 +8,15 @@ fun startGame() {
 }
 
 // 서로 다른 임의의 수 3개 선택 기능
-fun randomNumber(): Array<Int> {
-
+fun randomNumber(): MutableList<Int> {
+    val computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer
 }
 
 // 서로 다른 3개의 숫자 입력받는 기능
@@ -48,6 +55,7 @@ fun endGame() {
 
 
 fun main() {
-
+    println("숫자 야구 게임을 시작합니다.")
+    startGame()
 
 }
