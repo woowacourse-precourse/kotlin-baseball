@@ -89,15 +89,18 @@ fun resultOutput(strikeCount: Int, ballCount: Int): Int {
         println("($strikeCount)스트라이크")
     else
         println("($strikeCount)스트라이크 ($ballCount)볼")
-    
+
     if(strikeCount==3)
         return 1
     return 0
 }
 
-// 게임 종료 기능
+// 게임 종료 선택 기능
 fun endGame(): Int {
-
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    var endResult = readLine()!!
+    return endResult[0].digitToInt()
 }
 
 
