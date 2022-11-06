@@ -7,6 +7,8 @@ fun main() {
 
     val computerNumber = generateComputerNumber()
     val userNumber = getUserNumber()
+
+    val result = compareNumber(computerNumber, userNumber)
 }
 
 fun printGameStart() {
@@ -52,4 +54,26 @@ fun checkException(userInput: List<Char>?) {
     if (userInput.distinct() != userInput) {
         throw java.lang.IllegalArgumentException("서로 다른 수를 입력하세요")
     }
+}
+
+fun compareNumber(computerNumber: List<Int>, userNumber: List<Int>): List<Int> {
+    var result = mutableListOf<Int>(0,0)
+    for(i in userNumber.indices) {
+        if(calcStrike(computerNumber[i], userNumber[i])) {
+            result[0]++
+        } else {
+            result[1] += calcBall(computerNumber, userNumber[i])
+        }
+    }
+    return result
+}
+
+fun calcStrike(computerNumber: Int, userNumber: Int): Boolean{
+    if(computerNumber == userNumber) return true
+    return false
+}
+
+fun calcBall(computerNumber: List<Int>, userNumber: Int): Int{
+    if(computerNumber.contains(userNumber)) return 1
+    return 0
 }
