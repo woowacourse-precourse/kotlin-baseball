@@ -7,8 +7,9 @@ fun main() {
     while(gameStart == 1){
         val computerNum = setComputerNum()
         Play(computerNum)
-        finishGame()
+        gameStart = finishGame()
     }
+    println("게임 종료")
 }
 
 fun setComputerNum(): MutableList<Int>{
