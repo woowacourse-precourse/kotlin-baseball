@@ -36,7 +36,6 @@ fun inputNum(): String {
 }
 
 fun rightInputCheck(num: String) {
-    val inputNum = num
     if (num.length != 3){
         throw IllegalArgumentException("세자리 숫자를 말씀해주세요.")
     }
