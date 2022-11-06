@@ -9,6 +9,16 @@ fun main() {
     TODO("프로그램 구현")
 }
 
+fun countTotal(computerNumber: MutableList<Int>, userNumber: MutableList<Int>): Int {
+    var count = 0
+    for (idx in 0 until computerNumber.size) {
+        if (computerNumber.contains(userNumber[idx])) {
+            count++
+        }
+    }
+    return count
+}
+
 fun randomNumber(): MutableList<Int> {
     val computerNumber = mutableListOf<Int>()
     while (computerNumber.size < 3) {
