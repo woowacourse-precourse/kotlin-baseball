@@ -24,21 +24,21 @@ class BallTest {
     @Test
     fun `ball이 스트라이크인지 확인`() {
         val userBall = Ball(4, 1)
-        val result = "Strike"
+        val result = Result.STRIKE
         assertThat(ball.playGame(userBall)).isEqualTo(result)
     }
 
     @Test
     fun `ball이 볼인지 확인`() {
         val userBall = Ball(4, 2)
-        val result = "Ball"
+        val result = Result.BALL
         assertThat(ball.playGame(userBall)).isEqualTo(result)
     }
 
     @Test
     fun `ball이 낫싱인지 확인`() {
         val userBall = Ball(2, 1)
-        val result = "Nothing"
+        val result = Result.NOTHING
         assertThat(ball.playGame(userBall)).isEqualTo(result)
     }
 }
