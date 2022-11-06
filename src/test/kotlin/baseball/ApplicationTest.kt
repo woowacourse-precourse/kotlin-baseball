@@ -37,12 +37,34 @@ class ApplicationTest : NsTest() {
             listOf(2, 4, 6),
             listOf(1, 3, 5),
             listOf(5, 9, 7),
-            listOf(5, 8, 9)
-        )
+            listOf(5, 8, 9))
 
         for (idx in inputs.indices) {
             val digits = splitUserInput(inputs[idx])
             assertThat(digits)
+                .isEqualTo(expects[idx])
+        }
+    }
+
+    @Test
+    fun `숫자 비교 결과`() {
+        val computer = listOf(7, 1, 3)
+        val users = listOf(
+            listOf(1, 2, 3),
+            listOf(1, 4, 5),
+            listOf(6, 7, 1),
+            listOf(2, 1, 6),
+            listOf(7, 1, 3))
+        val expects = listOf(
+            "1볼 1스트라이크\n",
+            "1볼\n",
+            "2볼\n",
+            "1스트라이크\n",
+            "3스트라이크\n")
+
+        for (idx in users.indices) {
+            val result = CompResult(computer, users[idx])
+            assertThat(result.toString())
                 .isEqualTo(expects[idx])
         }
     }
