@@ -1,7 +1,7 @@
 package baseball
 
 
-class InputValidator(val inputNumber: String) {
+class InputValidation(val inputNumber: String) {
     companion object {
         const val NUMBER_LENGTH = 3
     }
