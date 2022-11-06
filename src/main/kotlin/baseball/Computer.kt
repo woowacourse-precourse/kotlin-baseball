@@ -26,7 +26,6 @@ object Computer {
         for (inputIndex in 0 until correctNumber.size) {
             countScore(inputValue, inputIndex)
         }
-        printCurrentScore()
     }
 
     private fun countScore(inputValue: String, inputIndex: Int) {
@@ -39,7 +38,7 @@ object Computer {
         }
     }
 
-    private fun printCurrentScore() {
+    fun printCurrentScore() {
         if (strike == 0 && ball == 0) {
             println("낫싱")
         } else if (strike == 0 && ball > 0) {
@@ -52,10 +51,9 @@ object Computer {
         } else if (strike > 0 && ball > 0) {
             println("${ball}볼 ${strike}스트라이크")
         }
-        resetScore()
     }
 
-    private fun resetScore() {
+    fun resetScore() {
         strike = 0
         ball = 0
     }
@@ -64,7 +62,8 @@ object Computer {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         checkGameRestartOrStop()
     }
-    private fun checkGameRestartOrStop(){
+
+    private fun checkGameRestartOrStop() {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         var input = Console.readLine()
         if (input == INPUT_GAME_RESTART) {

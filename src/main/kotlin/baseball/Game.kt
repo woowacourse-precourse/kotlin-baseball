@@ -23,6 +23,8 @@ object Game {
             require(false)
         }
         Computer.compareInputWithCorrectNumber(input)
+        Computer.printCurrentScore()
+        Computer.resetScore()
     }
 
     private fun checkInputValueException(inputValue: String): Boolean {
