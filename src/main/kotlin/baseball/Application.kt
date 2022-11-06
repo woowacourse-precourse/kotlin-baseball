@@ -27,11 +27,7 @@ fun playerThreeNumber():MutableList<Int>{
 }
 
 fun inputErrorCheck(userInputMutableList:List<Int>){
-    if(userInputMutableList.size != 3) {
-        throw IllegalArgumentException()
-    }
-
-    if(userInputMutableList.size != userInputMutableList.toSet().size){
+    if(userInputMutableList.size != 3 || userInputMutableList.toSet().size!=3){
         throw IllegalArgumentException()
     }
 
