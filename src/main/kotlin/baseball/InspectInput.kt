@@ -15,3 +15,11 @@ fun inspectInputThreeNumberStatus(inputThreeNumber: String): Int {
 
     return 1
 }
+
+fun inspectInputGoAndStopStatus(inputGoAndStopStatus: String): Int {
+    // "Only 1 or 2 can be entered."
+    if (inputGoAndStopStatus.length == 1) return 1
+    else if (inputGoAndStopStatus.length == 2) return 1
+
+    throw IllegalArgumentException()
+}
