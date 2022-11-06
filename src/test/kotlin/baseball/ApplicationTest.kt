@@ -19,6 +19,18 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `사용자 입력이 1부터 9사이의 중복없는 3자리 숫자인지 검사`() {
+        val inputs = listOf("246", "135", "1", "597", "589", "2", "024", "201")
+        val expects = listOf(true, true, false, true, true, false, false, false)
+
+        for (idx in inputs.indices) {
+            val validationResult = validateUserInput(inputs[idx])
+            assertThat(validationResult)
+                .isEqualTo(expects[idx])
+        }
+    }
+
+    @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
             {
