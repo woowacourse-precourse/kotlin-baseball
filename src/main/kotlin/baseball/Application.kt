@@ -49,3 +49,41 @@ fun getUserNumber(): String {
     }
     return userNumber.toString()
 }
+
+fun compareWithAnswer(answer: String, userNumber: String): Pair<Int, Int> {
+    var strike = 0
+    var ball = 0
+
+    for (index in userNumber.indices) {
+        if (userNumber[index] == answer[index]) {
+            strike++
+            continue
+        }
+        if (answer.contains(userNumber[index])) {
+            ball++
+        }
+    }
+    return Pair(strike, ball)
+}
+
+fun printHint(result: Pair<Int, Int>) {
+    val strike = result.first
+    val ball = result.second
+
+    if (strike == 0 && ball == 0) {
+        println("낫싱")
+        return
+    }
+
+    if (strike == 0) {
+        println("${ball}볼")
+        return
+    }
+
+    if (ball == 0) {
+        println("${strike}스트라이크")
+        return
+    }
+
+    println("${ball}볼 ${strike}스트라이크")
+}
