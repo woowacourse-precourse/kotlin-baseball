@@ -12,8 +12,8 @@ class BaseballGameProcessor(private val user: User, private val computer: Comput
             }
 
             val guessedNumbers = userInput.toBaseballNumbers()
-            val (strikeCount, ballCount) = arrayOf(BSCounter.calcStrikeCount(computer.randomNumbers, guessedNumbers),
-                BSCounter.calcBallCount(computer.randomNumbers, guessedNumbers))
+            val (strikeCount, ballCount) = arrayOf(BallStrikeCounter.calcStrikeCount(computer.randomNumbers, guessedNumbers),
+                BallStrikeCounter.calcBallCount(computer.randomNumbers, guessedNumbers))
 
             when (BaseballGameReferee.decideEachTurn(strikeCount, ballCount)) {
                 GameStatus.TERMINATE -> break
