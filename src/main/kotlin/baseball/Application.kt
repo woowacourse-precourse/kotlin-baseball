@@ -4,22 +4,26 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    var flag: Boolean = true
-    var computer: List<Int>
+    var start: Boolean = true
+    var play: Boolean = true
+    var computer: List<Int> = listOf()
     var player: List<Int>
 
-    println("숫자 야구 게임을 시작합니다.")
-    computer = getComputerNumbers()
-    println(computer)
-    while (flag) {
+    while (start or play) {
+        if (start) {
+            computer = getComputerNumbers()
+            start = false
+        }
         player = getPlayerNumbers()
-        flag = checkStrike(computer, player)
+        play = checkStrike(computer, player)
+        start = checkPlayAgain(play)
     }
 }
 
 fun getComputerNumbers(): List<Int> {
     val computer: MutableList<Int> = mutableListOf()
 
+    println("숫자 야구 게임을 시작합니다.")
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computer.contains(randomNumber)) {
@@ -93,4 +97,20 @@ fun getResultString(ball: Int, strike: Int): String {
         }
     }
     return str
+}
+
+fun checkPlayAgain(x: Boolean): Boolean {
+    var input: String
+
+    if (!x) {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        input = Console.readLine()
+        return when(input) {
+            "1" -> true
+            "2" -> false
+            else -> false
+        }
+    }
+
+    return false
 }
