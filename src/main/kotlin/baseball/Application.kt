@@ -26,21 +26,7 @@ fun main() {
                 }
             }
 
-            if (ball == 0) {
-                if (strike == 0)
-                    println("낫싱")
-                else
-                    println("${strike}스트라이크")
-            }
-
-            if (strike == 0) {
-                if (ball != 0) {
-                    println("${ball}볼")
-                }
-            }
-
-            if (ball != 0 && strike != 0)
-                println("${ball}볼 ${strike}스트라이크")
+            printResult(ball, strike)
         }
 
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
@@ -73,4 +59,22 @@ fun getPlayerNum(): String {
         throw IllegalArgumentException("세자리 수를 입력해주세요.")
     }
     return playerNum
+}
+
+fun printResult(ball: Int, strike: Int) {
+    if (ball == 0) {
+        if (strike == 0)
+            println("낫싱")
+        else
+            println("${strike}스트라이크")
+    }
+
+    if (strike == 0) {
+        if (ball != 0) {
+            println("${ball}볼")
+        }
+    }
+
+    if (ball != 0 && strike != 0)
+        println("${ball}볼 ${strike}스트라이크")
 }
