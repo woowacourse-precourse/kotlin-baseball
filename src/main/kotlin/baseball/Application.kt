@@ -32,8 +32,8 @@ fun validateUserInput(input: String): Boolean {
     return true
 }
 
-fun splitUserInput(input: String): List<Int> {
-    TODO("유저 입력 각 자릿수 분리")
-}
+fun splitUserInput(input: String) =
+    input.toList()
+        .map { it.digitToInt() }
 
 
