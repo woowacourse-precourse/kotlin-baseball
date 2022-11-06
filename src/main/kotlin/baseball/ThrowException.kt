@@ -17,13 +17,11 @@ class ThrowException {
      * 사용자가 3자리 숫자를 올바르게 입력하지 않았다면 예외를 던져주는 함수
      */
     fun throwExceptionForUserNumber(inputValue: String?){
-        var userNumber = inputValue
-
-        if (!isNumber(userNumber))
+        if (!isNumber(inputValue))
             throw IllegalArgumentException("입력한 값이 숫자가 아닙니다.")
-        else if(!hasThreeDigits(userNumber))
+        else if(!hasThreeDigits(inputValue))
             throw IllegalArgumentException("입력한 수가 3자릿수가 아닙니다.")
-        else if(!hasDistinctDigits(userNumber))
+        else if(!hasDistinctDigits(inputValue))
             throw IllegalArgumentException("입력한 숫자들 중 중복된 숫자가 있습니다.")
     }
 
