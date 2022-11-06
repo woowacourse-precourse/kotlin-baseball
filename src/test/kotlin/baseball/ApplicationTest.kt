@@ -59,6 +59,14 @@ class ApplicationTest : NsTest() {
         assertThat(output()).contains("숫자 야구 게임을 시작합니다.")
     }
 
+    @Test
+    fun `숫자 비교 결과 테스트`() {
+        val computerNumber = listOf<Int>(1, 2, 3)
+        val userNumber = listOf<Int>(1, 3, 4)
+        val result = listOf<Int>(1, 1)
+        assertThat(compareNumber(computerNumber, userNumber)).isEqualTo(result)
+    }
+
     override fun runMain() {
         main()
     }
