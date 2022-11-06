@@ -5,13 +5,15 @@ class BaseBall(
     val playerNumbers: List<Int>
 ) {
     fun getStrikeCount(): Int {
-        return computerNumbers.zip(playerNumbers)
+        return computerNumbers
+            .zip(playerNumbers)
             .filter { num -> num.first == num.second }
             .count()
     }
 
     fun getBallCount(): Int {
-        return computerNumbers.zip(playerNumbers)
+        return computerNumbers
+            .zip(playerNumbers)
             .filter { num -> num.first != num.second && hasNumberInComputer(num.second) }
             .count()
     }
