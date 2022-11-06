@@ -5,20 +5,22 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 fun main() {
-//    val input = inputNum()
-//    rightInputCheck(input)
-//    val computerNum = pickRandomNums()
+    val input = inputNum()
+    rightInputCheck(input)
+    val computerNum = pickRandomNums()
+    val result = checkStrikeBallNothing(input, computerNum)
+    println("result: $result")
 }
 
-fun pickRandomNums(): MutableList<Char> {
-    val computer = mutableListOf<Char>() //Changed Int to Char for better compare
+fun pickRandomNums(): MutableList<String> {
+    val computer = mutableListOf<String>() //Changed Char to String for better compare
     while (computer.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9).toChar()
+        val randomNumber = Randoms.pickNumberInRange(1, 9).toString()
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber)
         }
     }
-    println("computer: $computer")
+    println(computer)
     return computer
 }
 
@@ -35,10 +37,10 @@ fun rightInputCheck(num: String) {
     println("length check success")
 }
 
-fun checkStrikeBallNothing(inputNum: String): String {
+fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): String {
     // 게임 종료 조건부터 체크 (3 strike)
     var pickRandomNumsResult = ""
-    for (pickRandomNum in pickRandomNums()) {
+    for (pickRandomNum in computerNum) {
         pickRandomNumsResult += pickRandomNum
     }
     if(pickRandomNumsResult == inputNum) {
@@ -47,32 +49,40 @@ fun checkStrikeBallNothing(inputNum: String): String {
 
     // 게임 종료가 아닐 경우 낫싱 -> 스트라이크 -> 볼 순으로 구분
     for(index in inputNum.indices){
-        if (pickRandomNums().contains(inputNum[index])){
+        println("index: $index")
+        println("computerNum: $computerNum")
+        println("inputNum[index].toString(): ${inputNum[index].toString()}")
+        if (computerNum.contains(inputNum[index].toString())){
             var strikeNum = 0
             var ballNum = 0
             for(i in inputNum.indices){ // 스트라이크부터 먼저 체크하고 제거하기
-                if (inputNum[i] == pickRandomNums()[i]) {
+                if (inputNum[i].toString() == computerNum[i]) {
                     strikeNum += 1
-                    pickRandomNums().removeAt(i)
+                    computerNum.removeAt(i)
                     inputNum.replace("${ inputNum[i] }","")
                 }
             }
             for(j in inputNum.indices){ // 남은 것에서 볼 체크하기
-                if(pickRandomNums().contains(inputNum[j])) {
+                if(computerNum.contains(inputNum[j].toString())) {
                     ballNum += 1
                 }
             }
             if(strikeNum != 0 && ballNum != 0){
-                return "{$ballNum}볼 {$strikeNum}스트라이크"
+                println("${ballNum}볼 ${strikeNum}스트라이크")
+                return "${ballNum}볼 ${strikeNum}스트라이크"
             }
             else if(strikeNum == 0 && ballNum != 0){
-                return "{$ballNum}볼"
+                println("${ballNum}볼")
+                return "${ballNum}볼"
             }
             else {
-                return "{$strikeNum}스트라이크"
+                println("${strikeNum}스트라이크")
+                return "${strikeNum}스트라이크"
             }
         }
+        println("낫싱")
         return "낫싱"
     }
+    println("숫자를 입력해주세요")
     return "숫자를 입력해주세요"
 }
