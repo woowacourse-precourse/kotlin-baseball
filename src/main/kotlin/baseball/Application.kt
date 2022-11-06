@@ -13,11 +13,9 @@ fun printNothing() {
 fun printReport(balls:Int, strike: Int): Boolean {
     if (balls > 0 && strike > 0) {
         println("${balls}볼 ${strike}스트라이크")
-    }
-    else if (balls > 0 && strike == 0) {
+    } else if (balls > 0 && strike == 0) {
         println("${balls}볼")
-    }
-    else if (balls == 0 && strike > 0) {
+    } else if (balls == 0 && strike > 0) {
         println("${strike}스트라이크")
 
         if (strike == 3) {
@@ -37,8 +35,7 @@ fun askContinue(): Boolean {
     val inputNum = readLine()
     if (inputNum.length == 1 && inputNum == "1") {
         return true
-    }
-    else if (inputNum.length == 1 && inputNum == "2") {
+    } else if (inputNum.length == 1 && inputNum == "2") {
         return false
     }
 
@@ -50,35 +47,21 @@ fun getInput(): String {
     return readLine()
 }
 
-fun listConverter(inputString: String): MutableList<Char> {
-    return inputString.toMutableList()
-}
+fun listConverter(inputString: String) = inputString.toMutableList()
 
-fun mapConverter(inputList: MutableList<Char>): Map<Char, Int> {
-    return inputList.mapIndexed { index, c -> c to index }.toMap()
-}
+fun mapConverter(inputList: MutableList<Char>) = inputList.mapIndexed { index, c -> c to index }.toMap()
 
-fun setConverter(inputList: MutableList<Char>): Set<Char> {
-    return inputList.toSet()
-}
+fun setConverter(inputList: MutableList<Char>) = inputList.toSet()
 
 fun listChecker(inputList: MutableList<Char>): Boolean {
-    if (inputList.size !in 1..3) {
-        return false
-    }
-    if (setConverter(inputList).size != 3) {
-        return false
-    }
+    if (inputList.size !in 1..3) return false
+    if (setConverter(inputList).size != 3) return false
 
     inputList.forEach { c ->
         if (c !in '1'..'9') { return false }
     }
 
     return true
-}
-
-fun intersectCounter(playerSet: Set<Char>, computerSet: Set<Char>): Set<Char> {
-    return playerSet.intersect(computerSet)
 }
 
 fun equalCounter(
@@ -114,16 +97,14 @@ fun main() {
 
     do {
         val player = listConverter(getInput())
-        if (!listChecker(player)) {
-            throw IllegalArgumentException()
-        }
+        if (!listChecker(player)) throw IllegalArgumentException()
 
         val playerSet = setConverter(player)
         val computerSet = setConverter(computer)
         val playerMap = mapConverter(player)
         val computerMap = mapConverter(computer)
 
-        val commonSet = intersectCounter(playerSet, computerSet)
+        val commonSet = playerSet.intersect(computerSet)
         val v1 = commonSet.size
 
         if (v1 < 1) {
@@ -137,15 +118,12 @@ fun main() {
 
         val reportBool = printReport(balls, v2)
         var continueBool = false
-        if (reportBool) {
-            continueBool = askContinue()
-        }
+        if (reportBool) { continueBool = askContinue() }
 
         if (reportBool && continueBool) {
             maxDeep = -1
             computer = getRandomNumList()
-        }
-        else if (reportBool && !continueBool) {
+        } else if (reportBool && !continueBool) {
             break
         }
 
