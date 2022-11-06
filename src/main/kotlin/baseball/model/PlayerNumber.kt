@@ -12,5 +12,5 @@ class PlayerNumber {
     }
 
     private fun convertStringToList(inputPlayer: String): List<Int> =
-        inputPlayer.toCharArray().map { num -> num - '0' }
+        inputPlayer.toCharArray().map { num -> num.digitToInt() }
 }
