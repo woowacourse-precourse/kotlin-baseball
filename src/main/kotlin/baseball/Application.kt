@@ -9,6 +9,7 @@ fun main() {
     var computer: List<Int> = listOf()
     var player: List<Int>
 
+    println("숫자 야구 게임을 시작합니다.")
     while (start or play) {
         if (start) {
             computer = getComputerNumbers()
@@ -23,7 +24,6 @@ fun main() {
 fun getComputerNumbers(): List<Int> {
     val computer: MutableList<Int> = mutableListOf()
 
-    println("숫자 야구 게임을 시작합니다.")
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computer.contains(randomNumber)) {
@@ -108,7 +108,7 @@ fun checkPlayAgain(x: Boolean): Boolean {
         return when(input) {
             "1" -> true
             "2" -> false
-            else -> false
+            else -> throw IllegalArgumentException("1과 2 중 선택해야합니다. !")
         }
     }
 
