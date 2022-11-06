@@ -7,8 +7,8 @@ class BaseballGame {
             println("숫자를 입력해주세요: ")
             val userNumber = inputUserNumber()
             val userNumberList = addUserNumberToList(userNumber)
-            println(judgeResult(computerNumberList, userNumberList))
-            if (judgeResult(computerNumberList, userNumberList) == "3스트라이크") {
+            println(getResultString(computerNumberList, userNumberList))
+            if (getResultString(computerNumberList, userNumberList) == "3스트라이크") {
                 println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
                 break
             }
@@ -44,7 +44,7 @@ class BaseballGame {
     /**
      * 결과를 판단하고, 그 결과를 string 으로 반환하는 함수
      */
-    private fun judgeResult(computerNumberList: MutableList<Int>, userNumberList: MutableList<Int>): String{
+    private fun getResultString(computerNumberList: MutableList<Int>, userNumberList: MutableList<Int>): String{
         var resultMap = mutableMapOf("볼" to 0, "스트라이크" to 0)
         var wrongCount = 0
         for (index in userNumberList.indices){
