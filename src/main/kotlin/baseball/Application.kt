@@ -94,16 +94,13 @@ fun gameAgainOrExit() {
 fun checkNum(playerNum: String) {
     if (playerNum.length != 3) {
         throw IllegalArgumentException("세자리 수를 입력해주세요.")
-        exitProcess(0)
     }
     if (playerNum.contains("0")) {
         throw IllegalArgumentException("1~9사이 숫자를 입력해주세요.")
-        exitProcess(0)
     }
     for (i in 0..1) {
         if (playerNum[i] == playerNum[i + 1]) {
             throw IllegalArgumentException("서로 다른 숫자를 입력해주세요.")
-            exitProcess(0)
         }
     }
 }
