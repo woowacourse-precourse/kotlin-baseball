@@ -12,6 +12,7 @@ fun main() {
             checkValidInput(playerInput)
             val gameResult = getGameResult(playerInput.map { it.digitToInt() }, computerNumber)
             println(gameResult)
+        } while (!checkCorrectAnswer(gameResult))
 
 
 fun make3RandomNumber(): MutableList<Int> {
@@ -60,6 +61,14 @@ fun countBallStrike(playerNumber: List<Int>, computerNumber: List<Int>): List<In
         }
     }
     return listOf(ballCount, strikeCount)
+}
+
+fun checkCorrectAnswer(gameResult: String): Boolean {
+    if (gameResult == "3스트라이크") {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        return true
+    }
+    return false
 }
 
 }
