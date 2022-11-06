@@ -1,5 +1,6 @@
 package baseball
 
+import baseball.util.createRandomNumber
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
@@ -25,6 +26,13 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
+    }
+
+    @Test
+    fun `랜덤으로 서로다른 3자리의 수 생성`() {
+        val computerNum = createRandomNumber()
+
+        assertThat(computerNum.toList()).doesNotHaveDuplicates()
     }
 
     override fun runMain() {
