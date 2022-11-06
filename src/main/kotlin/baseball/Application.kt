@@ -80,6 +80,10 @@ fun main() {
     do{
         prepareNewGame()
         playGame()
+        playNewGameOrStop= readln().toInt()
+        if(playNewGameOrStop !=1 && playNewGameOrStop!=2){
+            throw IllegalArgumentException("input should be 1 or 2.")
+        }
 
     }while(playNewGameOrStop==1)
 
