@@ -31,7 +31,7 @@ fun printEnd() {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
 
-fun askContinue(): Boolean {
+fun continueChecker(): Boolean {
     val inputNum = readLine()
     if (inputNum.length == 1 && inputNum == "1") {
         return true
@@ -118,7 +118,7 @@ fun main() {
 
         val reportBool = printReport(balls, v2)
         var continueBool = false
-        if (reportBool) { continueBool = askContinue() }
+        if (reportBool) { continueBool = continueChecker() }
 
         if (reportBool && continueBool) {
             maxDeep = -1
