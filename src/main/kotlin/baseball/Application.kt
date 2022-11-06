@@ -3,7 +3,7 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    //6. 2~5과정을 반복 만약 스트라이크 3개가 나오면 재시작 또는 종료
+
     printStart()
     var computer = generateComputer()
     var input = 1
@@ -22,10 +22,17 @@ fun main() {
             println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
             input = getInputFormUser()
             verificationQuitNumver(input)
-            computer = generateComputer()
+            computer = reGenerateComputer(input, computer)
+
         }
     }
+}
 
+fun reGenerateComputer(input: Int, computer: List<Int>): List<Int> {
+    if (input == 1) {
+        return generateComputer()
+    }
+    return computer
 }
 
 fun printStart(): Unit {
@@ -59,9 +66,9 @@ fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): MutableList<In
     var result = mutableListOf<Int>(0, 0) //첫번째 인덱스는 스트라이크 두번째 인덱스는 볼
 
     for (i in 0..2) {
-        result[0] += increaseStrike(computer,i,inputNum)
+        result[0] += increaseStrike(computer, i, inputNum)
 
-        result[1] += increaseBall(computer,i,inputNum)
+        result[1] += increaseBall(computer, i, inputNum)
     }
 
     return result
