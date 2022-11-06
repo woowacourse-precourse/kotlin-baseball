@@ -18,7 +18,7 @@ class BaseBallController {
         } while (!exitGame())
     }
 
-    fun progressGame(computerNumbers: List<Int>) {
+    private fun progressGame(computerNumbers: List<Int>) {
         do {
             OutputView().printInputNumber()
             val playerNumbers = PlayerNumber().inputPlayerNumber()
@@ -29,7 +29,7 @@ class BaseBallController {
         } while (!Validations.isThreeStrike(strike))
     }
 
-    fun exitGame(): Boolean {
+    private fun exitGame(): Boolean {
         val endNumber = InputView().endPlayerNumber()
         if (endNumber == Constants.RESTART) {
             return false
