@@ -22,6 +22,15 @@ fun isNotThreeDigits(inputData: String): Boolean {
     return inputData.length != 3
 }
 
+fun isNotInteger(inputData: String): Boolean {
+    try{
+        inputData.toInt()
+    }catch (e: NumberFormatException) {
+        return true
+    }
+    return false
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
