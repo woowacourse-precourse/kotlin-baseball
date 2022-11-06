@@ -49,11 +49,9 @@ fun getInput(): String {
 
 fun mapConverter(inputList: MutableList<Char>) = inputList.mapIndexed { index, c -> c to index }.toMap()
 
-fun setConverter(inputList: MutableList<Char>) = inputList.toSet()
-
 fun listChecker(inputList: MutableList<Char>): Boolean {
     if (inputList.size !in 1..3) return false
-    if (setConverter(inputList).size != 3) return false
+    if (inputList.toSet().size != 3) return false
 
     inputList.forEach { c ->
         if (c !in '1'..'9') { return false }
@@ -97,8 +95,8 @@ fun main() {
         val player = getInput().toMutableList()
         if (!listChecker(player)) throw IllegalArgumentException()
 
-        val playerSet = setConverter(player)
-        val computerSet = setConverter(computer)
+        val playerSet = player.toSet()
+        val computerSet = computer.toSet()
         val playerMap = mapConverter(player)
         val computerMap = mapConverter(computer)
 
