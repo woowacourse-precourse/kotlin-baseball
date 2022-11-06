@@ -4,10 +4,21 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.system.exitProcess
 
 var randomGeneratedNumber: String = ""
+var curGameResultType: GameResultType = GameResultType.NothingResult
 fun main() {
+    printGameStartPhrase()
+    startBaseballGame()
+}
+
+fun startBaseballGame() {
     generateRandomNumber()
-    println("답 : $randomGeneratedNumber")
-    printGuidelinePhraseAndWaitForInput()
+    processBaseBallGame()
+}
+
+fun processBaseBallGame() {
+    while (curGameResultType != GameResultType.CorrectResult) {
+        printGuidelinePhraseAndWaitForInput()
+    }
 }
 
 fun generateRandomNumber() {
@@ -70,7 +81,10 @@ fun printGameResult(
     when (resultType) {
         is GameResultType.NormalResult -> printNormalResult(resultType.ball, resultType.strike)
         is GameResultType.NothingResult -> printNothingResult()
-        is GameResultType.CorrectResult -> printCorrectResult()
+        is GameResultType.CorrectResult -> {
+            printCorrectResult()
+            TODO("게임 종료 후 다시 시작하거나 종료할지에 대한 판단 기능 로직 추가")
+        }
     }
 }
 
