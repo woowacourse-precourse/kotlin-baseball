@@ -47,8 +47,6 @@ fun getInput(): String {
     return readLine()
 }
 
-fun listConverter(inputString: String) = inputString.toMutableList()
-
 fun mapConverter(inputList: MutableList<Char>) = inputList.mapIndexed { index, c -> c to index }.toMap()
 
 fun setConverter(inputList: MutableList<Char>) = inputList.toSet()
@@ -96,7 +94,7 @@ fun main() {
     var computer = getRandomNumList()
 
     do {
-        val player = listConverter(getInput())
+        val player = getInput().toMutableList()
         if (!listChecker(player)) throw IllegalArgumentException()
 
         val playerSet = setConverter(player)
