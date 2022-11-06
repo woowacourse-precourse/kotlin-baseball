@@ -22,7 +22,7 @@ class Game {
 
     private fun isRestart(): Boolean {
         val userInput = user.getRestartOrNotInput()
-        if (userInput == 1) {
+        if (userInput == RESTART_CODE) {
             return true
         }
         return false
