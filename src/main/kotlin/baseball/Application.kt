@@ -65,35 +65,36 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
     if (numForNothing == 3) {
         println("낫싱")
     } else { // 스트라이크 -> 볼
-        for (index in inputNum.indices) {
-            if (computerNum.contains(inputNum[index].toString())) {
-                var strikeNum = 0
-                var ballNum = 0
-                val indexSize = inputNum.length
-                for (i in 0 until indexSize) { // 스트라이크부터 먼저 체크하고 제거하기
-                    println("inputNum: ${inputNum[index]}")
-                    if (inputNum[i].toString() == computerNum[i]) {
-                        strikeNum += 1
-                        computerNum.removeAt(i)
-                        inputNum.replace("${inputNum[i]}", "")
-                    }
-                }
-                for (j in 0 until indexSize) { // 남은 것에서 볼 체크하기
-                    if (computerNum.contains(inputNum[j].toString())) {
-                        ballNum += 1
-                    }
-                }
-                if (strikeNum != 0 && ballNum != 0) {
-                    println("${ballNum}볼 ${strikeNum}스트라이크")
-//                    return "${ballNum}볼 ${strikeNum}스트라이크"
-                } else if (strikeNum == 0 && ballNum != 0) {
-                    println("${ballNum}볼")
-//                    return "${ballNum}볼"
-                } else {
-                    println("${strikeNum}스트라이크")
-//                    return "${strikeNum}스트라이크"
-                }
+        val avoidList = mutableListOf<Int>(0,1,2)
+        var ballNum = 0
+        var strikeNum = 0
+        for (i in inputNum.indices) { // 스트라이크부터 먼저 체크하고 제거하기
+            if (inputNum[i].toString() == computerNum[i]) {
+                strikeNum += 1
+                avoidList.remove(i)
+                println("avoidList: $avoidList")
+                println("strikeNum: $strikeNum")
+//                        computerNum.removeAt(i)
+//                        inputNum.replace("${inputNum[i]}", "")
             }
+        }
+        for (j in avoidList) { // 남은 것에서 볼 체크하기
+            if (computerNum.contains(inputNum[j].toString())) {
+                ballNum += 1
+                println("ballNum: $ballNum")
+            }
+        }
+
+        // print
+        if (strikeNum != 0 && ballNum != 0) {
+            println("${ballNum}볼 ${strikeNum}스트라이크")
+//                    return "${ballNum}볼 ${strikeNum}스트라이크"
+        } else if (strikeNum == 0 && ballNum != 0) {
+            println("${ballNum}볼")
+//                    return "${ballNum}볼"
+        } else {
+            println("${strikeNum}스트라이크")
+//                    return "${strikeNum}스트라이크"
         }
     }
 
