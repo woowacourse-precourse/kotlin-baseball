@@ -10,6 +10,7 @@ fun main() {
             print("숫자를 입력해주세요 : ")
             val playerInput = Console.readLine()
             checkValidInput(playerInput)
+            val gameResult = getGameResult(playerInput.map { it.digitToInt() }, computerNumber)
 
 
 fun make3RandomNumber(): MutableList<Int> {
@@ -35,6 +36,14 @@ fun checkValidInput(input: String) {
             throw IllegalArgumentException("잘못된 값 입력")
         }
     }
+}
+
+fun getGameResult(playerNumber: List<Int>, computerNumber: List<Int>): String {
+    val ballStrikeCount = countBallStrike(playerNumber, computerNumber)
+    if ((ballStrikeCount[0] == 0) and (ballStrikeCount[1] == 0)) return "낫싱"
+    if (ballStrikeCount[0] == 0) return "${ballStrikeCount[1]}스트라이크"
+    if (ballStrikeCount[1] == 0) return "${ballStrikeCount[0]}볼"
+    return "${ballStrikeCount[0]}볼 ${ballStrikeCount[1]}스트라이크"
 }
 
 }
