@@ -2,7 +2,6 @@ package baseball.controller
 
 import baseball.Constants
 import baseball.Validations
-import baseball.model.BaseBall
 import baseball.model.ComputerNumber
 import baseball.model.PlayerNumber
 import baseball.view.InputView
@@ -12,8 +11,7 @@ class BaseBallController {
     fun startGame() {
         OutputView().printGameStart()
         do {
-            val computerNumbers = ComputerNumber().getRandomNumbers()
-            processGame(computerNumbers)
+            processGame(ComputerNumber().getRandomNumbers())
             OutputView().printGameOver()
         } while (!exitGame())
     }
@@ -21,13 +19,10 @@ class BaseBallController {
     private fun processGame(computerNumbers: List<Int>) {
         do {
             OutputView().printInputNumber()
-            val startNumber = InputView().startPlayerNumber()
-            val playerNumbers = PlayerNumber().inputPlayerNumber(startNumber)
-            val baseBall = BaseBall(computerNumbers, playerNumbers)
-            val strike = baseBall.getStrikeCount()
-            val ball = baseBall.getBallCount()
-            OutputView().printResult(ball, strike)
-        } while (!Validations.isThreeStrike(strike))
+            val playerNumbers = PlayerNumber().inputPlayerNumber(InputView().startPlayerNumber())
+            val counterController = CounterController(computerNumbers, playerNumbers)
+            OutputView().printResult(counterController.ball, counterController.strike)
+        } while (!Validations.isThreeStrike(counterController.strike))
     }
 
     private fun exitGame(): Boolean {
