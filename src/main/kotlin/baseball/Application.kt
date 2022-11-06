@@ -30,3 +30,19 @@ fun getUserInput(): MutableList<Int> {
     }
     return userNumber
 }
+
+fun checkSameNumber(input: String): Boolean {
+    val userNumber = mutableListOf<Int>()
+    userNumber.add(input[0] - '0')
+    var idx = 1
+    while (userNumber.size < 3) {
+        if (userNumber.contains(input[idx] - '0')) {
+            return true
+        }
+        if (!userNumber.contains(input[idx] - '0')) {
+            userNumber.add(input[idx] - '0')
+            idx++
+        }
+    }
+    return false
+}
