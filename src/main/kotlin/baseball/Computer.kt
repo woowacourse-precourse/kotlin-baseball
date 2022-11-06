@@ -23,7 +23,8 @@ class Computer {
         val strikeCount = countStrike(userGuess)
         val ballCount = countBall(userGuess)
 
-        if (strikeCount == ANSWER_COUNT){
+        if (strikeCount == ANSWER_COUNT) {
+            UserView.printStrike(strikeCount)
             UserView.printCorrectFinishGame()
             return false
         }
@@ -31,7 +32,7 @@ class Computer {
             UserView.printNothing()
             return true
         }
-        if (ballCount > 0 && strikeCount > 0){
+        if (ballCount > 0 && strikeCount > 0) {
             UserView.printBallAndStrike(ballCount, strikeCount)
             return true
         }
