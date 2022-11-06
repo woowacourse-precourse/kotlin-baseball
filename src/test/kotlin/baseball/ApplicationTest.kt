@@ -34,9 +34,12 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `입력한 세개 숫자 예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+            assertThrows<IllegalArgumentException> { runException("12") }
+            assertThrows<IllegalArgumentException> { runException("021") }
+            assertThrows<IllegalArgumentException> { runException("444") }
         }
     }
 
