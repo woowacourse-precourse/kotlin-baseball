@@ -47,4 +47,12 @@ class ApplicationTest : NsTest() {
         val input = 135
         assertThat(baseball.changeIntToMutableListInt(input)).isEqualTo(mutableListOf(1,3,5))
     }
+
+    @Test
+    fun `inputNumTest`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { inputNum("1234")}
+        }
+        assertThat(inputNum("135")).isEqualTo(mutableListOf(1,3,5))
+    }
 }

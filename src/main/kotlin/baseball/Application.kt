@@ -17,17 +17,17 @@ fun setComputerNum(): MutableList<Int>{
     return computerNum
 }
 
-//fun inputNum(): MutableList<Int>{
-//    val input = Console.readLine().toIntOrNull()
-//    val playerInput = mutableListOf<Int>()
-//    if (input == null || !(input in 0..999)){
-//        throw IllegalArgumentException("0~999의 값을 입력하지 않으셨습니다.")
-//    }
-//    if (input in 0..999){
-//        playerInput.add(input%10)
-//        playerInput.add
-//    }
-//}
+fun inputNum(stringInput: String): MutableList<Int>{
+    val input = stringInput.toIntOrNull()
+    var playerInput = mutableListOf<Int>()
+    if (input == null || !(input in 0..999)){
+        throw IllegalArgumentException("0~999의 값을 입력하지 않으셨습니다.")
+    }
+    if (input in 0..999){
+       playerInput = changeIntToMutableListInt(input)
+    }
+    return playerInput
+}
 
 fun changeIntToMutableListInt(input: Int): MutableList<Int>{
     val output = mutableListOf<Int>()
