@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class Result {
     var ball = 0
     var strike = 0
+    var chooseGameNum = 1
 
     fun getScore(computerNum: String, playerNum: String) {
         ball = 0
@@ -46,5 +47,12 @@ class Result {
     fun gameAgainOrExit() {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         chooseGameNum = Console.readLine().toInt()
+        checkChooseGameNum()
+    }
+
+    private fun checkChooseGameNum() {
+        if (chooseGameNum != 1 && chooseGameNum != 2) {
+            throw IllegalArgumentException("1이나 2를 입력해주세요.")
+        }
     }
 }

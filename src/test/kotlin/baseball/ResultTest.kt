@@ -27,6 +27,11 @@ class ResultTest : NsTest() {
             .isEqualTo("2볼 2스트라이크")
     }
 
+    @Test
+    fun `게임 진행 여부 입력값 검증`() {
+        assertThat(result.chooseGameNum).isIn(1,2)
+    }
+
     override fun runMain() {
         main()
     }
