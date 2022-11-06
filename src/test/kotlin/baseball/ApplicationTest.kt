@@ -27,6 +27,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `잘못된 수 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("012") }
+        }
+    }
+
+    @Test
+    fun `중복되는 수 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("122") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
