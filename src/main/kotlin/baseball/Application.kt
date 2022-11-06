@@ -3,6 +3,9 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+var ball = 0
+var strike = 0
+
 fun main() {
     var chooseGameNum = 1
     println("숫자 야구 게임을 시작합니다.")
@@ -12,20 +15,7 @@ fun main() {
         var playerNum = ""
         while (playerNum != computerNum) {
             playerNum = getPlayerNum()
-            var ball = 0
-            var strike = 0
-
-            for (j in 0..2) {
-                for (i in 0..2) {
-                    if (computerNum[j] == playerNum[i]) {
-                        if (i == j)
-                            strike++
-                        else
-                            ball++
-                    }
-                }
-            }
-
+            getScore(computerNum, playerNum)
             printResult(ball, strike)
         }
 
@@ -59,6 +49,25 @@ fun getPlayerNum(): String {
         throw IllegalArgumentException("세자리 수를 입력해주세요.")
     }
     return playerNum
+}
+
+fun getScore(computerNum: String, playerNum: String) {
+    ball = 0
+    strike = 0
+    for (j in 0..2) {
+        for (i in 0..2) {
+            compareNum(computerNum, playerNum, i, j)
+        }
+    }
+}
+
+fun compareNum(computerNum: String, playerNum: String, i: Int, j: Int) {
+    if (computerNum[j] == playerNum[i]) {
+        if (i == j)
+            strike++
+        else
+            ball++
+    }
 }
 
 fun printResult(ball: Int, strike: Int) {
