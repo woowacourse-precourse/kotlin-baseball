@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
+
 class Baseball {
 
     private val computer = Computer()
@@ -10,13 +12,23 @@ class Baseball {
     }
 
     private fun playGame() {
-        val computerList = computer.makeComputerList()
+        computer.makeComputerList()
         while (true) {
             val userList = user.inputUser()
 
-            if (checkBaseBall(computerList, userList))
+            if (checkBaseBall(computer.computerList, userList))
                 break;
+
         }
+    }
+
+    private fun checkContinue(): Boolean {
+        val input = Console.readLine()
+        if(input=="2") {
+            return true
+        }
+        computer.makeComputerList()
+        return false
     }
 
     private fun checkBaseBall(computerList: MutableList<Int>, userList: MutableList<Int>): Boolean {
@@ -30,8 +42,10 @@ class Baseball {
                 println("$ball$BALL_MESSAGE ")
             if (strike != 0)
                 println("$strike$STRIKE_MESSAGE")
-            if (strike == 3)
-                return true
+            if (strike == 3) {
+                println(CHECK_CONTINUE_MESSAGE)
+                return checkContinue()
+            }
         }
         return false
     }
