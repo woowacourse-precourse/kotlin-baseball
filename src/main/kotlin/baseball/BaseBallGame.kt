@@ -28,6 +28,14 @@ class BaseBallGame {
         }
         return guess
     }
+
+    private fun inputGameOver(): Int {
+        return when (Console.readLine().toInt()) {
+            1 -> RESTART
+            2 -> END
+            else -> throw IllegalArgumentException("exception")
+        }
+    }
     private fun checkValidGuess(guess: String) = guessRegex.matches(guess) && guess.toSet().size == 3
 
     private fun checkGameOver(score: Score) = score.strike == 3
