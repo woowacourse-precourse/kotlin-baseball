@@ -17,6 +17,7 @@ fun playNumberBaseballGame(){
         val userInputArray = makeNumToList(userInput.toInt())
         if(!checkValidNumber(userInputArray))
             throw IllegalArgumentException()
+        val (strike,ball) = countStrikeBall(answerNumberArray,userInputArray)
         break
 
     }while(true)
@@ -56,4 +57,16 @@ fun makeNumToList(num:Int):List<Int>{
     }
     numArray.reverse()
     return numArray
+}
+
+fun countStrikeBall(answerArray:List<Int>,inputArray:List<Int>): Pair<Int,Int>{
+    var strikeCnt = 0
+    var ballCnt = 0
+    for(input in inputArray.indices){
+        if (answerArray[input]==inputArray[input])
+            strikeCnt ++
+        else if(answerArray.contains(inputArray[input]))
+            ballCnt ++
+    }
+    return Pair(strikeCnt,ballCnt)
 }
