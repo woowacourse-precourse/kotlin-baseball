@@ -1,8 +1,21 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
 class NumberBaseballGame {
     private var strike = 0
     private var ball = 0
+    private var exit = false
+
+    private fun pickRandomNumber(computer: MutableList<Int>) {
+        while (computer.size < 3) {
+            val randomNumber = Randoms.pickNumberInRange(1, 9)
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber)
+            }
+        }
+    }
 
     fun resetScore() {
         strike = 0
@@ -36,9 +49,21 @@ class NumberBaseballGame {
         if (strike != 0 && ball != 0) {
             println("${ball}볼 ${strike}스트라이크")
         }
-        if (strike == 3) {
-            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    }
+
+    fun gameOver(computer: MutableList<Int>) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
+        when (Console.readLine().toInt()) {
+            1 -> {
+                computer.clear()
+                pickRandomNumber(computer)
+            }
+
+            2 -> {
+                exit = true
+            }
         }
     }
 }

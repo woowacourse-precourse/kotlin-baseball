@@ -8,13 +8,6 @@ fun main() {
     val game = NumberBaseballGame()
     val exit = false
 
-    while (computer.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber)
-        }
-    }
-
     println("숫자 야구 게임을 시작합니다.")
 
     while (!exit) {
