@@ -18,10 +18,10 @@ private fun setRandomNumber(): MutableList<Int> {
 }
 
 private fun getNumberOfStrike(computer: String, user: String): Int {
-    val computerNumber: List<String> = computer.split("")
-    val userNumber: List<String> = user.split("")
+    val computerNumber: String = computer
+    val userNumber: String = user
     var numberOfStrike = 0
-    for(i in 1..3){
+    for(i in 0..2){
         if(computerNumber[i] == userNumber[i]){
             numberOfStrike++
         }
@@ -30,14 +30,15 @@ private fun getNumberOfStrike(computer: String, user: String): Int {
 }
 
 private fun getNumberOfBall(computer: String, user: String): Int {
-    val computerNumber: List<String> = computer.split("")
-    val userNumber: List<String> = user.split("")
+    val computerNumber: String = computer
+    val userNumber: String = user
     var numberOfBall = 0
-    for(i in 1..3){
+    for(i in 0..2){
         if(computerNumber.contains(userNumber[i]) && computerNumber[i] != userNumber[i]){
             numberOfBall++
         }
     }
     return numberOfBall
 }
+
 
