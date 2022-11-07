@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun Numbergenerator(): MutableList<Int> {
     val computerNumber: MutableList<Int> = mutableListOf()
@@ -23,7 +24,7 @@ fun playerInput():String {
 fun playerInputToList(playerInputString:String) : MutableList<Int>{
     val playerInputSplit = playerInputString.split("")
     val playerInputList : MutableList<Int> = mutableListOf()
-    for(count in 0 until 3) playerInputList[count]=playerInputSplit[count].toInt()
+    for(count in 0..2) playerInputList[count]=playerInputSplit[count].toInt()
     return playerInputList
 }
 fun playerInputValidCheck(CheckList : MutableList<Int>){
@@ -36,6 +37,18 @@ fun playerInputValidCheck(CheckList : MutableList<Int>){
     if(CheckList[0]==CheckList[2]){
         throw IllegalArgumentException()
     }
+}
+fun StrikeBallCheck(Answer : MutableList<Int>,Input : MutableList<Int>){
+    var Strike = 0
+    var Ball = 0
+    for (count in 0..2){
+        if (Answer[count]==Input[count]){
+            Strike+=1
+        } else if(Answer.contains(Input[count])){
+            Ball+=1
+        }
+    }
+
 }
 fun main() {
     /*var computerNumber = Numbergenerator()
