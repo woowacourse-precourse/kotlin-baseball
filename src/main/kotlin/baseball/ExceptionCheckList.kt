@@ -1,5 +1,11 @@
 package baseball
 
+fun checkExceptionOnNumbers(input: String) {
+    isInteger(input)
+    isHavingDuplicatedNumber(input)
+    isNumberOfDigitsCorrect(input)
+}
+
 fun isInteger(input: String) {
     try {
         input.toInt()

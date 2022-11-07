@@ -21,7 +21,7 @@ fun playGame() {
 
 fun getUserNumberList(input: String): MutableList<Int> {
 
-    // 예외처리 추가
+    checkExceptionOnNumbers(input)
 
     val userNumberList = mutableListOf<Int>()
     for(digit in 0 until NUM_DIGITS) {
