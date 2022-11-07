@@ -29,6 +29,20 @@ class Game() {
             isGamePlaying = !refereeDecision.isStrikeOut
         }
     }
+
+    private fun endPhase(): Boolean {
+        gamePrinter.showEndMessage()
+        return when (readLine()) {
+            CONTINUE -> true
+            FINISH -> false
+            else -> throw IllegalArgumentException("1, 2가 아닌 다른 수가 입력되었습니다.")
+        }
+    }
+
+    companion object {
+        const val CONTINUE = "1"
+        const val FINISH = "2"
+    }
 }
 
 class Computer() {
