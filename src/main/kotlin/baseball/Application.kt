@@ -2,11 +2,14 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+var restartInput = 0
 fun main() {
     printGameStart()
 
-    val computerNumber = generateComputerNumber()
-    playGame(computerNumber)
+    do {
+        val computerNumber = generateComputerNumber()
+        playGame(computerNumber)
+    } while (restartInput != 2)
 }
 
 fun playGame(computerNumber: List<Int>) {
@@ -93,6 +96,7 @@ fun printResult(result: List<Int>): Boolean {
             println("3스트라이크")
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
             answer = true
+            restartOrEndGame()
         }
 
         result[0] == 0 -> println("${result[1]}볼")
@@ -100,4 +104,9 @@ fun printResult(result: List<Int>): Boolean {
         else -> println("${result[1]}볼 ${result[0]}스트라이크")
     }
     return answer
+}
+
+fun restartOrEndGame() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    restartInput = readLine()?.toInt() ?: 0
 }
