@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
+    Game().play()
 }
 
 class Game() {
@@ -11,6 +12,15 @@ class Game() {
     private val computer = Computer()
     private val user = User()
     private val referee = Referee()
+
+    fun play() {
+        var isGamePlaying: Boolean = true
+        while (isGamePlaying) {
+            standbyPhase()
+            mainPhase()
+            endPhase().also { isGamePlaying = it }
+        }
+    }
 
     private fun standbyPhase() {
         gamePrinter.showStartMessage()
