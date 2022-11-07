@@ -17,7 +17,12 @@ class ApplicationTest : NsTest() {
                 assertThat(output())
                     .contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
             },
-            1, 3, 5, 5, 8, 9
+            1,
+            3,
+            5,
+            5,
+            8,
+            9
         )
     }
 
@@ -45,30 +50,9 @@ class ApplicationTest : NsTest() {
         }
 
         @Test
-        fun `스트라이크 메시지 출력`() {
-            Printer().showStrikeMessage(3)
-            val result = ("3스트라이크")
-            assertThat(output()).isEqualTo(result)
-        }
-
-        @Test
-        fun `볼 메시지 출력`() {
-            Printer().showBallMessage(3)
-            val result = ("3볼")
-            assertThat(output()).isEqualTo(result)
-        }
-
-        @Test
-        fun `낫싱 메시지 출력`() {
-            Printer().showNothingMessage()
-            val result = ("낫싱")
-            assertThat(output()).isEqualTo(result)
-        }
-
-        @Test
-        fun `볼&스트라이크 메시지 출력`() {
-            Printer().showBallStrikeMessage(1, 1)
-            val result = ("1볼 1스트라이크")
+        fun `심판 판정 결과 출력`() {
+            Printer().showCountingMessage(0, 0)
+            val result = "낫싱"
             assertThat(output()).isEqualTo(result)
         }
 
