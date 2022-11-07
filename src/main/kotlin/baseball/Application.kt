@@ -1,12 +1,11 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
-import camp.nextstep.edu.missionutils.Console
 
 // 경기 진행 함수
 fun startGame() {
     val computerNum = randomNumber()
-    while(true){
+    while (true) {
         var playerNum = randomNumberInput()
         var result = checkResult(computerNum, playerNum)
         if (result == 1) break
@@ -54,11 +53,12 @@ fun checkResult(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int
     return resultOutput(strikeCount, ballCount)
 
 }
+
 // 스트라이크 확인 기능
 fun checkStrike(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int {
     var strikeCount = 0
-    for(i in 0..2){
-        if(computerNum[i]==playerNum[i])
+    for (i in 0..2) {
+        if (computerNum[i] == playerNum[i])
             strikeCount++
     }
     return strikeCount
@@ -99,7 +99,7 @@ fun endGame(): Int {
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     var result = 1
-    while(result == 1){
+    while (result == 1) {
         startGame()
         result = endGame()
     }
