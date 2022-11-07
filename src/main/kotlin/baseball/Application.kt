@@ -45,13 +45,31 @@ fun enterExpectedNumber(): List<Int>{
 
     return input_numbers
 }
-
+fun checkBallAndStrike(user: List<Int>,computer: List<Int>){
+    var strike_count: Int = 0
+    var ball_count: Int =0
+    user.forEach{
+        if(it in computer) ball_count++
+    }
+    for (i in 0..2) {
+        if(user[i]==computer[i]){
+            ball_count--
+            strike_count++
+        }
+    }
+    if(ball_count==0 && strike_count==0) println("낫싱")
+    if(ball_count==0 && strike_count!=0) println("${strike_count}스트라이크")
+    if(ball_count!=0 && strike_count==0) println("${ball_count}볼")
+    if(ball_count!=0 && strike_count!=0) println("${ball_count}볼 ${strike_count}스트라이크")
+}
 fun play(){
     val computer: List<Int> = createRandomNumbers()
     var user: List<Int> = mutableListOf()
     while(computer!=user){
         user= enterExpectedNumber()
+        checkBallAndStrike(user,computer)
     }
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 fun askContinue(): Boolean{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
