@@ -10,4 +10,10 @@ class GameTest (){
         val input = Game.checkInputLengthThree("123")
         assertThat(input).isEqualTo(true)
     }
+
+    @Test
+    fun `입력값이 중복된 값이 있는지 체크`(){
+        val input = Game.checkInputDuplication("112")
+        assertThat(input).isEqualTo(false)
+    }
 }
