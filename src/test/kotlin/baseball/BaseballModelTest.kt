@@ -1,5 +1,6 @@
 package baseball
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Nested
@@ -14,6 +15,30 @@ internal class BaseballModelTest {
         baseballModel = BaseballModel()
     }
 
+    @Test
+    fun `425가 제시된 숫자일 때 테스트 입력이 스트라이크 볼을 잘 반환하는지 체크`() {
+        baseballModel.computerNum = listOf(4, 2, 5)
+
+        baseballModel.checkBalls("123")
+        assertThat(baseballModel.strikeCnt).isEqualTo(1)
+        assertThat(baseballModel.ballCnt).isEqualTo(0)
+        baseballModel.strikeCnt = 0
+        baseballModel.ballCnt = 0
+
+        baseballModel.checkBalls("456")
+        assertThat(baseballModel.strikeCnt).isEqualTo(1)
+        assertThat(baseballModel.ballCnt).isEqualTo(1)
+        baseballModel.strikeCnt = 0
+        baseballModel.ballCnt = 0
+
+        baseballModel.checkBalls("789")
+        assertThat(baseballModel.strikeCnt).isEqualTo(0)
+        assertThat(baseballModel.ballCnt).isEqualTo(0)
+        baseballModel.strikeCnt = 0
+        baseballModel.ballCnt = 0
+    }
+
+    
     @Nested
     inner class UserInputTest {
         @Test
@@ -53,7 +78,7 @@ internal class BaseballModelTest {
         }
 
         @Test
-        fun `checkEndedNumber메소드에서 1이나 2가아닌 문자가 들어왔을 때 IllegalArgumentException을 발생시킨다.`() {
+        fun `checkEndedNumber메소드에서 1이나 2가아닌 문자가 들어왔을 때 IllegalArgumentException을 발생시킨다`() {
             val testInputs = listOf("3", "432", "", "aasd")
             testInputs.forEach { case ->
                 assertThrows<IllegalArgumentException>() {

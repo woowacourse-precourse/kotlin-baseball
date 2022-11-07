@@ -7,7 +7,7 @@ class BaseballModel {
 
     var strikeCnt = 0
     var ballCnt = 0
-    private var computerNum: List<Int> = emptyList<Int>()
+    var computerNum: List<Int> = emptyList<Int>()
     var resultString = ""
     var isEnded = false
     private val inputChecker: InputChecker = InputChecker()
