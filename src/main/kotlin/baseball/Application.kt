@@ -1,5 +1,17 @@
 package baseball
 
+import java.util.*
+
+
+fun randomNum(): List<Char> {
+    val tmp = mutableSetOf<Int>()
+    while (tmp.size < 3) {    // Set의 특성을 이용 세 자리의 중복없는 정답생성
+        tmp.add(Random().nextInt(9))
+    }
+    return tmp.toString().toList().filter { it.isDigit() }
+}
+
+
 
 fun main() {
 
