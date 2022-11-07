@@ -3,10 +3,26 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 const val NUM_LENGTH = 3
+const val MIN_NUM = 1
+const val MAX_NUM = 9
 const val ASCII_CODE_ONE = 49
 const val ASCII_CODE_NINE = 57
 const val RESTART_FLAG = 1
 const val EXIT_FLAG =2
+
+const val START_MESSAGE = "숫자 야구 게임을 시작합니다."
+const val INPUT_MESSAGE = "숫자를 입력해주세요 : "
+const val SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+const val RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+
+const val INPUT_ERROR_LENGTH = "3개의 숫자를 입력하세요"
+const val INPUT_ERROR_RANGE = "1부터 9까지의 숫자만 입력하세요"
+const val INPUT_ERROR_DUPLICATE ="서로 다른 수를 입력하세요"
+
+const val NOTHING ="낫싱"
+const val STRIKE = "스트라이크"
+const val BALL = "볼"
+
 
 var flag = 0
 fun main() {
@@ -15,7 +31,7 @@ fun main() {
 }
 
 fun printGameStart() {
-    println("숫자 야구 게임을 시작합니다.")
+    println(START_MESSAGE)
 }
 
 fun startGame() {
@@ -39,7 +55,7 @@ fun generateComputerNumber(): List<Int> {
     val computerNumber = mutableListOf<Int>()
 
     while (computerNumber.size < NUM_LENGTH) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        val randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM)
         if (!computerNumber.contains(randomNumber)) {
             computerNumber.add(randomNumber)
         }
@@ -49,7 +65,7 @@ fun generateComputerNumber(): List<Int> {
 }
 
 fun getUserNumber(): List<Int> {
-    print("숫자를 입력해주세요 : ")
+    print(INPUT_MESSAGE)
     val userInput = readLine()?.toList()
 
     checkUserNumberException(userInput)
@@ -64,17 +80,17 @@ fun getUserNumber(): List<Int> {
 
 fun checkUserNumberException(userInput: List<Char>?) {
     if (userInput?.size != NUM_LENGTH) {
-        throw IllegalArgumentException("3개의 숫자를 입력하세요")
+        throw IllegalArgumentException(INPUT_ERROR_LENGTH)
     }
 
     userInput.forEach { c ->
         if (c.code < ASCII_CODE_ONE || c.code > ASCII_CODE_NINE) {
-            throw IllegalArgumentException("1부터 9까지의 숫자만 입력하세요")
+            throw IllegalArgumentException(INPUT_ERROR_RANGE)
         }
     }
 
     if (userInput.distinct() != userInput) {
-        throw java.lang.IllegalArgumentException("서로 다른 수를 입력하세요")
+        throw java.lang.IllegalArgumentException(INPUT_ERROR_DUPLICATE)
     }
 }
 
@@ -116,24 +132,24 @@ fun printHint(hint: List<Int>): Boolean {
     var answer = false
 
     when {
-        strike == 0 && ball == 0 -> println("낫싱")
+        strike == 0 && ball == 0 -> println(NOTHING)
         strike == 3 -> {
-            println("3스트라이크")
-            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println("$strike$STRIKE")
+            println(SUCCESS_MESSAGE)
             answer = true
             restartOrEndGame()
         }
 
-        strike == 0 -> println("${hint[1]}볼")
-        ball == 0 -> println("${hint[0]}스트라이크")
-        else -> println("${ball}볼 ${strike}스트라이크")
+        strike == 0 -> println("$ball$BALL")
+        ball == 0 -> println("$strike$STRIKE")
+        else -> println("$ball$BALL $strike$STRIKE")
     }
 
     return answer
 }
 
 fun restartOrEndGame() {
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    println(RESTART_MESSAGE)
     val flagInput = readLine()
 
     checkFlagException(flagInput)
@@ -143,5 +159,5 @@ fun restartOrEndGame() {
 
 fun checkFlagException(flagInput: String?) {
     if (flagInput != "$RESTART_FLAG" && flagInput != "$EXIT_FLAG")
-        throw IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        throw IllegalArgumentException(RESTART_MESSAGE)
 }
