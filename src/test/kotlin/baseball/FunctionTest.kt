@@ -10,15 +10,13 @@ import org.junit.jupiter.api.assertThrows
 class FunctionTest : NsTest() {
     @Test
     fun `intToList 테스트`(){
+        var user : User = User()
+        user.inputNum = 123
         val result = mutableListOf<Int>(1,2,3)
-        assertThat(result).isEqualTo(intToList(123))
+        assertThat(result).isEqualTo(user.intputToList())
 
     }
-    @Test
-    fun `countingStrikeBall 테스트`(){
-        val result= mutableListOf<Int>(1,2)
-        assertThat(result).isEqualTo(countingStrikeBall(listOf(1,2,3), listOf(1,3,2)))
-    }
+
 
 
 
