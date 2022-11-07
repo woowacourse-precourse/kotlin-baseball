@@ -78,6 +78,7 @@ private fun increaseStrikeBallCount(computerNumberList : List<Int>, userNumberLi
 private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) {
     when {
         strikeBallCountPair.first == 0 && strikeBallCountPair.second == 0 -> println("낫싱")
+        strikeBallCountPair.first == 3 -> println("${strikeBallCountPair.first}스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         strikeBallCountPair.second > 0 && strikeBallCountPair.first > 0 -> println("${strikeBallCountPair.second}볼 ${strikeBallCountPair.first}스트라이크")
         strikeBallCountPair.second > 0 && strikeBallCountPair.first == 0 -> println("${strikeBallCountPair.second}볼")
         strikeBallCountPair.second == 0 && strikeBallCountPair.first > 0 -> println("${strikeBallCountPair.first}스트라이크")
