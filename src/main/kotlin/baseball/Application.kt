@@ -21,12 +21,11 @@ class Answer(answer: String) {
 
     private fun checkDup(answer: String): Boolean {
 
-        for (i in answer.indices) {
-            for (j in i + 1 until answer.length) {
-                if (answer[i] == answer[j]) {
-                    return true
-                }
-            }
+        val checkDup= mutableListOf<Char>()
+        for(i in answer) checkDup.add(i)
+
+        if(answer.length!=checkDup.distinct().size){
+            return true
         }
 
         return false
