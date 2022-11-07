@@ -9,9 +9,9 @@ object Computer {
     const val INPUT_MAX_SIZE = 3
     const val INPUT_GAME_RESTART = "1"
     const val INPUT_GAME_STOP = "2"
-    private var strike = 0
-    private var ball = 0
-    private val correctNumber = mutableListOf<Int>()
+    var strike = 0
+    var ball = 0
+    val correctNumber = mutableListOf<Int>()
     fun getCorrectRandomNumber() {
         correctNumber.clear()
         while (correctNumber.size < INPUT_MAX_SIZE) {
