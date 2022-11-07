@@ -8,7 +8,7 @@ fun gameStart() {
         val computer = makeRandomBallNumbers()
         printGameStartMessage()
         playGame(computer)
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        printReGameMessage()
         val reGame = Console.readLine()
         if (reGame == "2") break
     }
