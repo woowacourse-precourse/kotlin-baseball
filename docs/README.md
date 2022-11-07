@@ -13,9 +13,9 @@
 ### 예상 필요 함수 목록
 | 함수 | 매개변수 | 반환형 | 내용 |
 | --- | --- | --- | --- |
-|playGame| | |main에서 게임 실행을 위해 호출하는 함수|
+|playGame| | | main에서 게임 실행을 위해 호출하는 함수|
 | makeRandomNumberList |  | MutableList<Int> | 컴퓨터로 하여금 랜덤한 세자리 숫자 발생시킴 |
+| getUserNumberList | String (input) | MutableList<Int> | 사용자가 입력한 값 리스트로 반환 <br/>- 잘못된 입력 예외 발생 |
 | isHavingDuplicatedNumber | Int | Boolean | 중복된 숫자가 포함되어있는지 여부 |
 | isIntegerNumber | Int | Boolean | 입력한 형태가 숫자가 맞는지 여부 |
 | isNumberOfDigitsCorrect | Int | Boolean | 입력한 숫자 자리수가 맞는지 여부 |
-| getListOfNumberByDigits | Int | MutableList<Int> | 사용자가 입력한 숫자를 자릿수별로 나누어 리스트로 저장 |
