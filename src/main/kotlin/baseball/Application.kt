@@ -5,14 +5,20 @@ import camp.nextstep.edu.missionutils.Console
 
 var computerNumber = ""
 var userNumber = ""
+var isPlay = true
 
 fun main() {
-    println("숫자 야구 게임을 시작합니다.")
+    GameStart()
+}
 
+fun GameStart() {
+    println("숫자 야구 게임을 시작합니다.")
     computerNumber = makeRandomNumber(3)
-    println("랜덤숫자 : ${computerNumber}")
 
     while (true) {
+        if (!isPlay){
+            break
+        }
         print("숫자를 입력해주세요 : ")
         userNumber = Console.readLine()
         println(userNumber)
@@ -20,10 +26,7 @@ fun main() {
 
         var (isNothing, userindexIncomputerNum) = searchNothingCase()
 
-        if (isNothing) {
-            println("낫싱")
-        } else {
-            println("${userNumber}의 ${userindexIncomputerNum} 인덱스는 computerNumber에 존재")
+        if (!isNothing) {
             searchStrikeAndBallCase(userindexIncomputerNum)
         }
     }
@@ -38,15 +41,15 @@ fun makeRandomNumber(length: Int): String {
             noOverlapRandomNumber.add(randNum)
         }
     }
-    println("랜덤 숫자 생성 : ${noOverlapRandomNumber}")
+
     return noOverlapRandomNumber.joinToString("")
 }
 
 fun checkNumberException() {
     if (userNumber.toIntOrNull() == null) {
-        throw IllegalArgumentException("IllegalAccessException. 숫자로 이루어지지 않았습니다.")
+        throw IllegalArgumentException()
     } else if (userNumber.length != 3) {
-        throw IllegalArgumentException("IllegalAccessException. 3개의 숫자가 아닙니다.")
+        throw IllegalArgumentException()
     }
 
     var checkNumber = mutableListOf<Char>()
@@ -54,7 +57,7 @@ fun checkNumberException() {
         if (i !in checkNumber) {
             checkNumber.add(i)
         } else {
-            throw IllegalArgumentException("IllegalAccessException. 중복된 숫자가 존재합니다.")
+            throw IllegalArgumentException()
         }
     }
 }
@@ -68,48 +71,49 @@ fun searchNothingCase(): Pair<Boolean, MutableList<Int>> {
             userindexIncomputerNum.add(i)
         }
     }
+    if (isNothing) {
+        println("낫싱")
+    }
     return Pair(isNothing, userindexIncomputerNum)
 }
 
-fun searchStrikeAndBallCase(userNumIndex: MutableList<Int>){
+fun searchStrikeAndBallCase(userNumIndex: MutableList<Int>) {
     var strike = 0
     var ball = 0
-    for (i in userNumIndex){
-        if (userNumber[i] == computerNumber[i]){
+    for (i in userNumIndex) {
+        if (userNumber[i] == computerNumber[i]) {
             strike++
-        }
-        else{
+        } else {
             ball++
         }
     }
 
     if (strike != 0
         && ball != 0
-    ){
+    ) {
         println("${ball}볼 ${strike}스트라이크")
-    }
-    else if (strike != 0){
+    } else if (strike != 0) {
         println("${strike}스트라이크")
-    }
-    else if (ball != 0){
+    } else if (ball != 0) {
         println("${ball}볼")
     }
 
-    if (strike == computerNumber.length){
+    if (strike == computerNumber.length) {
         GameOverMessage()
     }
 }
 
-fun GameOverMessage(){
+fun GameOverMessage() {
     println("${computerNumber.length}의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
     var response = Console.readLine()
+    println("${response}")
 
     when (response) {
-        "1" -> TODO("게임 재시작")
-        "2" -> return
-        else -> throw IllegalArgumentException("IllegalAccessException. 잘못된 값입니다.")
+        "1" -> GameStart()
+        "2" -> isPlay = false
+        else -> throw IllegalArgumentException()
     }
 }
 
