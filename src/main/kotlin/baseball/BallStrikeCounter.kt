@@ -17,7 +17,8 @@ object BallStrikeCounter {
         var ballCount = 0
 
         userNumbers.forEachIndexed { userNumberIndex, userNum ->
-            ballCount += computerNumbers.filterIndexed { computerNumberIndex, _ -> computerNumberIndex != userNumberIndex }
+            ballCount += computerNumbers
+                .filterIndexed { computerNumberIndex, _ -> computerNumberIndex != userNumberIndex }
                 .filter { computerNumber -> computerNumber == userNum }.size
         }
         return ballCount
