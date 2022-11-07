@@ -8,7 +8,7 @@ class ThrowException {
     fun throwExceptionForRestartNumber(input: String?){
         if (!getIsNumber(input))
             throw IllegalArgumentException("입력한 값이 숫자가 아닙니다.")
-        else if (!isOneOrTwo(input))
+        else if (!getIsOneOrTwo(input))
             throw IllegalArgumentException("입력한 수가 올바른 값이 아닙니다")
     }
 
@@ -63,7 +63,7 @@ class ThrowException {
     /**
      * 입력한 숫자가 1과 2 인지 판단하는 함수
      */
-    private fun isOneOrTwo(input: String?): Boolean{
+    private fun getIsOneOrTwo(input: String?): Boolean{
         return input?.toInt()!! in 1..2
     }
 }
