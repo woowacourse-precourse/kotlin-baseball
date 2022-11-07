@@ -51,8 +51,13 @@ class BaseballModel {
             }
             reGame()
         }
+        clearGame()
+    }
+
+    fun clearGame() {
         strikeCnt = 0
         ballCnt = 0
+        resultString = ""
     }
 
     fun checkEndedNumber(userInput: String) = inputChecker.checkEndedNumber(userInput)

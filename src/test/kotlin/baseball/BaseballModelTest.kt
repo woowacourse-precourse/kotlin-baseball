@@ -16,29 +16,28 @@ internal class BaseballModelTest {
     }
 
     @Test
-    fun `425가 제시된 숫자일 때 테스트 입력이 스트라이크 볼을 잘 반환하는지 체크`() {
+    fun `checkBalls 및 setResultString메소드가 425가 제시된 숫자일 때 올바른 결과값을 반환하는지 체크`() {
         baseballModel.computerNum = listOf(4, 2, 5)
 
-        baseballModel.checkBalls("123")
-        assertThat(baseballModel.strikeCnt).isEqualTo(1)
-        assertThat(baseballModel.ballCnt).isEqualTo(0)
-        baseballModel.strikeCnt = 0
-        baseballModel.ballCnt = 0
+        val testInputs = listOf<String>("123", "456", "789")
+        val testResults = listOf<String>("1스트라이크", "1볼 1스트라이크", "낫싱")
+        val testStrikes = listOf<Int>(1, 1, 0)
+        val testBalls = listOf<Int>(0, 1, 0)
 
-        baseballModel.checkBalls("456")
-        assertThat(baseballModel.strikeCnt).isEqualTo(1)
-        assertThat(baseballModel.ballCnt).isEqualTo(1)
-        baseballModel.strikeCnt = 0
-        baseballModel.ballCnt = 0
-
-        baseballModel.checkBalls("789")
-        assertThat(baseballModel.strikeCnt).isEqualTo(0)
-        assertThat(baseballModel.ballCnt).isEqualTo(0)
-        baseballModel.strikeCnt = 0
-        baseballModel.ballCnt = 0
+        with(baseballModel) {
+            computerNum = listOf(4, 2, 5)
+            testInputs.forEachIndexed { idx, case ->
+                checkBalls(case)
+                setResultString()
+                assertThat(resultString).isEqualTo(testResults[idx])
+                assertThat(strikeCnt).isEqualTo(testStrikes[idx])
+                assertThat(ballCnt).isEqualTo(testBalls[idx])
+                clearGame()
+            }
+        }
     }
 
-    
+
     @Nested
     inner class UserInputTest {
         @Test
