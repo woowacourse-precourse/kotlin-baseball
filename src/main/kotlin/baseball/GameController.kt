@@ -1,16 +1,22 @@
 package baseball
 
+import model.Computer
+import model.User
+import util.Constants
 import util.Exceptions
 import util.Messages
 
 
 object GameController {
+    // 게임에 사용할 model
+    private val user = User()
+    private val computer = Computer()
 
     // 사용자가 잘못된 값을 입력한 경우
     fun exception(userList: List<Int>) {
-        if (Exceptions.isValidRange(userList) ||
-                Exceptions.isValidSize(userList) ||
-                Exceptions.hasNotDuplicatedNumber(userList)) {
+        if (!Exceptions.isValidRange(userList) ||
+                !Exceptions.isValidSize(userList) ||
+                !Exceptions.hasNotDuplicatedNumber(userList)) {
             throw IllegalArgumentException()
         }
     }
