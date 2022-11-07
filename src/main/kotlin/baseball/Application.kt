@@ -17,6 +17,7 @@ fun main() {
 }
 
 
+
 private fun startBaseBallGame() {
     println("숫자 야구 게임을 시작합니다.")
 }
@@ -92,13 +93,14 @@ private fun printGameResult(strikeBallCountPair: Pair<Int, Int>): Int {
     return strikeBallCountPair.first
 }
 
-private fun userDecideGameContinue() {
+private fun userDecideGameContinue() : Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val userInput = readLine()
     if (userGameContinueDecisionInputExceptionCheck(userInput)) {
         throw IllegalArgumentException()
     }
 
+    return userInput!!.toInt()
 }
 
 
