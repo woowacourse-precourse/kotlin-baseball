@@ -37,7 +37,7 @@ object Message {
     }
 
     fun showFinishGame() {
-        TODO()
+        println("게임 종료")
     }
 
     private fun checkFinishCode(code: String): Boolean {
