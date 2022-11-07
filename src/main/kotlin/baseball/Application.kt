@@ -4,69 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-
-    while (true) {
-        val answer = generateRandomNumber()
-        println(answer)
-        try {
-            print("숫자를 입력해주세요: ")
-            val input = readLine()!!
-            if (checkValidity(input)) {
-                if (input != answer) {
-                    // 스트라이크, 볼, 낫싱 결과 출력
-                    var strike = 0
-                    var ball = 0
-                    for(i in answer.indices){
-                        for(j in input.indices){
-                            // 같은 숫자가 같은 자리에 있으면 스트라이크
-                            if(answer[i] == input[j]){
-                                if(i == j){
-                                    strike++
-                                }else{ // 같은 숫자가 다른 자리에 있으면 볼
-                                    ball++
-                                }
-                            }
-                        }
-                    }
-                    if(strike != 0 && ball != 0){
-                        println("${ball}볼 ${strike}스트라이크")
-                    }else{
-                        if(strike != 0) println("${strike}스트라이크")
-                        else if(ball != 0) println("${ball}볼")
-                        else println("낫싱") // 같은 숫자가 아예 없으면 낫싱
-                    }
-                }else{
-                    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-                    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-                    when (readLine()!!) {
-                        "1" -> continue // 재시작
-                        "2" -> break // 종료
-                        else -> throw IllegalArgumentException()
-                    }
-                }
-            }else{
-                throw IllegalArgumentException()
-            }
-        } catch (e: IllegalArgumentException) {
-            println("유효한 값을 입력해주세요.")
-            break // 종료
-        }
-    }
+    playGame()
 }
 
-// 1~9까지의 범위에 해당하지 않는 수를 입력하면 예외 발생
-fun checkValidity(input: String): Boolean {
-    if (input.length == 3) {
-        for (item in input) {
-            if (item.digitToInt() !in 1..9) return false
-        }
-        return true
-    }
-    return false
+fun playGame() {
+    val answer = getComputerNumber()
+    println(answer)
+    startGuessing(answer)
 }
 
 // 컴퓨터의 랜덤 숫자 생성
-fun generateRandomNumber(): String {
+fun getComputerNumber(): String {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -74,11 +22,71 @@ fun generateRandomNumber(): String {
             computer.add(randomNumber)
         }
     }
-
     var result = ""
     for (item in computer) {
         result += item
     }
-
     return result
+}
+
+fun startGuessing(answer: String) {
+    var input = getUserNumber()
+    while(input != answer){
+        printHint(input, answer)
+        input = getUserNumber()
+    }
+    gameOver()
+}
+
+fun gameOver() {
+    println("3스트라이크")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    when(readLine()!!.toInt()) {
+        1 -> playGame() // 새로운 랜덤 숫자 생성
+        2 -> return // 완전히 종료
+        else -> throw IllegalArgumentException()
+    }
+}
+
+fun getUserNumber(): String {
+    print("숫자를 입력해주세요: ")
+    val input = readLine()!!
+
+    // 3자리 수가 아니거나 1~9까지의 범위를 벗어나면 예외 발생
+    if (input.length == 3) {
+        for (item in input) {
+            if (item.digitToInt() !in 1..9)
+                throw IllegalArgumentException()
+        }
+    }else{
+        throw IllegalArgumentException()
+    }
+
+    return input
+}
+
+// 스트라이크, 볼, 낫싱 결과 출력
+fun printHint(input: String, answer: String) {
+    var strike = 0
+    var ball = 0
+    for (i in answer.indices) {
+        for (j in input.indices) {
+            if (answer[i] == input[j]) {
+                if (i == j) { // 같은 숫자가 같은 자리에 있으면 스트라이크
+                    strike++
+                } else { // 같은 숫자가 다른 자리에 있으면 볼
+                    ball++
+                }
+            }
+        }
+    }
+
+    if (strike != 0 && ball != 0) {
+        println("${ball}볼 ${strike}스트라이크")
+    } else {
+        if (strike != 0) println("${strike}스트라이크")
+        else if (ball != 0) println("${ball}볼")
+        else println("낫싱") // 같은 숫자가 아예 없으면 낫싱
+    }
 }
