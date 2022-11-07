@@ -8,8 +8,13 @@ const val EXIT = 2
 
 fun main() {
     printStartMessage()
+    baseballGame()
 }
 
 fun printStartMessage() {
     println("숫자 야구 게임을 시작합니다.")
+}
+
+fun baseballGame() {
+
 }
