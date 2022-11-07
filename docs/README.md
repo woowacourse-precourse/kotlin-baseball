@@ -31,3 +31,9 @@
     - 파라미터 : 문자열(사용자가 입력한 1개의 숫자. go:1, stop:2)
     - 반환값 : 원하는 상태라면 1을, 아니라면 -1을 반환한다 (IllegalArgumentExceptionIllegalArgumentException을 발생시킨다). 
 
+## 📄 JUnitTest.kt
+JUnit Test를 위한 값을 설정한다.
+- ``` setTestAnswer() : String ```
+    - 테스트를 위해 입력받은 하나 혹은 여럿의 값을 검증해 순차적으로 배정시켜준다.
+    - 파라미터 : 없음. (전역변수 testAnswerList에 직접 접근 및 수정)
+    - 반환값 : 문자열. (다음 테스트 값)
