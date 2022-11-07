@@ -103,13 +103,14 @@ fun endGame(){
     val restartGameMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
     println(endMessage)
     println(restartGameMessage)
-    when(readLine()){
+    when(Console.readLine()){
         "1" -> restartGame()
         "2" -> {
             println("게임 종료")
             isEnd = 1
             return
         }
+        else -> callException()
     }
 }
 fun main() {
