@@ -57,6 +57,24 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
+    fun `checkGameOver 메서드출력 결과 확인`() {
+        val baseBallGame = BaseBallGame()
+
+        val method = baseBallGame.javaClass.getDeclaredMethod("checkGameOver", BaseBallGame.Score::class.java)
+        method.isAccessible = true
+
+        val parameters = arrayOfNulls<Any>(1)
+
+        parameters[0] = BaseBallGame.Score(1,0)
+        var getElement = method.invoke(baseBallGame, *parameters)
+        assertThat(getElement).isEqualTo(false)
+
+        parameters[0] = BaseBallGame.Score(3,0)
+        getElement = method.invoke(baseBallGame, *parameters)
+        assertThat(getElement).isEqualTo(true)
+    }
+
+    @Test
     fun `gradeGuess 메서드반환 결과 확인`() {
         val baseBallGame = BaseBallGame()
 
