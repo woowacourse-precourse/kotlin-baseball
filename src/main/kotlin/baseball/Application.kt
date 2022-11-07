@@ -15,7 +15,7 @@ fun getRandomNumber(): String { // 랜덤으로 숫자를 뽑아 3자리 수 문
     return randomNum
 }
 
-fun inputNumber(): String { // 잘못 입력했을 시 IllegalArgumentException을 발생시킨 후 애플리케이션 종료
+fun inputNumber(): String {
     /* 잘못 입력한경우
     1. 같은 숫자 두번 이상 입력
     2. 숫자 외 입력
@@ -75,18 +75,17 @@ fun ballOrStrike(randomNumber: String, inputNumber: String): String {
     var com_num = mutableListOf<Char>()
     var my_num = mutableListOf<Char>()
 
-    for (com in 0 until randomNumber.length){
+    for (com in 0 until randomNumber.length) {
         com_num.add(randomNumber[com])
     }
-    for (user in 0 until inputNumber.length){
+    for (user in 0 until inputNumber.length) {
         my_num.add(inputNumber[user])
     }
-    for (i in 0 until randomNumber.length){
-        if (my_num.contains(com_num[i]) && my_num[i]==com_num[i]){
-            strikecnt+=1
-        }
-        else if(my_num.contains(com_num[i]) && my_num[i]!=com_num[i]){
-            ballcnt+=1
+    for (i in 0 until randomNumber.length) {
+        if (my_num.contains(com_num[i]) && my_num[i] == com_num[i]) {
+            strikecnt += 1
+        } else if (my_num.contains(com_num[i]) && my_num[i] != com_num[i]) {
+            ballcnt += 1
         }
     }
 
@@ -99,7 +98,6 @@ fun ballOrStrike(randomNumber: String, inputNumber: String): String {
     } else {
         answer = (ballcnt.toString() + ball) + " " + (strikecnt.toString() + strike)
     }
-
 
     return answer
 }
@@ -124,9 +122,9 @@ fun main() {
     var flag = true // 플래그
     var restart = 0
 
-    startgame() // 최초 한번만 동작하므로 while문 밖 위치
-    randomNumber = getRandomNumber() // 숫자가 무엇인지 보여줄 필요는 없으므로 메서드 호출만
-    println(randomNumber) // 확인용
+    startgame()
+    randomNumber = getRandomNumber()
+//    println(randomNumber) // 확인용
     while (true) {
         if (flag == false) {
             break
@@ -144,8 +142,6 @@ fun main() {
             flag = false
         }
 
-
     }
-
 
 }
