@@ -3,8 +3,24 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 class BaseballGame {
-    fun processGame() {
+    /**
+     * 게임을 시작하는 함수
+     */
+    fun startGame(){
         println("숫자 야구 게임을 시작합니다.")
+        while(true){
+            processGame()
+            if (getNumberForRestartGame() == 2){
+                println("게임 종료.")
+                break
+            }
+        }
+    }
+
+    /**
+     *  값을 입력하고 결과를 확인하는 기능인 게임 과정을 진행하는 함수
+     */
+    fun processGame() {
         val computerNumberList = getComputerNumberList()
         while (true) {
             println("숫자를 입력해주세요: ")
@@ -16,6 +32,16 @@ class BaseballGame {
                 break
             }
         }
+    }
+
+    /**
+     * 숫자를 입력받고 예외 체크 후 반환하는 함수
+     */
+    fun getNumberForRestartGame(): Int{
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val input = readLine()
+        ThrowException().throwExceptionForRestartNumber(input)
+        return input?.toInt()!!
     }
 
     /**
