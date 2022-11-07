@@ -36,7 +36,7 @@ class ConsoleMessage {
         println(END_OR_RESTART_MESSAGE)
     }
 
-    fun printLineBreak(){
+    fun printLineBreak() {
         println()
     }
 }
