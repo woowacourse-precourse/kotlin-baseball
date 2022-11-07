@@ -11,6 +11,10 @@ fun main() {
 private fun gameStart() {
     while (true) {
         playNumBaseBall()
+        // 성공시 재시작 여부
+        if (goOrStop() == 2) {
+            break
+        }
     }
 }
 
@@ -76,4 +80,22 @@ private fun checkStrikeOrBall(user: String, com: String) {
     } else {
         println("${ball}볼 ${strike}스트라이크")
     }
+}
+
+private fun goOrStop(): Int {
+
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
+    var restart = Console.readLine()!!
+
+    val regex = "^[1-2]$".toRegex()
+    if (regex.find(restart) == null) {
+        throw IllegalArgumentException()
+    }
+
+    if (restart == "2") {
+        println("게임 종료")
+        return 2
+    }
+    return 1
 }
