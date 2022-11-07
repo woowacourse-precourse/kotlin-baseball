@@ -27,6 +27,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트 문자입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12ㄱ4") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 3이하 크기 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
