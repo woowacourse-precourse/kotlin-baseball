@@ -45,8 +45,8 @@ class Baseball(computer: String) {
 
     private fun playAgain(): Boolean {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
-        val inputNumber: String = readLine()!!
-        if (inputNumber == "1") {
+        val userInputNumber: String = readLine()!!
+        if (userInputNumber == "1") {
             computerInput = createComputerInput()
             return true
         }
@@ -82,17 +82,19 @@ class Baseball(computer: String) {
         val userInput: String = user
         var strikeCount = 0
         for (index in userInput.indices) {
-            if (computerInput[index] == user[index]) strikeCount++
+            val isMetStrikeCriteria = (computerInput[index] == userInput[index])
+            if (isMetStrikeCriteria) strikeCount++
         }
         return strikeCount
 
     }
 
-    fun ball(user: String): Int {
-        val userInput: String = user
+    fun ball(userInput: String): Int {
         var ballCount = 0
         for (index in userInput.indices) {
-            if (computerInput[index] != user[index] && computerInput.contains(user[index])) ballCount++
+            val isMetBallCriteria =
+                (computerInput[index] != userInput[index] && computerInput.contains(userInput[index]))
+            if (isMetBallCriteria) ballCount++
         }
         return ballCount
     }
