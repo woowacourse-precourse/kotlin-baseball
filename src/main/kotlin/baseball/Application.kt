@@ -60,7 +60,13 @@ private fun isValidInputNumber(code: Int): Boolean {
     return true
 }
 
+
 private fun determineJudgement(computerNumberList : List<Int>, userNumberList : List<Int>) {
+    increaseStrikeBallCount(computerNumberList, userNumberList)
+}
+
+
+private fun increaseStrikeBallCount(computerNumberList : List<Int>, userNumberList : List<Int>): Pair<Int, Int> {
     var strikeCount = 0
     var ballCount = 0
 
@@ -69,7 +75,7 @@ private fun determineJudgement(computerNumberList : List<Int>, userNumberList : 
         else if (userNumberList.contains(computerNumberList[i])) ballCount += 1
     }
 
-    println(strikeCount)
-    println(ballCount)
+    return Pair(strikeCount, ballCount)
 }
+
 
