@@ -9,7 +9,7 @@ class ComputerTest {
         val random = RandomTest()
         random.createRandomValue("201")
         val computerNumber = random.randomValue
-        val result = "202"
-        Assertions.assertEquals(result, computerNumber,)
+        val result = "201"
+        Assertions.assertEquals(result, computerNumber)
     }
 }
