@@ -27,6 +27,7 @@ fun startGame() {
 
 fun playGame(computerNumber: List<Int>) {
     var answer = false
+
     while (!answer) {
         val userNumber = getUserNumber()
         val hint = getHint(computerNumber, userNumber)
@@ -36,12 +37,14 @@ fun playGame(computerNumber: List<Int>) {
 
 fun generateComputerNumber(): List<Int> {
     val computerNumber = mutableListOf<Int>()
+
     while (computerNumber.size < NUM_LENGTH) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computerNumber.contains(randomNumber)) {
             computerNumber.add(randomNumber)
         }
     }
+
     return computerNumber
 }
 
@@ -76,49 +79,65 @@ fun checkUserNumberException(userInput: List<Char>?) {
 }
 
 fun getHint(computerNumber: List<Int>, userNumber: List<Int>): List<Int> {
+    var strike = 0
+    var ball = 0
     val hint = mutableListOf<Int>(0, 0)
+
     for (i in userNumber.indices) {
         if (countStrike(computerNumber[i], userNumber[i])) {
-            hint[0]++
+            strike++
         } else {
-            hint[1] += countBall(computerNumber, userNumber[i])
+            ball += countBall(computerNumber, userNumber[i])
         }
     }
+
+    hint[0] = strike
+    hint[1] = ball
+
     return hint
 }
 
 fun countStrike(computerNumber: Int, userNumber: Int): Boolean {
     if (computerNumber == userNumber) return true
+
     return false
 }
 
 fun countBall(computerNumber: List<Int>, userNumber: Int): Int {
     if (computerNumber.contains(userNumber)) return 1
+
     return 0
 }
 
 fun printHint(hint: List<Int>): Boolean {
+    val strike = hint[0]
+    val ball = hint[1]
+
     var answer = false
+
     when {
-        hint[0] == 0 && hint[1] == 0 -> println("낫싱")
-        hint[0] == 3 -> {
+        strike == 0 && ball == 0 -> println("낫싱")
+        strike == 3 -> {
             println("3스트라이크")
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
             answer = true
             restartOrEndGame()
         }
 
-        hint[0] == 0 -> println("${hint[1]}볼")
-        hint[1] == 0 -> println("${hint[0]}스트라이크")
-        else -> println("${hint[1]}볼 ${hint[0]}스트라이크")
+        strike == 0 -> println("${hint[1]}볼")
+        ball == 0 -> println("${hint[0]}스트라이크")
+        else -> println("${ball}볼 ${strike}스트라이크")
     }
+
     return answer
 }
 
 fun restartOrEndGame() {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val flagInput = readLine()
+
     checkFlagException(flagInput)
+
     flag = flagInput?.toInt() ?: 0
 }
 
