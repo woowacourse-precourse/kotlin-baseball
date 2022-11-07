@@ -134,7 +134,6 @@ fun setCheck(inputs: List<Int>): Boolean {
         false
     }
 }
-
 fun userInputCheck(userInput: Int?): Boolean {
     if (userInput !in 0..999){
         throw IllegalArgumentException("숫자는 세 개 이하의 중복되지 않은 정수여야 합니다.")
