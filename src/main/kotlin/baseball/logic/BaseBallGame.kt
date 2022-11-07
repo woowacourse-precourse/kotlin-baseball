@@ -35,8 +35,11 @@ class BaseBallGame {
         val playAgainFlag = endGame.printAskPlayAgainMessage()
         if(playAgainFlag == 1)
             startBaseballGame(false)
-        else (playAgainFlag == 2)
-        return false
+        else if(playAgainFlag == 2)
+            return false
+        else
+            throw IllegalArgumentException()
+        return true
     }
 
 }
