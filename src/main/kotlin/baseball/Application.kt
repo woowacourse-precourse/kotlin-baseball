@@ -2,17 +2,27 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val NUM_LENGTH = 3
+const val ASCII_CODE_ONE = 49
+const val ASCII_CODE_NINE = 57
+const val RESTART_FLAG = 1
+const val EXIT_FLAG =2
+
 var flag = 0
 fun main() {
     printGameStart()
     startGame()
 }
 
+fun printGameStart() {
+    println("숫자 야구 게임을 시작합니다.")
+}
+
 fun startGame() {
     do {
         val computerNumber = generateComputerNumber()
         playGame(computerNumber)
-    } while (flag != 2)
+    } while (flag != EXIT_FLAG)
 }
 
 fun playGame(computerNumber: List<Int>) {
@@ -24,13 +34,9 @@ fun playGame(computerNumber: List<Int>) {
     }
 }
 
-fun printGameStart() {
-    println("숫자 야구 게임을 시작합니다.")
-}
-
 fun generateComputerNumber(): List<Int> {
     val computerNumber = mutableListOf<Int>()
-    while (computerNumber.size < 3) {
+    while (computerNumber.size < NUM_LENGTH) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computerNumber.contains(randomNumber)) {
             computerNumber.add(randomNumber)
@@ -54,13 +60,13 @@ fun getUserNumber(): List<Int> {
 }
 
 fun checkUserNumberException(userInput: List<Char>?) {
-    if (userInput?.size != 3) {
+    if (userInput?.size != NUM_LENGTH) {
         throw IllegalArgumentException("3개의 숫자를 입력하세요")
     }
 
     userInput.forEach { c ->
-        if (c.code < 48 || c.code > 57) {
-            throw IllegalArgumentException("숫자만 입력하세요")
+        if (c.code < ASCII_CODE_ONE || c.code > ASCII_CODE_NINE) {
+            throw IllegalArgumentException("1부터 9까지의 숫자만 입력하세요")
         }
     }
 
@@ -117,6 +123,6 @@ fun restartOrEndGame() {
 }
 
 fun checkFlagException(flagInput: String?) {
-    if (flagInput != "1" && flagInput != "2")
+    if (flagInput != "$RESTART_FLAG" && flagInput != "$EXIT_FLAG")
         throw IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
