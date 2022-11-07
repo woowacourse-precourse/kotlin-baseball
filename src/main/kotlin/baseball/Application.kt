@@ -12,6 +12,8 @@ var userInput1 : Int = 0
 var userInput10 : Int = 0
 var userInput100 : Int = 0
 
+var strike : Int = 0
+var ball : Int = 0
 
 fun main() {
     TODO("프로그램 구현")
@@ -60,6 +62,47 @@ fun inputValidationCheck(input : String)  {
     ){
         throw IllegalArgumentException("User의 입력값 중 중복되는 수가 있습니다.")
     }
+}
 
+fun checkStrikeBall( ){
+    strike = 0
+    ball = 0
+
+    if(userInput100 == randomNumber100){
+        strike ++
+    }
+
+    if(userInput10 == randomNumber10){
+        strike ++
+    }
+
+    if(userInput1 == randomNumber1){
+        strike ++
+    }
+
+    if((userInput100 == randomNumber10)
+        || (userInput100 == randomNumber1)){
+        ball ++
+    }
+
+    if((userInput10 == randomNumber100)
+        || (userInput10 == randomNumber1)){
+        ball ++
+    }
+
+    if((userInput1 == randomNumber100)
+        || (userInput1 == randomNumber10)){
+        ball ++
+    }
+
+    if(strike == 0 && ball == 0 ){
+        println("낫싱")
+    }else if(strike == 0) {
+        println(" ${ball}볼")
+    }else if(ball == 0){
+        println("${strike}스트라이크")
+    }else{
+        println("${strike}스트라이크 ${ball}볼")
+    }
 }
 
