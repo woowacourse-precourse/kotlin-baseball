@@ -54,6 +54,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `부분 중복 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("212") }
+        }
+    }
+
     override fun runMain() {
         main()
     }

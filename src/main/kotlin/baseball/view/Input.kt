@@ -34,10 +34,12 @@ fun checkInputLength(input: String): Boolean {
 }
 
 fun checkInputElement(input: String): Boolean {
-    val firstElement = input[0]
-    val afterCheckList = input.filter { firstElement != it }
-    if (afterCheckList.length < 2) {
-        return false
+    val set = mutableSetOf<Char>()
+    input.forEach {
+        if(set.contains(it)) {
+            return false
+        }
+        set.add(it)
     }
     return true
 }

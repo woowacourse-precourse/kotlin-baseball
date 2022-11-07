@@ -16,6 +16,7 @@ class Application(
             presenter.setUserValue(numberOfUser)
             val userValue = presenter.getUserValue()
             val computerValue = presenter.getComputerValue()
+            println("answer : $computerValue")
             val strike = presenter.countStrike(userValue, computerValue)
             val ball = presenter.countBall(userValue, computerValue)
             resultReturn(ScoreLog(strike, ball))
