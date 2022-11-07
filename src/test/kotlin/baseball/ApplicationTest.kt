@@ -115,6 +115,21 @@ class ApplicationTest : NsTest() {
             assertThat(user.userNumbers).doesNotHaveDuplicates()
         }
     }
+
+    @Nested
+    inner class RefereeTest {
+        private val referee = Referee()
+        private val user = User()
+
+        @Test
+        fun `심판 - 판정 검사`() {
+            val computerNumbers = listOf<Int>(1, 3, 8)
+            user.enterUserNumbers("123")
+            val refereeDecision = referee.decideGameEnd(computerNumbers, user.userNumbers)
+            assertThat(refereeDecision).isEqualTo(RefereeDecision(1, 1, false))
+        }
+    }
+
     override fun runMain() {
         main()
     }
