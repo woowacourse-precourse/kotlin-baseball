@@ -38,7 +38,7 @@ object Game {
         return checkExceptionFlag
     }
 
-    private fun checkInputValueIsNumber(inputValue: String): Boolean {
+    fun checkInputValueIsNumber(inputValue: String): Boolean {
         var checkFlag = false
         for (splitString in inputValue) {
 
@@ -52,7 +52,7 @@ object Game {
         return checkFlag
     }
 
-    private fun checkInputLengthThree(inputValue: String): Boolean {
+    fun checkInputLengthThree(inputValue: String): Boolean {
         var checkFlag = false
         if (inputValue.length == Computer.INPUT_MAX_SIZE) {
             checkFlag = true
@@ -60,7 +60,7 @@ object Game {
         return checkFlag
     }
 
-    private fun checkInputDuplication(inputValue: String): Boolean {
+    fun checkInputDuplication(inputValue: String): Boolean {
         var checkFlag = false
         for (stringSplit in inputValue) {
             val splitCount = inputValue.count { it == stringSplit }
