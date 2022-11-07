@@ -4,11 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms
 import java.lang.IllegalArgumentException
 
 fun main() {
+
     startBaseBallGame()
     val computerRandomNumber = computerSelectThreeRandomNumber()
     println(computerRandomNumber)
-    val userNumber = userThreeNumberInput()
-    determineJudgement(computerRandomNumber, userNumber)
+
+    while (true) {
+        val userNumber = userThreeNumberInput()
+        if ( determineJudgement(computerRandomNumber, userNumber) == 3) {
+
+        }
+    }
+
 }
 
 
@@ -58,8 +65,8 @@ private fun isValidInputNumber(code: Int): Boolean {
 }
 
 
-private fun determineJudgement(computerNumberList : List<Int>, userNumberList : List<Int>) {
-    printGameResult(increaseStrikeBallCount(computerNumberList, userNumberList))
+private fun determineJudgement(computerNumberList : List<Int>, userNumberList : List<Int>) : Int{
+    return printGameResult(increaseStrikeBallCount(computerNumberList, userNumberList))
 }
 
 
@@ -75,7 +82,7 @@ private fun increaseStrikeBallCount(computerNumberList : List<Int>, userNumberLi
     return Pair(strikeCount, ballCount)
 }
 
-private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) {
+private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) : Int{
     when {
         strikeBallCountPair.first == 0 && strikeBallCountPair.second == 0 -> println("낫싱")
         strikeBallCountPair.first == 3 -> println("${strikeBallCountPair.first}스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
@@ -83,4 +90,6 @@ private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) {
         strikeBallCountPair.second > 0 && strikeBallCountPair.first == 0 -> println("${strikeBallCountPair.second}볼")
         strikeBallCountPair.second == 0 && strikeBallCountPair.first > 0 -> println("${strikeBallCountPair.first}스트라이크")
     }
+
+    return strikeBallCountPair.first
 }
