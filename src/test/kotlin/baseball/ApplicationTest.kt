@@ -16,6 +16,41 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `두 자리 입력 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheck("12")}
+        }
+    }
+
+    @Test
+    fun `네 자리 입력 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheck("1234")}
+        }
+    }
+
+    @Test
+    fun `중복된 숫자 입력 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheck("366")}
+        }
+    }
+
+    @Test
+    fun `0 입력 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheck("012")}
+        }
+    }
+
+    @Test
+    fun `문자 입력 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheck("Ab1")}
+        }
+    }
+
+    @Test
     fun `스트라이크 0개 찾기`(){
         val computer = listOf<Int>(1,4,8)
         val user = listOf<Int>(9,8,4)

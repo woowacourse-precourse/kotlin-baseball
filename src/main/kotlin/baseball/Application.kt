@@ -59,18 +59,19 @@ fun randomThreeNumber():MutableList<Int>{
 fun playerThreeNumber():MutableList<Int>{
     print("숫자를 입력해주세요 : ")
     val playerInput = Console.readLine()
+    inputErrorCheck(playerInput)
     val playerInputMutableList = playerInput.map {it.toString().toInt()}.toMutableList()
-    inputErrorCheck(playerInputMutableList)
     return playerInputMutableList
 }
 
-fun inputErrorCheck(userInputMutableList:List<Int>){
-    if(userInputMutableList.size != 3 || userInputMutableList.toSet().size!=3){
+fun inputErrorCheck(playerInput:String){
+    val playerInputMutableList = playerInput.map {it.toString().toInt()}.toMutableList()
+    if(playerInputMutableList.size != 3 || playerInputMutableList.toSet().size!=3){
         throw IllegalArgumentException()
     }
 
-    for(index in userInputMutableList.indices)
-        if(userInputMutableList[index] !in 1 .. 9){
+    for(index in playerInputMutableList.indices)
+        if(playerInputMutableList[index] !in 1 .. 9){
             throw IllegalArgumentException()
         }
 }
