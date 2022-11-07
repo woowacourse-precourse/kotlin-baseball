@@ -3,10 +3,11 @@ package baseball.view
 object InputView {
     fun inputExpectingNumber(): List<Int> {
         println("숫자를 입력해주세요 : ")
-        return readln().split("").map { it.toInt() }
+        return readln().map { Character.getNumericValue(it) }
     }
 
-    fun inputRestartingDecideNumber()  {
-        TODO("입력한 숫자에 따라서 재시작, 종료 결정하는 함수 새어")
+    fun inputRestartingDecideNumber() : String  {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        return readln()
     }
 }
