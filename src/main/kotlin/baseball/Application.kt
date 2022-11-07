@@ -60,7 +60,7 @@ private fun isValidInputNumber(code: Int): Boolean {
 
 
 private fun determineJudgement(computerNumberList : List<Int>, userNumberList : List<Int>) {
-    increaseStrikeBallCount(computerNumberList, userNumberList)
+    printGameResult(increaseStrikeBallCount(computerNumberList, userNumberList))
 }
 
 
