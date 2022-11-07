@@ -24,5 +24,6 @@ fun setGameStartMessage(){
 
 fun getUserInput() : String? {
     println("숫자를 입력해주세요 :")
-    return readLine()
+    return camp.nextstep.edu.missionutils.Console.readLine()
 }
+
