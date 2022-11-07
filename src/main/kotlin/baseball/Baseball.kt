@@ -10,8 +10,8 @@ class Baseball {
     }
 
     private fun playGame() {
+        val computerList = computer.makeComputerList()
         while (true) {
-            val computerList = computer.makeComputerList()
             val userList = user.inputUser()
 
             if (checkBaseBall(computerList, userList))
