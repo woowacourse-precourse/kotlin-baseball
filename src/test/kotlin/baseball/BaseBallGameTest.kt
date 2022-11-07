@@ -95,6 +95,16 @@ class BaseBallGameTest : NsTest() {
         }
         assertThat(output()).containsSequence("1볼 1스트라이크\n", "1스트라이크\n", "1볼\n", "낫싱")
     }
+
+    @Test
+    fun `printGameOverMessage 메서드출력 결과 확인`() {
+        val baseBallGame = BaseBallGame()
+        val method = baseBallGame.javaClass.getDeclaredMethod("printGameOverMessage")
+        method.isAccessible = true
+        val parameters = arrayOfNulls<Any>(0)
+        val getElement = method.invoke(baseBallGame, *parameters)
+        assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    }
     override fun runMain() {
         main()
     }
