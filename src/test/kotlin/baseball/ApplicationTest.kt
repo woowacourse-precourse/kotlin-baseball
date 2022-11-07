@@ -56,11 +56,11 @@ class ApplicationTest : NsTest() {
         }
 
         @Test
-        fun `isDuplicate 메서드가 중복이 없는 스트링값을 입력받았을 때 true 반환`() {
+        fun `isNotDuplicate 메서드가 중복이 없는 스트링값을 입력받았을 때 true 반환`() {
             val strings = listOf("12", "112", "abcda")
-            assertThat(isDuplicate(strings[0])).isEqualTo(true)
-            assertThat(isDuplicate(strings[1])).isEqualTo(false)
-            assertThat(isDuplicate(strings[2])).isEqualTo(false)
+            assertThat(isNotDuplicate(strings[0])).isEqualTo(true)
+            assertThat(isNotDuplicate(strings[1])).isEqualTo(false)
+            assertThat(isNotDuplicate(strings[2])).isEqualTo(false)
         }
 
         @Test
