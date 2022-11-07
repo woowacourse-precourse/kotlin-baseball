@@ -19,7 +19,7 @@ class GameController {
     private fun playNumBaseBall() {
         val computer = Computer()
         var com: String = computer.makeRandomNumber()
-        println(com)
+
         var user: String
 
         println(Messages.START_GAME)
