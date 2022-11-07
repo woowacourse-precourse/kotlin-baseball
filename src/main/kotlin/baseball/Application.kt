@@ -15,7 +15,12 @@ fun playGame(count:Int){
 
     while (true) {
         var comNum = randomNum()
-
+        if (count == 1){
+            comNum = "135".toList()?.distinct()
+        }
+        else if (count == 2){
+            comNum = "589".toList()?.distinct()
+        }
 
         var playerNum: List<Char>? = null
         var ball = 0
