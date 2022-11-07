@@ -1,7 +1,7 @@
 package baseball
 
 object Validator {
-    /** 사용자의 입력이 규칙에 적합한지 확인하는 함수 **/
+    /** 사용자의 숫자 추즉을 위한 입력이 규칙에 적합한지 확인하는 함수 **/
     fun checkIsValid(userInput: String): Boolean {
         var isValid = true
 
@@ -16,6 +16,14 @@ object Validator {
             ScreenManipulator.closeScreen()
         }
         return isValid
+    }
+
+    /** 3STRIKE인 경우 게임을 계속 진행할지에 대한 입력이 규칙에 적합한지 확인하는 함수 **/
+    fun checkContinuingIsValid(userInput:String): Boolean {
+        when(userInput){
+            !in "1", "2" -> return false
+        }
+        return true
     }
 
     /** 사용자의 입력에 숫자가 아닌 것들이 존재하는지 확인하기 위한 함수 **/
