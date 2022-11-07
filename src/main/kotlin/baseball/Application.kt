@@ -12,6 +12,15 @@ fun pickNumbers(): List<Char> {
     return result
 }
 
+fun inputNumbers(): List<Char> {
+    val input = Console.readLine()
+    Integer.parseInt(input)
+    if (input.length != 3) {
+        throw IllegalArgumentException("3자리의 수가 아닙니다")
+    }
+    return input.toList()
+}
+
 fun main() {
     val userNumbers: List<Char>
 
@@ -19,9 +28,13 @@ fun main() {
     do {
         val randNumbers = pickNumbers()
 
-
-
-
+        print("숫자를 입력해주세요 : ")
+        val userNumbers:List<Char> = try {
+            inputNumbers()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return
+        }
 
     } while(true)
 }
