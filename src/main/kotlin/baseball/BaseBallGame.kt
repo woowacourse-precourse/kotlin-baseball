@@ -15,9 +15,14 @@ fun gameStart() {
         printGameStartMessage()
         playGame(computer)
         printReGameMessage()
-        val reGame = Console.readLine()
-        if (reGame == RE_GAME) break
+        if (reGame()) break
     }
+}
+
+private fun reGame(): Boolean {
+    val reGame = Console.readLine()
+    if (reGame == RE_GAME) return true
+    return false
 }
 
 private fun makeRandomBallNumbers(): MutableList<Int> {
