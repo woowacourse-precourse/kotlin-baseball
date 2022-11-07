@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     gameStart()
@@ -15,7 +16,22 @@ private fun gameStart() {
 
 private fun playNumBaseBall() {
     var com: String = makeRandomNumber()
-    println(com)
+
+    var user: String
+
+    println("숫자 야구 게임을 시작합니다.")
+
+    while (true) {
+        // 숫자 입력
+        print("숫자를 입력해주세요 : ")
+        user = Console.readLine()!!
+
+        // 입력값 검증
+        val regex = "^[1-9]{3}$".toRegex()
+        if (regex.find(user) == null || user.toSet().size < 3) {
+            throw IllegalArgumentException()
+        }
+    }
 }
 
 private fun makeRandomNumber(): String {
