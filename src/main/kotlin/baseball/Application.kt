@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val computerNumber = getRandomNumber()
     printGameStart()
-    println(computerNumber)
-    val userNumber = inputUserNumber()
-    if (!checkInput(userNumber)) throw IllegalArgumentException()
-    checkCorrect(listToString(computerNumber), userNumber)
-
+    do{
+        val userNumber = inputUserNumber()
+        if (!checkInput(userNumber)) throw IllegalArgumentException()
+        checkCorrect(listToString(computerNumber), userNumber)
+    }while (userNumber != listToString(computerNumber))
 }
 
 fun getRandomNumber(): MutableList<Int> {
