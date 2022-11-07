@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+
+    @Test
+    fun `랜덤 세 자리 숫자 생성`(){
+        val randomNumber = randomThreeNumber()
+        assertThat(randomNumber).hasSize(3)
+    }
+
     @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
