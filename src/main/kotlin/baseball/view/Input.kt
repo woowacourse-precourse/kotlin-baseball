@@ -3,7 +3,7 @@ package baseball.view
 import camp.nextstep.edu.missionutils.Console
 
 fun inputUserValue(): List<Int> {
-    print("숫자를 입력해주세요 :")
+    print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
     return checkInput(input)
 }
