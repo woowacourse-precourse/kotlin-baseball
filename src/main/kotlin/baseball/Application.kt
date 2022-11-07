@@ -11,18 +11,14 @@ fun pickNumbers(): List<Char> {
     return numbers.toList()
 }
 
-fun checkNumbers(numbers: List<Char>){
+fun checkNumbers(numbers: List<Char>) {
     if (numbers.size != 3) {
         throw IllegalArgumentException("3자리의 수가 아닙니다.")
     }
-    for(i in numbers.indices) {
+    for (i in numbers.indices) {
         val number = Integer.parseInt(numbers[0].toString())
-        if(1 > number || number > 9) {
-            throw IllegalArgumentException("숫자의 범위가 틀렸습니다")
-        }
-        if (numbers.count {it == numbers[i]} > 1) {
-            throw IllegalArgumentException("세 개의 숫자가 서로 달라야 합니다")
-        }
+        if (1 > number || number > 9) throw IllegalArgumentException("숫자의 범위가 틀렸습니다")
+        if (numbers.count { it == numbers[i] } > 1) throw IllegalArgumentException("세 개의 숫자가 서로 달라야 합니다")
     }
 }
 
@@ -31,6 +27,7 @@ fun inputNumbers(): List<Char> {
     checkNumbers(input.toList())
     return input.toList()
 }
+
 fun judgeNumbers(userNumbers: List<Char>, randNumbers: List<Char>): List<Int> {
     var boll = 0
     var strike = 0
@@ -48,15 +45,9 @@ fun judgeNumbers(userNumbers: List<Char>, randNumbers: List<Char>): List<Int> {
 fun printResult(result: List<Int>) {
     val boll = result[0]
     val strike = result[1]
-    if (boll != 0) {
-        print("${boll}볼 ")
-    }
-    if (strike != 0) {
-        print("${strike}스트라이크")
-    }
-    if (boll == 0 && strike == 0) {
-        print("낫싱")
-    }
+    if (boll != 0) print("${boll}볼 ")
+    if (strike != 0) print("${strike}스트라이크")
+    if (boll == 0 && strike == 0) print("낫싱")
     println()
 }
 
@@ -69,7 +60,6 @@ fun gameMain() {
         printResult(judgeResult)
     } while (judgeResult[1] != 3)
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-
 }
 
 fun main() {
