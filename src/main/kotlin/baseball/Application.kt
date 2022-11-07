@@ -41,4 +41,18 @@ private fun getNumberOfBall(computer: String, user: String): Int {
     return numberOfBall
 }
 
-
+private fun printGameResult(computer: String, user: String){
+    val numberOfBall = getNumberOfBall(computer, user)
+    val numberOfStrike = getNumberOfStrike(computer, user)
+    when {
+        numberOfBall != 0 -> {
+            print(numberOfBall.toString()+"볼")
+        }
+        numberOfStrike != 0 -> {
+            print(numberOfStrike.toString()+"스트라이크")
+        }
+        else -> {
+            print("낫싱")
+        }
+    }
+}
