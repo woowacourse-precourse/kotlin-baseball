@@ -1,5 +1,10 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    val user = User()
+    val computer = Computer()
+    val messageMaker = BaseballStringMaker()
+    val checkParser = BaseballInputValidCheckAndConverter(BaseballGameInputConverter())
+    val baseBallGame = BaseBallGameRule(user, computer, messageMaker, checkParser)
+    baseBallGame.run()
 }
