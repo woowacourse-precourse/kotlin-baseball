@@ -5,8 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 class BaseBallGame {
     data class Score(var strike: Int, var ball: Int)
 
-    private var score: Score = Score(0, 0)
+    private val guessRegex = "[1-9]{3}".toRegex()
 
+    private var score: Score = Score(0, 0)
     private var progressStatus = RUNNING
     private fun generateAnswer(): String {
         val answerList = mutableListOf<Int>()
@@ -18,6 +19,8 @@ class BaseBallGame {
         }
         return answerList.joinToString("")
     }
+
+    private fun checkValidGuess(guess: String) = guessRegex.matches(guess) && guess.toSet().size == 3
 
     private fun printGuide() {
         println("숫자 야구 게임을 시작합니다.")
