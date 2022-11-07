@@ -30,4 +30,8 @@ class ApplicationTest : NsTest() {
     override fun runMain() {
         main()
     }
+//    @Test
+//    fun `getRandomNumbers 1~9까지의 무작위수 3개를 가진 mutableList 반환`(){
+//
+//    }
 }
