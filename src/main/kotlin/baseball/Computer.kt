@@ -1,18 +1,19 @@
 package baseball
 
-class Computer {
-    private val randomNumberGenerator = RandomNumberGenerator()
+class Computer(private val generator: Generator) {
     private val numberLocations = mutableListOf(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1)
 
     fun generateNumbers() {
-        val numbers = randomNumberGenerator.generateNumbers(3)
+        val numbers = generator.generateNumbers(3)
+        numbers.withIndex()
+            .map { (index, number) -> numberLocations[number] = index }
     }
 
     fun countBallsStrikes(numbers: List<Int>): BallsStrikes {
         return BallsStrikes(0, 0)
     }
 
-    fun isWin(ballsStrikes: BallsStrikes) : Boolean {
+    fun isWin(ballsStrikes: BallsStrikes): Boolean {
         return false
     }
 }

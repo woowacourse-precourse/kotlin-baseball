@@ -135,6 +135,32 @@ class ApplicationTest : NsTest() {
             .contains("숫자 야구 게임을 시작합니다.")
     }
 
+    @Test
+    fun `무작위로 생성된 숫자 유효성 검사`() {
+        val randomNumberGenerator = RandomNumberGenerator()
+        val numberValidator = InputValidator(
+            listOf(
+                OneToNineOnlyVerifier(),
+                NoSameCharacterVerifier(),
+            )
+        )
+
+        val numbers = randomNumberGenerator.generateNumbers(3)
+
+        assertThat(numbers.size).isEqualTo(3)
+        assertDoesNotThrow { numberValidator.validate(numbers.joinToString("")) }
+    }
+
+    @Test
+    fun `무작위 숫자 생성`() {
+        val expect = listOf(1, 3, 5)
+        val expectedNumberGenerator = ExpectedNumberGenerator(expect)
+
+        val result = expectedNumberGenerator.generateNumbers(3)
+
+        assertThat(result).isEqualTo(expect)
+    }
+
     override fun runMain() {
         main()
     }

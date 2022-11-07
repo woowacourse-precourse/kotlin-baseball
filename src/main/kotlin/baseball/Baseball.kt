@@ -1,8 +1,8 @@
 package baseball
 
-class Baseball(private val input: Input) {
+class Baseball(private val input: Input, private val generator: Generator) {
     private val guide = Guide()
-    private val computer = Computer()
+    private val computer = Computer(generator)
     private val stringToIntegerListConverter = StringToIntegerList()
 
     fun start() {
