@@ -9,5 +9,21 @@ class Guide {
         print("숫자를 입력해주세요 : ")
     }
 
-    fun ballsStrikes(ballsStrikes: BallsStrikes) {}
+    fun ballsStrikes(ballsStrikes: BallsStrikes) {
+        if (ballsStrikes.balls == 0 && ballsStrikes.strikes == 0) {
+            println("낫싱")
+            return
+        }
+
+        var output = ""
+        if (ballsStrikes.balls > 0) {
+            output += "${ballsStrikes.balls}볼 "
+        }
+
+        if (ballsStrikes.strikes > 0) {
+            output += "${ballsStrikes.strikes}스트라이크"
+        }
+
+        println(output.trim())
+    }
 }

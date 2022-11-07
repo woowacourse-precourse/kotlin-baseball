@@ -14,10 +14,8 @@ class ApplicationTest : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 run("246", "135", "1", "597", "589", "2")
-                assertThat(output())
-                    .contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
-            },
-            1, 3, 5, 5, 8, 9
+                assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
+            }, 1, 3, 5, 5, 8, 9
         )
     }
 
@@ -131,8 +129,7 @@ class ApplicationTest : NsTest() {
 
         guide.start()
 
-        assertThat(output())
-            .contains("숫자 야구 게임을 시작합니다.")
+        assertThat(output()).contains("숫자 야구 게임을 시작합니다.")
     }
 
     @Test
@@ -167,8 +164,7 @@ class ApplicationTest : NsTest() {
 
         guide.input()
 
-        assertThat(output())
-            .contains("숫자를 입력해주세요 :")
+        assertThat(output()).contains("숫자를 입력해주세요 :")
     }
 
     @Test
@@ -241,6 +237,25 @@ class ApplicationTest : NsTest() {
         assertThat(strikes.strikes).isEqualTo(3)
         assertThat(ballsStrikes.balls).isEqualTo(1)
         assertThat(ballsStrikes.strikes).isEqualTo(1)
+    }
+
+    @Test
+    fun `볼, 스트라이크 개수 안내`() {
+        val guide = Guide()
+        val generator = ExpectedNumberGenerator(listOf(1, 3, 5))
+        val computer = Computer(generator)
+
+        computer.generateNumbers()
+        val nothing = computer.countBallsStrikes(listOf(2, 4, 6))
+        val strikes = computer.countBallsStrikes(listOf(1, 3, 5))
+        val ballsStrikes = computer.countBallsStrikes(listOf(1, 5, 9))
+
+        guide.ballsStrikes(nothing)
+        assertThat(output()).contains("낫싱")
+        guide.ballsStrikes(strikes)
+        assertThat(output()).contains("3스트라이크")
+        guide.ballsStrikes(ballsStrikes)
+        assertThat(output()).contains("1볼 1스트라이크")
     }
 
     override fun runMain() {
