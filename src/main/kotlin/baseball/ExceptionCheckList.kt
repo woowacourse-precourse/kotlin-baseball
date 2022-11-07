@@ -15,3 +15,9 @@ fun isHavingDuplicatedNumber(input: String) {
         }
     }
 }
+
+fun isNumberOfDigitsCorrect(input: String) {
+    if(input.length != NUM_DIGITS) {
+        throw IllegalArgumentException("입력된 값의 길이가 규칙에 맞지 않습니다.")
+    }
+}

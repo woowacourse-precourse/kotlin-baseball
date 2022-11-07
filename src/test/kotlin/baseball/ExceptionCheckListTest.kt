@@ -19,4 +19,12 @@ class ExceptionCheckListTest {
             assertThrows<IllegalArgumentException> { isHavingDuplicatedNumber("01232") }
         }
     }
+
+    @Test
+    fun `입력값의 길이가 규칙에 맞지 않는 경우 예외 발생`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { isNumberOfDigitsCorrect("1234") }
+            assertThrows<IllegalArgumentException> { isNumberOfDigitsCorrect("31") }
+        }
+    }
 }
