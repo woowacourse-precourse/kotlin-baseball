@@ -1,18 +1,19 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.IllegalArgumentException
 
 
 fun main() {
     playGameStart()
+    checkRestartOrEnd()
 }
 
-fun playGameStart(){
+fun playGameStart() {
     setGameStartMessage()
     getUserInput()
     printResultMessage()
 }
-
 
 
 fun setRandomAnswer(): ArrayList<Int> {
@@ -67,6 +68,17 @@ fun printResultMessage() {
     checkBall(answer, user)
     checkStrike(answer, user)
     checkNothing(answer, user)
+}
+
+fun checkRestartOrEnd() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n")
+    when (camp.nextstep.edu.missionutils.Console.readLine()) {
+        "1" ->
+            playGameStart()
+        "2" -> return
+
+        else -> throw IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    }
 }
 
 
