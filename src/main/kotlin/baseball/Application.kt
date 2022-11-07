@@ -14,8 +14,6 @@ private fun startBaseBallGame() {
     val computerRandomNumber = computerSelectThreeRandomNumber()
     println(computerRandomNumber)
     val userNumber = userThreeNumberInput()
-    println(userNumber)
-
     determineJudgement(computerRandomNumber, userNumber)
 }
 
@@ -78,4 +76,11 @@ private fun increaseStrikeBallCount(computerNumberList : List<Int>, userNumberLi
     return Pair(strikeCount, ballCount)
 }
 
-
+private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) {
+    when {
+        strikeBallCountPair.first == 0 && strikeBallCountPair.second == 0 -> println("낫싱")
+        strikeBallCountPair.second > 0 && strikeBallCountPair.first > 0 -> println("${strikeBallCountPair.second}볼 ${strikeBallCountPair.first}스트라이크")
+        strikeBallCountPair.second > 0 && strikeBallCountPair.first == 0 -> println("${strikeBallCountPair.second}볼")
+        strikeBallCountPair.second == 0 && strikeBallCountPair.first > 0 -> println("${strikeBallCountPair.first}스트라이크")
+    }
+}
