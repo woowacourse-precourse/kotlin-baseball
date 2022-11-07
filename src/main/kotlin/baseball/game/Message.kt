@@ -7,7 +7,9 @@ object Message {
     }
 
     fun requestUserNumber(read: () -> String): String {
-        TODO()
+        print("숫자를 입력해주세요 : ")
+
+        return ExceptionHandler.checkNumberFormat(read())
     }
 
     fun showHint(ball: Int, strike: Int) {
