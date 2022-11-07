@@ -35,11 +35,11 @@ private fun restartOrFinish(finish: Boolean): Boolean {
 // 게임 시작
 private fun gameStart(computer: String): Boolean {
     while (true) {
-        // 추측 숫자
-        val number = guessNumber()
+        // 사용자 입력 숫자
+        val userNumber = guessNumber()
 
         // 사용자에게 받은 숫자 체크(볼, 스트라이크, 예외사항)
-        val (ball, strike) = userNumberCheck(number, computer)
+        val (ball, strike) = userNumberCheck(userNumber, computer)
 
         // 사용자 넘버 결과 출력
         println(userNumberCheckResult(ball, strike))
