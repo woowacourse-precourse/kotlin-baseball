@@ -20,7 +20,7 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
-    fun `printGuide 메서드출력 결과 확인`() {
+    fun `printGuide 메소드 출력 결과 확인`() {
         val baseBallGame = BaseBallGame()
         val method = baseBallGame.javaClass.getDeclaredMethod("printGuide")
         method.isAccessible = true
@@ -31,7 +31,7 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
-    fun `checkValidGuess 메서드출력 결과 확인`() {
+    fun `checkValidGuess 메소드 반환 결과 확인`() {
         val baseBallGame = BaseBallGame()
 
         val method = baseBallGame.javaClass.getDeclaredMethod("checkValidGuess", String::class.java)
@@ -57,7 +57,7 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
-    fun `checkGameOver 메서드출력 결과 확인`() {
+    fun `checkGameOver 메소드 반환 결과 확인`() {
         val baseBallGame = BaseBallGame()
 
         val method = baseBallGame.javaClass.getDeclaredMethod("checkGameOver", BaseBallGame.Score::class.java)
@@ -75,7 +75,7 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
-    fun `gradeGuess 메서드반환 결과 확인`() {
+    fun `gradeGuess 메소드 반환 결과 확인`() {
         val baseBallGame = BaseBallGame()
 
         val method = baseBallGame.javaClass.getDeclaredMethod("gradeGuess", String::class.java, String::class.java)
@@ -95,7 +95,7 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
-    fun `printScore 메서드출력 결과 확인`() {
+    fun `printScore 메소드 출력 결과 확인`() {
         val baseBallGame = BaseBallGame()
         val method = baseBallGame.javaClass.getDeclaredMethod("printScore", BaseBallGame.Score::class.java)
         method.isAccessible = true
@@ -115,7 +115,7 @@ class BaseBallGameTest : NsTest() {
     }
 
     @Test
-    fun `printGameOverMessage 메서드출력 결과 확인`() {
+    fun `printGameOverMessage 메소드 출력 결과 확인`() {
         val baseBallGame = BaseBallGame()
         val method = baseBallGame.javaClass.getDeclaredMethod("printGameOverMessage")
         method.isAccessible = true
