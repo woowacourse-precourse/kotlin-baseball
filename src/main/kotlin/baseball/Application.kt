@@ -102,7 +102,7 @@ fun playGame() {
             println(gameStrings.CORRECT_TEXT)
             return
         } else {
-            gameStrings.printStrikeAndBallCount(strikeCount, ballCount)
+            println(gameStrings.strikeAndBallCountString(strikeCount, ballCount))
         }
     }
 
