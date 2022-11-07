@@ -1,5 +1,6 @@
 package baseball
 
+
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
@@ -25,6 +26,25 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
+    }
+
+    @Test
+    fun `유효성 테스트 함수 테스트1`(){
+        val par = listOf(1,2,3)
+        val result = checkValidNumber(par)
+        assertThat(result).isEqualTo(true)
+    }
+    @Test
+    fun `유효성 테스트 함수 테스트2`(){
+        val par = listOf(0,2,3)
+        val result = checkValidNumber(par)
+        assertThat(result).isEqualTo(false)
+    }
+    @Test
+    fun `유효성 테스트 함수 테스트3`(){
+        val par = listOf(1,1,3)
+        val result = checkValidNumber(par)
+        assertThat(result).isEqualTo(false)
     }
 
     override fun runMain() {
