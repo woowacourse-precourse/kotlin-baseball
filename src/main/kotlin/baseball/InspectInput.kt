@@ -8,7 +8,7 @@ fun inspectInputThreeNumberStatus(inputThreeNumber: String): Int {
 
     // "Non-numeric values cannot be entered."
     for (index in inputThreeNumber.indices) {
-        if (inputThreeNumber[index].code !in 48 .. 57) {
+        if (inputThreeNumber[index].code !in 48..57) {
             throw IllegalArgumentException()
         }
     }

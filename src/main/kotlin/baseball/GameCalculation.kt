@@ -28,12 +28,16 @@ fun calculateBaseballAndThreeNumberStatus(answerBaseballNumber: String, inputThr
 fun printBaseballStatus(baseballStatus: List<Int>) {
     when {
         baseballStatus[0] == 3 -> {
-            print("3스트라이크")
+            println("3스트라이크")
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         }
+
         baseballStatus[0] == 0 && baseballStatus[1] == 0 -> println("낫싱")
+
         baseballStatus[0] == 0 -> println("${baseballStatus[1]}볼")
+
         baseballStatus[1] == 0 -> println("${baseballStatus[0]}스트라이크")
+
         else -> println("${baseballStatus[1]}볼 ${baseballStatus[0]}스트라이크")
     }
 }
