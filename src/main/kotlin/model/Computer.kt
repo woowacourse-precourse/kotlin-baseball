@@ -13,6 +13,7 @@ class Computer {
 
     // 랜덤한 범위의 숫자 3개를 중복없이 생성한다
     fun registerNumbersToList() {
+        _randomNumberList.clear()
         _randomNumberList.apply {
             while (!isFull(this)) {
                 addRandomNumber(this, Randoms.pickNumberInRange(RANGE_START, RANGE_END))
