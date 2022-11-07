@@ -23,25 +23,25 @@ class Game() {
     }
 
     private fun standbyPhase() {
-        gamePrinter.showStart()
-        computer.createNumbers()
+        gamePrinter.showStartMessage()
+        computer.createComputerNumbers()
     }
 
     private fun mainPhase() {
         var isGamePlaying: Boolean = true
         while (isGamePlaying) {
-            gamePrinter.showInputRequest()
-            user.enterNumbers()
+            gamePrinter.showInputMessage()
+            user.enterUserNumbers()
 
-            val refereeDecision = referee.decideGameEnd(computer.numbers, user.numbers)
-            gamePrinter.showCounting(refereeDecision.ballCount, refereeDecision.strikeCount)
+            val refereeDecision = referee.decideGameEnd(computer.computerNumbers, user.userNumbers)
+            gamePrinter.showCountingMessage(refereeDecision.ballCount, refereeDecision.strikeCount)
 
             isGamePlaying = !refereeDecision.isStrikeOut
         }
     }
 
     private fun endPhase(): Boolean {
-        gamePrinter.showEnd()
+        gamePrinter.showEndMessage()
         return when (readLine()) {
             CONTINUE -> true
             FINISH -> false
@@ -56,15 +56,15 @@ class Game() {
 }
 
 class Computer() {
-    private val _numbers = mutableListOf<Int>()
-    val numbers: List<Int> get() = _numbers
+    private val _computerNumbers = mutableListOf<Int>()
+    val computerNumbers: List<Int> get() = _computerNumbers
 
-    fun createNumbers() {
-        _numbers.clear()
-        while (_numbers.size < 3) {
+    fun createComputerNumbers() {
+        _computerNumbers.clear()
+        while (_computerNumbers.size < 3) {
             val randomNumber: Int = createNumberInRange()
             if (isNumberRepeated(randomNumber)) {
-                _numbers.add(randomNumber)
+                _computerNumbers.add(randomNumber)
             }
         }
     }
@@ -74,26 +74,26 @@ class Computer() {
     }
 
     private fun isNumberRepeated(randomNumber: Int): Boolean {
-        return (!_numbers.contains(randomNumber))
+        return (!_computerNumbers.contains(randomNumber))
     }
 }
 
 class User() {
-    private val _numbers = mutableListOf<Int>()
-    val numbers: List<Int> get() = _numbers
+    private val _userNumbers = mutableListOf<Int>()
+    val userNumbers: List<Int> get() = _userNumbers
 
-    fun enterNumbers(inputNumbers: String = readLine()) {
+    fun enterUserNumbers(inputNumbers: String = readLine()) {
         convertNumberToList(inputNumbers)
     }
 
     private fun convertNumberToList(inputNumbers: String) {
         checkNumbersLength(inputNumbers)
-        _numbers.clear()
+        _userNumbers.clear()
 
         inputNumbers.forEach {
             val digit = checkNumberRange(it)
             checkRepeatedNumber(digit)
-            _numbers.add(digit)
+            _userNumbers.add(digit)
         }
     }
 
@@ -107,7 +107,7 @@ class User() {
     }
 
     private fun checkRepeatedNumber(number: Int) {
-        if (_numbers.contains(number)) throwException("중복된 숫자가 입력되었습니다.")
+        if (_userNumbers.contains(number)) throwException("중복된 숫자가 입력되었습니다.")
     }
 
     private fun throwException(exceptionMessage: String) {
@@ -148,40 +148,40 @@ data class RefereeDecision(
 )
 
 class Printer() {
-    fun showStart() {
+    fun showStartMessage() {
         println("숫자 야구 게임을 시작합니다.")
     }
 
-    fun showInputRequest() {
+    fun showInputMessage() {
         print("숫자를 입력해주세요 : ")
     }
 
-    private fun showStrikeCount(strikeCount: Int) {
+    private fun showStrikeMessage(strikeCount: Int) {
         println("${strikeCount}스트라이크")
     }
 
-    private fun showBallCount(ballCount: Int) {
+    private fun showBallMessage(ballCount: Int) {
         println("${ballCount}볼")
     }
 
-    private fun showNothing() {
+    private fun showNothingMessage() {
         println("낫싱")
     }
 
-    private fun showBallStrikeCount(ballCount: Int, strikeCount: Int) {
+    private fun showBallStrikeMessage(ballCount: Int, strikeCount: Int) {
         println("${ballCount}볼 ${strikeCount}스트라이크")
     }
 
-    fun showCounting(ballCount: Int, strikeCount: Int) {
+    fun showCountingMessage(ballCount: Int, strikeCount: Int) {
         when {
-            (strikeCount == 0) and (ballCount == 0) -> showNothing()
-            strikeCount == 0 -> showBallCount(ballCount)
-            ballCount == 0 -> showStrikeCount(strikeCount)
-            else -> showBallStrikeCount(ballCount, strikeCount)
+            (strikeCount == 0) and (ballCount == 0) -> showNothingMessage()
+            strikeCount == 0 -> showBallMessage(ballCount)
+            ballCount == 0 -> showStrikeMessage(strikeCount)
+            else -> showBallStrikeMessage(ballCount, strikeCount)
         }
     }
 
-    fun showEnd() {
+    fun showEndMessage() {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     }
