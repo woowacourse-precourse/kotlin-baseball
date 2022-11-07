@@ -4,16 +4,18 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 fun main() {
-    playBaseBall()
-    startOrEnd()
+    println("숫자 야구 게임을 시작합니다.")
+    var oneOrTwo = 1
+    while(oneOrTwo == 1){
+        playBaseBall()
+        oneOrTwo = startOrEnd()
+    }
 }
 
-fun startOrEnd(): Boolean {
+fun startOrEnd(): Int {
     val oneOrTwo = Console.readLine().toInt()
     inputErrorCheckOneNum(oneOrTwo)
-    if(oneOrTwo == 1)
-        return true
-    return false
+    return oneOrTwo
 }
 
 fun inputErrorCheckOneNum(oneOrTwo:Int){
@@ -30,6 +32,8 @@ fun playBaseBall(){
     while(result["스트라이크"]!=3) {
         result = playOneTime(computer,result)
     }
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
 
 fun playOneTime(computer:List<Int>,result:HashMap<String,Int>):HashMap<String,Int>{
@@ -48,15 +52,15 @@ fun randomThreeNumber():MutableList<Int>{
             computer.add(randomNumber)
         }
     }
-    println(computer)
+//    println(computer)
     return computer
 }
 
 fun playerThreeNumber():MutableList<Int>{
+    print("숫자를 입력해주세요 : ")
     val playerInput = Console.readLine()
     val playerInputMutableList = playerInput.map {it.toString().toInt()}.toMutableList()
     inputErrorCheck(playerInputMutableList)
-//    print(playerInputMutableList)
     return playerInputMutableList
 }
 
