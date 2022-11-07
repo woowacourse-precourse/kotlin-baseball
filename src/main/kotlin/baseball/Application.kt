@@ -100,7 +100,7 @@ fun checkGameStatus(resultOfCheckBothNumbers: String): Int {
         validateStatusNumber(inputStatusNumber)
         return inputStatusNumber.toInt()
     }
-    return 3
+    return IN_GAME
 }
 
 fun createRandomNumber(): List<Int> {
@@ -130,8 +130,8 @@ fun validateNumber(inputNumber: String) {
 }
 
 fun validateLength(inputNumber: String) {
-    if (inputNumber.length >= 4) {
-        throw IllegalArgumentException("입력한 문자열의 길이가 3보다 큽니다.")
+    if (inputNumber.length != 3) {
+        throw IllegalArgumentException("입력한 문자열의 길이가 3이 아닙니다.")
     }
 }
 
