@@ -109,6 +109,30 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `게임종료 후 재시작 2`() {
+        assertRandomNumberInRangeTest(
+                {
+                    run("123", "572", "1", "125", "123", "2")
+                    assertThat(output())
+                            .contains("1볼", "3스트라이크", "2스트라이크", "3스트라이크", "게임 종료")
+                },
+                5, 7, 2, 1, 2, 3
+        )
+    }
+
+    @Test
+    fun `게임종료 후 재시작 3`() {
+        assertRandomNumberInRangeTest(
+                {
+                    run("431", "987","942", "2")
+                    assertThat(output())
+                            .contains("1볼", "1스트라이크", "3스트라이크",  "게임 종료")
+                },
+                9, 4, 2
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
