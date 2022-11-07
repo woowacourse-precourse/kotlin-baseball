@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
 
-    print(createRandomList())
+    print(createRandomNum())
 
 }
 
-fun createRandomList(): MutableList<Int> {
-    val computer = mutableListOf<Int>()
-    while (computer.size < 3) {
+fun createRandomNum(): MutableList<Int> {
+    val computerNum = mutableListOf<Int>()
+    while (computerNum.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber)
+        if (!computerNum.contains(randomNumber)) {
+            computerNum.add(randomNumber)
         }
     }
-
-    return computer
+    return computerNum
 }
+
