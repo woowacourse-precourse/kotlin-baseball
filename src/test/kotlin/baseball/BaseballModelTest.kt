@@ -27,7 +27,7 @@ class BaseballModelTest {
         with(baseballModel) {
             computerNum = listOf(4, 2, 5)
             testInputs.forEachIndexed { idx, case ->
-                checkBalls(case)
+                calculateBalls(case)
                 assertThat(getResultString()).isEqualTo(testResults[idx])
                 assertThat(ballResult.strikeCnt).isEqualTo(testStrikes[idx])
                 assertThat(ballResult.ballCnt).isEqualTo(testBalls[idx])
@@ -62,7 +62,7 @@ class BaseballModelTest {
                 assertThrows<IllegalArgumentException>(
                     "$case 3자리가 아니거나, 숫자가 아닌 값"
                 ) {
-                    baseballModel.checkBasballNumber(case)
+                    baseballModel.checkBasballIsCorrectNumber(case)
                 }
             }
         }
@@ -74,7 +74,7 @@ class BaseballModelTest {
                 assertThrows<IllegalArgumentException>(
                     "$case 3자리가 아니거나, 숫자가 아닌 값"
                 ) {
-                    baseballModel.checkBasballNumber(case)
+                    baseballModel.checkBasballIsCorrectNumber(case)
                 }
             }
         }
@@ -86,7 +86,7 @@ class BaseballModelTest {
                 assertThrows<IllegalArgumentException>(
                     "$case 각각 다른 3자리 숫자가 아님"
                 ) {
-                    baseballModel.checkBasballNumber(case)
+                    baseballModel.checkBasballIsCorrectNumber(case)
                 }
             }
         }

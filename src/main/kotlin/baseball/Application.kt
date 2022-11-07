@@ -8,8 +8,7 @@ fun main() {
         do {
             print("숫자를 입력해주세요 : ")
             val userInput = Console.readLine()
-            checkBasballNumber(userInput)
-            checkBalls(userInput)
+            calculateBalls(userInput)
             println(getResultString())
             isEndedCheck()
         } while (!isEnded)

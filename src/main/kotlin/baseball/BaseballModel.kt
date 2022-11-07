@@ -1,21 +1,23 @@
 package baseball
 
-import baseball.BallResult.Companion.NOTHING_STR
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class BaseballModel {
 
-    private val inputChecker: InputChecker = InputChecker()
-    val ballResult: BallResult = BallResult(0, 0)
-    var computerNum: List<Int> = emptyList<Int>()
+    private val inputChecker: InputChecker
+    val ballResult: BallResult
+    var computerNum: List<Int> = emptyList()
     var isEnded = false
 
     init {
         computerNum = makeRandomNum()
+        ballResult = BallResult(strikeCnt = 0, ballCnt = 0)
+        inputChecker = InputChecker()
     }
 
-    fun checkBalls(userInput: String) {
+    fun calculateBalls(userInput: String) {
+        checkBasballIsCorrectNumber(userInput)
         userInput.forEachIndexed { idx, numStr ->
             val number = numStr.toNumber()
             if (number == computerNum[idx]) {
@@ -47,12 +49,11 @@ class BaseballModel {
     fun clearGame() = ballResult.clear()
 
     fun checkEndedNumber(userInput: String) = inputChecker.checkEndedNumber(userInput)
-    fun checkBasballNumber(userNum: String) = inputChecker.checkBasballNumber(userNum)
+    fun checkBasballIsCorrectNumber(userNum: String) = inputChecker.checkBasballNumber(userNum)
 
     private fun reGame() {
         computerNum = makeRandomNum()
     }
-
 
     /** 3개의 각각 다른 랜덤 값 생성한다. */
     fun makeRandomNum(): List<Int> {
