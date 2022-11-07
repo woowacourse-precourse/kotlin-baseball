@@ -2,6 +2,7 @@ package baseball.view
 
 import baseball.model.database.DataBase
 import baseball.model.datasource.Datasource
+import baseball.model.domain.ScoreLog
 import baseball.presenter.Presenter
 
 class Application(
@@ -17,7 +18,7 @@ class Application(
             val computerValue = presenter.getComputerValue()
             val strike = presenter.countStrike(userValue, computerValue)
             val ball = presenter.countBall(userValue, computerValue)
-            resultReturn(strike, ball)
+            resultReturn(ScoreLog(strike, ball))
             val complete = strike == 3
             isComplete(complete)
             val restart = restart(complete)

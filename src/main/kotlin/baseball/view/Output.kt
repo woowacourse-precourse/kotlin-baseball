@@ -1,16 +1,9 @@
 package baseball.view
 
-fun resultReturn(strike: Int, ball: Int) {
-    if(isNothing(strike, ball)) {
-        println("낫싱")
-        return
-    }
-    if(ball != 0) {
-        print("${ball}볼 ")
-    }
-    if(strike != 0) {
-        println("${strike}스트라이크")
-    }
+import baseball.model.domain.ScoreLog
+
+fun resultReturn(score: ScoreLog) {
+    println(score.getScore())
 }
 
 fun isComplete(complete: Boolean) {
