@@ -45,17 +45,28 @@ private fun countingBall(computer: MutableList<Int>, input: String): Int {
     return count
 }
 
+private fun countingStrike(computer: MutableList<Int>, input: String): Int {
+    var count = 0
+    for (number in 0 until computer.size) {
+        if (input.indexOf(computer[number].toString()) == number) count++
+    }
+    return count
+}
+
+private fun resultString(ball: Int, strike: Int): String {
+    return when {
+        strike == 0 && ball == 0 -> "낫싱"
+        strike == 3 -> "3스트라이크"
+        ball == strike -> "${strike}스트라이크"
+        strike != 0 -> "${ball - strike}볼 ${strike}스트라이크"
+        else -> "${ball}볼"
+    }
+}
+
 fun checkThreeStrike(computer: MutableList<Int>, input: String?): Boolean {
     TODO("Not yet implemented")
 }
 
-fun countingStrike(computer: MutableList<Int>, input: String?): Any {
-    TODO("Not yet implemented")
-}
-
-fun resultString(countingBall: Any, countingStrike: Any): Any? {
-    TODO("Not yet implemented")
-}
 
 fun inputNumberException(input: String?) {
     TODO("Not yet implemented")
