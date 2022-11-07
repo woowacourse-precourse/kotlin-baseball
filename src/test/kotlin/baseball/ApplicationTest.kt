@@ -17,12 +17,31 @@ class ApplicationTest : NsTest() {
                 assertThat(output())
                     .contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
             },
-            1,
-            3,
-            5,
-            5,
-            8,
-            9
+            1, 3, 5, 5, 8, 9
+        )
+    }
+
+    @Test
+    fun `게임 재시작 후 종료`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("129", "892", "398", "1", "234", "256", "215", "2")
+                assertThat(output())
+                    .contains("1볼", "1볼 1스트라이크", "3스트라이크", "1스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
+            },
+            3, 9, 8, 2, 1, 5
+        )
+    }
+
+    @Test
+    fun `게임 1회 진행 후 종료`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("123", "456", "789", "2")
+                assertThat(output())
+                    .contains("낫싱", "3스트라이크", "게임 종료")
+            },
+            7, 8, 9
         )
     }
 
