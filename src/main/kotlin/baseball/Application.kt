@@ -11,7 +11,12 @@ fun main() {
     do {
         startGame()
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    } while (Console.readLine() == "1")
+        when (Console.readLine()) {
+            "1" -> continue
+            "2" -> break
+            else -> throw IllegalArgumentException()
+        }
+    } while (true)
 }
 
 fun startGame() {
