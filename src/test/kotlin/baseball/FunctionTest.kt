@@ -77,6 +77,12 @@ class FunctionTest : NsTest() {
     }
 
     @Test
+    fun `랜덤 값 길이 검사`() {
+        val randomNumber = getComputerNumber()
+        assertThat(randomNumber).hasSize(3)
+    }
+
+    @Test
     fun `유저 입력값 정상 인식 검사`() {
         System.setIn("123".byteInputStream())
         val userNumber = getUserPredictionNumber()
