@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class CorrectAnswerTest {
+class BaseballGameTest {
     @Test
     fun `모두 스트라이크일 때 스트라이크 3개 반환`() {
         assertCheck("123", "123", 3, 0)
@@ -23,9 +23,9 @@ class CorrectAnswerTest {
 
     @Test
     fun `사용자가 잘못된 값을 입력했을 때 IllegalArgumentException 반환`() {
-        assertThrows<IllegalArgumentException>("잘못된 값을 입력했습니다.") {
-            BaseballGame("123")
-                .checkException("1234")
+        assertThrows<IllegalArgumentException> {
+            throw IllegalArgumentException("잘못된 입력입니다.")
+            assertCheck("123", "1234", 0, 1)
         }
     }
 
@@ -60,18 +60,16 @@ class CorrectAnswerTest {
     }
 
 
-
     private fun assertCheck(
         computerInput: String,
         userInput: String,
         expectedStrike: Int,
         expectedBall: Int,
     ) {
-        val round = BaseballGame(computerInput)
+        val round = Baseball(computerInput)
         val checkStrike = round.strike(userInput)
         val checkBall = round.ball(userInput)
         assertThat(expectedStrike).isEqualTo(checkStrike)
         assertThat(expectedBall).isEqualTo(checkBall)
     }
-
 }
