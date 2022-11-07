@@ -32,6 +32,30 @@ class ApplicationTest : NsTest() {
         assertThat(ballCheck(userIn,computerList))
             .isEqualTo(0)
     }
+    @Test
+    fun strikeCheckTest0(){
+        val i: Int = 1
+        val computerList: List<Int> = listOf(1,2,3)
+        val userInputList: List<Int> = listOf(1,2,3)
+
+        assertThat(strikeCheck(i, userInputList,computerList))
+            .isEqualTo(1)
+    }
+    @Test
+    fun strikeCheckTest1(){
+        val i: Int = 1
+        val computerList: List<Int> = listOf(1,4,3)
+        val userInputList: List<Int> = listOf(1,2,3)
+
+        assertThat(strikeCheck(i, userInputList,computerList))
+            .isEqualTo(0)
+    }
+
+    @Test
+    fun `create list test`(){
+        assertThat(createComputerList()).isNotEmpty
+    }
+
 
     @Test
     fun `재시작 메뉴 테스트`(){
