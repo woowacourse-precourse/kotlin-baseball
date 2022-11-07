@@ -2,24 +2,20 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-
-fun main() {
-    println("숫자 야구 게임을 시작합니다.")
-    subMain()
-//    println("result: $result")
-}
+import java.security.KeyStore.TrustedCertificateEntry
 
 fun subMain() {
-    print("숫자를 입력해주세요 : ")
+    val computerNum = pickRandomNums()
     var input = inputNum()
     rightInputCheck(input)
-    val computerNum = pickRandomNums()
     var result = checkStrikeBallNothing(input, computerNum)
-    while (result) {
+    while (result) { // 3스트라이크가 나올 때까지 반복문
         input = inputNum()
         rightInputCheck(input)
         result = checkStrikeBallNothing(input, computerNum)
     }
+    println("3스트라이크")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
 fun pickRandomNums(): MutableList<String> {
@@ -30,12 +26,17 @@ fun pickRandomNums(): MutableList<String> {
             computer.add(randomNumber)
         }
     }
-    println(computer)
     return computer
 }
 
 fun inputNum(): String {
-    val inputNum: String = Console.readLine()
+    print("숫자를 입력해주세요 : ")
+    val inputNum: String = Console.readLine()!!.toString()
+    for(i in inputNum.indices){
+        if(inputNum[i] !in "123456789"){
+            throw IllegalArgumentException("1~9사이의 값이 아닙니다.")
+        }
+    }
     return inputNum
 }
 
@@ -51,7 +52,6 @@ fun rightInputCheck(num: String) {
     }
     if (num[0] == num[2])
         throw IllegalArgumentException("서로 다른 세자리 숫자를 말씀해주세요.")
-//    println("length check success")
 }
 
 fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): Boolean {
@@ -61,10 +61,7 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
         pickRandomNumsResult += pickRandomNum
     }
     if (pickRandomNumsResult == inputNum) {
-        println("3스트라이크")
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        gameRestartCheck(inputNum())
+        return false
     }
 
     // 게임 종료가 아닐 경우 낫싱 -> 스트라이크 -> 볼 순으로 구분
@@ -88,47 +85,47 @@ fun checkStrikeBallNothing(inputNum: String, computerNum: MutableList<String>): 
         if (inputNum[i].toString() == computerNum[i]) {
             strikeNum += 1
             avoidList.remove(i)
-//                println("avoidList: $avoidList")
-//                println("strikeNum: $strikeNum")
-//                        computerNum.removeAt(i)
-//                        inputNum.replace("${inputNum[i]}", "")
         }
     }
     for (j in avoidList) { // 남은 것에서 볼 체크하기
         if (computerNum.contains(inputNum[j].toString())) {
             ballNum += 1
-//                println("ballNum: $ballNum")
         }
     }
 
     // print
     if (strikeNum != 0 && ballNum != 0) {
         println("${ballNum}볼 ${strikeNum}스트라이크")
-//                    return "${ballNum}볼 ${strikeNum}스트라이크"
     } else if (strikeNum == 0 && ballNum != 0) {
         println("${ballNum}볼")
-//                    return "${ballNum}볼"
     } else {
         println("${strikeNum}스트라이크")
-//                    return "${strikeNum}스트라이크"
     }
-
-    // return "낫싱"
     print("숫자를 입력해주세요 : ")
-    // return "숫자를 입력해주세요"
     return true
 }
 
-fun gameRestartCheck(selectionNum: String) {
-    when (selectionNum) {
+fun gameRestartCheck(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return when (Console.readLine()!!.toString()) {
         "1" -> {
-            subMain()
+            true
         }
         "2" -> {
-            throw SecurityException()
+            false
         }
         else -> {
             throw IllegalArgumentException("1 혹은 2 숫자를 입력해주세요")
         }
     }
 }
+
+fun main() {
+    var flag: Boolean = true
+    println("숫자 야구 게임을 시작합니다.")
+    while(flag) { // 최종적으로 1과 2일 때 반복을 위한 while문
+        subMain()
+        flag = gameRestartCheck()
+    }
+}
+
