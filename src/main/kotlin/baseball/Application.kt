@@ -21,7 +21,12 @@ fun playerInput():String {
     }
     return playerAnswer
 }
-
+fun playerInputToList(playerInputString:String) : MutableList<Int>{
+    val playerInputSplit = playerInputString.split("")
+    val playerInputList : MutableList<Int> = mutableListOf()
+    for(count in 0 until 3) playerInputList[count]=playerInputSplit[count].toInt()
+    return playerInputList
+}
 
 fun main() {
     /*var computerNumber = Numbergenerator()
