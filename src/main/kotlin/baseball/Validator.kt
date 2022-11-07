@@ -13,7 +13,7 @@ object Validator {
         }
 
         if (!isValid) {
-            ScreenManipulator.screenClose()
+            ScreenManipulator.closeScreen()
         }
         return isValid
     }

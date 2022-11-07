@@ -4,62 +4,50 @@ import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 
 object ScreenManipulator {
-    lateinit var screen: BufferedWriter
+    private lateinit var screen: BufferedWriter
+    private const val MSG_STRIKE = "스트라이크 "
+    private const val MSG_BALL = "볼 "
+    private const val THREE_STRIKE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n"
+    private const val NOTHING = "낫싱"
+    const val START_BASEBALLGAME = "숫자 야구 게임을 시작합니다.\n"
+    const val REQUEST_USER_INPUT = "숫자를 입력해주세요 : "
 
-    fun manipulateScreen(strikeCount: Int, ballCount: Int) {
+    fun showResultToScreen(strikeCount: Int, ballCount: Int) {
         if (ballCount > 0) {
-            printBallCount(ballCount)
+            showBallCount(ballCount)
         }
         when {
-            strikeCount + ballCount == 0 -> printNothing()
+            strikeCount + ballCount == 0 -> showMessageToScreen(NOTHING)
             strikeCount == 3 -> {
-                printStrikeCount(strikeCount)
-                printNewLine()
-                printGameEnd()
+                showStrikeCount(strikeCount)
+                screen.newLine()
+                showMessageToScreen(THREE_STRIKE_GAME_END)
             }
-            strikeCount in 1..2 -> printStrikeCount(strikeCount)
+            strikeCount in 1..2 -> showStrikeCount(strikeCount)
         }
-        printNewLine()
+        screen.newLine()
     }
 
-    fun printGameStart() {
-        screen = BufferedWriter(OutputStreamWriter(System.`out`))
-        screen.write("숫자 야구 게임을 시작합니다.\n")
+    fun showMessageToScreen(msg:String){
+        if(msg== START_BASEBALLGAME){
+            screen= BufferedWriter(OutputStreamWriter(System.`out`))
+        }
+        screen.write(msg)
         screen.flush()
     }
 
-    fun printRequestUserInput() {
-        screen.write("숫자를 입력해주세요 : ")
+    private fun showStrikeCount(strikeCount: Int) {
+        screen.write("${strikeCount}${MSG_STRIKE}")
         screen.flush()
     }
 
-    private fun printNewLine() {
-        screen.write("\n")
+    private fun showBallCount(ballCount: Int) {
+        screen.write("${ballCount}${MSG_BALL}")
         screen.flush()
     }
 
-    private fun printStrikeCount(strikeCount: Int) {
-        screen.write("${strikeCount}스트라이크 ")
-        screen.flush()
-    }
-
-    private fun printBallCount(ballCount: Int) {
-        screen.write("${ballCount}볼 ")
-        screen.flush()
-    }
-
-    private fun printGameEnd() {
-        screen.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        screen.flush()
-    }
-
-    private fun printNothing() {
-        screen.write("낫싱")
-        screen.flush()
-    }
-
-    fun screenClose() {
+    fun closeScreen() {
         screen.close()
     }
 }

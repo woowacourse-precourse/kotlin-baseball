@@ -8,7 +8,7 @@ class BaseballGameProcessor(
     private val computer: Computer,
 ) : BaseballGameReferee {
     fun processBaseballGame() {
-        ScreenManipulator.printGameStart()
+        ScreenManipulator.showMessageToScreen(ScreenManipulator.START_BASEBALLGAME)
         while (true) {
             val guessedNumbers = processGuessNumbers()
             val strikeCount = processCount(guessedNumbers)
@@ -28,12 +28,12 @@ class BaseballGameProcessor(
             BallStrikeCounter.calcBallCount(computer.randomNumbers, guessedNumbers)
         )
 
-        ScreenManipulator.manipulateScreen(strikeCount, ballCount)
+        ScreenManipulator.showResultToScreen(strikeCount, ballCount)
         return strikeCount
     }
 
     private fun processGuessNumbers(): List<Int> {
-        ScreenManipulator.printRequestUserInput()
+        ScreenManipulator.showMessageToScreen(ScreenManipulator.REQUEST_USER_INPUT)
         val userInput = user.guessNumbers()
 
         if (!Validator.checkIsValid(userInput)) {
@@ -66,11 +66,11 @@ class BaseballGameProcessor(
         return when (Console.readLine()) {
             "1" -> GameStatus.NEW_GAME
             "2" -> {
-                ScreenManipulator.screenClose()
+                ScreenManipulator.closeScreen()
                 GameStatus.TERMINATE
             }
             else -> {
-                ScreenManipulator.screenClose()
+                ScreenManipulator.closeScreen()
                 GameStatus.ERROR
             }
         }
