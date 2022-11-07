@@ -56,4 +56,34 @@ object GameController {
         }
     }
 
+    // 모든 숫자들을 맞추면 성공
+    private fun userCorrectAnswer(strike: Int): Boolean {
+        if (strike == Constants.MAX_SIZE) {
+            println(Messages.SUCCESS_MESSAGE)
+            return true
+        }
+        return false
+    }
+
+    // 야구 게임의 한 사이클을 동작하는 함수
+    private fun guessTheNumber() {
+        println(Messages.START_MESSAGE)
+        // 랜덤한 컴퓨터 번호 생성
+        computer.registerNumbersToList()
+        while (true) {
+            val userInput = user.input()
+            user.inputConvertToList(userInput)
+            // 사용자 입력에 대한 리스트 예외 확인
+            exception(user.numberList)
+            // 스트라이크, 볼 개수 확인
+            val strikeCount = getStrikeCount(computer.randomNumberList, user.numberList)
+            val ballCount = getBallCount(computer.randomNumberList, user.numberList)
+            println(resultMessage(strikeCount, ballCount))
+            // 모든 숫자를 맞추면 게임 종료
+            if (userCorrectAnswer(strikeCount)) {
+                break
+            }
+        }
+    }
+
 }
