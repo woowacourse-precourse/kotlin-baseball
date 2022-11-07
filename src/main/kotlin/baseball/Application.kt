@@ -1,5 +1,12 @@
 package baseball
 
+import baseball.game.BaseballGame
+import baseball.game.Game
+
+private val baseballGame: Game by lazy {
+    BaseballGame()
+}
+
 fun main() {
-    TODO("프로그램 구현")
+    baseballGame.start()
 }
