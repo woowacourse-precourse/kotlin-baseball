@@ -40,6 +40,16 @@ class ApplicationTest : NsTest() {
         assertTrue(guessRegex.matches(getElement) && getElement.toSet().size == 3)
     }
 
+    @Test
+    fun `printGuide 메서드출력 결과 확인`() {
+        val baseBallGame = BaseBallGame()
+        val method = baseBallGame.javaClass.getDeclaredMethod("printGuide")
+        method.isAccessible = true
+
+        val parameters = arrayOfNulls<Any>(0)
+        val getElement = method.invoke(baseBallGame, *parameters)
+        assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.\n숫자를 입력해주세요 :")
+    }
     override fun runMain() {
         main()
     }
