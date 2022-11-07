@@ -15,8 +15,10 @@ fun nextGame(){
     val select= readLine()!!.toInt()
     if(select==1)
         playGame()
-    else if(select==2)
+    else if(select==2) {
         println("게임을 종료합니다!")
+        return
+    }
 }
 
 fun message(computer: MutableList<Int>) {
@@ -24,7 +26,7 @@ fun message(computer: MutableList<Int>) {
 
     var strike = 0
     var ball = 0
-    val index = 0
+    var index = 0
 
     val user = getUserNumber()
 
@@ -35,6 +37,7 @@ fun message(computer: MutableList<Int>) {
             ball--
             strike++
         }
+        index++
     }
 
     if (strike == 3){
@@ -42,7 +45,9 @@ fun message(computer: MutableList<Int>) {
         print("3개의 숫자를 모두 맞히셨습니다!")
         println(" 게임 종료")
         nextGame() //게임 한 턴 후 다음 게임 의사 여부를 묻기
+        return
     }
+
     else if(strike==0&&ball==0)
         println("낫싱")
     else if(strike==0)
@@ -74,12 +79,17 @@ fun getUserNumber(): String {
 
     //예외처리
     if(user.isNullOrEmpty() ||user.length!=3)
-        throw IllegalArgumentException()
+        throw IllegalArgumentException("잘못입력하셨습니다.")
+
 
     for (i in user) {
-        if (i !in '0'..'9')
-            throw IllegalArgumentException()
+        if (i !in '0'..'9'){
+            throw IllegalArgumentException("잘못입력하셨습니다.")}
     }
+    if (user[0] == user[1] || user[0] == user[2] ||user[1] ==user[2]) {
+        throw IllegalArgumentException("중복되지 않는 수만 입력 가능합니다.")
+    }
+
     return user
 }
 
