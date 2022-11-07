@@ -1,9 +1,15 @@
 package baseball
 
+import baseball.GameState.ONGOING_STATE
 import baseball.NumberBaseBallGamePhrases.START_PHRASE
 
 fun main() {
     printStartGameString()
+    val gameState = ONGOING_STATE
+    val randomNumberList = getRandomNumberList(3)
+
+    while (gameState == ONGOING_STATE) {
+    }
 }
 
 private fun printStartGameString() {
