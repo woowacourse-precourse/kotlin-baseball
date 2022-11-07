@@ -12,17 +12,17 @@ fun checkTrue(input : CharArray){
 
     if(input.size != 3) throw IllegalArgumentException("세개의 숫자를 입력하여야 합니다.")
 
-    var IsNum = 0
+    var isNum = 0
 
     for(i in 0 until 3){
-        IsNum = 0
+        isNum = 0
         for(j in '1' .. '9'){
             if(input[i] == j){
-                IsNum = 1
+                isNum = 1
                 break
             }
         }
-        if(IsNum == 0) throw IllegalArgumentException("숫자가 아닙니다.")
+        if(isNum == 0) throw IllegalArgumentException("숫자가 아닙니다.")
         if(input[i] == '0') throw IllegalArgumentException("0이 포함되어있습니다.")
     }
 }
@@ -38,6 +38,32 @@ fun random():MutableList<Int>{
     return computer
 }
 
+fun countCorrect(computer:MutableList<Char>,input:CharArray):MutableList<Int>{
+    var homerun_strike = mutableListOf<Int>()
+    homerun_strike.add(0)
+    homerun_strike.add(0)
+
+    for(i in 0 until 3){
+        for(j in 0 until 3){
+            if(computer[i] == input[j]){
+                if(i == j){
+                    homerun_strike[0]++
+                }else{
+                    homerun_strike[1]++
+                }
+            }
+        }
+    }
+    return homerun_strike
+}
+
+fun changeToChar(get : MutableList<Int>):MutableList<Char>{
+    var getToChar = mutableListOf<Char>()
+    for(i in 0..2){
+        getToChar[i] = (get[i]+48).toChar()
+    }
+    return getToChar
+}
 
 
 fun main() {
@@ -52,12 +78,9 @@ fun main() {
         } else throw IllegalArgumentException("입력 값이 없습니다.");
 
         val ComputerNum = random()
-
-
+        val ComputerChar = changeToChar(ComputerNum)
+        countCorrect(ComputerChar, input)
 
     }
-
-
-
 
 }
