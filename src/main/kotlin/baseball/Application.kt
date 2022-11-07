@@ -1,6 +1,18 @@
 package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
+fun main() {
+    startgame()
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    var menu : Int? = readLine()?.toInt()
+    while(restart(menu)) {
+        startgame()
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        menu = readLine()?.toInt()
+    }
+
+}
+
 fun compareList(userInputToInt: List<Int>, computerList: List<Int>): Boolean {
     if (userInputToInt == computerList) {
         return true
@@ -66,18 +78,6 @@ fun strikeCheck(i: Int, userInputList: List<Int>, computerList: List<Int>) : Int
     }
 }
 
-fun main() {
-    startgame()
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    var menu : Int? = readLine()?.toInt()
-    while(restart(menu)) {
-        startgame()
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        menu = readLine()?.toInt()
-    }
-
-}
-
 fun restart(menu: Int?): Boolean {
 
     if (!menuCheck(menu)){
@@ -107,9 +107,9 @@ fun userInputToInt() : List<Int> {
     var userInput : Int? = readLine()!!.toIntOrNull()
     var inputs : List<Int> = listOf()
 
-   if(!userInputCheck(userInput)){
-       println("유효하지 않은 입력입니다.")
-   }
+    if(!userInputCheck(userInput)){
+        println("유효하지 않은 입력입니다.")
+    }
 
     while (userInput!! > 0){
         var tmp = userInput % 10
