@@ -19,3 +19,13 @@ fun createRandomNum(): MutableList<Int> {
     return computerNum
 }
 
+fun printState(state : Int){
+    when(state){
+        gameStart -> println("숫자 야구 게임을 시작합니다.")
+        gameInProgress -> println("숫자를 입력해주세요 : " )
+    }
+}
+
+const val gameStart = 0
+const val gameInProgress = 1
+const val gameEnd = 2
