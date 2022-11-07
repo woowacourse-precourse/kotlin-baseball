@@ -8,6 +8,24 @@ class NumberBaseballGame {
     private var ball = 0
     private var exit = false
 
+    fun startGame(computer: MutableList<Int>) {
+        println("숫자 야구 게임을 시작합니다.")
+
+        pickRandomNumber(computer)
+
+        while (!exit) {
+            print("숫자를 입력해주세요 : ")
+            val player = Console.readLine().map { it.digitToInt() }
+
+            resetScore()
+            calculateScore(computer, player)
+            printResult()
+
+            if (strike == 3) {
+                gameOver(computer)
+            }
+        }
+    }
     private fun pickRandomNumber(computer: MutableList<Int>) {
         while (computer.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -17,12 +35,12 @@ class NumberBaseballGame {
         }
     }
 
-    fun resetScore() {
+    private fun resetScore() {
         strike = 0
         ball = 0
     }
 
-    fun calculateScore(computer: List<Int>, player: List<Int>) {
+    private fun calculateScore(computer: List<Int>, player: List<Int>) {
         computer.forEachIndexed { i, computerNumber ->
             player.forEachIndexed { j, playerNumber ->
                 if (computerNumber == playerNumber) {
@@ -36,7 +54,7 @@ class NumberBaseballGame {
         }
     }
 
-    fun printResult() {
+    private fun printResult() {
         if (strike == 0 && ball == 0) {
             println("낫싱")
         }
@@ -51,7 +69,7 @@ class NumberBaseballGame {
         }
     }
 
-    fun gameOver(computer: MutableList<Int>) {
+    private fun gameOver(computer: MutableList<Int>) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
