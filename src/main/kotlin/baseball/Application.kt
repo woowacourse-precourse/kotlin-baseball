@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     var computer_number = create_computer_number()
+    game_Start(computer_number)
 }
 fun InputNumber(): String{ //숫자 입력
     print("숫자를 입력해주세요: ")
@@ -46,23 +47,28 @@ fun test_number(computer_number: String,number: String){ // 스트라이크 볼 
     if (strike == 3){
         println("3스트라이크")
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-
     }
     else if(strike == 0 && ball == 0){
         println("낫싱")
-
+        game_Start(computer_number)
     }
     else if (strike == 0 && ball!=0){
         println("$ball 볼")
-
+        game_Start(computer_number)
     }
     else if (strike != 0 && ball == 0){
         println("$strike 스트라이크")
-
+        game_Start(computer_number)
     }
     else {
         println("${ball}볼 ${strike}스트라이크")
+        game_Start(computer_number)
     }
+}
+
+fun game_Start(computer_number: String){ // 게임시작
+    var number = InputNumber()
+    test_number(computer_number,number)
 }
 
 
