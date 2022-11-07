@@ -3,14 +3,14 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 class Computer {
+    var computerList = mutableListOf<Int>()
     fun makeComputerList(): MutableList<Int> {
-        val computer = mutableListOf<Int>()
-        while (computer.size < 3) {
+        while (computerList.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber)
+            if (!computerList.contains(randomNumber)) {
+                computerList.add(randomNumber)
             }
         }
-        return computer
+        return computerList
     }
 }
