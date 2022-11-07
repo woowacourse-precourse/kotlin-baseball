@@ -1,5 +1,8 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    val woowaInput = WoowaInput()
+    val randomNumberGenerator = RandomNumberGenerator()
+    val baseball = Baseball(woowaInput, randomNumberGenerator)
+    baseball.start()
 }
