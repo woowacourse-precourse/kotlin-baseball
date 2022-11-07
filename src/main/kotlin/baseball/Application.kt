@@ -16,3 +16,15 @@ private fun setRandomNumber(): MutableList<Int> {
     }
     return computer
 }
+
+private fun getNumberOfStrike(computer: String, user: String): Int {
+    val computerNumber: List<String> = computer.split("")
+    val userNumber: List<String> = user.split("")
+    var numberOfStrike = 0
+    for(i in 1..3){
+        if(computerNumber[i] == userNumber[i]){
+            numberOfStrike++
+        }
+    }
+    return numberOfStrike
+}
