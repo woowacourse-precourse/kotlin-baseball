@@ -87,7 +87,7 @@ object Game {
         } else if (input == Computer.INPUT_GAME_STOP) {
             println("게임종료")
             gameStop = true
-        } else if (input != "1" && input != "2") {
+        } else if (input != Computer.INPUT_GAME_RESTART && input != Computer.INPUT_GAME_STOP) {
             require(false)
         }
     }
