@@ -2,6 +2,7 @@ package baseball
 
 import baseball.GameState.ONGOING_STATE
 import baseball.NumberBaseBallGamePhrases.START_PHRASE
+import java.util.regex.Pattern
 
 fun main() {
     printStartGameString()
@@ -27,3 +28,7 @@ private fun getRandomNumberList(listLength: Int): MutableList<Int> {
 
     return randomNumberList
 }
+
+private fun isInputTypeNumber(userInput: String): Boolean = Pattern.matches("^[0-9]+$", userInput)
+
+
