@@ -24,7 +24,7 @@
 
 ```kotlin
 BaseballGame.Builder()
-    .onInit(/* 컴퓨터 랜덤 숫자 입력 */)
+    .onStart(/* 컴퓨터 랜덤 숫자 입력 */)
     .onProgress(/* 사용자 숫자 입력 */)
     .onFinish(/* 게임 재시작(1) or 종료(2) 코드 입력 */)
     .build()
