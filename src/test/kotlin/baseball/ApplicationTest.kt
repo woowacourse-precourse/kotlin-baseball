@@ -258,6 +258,19 @@ class ApplicationTest : NsTest() {
         assertThat(output()).contains("1볼 1스트라이크")
     }
 
+    @Test
+    fun `사용자가 게임을 이겼는지 확인`() {
+        val generator = ExpectedNumberGenerator(listOf(1, 3, 5))
+        val computer = Computer(generator)
+
+        computer.generateNumbers()
+        val lose = computer.countBallsStrikes(listOf(2, 4, 6))
+        val win = computer.countBallsStrikes(listOf(1, 3, 5))
+
+        assertThat(computer.isWin(lose)).isEqualTo(false)
+        assertThat(computer.isWin(win)).isEqualTo(true)
+    }
+
     override fun runMain() {
         main()
     }
