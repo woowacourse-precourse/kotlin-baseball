@@ -4,9 +4,11 @@ class PredeterminedInput(private val inputs: List<String>) : Input {
     private var index = 0
 
     override fun get(): String {
+        var userInput = ""
         if(index < inputs.size) {
-            return inputs[index++]
+            userInput = inputs[index++]
         }
-        return ""
+        println(userInput)
+        return userInput
     }
 }

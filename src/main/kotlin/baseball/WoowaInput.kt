@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 
 class WoowaInput : Input {
     override fun get(): String {
-        return Console.readLine()
+        val userInput = Console.readLine()
+        println(userInput)
+        return userInput
     }
 }
