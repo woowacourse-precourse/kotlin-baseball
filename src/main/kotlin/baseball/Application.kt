@@ -8,7 +8,7 @@ const val MAX_NUM = 9
 const val ASCII_CODE_ONE = 49
 const val ASCII_CODE_NINE = 57
 const val RESTART_FLAG = 1
-const val EXIT_FLAG =2
+const val EXIT_FLAG = 2
 
 const val START_MESSAGE = "숫자 야구 게임을 시작합니다."
 const val INPUT_MESSAGE = "숫자를 입력해주세요 : "
@@ -17,9 +17,9 @@ const val RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면
 
 const val INPUT_ERROR_LENGTH = "3개의 숫자를 입력하세요"
 const val INPUT_ERROR_RANGE = "1부터 9까지의 숫자만 입력하세요"
-const val INPUT_ERROR_DUPLICATE ="서로 다른 수를 입력하세요"
+const val INPUT_ERROR_DUPLICATE = "서로 다른 수를 입력하세요"
 
-const val NOTHING ="낫싱"
+const val NOTHING = "낫싱"
 const val STRIKE = "스트라이크"
 const val BALL = "볼"
 
