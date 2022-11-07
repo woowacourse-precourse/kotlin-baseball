@@ -103,3 +103,20 @@ BaseballGame.Builder()
 ```
 게임 종료
 ```
+
+<br/>
+
+## [ExceptionHandler::class](/src/main/kotlin/baseball/game/ExceptionHandler.kt)
+사용자 입력 예외 처리 핸들러
+
+- `checkNumberFormat(number)`
+    1. 글자 수가 3자리인지 확인
+    2. 중복된 숫자가 없는지 확인
+    3. 각 자리 숫자가 (1 ~ 9)인지 확인
+
+위 조건 중 하나라도 맞지 않으면 `IllegalArgumentException` 이 발생한다
+
+- `throwFinishCode(code)`
+
+게임 종료/재시작 코드를 잘못 입력하였을 때 위 함수를 호출하여 `IllegalArgumentException` 를 발생시킨다
+
