@@ -40,6 +40,14 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("12a") }
         }
     }
+
+    @Test
+    fun `예외 테스트(입력값에 띄어쓰기가 있는 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12 3") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
