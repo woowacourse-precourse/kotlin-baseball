@@ -11,9 +11,9 @@ fun main() {
             checkInputIsCorrect(userInput)
             checkBalls(userInput)
             setResultString()
-            // 결과 값을 출력한다.
+            println(resultString)
             isEndedCheck()
-        } while (/* 끝났는지 체크 */)
+        } while (!isEnded)
     }
 }
 
