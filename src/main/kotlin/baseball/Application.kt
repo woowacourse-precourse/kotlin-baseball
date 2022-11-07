@@ -5,17 +5,28 @@ import java.lang.IllegalArgumentException
 
 fun main() {
     startBaseBallGame()
-    val computerRandomNumber = computerSelectThreeRandomNumber()
-    println(computerRandomNumber)
 
-    while (true) {
-        val userNumber = userThreeNumberInput()
-        if (determineJudgement(computerRandomNumber, userNumber) == 3) userDecideGameContinue()
-
-    }
+    var gameOverDecision = 0
+    do {
+        val computerRandomNumber = computerSelectThreeRandomNumber()
+        println(computerRandomNumber)
+        gameOverDecision = progressBaseBallGame(computerRandomNumber)
+    } while (gameOverDecision != 2)
 
 }
 
+
+fun progressBaseBallGame(computerRandomNumber: List<Int>): Int {
+    var progressGameDecision = 0
+    while (progressGameDecision != 1) {
+        val userNumber = userThreeNumberInput()
+        if (determineJudgement(computerRandomNumber, userNumber) == 3){
+            progressGameDecision = userDecideGameContinue()
+        }
+    }
+
+    return progressGameDecision
+}
 
 
 private fun startBaseBallGame() {
@@ -93,7 +104,7 @@ private fun printGameResult(strikeBallCountPair: Pair<Int, Int>): Int {
     return strikeBallCountPair.first
 }
 
-private fun userDecideGameContinue() : Int {
+private fun userDecideGameContinue(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val userInput = readLine()
     if (userGameContinueDecisionInputExceptionCheck(userInput)) {
