@@ -38,7 +38,7 @@ fun playerInputValidCheck(CheckList : MutableList<Int>){
         throw IllegalArgumentException()
     }
 }
-fun StrikeBallCheck(Answer : MutableList<Int>,Input : MutableList<Int>){
+fun StrikeBallCheck(Answer : MutableList<Int>,Input : MutableList<Int>) : Int{
     var Strike = 0
     var Ball = 0
     for (count in 0..2){
@@ -48,7 +48,18 @@ fun StrikeBallCheck(Answer : MutableList<Int>,Input : MutableList<Int>){
             Ball+=1
         }
     }
-
+    if (Strike==3){
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    } else if(Strike!=0 && Ball==0){
+        println("$Strike+스트라이크")
+    } else if(Strike==0 && Ball!=0){
+        println("$Ball+볼")
+    } else if(Strike==0 && Ball==0){
+        println("낫싱")
+    } else{
+        println("$Ball+볼 $Strike+스트라이크")
+    }
+    return Strike
 }
 fun main() {
     /*var computerNumber = Numbergenerator()
