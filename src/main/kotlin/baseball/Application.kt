@@ -22,37 +22,46 @@ fun inputNumber(): String { // 잘못 입력했을 시 IllegalArgumentException�
     3. 길이가 3이 되지 않을때
     */
     var num_list = mutableListOf<String>()
+    var num_map = mutableMapOf(
+        "1" to 1,
+        "2" to 2,
+        "3" to 3,
+        "4" to 4,
+        "5" to 5,
+        "6" to 6,
+        "7" to 7,
+        "8" to 8,
+        "9" to 9
+    )
     var onlynum = mutableListOf<Int>()
 
     print("숫자를 입력해주세요 : ")
     var user = readLine()
 
-    for (num in 0 until user.length){
-        if (num_list.contains(user[num].toString())){
+    for (num in 0 until user.length) {
+        if (num_list.contains(user[num].toString())) {
             continue
         }
-        num_list.add(num, user[num].toString())
+        num_list.add(user[num].toString())
     }
-    for (Intcheck in 0 until user.length){
-        if (user[Intcheck].isDigit()){
-            onlynum.add(Intcheck, user[Intcheck].digitToInt())
+    for (Intcheck in 0 until user.length) {
+        if (num_map.containsKey(user[Intcheck].toString())) {
+            onlynum.add(user[Intcheck].digitToInt())
         }
     }
-//    println(onlynum)
 
-    //1. 같은 숫자 두번 이상 입력
-    if (num_list.size < 3 ){
-        throw IllegalArgumentException("같은 숫자 두번 이상 입력")
-    }
-    //2. 숫자 외 입력
-    if (onlynum.size<3){
-        throw IllegalArgumentException("숫자 외 입력하였음")
-    }
     //3. 길이가 3이 아닐때
     if (user.length != 3) {
         throw IllegalArgumentException("숫자 3자리를 입력해야함")
     }
-
+    //1. 같은 숫자 두번 이상 입력
+    else if (num_list.size < 3) {
+        throw IllegalArgumentException("같은 숫자 두번 이상 입력")
+    }
+    //2. 숫자 외 입력
+    else if (onlynum.size < 3) {
+        throw IllegalArgumentException("숫자 외 입력하였음")
+    }
 
 
 
