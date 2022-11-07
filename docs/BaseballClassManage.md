@@ -1,4 +1,4 @@
-## 🚀 BaseballClassManage 기능 목록
+## 🚀 BaseballClassManage.kt 기능 목록
 
 ### 핵심 기능 클래스 목록
 

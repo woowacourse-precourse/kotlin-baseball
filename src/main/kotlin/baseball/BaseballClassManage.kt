@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms
 class NumberBaseballComputer {
     private var powerOfComputer: Boolean = true
     private val randomList = RandomGenerator().randomList()
-    //private val randomList = listOf(1, 3, 5)
     private var responseMessage = StringBuilder("")
 
     fun receiveUserMessage(message: String) {
@@ -70,15 +69,15 @@ class NumberBaseballComputer {
 
 class RandomGenerator {
     fun randomList(): List<Int> {
-        val computer = mutableListOf<Int>()
-        while (computer.size < 3) {
+        val randomList = mutableListOf<Int>()
+        while (randomList.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber)
+            if (!randomList.contains(randomNumber)) {
+                randomList.add(randomNumber)
             }
         }
 
-        return computer
+        return randomList
     }
 }
 
