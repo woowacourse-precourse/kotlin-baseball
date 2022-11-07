@@ -28,14 +28,12 @@ fun message(computer: MutableList<Int>) {
 
     val user = getUserNumber()
 
-    if (user != null) {
-        for (i in user) {
-            if (computer.contains(i - '0'))
-                ball++
-            if (computer[index] == i - '0') {
-                ball--
-                strike++
-            }
+    for (i in user) {
+        if (computer.contains(i - '0'))
+            ball++
+        if (computer[index] == i - '0') {
+            ball--
+            strike++
         }
     }
 
