@@ -3,20 +3,21 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import utils.Constants
 
-class Game {
+class Game() {
+    private val display = Display()
     fun start(computer: List<Int>): Boolean {
-        var isRightAnswer = false
-        while (!isRightAnswer) {
-            print(Constants.INPUT_PLAYER_MESSAGE)
+        val hint = Hint(computer)
+
+        while (hint.strikeNum != 3) {
+            display.printRequireInputNumber()
             val player = Console.readLine()
             if (!isCorrectNumber(player)) {
                 throw IllegalArgumentException()
             }
 
-            val strikeNum = getStrikeNum(computer, player)
-            val ballNum = getBallNum(computer, player, strikeNum)
-            // 3스트라이크 여부
-            isRightAnswer = printBallNStrike(strikeNum, ballNum)
+            hint.calculateStrike(player)
+            hint.calculateBall(player)
+            display.printBallNStrike(hint)
         }
         // 게임 재시작 or 완전히 종료 선택
         return choiceGameRestart()
@@ -40,51 +41,8 @@ class Game {
         return true
     }
 
-    fun getStrikeNum(computer: List<Int>, player: String): Int {
-        var strikeNum = 0
-        for (i in computer.indices) {
-            val computerNumber = computer[i]
-            val playerNumber = player[i] - '0'
-            if (computerNumber == playerNumber)
-                strikeNum++
-        }
-        return strikeNum
-    }
-
-
-    fun getBallNum(computer: List<Int>, player: String, strikeNum: Int): Int {
-        var ballNum = 0
-        for (playerCharacter in player) {
-            val playerNumber = playerCharacter - '0'
-            if (computer.contains(playerNumber))
-                ballNum++
-        }
-        return ballNum - strikeNum
-    }
-
-
-    fun printBallNStrike(strikeNum: Int, ballNum: Int): Boolean {
-        var rightAnswer = false
-        if (strikeNum == 0 && ballNum == 0)
-            println("낫싱")
-        else {
-            if (ballNum > 0)
-                print("${ballNum}볼 ")
-            if (strikeNum > 0)
-                print("${strikeNum}스트라이크")
-            println()
-
-            if (strikeNum == 3)
-                rightAnswer = true
-        }
-
-        return rightAnswer
-    }
-
-    // 게임을 완전히 종료할 것인지(2) 재시작할 것인지(1)
     fun choiceGameRestart(): Boolean {
-        println(Constants.GAME_OVER_MESSAGE)
-        println(Constants.ASK_GAME_RESTART_MESSAGE)
+        display.printGameOver()
         return when (Console.readLine()) {
             Constants.RESTART -> true
             Constants.GAME_OVER -> false
