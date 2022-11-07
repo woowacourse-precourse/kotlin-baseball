@@ -280,6 +280,15 @@ class ApplicationTest : NsTest() {
         assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 
+    @Test
+    fun `게임 재시작 또는 종료 안내`() {
+        val guide = Guide()
+
+        guide.restartOrEnd()
+
+        assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    }
+
     override fun runMain() {
         main()
     }
