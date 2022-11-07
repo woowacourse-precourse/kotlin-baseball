@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val computerNumber = getRandomNumber()
     printGameStart()
-    do{
+    do {
         val userNumber = inputUserNumber()
         if (!checkInput(userNumber)) throw IllegalArgumentException()
         checkCorrect(listToString(computerNumber), userNumber)
-    }while (userNumber != listToString(computerNumber))
+    } while (userNumber != listToString(computerNumber))
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
@@ -69,5 +69,15 @@ fun printHint(strikeCount: Int, ballCount: Int) {
         strikeCount == 0 && ballCount in 1..3 -> println("${ballCount}볼")
         strikeCount in 1..3 && ballCount == 0 -> println("${strikeCount}스트라이크")
         strikeCount in 1..3 && ballCount in 1..3 -> println("${ballCount}볼 ${strikeCount}스트라이크")
+    }
+}
+
+fun end() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val number = readLine()!!.toInt()
+    when (number) {
+        1 -> gameStart()
+        2 -> return
+        else -> throw IllegalArgumentException()
     }
 }
