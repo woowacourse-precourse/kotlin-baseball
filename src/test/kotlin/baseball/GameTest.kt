@@ -16,4 +16,10 @@ class GameTest (){
         val input = Game.checkInputDuplication("112")
         assertThat(input).isEqualTo(false)
     }
+
+    @Test
+    fun `입력값이 숫자외 다른 값이 있는지 체크`(){
+        val input = Game.checkInputValueIsNumber("11a")
+        assertThat(input).isEqualTo(false)
+    }
 }
