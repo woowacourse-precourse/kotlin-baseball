@@ -49,7 +49,7 @@ object GameController {
      fun getStrikeCount(computer: List<Int>, user: List<Int>): Int {
         return user.filterIndexed { index, number ->
             computer[index] == number
-        }.count()
+        }.size
     }
 
     // 볼 -> 위치는 다르지만 숫자가 포함
