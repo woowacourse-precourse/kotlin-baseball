@@ -34,6 +34,11 @@ class Baseball {
     }
 
     private fun checkBall(computerList: MutableList<Int>, userList: MutableList<Int>): Int {
-
+        var ball = 0
+        for (i in userList) {
+            if (computerList.contains(i))
+                ball++
+        }
+        return ball
     }
 }
