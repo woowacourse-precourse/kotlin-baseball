@@ -5,7 +5,7 @@ class PredeterminedInput(private val inputs: List<String>) : Input {
 
     override fun get(): String {
         var userInput = ""
-        if(index < inputs.size) {
+        if (index < inputs.size) {
             userInput = inputs[index++]
         }
         println(userInput)
