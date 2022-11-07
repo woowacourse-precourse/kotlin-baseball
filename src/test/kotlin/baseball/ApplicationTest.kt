@@ -12,7 +12,7 @@ class ApplicationTest : NsTest() {
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
             {
-                run("246", "135", "1", "597", "589", "2")
+                run("246", "315", "1", "857", "358", "2")
                 assertThat(output())
                     .contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
             },
