@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -24,6 +25,17 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Nested
+    inner class Function2Test {
+        @Test
+        fun `getComputerNum 메서드로 서로 다른 3자리 수의 리스트 반환`() {
+            val numbers = getComputerNum()
+            assertThat(numbers)
+                    .hasSize(3)
+                    .doesNotHaveDuplicates()
         }
     }
 
