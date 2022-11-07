@@ -13,10 +13,10 @@ class Baseball(private val input: Input, private val generator: Generator) {
     private fun play() {
         computer.generateNumbers()
 
-        guide.input()
-
         var win = false
         while (!win) {
+            guide.input()
+
             val userInput = input.get()
 
             val validators = listOf(

@@ -161,6 +161,16 @@ class ApplicationTest : NsTest() {
         assertThat(result).isEqualTo(expect)
     }
 
+    @Test
+    fun `사용자 숫자 입력 안내`() {
+        val guide = Guide()
+
+        guide.input()
+
+        assertThat(output())
+            .contains("숫자를 입력해주세요 :")
+    }
+
     override fun runMain() {
         main()
     }
