@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
+
     // 시작
     while (true) {
         // 랜덤 숫자 3개 받아오기
@@ -15,7 +16,6 @@ fun main() {
         // 게임 시작 or 종료
         if (restartOrFinish(finish)) break
     }
-    return
 }
 
 // 게임 시작 or 종료
@@ -103,12 +103,10 @@ private fun guessNumber(): String {
 // 랜덤 3글자 추출
 private fun randomThreeNumber(): String {
     println("숫자 야구 게임을 시작합니다.")
-    val computer = mutableListOf(3)
+    val computer = mutableSetOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computer.contains(randomNumber)) {
-            computer.add(randomNumber)
-        }
+        computer.add(randomNumber)
     }
 
     println(computer)
