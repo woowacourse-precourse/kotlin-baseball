@@ -59,7 +59,7 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    @DisplayName("//입력된 값이 1~9가 아닐떄 테스트")
+    @DisplayName("입력된 값이 1~9가 아닐떄 테스트")
     @Test
     fun `checkNumberTest`() {
         val input = "qwe"
@@ -163,16 +163,4 @@ class ApplicationTest : NsTest() {
         assertThat(output).contains("2볼 1스트라이크")
     }
 
-    @DisplayName("게임 종료")
-    @Test
-    fun `정답 이후 게임 종료 테스트`() {
-        System.setOut(PrintStream(outputStreamCaptor))
-
-        isContainNumber("947","947")
-        System.setIn(ByteArrayInputStream("2".toByteArray()))
-        endGame()
-
-        val output = outputStreamCaptor.toString()
-        assertThat(output).contains("게임 종료")
-    }
 }
