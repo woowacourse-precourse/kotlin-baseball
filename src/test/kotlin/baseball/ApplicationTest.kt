@@ -66,11 +66,50 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    // 예외 테스트
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
+    }
+    @Test
+    fun `영어 등의 문자가 포함된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("asd") }
+        }
+    }
+    @Test
+    fun `자리수가 3이 아닌 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("123456") }
+        }
+    }
+    @Test
+    fun `0이 포함되어있는 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("012") }
+        }
+    }
+    @Test
+    fun `공백 값이 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(" ") }
+        }
+    }
+    @Test
+    fun `중복된 숫자가 포함된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("112") }
+        }
+    }
+    @Test
+    fun `게임 종료 입력값이 1이 아닌 경우`() {
+        assertSimpleTest {
+            System.setIn("123".byteInputStream())
+            assertThrows<IllegalArgumentException> { getGameResult(Pair(0,3)) }
+        }
+
     }
 
     override fun runMain() {
