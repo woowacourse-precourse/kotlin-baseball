@@ -11,8 +11,7 @@ fun inputUserValue(): List<Int> {
 fun restart(complete: Boolean): Int {
     if(complete) {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        val input = Console.readLine().toInt()
-        return input
+        return Console.readLine().toInt()
     }
     return 0
 }
