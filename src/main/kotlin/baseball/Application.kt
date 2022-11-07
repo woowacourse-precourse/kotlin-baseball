@@ -10,7 +10,6 @@ fun main() {
 
 fun playNumberBaseballGame(){
     val answerNumberArray= makeAnswerNumber()
-    //print(answerNumberArray)
 }
 
 fun makeAnswerNumber():List<Int>{
@@ -22,4 +21,16 @@ fun makeAnswerNumber():List<Int>{
         }
     }
     return answerNumberArray
+}
+
+fun checkValidNumber(num: List<Int>):Boolean{
+
+    if(num.distinct().size != 3)
+        return false
+
+    for (n in num){
+        if(n<1 || n>9)
+            return false
+    }
+    return true
 }
