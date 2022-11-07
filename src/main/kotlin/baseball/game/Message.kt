@@ -13,7 +13,15 @@ object Message {
     }
 
     fun showHint(ball: Int, strike: Int) {
-        TODO()
+        val hint = mutableListOf<String>()
+            .apply {
+                if (ball != 0) add("${ball}볼")
+                if (strike != 0) add("${strike}스트라이크")
+            }
+            .joinToString(" ")
+            .ifBlank { "낫싱" }
+
+        println(hint)
     }
 
     fun requestRestartGame(read: () -> String): Boolean {
