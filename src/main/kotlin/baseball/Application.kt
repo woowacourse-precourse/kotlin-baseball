@@ -14,7 +14,9 @@ fun playNumberBaseballGame(){
     do {
         print("숫자를 입력해주세요 : ")
         val userInput = Console.readLine()
-        //val userInputArray = makeNumToList(userInput)
+        val userInputArray = makeNumToList(userInput.toInt())
+        if(!checkValidNumber(userInputArray))
+            throw IllegalArgumentException()
         break
 
     }while(true)
