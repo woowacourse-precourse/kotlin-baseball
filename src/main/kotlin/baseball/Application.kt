@@ -9,10 +9,6 @@ fun playGame(){
 
 
     message(computer)
-    print("3개의 숫자를 모두 맞히셨습니다!")
-    println("게임 종료")
-
-    nextGame() //게임 한 턴 후 다음 게임 의사 여부를 묻기
 }
 
 fun nextGame(){
@@ -25,28 +21,32 @@ fun nextGame(){
         println("게임을 종료합니다!")
 }
 
-fun message(computer: MutableList<Int>){
+fun message(computer: MutableList<Int>) {
     //판단 및 메시지 출력
 
-    var strike=0
-    var ball=0
-    val index=0
+    var strike = 0
+    var ball = 0
+    val index = 0
 
-    val user=getUserNumber()
+    val user = getUserNumber()
 
     if (user != null) {
-        for (i in user){
-            if(computer.contains(i-'0'))
+        for (i in user) {
+            if (computer.contains(i - '0'))
                 ball++
-            if(computer[index]==i-'0'){
+            if (computer[index] == i - '0') {
                 ball--
                 strike++
             }
         }
     }
 
-    if(strike==3)
+    if (strike == 3){
         println("${strike}스트라이크")
+        print("3개의 숫자를 모두 맞히셨습니다!")
+        println(" 게임 종료")
+        nextGame() //게임 한 턴 후 다음 게임 의사 여부를 묻기
+    }
     else if(strike==0&&ball==0)
         println("낫싱")
     else if(strike==0)
@@ -56,6 +56,7 @@ fun message(computer: MutableList<Int>){
     else
         println("${ball}볼 ${strike}스트라이크")
 
+    message(computer)
 }
 
 fun getComputerNumber(): MutableList<Int> {
@@ -72,7 +73,7 @@ fun getComputerNumber(): MutableList<Int> {
 fun getUserNumber(): String? {
     //사용자 숫자 입력하기
 
-    println("숫자를 입력해주세요 :")
+    print("숫자를 입력해주세요 :")
     val user = readLine()
 
     //예외처리
