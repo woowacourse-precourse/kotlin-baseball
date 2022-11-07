@@ -31,3 +31,10 @@ BaseballGame.Builder()
     .play()
 ```
 
+<br/>
+
+## 패키지 구성 요소
+- BaseballGame::class
+- Message::class
+- ExceptionHandler::class
+- Provider::class
