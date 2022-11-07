@@ -2,7 +2,7 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-
+    var computer_number = create_computer_number()
 }
 fun InputNumber(): String{ //숫자 입력
     print("숫자를 입력해주세요: ")
@@ -21,6 +21,18 @@ fun iscorrectNumber(number : String){ // 숫자의 조건이 맞는지 검사
         }
     }
 }
+fun create_computer_number(): String{
+    var computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = pickNumberInRange(1,9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    var computer_number = computer.joinToString("")
+    return computer_number
+}
+
 
 
 
