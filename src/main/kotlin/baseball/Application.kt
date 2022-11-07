@@ -4,16 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms
 import java.lang.IllegalArgumentException
 
 fun main() {
-
     startBaseBallGame()
     val computerRandomNumber = computerSelectThreeRandomNumber()
     println(computerRandomNumber)
 
     while (true) {
         val userNumber = userThreeNumberInput()
-        if ( determineJudgement(computerRandomNumber, userNumber) == 3) {
+        if (determineJudgement(computerRandomNumber, userNumber) == 3) userDecideGameContinue()
 
-        }
     }
 
 }
@@ -37,7 +35,7 @@ private fun computerSelectThreeRandomNumber(): List<Int> {
 private fun userThreeNumberInput(): List<Int> {
     print("숫자를 입력해주세요 : ")
     val userInput = readLine()
-    if (userInputExceptionCheck(userInput)) {
+    if (userNumberInputExceptionCheck(userInput)) {
         throw IllegalArgumentException()
     }
 
@@ -45,7 +43,7 @@ private fun userThreeNumberInput(): List<Int> {
 }
 
 
-private fun userInputExceptionCheck(inputString: String?): Boolean {
+private fun userNumberInputExceptionCheck(inputString: String?): Boolean {
     if (inputString == null || inputString == "") {
         return true
     }
@@ -65,12 +63,12 @@ private fun isValidInputNumber(code: Int): Boolean {
 }
 
 
-private fun determineJudgement(computerNumberList : List<Int>, userNumberList : List<Int>) : Int{
+private fun determineJudgement(computerNumberList: List<Int>, userNumberList: List<Int>): Int {
     return printGameResult(increaseStrikeBallCount(computerNumberList, userNumberList))
 }
 
 
-private fun increaseStrikeBallCount(computerNumberList : List<Int>, userNumberList : List<Int>): Pair<Int, Int> {
+private fun increaseStrikeBallCount(computerNumberList: List<Int>, userNumberList: List<Int>): Pair<Int, Int> {
     var strikeCount = 0
     var ballCount = 0
 
@@ -82,7 +80,7 @@ private fun increaseStrikeBallCount(computerNumberList : List<Int>, userNumberLi
     return Pair(strikeCount, ballCount)
 }
 
-private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) : Int{
+private fun printGameResult(strikeBallCountPair: Pair<Int, Int>): Int {
     when {
         strikeBallCountPair.first == 0 && strikeBallCountPair.second == 0 -> println("낫싱")
         strikeBallCountPair.first == 3 -> println("${strikeBallCountPair.first}스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
@@ -92,4 +90,10 @@ private fun printGameResult(strikeBallCountPair : Pair<Int, Int>) : Int{
     }
 
     return strikeBallCountPair.first
+}
+
+private fun userDecideGameContinue() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val userInput = readLine()
+
 }
