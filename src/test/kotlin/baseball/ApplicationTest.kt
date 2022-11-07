@@ -125,6 +125,27 @@ class ApplicationTest : NsTest() {
         assertThat(result).isEqualTo(Pair(0,3))
     }
 
+    @Test
+    fun `strike,ball 출력 함수 테스트1`(){
+        val result = printStrikeBall(3,0)
+        assertThat(result).isEqualTo("3스트라이크")
+    }
+    @Test
+    fun `strike,ball 출력 함수 테스트2`(){
+        val result = printStrikeBall(2,1)
+        assertThat(result).isEqualTo("1볼 2스트라이크")
+    }
+    @Test
+    fun `strike,ball 출력 함수 테스트3`(){
+        val result = printStrikeBall(1,2)
+        assertThat(result).isEqualTo("2볼 1스트라이크")
+    }
+    @Test
+    fun `strike,ball 출력 함수 테스트4`(){
+        val result = printStrikeBall(0,0)
+        assertThat(result).isEqualTo("낫싱")
+    }
+
     override fun runMain() {
         main()
     }
