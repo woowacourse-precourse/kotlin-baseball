@@ -7,14 +7,12 @@ fun playGame(){
     //리드미 파일을 참조함
     val computer=getComputerNumber()
 
-
     message(computer)
 }
 
 fun nextGame(){
-    var select = 0
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    select= readLine()!!.toInt()
+    val select= readLine()!!.toInt()
     if(select==1)
         playGame()
     else if(select==2)
@@ -70,7 +68,7 @@ fun getComputerNumber(): MutableList<Int> {
     return computer
 }
 
-fun getUserNumber(): String? {
+fun getUserNumber(): String {
     //사용자 숫자 입력하기
 
     print("숫자를 입력해주세요 :")
