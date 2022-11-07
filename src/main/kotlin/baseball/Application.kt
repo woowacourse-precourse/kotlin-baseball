@@ -1,6 +1,11 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
+
+var randomNumber100: Int = 0
+var randomNumber10 :Int =0
+var randomNumber1 :Int = 0
 
 
 fun main() {
@@ -9,19 +14,20 @@ fun main() {
 
 }
 
-fun randomMaker(): Int {
-    val randomNumber = Randoms.pickNumberInRange(1, 9)
-    var randomNumber2: Int
-    var randomNumber3: Int
+fun randomMaker() : Int{
+    randomNumber100 =  Randoms.pickNumberInRange(1,9)
 
-    do {
-        randomNumber2 = Randoms.pickNumberInRange(1, 9)
-    } while (randomNumber == randomNumber2)
+    do{
+        randomNumber10 = Randoms.pickNumberInRange(1,9)
+    }while(randomNumber100 == randomNumber10)
 
-    do {
-        randomNumber3 = Randoms.pickNumberInRange(1, 9)
-    } while (randomNumber == randomNumber3 || randomNumber3 == randomNumber2)
+    do{
+        randomNumber1 = Randoms.pickNumberInRange(1,9)
+    }while(randomNumber100 == randomNumber1 || randomNumber1 == randomNumber10)
 
-    return 100 * randomNumber + 10 * randomNumber2 + randomNumber3
+    val Number = 100*randomNumber100+10*randomNumber10+randomNumber1
+
+    return Number
 
 }
+
