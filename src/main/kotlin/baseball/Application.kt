@@ -46,10 +46,15 @@ private fun userInputExceptionCheck(inputString: String?): Boolean {
     }
 
     for (code in inputString.toList().map { it.code }) {
-        if (code < 48 || code > 57) {
-            return true
-        }
+        if (!isValidInputNumber(code)) return true
     }
 
     return false
+}
+
+private fun isValidInputNumber(code: Int): Boolean {
+    if (code < 48 || code > 57) {
+        return false
+    }
+    return true
 }
