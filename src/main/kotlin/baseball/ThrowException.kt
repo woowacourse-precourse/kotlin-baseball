@@ -6,7 +6,7 @@ class ThrowException {
      * 게임 종료시에 사용자가 입력을 올바르게 하지 않았다면 예외를 던져주는 함수
      */
     fun throwExceptionForRestartNumber(input: String?){
-        if (!isNumber(input))
+        if (!getIsNumber(input))
             throw IllegalArgumentException("입력한 값이 숫자가 아닙니다.")
         else if (!isOneOrTwo(input))
             throw IllegalArgumentException("입력한 수가 올바른 값이 아닙니다")
@@ -16,7 +16,7 @@ class ThrowException {
      * 사용자가 3자리 숫자를 올바르게 입력하지 않았다면 예외를 던져주는 함수
      */
     fun throwExceptionForUserNumber(inputValue: String?){
-        if (!isNumber(inputValue))
+        if (!getIsNumber(inputValue))
             throw IllegalArgumentException("입력한 값이 숫자가 아닙니다.")
         else if(!hasThreeDigits(inputValue))
             throw IllegalArgumentException("입력한 수가 3자릿수가 아닙니다.")
@@ -25,9 +25,9 @@ class ThrowException {
     }
 
     /**
-     * 입력한 값이 숫자인지 확인해주는 함수
+     * 입력한 값이 숫자인지를 Boolean 으로 반환해주는 함수
      */
-    private fun isNumber(input: String?): Boolean{
+    private fun getIsNumber(input: String?): Boolean{
         try {
             input?.toInt()!!
         }
