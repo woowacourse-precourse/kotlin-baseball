@@ -48,6 +48,28 @@ BUILD SUCCESSFUL in 0s
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
+## 구현할  기능 목록
+- `startgame` : 게임의 시작 지점(첫 숫자 입력)부터 종료까지(전부 맞힐 때)를 출력 및 반복하는 함수 
+- `userInputToInt` : 사용자로부터 값을 입력받고, 
+이를 `List<Int> ` 형태로 반환하는 함수 
+- `createComputerList` : `List<Int>`
+  - `compareList` : 입력받은 값과 컴퓨터가 생성한 값이 일치하는지 확인하고,
+  일치하면 (3 스트라이크) `true`를 리턴하고 그렇지 않은 경우 `false`를 리턴한다.
+- `userInputCheck` : 입력받은 값이 유효한지 확인한다.
+    입력받은 값이 3개 이하의 정수가 아니면 
+`IllegalArgumentException`을 호출하고 종료한다.
+- `setCheck` : 입력받은 값이 유효한지 확인한다.
+  입력받은 값이 3개 이하의 중북되지 않는 정수가 아니면
+  `IllegalArgumentException`을 호출하고 종료한다.
+- `menuCheck` : 게임을 반복할지 결정하는 함수이다. 
+    만일 유효하지 않은 입력이 들어오면, `IllegalArgumentException`
+    을 발생해 종료시킨다.
+- `notThreeStrike`: `ballCheck`, `strikeCheck`를 통해 계산된 볼과 스트라이크의 횟수를 저장하고,
+    출력하기 위한 볼 횟수와 스트라이크 횟수를 저장해 `printResult`에 파라미터로 전달한다.
+- `printResult`: 3 스트라이크가 아닐 때의 볼, 스트라이크 횟수를 출력한다.
+- `ballCheck`, `strikeCheck`: 볼 횟수와 스트라이크 횟수를 체크하기 위한 함수이다.
+- `restart`: 재시작 여부를 결정하는 `boolean` 값을 리턴하는 함수
+
 ### 입출력 요구 사항
 
 #### 입력
