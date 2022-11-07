@@ -21,6 +21,12 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+    @Test
     fun `예외 테스트_길이`() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> { checkInputLength("1234") }

@@ -98,6 +98,15 @@ fun getUserInput(): String {
 }
 
 fun userInputValidation(input: String): Boolean {
+
+
+    checkIncludeZero(input)
+    checkInputLength(input)
+    checkDuplicateNum(input)
+    checkOnlyNumber(input)
+    return true
+
+        /* 예외처리
     try {
         checkIncludeZero(input)
         checkInputLength(input)
@@ -107,6 +116,8 @@ fun userInputValidation(input: String): Boolean {
         return false
     }
     return true
+    */
+
 }
 
 fun checkIncludeZero(input: String) {
