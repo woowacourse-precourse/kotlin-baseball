@@ -1,9 +1,9 @@
 # 📌 기능 목록
 
 ### 1에서 9까지 서로 다른 임의의 수 3개를 선택
-- [ ] mutableList를 만든다.
-- [ ] mutableList의 크기가 3보다 작을 때까지 랜덤 숫자를 mutableList에 추가한다.
-- [ ] mutableList를 return 한다.
+- [x] mutableList를 만든다.
+- [x] mutableList의 크기가 3보다 작을 때까지 랜덤 숫자를 mutableList에 추가한다.
+- [x] mutableList를 return 한다.
 
 ### 스트라이크를 판단
 - [ ] 컴퓨터의 random 숫자와 사용자의 입력 숫자를 받아와 list에 담는다.
