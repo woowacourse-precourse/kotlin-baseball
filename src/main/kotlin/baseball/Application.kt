@@ -108,20 +108,29 @@ class Printer() {
         print("숫자를 입력해주세요 : ")
     }
 
-    fun showStrikeMessage(strikeCount: Int) {
+    private fun showStrikeMessage(strikeCount: Int) {
         println("${strikeCount}스트라이크")
     }
 
-    fun showBallMessage(ballCount: Int) {
+    private fun showBallMessage(ballCount: Int) {
         println("${ballCount}볼")
     }
 
-    fun showNothingMessage() {
+    private fun showNothingMessage() {
         println("낫싱")
     }
 
-    fun showBallStrikeMessage(ballCount: Int, strikeCount: Int) {
+    private fun showBallStrikeMessage(ballCount: Int, strikeCount: Int) {
         println("${ballCount}볼 ${strikeCount}스트라이크")
+    }
+
+    fun showCountingMessage(ballCount: Int, strikeCount: Int) {
+        when {
+            (strikeCount == 0) and (ballCount == 0) -> showNothingMessage()
+            strikeCount == 0 -> showBallMessage(ballCount)
+            ballCount == 0 -> showStrikeMessage(strikeCount)
+            else -> showBallStrikeMessage(ballCount, strikeCount)
+        }
     }
 
     fun showEndMessage() {
