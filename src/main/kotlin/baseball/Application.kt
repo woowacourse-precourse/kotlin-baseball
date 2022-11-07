@@ -19,9 +19,7 @@ private fun computerSelectThreeRandomNumber(): List<Int> {
     val computerList = mutableListOf<Int>()
     while (computerList.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computerList.contains(randomNumber)){
-            computerList.add(randomNumber)
-        }
+        if (!computerList.contains(randomNumber)) computerList.add(randomNumber)
     }
     return computerList
 }
