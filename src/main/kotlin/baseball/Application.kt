@@ -18,10 +18,9 @@ class Baseball(computer: String) {
         var isPlaying = true
         while (isPlaying) {
             val userInput = createUserInput()
-            val isEndedGame = (strike(userInput) == 3)
+            val isEndedGame = (strike(userInput) == THREE_STRIKE)
 
             checkCriteria(userInput)
-
             if (isEndedGame) {
                 endGame(userInput)
                 isPlaying = playAgain()
@@ -34,14 +33,6 @@ class Baseball(computer: String) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 
-    private fun createUserInput(): String {
-        print("숫자를 입력해주세요 : ")
-        val userInput: String = readLine()!!
-        if (userInput.length > 3) {
-            throw IllegalArgumentException("잘못된 값을 입력했습니다.")
-        }
-        return userInput
-    }
 
     private fun playAgain(): Boolean {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
@@ -56,30 +47,29 @@ class Baseball(computer: String) {
 
     private fun checkCriteria(userInput: String) {
         when (ball(userInput)) {
-            0 -> {
-                if (strike(userInput) == 0) return println("낫싱")
-                if (strike(userInput) == 1) return println("${strike(userInput)}스트라이크")
-                if (strike(userInput) == 2) return println("${strike(userInput)}스트라이크")
+            NONE_BALL -> {
+                if (strike(userInput) == NONE_STRIKE) println("낫싱")
+                if (strike(userInput) == ONE_STRIKE) println("${strike(userInput)}스트라이크")
+                if (strike(userInput) == TWO_STRIKE) println("${strike(userInput)}스트라이크")
             }
 
-            1 -> {
-                if (strike(userInput) == 0) return println("${ball(userInput)}볼")
-                if (strike(userInput) == 1) return println("${ball(userInput)}볼 ${strike(userInput)}스트라이크")
-
-            }
-
-            2 -> {
-                if (strike(userInput) == 0) return println("${ball(userInput)}볼")
-                if (strike(userInput) == 1) return println("${ball(userInput)}볼 ${strike(userInput)}스트라이크")
+            ONE_BALL -> {
+                if (strike(userInput) == NONE_STRIKE) println("${ball(userInput)}볼")
+                if (strike(userInput) == ONE_STRIKE) println("${ball(userInput)}볼 ${strike(userInput)}스트라이크")
 
             }
 
-            3 -> println("${ball(userInput)}볼")
+            TWO_BALL -> {
+                if (strike(userInput) == NONE_STRIKE) println("${ball(userInput)}볼")
+                if (strike(userInput) == ONE_STRIKE) println("${ball(userInput)}볼 ${strike(userInput)}스트라이크")
+
+            }
+
+            THREE_BALL -> println("${ball(userInput)}볼")
         }
     }
 
-    fun strike(user: String): Int {
-        val userInput: String = user
+    fun strike(userInput: String): Int {
         var strikeCount = 0
         for (index in userInput.indices) {
             val isMetStrikeCriteria = (computerInput[index] == userInput[index])
@@ -112,3 +102,23 @@ private fun createComputerInput(): String {
     }
     return computer.joinToString("")
 }
+
+
+fun createUserInput(): String {
+    print("숫자를 입력해주세요 : ")
+    val userInput: String = readLine()!!
+    if (userInput.length > 3) {
+        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+    }
+    return userInput
+}
+
+const val NONE_BALL = 0
+const val ONE_BALL = 1
+const val TWO_BALL = 2
+const val THREE_BALL = 3
+
+const val NONE_STRIKE = 0
+const val ONE_STRIKE = 1
+const val TWO_STRIKE = 2
+const val THREE_STRIKE = 3
