@@ -15,6 +15,7 @@ class User {
 
     // 유저의 입력을 리스트 변환
     fun inputConvertToList(userInput: String) {
+        _numberList.clear()
         _numberList.apply {
             userInput.forEach { number ->
                 add(number - '0')
