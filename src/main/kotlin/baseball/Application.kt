@@ -109,7 +109,7 @@ fun checkStrikeBall( ){
     }else if(ball == 0){
         println("${strike}스트라이크")
     }else{
-        println("${strike}스트라이크 ${ball}볼")
+        println("${ball}볼 ${strike}스트라이크")
     }
 }
 
