@@ -37,15 +37,19 @@ private fun playGame(computer: MutableList<Int>) {
     }
 }
 
+private fun countingBall(computer: MutableList<Int>, input: String): Int {
+    var count = 0
+    for (number in computer) {
+        if (input.contains(number.toString())) count++
+    }
+    return count
+}
+
 fun checkThreeStrike(computer: MutableList<Int>, input: String?): Boolean {
     TODO("Not yet implemented")
 }
 
 fun countingStrike(computer: MutableList<Int>, input: String?): Any {
-    TODO("Not yet implemented")
-}
-
-fun countingBall(computer: MutableList<Int>, input: String?): Any {
     TODO("Not yet implemented")
 }
 
