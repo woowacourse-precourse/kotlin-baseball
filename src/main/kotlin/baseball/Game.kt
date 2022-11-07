@@ -53,7 +53,7 @@ class Game {
         }
         if (strikeOrBall[0] == 0 && strikeOrBall[1] != 0) {
             message.ballMessage(strikeOrBall[1])
-            println()
+            message.printLineBreak()
         }
     }
 
