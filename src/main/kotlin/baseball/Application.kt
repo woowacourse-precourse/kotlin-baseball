@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val computerNumber = getRandomNumber()
     printGameStart()
+    println(computerNumber)
     val userNumber = inputUserNumber()
-    if(!checkInput(userNumber)) throw IllegalArgumentException()
+    if (!checkInput(userNumber)) throw IllegalArgumentException()
+
 }
 
 fun getRandomNumber(): MutableList<Int> {
@@ -30,10 +32,18 @@ fun inputUserNumber(): String {
 }
 
 fun checkInput(number: String): Boolean {
-    if(number.length != 3) return false
+    if (number.length != 3) return false
     number.forEach {
-        if(it !in '1'..'9') return false
+        if (it !in '1'..'9') return false
     }
-    if(number.toSet().size != 3) return false
+    if (number.toSet().size != 3) return false
     return true
+}
+
+fun listToString(list: List<Int>): String{
+    var answer = ""
+    list.forEach {
+        answer += it
+    }
+    return answer
 }
