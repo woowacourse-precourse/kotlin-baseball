@@ -15,12 +15,15 @@ const val INPUT_VALUE_WITH_MIXED_CHARACTERS = "문자가 섞인 입력 값입니
 const val INPUT_VALUE_NOT_THREE_DIGITS = "세 자리 숫자가 아닙니다."
 const val INPUT_VALUE_DUPLICATES = "중복되는 숫자가 존재합니다."
 const val INPUT_VALUE_IF_CONTAINS_ZERO = "입력 포맷이 일치하지 않습니다. 1부터 9까지 수만 입력해주세요."
+const val INPUT_VALUE_ONE_OR_TWO_ONLY = "1 또는 2를 입력해주세요."
 
 /**
  * GAME RULE
  */
-const val GO = "1"
-const val STOP = "2"
+const val RESTART = "1"
+const val QUIT = "2"
+const val RETRY = true
+const val STOP = false
 
 const val BALL = "볼 "
 const val STRIKE = "스트라이크"

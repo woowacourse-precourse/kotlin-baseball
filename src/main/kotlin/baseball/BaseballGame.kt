@@ -1,9 +1,9 @@
 package baseball
 
+import baseball.resources.*
 import baseball.domain.Computer
 import baseball.domain.Match
 import baseball.domain.Player
-import baseball.resources.*
 import baseball.view.View
 import java.lang.IllegalArgumentException
 
@@ -26,22 +26,22 @@ class BaseballGame {
             player.saveIfValid(view.inputPlayerNumber())
             match.startWith(computer.number, player.number)
             view.outputMessageAndLinebreak(match.printHint())
-        } while (!isThreeStrike())
+        } while (matchAllNumbers())
     }
 
     private fun startNewGame(): Boolean {
         view.outputMessageAndLinebreak(NEW_GAME_START_OR_GO)
         return when (view.inputPlayerGoOrStop()) {
-            GO -> true
-            STOP -> false
-            else -> throw IllegalArgumentException()
+            RESTART -> true
+            QUIT -> false
+            else -> throw IllegalArgumentException(INPUT_VALUE_ONE_OR_TWO_ONLY)
         }
     }
 
-    private fun isThreeStrike(): Boolean {
+    private fun matchAllNumbers(): Boolean {
         return if (computer.number == player.number) {
             view.outputMessageAndLinebreak(GAME_STOP)
-            true
-        } else false
+            STOP
+        } else RETRY
     }
 }

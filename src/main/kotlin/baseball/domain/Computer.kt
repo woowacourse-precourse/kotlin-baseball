@@ -10,11 +10,12 @@ class Computer {
 
     fun makeRandomNumbers() {
         _number = NULL
-        val set = mutableSetOf<String>()
+        val newNumber = mutableSetOf<String>()
 
-        while (set.size < RULE_NUMBER_SIZE) {
-            set.add(randomGenerate.generate())
+        while (newNumber.size < RULE_NUMBER_SIZE) {
+            newNumber.add(randomGenerate.generate())
         }
-        set.forEach { _number = number.plus(it) }
+
+        newNumber.forEach { _number = _number.plus(it) }
     }
 }

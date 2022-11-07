@@ -1,6 +1,7 @@
 package baseball.domain
 
 import baseball.resources.*
+
 class Player {
     private var _number = String()
     val number: String get() = _number
