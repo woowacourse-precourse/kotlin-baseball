@@ -53,6 +53,10 @@ private fun userNumberInputExceptionCheck(inputString: String?): Boolean {
         return true
     }
 
+    if (inputString.length > 3) {
+        return true
+    }
+
     val digitDuplicatedCheckList = mutableListOf<Boolean>(false, false, false, false, false, false, false, false, false, false)
     for (code in inputString.toList().map { it.code }) {
         if (!isValidUserNumber(code)) return true
