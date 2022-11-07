@@ -21,9 +21,23 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 테스트`() { // 세 글자가 아닐 때
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트2`() { // 숫자 외 입력
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("as7") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트3`() { // 같은 숫자 반복 입력
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("757") }
         }
     }
 
