@@ -62,3 +62,44 @@ BaseballGame.Builder()
     1. 같은 수가 다른 자리에 있는 숫자의 갯수: "N볼"
     2. 같은 수가 같은 자리에 있는 숫자의 갯수: "M스트라이크"
     3. N == 0 and M == 0: "낫싱"
+
+
+<br/>
+
+## [Message::class](/src/main/kotlin/baseball/game/Message.kt)
+게임 진행 과정내에서 메세지를 출력하는 로직 담당
+
+- `showStartGame()`
+```
+숫자 야구 게임을 시작합니다.
+```
+
+- `requestUserNumber()`
+```
+숫자를 입력해주세요 : 
+```
+사용자가 잘못된 숫자를 입력한 경우 `ExceptionHandler.checkNumberFormat(...)` 함수를 통해 예외 처리된다
+
+- `showHint(ball, strike)`
+    - ball == 0 and strike == 0 이면
+  ```
+  낫싱
+  ```
+    - 그렇지 않으면, 아래 방식 중 하나 출력
+  ```
+  n볼
+  m스트라이크
+  n볼 m스트라이크
+  ```
+
+- `requestRestartOrFinish()`
+```
+3개의 숫자를 모두 맞히셨습니다! 게임 종료
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+```
+
+
+- `showGameFinished()`
+```
+게임 종료
+```
