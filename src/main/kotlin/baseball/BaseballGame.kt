@@ -13,6 +13,33 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
             checkValidInput(userInput)
 
             var result = getResult(userInput)
+            processStatus = processByResult(result)
+        }
+
+        BaseballStatement.printQuit()
+    }
+
+    private fun processByResult(result: Int): Int{
+        return when(result){
+            BaseballSetting.DIGIT_NUMBER.number -> {
+                BaseballStatement.printSuccess()
+                decideRestartOrQuit()
+            }
+            else -> BaseballSetting.START_OR_RESTART.number
+        }
+    }
+
+    private fun decideRestartOrQuit(): Int{
+        BaseballStatement.printRestartOrQuit()
+        return when(val userInput = Console.readLine().toInt()){
+            BaseballSetting.QUIT.number-> {
+                userInput
+            }
+            BaseballSetting.START_OR_RESTART.number -> {
+                resetComputerNumbers()
+                userInput
+            }
+            else -> throw IllegalArgumentException()
         }
     }
 
@@ -24,8 +51,14 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
 
     private fun checkValidInput(userInput: String){
         if(userInput.length != BaseballSetting.DIGIT_NUMBER.number
-                || !userInput.isNumberString()) throw IllegalArgumentException()
+            || !userInput.isNumberString()) throw IllegalArgumentException()
     }
 
     private fun String.isNumberString() = this.all { it.isDigit() }
+
+    private fun resetComputerNumbers(){
+        computerNumbers =
+            ComputerNumbers(RandomNumberGenerator.nDigitMap(BaseballSetting.DIGIT_NUMBER.number))
+    }
+
 }
