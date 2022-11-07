@@ -28,5 +28,9 @@ class Computer(private val generator: Generator) {
         return ballsStrikes.strikes == 3
     }
 
-    fun reset() {}
+    fun reset() {
+        for (index in 0 until numberLocations.size) {
+            numberLocations[index] = -1
+        }
+    }
 }

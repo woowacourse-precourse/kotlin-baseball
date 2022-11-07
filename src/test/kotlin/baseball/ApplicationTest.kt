@@ -289,6 +289,20 @@ class ApplicationTest : NsTest() {
         assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     }
 
+    @Test
+    fun `저장된 컴퓨터 무작위 숫자 초기화`() {
+        val generator = ExpectedNumberGenerator(listOf(1, 3, 5))
+        val computer = Computer(generator)
+
+        computer.generateNumbers()
+        val beforeReset = computer.countBallsStrikes(listOf(1, 3, 5))
+        assertThat(beforeReset.strikes).isEqualTo(3)
+
+        computer.reset()
+        val afterReset = computer.countBallsStrikes(listOf(1, 3, 5))
+        assertThat(afterReset.strikes).isEqualTo(0)
+    }
+
     override fun runMain() {
         main()
     }
