@@ -36,7 +36,10 @@ fun printGuidelinePhraseAndWaitForInput() {
     print("숫자를 입력해주세요 : ")
     val userInput = readln().trim()
     try {
-        if (userInput.isNotException(ExceptionType.GameException)) {
+        if (
+            userInput.isNotException(ExceptionType.GameException) &&
+            userInput.isNotDuplicated()
+        ) {
             printGameResult(userInput.gameResult())
         } else {
             throw IllegalArgumentException()
@@ -53,6 +56,14 @@ fun printGameStartPhrase() {
 fun printExceptionPhraseAndQuitProcess() {
     println("예외가 발생되어 프로그램을 종료합니다.")
     exitProcess(0)
+}
+
+fun String.isNotDuplicated(): Boolean {
+    val setOfUserInput = mutableSetOf<Int>()
+    this.map { it.digitToInt() }.forEach {
+        setOfUserInput.add(it)
+    }
+    return setOfUserInput.size == 3
 }
 
 fun String.isNotException(
