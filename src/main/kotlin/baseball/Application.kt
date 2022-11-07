@@ -37,24 +37,25 @@ fun random():MutableList<Int>{
     }
     return computer
 }
+fun checkCorrect(now : Char, input:CharArray):Int{
+    for(i in 0 until 3){
+        if(now == input[i]) return i
+    }
+    return -1
+}
 
 fun countCorrect(computer:MutableList<Char>,input:CharArray):MutableList<Int>{
-    var homerun_strike = mutableListOf<Int>()
-    homerun_strike.add(0)
-    homerun_strike.add(0)
+    var strike_ball = mutableListOf<Int>()
+    strike_ball.add(0)
+    strike_ball.add(0)
 
     for(i in 0 until 3){
-        for(j in 0 until 3){
-            if(computer[i] == input[j]){
-                if(i == j){
-                    homerun_strike[0]++
-                }else{
-                    homerun_strike[1]++
-                }
-            }
+       var same = checkCorrect(computer[i],input);
+        if(same == i) strike_ball[0]++
+        else if(same != -1) strike_ball[1]++
         }
-    }
-    return homerun_strike
+
+    return strike_ball
 }
 
 fun changeToChar(get : MutableList<Int>):MutableList<Char>{
@@ -79,7 +80,9 @@ fun main() {
 
         val ComputerNum = random()
         val ComputerChar = changeToChar(ComputerNum)
-        countCorrect(ComputerChar, input)
+        var strike_ball = countCorrect(ComputerChar, input)
+
+
 
     }
 
