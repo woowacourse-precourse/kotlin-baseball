@@ -21,9 +21,10 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun inputValidationTest() {
+        val input = "012"
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
+            assertThrows<IllegalArgumentException> { userInputValidation(input) }
         }
     }
 
