@@ -36,8 +36,9 @@ class BaseballModel {
         }
 
         val strikeStr = if (strikeCnt > 0) "$strikeCnt" + STRIKE_STR else ""
-        val ballStr = if (ballCnt > 0) "$ballCnt$BALL_STR " else ""
-        resultString = "$ballStr$strikeStr"
+        val ballStr = if (ballCnt > 0) "$ballCnt$BALL_STR" else ""
+        val space = if (ballCnt > 0 && strikeCnt > 0) " " else ""
+        resultString = ballStr + space + strikeStr
     }
 
     fun isEndedCheck() {
