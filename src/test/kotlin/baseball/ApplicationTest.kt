@@ -90,6 +90,31 @@ class ApplicationTest : NsTest() {
             assertThat(computer.computerNumbers).doesNotHaveDuplicates()
         }
     }
+
+    @Nested
+    inner class UserTest {
+        private val user = User()
+
+        @Test
+        fun `유저 입력 - 3자리수 검사`() {
+            user.enterUserNumbers("1234")
+            assertThat(user.userNumbers).hasSize(3)
+        }
+
+        @Test
+        fun `유저 입력 - 1~9범위 검사`() {
+            user.enterUserNumbers("430")
+            user.userNumbers.forEach() {
+                assertThat(it).isIn(1..9)
+            }
+        }
+
+        @Test
+        fun `유저 입력 - 중복 검사`() {
+            user.enterUserNumbers("335")
+            assertThat(user.userNumbers).doesNotHaveDuplicates()
+        }
+    }
     override fun runMain() {
         main()
     }
