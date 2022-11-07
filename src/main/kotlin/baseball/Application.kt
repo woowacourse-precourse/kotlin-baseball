@@ -103,7 +103,7 @@ private fun userDecideGameContinue() {
 
 
 private fun userGameContinueDecisionInputExceptionCheck(inputString: String?): Boolean {
-    if (inputString == null || inputString == "") {
+    if (inputString.isNullOrBlank()) {
         return true
     }
 
