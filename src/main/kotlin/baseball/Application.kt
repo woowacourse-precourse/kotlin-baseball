@@ -5,26 +5,44 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
 
-    var input: String
     while (true) {
         val answer = generateRandomNumber()
         println(answer)
         try {
             print("숫자를 입력해주세요: ")
-            input = readLine()!!
+            val input = readLine()!!
             if (checkValidity(input)) {
-                if (input == answer) {
+                if (input != answer) {
+                    // 스트라이크, 볼, 낫싱 결과 출력
+                    var strike = 0
+                    var ball = 0
+                    for(i in answer.indices){
+                        for(j in input.indices){
+                            // 같은 숫자가 같은 자리에 있으면 스트라이크
+                            if(answer[i] == input[j]){
+                                if(i == j){
+                                    strike++
+                                }else{ // 같은 숫자가 다른 자리에 있으면 볼
+                                    ball++
+                                }
+                            }
+                        }
+                    }
+                    if(strike != 0 && ball != 0){
+                        println("${ball}볼 ${strike}스트라이크")
+                    }else{
+                        if(strike != 0) println("${strike}스트라이크")
+                        else if(ball != 0) println("${ball}볼")
+                        else println("낫싱") // 같은 숫자가 아예 없으면 낫싱
+                    }
+                }else{
                     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
                     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-                    input = readLine()!!
-                    when (input) {
+                    when (readLine()!!) {
                         "1" -> continue // 재시작
                         "2" -> break // 종료
                         else -> throw IllegalArgumentException()
                     }
-                }else{
-                    // todo: 스트라이크, 볼, 낫싱 결과 출력
-
                 }
             }else{
                 throw IllegalArgumentException()
