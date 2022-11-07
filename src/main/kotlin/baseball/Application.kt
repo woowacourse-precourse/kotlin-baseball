@@ -6,23 +6,24 @@ import java.lang.IllegalArgumentException
 val gameStrings = GameStrings()
 lateinit var answer: Answer
 
-class Answer(answer:String){
-    val answer:String
+class Answer(answer: String) {
+    val answer: String
 
-    init{
+    init {
         if (answer.length != 3) {
             throw IllegalArgumentException("number's digit should be 3.")
         }
-        if (checkDup(answer)){
+        if (checkDup(answer)) {
             throw IllegalArgumentException("each number in answer should be unique.")
         }
         this.answer = answer
     }
-    private fun checkDup(answer:String):Boolean{
 
-        for(i in answer.indices){
-            for(j in i+1 until answer.length){
-                if(answer[i]==answer[j]){
+    private fun checkDup(answer: String): Boolean {
+
+        for (i in answer.indices) {
+            for (j in i + 1 until answer.length) {
+                if (answer[i] == answer[j]) {
                     return true
                 }
             }
@@ -31,6 +32,7 @@ class Answer(answer:String){
         return false
     }
 }
+
 class PlayersGuess(playerGuess: String) {
     val guess: String
 
@@ -55,7 +57,7 @@ class NewGameOrEnd(playerInput: Int) {
 
 
 fun setRandomNumber() {
-    var generateNumber=""
+    var generateNumber = ""
     while (generateNumber.length < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!generateNumber.contains(randomNumber.digitToChar())) {
@@ -63,7 +65,7 @@ fun setRandomNumber() {
         }
     }
 
-    answer=Answer(generateNumber)
+    answer = Answer(generateNumber)
 }
 
 fun prepareNewGame() {
@@ -92,27 +94,38 @@ fun countBallAndStrike(playersGuess: PlayersGuess): List<Int> {
 fun playGame() {
     lateinit var playerAnswer: PlayersGuess
 
+
     while (true) {
         print(gameStrings.REQUEST_INPUT_TEXT)
         playerAnswer = PlayersGuess(readln())
 
         val (strikeCount, ballCount) = countBallAndStrike(playerAnswer)
         println(gameStrings.strikeAndBallCountString(strikeCount, ballCount))
+
+        if (strikeCount == 3) {
+            return
+        }
     }
 
 }
 
+fun decideNewGameOrEnd(input: NewGameOrEnd): Boolean {
+    return input.input != 1
+}
+
 
 fun main() {
-    lateinit var newGameOrEnd: NewGameOrEnd
-
     println(gameStrings.GAME_START_TEXT)
-    do {
+    while (true) {
+
         prepareNewGame()
         playGame()
-        newGameOrEnd = NewGameOrEnd(readln().toInt())
 
-    } while (newGameOrEnd.input == 1)
+        val newGameOrEnd = NewGameOrEnd(readln().toInt())
+        if (decideNewGameOrEnd(newGameOrEnd)) {
+            break
+        }
+    }
 
 
 }

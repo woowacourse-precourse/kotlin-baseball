@@ -8,7 +8,7 @@ class GameStrings {
     val REQUEST_INPUT_TEXT = "숫자를 입력해주세요 : "
 
 
-    fun strikeAndBallCountString(strikeCount: Int, ballCount: Int):String {
+    fun strikeAndBallCountString(strikeCount: Int, ballCount: Int): String {
         val strikeAndBall = mutableListOf<String>()
         if (ballCount > 0) {
             strikeAndBall.add("${ballCount}볼")
@@ -21,7 +21,7 @@ class GameStrings {
         if (strikeAndBall.isEmpty()) {
             return "낫싱"
         }
-        if (strikeCount==3){
+        if (strikeCount == 3) {
             return this.CORRECT_TEXT
         }
 
