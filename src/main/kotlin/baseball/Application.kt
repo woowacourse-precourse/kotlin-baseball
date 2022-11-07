@@ -21,7 +21,48 @@ fun entireGame():Int {
     var computerNum:List<Int> = makeRandomNum()
 
 
+
     return 0 //임시 코드
+}
+
+
+fun getBallAndStrike(computerNum: List<Int>,
+                     userNum:List<Int>):List<Int>{
+    var ballCount:Int
+    var strikeCount:Int
+    val countList= mutableListOf<Int>()
+
+    ballCount= getBall(computerNum,userNum)
+    strikeCount= getStrike(computerNum, userNum)
+
+    ballCount-=strikeCount
+
+    countList.add(ballCount)
+    countList.add(strikeCount)
+
+    return countList
+
+}
+
+fun getBall(computerNum: List<Int>,
+            userNum: List<Int>):Int{
+    var ballCount=0
+    for(idx in userNum.indices){
+        if(computerNum.contains(userNum[idx])){
+            ballCount+=1
+        }
+    }
+    return ballCount
+}
+fun getStrike(computerNum: List<Int>,
+              userNum: List<Int>):Int{
+    var strikeCount=0
+    for(idx in userNum.indices){
+        if(userNum[idx]==computerNum[idx]){
+            strikeCount+=1
+        }
+    }
+    return strikeCount
 }
 
 fun makeRandomNum():List<Int>{
@@ -80,7 +121,6 @@ fun inputUserNum():List<Int>{ //사용자가 번호 입력하는 함수
     }
 
     return answerList //List<Int>형식으로 변환 후 리턴
-
 }
 
 
