@@ -66,12 +66,12 @@ fun getBaseballResult(computerNumbers: MutableList<Int>, playerNumbers: MutableL
     return if (strikeCount + ballCount != 0) ball + strike else "낫싱"
 }
 
-fun chooseToContinueOrStop(baseballResult: String):Boolean {
+fun chooseToContinueOrStop(baseballResult: String, readInputString: String): Boolean {
     var stop = false
     if (baseballResult == "3스트라이크") {
         println("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.")
         var f = validateInputString(
-            readInputString(),
+            readInputString,
             stringLengthToSpecify = 1,
             inputStartNumber = 1,
             inputEndNumber = 2

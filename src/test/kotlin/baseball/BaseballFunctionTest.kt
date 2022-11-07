@@ -36,7 +36,7 @@ class BaseballFunctionTest {
     }
 
     @Test
-    fun `컴퓨터와 플레이어의 숫자들을 비교하여 스트라이크 볼 또는 낫싱을 반환하는 기능`() {
+    fun `컴퓨터와 플레이어의 숫자들을 비교하여 스트라이크 볼 또는 낫싱 문자열을 반환하는 기능`() {
         val computerNumbersExample = mutableListOf(4, 2, 3)
         val playerNumbersExample1 = mutableListOf(1, 5, 3)
         val playerNumbersExample2 = mutableListOf(4, 3, 2)
@@ -48,5 +48,16 @@ class BaseballFunctionTest {
             { assertThat(getBaseballResult(computerNumbersExample, playerNumbersExample2)).isEqualTo("2볼 1스트라이크") },
             { assertThat(getBaseballResult(computerNumbersExample, playerNumbersExample3)).isEqualTo("낫싱") },
             { assertThat(getBaseballResult(computerNumbersExample, playerNumbersExample4)).isEqualTo("3볼 ") })
+    }
+
+    @Test
+    fun `게임에서 승리 하였을시 계속할지 그만둘지 선택하는 기능`() {
+
+        val stopExample1 = chooseToContinueOrStop("3스트라이크", "1")
+        val stopExample2 = chooseToContinueOrStop("3스트라이크", "2")
+
+        assertAll("getBaseballResult가 정확히 구현되어 있는지 검사",
+            { assertThat(stopExample1).isEqualTo(false) },
+            { assertThat(stopExample2).isEqualTo(true) })
     }
 }
