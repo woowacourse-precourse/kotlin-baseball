@@ -13,31 +13,28 @@
 
 ## 만들어본 기능 목록
 
-1. Computer: 컴퓨터의 랜덤값을 생성하고 관리하는 클래스
-    * getComputerNumberList(): 컴퓨터가 1에서 9까지의 서로 다른 임의의 수 3개를 선택하며 순서대로 리스트에 넣는 함수
-
-2. ThrowException: 입력값에 대한 예외처리를 관리하는 클래스
+1. ThrowException: 입력값에 대한 예외처리를 관리하는 클래스
     * throwExceptionForUserNumber(): 사용자가 3자리 숫자를 올바르게 입력하지 않았다면 예외를 던져주는 함수
-        * isNumber(): 입력한 값이 숫자인지 판단해주고 Boolean 형으로 반환해주는 함수
+        * getIsNumber(): 입력한 값이 숫자인지 판단해주고 Boolean 형으로 반환해주는 함수
         * hasThreeDigits(): 입력한 값이 세자리 수 인지 판단해주고 Boolean 형으로 반환해주는 함수
         * hasDistinctDigits(): 입력한 값에 중복된 숫자가 있는지 판단해주고 Boolean 형으로 반환해주는 함수
       
     * throwExceptionForRestartNumber(): 게임 종료시에 사용자가 입력을 올바르게 하지 않았다면 예외를 던져주는 함수
-        * isNumber(): 입력한 값이 숫자인지 판단해주는 함수
-        * isOneOrTwo(): 입력값이 1과 2 사이에 있는지 판단해주는 함수
+        * getIsNumber(): 입력한 값이 숫자인지를 Boolean 으로 반환해주는 함수
+        * getIsOneOrTwo(): 입력값이 1과 2 사이에 있는지를 Boolean 으로 반환해주는 함수
       
-3. BaseballGame: 컴퓨터 값과 유저의 값을 비교하고 판단하는 등 게임을 진행하는 클래스
-    * processGame(): 게임을 진행하는 함수
-       * getUserNumber(): 사용자로부터 입력을 받고, ThrowException 객체를 통해 예외 처리를 한 후 반환하는 함수
-       * getUserNumberList(): 사용자로부터 입력 받은 숫자를 쪼개어 순서대로 리스트에 넣고 리스트를 반환하는 함수
-       
-       * getResultString(): 두 개의 배열을 인자로 받아 반복문을 돌려 스트라이크와 볼과 낫싱을 판단하고 string 형태로 반환하는 함수
-           * setResult() 사용자의 숫자 값이 컴퓨터 값 리스트에 포함되어 있을 때 각각의 index 를 비교하여 일치하면 스트라이크, 불일치하면 볼에 1씩 더해주는 함수
-           * decideResultString(): 결과를 string 형태로 바꿔주는 함수
+2. BaseballGame: 컴퓨터 값과 유저의 값을 비교하고 판단하는 등 게임을 진행하는 클래스
+    * startGame(): 게임을 시작하는 함수
+      * processGame(): 값을 입력하고 결과를 확인하는 기능인 게임 과정을 진행하는 함수
+         * getComputerNumberList(): 컴퓨터의 랜덤한 숫자를 정해주고 리스트에 넣어 반환해주는 함수
+         * getUserNumber(): 사용자로부터 입력을 받고, ThrowException 객체를 통해 예외 처리를 한 후 반환하는 함수
+         * getUserNumberList(): 사용자로부터 입력 받은 숫자를 쪼개어 순서대로 리스트에 넣고 리스트를 반환하는 함수
+         * getResultString(): 두 개의 배열을 인자로 받아 반복문을 돌려 스트라이크와 볼과 낫싱을 판단하고 string 형태로 반환하는 함수
+             * setResult() 사용자의 숫자 값이 컴퓨터 값 리스트에 포함되어 있을 때 각각의 index 를 비교하여 일치하면 스트라이크, 불일치하면 볼에 1씩 더해주는 함수
+             * decideResultString(): 결과를 string 형태로 바꿔주는 함수
       
 4. Application: 게임을 실행하는 클래스
-    * startGame(): 게임을 시작하는 함수
-       * getNumberForRestartGame(): 재시작 혹은 종료를 위한 값을 입력받고 ThrowException 객체를 통해 예외 처리를 한 후 입력값을 반환하는 함수
+    BaseballGame 클래스의 startGame 함수를 실행
            
 
 
