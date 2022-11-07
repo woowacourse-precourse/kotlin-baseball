@@ -6,18 +6,19 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
     var randomValue = createRandomValue()
     while (true) {
-        val inputValue = createInputValue()
-        if (!isValid(inputValue))
-            throw IllegalArgumentException("입력 오류")
-
-        val compared = compareNumber(randomValue, inputValue)
-        printResult(compared)
-        val isExit = isExit(compared)
-        if (isExit < 0) break
-        if (isExit > 0) randomValue = createRandomValue()
+        when (playBaseBall(randomValue)){
+            "EXIT" -> break
+            "FAIL" -> continue
+            "SUCCESS" -> randomValue = createRandomValue()
+        }
     }
 }
-
+fun playBaseBall(randomValue: List<Int>): String{
+    val inputValue = createInputValue()
+    val compared = compareNumber(randomValue, inputValue)
+    printResult(compared)
+    return getGameResult(compared)
+}
 fun createRandomValue(): List<Int> {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
@@ -29,23 +30,17 @@ fun createRandomValue(): List<Int> {
     return computer
 }
 
-fun createInputValue(): List<Int>{
+fun createInputValue(): List<Int> {
     print("숫자를 입력해주세요: ")
     val input = readLine()
-    val isDigitOnly = input!!.all {
-        it.isDigit() && it.digitToInt() > 0
-    }
-    if (!isDigitOnly) return emptyList()
 
-    return input
-        .map { it.digitToIntOrNull() }
-        .filterNotNull()
+    if (isValid(input!!))
+        return input.map { it.digitToInt() }
+
+    throw IllegalArgumentException("입력값이 서로 다른 3자리의 수가 아니므로 게임을 종료합니다.")
 }
 
-fun compareNumber(
-    computer: List<Int>,
-    user: List<Int>
-): Pair<Int, Int> {
+fun compareNumber(computer: List<Int>, user: List<Int>): Pair<Int, Int> {
     var ball = 0
     var strike = 0
     computer.onEachIndexed { index, num ->
@@ -57,8 +52,8 @@ fun compareNumber(
     return Pair(ball, strike)
 }
 
-fun printResult(result: Pair<Int, Int>){
-    val ball   = result.first
+fun printResult(result: Pair<Int, Int>) {
+    val ball = result.first
     val strike = result.second
     var hintMessage = ""
 
@@ -67,30 +62,31 @@ fun printResult(result: Pair<Int, Int>){
     if (strike != 0)
         hintMessage += "${strike}스트라이크"
 
-    if (hintMessage.isBlank()) hintMessage = "낫싱"
+    if (hintMessage.isBlank())
+        hintMessage = "낫싱"
 
     println(hintMessage)
 }
 
-fun isValid(inputValue: List<Int>): Boolean{
-    val isEmpty = inputValue.isEmpty()
-    if (isEmpty) return false
-
-    val listSize = inputValue.distinct().size
-    return (listSize == 3)
+fun isValid(input: String): Boolean {
+    val distinctList = input.toMutableList().distinct()
+    val isDigitValid = input.all {
+        it.isDigit() && it.digitToInt() > 0
+    }
+    val isSizeValid = (distinctList.size == 3 && input.length == 3)
+    return (isDigitValid && isSizeValid)
 }
 
-fun isExit(compared: Pair<Int, Int>): Int{
+fun getGameResult(compared: Pair<Int, Int>): String {
     val isThreeStrike = (compared.second == 3)
-    if (!isThreeStrike) return 0
+    if (!isThreeStrike) return "FAIL"
 
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
 
-    var continueInput = ""
-    continueInput = readLine()!!
-
-    if (continueInput == "1") return 1
-    if (continueInput == "2") return -1
-    throw IllegalArgumentException("입력 오류")
+    when(readLine()!!){
+        "1" -> return "SUCCESS"
+        "2" -> return "EXIT"
+    }
+    throw IllegalArgumentException("재시작이나 종료를 위해 1또는 2를 입력해주어야 합니다.")
 }
