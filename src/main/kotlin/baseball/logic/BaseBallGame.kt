@@ -20,26 +20,26 @@ class BaseBallGame {
 
     private fun playBaseballGame(computer: Computer){
         while(true) {
+            computer.number.forEach { print(it) }
             user.numberFormatting(playGame.getUserNum())
             val resultArr = user.compareWithAnswer(computer.number)
-            if(resultArr[0] == 3)
-                if(!endBaseballGame())
-                    break
+            if(resultArr[0] == 3){
+                when(endBaseballGame()){
+                    1 -> {startBaseballGame(false)
+                        break}
+                    2 -> break
+                    else -> throw IllegalArgumentException()
+                }
+            }
+
             playGame.printResult(resultArr)
         }
     }
 
-    private fun endBaseballGame(): Boolean {
+    private fun endBaseballGame(): Int {
         endGame.printEndGameMessage()
 
-        val playAgainFlag = endGame.printAskPlayAgainMessage()
-        if(playAgainFlag == 1)
-            startBaseballGame(false)
-        else if(playAgainFlag == 2)
-            return false
-        else
-            throw IllegalArgumentException()
-        return true
+        return endGame.printAskPlayAgainMessage()
     }
 
 }
