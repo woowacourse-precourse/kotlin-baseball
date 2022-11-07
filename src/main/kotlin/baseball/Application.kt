@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val computerNumber = getRandomNumber()
     printGameStart()
-    println(computerNumber)
     val userNumber = inputUserNumber()
     if (!checkInput(userNumber)) throw IllegalArgumentException()
+    checkCorrect(listToString(computerNumber), userNumber)
 
 }
 
@@ -46,4 +46,15 @@ fun listToString(list: List<Int>): String{
         answer += it
     }
     return answer
+}
+
+fun checkCorrect(answer: String, userInput: String) {
+    var strikeCount = 0
+    var ballCount = 0
+    userInput.forEachIndexed { index, c ->
+        if (answer.contains(c) && c == answer[index]) strikeCount++
+    }
+    userInput.forEachIndexed { index, c ->
+        if (answer.contains(c) && c != answer[index]) ballCount++
+    }
 }
