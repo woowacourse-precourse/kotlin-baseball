@@ -10,11 +10,11 @@ fun main() {
         // 랜덤 숫자 3개 받아오기
         val computer = randomThreeNumber()
 
-        // 게임 진행
-        val finish = gameStart(computer)
+        // 게임 진행, 3스트라이크일 경우 true 리턴
+        val finishGame = gameStart(computer)
 
         // 게임 시작 or 종료
-        if (restartOrFinish(finish)) break
+        if (restartOrFinish(finishGame)) break
     }
 }
 
