@@ -30,3 +30,33 @@ abstract class GameProgress(
         messageMaker: StringMaker,
     ): Boolean
 }
+
+class BaseBallGameRule(
+    private val user: Participant,
+    private val computer: Participant,
+    private val messageMaker: StringMaker,
+    private val checkParser: InputValidCheckAndConverter,
+) : GameProgress(user, computer, messageMaker) {
+
+    override fun isRestartGame(user: Participant): Boolean {
+        val userInput = user.input() as String
+        val isRestart =
+            checkParser.inputValidCheckAndConvert(BaseballGameInputConverter.INPUT_RESTART_GAME, userInput) as Int
+        return isRestart == 1
+    }
+
+    override fun gameStart(user: Participant, computer: Participant, messageMaker: StringMaker): Boolean {
+        val computerNumbers = computer.input() as List<Int>
+        while (true) {
+            print(messageMaker.inputForEachRoundMessage())
+            val userInput = user.input() as String
+            val userSelectNumbers = checkParser.inputValidCheckAndConvert(BaseballGameInputConverter.INPUT_CUR_ROUND,
+                userInput)!!
+            val resultCurRound = messageMaker.resultCurRound(userSelectNumbers, computerNumbers)
+            println(resultCurRound)
+            if (resultCurRound == BaseballStringMaker.END_CONDITION_MESSAGE) break
+        }
+        return true
+    }
+
+}
