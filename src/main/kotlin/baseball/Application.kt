@@ -63,7 +63,7 @@ fun gameAnswer():List<Int>{
             computer.add(randomNumber)
         }
     }
-    //println(computer)
+    println(computer)
     return computer
 }
 
@@ -85,15 +85,15 @@ fun printResult(ball:Int, strike: Int, answerArray:List<Int>){
             println("낫싱")
         }
         else{
-            println("$strike 스트라이크")
+            println("${strike}스트라이크")
         }
     }
     else{
         if(strike==0){
-            println("$ball 볼")
+            println("${ball}볼")
         }
         else{
-            println("$ball 볼 $strike 스트라이크")
+            println("${ball}볼 ${strike}스트라이크")
         }
     }
     if(strike==3){
