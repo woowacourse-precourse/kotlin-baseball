@@ -29,6 +29,7 @@ fun game() {
 
         val strikeBall = compare(computerNum, inputNum.toInt())
 
+        print("\n")
         if (strikeBall[1] > 0) {
             print("${strikeBall[1]}볼 ")
         }
