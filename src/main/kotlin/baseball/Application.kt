@@ -12,7 +12,7 @@ import camp.nextstep.edu.missionutils.Randoms
 const val RESULT_NUM_RANGE = 3
 
 fun validateRange() {
-    if(RESULT_NUM_RANGE !in 1 .. 9) throw IllegalArgumentException()
+    if (RESULT_NUM_RANGE !in 1..9) throw IllegalArgumentException()
 }
 
 fun getResultNum(): Int {
@@ -39,7 +39,16 @@ fun getResultRange(): Pair<Int, Int> {
 
 fun validateNumInRange(num: Int) {
     val (start, end) = getResultRange()
-    if(num !in start..end) throw IllegalArgumentException()
+    if (num !in start..end) throw IllegalArgumentException()
+}
+
+fun String.mappingExitCode(): Boolean {
+    if(this.isBlank()) throw IllegalArgumentException()
+    return when (this[0]) {
+        '1' -> false
+        '2' -> true
+        else -> throw IllegalArgumentException()
+    }
 }
 
 fun main() {
