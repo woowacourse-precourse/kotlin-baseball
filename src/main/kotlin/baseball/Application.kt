@@ -6,6 +6,16 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
 }
 
+class Game() {
+    private val gamePrinter = Printer()
+    private val computer = Computer()
+
+    private fun standbyPhase() {
+        gamePrinter.showStartMessage()
+        computer.createComputerNumbers()
+    }
+}
+
 class Computer() {
     private val _computerNumbers = mutableListOf<Int>()
     val computerNumbers: List<Int> get() = _computerNumbers
