@@ -3,6 +3,9 @@ package baseball
 import utils.Constants
 
 class Display {
+    fun printGameStart() {
+        println(Constants.GAME_START_MESSAGE)
+    }
 
     fun printBallNStrike(hint: Hint) {
         if (hint.strikeNum == 0 && hint.ballNum == 0)

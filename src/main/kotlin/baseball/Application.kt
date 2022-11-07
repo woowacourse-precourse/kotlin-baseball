@@ -5,10 +5,11 @@ import utils.Constants.GAME_START_MESSAGE
 
 fun main() {
     val game = Game()
-    println(GAME_START_MESSAGE) // todo 프린트 클래스 사용
+    val display = Display()
+    display.printGameStart()
+
     do {
         val computer = getComputerRandomNumber()
-        println(computer)
         val restart = game.start(computer)
     } while (restart)
 }
