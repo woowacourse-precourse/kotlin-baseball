@@ -96,8 +96,20 @@ fun searchStrikeAndBallCase(userNumIndex: MutableList<Int>){
     }
 
     if (strike == computerNumber.length){
-        println("${computerNumber.length}의 숫자를 모두 맞히셨습니다! 게임 종료")
-        TODO("게임 종료 안내")
+        GameOverMessage()
+    }
+}
+
+fun GameOverMessage(){
+    println("${computerNumber.length}의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
+    var response = Console.readLine()
+
+    when (response) {
+        "1" -> TODO("게임 재시작")
+        "2" -> return
+        else -> throw IllegalArgumentException("IllegalAccessException. 잘못된 값입니다.")
     }
 }
 
