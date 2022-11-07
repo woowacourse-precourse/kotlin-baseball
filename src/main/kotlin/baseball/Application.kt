@@ -29,12 +29,47 @@ fun startgame(){
 fun notThreeStrike(userInputList: List<Int>, computerList: List<Int>) {
     var strike = 0
     for (i in 0..1) {
-        strike  += StrikeCheck(i, userInputList, computerList)
+        strike  += strikeCheck(i, userInputList, computerList)
     }
+    var ball = 0
+    for (userIn in userInputList){
+        ball += ballCheck(userIn, computerList)
+    }
+    ball -= strike
+
+    printres(ball, strike)
+//    if(ball!=0 && strike != 0){
+//        println("${ball}볼${strike}스트라이크")
+//    }else if(ball == 0 && strike != 0){
+//        println("${strike}스트라이크")
+//    }else if(ball != 0 && strike == 0){
+//        println("${ball}볼")
+//    }else{
+//        println("낫싱")
+//    }
 
 }
 
-fun StrikeCheck(i: Int, userInputList: List<Int>, computerList: List<Int>) : Int{
+fun printres(ball: Int, strike: Int) {
+    if(ball!=0 && strike != 0){
+        println("${ball}볼${strike}스트라이크")
+    }else if(ball == 0 && strike != 0){
+        println("${strike}스트라이크")
+    }else if(ball != 0 && strike == 0){
+        println("${ball}볼")
+    }else{
+        println("낫싱")
+    }
+}
+
+fun ballCheck(userIn : Int, computerList: List<Int>): Int{
+    return if (computerList.contains(userIn)){
+        1
+    }else
+        0
+}
+
+fun strikeCheck(i: Int, userInputList: List<Int>, computerList: List<Int>) : Int{
     if(userInputList[i] == computerList[i]){
         return 1
     }else{
