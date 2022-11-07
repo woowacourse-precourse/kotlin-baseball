@@ -31,7 +31,18 @@ class BaseballGame private constructor(
     }
 
     private fun compare(computer: String, user: String): Pair<Int, Int> {
-        TODO()
+        var ball = 0
+        var strike = 0
+
+        for (i in user.indices) {
+            if (computer[i] == user[i]) {
+                strike += 1
+            } else if (computer.contains(user[i])) {
+                ball += 1
+            }
+        }
+
+        return ball to strike
     }
 
     class Builder {
