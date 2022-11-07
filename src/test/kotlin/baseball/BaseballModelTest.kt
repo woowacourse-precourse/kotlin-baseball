@@ -17,7 +17,7 @@ internal class BaseballModelTest {
     @Nested
     inner class UserInputTest {
         @Test
-        fun `3자리 숫자가 아닌 값이 입력됬을 때_IllegalArgumentException을 발생시킨다`() {
+        fun `checkBasballNumber 메소드에서 3자리 숫자가 아닌 값이 입력됬을 때 IllegalArgumentException을 발생시킨다`() {
             val testInputs = listOf("1234", "53", "1", "4123123123512312312312313122312312312312312312314123123", "")
             testInputs.forEach { case ->
                 assertThrows<IllegalArgumentException>(
@@ -29,7 +29,7 @@ internal class BaseballModelTest {
         }
 
         @Test
-        fun `숫자가 아닌 값이 입력됬을 때_IllegalArgumentException을 발생시킨다`() {
+        fun `checkBasballNumber 메소드에서 숫자가 아닌 값이 입력됬을 때 IllegalArgumentException을 발생시킨다`() {
             val testInputs = listOf("asd", "d221sf", "간12", "", " ", "@!2")
             testInputs.forEach { case ->
                 assertThrows<IllegalArgumentException>(
@@ -41,7 +41,7 @@ internal class BaseballModelTest {
         }
 
         @Test
-        fun `각각 다른 3자리 숫자가 아닐 때_IllegalArgumentException을 발생시킨다`() {
+        fun `checkBasballNumber 메소드에서 각각 다른 3자리 숫자가 아닐 때 IllegalArgumentException을 발생시킨다`() {
             val testInputs = listOf("121", "333", "454", "666")
             testInputs.forEach { case ->
                 assertThrows<IllegalArgumentException>(
@@ -53,7 +53,7 @@ internal class BaseballModelTest {
         }
 
         @Test
-        fun `끝났을 떄의 인풋 테스트`() {
+        fun `checkEndedNumber메소드에서 1이나 2가아닌 문자가 들어왔을 때 IllegalArgumentException을 발생시킨다.`() {
             val testInputs = listOf("3", "432", "", "aasd")
             testInputs.forEach { case ->
                 assertThrows<IllegalArgumentException>() {
