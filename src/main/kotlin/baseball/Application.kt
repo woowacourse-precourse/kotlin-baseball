@@ -9,15 +9,20 @@ fun main() {
 
 fun playBaseBall(){
     val computer = randomThreeNumber()
-    val result = hashMapOf<String,Int>()
+    var result = hashMapOf<String,Int>()
     result["스트라이크"] = 0
     result["볼"] = 0
     while(result["스트라이크"]!=3) {
-        val user = playerThreeNumber()
-        result.replace("스트라이크", findStrike(computer, user))
-        result.replace("볼", findBall(computer, user) - result["스트라이크"]!!)
-        printResult(result)
+        result = playOneTime(computer,result)
     }
+}
+
+fun playOneTime(computer:List<Int>,result:HashMap<String,Int>):HashMap<String,Int>{
+    val user = playerThreeNumber()
+    result.replace("스트라이크", findStrike(computer, user))
+    result.replace("볼", findBall(computer, user) - result["스트라이크"]!!)
+    printResult(result)
+    return result
 }
 
 fun randomThreeNumber():MutableList<Int>{

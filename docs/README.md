@@ -15,8 +15,7 @@
    - findStrike() : 각 자리의 수를 서로 비교하여 같으면 TRUE , 같지 않으면 FALSE
    - findBall() : 스트라이크가 아니면 나머지 자리에 존재하는지 확인 후 같으면 TRUE, 같지 않으면 FALSE
    - printResult() : result 리스트에서 스트라이크, 볼의 개수를 세고 출력
-   - allStrike() : 숫자를 모두 맞추었는지 확인하고 TRUE, FALSE 반환
-      - allStrike가 TRUE면 게임 종료 FALSE면 계속 진행
+
 
 
 4. 게임이 끝난 경우 1을 입력받으면 재시작 2를 입력받으면 종료
@@ -24,7 +23,8 @@
    - 잘못된 입력일 경우 : IllegalArgumentException 발생 후 애플리케이션 종료
       - 1이나 2가 아닌 입력
    - 정상 입력일 경우 : main 에서 playBaseBall() 함수 실행
-     - playBaseBall() : 게임을 시작하는 함수
+     
 
- 
-    
+5. 게임할 때 반복되는 기능
+    - playOneTime() : 플레이어가 값을 입력하면 컴퓨터 수와 비교하여 n볼 n스트라이크 혹은 낫싱 출력
+    - playBaseBall() : 게임을 처음부터 반복 실행하는 함수
