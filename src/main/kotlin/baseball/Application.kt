@@ -38,13 +38,11 @@ fun randomNumberInput(): MutableList<Int> {
 
 // 잘못된 값을 입력할 경우 예외 처리 기능
 fun exceptionHandling(player: String) {
-    if(player.length!=3
-        ||player[0].digitToInt() !in 1..9
-        ||player[1].digitToInt() !in 1..9
-        ||player[2].digitToInt() !in 1..9
-        ||player[0]==player[1]
-        ||player[1]==player[2]
-        ||player[2]==player[0])
+    var list = player.toList()
+    if (list.size != 3
+        || list.distinct().size != 3
+        || list.all { it !in '1'..'9' }
+    )
         throw IllegalArgumentException("Wrong Input Value")
 }
 
