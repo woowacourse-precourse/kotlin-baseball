@@ -44,7 +44,7 @@ private fun userThreeNumberInput(): List<Int> {
 
 
 private fun userNumberInputExceptionCheck(inputString: String?): Boolean {
-    if (inputString == null || inputString == "") {
+    if (inputString.isNullOrBlank()) {
         return true
     }
 
