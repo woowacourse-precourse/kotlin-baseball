@@ -4,7 +4,23 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    TODO("프로그램 구현")
+    printFirstStartMessage()
+    do {
+        startBaseballGame()
+    } while (restartOrQuit())
+}
+
+fun startBaseballGame() {
+    val answer = chooseComputerNumber()
+    while (true) {
+        var userNumber = getUserNumber()
+        var result = compareWithAnswer(answer, userNumber)
+        printHint(result)
+        if (result.first == 3) {
+            printGameOver()
+            return
+        }
+    }
 }
 
 fun chooseComputerNumber(): String {
@@ -102,5 +118,6 @@ fun restartOrQuit(): Boolean {
     if (inputNumber == 1) {
         return true
     }
+    println("게임 종료")
     return false
 }
