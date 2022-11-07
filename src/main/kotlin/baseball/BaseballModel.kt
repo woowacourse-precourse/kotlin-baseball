@@ -29,7 +29,14 @@ class BaseballModel {
     }
 
     fun setResultString() {
-        TODO("결과 값 생성")
+        if (strikeCnt == 0 && ballCnt == 0) {
+            resultString = NOTHING_STR
+            return
+        }
+
+        val strikeStr = if (strikeCnt > 0) "$strikeCnt" + STRIKE_STR else ""
+        val ballStr = if (ballCnt > 0) "$ballCnt$BALL_STR " else ""
+        resultString = "$ballStr$strikeStr"
     }
 
     fun isEndedCheck() {
