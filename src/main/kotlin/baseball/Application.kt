@@ -83,14 +83,20 @@ fun main() {
         var strike_ball = countCorrect(ComputerChar, input)
 
         if (strike_ball[0] == 0 && strike_ball[1] == 0) {
-            print("낫싱")
+            println("낫싱")
         } else if (strike_ball[0] == 0) {
-            print("${strike_ball[1]}볼")
+            println("${strike_ball[1]}볼")
         } else if (strike_ball[1] == 0) {
-            print("${strike_ball[0]}스트라이크")
+            println("${strike_ball[0]}스트라이크")
         } else {
             print("${strike_ball[0]}스트라이크 ${strike_ball[1]}볼")
+            println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
+           var input_again = readLine()
+            if(input_again == "2") Continue = 0
+
         }
+
+
 
 
     }
