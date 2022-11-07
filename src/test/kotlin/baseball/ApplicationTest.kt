@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -17,7 +16,12 @@ class ApplicationTest : NsTest() {
                 assertThat(output())
                     .contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
             },
-            1, 3, 5, 5, 8, 9
+            1,
+            3,
+            5,
+            5,
+            8,
+            9
         )
     }
 
@@ -27,6 +31,7 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
+
     override fun runMain() {
         main()
     }
