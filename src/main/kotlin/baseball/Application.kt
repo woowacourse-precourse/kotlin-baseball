@@ -23,8 +23,8 @@ fun startBaseballGame(): Boolean {
         val gameRes = compareUserAndCom(user, com)
         val ballCnt = gameRes[0]
         val strikeCnt = gameRes[1]
-        val gameFinishFlag = displayResult(strikeCnt,ballCnt)
-        if(gameFinishFlag){
+        val gameFinishFlag = displayResult(strikeCnt, ballCnt)
+        if (gameFinishFlag) {
             return restartOrExit()
         }
     }
@@ -88,10 +88,9 @@ fun getComInput(): List<Int> {
 
 fun getUserInput(): String {
     val input = Console.readLine()
-    return if( userInputValidation(input)){
+    return if (userInputValidation(input)) {
         input
-    }
-    else{
+    } else {
         ""
     }
 
@@ -99,39 +98,38 @@ fun getUserInput(): String {
 }
 
 fun userInputValidation(input: String): Boolean {
-    try{
+    try {
         checkIncludeZero(input)
         checkInputLength(input)
         checkDuplicateNum(input)
         checkOnlyNumber(input)
-    }
-    catch (e:java.lang.IllegalArgumentException){
+    } catch (e: java.lang.IllegalArgumentException) {
         return false
     }
     return true
 }
 
 fun checkIncludeZero(input: String) {
-    if(input.contains("0")){
+    if (input.contains("0")) {
         throw IllegalArgumentException(Constant.INVALID_ZERO_INCLUDE_ERROR)
     }
 }
 
-fun checkInputLength(input: String){
-    if(input.length != 3){
+fun checkInputLength(input: String) {
+    if (input.length != 3) {
         throw IllegalArgumentException(Constant.INVALID_LENGTH_ERROR)
     }
 }
 
-fun checkDuplicateNum(input: String){
-    if(input.toList().distinct().size != 3){
+fun checkDuplicateNum(input: String) {
+    if (input.toList().distinct().size != 3) {
         throw IllegalArgumentException(Constant.INVALID_DUPLICATE_NUM_ERROR)
     }
 }
 
-fun checkOnlyNumber(input: String){
+fun checkOnlyNumber(input: String) {
     val regexOnlyNumber = Regex("-?\\d+(\\.\\d+)?")
-    if (!regexOnlyNumber.matches(input)){
+    if (!regexOnlyNumber.matches(input)) {
         throw IllegalArgumentException(Constant.INVALID_NOT_ONLY_NUMBER_ERROR)
     }
 }
