@@ -8,7 +8,7 @@
   ```
   computer: MutableList<Int>
   ```
-  - Do: Ramdoms.pickNumberInRange(1, 9)를 활용해 
+  - Do: Ramdoms.pickNumberInRange(1, 9)를 활용해 서로 다른 세자리수 리스트 생성
 
 - **fun receiveUserInput** : readLine 라이브러리 활용해 유저로부터 세자리 수를 입력 받아, 각 자릿수 분리
   - Parameters: None
@@ -29,8 +29,7 @@
     - 맞으면 true 아닐시 false
     - default: false
   ```
-  correct: Boolean 
-  
+  correct: Boolean
   ```
   - Do:
     1. for (i in 0..2) 루프로 **스트라이크** 갯수 판별
@@ -60,6 +59,7 @@
     
 ## 예외처리
   - 유저가 같은 값을 입력하지 않게 방지
+    - 예시) 3자리 초과, 미만 입력, 중복되는 값 입력 등 
     - 잘못된 값을 입력했을 경우 `IllegalArgumentException`을 발생
 
 
