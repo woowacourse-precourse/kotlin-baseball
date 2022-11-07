@@ -53,6 +53,18 @@ fun validateInputString(
     return verifiedNumbers
 }
 
+fun getBaseballResult(computerNumber:MutableList<Int>,playerNumber:MutableList<Int>) :String{
+    var strikeCount = 0
+    var ballCount = 0
+    computerNumber.forEachIndexed { index, value ->
+        if (playerNumber[index] == value) strikeCount++
+        if (playerNumber[index] != value && playerNumber.contains(value)) ballCount++
+    }
+    var strike = if (strikeCount != 0) "${strikeCount}스트라이크" else ""
+    var ball = if (ballCount != 0) "${ballCount}볼 " else ""
+    return if(strikeCount+ballCount!=0) ball+strike else "낫싱"
+}
+
 
 
 
