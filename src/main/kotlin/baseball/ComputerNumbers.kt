@@ -1,7 +1,6 @@
 package baseball
 
 class ComputerNumbers(private val computerNumberMap: Map<Int, Int>) {
-
     fun compareToUserInput(userInput: String): Pair<Int, Int> {
         var totalStrike = 0
         var totalBall = 0
