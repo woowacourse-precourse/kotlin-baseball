@@ -67,3 +67,23 @@ private fun countStrikeAndBall(computerNum:List<Int>, inputNum: List<Int>): List
     }
     return listOf(strike, ball)
 }
+private fun printScore(strike: Int, ball: Int): Boolean {
+    if (strike == 0 && ball == 0) {
+        println("낫싱")
+    }
+    if (strike > 0 && ball == 0) {
+        println("${strike}스트라이크")
+    }
+    if (strike == 0 && ball > 0) {
+        println("${ball}볼")
+    }
+    if (strike > 0 && ball > 0) {
+        println("${ball}볼 ${strike}스트라이크")
+    }
+
+    if (strike == 3) {
+        return false
+    }
+
+    return true
+}
