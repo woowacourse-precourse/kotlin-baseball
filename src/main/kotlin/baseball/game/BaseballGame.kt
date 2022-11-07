@@ -7,7 +7,16 @@ class BaseballGame private constructor(
 ) {
 
     fun play() {
-        TODO()
+        do {
+            Message.showStartGame()
+
+            startGame(
+                ExceptionHandler.checkNumberFormat(readComputerNumber())
+            )
+
+        } while (Message.requestRestartGame(readFinishCode))
+
+        Message.showFinishGame()
     }
 
     private fun startGame(computerNumber: String) {
