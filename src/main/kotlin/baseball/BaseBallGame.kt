@@ -3,6 +3,12 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+const val NOTHING = "낫싱"
+const val THREE_STRIKE = "3스트라이크"
+const val ZERO_COUNT = 0
+const val FULL_COUNT = 3
+const val RE_GAME = "2"
+
 fun gameStart() {
     while (true) {
         val computer = makeRandomBallNumbers()
@@ -10,14 +16,14 @@ fun gameStart() {
         playGame(computer)
         printReGameMessage()
         val reGame = Console.readLine()
-        if (reGame == "2") break
+        if (reGame == RE_GAME) break
     }
 }
 
 private fun makeRandomBallNumbers(): MutableList<Int> {
     val computer = mutableListOf<Int>()
 
-    while (computer.size < 3) {
+    while (computer.size < FULL_COUNT) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber)
@@ -55,16 +61,16 @@ private fun countingStrike(computer: MutableList<Int>, input: String): Int {
 
 private fun resultString(ball: Int, strike: Int): String {
     return when {
-        strike == 0 && ball == 0 -> "낫싱"
-        strike == 3 -> "3스트라이크"
+        strike == ZERO_COUNT && ball == ZERO_COUNT -> NOTHING
+        strike == FULL_COUNT -> THREE_STRIKE
         ball == strike -> "${strike}스트라이크"
-        strike != 0 -> "${ball - strike}볼 ${strike}스트라이크"
+        strike != ZERO_COUNT -> "${ball - strike}볼 ${strike}스트라이크"
         else -> "${ball}볼"
     }
 }
 
 private fun checkThreeStrike(computer: MutableList<Int>, input: String): Boolean {
-    if (countingStrike(computer, input) == 3) {
+    if (countingStrike(computer, input) == FULL_COUNT) {
         printGameEndMessage()
         return true
     }
