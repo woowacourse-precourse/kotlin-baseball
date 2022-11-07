@@ -87,3 +87,14 @@ private fun printScore(strike: Int, ball: Int): Boolean {
 
     return true
 }
+private fun continueOrEndGame(continueGame: String): Boolean {
+    if (continueGame != "1" && continueGame != "2") {
+        throw IllegalArgumentException("1 혹은 2만 입력가능합니다")
+    }
+
+    if (continueGame == "2") {
+        return false
+    }
+
+    return true
+}
