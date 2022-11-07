@@ -54,6 +54,12 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("111") }
         }
     }
+
+    @Test
+    fun `게임은 정답을 가지고 있습니다`() {
+        assertThat(randomNum()).hasSize(3)
+    }
+
     override fun runMain() {
         main()
     }
