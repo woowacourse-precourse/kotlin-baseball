@@ -53,6 +53,8 @@ private fun userNumberInputExceptionCheck(inputString: String?): Boolean {
         return true
     }
 
+    //val digitList = listOf<Boolean>(true,true,true,true,true,true,true,true,true,true,)
+
     for (code in inputString.toList().map { it.code }) {
         if (!isValidUserNumber(code)) return true
     }
@@ -61,7 +63,7 @@ private fun userNumberInputExceptionCheck(inputString: String?): Boolean {
 }
 
 private fun isValidUserNumber(code: Int): Boolean {
-    if (code < 48 || code > 57) {
+    if (code < 49 || code > 57) {
         return false
     }
     return true
