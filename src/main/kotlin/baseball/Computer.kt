@@ -5,7 +5,6 @@ import kotlin.random.Random
 
 class Computer {
     lateinit var randomNumbers: List<Int>
-
     init {
         generateNewRandomNumbers()
     }
@@ -20,7 +19,6 @@ class Computer {
                 generatedNumbers.add(eachNumber)
             }
         }
-        println(generatedNumbers)
         randomNumbers = generatedNumbers.toList()
     }
 }
