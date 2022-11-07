@@ -5,16 +5,15 @@ import java.lang.IllegalArgumentException
 
 fun main() {
     startBaseBallGame()
-
+    val computerRandomNumber = computerSelectThreeRandomNumber()
+    println(computerRandomNumber)
+    val userNumber = userThreeNumberInput()
+    determineJudgement(computerRandomNumber, userNumber)
 }
 
 
 private fun startBaseBallGame() {
     println("숫자 야구 게임을 시작합니다.")
-    val computerRandomNumber = computerSelectThreeRandomNumber()
-    println(computerRandomNumber)
-    val userNumber = userThreeNumberInput()
-    determineJudgement(computerRandomNumber, userNumber)
 }
 
 
