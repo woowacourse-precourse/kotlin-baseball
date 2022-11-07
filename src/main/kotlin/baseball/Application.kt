@@ -100,10 +100,10 @@ private fun guessNumber(): String {
 // 랜덤 3글자 추출
 private fun randomThreeNumber(): String {
     println("숫자 야구 게임을 시작합니다.")
-    val computer = mutableListOf<Int>()
+    val computer = mutableSetOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (randomNumber !in computer) computer.add(randomNumber)
+        computer.add(randomNumber)
     }
 
     println(computer)
