@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import model.Computer
 import model.User
 import util.Constants
@@ -86,4 +87,21 @@ object GameController {
         }
     }
 
+    // 전체적인 게임을 동작
+    fun playGame() {
+        while (true) {
+            guessTheNumber()
+            println(Messages.RESTART_OR_EXIT)
+            if (gameExit()) {
+                break
+            }
+        }
+    }
+
+    private fun gameExit(): Boolean {
+        val status = Console.readLine()
+        // 입력 값에 따른 예외처리
+        Exceptions.checkValidInput(status)
+        return status == "${Constants.EXIT}"
+    }
 }

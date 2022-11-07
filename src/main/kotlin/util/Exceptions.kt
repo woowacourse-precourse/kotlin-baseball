@@ -20,4 +20,11 @@ object Exceptions {
         }
         return true
     }
+
+    // 게임의 다시 시작과 종료에 대한 예외 확인
+    fun checkValidInput(status: String) {
+        if (status != "${Constants.RESTART}" && status != "${Constants.EXIT}") {
+            throw IllegalArgumentException()
+        }
+    }
 }
