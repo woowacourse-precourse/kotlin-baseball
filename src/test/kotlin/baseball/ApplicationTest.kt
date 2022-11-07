@@ -215,12 +215,12 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `문자열을 정수 리스트로 변환`() {
-        val inputString = "189"
+    fun `사용자 입력 정수 리스트로 변환`() {
+        val userInput = "189"
         val converter = StringToIntegerList()
         val expected = listOf(1, 8, 9)
 
-        val result = converter.convert(inputString)
+        val result = converter.convert(userInput)
 
         assertThat(result).isEqualTo(expected)
     }
