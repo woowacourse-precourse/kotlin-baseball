@@ -66,6 +66,21 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `input number validation 테스트`() {
+        val input = "9999"
+        val (start, end) = getResultRange()
+        try {
+            when{
+                input.isBlank() -> assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
+                input.toInt() in start .. end -> assertThat(input.mappingInputNumber())
+                else -> assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
+            }
+        }catch (e: Exception){
+            assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
+        }
+    }
+
     override fun runMain() {
         main()
     }

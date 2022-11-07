@@ -1,10 +1,12 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 /* 기능 목록
 * 입력 예외 처리
 *   resultNum 입력
+*   inputNum, exitCode 입력
 * 게임 구현
 * 종료 및 재시작 구현
 * */
@@ -48,6 +50,16 @@ fun String.mappingExitCode(): Boolean {
         '1' -> false
         '2' -> true
         else -> throw IllegalArgumentException()
+    }
+}
+
+fun String.mappingInputNumber(): Int{
+    return try{
+        val ret = this.toInt()
+        validateNumInRange(ret)
+        ret
+    }catch (e: Exception){
+        throw IllegalArgumentException()
     }
 }
 
