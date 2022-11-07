@@ -22,9 +22,21 @@ private fun gameStart(computer: String): Boolean {
         // 사용자 입력 숫자
         val userNumber = guessNumber()
 
-
+        // 사용자에게 받은 숫자 체크(볼, 스트라이크, 예외사항)
+        val (ball, strike) = userNumberCheck(userNumber, computer)
 
     }
+}
+
+// 사용자에게 받은 숫자 체크(볼, 스트라이크, 예외사항)
+private fun userNumberCheck(number: String, computer: String): Pair<Int, Int> {
+    var ball = 0    // 볼 카운트
+    var strike = 0  // 스트라이크 카운트
+    for (i in 0 until 3) {
+        if (number[i] == computer[i]) strike += 1
+        if (number[i] != computer[i] && number[i].toString() in computer) ball += 1
+    }
+    return Pair(ball, strike)
 }
 
 // 사용자에게 숫자 받기
@@ -33,7 +45,6 @@ private fun guessNumber(): String {
     val userNumber = Console.readLine()
 
     var check = true
-
 
     // 중복 숫자 체크
     val number = userNumber.toSet().joinToString("")
