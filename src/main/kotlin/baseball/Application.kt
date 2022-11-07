@@ -82,9 +82,8 @@ class User() {
     private val _userNumbers = mutableListOf<Int>()
     val userNumbers: List<Int> get() = _userNumbers
 
-    fun enterUserNumbers() {
-        val inputNumebrs = readLine()
-        convertNumberToList(inputNumebrs)
+    fun enterUserNumbers(inputNumbers: String = readLine()) {
+        convertNumberToList(inputNumbers)
     }
 
     private fun convertNumberToList(inputNumbers: String) {
