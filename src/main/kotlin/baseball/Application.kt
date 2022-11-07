@@ -12,9 +12,46 @@ fun createRandomNumbers(): List<Int>{
     }
     return numbers
 }
+fun enterExpectedNumber(): List<Int>{
+    val input_numbers: MutableList<Int> = mutableListOf(0,0,0)
+    print("숫자를 입력해주세요 : ")
+    var input_temp: String = Console.readLine()
+
+    //예외 처리 - 3글자를 입력 받았는가?
+    if(input_temp.length!=3){
+        throw IllegalArgumentException("입력 값이 3자가 아닙니다.")
+    }
+
+    //예외 처리 - 서로 다른 숫자인가?
+    if(input_temp[0]==input_temp[1]||
+        input_temp[0]==input_temp[2]||
+        input_temp[1]==input_temp[2]){
+        throw IllegalArgumentException("같은 숫자를 입력할 수 없습니다.")
+    }
+
+    //예외처리 - 0이 포함되어 있는가?
+    if('0' in input_temp){
+        throw IllegalArgumentException("0은 입력할 수 없습니다.")
+    }
+
+    //예외 처리 - 숫자인가?
+    for(i in 0..input_temp.length-1) {
+        if(input_temp[i] !in "0123456789"){
+            throw IllegalArgumentException("입력 값이 숫자가 아닙니다.")
+        }
+        //숫자라면 inputnumbers에 리스트로 저장.
+        input_numbers[i] = input_temp[i].code - '0'.code
+    }
+
+    return input_numbers
+}
 
 fun play(){
     val computer: List<Int> = createRandomNumbers()
+    var user: List<Int> = mutableListOf()
+    while(computer!=user){
+        user= enterExpectedNumber()
+    }
 }
 fun askContinue(): Boolean{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
