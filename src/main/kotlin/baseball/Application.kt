@@ -31,6 +31,8 @@ private fun playNumBaseBall() {
         if (regex.find(user) == null || user.toSet().size < 3) {
             throw IllegalArgumentException()
         }
+        // 판정
+        checkStrikeOrBall(user, com)
     }
 }
 
@@ -48,4 +50,26 @@ private fun makeRandomNumber(): String {
     com = "${computer[0]}${computer[1]}${computer[2]}"
 
     return com
+}
+
+private fun checkStrikeOrBall(user: String, com: String) {
+    var strike = 0
+    var ball = 0
+
+    for ((i, v) in user.withIndex()) {
+        if (com[i] == v) {
+            strike++
+        } else if (v in com) {
+            ball++
+        }
+    }
+    if (ball == 0 && strike == 0) {
+        println("낫싱")
+    } else if (ball == 0) {
+        println("${strike}스트라이크")
+    } else if (strike == 0) {
+        println("${ball}볼")
+    } else {
+        println("${ball}볼 ${strike}스트라이크")
+    }
 }
