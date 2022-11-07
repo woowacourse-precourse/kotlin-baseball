@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
 
-    print(createRandomNum())
+    printState(1)
+    println(createRandomNum())
+    println(createUserNum())
 
 }
 
@@ -19,12 +21,28 @@ fun createRandomNum(): MutableList<Int> {
     return computerNum
 }
 
-fun printState(state : Int){
-    when(state){
+fun printState(state: Int) {
+    when (state) {
         gameStart -> println("숫자 야구 게임을 시작합니다.")
-        gameInProgress -> println("숫자를 입력해주세요 : " )
+        gameInProgress -> println("숫자를 입력해주세요 : ")
     }
 }
+
+fun createUserNum(): List<Int> {
+    return readLine()!!.map { it.digitToInt() }
+}
+
+//fun createUserNumList(userNum: Int?): MutableList<Int> {
+//    var userNum = userNum
+//    val userNumList = mutableListOf<Int>()
+//
+//    while (userNum != 0 && userNum != null) {
+//        userNumList.add(userNum % 10)
+//        userNum /= 10
+//    }
+//
+//    return userNumList
+//}
 
 const val gameStart = 0
 const val gameInProgress = 1
