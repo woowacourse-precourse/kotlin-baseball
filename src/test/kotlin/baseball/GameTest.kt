@@ -18,7 +18,7 @@ class GameTest (){
     }
 
     @Test
-    fun `입력값이 숫자외 다른 값이 있는지 체크`(){
+    fun `입력값이 숫자외 다른 값이 있는지 체크`() {
         val input = Game.checkInputValueIsNumber("11a")
         assertThat(input).isEqualTo(false)
     }
