@@ -26,6 +26,33 @@ private fun makeRandomBallNumbers(): MutableList<Int> {
     return computer
 }
 
-fun playGame(computer: Any) {
+private fun playGame(computer: MutableList<Int>) {
+    while (true) {
+        val input = Console.readLine()
+
+        println("숫자를 입력해주세요 : ")
+        inputNumberException(input)
+        println(resultString(countingBall(computer, input), countingStrike(computer, input)))
+        if (checkThreeStrike(computer, input)) break
+    }
+}
+
+fun checkThreeStrike(computer: MutableList<Int>, input: String?): Boolean {
+    TODO("Not yet implemented")
+}
+
+fun countingStrike(computer: MutableList<Int>, input: String?): Any {
+    TODO("Not yet implemented")
+}
+
+fun countingBall(computer: MutableList<Int>, input: String?): Any {
+    TODO("Not yet implemented")
+}
+
+fun resultString(countingBall: Any, countingStrike: Any): Any? {
+    TODO("Not yet implemented")
+}
+
+fun inputNumberException(input: String?) {
     TODO("Not yet implemented")
 }
