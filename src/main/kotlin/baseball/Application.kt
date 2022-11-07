@@ -10,6 +10,14 @@ fun main() {
 
 fun playNumberBaseballGame(){
     val answerNumberArray= makeAnswerNumber()
+
+    do {
+        print("숫자를 입력해주세요 : ")
+        val userInput = Console.readLine()
+        //val userInputArray = makeNumToList(userInput)
+        break
+
+    }while(true)
 }
 
 fun makeAnswerNumber():List<Int>{
@@ -33,4 +41,17 @@ fun checkValidNumber(num: List<Int>):Boolean{
             return false
     }
     return true
+}
+
+fun makeNumToList(num:Int):List<Int>{
+    var n = num
+    val numArray = mutableListOf<Int>()
+    while(true){
+        if(n==0)
+            break
+        numArray.add(n%10)
+        n/=10
+    }
+    numArray.reverse()
+    return numArray
 }
