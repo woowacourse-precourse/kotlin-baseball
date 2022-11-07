@@ -1,5 +1,7 @@
 package baseball
 
+var testAnswerList: MutableList<String> = mutableListOf()
+
 fun main() {
     runBaseballGame()
 }
@@ -8,7 +10,7 @@ fun runBaseballGame() {
     println("숫자 야구 게임을 시작합니다.")
 
     var inputGoAndStopStatus: String = "1"
-    var answerBaseballNumber: String = "000"
+    var answerBaseballNumber: String = setTestAnswer()
 
     while (inputGoAndStopStatus == "1") {
 
@@ -23,7 +25,7 @@ fun runBaseballGame() {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         inputGoAndStopStatus = readLine().toString()
         if(inspectInputGoAndStopStatus(inputGoAndStopStatus) == -1) throw IllegalArgumentException()
-        if(inputGoAndStopStatus == "1") answerBaseballNumber = "000"
+        if(inputGoAndStopStatus == "1") answerBaseballNumber = setTestAnswer()
         if(inputGoAndStopStatus == "2") println("게임 종료")
     }
 }

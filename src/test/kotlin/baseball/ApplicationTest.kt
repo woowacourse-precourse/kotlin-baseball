@@ -4,12 +4,18 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.provider.CsvSource
 
 class ApplicationTest : NsTest() {
+
     @Test
     fun `게임종료 후 재시작`() {
+        testAnswerList = mutableListOf<String>("135", "589")
+
         assertRandomNumberInRangeTest(
             {
                 run("246", "135", "1", "597", "589", "2")
@@ -22,6 +28,8 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `예외 테스트`() {
+        testAnswerList = mutableListOf<String>("1234")
+
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
