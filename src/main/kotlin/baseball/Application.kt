@@ -20,11 +20,24 @@ fun main() {
 fun entireGame():Int {
     var computerNum:List<Int> = makeRandomNum()
 
-
+    playUntilCorrect(computerNum)
 
     return 0 //임시 코드
 }
 
+fun playUntilCorrect(computerNum: List<Int>){ //정답을 맟줄때 까지 반복하는 함수
+    var userNum:List<Int>
+    var ballAndStrike:List<Int>
+    var untilCorrect=true
+
+    while(untilCorrect){
+        userNum= inputUserNum()
+
+        ballAndStrike=getBallAndStrike(computerNum,userNum)
+        untilCorrect= printBallAndStrike(ballAndStrike)
+
+    }
+}
 
 fun getBallAndStrike(computerNum: List<Int>,
                      userNum:List<Int>):List<Int>{
@@ -65,6 +78,29 @@ fun getStrike(computerNum: List<Int>,
     return strikeCount
 }
 
+fun printBallAndStrike(ballAndStrike:List<Int>):Boolean{
+    var ballCount=ballAndStrike[0]
+    var strikeCount=ballAndStrike[1]
+
+    if(ballAndStrike.contains(0)){ //볼과 스트라이크 중 0이 있을 때
+        if(ballCount!=0){
+            println("${ballCount}볼")
+        }
+        if(strikeCount!=0){
+            println("${strikeCount}스트라이크")
+        }
+        if(ballCount==0 && strikeCount==0){
+            println("낫싱")
+        }
+    }
+    else{ //n볼 m 스트라이크인 경우 n,m>0
+        println("${ballCount}볼 ${strikeCount}스트라이크")
+    }
+
+    return strikeCount!=3 //3스트라이크인 경우 false를 리턴한다다
+
+
+}
 fun makeRandomNum():List<Int>{
     val computerNum = mutableListOf<Int>()
 

@@ -30,4 +30,5 @@ class BallNStrikeTest {
         Assertions.assertThat(result4).isEqualTo(answer4)
 
     }
+
 }
