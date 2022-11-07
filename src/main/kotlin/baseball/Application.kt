@@ -27,14 +27,27 @@ fun getUserInput() : String? {
     return camp.nextstep.edu.missionutils.Console.readLine()
 }
 
-fun checkStrike(answer:ArrayList<Int>,user:ArrayList<Int>):Int{
-    var strikeCountNum =0
-    for(i in 0 until answer.size)
-    if(answer[i] == user [i])
-        strikeCountNum +=1
+fun checkStrike(answer: ArrayList<Int>, user: ArrayList<Int>): Int {
+    var strikeCountNum = 0
+    for (i in 0 until answer.size)
+        if (answer[i] == user[i])
+            strikeCountNum += 1
 
     return strikeCountNum
 }
+
+fun checkBall(answer: ArrayList<Int>, user: ArrayList<Int>):Int{
+    var ballCountNum =0
+    for(i in 0 until answer.size)
+        if(answer[i]!=user[i] && user.contains(answer[i]))
+            ballCountNum +=1
+
+    return ballCountNum
+}
+
+
+
+
 
 
 
