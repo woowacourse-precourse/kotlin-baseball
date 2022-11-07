@@ -5,10 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    playNumberBaseball()
+    var isRestart : Boolean
+    do {
+        isRestart = playNumberBaseball()
+    } while (isRestart)
 }
 
-fun playNumberBaseball() {
+fun playNumberBaseball(): Boolean {
     val answerNumber = createRandomAnswerNumber().toString()
     do {
         print("숫자를 입력해주세요 : ")
@@ -22,12 +25,16 @@ fun playNumberBaseball() {
         printBallCount(ballCount)
 
     } while (true)
+
     println("3스트라이크")
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    if (isRestart()) {
-        playNumberBaseball()
+
+    val userInputRestart = Console.readLine().trim()
+    if (isRestart(userInputRestart)) {
+        return true
     }
+    return false
 }
 
 fun createRandomAnswerNumber(): Int {
@@ -75,10 +82,9 @@ fun printBallCount(ballCount: Pair<Int, Int>) {
     println("${ball}볼 ${strike}스트라이크")
 }
 
-fun isRestart(): Boolean {
-    val userInput = Console.readLine().trim()
-    validationUserInputRestart(userInput)
-    if (userInput == "1") {
+fun isRestart(userInputRestart: String): Boolean {
+    validationUserInputRestart(userInputRestart)
+    if (userInputRestart == "1") {
         return true
     }
     return false
@@ -88,7 +94,7 @@ fun validationUserInputNumber(userInputNumber: String) {
     if (userInputNumber.isEmpty()) {
         throw IllegalArgumentException("입력값이 비었습니다.")
     }
-    if (userInputNumber.contains(" ")){
+    if (userInputNumber.contains(" ")) {
         throw IllegalArgumentException("공백을 포함하지 않고 입력해주세요.")
     }
     if (!userInputNumber.matches(Regex("^\\d*\$"))) {
