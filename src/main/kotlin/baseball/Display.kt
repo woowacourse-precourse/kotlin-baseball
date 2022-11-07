@@ -9,14 +9,24 @@ class Display {
 
     fun printBallNStrike(hint: Hint) {
         if (hint.strikeNum == 0 && hint.ballNum == 0)
-            print("낫싱")
+            printNothing()
         else {
             if (hint.ballNum > 0)
-                print("${hint.ballNum}볼 ")
+                printBall(hint.ballNum)
             if (hint.strikeNum > 0)
-                print("${hint.strikeNum}스트라이크")
+                printStrike(hint.strikeNum)
         }
         println()
+    }
+
+    private fun printNothing() {
+        print("낫싱")
+    }
+    private fun printBall(ballNum: Int) {
+        print("${ballNum}볼 ")
+    }
+    private fun printStrike(strikeNum: Int) {
+        print("${strikeNum}스트라이크")
     }
 
     fun printGameOver() {

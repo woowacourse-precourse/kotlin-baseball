@@ -20,7 +20,7 @@ class Game {
         return choiceGameRestartOrOver()
     }
 
-    fun inputPlayerNumber(): String {
+    private fun inputPlayerNumber(): String {
         val input = Console.readLine()
         return when (rule.isCorrectNumber(input)) {
             true -> input
@@ -28,7 +28,7 @@ class Game {
         }
     }
 
-    fun choiceGameRestartOrOver(): Boolean {
+    private fun choiceGameRestartOrOver(): Boolean {
         display.printGameOver()
         return when (Console.readLine()) {
             Constants.RESTART -> true

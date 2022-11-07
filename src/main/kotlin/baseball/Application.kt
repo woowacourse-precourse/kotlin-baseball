@@ -1,7 +1,6 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
-import utils.Constants.GAME_START_MESSAGE
 
 fun main() {
     val game = Game()
