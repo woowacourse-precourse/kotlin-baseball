@@ -77,7 +77,6 @@ class GameController {
         }
 
         if (restart == Constraints.FINISH) {
-            println(Messages.FINISH)
             return Constraints.FINISH
         }
         return Constraints.RESTART

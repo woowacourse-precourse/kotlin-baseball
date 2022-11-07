@@ -8,5 +8,4 @@ object Messages {
     const val STRIKE : String = "스트라이크"
     const val BALL : String = "볼"
     const val ASK_RESTART_OR_STOP : String = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-    const val FINISH : String = "게임 종료"
 }
