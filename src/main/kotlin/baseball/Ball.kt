@@ -3,8 +3,8 @@ package baseball
 class Ball {
 
     companion object {
-        const val MINNUM = 1
-        const val MAXNUM = 9
+        const val MIN_NUM = 1
+        const val MAX_NUM = 9
     }
 
     val number : Int
@@ -12,7 +12,7 @@ class Ball {
 
     constructor(number: Int, position: Int) {
 
-        if(number < MINNUM || number > MAXNUM) {
+        if(number < MIN_NUM || number > MAX_NUM) {
             throw IllegalArgumentException("1에서 9사이의 숫자여야 합니다.")
         }
 
