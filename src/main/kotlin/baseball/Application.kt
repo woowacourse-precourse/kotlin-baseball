@@ -15,6 +15,8 @@ private fun startBaseBallGame() {
     println(computerRandomNumber)
     val userNumber = userThreeNumberInput()
     println(userNumber)
+
+    determineJudgement(computerRandomNumber, userNumber)
 }
 
 
@@ -39,7 +41,6 @@ private fun userThreeNumberInput(): List<Int> {
 }
 
 
-
 private fun userInputExceptionCheck(inputString: String?): Boolean {
     if (inputString == null || inputString == "") {
         return true
@@ -58,3 +59,17 @@ private fun isValidInputNumber(code: Int): Boolean {
     }
     return true
 }
+
+private fun determineJudgement(computerNumberList : List<Int>, userNumberList : List<Int>) {
+    var strikeCount = 0
+    var ballCount = 0
+
+    for (i in 0..2) {
+        if (computerNumberList[i] == userNumberList[i]) strikeCount += 1
+        else if (userNumberList.contains(computerNumberList[i])) ballCount += 1
+    }
+
+    println(strikeCount)
+    println(ballCount)
+}
+
