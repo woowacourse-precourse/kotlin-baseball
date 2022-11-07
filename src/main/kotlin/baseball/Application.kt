@@ -7,6 +7,6 @@ fun main() {
     try {
         baseballGame.start()
     } catch (exception: IllegalArgumentException){
-        BaseballString.ILLEGAL_ARGUMENT.print()
+        BaseballStatement.printIllegalArgument()
     }
 }
