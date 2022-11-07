@@ -6,10 +6,16 @@ fun main() {
     printGameStart()
 
     val computerNumber = generateComputerNumber()
-    val userNumber = getUserNumber()
+    playGame(computerNumber)
+}
 
-    val result = compareNumber(computerNumber, userNumber)
-    printResult(result)
+fun playGame(computerNumber: List<Int>) {
+    var answer = false
+    while (!answer) {
+        val userNumber = getUserNumber()
+        val result = compareNumber(computerNumber, userNumber)
+        answer = printResult(result)
+    }
 }
 
 fun printGameStart() {
@@ -79,16 +85,19 @@ fun calcBall(computerNumber: List<Int>, userNumber: Int): Int {
     return 0
 }
 
-fun printResult(result: List<Int>) {
+fun printResult(result: List<Int>): Boolean {
+    var answer = false
     when {
         result[0] == 0 && result[1] == 0 -> println("낫싱")
         result[0] == 3 -> {
             println("3스트라이크")
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            answer = true
         }
 
         result[0] == 0 -> println("${result[1]}볼")
         result[1] == 0 -> println("${result[0]}스트라이크")
         else -> println("${result[1]}볼 ${result[0]}스트라이크")
     }
+    return answer
 }
