@@ -63,10 +63,13 @@ private fun resultString(ball: Int, strike: Int): String {
     }
 }
 
-fun checkThreeStrike(computer: MutableList<Int>, input: String?): Boolean {
-    TODO("Not yet implemented")
+private fun checkThreeStrike(computer: MutableList<Int>, input: String): Boolean {
+    if (countingStrike(computer, input) == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        return true
+    }
+    return false
 }
-
 
 fun inputNumberException(input: String?) {
     TODO("Not yet implemented")
