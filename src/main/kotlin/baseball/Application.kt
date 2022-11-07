@@ -24,7 +24,7 @@ fun main() {
             println("낫싱")
         } else {
             println("${userNumber}의 ${userindexIncomputerNum} 인덱스는 computerNumber에 존재")
-            TODO("스트라이크/볼 판단")
+            searchStrikeAndBallCase(userindexIncomputerNum)
         }
     }
 }
@@ -38,6 +38,7 @@ fun makeRandomNumber(length: Int): String {
             noOverlapRandomNumber.add(randNum)
         }
     }
+    println("랜덤 숫자 생성 : ${noOverlapRandomNumber}")
     return noOverlapRandomNumber.joinToString("")
 }
 
@@ -69,3 +70,35 @@ fun searchNothingCase(): Pair<Boolean, MutableList<Int>> {
     }
     return Pair(isNothing, userindexIncomputerNum)
 }
+
+fun searchStrikeAndBallCase(userNumIndex: MutableList<Int>){
+    var strike = 0
+    var ball = 0
+    for (i in userNumIndex){
+        if (userNumber[i] == computerNumber[i]){
+            strike++
+        }
+        else{
+            ball++
+        }
+    }
+
+    if (strike != 0
+        && ball != 0
+    ){
+        println("${ball}볼 ${strike}스트라이크")
+    }
+    else if (strike != 0){
+        println("${strike}스트라이크")
+    }
+    else if (ball != 0){
+        println("${ball}볼")
+    }
+
+    if (strike == computerNumber.length){
+        println("${computerNumber.length}의 숫자를 모두 맞히셨습니다! 게임 종료")
+        TODO("게임 종료 안내")
+    }
+}
+
+
