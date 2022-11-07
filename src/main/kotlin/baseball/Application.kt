@@ -20,17 +20,20 @@ fun main() {
 fun entireGame():Int {
     var computerNum:List<Int> = makeRandomNum()
 
+
     return 0 //임시 코드
 }
 
 fun makeRandomNum():List<Int>{
     val computerNum = mutableListOf<Int>()
+
     while (computerNum.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computerNum.contains(randomNumber)) {
             computerNum.add(randomNumber)
         }
     }
+
     return computerNum
 }
 
@@ -57,9 +60,10 @@ fun isValidNum(answer:Int):Boolean{ //사용자 입력 검사 함수
     return true
 }
 
-fun inputUserNum():List<Char>{ //사용자가 번호 입력하는 함수
+fun inputUserNum():List<Int>{ //사용자가 번호 입력하는 함수
     var answer:Int
-
+    val answerList= mutableListOf<Int>()
+    var divideNum=100
     print("숫자를 입력해주세요 : ")
     try{
         answer= Console.readLine()!!.toInt()
@@ -69,7 +73,14 @@ fun inputUserNum():List<Char>{ //사용자가 번호 입력하는 함수
 
     if(!isValidNum(answer)) throw IllegalArgumentException()
 
-    return answer.toString().toList() //List<Char>형식으로 변환 후 리턴
+    for(divideTime in 1 ..3){
+        answerList.add(answer/divideNum)
+        answer %= divideNum
+        divideNum /= 10
+    }
+
+    return answerList //List<Int>형식으로 변환 후 리턴
 
 }
+
 
