@@ -33,6 +33,13 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("abc") }
         }
     }
+
+    @Test
+    fun `예외 테스트(입력값에 숫자가 아닌 다른 타입이 있는 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12a") }
+        }
+    }
     override fun runMain() {
         main()
     }
