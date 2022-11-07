@@ -22,11 +22,12 @@ class Baseball {
         val strike = checkStrike(computerList, userList)
         val ball = checkBall(computerList, userList) - strike
 
+
     }
 
     private fun checkStrike(computerList: MutableList<Int>, userList: MutableList<Int>): Int {
         var strike = 0
-        for (i in 0..userList.size) {
+        for (i in 0 until userList.size) {
             if (userList[i] == computerList[i])
                 strike++
         }
