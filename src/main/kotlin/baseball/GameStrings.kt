@@ -21,6 +21,9 @@ class GameStrings {
         if (strikeAndBall.isEmpty()) {
             return "낫싱"
         }
+        if (strikeCount==3){
+            return this.CORRECT_TEXT
+        }
 
         return strikeAndBall.joinToString(" ")
     }

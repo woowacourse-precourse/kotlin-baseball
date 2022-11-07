@@ -97,13 +97,7 @@ fun playGame() {
         playerAnswer = PlayersGuess(readln())
 
         val (strikeCount, ballCount) = countBallAndStrike(playerAnswer)
-
-        if (strikeCount == 3) {
-            println(gameStrings.CORRECT_TEXT)
-            return
-        } else {
-            println(gameStrings.strikeAndBallCountString(strikeCount, ballCount))
-        }
+        println(gameStrings.strikeAndBallCountString(strikeCount, ballCount))
     }
 
 }
