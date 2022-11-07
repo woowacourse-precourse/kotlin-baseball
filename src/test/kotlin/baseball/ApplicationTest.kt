@@ -47,6 +47,13 @@ class ApplicationTest : NsTest() {
         assertThat(result).isEqualTo(false)
     }
 
+    @Test
+    fun `정수 list 변환 함수 테스트`(){
+        val result = makeNumToList(123)
+        val par = listOf(1,2,3)
+        assertThat(result).isEqualTo(par)
+    }
+
     override fun runMain() {
         main()
     }
