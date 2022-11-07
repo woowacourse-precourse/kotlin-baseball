@@ -3,14 +3,19 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val computerNumber = getRandomNumber()
     printGameStart()
+    gameStart()
+}
+
+fun gameStart(){
+    val computerNumber = getRandomNumber()
     do {
         val userNumber = inputUserNumber()
         if (!checkInput(userNumber)) throw IllegalArgumentException()
         checkCorrect(listToString(computerNumber), userNumber)
     } while (userNumber != listToString(computerNumber))
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    end()
 }
 
 fun getRandomNumber(): MutableList<Int> {
