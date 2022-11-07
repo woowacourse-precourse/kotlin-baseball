@@ -27,6 +27,49 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트(타입이 다를 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("abc") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(입력값에 숫자가 아닌 다른 타입이 있는 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12a") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(입력값에 띄어쓰기가 있는 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12 3") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(서로 다른 수를 입력하지 않은 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("111") }
+        }
+    }
+
+    @Test
+    fun `게임은 정답을 가지고 있습니다`() {
+        assertThat(randomNum()).hasSize(3)
+    }
+
+    @Test
+    fun `정답에는 중복된 숫자가 포함되지 않는다`() {
+        val computer = randomNum()
+        val computerAnswer = mutableListOf<Char>()
+        computer.forEach { it ->
+            if (computer.count { c -> c == it } == 1) computerAnswer.add(it)
+        }
+        assertThat(computerAnswer).hasSize(3)
+    }
+
     override fun runMain() {
         main()
     }
