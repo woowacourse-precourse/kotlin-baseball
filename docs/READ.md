@@ -14,7 +14,7 @@
 ## 만들어본 기능 목록
 
 1. Computer: 컴퓨터의 랜덤값을 생성하고 관리하는 클래스
-    * createComputerNumberList(): 컴퓨터가 1에서 9까지의 서로 다른 임의의 수 3개를 선택하며 순서대로 리스트에 넣는 함수
+    * getComputerNumberList(): 컴퓨터가 1에서 9까지의 서로 다른 임의의 수 3개를 선택하며 순서대로 리스트에 넣는 함수
 
 2. ThrowException: 입력값에 대한 예외처리를 관리하는 클래스
     * throwExceptionForUserNumber(): 사용자가 3자리 숫자를 올바르게 입력하지 않았다면 예외를 던져주는 함수

@@ -1,8 +1,11 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class BaseballGame {
     fun processGame() {
-        val computerNumberList = Computer().getComputerNumberList()
+        println("숫자 야구 게임을 시작합니다.")
+        val computerNumberList = getComputerNumberList()
         while (true) {
             println("숫자를 입력해주세요: ")
             val userNumber = getUserNumber()
@@ -13,6 +16,20 @@ class BaseballGame {
                 break
             }
         }
+    }
+
+    /**
+     * 컴퓨터의 랜덤한 숫자를 정해주고 리스트에 넣어 반환해주는 함수
+     */
+    fun getComputerNumberList(): MutableList<Int> {
+        val computerNumber = mutableListOf<Int>()
+        while (computerNumber.size < 3) {
+            val randomNumber = Randoms.pickNumberInRange(1, 9)
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber)
+            }
+        }
+        return computerNumber
     }
 
     /**
