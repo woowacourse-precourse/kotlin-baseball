@@ -7,25 +7,18 @@ fun main() {
     startBaseBallGame()
 
     var gameOverDecision = 0
-    do {
+    while (gameOverDecision != 2) {
         val computerRandomNumber = computerSelectThreeRandomNumber()
-        println(computerRandomNumber)
         gameOverDecision = progressBaseBallGame(computerRandomNumber)
-    } while (gameOverDecision != 2)
-
+    }
 }
 
 
 fun progressBaseBallGame(computerRandomNumber: List<Int>): Int {
-    var progressGameDecision = 0
-    while (progressGameDecision != 1) {
+    while (true) {
         val userNumber = userThreeNumberInput()
-        if (determineJudgement(computerRandomNumber, userNumber) == 3){
-            progressGameDecision = userDecideGameContinue()
-        }
+        if (determineJudgement(computerRandomNumber, userNumber) == 3) return userDecideGameContinue()
     }
-
-    return progressGameDecision
 }
 
 
