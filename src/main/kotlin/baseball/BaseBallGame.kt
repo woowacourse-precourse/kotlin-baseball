@@ -30,6 +30,18 @@ class BaseBallGame {
     }
     private fun checkValidGuess(guess: String) = guessRegex.matches(guess) && guess.toSet().size == 3
 
+    private fun gradeGuess(answer: String, guess: String): Score {
+        val score = Score(0, 0)
+
+        for (i in 0..2) {
+            when {
+                guess[i] == answer[i] -> score.strike += 1
+                guess[i] in answer -> score.ball += 1
+            }
+        }
+        return score
+    }
+
     private fun printGuide() {
         println("숫자 야구 게임을 시작합니다.")
         print("숫자를 입력해주세요 : ")
