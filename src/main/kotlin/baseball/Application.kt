@@ -6,6 +6,7 @@ fun main() {
     val computerNumber = getRandomNumber()
     printGameStart()
     inputUserNumber()
+
 }
 
 fun getRandomNumber(): MutableList<Int> {
@@ -23,7 +24,8 @@ fun printGameStart() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
-fun inputUserNumber() {
+fun inputUserNumber(): String {
     print("숫자를 입력해주세요 : ")
-    val userNumber: Int = readLine()!!.toInt()
+    return readLine().toString()
 }
+
