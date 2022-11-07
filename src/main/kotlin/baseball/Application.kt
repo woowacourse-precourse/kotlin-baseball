@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun createOpponentData(): String {
@@ -83,5 +84,37 @@ fun gameResultString(inputResult: List<Int>): String {
 }
 
 fun main() {
-    TODO("프로그램 구현")
+    var opponentData = createOpponentData()
+
+    println("숫자 야구 게임을 시작합니다.")
+    var isRunning = true
+    while(isRunning) {
+        print("숫자를 입력해주세요. : ")
+
+        val inputData = Console.readLine()
+
+        if(isNotInteger(inputData))
+            throw IllegalArgumentException()
+
+        if(isNotThreeDigits(inputData))
+            throw IllegalArgumentException()
+
+        if(isNegativeNumber(inputData))
+            throw IllegalArgumentException()
+
+        val inputResult = compareData(opponentData, inputData)
+
+        println(gameResultString(inputResult))
+        if(isGameOver(inputResult)) {
+            val inputContinue = Console.readLine()
+
+            if(!continueGame(inputContinue)) {
+                isRunning = false
+            }
+            else {
+                opponentData = createOpponentData()
+                println("숫자 야구 게임을 시작합니다.")
+            }
+        }
+    }
 }
