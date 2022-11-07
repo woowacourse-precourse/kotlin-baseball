@@ -111,7 +111,6 @@ fun askRegame(): Int { // 게임을 새로 시작할것인지 묻는 메서드
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     var restart = readLine().toInt()
-
     return restart
 }
 
@@ -137,11 +136,8 @@ fun main() {
         if (restart == 1) { // 새로 시작
             randomNumber = getRandomNumber() // 다시 값을 받아와줘야하므로 메서드 재호출
             restart = 0 // 값 초기화
-
         } else if (restart == 2) { // 종료
             flag = false
         }
-
     }
-
 }
