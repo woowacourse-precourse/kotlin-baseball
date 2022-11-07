@@ -60,6 +60,16 @@ class ApplicationTest : NsTest() {
         assertThat(randomNum()).hasSize(3)
     }
 
+    @Test
+    fun `정답에는 중복된 숫자가 포함되지 않는다`() {
+        val computer = randomNum()
+        val computerAnswer = mutableListOf<Char>()
+        computer.forEach { it ->
+            if (computer.count { c -> c == it } == 1) computerAnswer.add(it)
+        }
+        assertThat(computerAnswer).hasSize(3)
+    }
+
     override fun runMain() {
         main()
     }
