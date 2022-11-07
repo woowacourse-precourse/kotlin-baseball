@@ -105,8 +105,5 @@ private fun randomThreeNumber(): String {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         computer.add(randomNumber)
     }
-
-    println(computer)
-
     return computer.joinToString("")
 }
