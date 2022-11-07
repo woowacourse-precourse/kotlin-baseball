@@ -40,7 +40,25 @@ class BaseballModel {
     }
 
     fun isEndedCheck() {
-        TODO("게임이 끝났는지 체크")
+        if (strikeCnt == 3) {
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            val regex = Regex("[1-2]{1}")
+            val userInput = Console.readLine()
+            require(userInput.matches(regex)) {
+                "1또는 2를 입력해 주세요."
+            }
+            if (userInput.first().toNumber() == 2) {
+                isEnded = true
+                return
+            }
+            reGame()
+        }
+        strikeCnt = 0
+        ballCnt = 0
+    }
+
+    private fun reGame() {
+        computerNum = makeRandomNum()
     }
 
     fun checkInputIsCorrect(userNum: String) {
