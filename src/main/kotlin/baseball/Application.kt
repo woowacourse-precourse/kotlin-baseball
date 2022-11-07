@@ -46,26 +46,28 @@ fun test_number(computer_number: String,number: String){ // 스트라이크 볼 
             ball+=1
         }
     }
-    if (strike == 3){
-        println("3스트라이크")
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-        restart_game()
-    }
-    else if(strike == 0 && ball == 0){
-        println("낫싱")
-        game_Start(computer_number)
-    }
-    else if (strike == 0 && ball!=0){
-        println("$ball 볼")
-        game_Start(computer_number)
-    }
-    else if (strike != 0 && ball == 0){
-        println("$strike 스트라이크")
-        game_Start(computer_number)
-    }
-    else {
-        println("${ball}볼 ${strike}스트라이크")
-        game_Start(computer_number)
+    return when{
+        strike == 3 -> {
+            println("3스트라이크")
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            restart_game()
+        }
+        strike == 0 && ball == 0 -> {
+            println("낫싱")
+            game_Start(computer_number)
+        }
+        strike == 0 && ball!=0 ->{
+            println("$ball 볼")
+            game_Start(computer_number)
+        }
+        strike != 0 && ball == 0 ->{
+            println("$strike 스트라이크")
+            game_Start(computer_number)
+        }
+        else -> {
+            println("${ball}볼 ${strike}스트라이크")
+            game_Start(computer_number)
+        }
     }
 }
 fun restart_game() { // 게임 재시작
