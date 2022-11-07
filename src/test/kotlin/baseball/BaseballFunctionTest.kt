@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.api.assertThrows
+import java.lang.IllegalArgumentException
 
 class BaseballFunctionTest {
     @Test
@@ -16,5 +17,23 @@ class BaseballFunctionTest {
             { assertThat(randomNumbers).allMatch { number -> (1..9).contains(number) } }
         )
     }
-
+    @Test
+    fun `validateInputString inputStartNumber~inputEndNumber 까지의 각기 다른 무작위수 stringLengthToSpecify개를 정확하게 입력하지 않을시 오류를 반환하는지 검사`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validateInputString("1234") }
+            assertThrows<IllegalArgumentException> { validateInputString("1a4") }
+            assertThrows<IllegalArgumentException> { validateInputString("114") }
+            assertThrows<IllegalArgumentException> { validateInputString("123443") }
+            assertThrows<IllegalArgumentException> {
+                validateInputString(
+                    "132",
+                    inputStartNumber = 1,
+                    inputEndNumber = 2
+                )
+            }
+            assertThrows<IllegalArgumentException> {
+                validateInputString("123", stringLengthToSpecify = 1)
+            }
+        }
+    }
 }
