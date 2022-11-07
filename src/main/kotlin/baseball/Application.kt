@@ -82,7 +82,11 @@ fun calcBall(computerNumber: List<Int>, userNumber: Int): Int {
 fun printResult(result: List<Int>) {
     when {
         result[0] == 0 && result[1] == 0 -> println("낫싱")
-        result[0] == 3 -> println("3스트라이크")
+        result[0] == 3 -> {
+            println("3스트라이크")
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        }
+
         result[0] == 0 -> println("${result[1]}볼")
         result[1] == 0 -> println("${result[0]}스트라이크")
         else -> println("${result[1]}볼 ${result[0]}스트라이크")
