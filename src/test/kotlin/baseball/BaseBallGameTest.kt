@@ -1,12 +1,9 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class BaseBallGameTest : NsTest() {
     @Test
@@ -59,6 +56,25 @@ class BaseBallGameTest : NsTest() {
         assertThat(getElement).isEqualTo(false)
     }
 
+    @Test
+    fun `gradeGuess 메서드반환 결과 확인`() {
+        val baseBallGame = BaseBallGame()
+
+        val method = baseBallGame.javaClass.getDeclaredMethod("gradeGuess", String::class.java, String::class.java)
+        method.isAccessible = true
+
+        val parameters = arrayOfNulls<Any>(2)
+
+        parameters[0] = "123"
+        parameters[1] = "123"
+        var getElement = method.invoke(baseBallGame, *parameters)
+        assertThat(getElement).isEqualTo(BaseBallGame.Score(3, 0))
+
+        parameters[0] = "124"
+        parameters[1] = "123"
+        getElement = method.invoke(baseBallGame, *parameters)
+        assertThat(getElement).isEqualTo(BaseBallGame.Score(2, 0))
+    }
     override fun runMain() {
         main()
     }
