@@ -30,7 +30,7 @@ private fun playGame(computer: MutableList<Int>) {
     while (true) {
         val input = Console.readLine()
 
-        println("숫자를 입력해주세요 : ")
+        printInputMessage()
         inputNumberException(input)
         println(resultString(countingBall(computer, input), countingStrike(computer, input)))
         if (checkThreeStrike(computer, input)) break
