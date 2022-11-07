@@ -1,4 +1,4 @@
-package baseball
+package baseball.gameservice
 
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
@@ -31,19 +31,19 @@ object ScreenManipulator {
 
     fun showMessageToScreen(msg:String){
         if(msg== START_BASEBALLGAME){
-            screen= BufferedWriter(OutputStreamWriter(System.`out`))
+            screen = BufferedWriter(OutputStreamWriter(System.`out`))
         }
         screen.write(msg)
         screen.flush()
     }
 
     private fun showStrikeCount(strikeCount: Int) {
-        screen.write("${strikeCount}${MSG_STRIKE}")
+        screen.write("${strikeCount}$MSG_STRIKE")
         screen.flush()
     }
 
     private fun showBallCount(ballCount: Int) {
-        screen.write("${ballCount}${MSG_BALL}")
+        screen.write("${ballCount}$MSG_BALL")
         screen.flush()
     }
 

@@ -1,6 +1,6 @@
-package baseball
+package baseball.gameservice
 
-import camp.nextstep.edu.missionutils.Console
+import baseball.data.GameStatus
 
 //interface
 interface BaseballGameReferee {

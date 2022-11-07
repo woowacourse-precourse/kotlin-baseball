@@ -1,4 +1,4 @@
-package baseball
+package baseball.gameservice
 
 object Validator {
     /** 사용자의 숫자 추즉을 위한 입력이 규칙에 적합한지 확인하는 함수 **/

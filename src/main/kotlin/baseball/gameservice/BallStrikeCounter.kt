@@ -1,4 +1,4 @@
-package baseball
+package baseball.gameservice
 
 /** ball과 strike의 개수를 세어주는 class **/
 object BallStrikeCounter {
