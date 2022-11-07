@@ -26,4 +26,8 @@ class Guide {
 
         println(output.trim())
     }
+
+    fun gameOver() {}
+
+    fun restartOrEnd() {}
 }

@@ -37,5 +37,24 @@ class Baseball(private val input: Input, private val generator: Generator) {
         gameOver()
     }
 
-    private fun gameOver() {}
+    private fun gameOver() {
+        guide.gameOver()
+
+        guide.restartOrEnd()
+
+        val userInput = input.get()
+
+        val validChoices = listOf("1", "2")
+        val validators = listOf(
+            StringLengthVerifier(1),
+            ValidChoiceVerifier(validChoices),
+        )
+        input.validCheck(userInput, validators)
+
+        if (userInput == "1") {
+            restart()
+        }
+    }
+
+    private fun restart() {}
 }
