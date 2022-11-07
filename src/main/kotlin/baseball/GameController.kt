@@ -13,59 +13,16 @@ object GameController {
     private val user = User()
     private val computer = Computer()
 
-    // 사용자가 잘못된 값을 입력한 경우
-    fun exception(userList: List<Int>) {
-        if (!Exceptions.isValidRange(userList) ||
-                !Exceptions.isValidSize(userList) ||
-                !Exceptions.hasNotDuplicatedNumber(userList)) {
-            throw IllegalArgumentException()
-        }
-    }
-
-    // 스트라이크 -> 위치와 숫자가 모두 같음
-    fun getStrikeCount(computer: List<Int>, user: List<Int>): Int {
-        return user.filterIndexed { index, number ->
-            computer[index] == number
-        }.count()
-    }
-
-    // 볼 -> 위치는 다르지만 숫자가 포함
-    fun getBallCount(computer: List<Int>, user: List<Int>): Int {
-        var ball = 0
-        // 위치와 숫자가 같은 부분 필터링
-        val filterList = computer.filterIndexed { index, computerNumber ->
-            user[index] != computerNumber
-        }
-        user.forEach { number ->
-            if (filterList.contains(number)) {
-                ball++
+    // 전체적인 게임을 동작
+    fun playGame() {
+        while (true) {
+            guessTheNumber()
+            println(Messages.RESTART_OR_EXIT)
+            if (gameExit()) {
+                break
             }
         }
-        return ball
     }
-
-    // 결과에 따라 출력
-    fun resultMessage(strike: Int, ball: Int): String {
-        return if (strike == 0 && ball == 0) {
-            Messages.NOTHING
-        } else if (strike == 0) {
-            "$ball" + Messages.BALL
-        } else if (ball == 0) {
-            "$strike" + Messages.STRIKE
-        } else {
-            "$ball" + Messages.BALL + " $strike" + Messages.STRIKE
-        }
-    }
-
-    // 모든 숫자들을 맞추면 성공
-    private fun userCorrectAnswer(strike: Int): Boolean {
-        if (strike == Constants.MAX_SIZE) {
-            println(Messages.SUCCESS_MESSAGE)
-            return true
-        }
-        return false
-    }
-
     // 야구 게임의 한 사이클을 동작하는 함수
     private fun guessTheNumber() {
         println(Messages.START_MESSAGE)
@@ -87,15 +44,49 @@ object GameController {
         }
     }
 
-    // 전체적인 게임을 동작
-    fun playGame() {
-        while (true) {
-            guessTheNumber()
-            println(Messages.RESTART_OR_EXIT)
-            if (gameExit()) {
-                break
+
+    // 스트라이크 -> 위치와 숫자가 모두 같음
+    private fun getStrikeCount(computer: List<Int>, user: List<Int>): Int {
+        return user.filterIndexed { index, number ->
+            computer[index] == number
+        }.count()
+    }
+
+    // 볼 -> 위치는 다르지만 숫자가 포함
+    private fun getBallCount(computer: List<Int>, user: List<Int>): Int {
+        var ball = 0
+        // 위치와 숫자가 같은 부분 필터링
+        val filterList = computer.filterIndexed { index, computerNumber ->
+            user[index] != computerNumber
+        }
+        user.forEach { number ->
+            if (filterList.contains(number)) {
+                ball++
             }
         }
+        return ball
+    }
+
+    // 결과에 따라 출력
+    private fun resultMessage(strike: Int, ball: Int): String {
+        return if (strike == 0 && ball == 0) {
+            Messages.NOTHING
+        } else if (strike == 0) {
+            "$ball" + Messages.BALL
+        } else if (ball == 0) {
+            "$strike" + Messages.STRIKE
+        } else {
+            "$ball" + Messages.BALL + " $strike" + Messages.STRIKE
+        }
+    }
+
+    // 모든 숫자들을 맞추면 성공
+    private fun userCorrectAnswer(strike: Int): Boolean {
+        if (strike == Constants.MAX_SIZE) {
+            println(Messages.SUCCESS_MESSAGE)
+            return true
+        }
+        return false
     }
 
     private fun gameExit(): Boolean {
@@ -103,5 +94,14 @@ object GameController {
         // 입력 값에 따른 예외처리
         Exceptions.checkValidInput(status)
         return status == "${Constants.EXIT}"
+    }
+
+    // 사용자가 잘못된 값을 입력한 경우
+    private fun exception(userList: List<Int>) {
+        if (!Exceptions.isValidRange(userList) ||
+            !Exceptions.isValidSize(userList) ||
+            !Exceptions.hasNotDuplicatedNumber(userList)) {
+            throw IllegalArgumentException()
+        }
     }
 }
