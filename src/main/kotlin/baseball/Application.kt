@@ -1,5 +1,8 @@
 package baseball
 
+import baseball.logic.BaseBallGame
+
 fun main() {
-    TODO("프로그램 구현")
+    val baseBallGame = BaseBallGame()
+    baseBallGame.startBaseballGame()
 }
