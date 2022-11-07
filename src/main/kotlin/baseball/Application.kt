@@ -106,3 +106,19 @@ fun checkStrikeBall( ){
     }
 }
 
+fun restartCheck(input : String) : Boolean{
+    val again : Int
+    try {
+        again = input.toInt()
+    }catch (e : NumberFormatException){
+        throw IllegalArgumentException("User의 입력이 적절하지 않습니다.")
+    }
+
+    if(again != 1 && again !=2){
+        throw IllegalArgumentException("User의 입력이 적절하지 않습니다.")
+    }
+
+    return again == 1
+
+}
+
