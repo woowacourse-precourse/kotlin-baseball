@@ -46,6 +46,17 @@ class BaseBallGame {
         println("숫자 야구 게임을 시작합니다.")
         print("숫자를 입력해주세요 : ")
     }
+
+    private fun printScore(score: Score) {
+        score.apply {
+            when {
+                strike != 0 && ball != 0 -> "${ball}볼 ${strike}스트라이크"
+                strike != 0 -> "${strike}스트라이크"
+                ball != 0 -> "${ball}볼"
+                else -> "낫싱"
+            }.let { println(it) }
+        }
+    }
     companion object {
         private const val RUNNING = 1
         private const val RESTART = 2
