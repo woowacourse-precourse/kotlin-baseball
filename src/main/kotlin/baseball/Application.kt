@@ -10,6 +10,7 @@ fun main() {
         if (!checkInput(userNumber)) throw IllegalArgumentException()
         checkCorrect(listToString(computerNumber), userNumber)
     }while (userNumber != listToString(computerNumber))
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
 fun getRandomNumber(): MutableList<Int> {
