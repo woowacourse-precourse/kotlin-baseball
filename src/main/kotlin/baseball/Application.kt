@@ -20,8 +20,7 @@ object BaseballGame {
         while (true) {
             print("숫자를 입력해주세요 : ")
             val input = readLine()
-            input?.let { inputException(it) }
-
+            inputException(input)
             compareNumber(input!!)
             printResult()
 
@@ -84,7 +83,11 @@ object BaseballGame {
 
 }
 
-fun inputException(input: String) {
+fun inputException(input: String?) {
+    require(!input.isNullOrEmpty()) {
+        throw IllegalArgumentException()
+    }
+
     val regex = "[1-9][1-9][1-9]".toRegex()
     require(input.matches(regex)) {
         throw IllegalArgumentException()
@@ -95,7 +98,7 @@ fun inputException(input: String) {
     }
 }
 
-fun restartException(answer: String) {
+fun restartException(answer: String?) {
     require(answer == "1" || answer == "2") {
         throw IllegalArgumentException()
     }
@@ -105,7 +108,7 @@ fun restartGame(): Boolean {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val answer = readLine()
-    answer?.let { restartException(it) }
+    restartException(answer)
     when (answer) {
         "1" -> return true
         "2" -> return false
