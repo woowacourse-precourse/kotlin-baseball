@@ -66,7 +66,7 @@ class GameTest : NsTest() {
             val inputNumber = "123"
             val computerRandomNumber = listOf(1, 2, 3)
             val strikeOrBall = Judgement(inputNumber.map { it.digitToInt() }.toList(), computerRandomNumber)
-                                .judgeTheBall()
+                .judgeTheBall()
             assertThat(strikeOrBall).isEqualTo(listOf(3, 0))
         }
 
@@ -75,7 +75,7 @@ class GameTest : NsTest() {
             val inputNumber = "234"
             val computerRandomNumber = listOf(1, 2, 3)
             val strikeOrBall = Judgement(inputNumber.map { it.digitToInt() }.toList(), computerRandomNumber)
-                                .judgeTheBall()
+                .judgeTheBall()
             assertThat(strikeOrBall).isEqualTo(listOf(0, 2))
         }
 
@@ -84,7 +84,7 @@ class GameTest : NsTest() {
             val inputNumber = "567"
             val computerRandomNumber = listOf(1, 2, 3)
             val strikeOrBall = Judgement(inputNumber.map { it.digitToInt() }.toList(), computerRandomNumber)
-                                .judgeTheBall()
+                .judgeTheBall()
             assertThat(strikeOrBall).isEqualTo(listOf(0, 0))
         }
 
@@ -93,7 +93,7 @@ class GameTest : NsTest() {
             val inputNumber = "132"
             val computerRandomNumber = listOf(1, 2, 3)
             val strikeOrBall = Judgement(inputNumber.map { it.digitToInt() }.toList(), computerRandomNumber)
-                                .judgeTheBall()
+                .judgeTheBall()
             assertThat(strikeOrBall).isEqualTo(listOf(1, 2))
         }
     }
