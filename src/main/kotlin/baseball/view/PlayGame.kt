@@ -15,6 +15,10 @@ class PlayGame {
     fun printResult(resultArr: IntArray){
         if(resultArr[0] == 0 && resultArr[1] == 0)
             println("낫싱")
+        else if(resultArr[0] == 0)
+            println("${resultArr[1]}볼")
+        else if(resultArr[1] == 0)
+            println("${resultArr[0]}스트라이크")
         else
             println("${resultArr[1]}볼 ${resultArr[0]}스트라이크")
     }
