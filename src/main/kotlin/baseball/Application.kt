@@ -108,5 +108,12 @@ fun printResult(result: List<Int>): Boolean {
 
 fun restartOrEndGame() {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    restartInput = readLine()?.toInt() ?: 0
+    val restartOrEnd = readLine()
+    checkRestartInputException(restartOrEnd)
+    restartInput = restartOrEnd?.toInt() ?: 0
+}
+
+fun checkRestartInputException(restartOrEnd: String?) {
+    if (restartOrEnd != "1" && restartOrEnd != "2")
+        throw IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 }
