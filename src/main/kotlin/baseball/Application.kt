@@ -2,6 +2,8 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import common.Constant
+
 
 fun main() {
     var exitFlag = false
@@ -86,30 +88,50 @@ fun getComInput(): List<Int> {
 
 fun getUserInput(): String {
     val input = Console.readLine()
-    try {
-        userInputValidation(input)
-    } catch (e: java.lang.IllegalArgumentException) {
-        return ""
+    return if( userInputValidation(input)){
+        input
     }
-    return input
+    else{
+        ""
+    }
+
 
 }
 
 fun userInputValidation(input: String): Boolean {
-    if (checkIncludeZero(input) || checkInputLength(input) || checkDuplicateNum(input)) {
-        throw IllegalArgumentException()
+    try{
+        checkIncludeZero(input)
+        checkInputLength(input)
+        checkDuplicateNum(input)
+        checkOnlyNumber(input)
+    }
+    catch (e:java.lang.IllegalArgumentException){
+        return false
     }
     return true
 }
 
-fun checkIncludeZero(input: String): Boolean {
-    return input.contains("0")
+fun checkIncludeZero(input: String) {
+    if(input.contains("0")){
+        throw IllegalArgumentException(Constant.INVALID_ZERO_INCLUDE_ERROR)
+    }
 }
 
-fun checkInputLength(input: String): Boolean {
-    return (input.length != 3)
+fun checkInputLength(input: String){
+    if(input.length != 3){
+        throw IllegalArgumentException(Constant.INVALID_LENGTH_ERROR)
+    }
 }
 
-fun checkDuplicateNum(input: String): Boolean {
-    return (input.toList().distinct().size != 3)
+fun checkDuplicateNum(input: String){
+    if(input.toList().distinct().size != 3){
+        throw IllegalArgumentException(Constant.INVALID_DUPLICATE_NUM_ERROR)
+    }
+}
+
+fun checkOnlyNumber(input: String){
+    val regexOnlyNumber = Regex("-?\\d+(\\.\\d+)?")
+    if (!regexOnlyNumber.matches(input)){
+        throw IllegalArgumentException(Constant.INVALID_NOT_ONLY_NUMBER_ERROR)
+    }
 }
