@@ -76,8 +76,10 @@ private fun userNumberCheck(number: String, computer: String): Pair<Int, Int> {
 // 숫자 맞추기
 private fun guessNumber(): String {
     print("숫자를 입력해주세요 : ")
-    val number = Console.readLine()
-    // 숫자 3개까지
+    val userNumber = Console.readLine()
+    // 중복 숫자 체크
+    val number = userNumber.toSet().joinToString("")
+
     var check = true
 
     // 3개가 아닐 경우 에러
@@ -85,11 +87,6 @@ private fun guessNumber(): String {
     for (i in number) {
         // 1~9까지만
         if (i !in '1'..'9') {
-            check = false
-            break
-        }
-        // 무조건 한글자여야함
-        if (number.count { it == i } != 1) {
             check = false
             break
         }
