@@ -12,9 +12,18 @@ data class BallResult(
         ballCnt = 0
     }
 
-    fun makeStrikeStr() = if (strikeCnt > 0) "$strikeCnt" + STRIKE_STR else ""
-    fun makeBallStr() = if (ballCnt > 0) "$ballCnt" + BALL_STR else ""
-    fun makeSpace() = if (strikeCnt > 0 && ballCnt > 0) " " else ""
+    private fun makeStrikeStr() = if (strikeCnt > 0) "$strikeCnt" + STRIKE_STR else ""
+    private fun makeBallStr() = if (ballCnt > 0) "$ballCnt" + BALL_STR else ""
+    private fun makeSpace() = if (strikeCnt > 0 && ballCnt > 0) " " else ""
+    fun makeResultString(): String {
+        if (isNothing()) {
+            return NOTHING_STR
+        }
+        val strikeStr = makeStrikeStr()
+        val ballStr = makeBallStr()
+        val space = makeSpace()
+        return ballStr + space + strikeStr
+    }
 
     companion object {
         const val STRIKE_STR = "스트라이크"

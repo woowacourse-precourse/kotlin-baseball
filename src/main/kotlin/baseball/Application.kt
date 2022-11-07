@@ -10,8 +10,7 @@ fun main() {
             val userInput = Console.readLine()
             checkBasballNumber(userInput)
             checkBalls(userInput)
-            setResultString()
-            println(resultString)
+            println(getResultString())
             isEndedCheck()
         } while (!isEnded)
     }

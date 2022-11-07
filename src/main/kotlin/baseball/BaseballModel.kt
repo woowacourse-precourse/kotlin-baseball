@@ -9,7 +9,6 @@ class BaseballModel {
     private val inputChecker: InputChecker = InputChecker()
     val ballResult: BallResult = BallResult(0, 0)
     var computerNum: List<Int> = emptyList<Int>()
-    var resultString = ""
     var isEnded = false
 
     init {
@@ -29,16 +28,7 @@ class BaseballModel {
         }
     }
 
-    fun setResultString() {
-        if (ballResult.isNothing()) {
-            resultString = NOTHING_STR
-            return
-        }
-        val strikeStr = ballResult.makeStrikeStr()
-        val ballStr = ballResult.makeBallStr()
-        val space = ballResult.makeSpace()
-        resultString = ballStr + space + strikeStr
-    }
+    fun getResultString() = ballResult.makeResultString()
 
     fun isEndedCheck() {
         if (ballResult.isOut()) {
@@ -54,10 +44,7 @@ class BaseballModel {
         clearGame()
     }
 
-    fun clearGame() {
-        ballResult.clear()
-        resultString = ""
-    }
+    fun clearGame() = ballResult.clear()
 
     fun checkEndedNumber(userInput: String) = inputChecker.checkEndedNumber(userInput)
     fun checkBasballNumber(userNum: String) = inputChecker.checkBasballNumber(userNum)

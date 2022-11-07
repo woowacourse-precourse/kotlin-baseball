@@ -28,8 +28,7 @@ class BaseballModelTest {
             computerNum = listOf(4, 2, 5)
             testInputs.forEachIndexed { idx, case ->
                 checkBalls(case)
-                setResultString()
-                assertThat(resultString).isEqualTo(testResults[idx])
+                assertThat(getResultString()).isEqualTo(testResults[idx])
                 assertThat(ballResult.strikeCnt).isEqualTo(testStrikes[idx])
                 assertThat(ballResult.ballCnt).isEqualTo(testBalls[idx])
                 clearGame()
@@ -49,8 +48,7 @@ class BaseballModelTest {
             testResults.forEachIndexed { idx, case ->
                 ballResult.strikeCnt = testStrikes[idx]
                 ballResult.ballCnt = testBalls[idx]
-                setResultString()
-                assertThat(resultString).isEqualTo(case)
+                assertThat(getResultString()).isEqualTo(case)
             }
         }
     }
