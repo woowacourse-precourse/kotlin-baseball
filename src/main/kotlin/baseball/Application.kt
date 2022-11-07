@@ -5,7 +5,9 @@ import java.util.*
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    startNewGame()
+    do {
+        startNewGame()
+    } while (isContinuedNewGame())
 }
 
 private fun getComputerNumber(): String {
@@ -119,4 +121,15 @@ private fun isWrongNumber(ballCount: Int, strikeCount: Int): Boolean {
     if (ballCount != 0 && strikeCount != 0)
         println("${ballCount}볼 ${strikeCount}스트라이크")
     return true
+}
+
+private fun isContinuedNewGame(): Boolean {
+    val userContinueNewGameInput = Console.readLine()
+    println(userContinueNewGameInput)
+    validateInputString(userContinueNewGameInput, true)
+
+    if (userContinueNewGameInput == "1") {
+        return true
+    }
+    return false
 }
