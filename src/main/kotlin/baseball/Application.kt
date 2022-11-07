@@ -21,8 +21,8 @@ fun inputNumber(): String { // 잘못 입력했을 시 IllegalArgumentException�
     2. 숫자 외 입력
     3. 길이가 3이 되지 않을때
     */
-    var num_list= mutableListOf<String>()
-
+    var num_list = mutableListOf<String>()
+    var onlynum = mutableListOf<Int>()
 
     print("숫자를 입력해주세요 : ")
     var user = readLine()
@@ -33,13 +33,22 @@ fun inputNumber(): String { // 잘못 입력했을 시 IllegalArgumentException�
         }
         num_list.add(num, user[num].toString())
     }
+    for (Intcheck in 0 until user.length){
+        if (user[Intcheck].isDigit()){
+            onlynum.add(Intcheck, user[Intcheck].digitToInt())
+        }
+    }
+//    println(onlynum)
 
     //1. 같은 숫자 두번 이상 입력
     if (num_list.size < 3 ){
         throw IllegalArgumentException("같은 숫자 두번 이상 입력")
     }
-
-    //3. 길이가 3이 되지 않을때
+    //2. 숫자 외 입력
+    if (onlynum.size<3){
+        throw IllegalArgumentException("숫자 외 입력하였음")
+    }
+    //3. 길이가 3이 아닐때
     if (user.length != 3) {
         throw IllegalArgumentException("숫자 3자리를 입력해야함")
     }
@@ -113,7 +122,7 @@ fun main() {
             askRegame()
             restart = readLine().toInt()
             if (restart == 1) { // 새로 시작
-                randomNumber = getRandomNumber()
+                randomNumber = getRandomNumber() // 다시 값을 받아와줘야하므로 메서드 재호출
             } else if (restart == 2) { // 종료
                 flag = false
             }
