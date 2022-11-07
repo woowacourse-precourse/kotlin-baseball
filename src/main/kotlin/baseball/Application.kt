@@ -27,6 +27,18 @@ fun checkTrue(input : CharArray){
     }
 }
 
+fun random():MutableList<Int>{
+    val computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer
+}
+
+
 
 fun main() {
 
@@ -38,6 +50,10 @@ fun main() {
         if (input != null) {
             checkTrue(input)
         } else throw IllegalArgumentException("입력 값이 없습니다.");
+
+        val ComputerNum = random()
+
+
 
     }
 
