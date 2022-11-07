@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.lang.Exception
 import java.lang.IllegalArgumentException
@@ -19,9 +20,7 @@ fun main() {
 fun entireGame():Int {
     var computerNum:List<Int> = makeRandomNum()
 
-
-
-    return 0 //임시
+    return 0 //임시 코드
 }
 
 fun makeRandomNum():List<Int>{
@@ -36,7 +35,7 @@ fun makeRandomNum():List<Int>{
 }
 
 
-fun isValidNum(answer:Int):Boolean{
+fun isValidNum(answer:Int):Boolean{ //사용자 입력 검사 함수
     var answerList=answer.toString().toList()
 
     if(!(answer is  Int)){
@@ -56,5 +55,21 @@ fun isValidNum(answer:Int):Boolean{
     }
 
     return true
+}
+
+fun inputUserNum():List<Char>{ //사용자가 번호 입력하는 함수
+    var answer:Int
+
+    print("숫자를 입력해주세요 : ")
+    try{
+        answer= Console.readLine()!!.toInt()
+    } catch (e:Exception){
+        throw IllegalArgumentException()
+    }
+
+    if(!isValidNum(answer)) throw IllegalArgumentException()
+
+    return answer.toString().toList() //List<Char>형식으로 변환 후 리턴
+
 }
 
