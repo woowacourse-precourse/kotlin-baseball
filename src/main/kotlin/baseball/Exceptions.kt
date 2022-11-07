@@ -8,6 +8,9 @@ fun inputNumberException(input: String) {
     when {
         input.toSet().size < 3 -> throw IllegalArgumentException(DUPLICATED_NUMBER)
         input.length > 3 -> throw IllegalArgumentException(NOT_THREE_NUMBER)
-        !("[1-9]{3}".toRegex().matches(input)) -> throw IllegalArgumentException(NOT_NUMBER)
+        isNotNumber(input) -> throw IllegalArgumentException(NOT_NUMBER)
     }
 }
+
+private fun isNotNumber(input: String) = !("[1-9]{3}".toRegex()
+    .matches(input))
