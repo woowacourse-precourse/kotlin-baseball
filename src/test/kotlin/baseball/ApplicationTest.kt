@@ -30,4 +30,11 @@ class ApplicationTest : NsTest() {
     override fun runMain() {
         main()
     }
+
+    @Test
+    fun `사용자가 입력한 숫자 자리수로 끊어서 리스트로 변환`() {
+        val input = "123"
+        val result = mutableListOf(1, 2, 3)
+        assertThat(getUserNumberList(input)).isEqualTo(result)
+    }
 }
