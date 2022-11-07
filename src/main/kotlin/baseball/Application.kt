@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms
 fun playGame(){
     //컴퓨터 숫자 만들기
     //리드미 파일을 참조함
-    getComputerNumber()
-    getUserNumber()
+    val computer=getComputerNumber()
+    val user=getUserNumber()
 
     //message(computer)
     print("3개의 숫자를 모두 맞히셨습니다!")
@@ -27,9 +27,25 @@ fun nextGame(){
 
 fun message():String{
     //판단 및 메시지 출력
+
+    val strike=0
+    val ball=0
+    val number= getUserNumber()
+
+    if(strike==3)
+        println("${strike}스트라이크")
+    else if(strike==0&&ball==0)
+        println("낫싱")
+    else if(strike==0)
+        println("${ball}볼")
+    else if(ball==0)
+        println("${strike}스트라이크")
+    else
+        println("${ball}볼 ${strike}스트라이크")
+
 }
 
-fun getComputerNumber(){
+fun getComputerNumber(): MutableList<Int> {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -37,6 +53,7 @@ fun getComputerNumber(){
             computer.add(randomNumber)
         }
     }
+    return computer
 }
 
 fun getUserNumber(): String? {
