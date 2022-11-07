@@ -37,6 +37,16 @@
 
     + compareData return List<Int> -> ball / strike 2개를 카운트한 List
 
+4. 수정 사항
+    + main 함수 파일에 너무 많은 함수가 있어 읽기 불편하다. 비슷한 기능끼리 묶어 class화 하자.
+    
+    | 클래스 | 함수 | 용도 |
+    | --- | --- | --- |
+    | UserInputException(Input: String) | isNegativeNumber, isNotThreeDigits, isNotInteger | 입력 받은 유저의 값을 예외 처리함 |
+    | ContinueInputException(Input: String) | isNegativeNumber, isNotOneDigits, isNotOneOrTwo, isNotInteger | 입력 받은 게임 진행 / 종료 값을 예외 처리함 |
+    | BaseballGame | createOpponentData, compareData, isGameOver, gameResultString, continueGame, processGame | 게임 진행 |
+    | InOutput | inputUserData, inputContinueData, printStartMessage, printInputMessage, printGameResult, printEndMessage | 게임 진행 / 결과 출력 |
+    
 ---
 ## 문제
 
