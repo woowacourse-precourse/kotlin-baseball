@@ -12,6 +12,7 @@ class BaseballGame {
     private val player = Player()
     private val match = Match()
     private val view = View()
+
     fun run() {
         view.outputMessageAndLinebreak(GAME_START)
         do {
