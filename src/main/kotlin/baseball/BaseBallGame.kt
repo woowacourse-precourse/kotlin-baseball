@@ -8,6 +8,8 @@ const val THREE_STRIKE = "3스트라이크"
 const val ZERO_COUNT = 0
 const val FULL_COUNT = 3
 const val RE_GAME = "2"
+const val END_GAME = "1"
+const val INVAILD_NUMBER = "유효한 수가 아닙니다."
 
 fun gameStart() {
     while (true) {
@@ -20,9 +22,11 @@ fun gameStart() {
 }
 
 private fun reGame(): Boolean {
-    val reGame = Console.readLine()
-    if (reGame == RE_GAME) return true
-    return false
+    return when (Console.readLine()) {
+        RE_GAME -> true
+        END_GAME -> false
+        else -> throw IllegalArgumentException(INVAILD_NUMBER)
+    }
 }
 
 private fun makeRandomBallNumbers(): MutableList<Int> {
