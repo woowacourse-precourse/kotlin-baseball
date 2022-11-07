@@ -24,8 +24,8 @@ fun main() {
 fun startGame() {
     val answer = pickRandomNumber()
     do {
-        val userNumber = userInput()
-        checkHint(userNumber, answer)
+        val userNumber = inputUserNumber()
+        checkNumberHint(userNumber, answer)
     } while (!checkAnswer(userNumber, answer))
     println(END_GAME)
     restartGame()
@@ -42,7 +42,7 @@ fun pickRandomNumber(): String {
     return computerNumber.joinToString("")
 }
 
-fun userInput(): String {
+fun inputUserNumber(): String {
     print(INPUT)
     val input = Console.readLine()
     val numbers = input.toCharArray().filter { number ->
@@ -55,17 +55,17 @@ fun userInput(): String {
     }
 }
 
-fun checkHint(userNumber: String, answer: String) {
+fun checkNumberHint(userNumber: String, answer: String) {
     val strikeCount = userNumber.filterIndexed { index, number ->
         answer.contains(number) && number == answer[index]
     }.length
     val ballCount = userNumber.filterIndexed { index, number ->
         answer.contains(number) && number != answer[index]
     }.length
-    printHint(ballCount, strikeCount)
+    printNumberHint(ballCount, strikeCount)
 }
 
-fun printHint(ballCount: Int, strikeCount: Int) {
+fun printNumberHint(ballCount: Int, strikeCount: Int) {
     when {
         strikeCount == 0 && ballCount == 0 -> println(NOTHING)
 
