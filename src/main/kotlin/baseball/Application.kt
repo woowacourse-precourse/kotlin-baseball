@@ -6,7 +6,7 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
     var randomValue = createRandomValue()
     while (true) {
-        when (playBaseBall(randomValue)){
+        when (playBaseBall(randomValue)) {
             "EXIT" -> break
             "FAIL" -> continue
             "SUCCESS" -> randomValue = createRandomValue()
@@ -40,7 +40,10 @@ fun createInputValue(): List<Int> {
     throw IllegalArgumentException("입력값이 서로 다른 3자리의 수가 아니므로 게임을 종료합니다.")
 }
 
-fun compareNumber(computer: List<Int>, user: List<Int>): Pair<Int, Int> {
+fun compareNumber(
+    computer: List<Int>,
+    user: List<Int>,
+): Pair<Int, Int> {
     var ball = 0
     var strike = 0
     computer.onEachIndexed { index, num ->
@@ -69,11 +72,12 @@ fun printResult(result: Pair<Int, Int>) {
 }
 
 fun isValid(input: String): Boolean {
-    val distinctList = input.toMutableList().distinct()
-    val isDigitValid = input.all {
-        it.isDigit() && it.digitToInt() > 0
-    }
-    val isSizeValid = (distinctList.size == 3 && input.length == 3)
+    val distinctList = input
+        .toMutableList()
+        .distinct()
+    val isDigitValid = input
+        .all { it.isDigit() && it.digitToInt() > 0 }
+    val isSizeValid = (distinctList.size == 3) && (input.length == 3)
     return (isDigitValid && isSizeValid)
 }
 
