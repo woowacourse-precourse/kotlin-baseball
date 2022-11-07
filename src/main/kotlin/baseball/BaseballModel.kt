@@ -5,11 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class BaseballModel {
 
-    private var strikeCnt = 0
-    private var ballCnt = 0
-    var computerNum: List<Int> = emptyList<Int>()
+    var strikeCnt = 0
+    var ballCnt = 0
+    private var computerNum: List<Int> = emptyList<Int>()
     var resultString = ""
     var isEnded = false
+    val inputChecker: InputChecker = InputChecker()
 
     init {
         computerNum = makeRandomNum()
@@ -42,11 +43,8 @@ class BaseballModel {
     fun isEndedCheck() {
         if (strikeCnt == 3) {
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-            val regex = Regex("[1-2]{1}")
             val userInput = Console.readLine()
-            require(userInput.matches(regex)) {
-                "1또는 2를 입력해 주세요."
-            }
+            checkEndedNumber(userInput)
             if (userInput.first().toNumber() == 2) {
                 isEnded = true
                 return
@@ -57,19 +55,13 @@ class BaseballModel {
         ballCnt = 0
     }
 
+    fun checkEndedNumber(userInput: String) = inputChecker.checkEndedNumber(userInput)
+    fun checkBasballNumber(userNum: String) = inputChecker.checkBasballNumber(userNum)
+
     private fun reGame() {
         computerNum = makeRandomNum()
     }
 
-    fun checkInputIsCorrect(userNum: String) {
-        val regex = Regex("[0-9]{3}")
-        require(userNum.matches(regex)) {
-            "$userNum 3자리가 아니거나, 숫자가 아닌 값"
-        }
-        require(userNum.toCharArray().distinct().size == 3) {
-            "$userNum 각각 다른 3자리 숫자가 아님"
-        }
-    }
 
     /** 3개의 각각 다른 랜덤 값 생성한다. */
     fun makeRandomNum(): List<Int> {
