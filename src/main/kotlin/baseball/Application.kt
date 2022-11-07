@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val computerNumber = getRandomNumber()
     printGameStart()
+    println(computerNumber)
     val userNumber = inputUserNumber()
     if (!checkInput(userNumber)) throw IllegalArgumentException()
     checkCorrect(listToString(computerNumber), userNumber)
@@ -40,7 +41,7 @@ fun checkInput(number: String): Boolean {
     return true
 }
 
-fun listToString(list: List<Int>): String{
+fun listToString(list: List<Int>): String {
     var answer = ""
     list.forEach {
         answer += it
@@ -56,5 +57,16 @@ fun checkCorrect(answer: String, userInput: String) {
     }
     userInput.forEachIndexed { index, c ->
         if (answer.contains(c) && c != answer[index]) ballCount++
+    }
+
+    printHint(strikeCount, ballCount)
+}
+
+fun printHint(strikeCount: Int, ballCount: Int) {
+    when {
+        strikeCount == 0 && ballCount == 0 -> println("낫싱")
+        strikeCount == 0 && ballCount in 1..3 -> println("${ballCount}볼")
+        strikeCount in 1..3 && ballCount == 0 -> println("${strikeCount}스트라이크")
+        strikeCount in 1..3 && ballCount in 1..3 -> println("${ballCount}볼 ${strikeCount}스트라이크")
     }
 }
