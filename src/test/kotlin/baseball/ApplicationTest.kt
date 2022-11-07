@@ -97,7 +97,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `사용자 입력값 유효성 검사`() {
+    fun `주어진 문자열 유효성 검사`() {
         val inputValidator = InputValidator(
             listOf(
                 StringLengthVerifier(3),
