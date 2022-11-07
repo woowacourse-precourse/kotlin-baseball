@@ -1,7 +1,9 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
+
 class WoowaInput : Input {
     override fun get(): String {
-        return ""
+        return Console.readLine()
     }
 }

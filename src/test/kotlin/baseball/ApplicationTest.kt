@@ -171,6 +171,19 @@ class ApplicationTest : NsTest() {
             .contains("숫자를 입력해주세요 :")
     }
 
+    @Test
+    fun `사용자 입력 테스트`() {
+        val expected = listOf("246", "135", "1", "597", "589", "2")
+        val predeterminedInput = PredeterminedInput(expected)
+
+        val result = mutableListOf<String>()
+        for(index in expected.indices) {
+            result.add(predeterminedInput.get())
+        }
+
+        assertThat(result).isEqualTo(expected)
+    }
+
     override fun runMain() {
         main()
     }
