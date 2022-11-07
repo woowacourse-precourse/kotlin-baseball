@@ -1,5 +1,9 @@
 package study
 
+import baseball.getBallCount
+import baseball.getRandomNumber
+import baseball.getStrikeCount
+import baseball.isValidNumber
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -40,5 +44,36 @@ class StringTest {
         assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
             input[5]
         }
+    }
+
+    @Test
+    fun `유효한 숫자인지 확인`() {
+        val result = isValidNumber("123")
+        assertThat(result).isEqualTo(true)
+    }
+
+    @Test
+    fun `유효하지 않은 숫자인지 확인`() {
+        val result = isValidNumber("103")
+        assertThat(result).isEqualTo(false)
+    }
+
+    @Test
+    fun `정답 숫자 유효한 숫자인지 확인`() {
+        val number = getRandomNumber()
+        val result = isValidNumber(number)
+        assertThat(result).isEqualTo(true)
+    }
+
+    @Test
+    fun `스트라이크 개수 판별`() {
+        val result = getStrikeCount("123", "125")
+        assertThat(result).isEqualTo(2)
+    }
+
+    @Test
+    fun `볼 개수 판별`() {
+        val result = getBallCount("123", "132")
+        assertThat(result).isEqualTo(2)
     }
 }

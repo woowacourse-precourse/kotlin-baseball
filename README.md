@@ -154,3 +154,19 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 기능 목록
+
+- [x] 잘못된 값 입력 시 `IllegalArgumentException` 발생
+- [x] 임의의 수 3개 선택
+- [x] 숫자 판단
+    - [x] 볼 판단
+    - [x] 스트라이크 판단
+- [x] 게임 종료 판단
+- [x] 재시작 및 종료
+
+- [x] 들여쓰기 최대 2
+- [x] 함수 분리
+- [x] 테스트 코드 작성
