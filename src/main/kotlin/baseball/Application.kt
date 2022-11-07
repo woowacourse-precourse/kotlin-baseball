@@ -2,22 +2,24 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import java.util.IllegalFormatCodePointException
 
 fun pickNumbers(): List<Char> {
-    val result = mutableListOf<Char>()
+    var numbers = ""
     for (i in 1..3) {
-        result.add(Randoms.pickNumberInRange(1, 9).toChar())
+        numbers += Randoms.pickNumberInRange(1, 9).toString()
     }
-    return result
+    return numbers.toList()
 }
 
 fun inputNumbers(): List<Char> {
     val input = Console.readLine()
-    Integer.parseInt(input)
+
+//    Integer.parseInt(input)
     if (input.length != 3) {
         throw IllegalArgumentException("3자리의 수가 아닙니다")
     }
+
+
     return input.toList()
 }
 
@@ -51,12 +53,14 @@ fun printResult(result: List<Int>) {
     println()
 }
 
-
 fun main() {
+    var isContinue = 1
+
     println("숫자 야구 게임을 시작합니다.")
     do {
         val randNumbers = pickNumbers()
 //        val randNumbers = "425".toList()
+        println(randNumbers)
         print("숫자를 입력해주세요 : ")
         val userNumbers: List<Char> = try {
             inputNumbers()
@@ -68,5 +72,12 @@ fun main() {
 
         val judgeResult = judgeNumbers(userNumbers, randNumbers)
         printResult(judgeResult)
-    } while (true)
+
+        if (judgeResult[1] == 3) {
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            isContinue = Console.readLine().toInt()
+        }
+    } while (isContinue == 1)
+
 }
