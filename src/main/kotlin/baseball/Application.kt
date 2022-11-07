@@ -10,19 +10,29 @@ private const val GAMEEND=2
 
 fun main() {
     var userChoice=1
-    println("숫자 야구 게임을 시작합니다.")
+    //println("숫자 야구 게임을 시작합니다.")
 
     while(userChoice==GAMESTART){
         userChoice= entireGame()
     }
+    if(userChoice!=2) throw IllegalArgumentException()
+    println("게임 종료")
 }
 
 fun entireGame():Int {
     var computerNum:List<Int> = makeRandomNum()
-
+    var userChoice:Int
+    println(computerNum)
     playUntilCorrect(computerNum)
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
-    return 0 //임시 코드
+    try{
+        userChoice=Console.readLine().toInt()
+    }catch (e:Exception){
+        throw IllegalArgumentException()
+    }
+
+    return userChoice
 }
 
 fun playUntilCorrect(computerNum: List<Int>){ //정답을 맟줄때 까지 반복하는 함수
@@ -35,8 +45,9 @@ fun playUntilCorrect(computerNum: List<Int>){ //정답을 맟줄때 까지 반�
 
         ballAndStrike=getBallAndStrike(computerNum,userNum)
         untilCorrect= printBallAndStrike(ballAndStrike)
-
     }
+
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
 
 fun getBallAndStrike(computerNum: List<Int>,
