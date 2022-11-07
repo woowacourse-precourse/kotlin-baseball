@@ -28,21 +28,21 @@
    strikeCount(user: List<Int>, computer: List<Int>): 스트라이크 개수를 세서 리턴해주는 메소드입니다.
 
 6. Participant 인터페이스: 게임에 참가하는 참가자들을 나타내기 위한 인터페이스입니다. 게임의 참가자는 최소한 게임의 종류가 무엇이든지 간에 게임 안에 자신의 의견 혹은 입력을 건내줄 수단인 input()메소드를 구현해야 합니다.
-7. User클래스: Participant인터페이스를 구현한 클래스이고 Console.readLine()을 사용해서 입력을 받는 input()메소드를 구현합니다.
-8. Computer클래스: Participant인터페이스를 구현한 클래스이고 구현한 input()메소드 안에서 computerRandomChoiceNumber()를 호출해서 랜덤 숫자 세개를 Randoms.pickNumberInRange(1,9)를 사용해서 가져옵니다.
+   User클래스: Participant인터페이스를 구현한 클래스이고 Console.readLine()을 사용해서 입력을 받는 input()메소드를 구현합니다.
+   Computer클래스: Participant인터페이스를 구현한 클래스이고 구현한 input()메소드 안에서 computerRandomChoiceNumber()를 호출해서 랜덤 숫자 세개를 Randoms.pickNumberInRange(1,9)를 사용해서 가져옵니다.
 
-9. InputValidCheckAndConverter(private val inputConverter: InputConverter) 추상클래스: 입력에 대해 유효성을 검증하고 입력이 유효하다면, inputConverter객체를 활용해서 입력을 변환해서 리턴해줍니다.
+7. InputValidCheckAndConverter(private val inputConverter: InputConverter) 추상클래스: 입력에 대해 유효성을 검증하고 입력이 유효하다면, inputConverter객체를 활용해서 입력을 변환해서 리턴해줍니다.
    inputValidCheckAndConvert(questionType: Int, input: String): 이 안에서 inputValidCheck를 호출해서 questionType에 맞는 유효성 검증을 수행합니다. 만약 여기서 유효하지 않다는 결과를 받으면, 
                                                                isNotValidThrowException()을 호출해서 예외를 발생시킵니다.
    이 외에도 이 추상 클래스는 inputValidCheck()추상메소드와 isNotValidThrowException() 추상메소드가 선언되어 있어야 합니다.
-10. BaseballInputValidCheckAndConverter 클래스는 숫자야구게임을 진행하기 위해 받은 입력에 대해 유효성 검증을 하고 필요에 맞게 변환시켜서 반환해주도록 구성되어 있습니다.
-    curRoundInputValidCheck(input: String): 각 라운드마다 입력받은 것이 숫자 세개가 들어있는 스트링인지 확인하고 맞다면 true를 반환합니다.
-    isNumberValidRange(num: Int): 해당 숫자가 1~9 이내인지에 대한 참/거짓 여부를 리턴합니다.
-    restartGameInputValidCheck(input: String): 게임 재시작 여부에 대한 입력을 받은 문자열이 정확히 숫자 한개로 구성되어 있는지 또한 그 숫자가 1혹은2의 숫자가 맞는지에 대한 참/거짓 여부를 리턴합니다.
-    restartAnswerInputValidRange(input: String): 게임 재시작 여부에 대한 입력을 받은 문자열이 1혹은2의 숫자가 맞는지 검증하는 메소드입니다.
+8. BaseballInputValidCheckAndConverter 클래스는 숫자야구게임을 진행하기 위해 받은 입력에 대해 유효성 검증을 하고 필요에 맞게 변환시켜서 반환해주도록 구성되어 있습니다.
+   curRoundInputValidCheck(input: String): 각 라운드마다 입력받은 것이 숫자 세개가 들어있는 스트링인지 확인하고 맞다면 true를 반환합니다.
+   isNumberValidRange(num: Int): 해당 숫자가 1~9 이내인지에 대한 참/거짓 여부를 리턴합니다.
+   restartGameInputValidCheck(input: String): 게임 재시작 여부에 대한 입력을 받은 문자열이 정확히 숫자 한개로 구성되어 있는지 또한 그 숫자가 1혹은2의 숫자가 맞는지에 대한 참/거짓 여부를 리턴합니다.
+   restartAnswerInputValidRange(input: String): 게임 재시작 여부에 대한 입력을 받은 문자열이 1혹은2의 숫자가 맞는지 검증하는 메소드입니다.
 
-11. InputConverter 인터페이스: 입력받은 인풋 스트링에 대해서 적절하게 변환해주는 메소드를 구현하도록 유도하는 인터페이스입니다. convertInput(questionType: Int, input: String)이 선언되어 있습니다.
-12. BaseballGameInputConverter 클래스: InputConverter 인터페이스를 숫자 야구게임에 맞게 구현한 인풋컨버터입니다. convertInput(questionType: Int, input: String)는 questionType에 맞게 적절한 변환 함수를 호출합니다.
+9. InputConverter 인터페이스: 입력받은 인풋 스트링에 대해서 적절하게 변환해주는 메소드를 구현하도록 유도하는 인터페이스입니다. convertInput(questionType: Int, input: String)이 선언되어 있습니다.
+10. BaseballGameInputConverter 클래스: InputConverter 인터페이스를 숫자 야구게임에 맞게 구현한 인풋컨버터입니다. convertInput(questionType: Int, input: String)는 questionType에 맞게 적절한 변환 함수를 호출합니다.
     convertCurRoundInput(input: String): 각 라운드에서 입력받는 질문에 대한 인풋스트링을 List<Int>로 변환해주는 메소드입니다.
     convertRestartGameInput(input: String): 게임이 클리어 되고 나서 게임 재시작 여부 질문에 대한 입력인풋을 Int형으로 변환해주는 메소드입니다.
     companion object로 const val INPUT_CUR_ROUND = 0, const val INPUT_RESTART_GAME = 1 이 정의되어 있어서 questionType을 이용하는데 편리하게 해줍니다.
