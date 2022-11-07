@@ -17,3 +17,17 @@
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
+<br/>
+
+## 게임 실행 방법
+다음과 같이 `BaseballGame.Builder` 클래스를 이용하여 `BaseballGame` 인스턴스를 생성하고, `BaseballGame.play()` 함수 호출시 게임이 시작됩니다.
+
+```kotlin
+BaseballGame.Builder()
+    .onInit(/* 컴퓨터 랜덤 숫자 입력 */)
+    .onProgress(/* 사용자 숫자 입력 */)
+    .onFinish(/* 게임 재시작(1) or 종료(2) 코드 입력 */)
+    .build()
+    .play()
+```
+
