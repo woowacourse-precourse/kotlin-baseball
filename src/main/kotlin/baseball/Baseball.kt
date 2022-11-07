@@ -14,15 +14,25 @@ class Baseball {
             val computerList = computer.makeComputerList()
             val userList = user.inputUser()
 
-            checkBaseBall(computerList, userList)
+            if (checkBaseBall(computerList, userList))
+                break;
         }
     }
 
-    private fun checkBaseBall(computerList: MutableList<Int>, userList: MutableList<Int>) {
+    private fun checkBaseBall(computerList: MutableList<Int>, userList: MutableList<Int>): Boolean {
         val strike = checkStrike(computerList, userList)
         val ball = checkBall(computerList, userList) - strike
 
-
+        if (strike == 0 && ball == 0)
+            println(NOTING_MESSAGE)
+        else {
+            if (ball != 0)
+                println("$ball$BALL_MESSAGE ")
+            if (strike != 0)
+                println("$strike$STRIKE_MESSAGE")
+            
+        }
+        return false
     }
 
     private fun checkStrike(computerList: MutableList<Int>, userList: MutableList<Int>): Int {
