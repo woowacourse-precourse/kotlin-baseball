@@ -225,6 +225,24 @@ class ApplicationTest : NsTest() {
         assertThat(result).isEqualTo(expected)
     }
 
+    @Test
+    fun `볼, 스트라이크 개수 세기`() {
+        val generator = ExpectedNumberGenerator(listOf(1, 3, 5))
+        val computer = Computer(generator)
+
+        computer.generateNumbers()
+        val nothing = computer.countBallsStrikes(listOf(2, 4, 6))
+        val strikes = computer.countBallsStrikes(listOf(1, 3, 5))
+        val ballsStrikes = computer.countBallsStrikes(listOf(1, 5, 9))
+
+        assertThat(nothing.balls).isEqualTo(0)
+        assertThat(nothing.strikes).isEqualTo(0)
+        assertThat(strikes.balls).isEqualTo(0)
+        assertThat(strikes.strikes).isEqualTo(3)
+        assertThat(ballsStrikes.balls).isEqualTo(1)
+        assertThat(ballsStrikes.strikes).isEqualTo(1)
+    }
+
     override fun runMain() {
         main()
     }
