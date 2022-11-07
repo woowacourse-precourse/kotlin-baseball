@@ -2,13 +2,19 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import utils.Constants.ASK_GAME_RESTART_MSG
+import utils.Constants.GAME_OVER
+import utils.Constants.GAME_OVER_MSG
+import utils.Constants.GAME_START_MSG
+import utils.Constants.INPUT_PLAYER_MSG
+import utils.Constants.RESTART
 
 fun main() {
     var computer = getComputerRandomNumber()
     println(computer)
-    println("숫자 야구 게임을 시작합니다.")
+    println(GAME_START_MSG)
     while (true) {
-        print("숫자를 입력해주세요 : ")
+        print(INPUT_PLAYER_MSG)
         val player = Console.readLine()
         if (!isCorrectNumber(player)) {
             throw IllegalArgumentException()
@@ -97,11 +103,11 @@ fun printBallNStrike(strikeNum: Int, ballNum: Int): Pair<Boolean, List<Int>?> {
 
 // 게임을 완전히 종료할 것인지(2) 재시작할 것인지(1), 그리고 재시작 한다면 새로운 컴퓨터 랜덤 숫자를 만들어서 보내준다.
 fun choiceGameOver(): Pair<Boolean, List<Int>?> {
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    println(GAME_OVER_MSG)
+    println(ASK_GAME_RESTART_MSG)
     return when (Console.readLine()) {
-        "1" -> Pair(false, getComputerRandomNumber())
-        "2" -> Pair(true, null)
+        RESTART -> Pair(false, getComputerRandomNumber())
+        GAME_OVER -> Pair(true, null)
         else ->  {
             Pair(true, null)
             throw IllegalArgumentException()
