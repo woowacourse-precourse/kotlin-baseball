@@ -56,5 +56,8 @@ class Baseball(private val input: Input, private val generator: Generator) {
         }
     }
 
-    private fun restart() {}
+    private fun restart() {
+        computer.reset()
+        play()
+    }
 }

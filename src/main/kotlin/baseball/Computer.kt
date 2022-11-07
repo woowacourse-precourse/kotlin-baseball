@@ -27,4 +27,6 @@ class Computer(private val generator: Generator) {
     fun isWin(ballsStrikes: BallsStrikes): Boolean {
         return ballsStrikes.strikes == 3
     }
+
+    fun reset() {}
 }
