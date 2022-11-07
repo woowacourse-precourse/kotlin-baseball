@@ -27,6 +27,12 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트(타입이 다를 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("abc") }
+        }
+    }
     override fun runMain() {
         main()
     }
