@@ -38,3 +38,17 @@
 - 3개의 숫자가 모두 맞힌 경우 게임을 재시작하거나 게임을 종료한다.
     - 재시작 : 1
     - 종료 : 2
+
+## MVC 구조
+<img width="100%" height="50% alt="MVC_pattern" src="https://user-images.githubusercontent.com/39490416/200239440-765eba47-e8f2-4bf7-a9bb-4426947d2ee2.png">
+
+- Controller
+ - BaseBallController : 게임 플레이관련 컨트롤러
+ -  CounterController : 스트라이크/볼 개수 컨트롤러
+- Model
+ - BaseBall : 스트라이크/볼 데이터관련 모델
+ - PlayerNumber : 플레이어 입력 데이터관련 모델
+ - ComputerNumber : 컴퓨터 난수 데이터관련 모델
+- View
+ - InputView : 입력관련 뷰
+ - OutputView : 출력관련 뷰
