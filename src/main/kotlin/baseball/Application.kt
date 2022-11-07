@@ -95,6 +95,22 @@ private fun printGameResult(strikeBallCountPair: Pair<Int, Int>): Int {
 private fun userDecideGameContinue() {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val userInput = readLine()
+    if (userGameContinueDecisionInputExceptionCheck(userInput)) {
+        throw IllegalArgumentException()
+    }
+
 }
+
+
+private fun userGameContinueDecisionInputExceptionCheck(inputString: String?): Boolean {
+    if (inputString == null || inputString == "") {
+        return true
+    }
+
+    if (inputString.toInt() != 1 && inputString.toInt() != 2) return true
+
+    return false
+}
+
 
 
