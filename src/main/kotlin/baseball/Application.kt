@@ -18,8 +18,10 @@ fun playNumberBaseballGame(){
         if(!checkValidNumber(userInputArray))
             throw IllegalArgumentException()
         val (strike,ball) = countStrikeBall(answerNumberArray,userInputArray)
-        break
-
+        val result = printStrikeBall(strike,ball)
+        println(result)
+        if(strike==3)
+            break
     }while(true)
 }
 
@@ -69,4 +71,15 @@ fun countStrikeBall(answerArray:List<Int>,inputArray:List<Int>): Pair<Int,Int>{
             ballCnt ++
     }
     return Pair(strikeCnt,ballCnt)
+}
+
+fun printStrikeBall(strike:Int, ball:Int): String {
+    if(strike > 0 && ball > 0){
+        return "${ball}볼 ${strike}스트라이크"
+    } else if (strike == 0 && ball > 0){
+        return "${ball}볼"
+    } else if (strike > 0 && ball == 0) {
+        return "${strike}스트라이크"
+    }
+    return "낫싱"
 }
