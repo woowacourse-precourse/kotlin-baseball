@@ -38,3 +38,27 @@ BaseballGame.Builder()
 - Message::class
 - ExceptionHandler::class
 - Provider::class
+
+<br/>
+
+## [BaseballGame::class](/src/main/kotlin/baseball/game/BaseballGame.kt)
+숫자 야구 게임 실행 클래스
+
+1. `play()`
+    1. 게임 시작 메시지 출력한다
+    2. 임의의 3자리 숫자를 컴퓨터 숫자로 입력한다
+    3. `startGame(...)` 함수 호출을 통해 게임 시작된다
+    4. 유저가 컴퓨터의 3자리 숫자를 모두 맞히게 되면 유저는 게임을 재시작 및 종료를 선택할 수 있다
+    5. 재시작(1)을 선택하면 (ⅰ ~ ⅳ) 과정을 다시 반복, 종료(2) 선택시 프로그램이 종료된다
+
+2. `startGame(computerNumber)`
+    1. 컴퓨터 숫자를 맞힐 유저의 숫자를 입력받는다
+    2. `compare(...)` 함수를 통해 컴퓨터 숫자와 유저 숫자를 비교한다
+    3. `compare(...)` 의 결과(ball, strike)에 대한 메시지(힌트) 출력한다
+    4. strike < 3 이면, (ⅰ ~ ⅲ) 과정 다시 반복한다
+    5. strike == 3 이면, 게임이 종료된다
+
+3. `compare(computer, user)`
+    1. 같은 수가 다른 자리에 있는 숫자의 갯수: "N볼"
+    2. 같은 수가 같은 자리에 있는 숫자의 갯수: "M스트라이크"
+    3. N == 0 and M == 0: "낫싱"
