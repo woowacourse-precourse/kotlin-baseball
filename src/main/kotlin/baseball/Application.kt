@@ -2,7 +2,6 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-//class문 써보기
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     playBaseball()
@@ -27,14 +26,14 @@ fun inputUserNumber(): String {
 fun checkNumber(user: String): List<Int> {
     val userNumber = user.map { it.code - '0'.code }
 
-    return if (userNumber.size != 3) {
-        throw IllegalArgumentException()
-    } else if (userNumber.contains(0)) {
-        throw IllegalArgumentException()
-    } else if (userNumber.size != userNumber.distinct().count()) {
-        throw IllegalArgumentException()
-    } else {
-        userNumber
+    when {
+        userNumber.size != 3 || userNumber.contains(0) || userNumber.size != userNumber.distinct().count() -> {
+            throw IllegalArgumentException()
+        }
+
+        else -> {
+            return userNumber
+        }
     }
 }
 
