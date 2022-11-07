@@ -4,10 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms
 
 
 fun main() {
+    playGameStart()
+}
+
+fun playGameStart(){
     setGameStartMessage()
     getUserInput()
     printResultMessage()
 }
+
 
 
 fun setRandomAnswer(): ArrayList<Int> {
@@ -63,6 +68,7 @@ fun printResultMessage() {
     checkStrike(answer, user)
     checkNothing(answer, user)
 }
+
 
 
 
