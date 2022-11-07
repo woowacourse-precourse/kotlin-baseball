@@ -214,6 +214,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `문자열을 정수 리스트로 변환`() {
+        val inputString = "189"
+        val converter = StringToIntegerList()
+        val expected = listOf(1, 8, 9)
+
+        val result = converter.convert(inputString)
+
+        assertThat(result).isEqualTo(expected)
+    }
+
     override fun runMain() {
         main()
     }
