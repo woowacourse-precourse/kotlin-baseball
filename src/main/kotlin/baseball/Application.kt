@@ -16,10 +16,10 @@ fun main() {
 
 fun playGame() {
     val computerNumberList = makeRandomNumberList()
-    val userNumberList = readLine()?.let { getUserNumberList(it) }
+    val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
 }
 
-fun getUserNumberList(input: String): MutableList<Int> {
+fun getPlayerNumberList(input: String): MutableList<Int> {
 
     checkExceptionOnNumbers(input)
 

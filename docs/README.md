@@ -17,7 +17,7 @@
 | --- | --- | --- | --- |
 |playGame| | | main에서 게임 실행을 위해 호출하는 함수|
 | makeRandomNumberList |  | MutableList<Int> | 컴퓨터로 하여금 랜덤한 세자리 숫자 발생시킴 |
-| getUserNumberList | String (input) | MutableList<Int> | 사용자가 입력한 값 리스트로 반환 <br/>- 잘못된 입력 예외 발생(checkExceptionOnNumbers) |
+| getPlayerNumberList | String (input) | MutableList<Int> | 사용자가 입력한 값 리스트로 반환 <br/>- 잘못된 입력 예외 발생(checkExceptionOnNumbers) |
 | isHavingDuplicatedNumber | String |  | 중복된 숫자가 포함되어있으면 오류 발생 |
 | isInteger | String |  | 입력한 형태가 숫자가 아닌 형태면 오류 발생 |
 | isNumberOfDigitsCorrect | String |  | 입력한 숫자 자리수가 다르면 오류 발생 |
