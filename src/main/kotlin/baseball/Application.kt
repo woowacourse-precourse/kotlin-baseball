@@ -1,5 +1,11 @@
 package baseball
 
+import baseball.NumberBaseBallGamePhrases.START_PHRASE
+
 fun main() {
-    TODO("프로그램 구현")
+    printStartGameString()
+}
+
+private fun printStartGameString() {
+    println(START_PHRASE)
 }
