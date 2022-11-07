@@ -6,9 +6,9 @@ fun playGame(){
     //컴퓨터 숫자 만들기
     //리드미 파일을 참조함
     val computer=getComputerNumber()
-    val user=getUserNumber()
 
-    //message(computer)
+
+    message(computer)
     print("3개의 숫자를 모두 맞히셨습니다!")
     println("게임 종료")
 
@@ -25,12 +25,25 @@ fun nextGame(){
         println("게임을 종료합니다!")
 }
 
-fun message():String{
+fun message(computer: MutableList<Int>){
     //판단 및 메시지 출력
 
-    val strike=0
-    val ball=0
-    val number= getUserNumber()
+    var strike=0
+    var ball=0
+    val index=0
+
+    val user=getUserNumber()
+
+    if (user != null) {
+        for (i in user){
+            if(computer.contains(i-'0'))
+                ball++
+            if(computer[index]==i-'0'){
+                ball--
+                strike++
+            }
+        }
+    }
 
     if(strike==3)
         println("${strike}스트라이크")
