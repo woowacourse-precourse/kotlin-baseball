@@ -2,8 +2,19 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
-fun play(){
+fun createRandomNumbers(): List<Int>{
+    val numbers: MutableList<Int> = mutableListOf()
+    while (numbers.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber)
+        }
+    }
+    return numbers
+}
 
+fun play(){
+    val computer: List<Int> = createRandomNumbers()
 }
 fun askContinue(): Boolean{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
