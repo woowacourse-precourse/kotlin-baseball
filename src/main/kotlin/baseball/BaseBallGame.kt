@@ -65,11 +65,12 @@ private fun resultString(ball: Int, strike: Int): String {
 
 private fun checkThreeStrike(computer: MutableList<Int>, input: String): Boolean {
     if (countingStrike(computer, input) == 3) {
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        printGameEndMessage()
         return true
     }
     return false
 }
+
 
 fun inputNumberException(input: String) {
     when {
