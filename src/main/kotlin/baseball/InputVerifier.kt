@@ -15,15 +15,9 @@ class InputVerifier {
         return input
     }
 
-    private fun isOutOfRange(input: List<Int>): Boolean {
-        return input.contains(0)
-    }
+    private fun isOutOfRange(input: List<Int>): Boolean = input.contains(0)
 
-    private fun isOutOfSize(input: List<Int>): Boolean {
-        return input.size != 3
-    }
+    private fun isOutOfSize(input: List<Int>): Boolean = (input.size != 3)
 
-    private fun hasDuplicatedNumber(input: List<Int>): Boolean {
-        return input.size != input.distinct().count()
-    }
+    private fun hasDuplicatedNumber(input: List<Int>): Boolean = (input.size != input.distinct().count())
 }

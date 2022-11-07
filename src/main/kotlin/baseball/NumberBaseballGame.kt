@@ -16,8 +16,7 @@ class NumberBaseballGame {
 
         while (!exit) {
             print("숫자를 입력해주세요 : ")
-            val input = Console.readLine().map { it.digitToInt() }
-            val player = inputVerifier.playerNumber(input)
+            val player = playerInput()
 
             resetScore()
             calculateScore(computer, player)
@@ -28,6 +27,7 @@ class NumberBaseballGame {
             }
         }
     }
+
     private fun pickRandomNumber(computer: MutableList<Int>) {
         while (computer.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -37,6 +37,11 @@ class NumberBaseballGame {
         }
     }
 
+    private fun playerInput(): List<Int> {
+        val input = Console.readLine().map { it.digitToInt() }
+        return inputVerifier.playerNumber(input)
+    }
+
     private fun resetScore() {
         strike = 0
         ball = 0
@@ -44,14 +49,17 @@ class NumberBaseballGame {
 
     private fun calculateScore(computer: List<Int>, player: List<Int>) {
         computer.forEachIndexed { i, computerNumber ->
-            player.forEachIndexed { j, playerNumber ->
-                if (computerNumber == playerNumber) {
-                    if (i == j) {
-                        strike += 1
-                    } else {
-                        ball += 1
-                    }
-                }
+            partOfCalculate(player, i, computerNumber)
+        }
+    }
+
+    private fun partOfCalculate(player: List<Int>, index: Int, number: Int) {
+        player.forEachIndexed { i, playerNumber ->
+            if ((number == playerNumber) && (index == i)) {
+                strike += 1
+            }
+            if ((number == playerNumber) && (index != i)) {
+                ball += 1
             }
         }
     }
@@ -74,9 +82,8 @@ class NumberBaseballGame {
     private fun gameOver(computer: MutableList<Int>) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        val input = Console.readLine().toInt()
 
-        when (inputVerifier.exitNumber(input)) {
+        when (exitInput()) {
             1 -> {
                 computer.clear()
                 pickRandomNumber(computer)
@@ -86,5 +93,10 @@ class NumberBaseballGame {
                 exit = true
             }
         }
+    }
+
+    private fun exitInput(): Int {
+        val input = Console.readLine().toInt()
+        return inputVerifier.exitNumber(input)
     }
 }
