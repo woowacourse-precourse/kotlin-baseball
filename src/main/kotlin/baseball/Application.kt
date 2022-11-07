@@ -1,5 +1,11 @@
 package baseball
 
+import baseball.Constant.Companion.startGameMessage
+
+
 fun main() {
-    TODO("프로그램 구현")
+    val computerNum = ComputerNumberCreate().computerNumber
+
+    println(startGameMessage)
+    PlayBaseballGame(computerNum)
 }
