@@ -76,17 +76,14 @@ fun checkBall(computerNum: MutableList<Int>, playerNum: MutableList<Int>): Int {
 
 // 비교 결과 출력 기능
 fun resultOutput(strikeCount: Int, ballCount: Int): Int {
-    if(strikeCount==0&&ballCount==0)
-        println("낫싱")
-    else if(strikeCount==0)
-        println("${ballCount}볼")
-    else if(ballCount==0)
-        println("${strikeCount}스트라이크")
-    else
-        println("${strikeCount}스트라이크 ${ballCount}볼")
+    val message = if (strikeCount == 0 && ballCount == 0) "낫싱"
+    else if (strikeCount == 0) "${ballCount}볼"
+    else if (ballCount == 0) "${strikeCount}스트라이크"
+    else "${ballCount}볼 ${strikeCount}스트라이크"
 
-    if(strikeCount==3)
-        return 1
+    print(message)
+
+    if (strikeCount == 3) return 1
     return 0
 }
 
