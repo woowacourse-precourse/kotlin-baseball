@@ -7,6 +7,11 @@ var randomNumber100: Int = 0
 var randomNumber10 :Int =0
 var randomNumber1 :Int = 0
 
+var userInput : Int =0
+var userInput1 : Int = 0
+var userInput10 : Int = 0
+var userInput100 : Int = 0
+
 
 fun main() {
     TODO("프로그램 구현")
@@ -28,6 +33,33 @@ fun randomMaker() : Int{
     val Number = 100*randomNumber100+10*randomNumber10+randomNumber1
 
     return Number
+
+}
+
+fun inputValidationCheck(input : String)  {
+    try {
+        userInput = input.toInt()
+    }catch (e : NumberFormatException){
+        throw IllegalArgumentException("User의 입력이 적절하지 않습니다.")
+    }
+
+    if( userInput in 111..999){
+        userInput
+    }else{
+        throw IllegalArgumentException("User의 입력값이 적정범위를 벗어났습니다.")
+    }
+    var temp = userInput
+    userInput100 = temp/100
+    temp -= (100 * userInput100)
+    userInput10 = temp/10
+    userInput1 =  temp-(10*userInput10)
+
+    if((userInput1 == userInput10)
+        || (userInput1 == userInput100)
+        || (userInput10 == userInput100)
+    ){
+        throw IllegalArgumentException("User의 입력값 중 중복되는 수가 있습니다.")
+    }
 
 }
 
