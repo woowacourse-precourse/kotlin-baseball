@@ -6,8 +6,8 @@ class Game {
     private val computer = Computer()
     private val gameManager = GameManager()
     private val exception = Exception()
-    private var ball=0
-    private var strike=0
+    private var ball = 0
+    private var strike = 0
 
     fun start() {
         computer.number = computer.generateComputerNumber()
@@ -53,10 +53,10 @@ class Game {
     }
 
     private fun printBallAndStrike(ball: Int, strike: Int) {
-            printBall(ball)
-            printStrike(strike)
-            printNothing(ball, strike)
-            println("")
+        printBall(ball)
+        printStrike(strike)
+        printNothing(ball, strike)
+        println("")
     }
 
     private fun printThreeStrike() {
