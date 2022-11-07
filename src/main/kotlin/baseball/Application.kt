@@ -14,7 +14,12 @@ fun main() {
         println(userInput)
         checkNumberException(userInput)
 
-        searchNothingCase(userInput, computerNumber)
+        if (!searchNothingCase(userInput, computerNumber)){
+            println("낫싱")
+        }
+        else{
+            TODO("낫싱이 아닌 경우")
+        }
     }
 }
 
@@ -49,10 +54,12 @@ fun checkNumberException(userInput: String){
     }
 }
 
-fun searchNothingCase(userNum: String, computerNum: String){
+fun searchNothingCase(userNum: String, computerNum: String) : Boolean {
     for (i in userNum){
         if (i !in computerNum){
-            println("낫싱")
+            return false
         }
     }
+    return true
 }
+
