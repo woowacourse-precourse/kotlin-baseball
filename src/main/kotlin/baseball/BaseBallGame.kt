@@ -3,6 +3,10 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 class BaseBallGame {
+    data class Score(var strike: Int, var ball: Int)
+
+    private var score: Score = Score(0, 0)
+
     private var progressStatus = RUNNING
     private fun generateAnswer(): String {
         val answerList = mutableListOf<Int>()
