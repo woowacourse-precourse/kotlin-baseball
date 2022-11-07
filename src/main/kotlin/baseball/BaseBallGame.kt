@@ -8,8 +8,35 @@ class BaseBallGame {
 
     private val guessRegex = "[1-9]{3}".toRegex()
 
+    private var answer = ""
+    private var guess = ""
     private var score: Score = Score(0, 0)
     private var progressStatus = RUNNING
+
+    fun start() {
+        answer = generateAnswer()
+        progressStatus = RUNNING
+        while (true) {
+            printGuide()
+            guess = inputUserGuess()
+
+            score = gradeGuess(answer, guess)
+            printScore(score)
+
+            if (checkGameOver(score)) {
+                printGameOverMessage()
+                progressStatus = inputGameOver()
+            }
+
+            when (progressStatus) {
+                RESTART -> {
+                    answer = generateAnswer()
+                    progressStatus = RUNNING
+                }
+                END -> return
+            }
+        }
+    }
     private fun generateAnswer(): String {
         val answerList = mutableListOf<Int>()
         while (answerList.size < 3) {
