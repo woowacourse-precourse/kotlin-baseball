@@ -30,20 +30,18 @@ fun main() {
 
 }
 
-fun randomMaker() : Int{
-    randomNumber100 =  Randoms.pickNumberInRange(1,9)
+fun randomMaker(): Int {
+    randomNumber100 = Randoms.pickNumberInRange(1, 9)
 
-    do{
-        randomNumber10 = Randoms.pickNumberInRange(1,9)
-    }while(randomNumber100 == randomNumber10)
+    do {
+        randomNumber10 = Randoms.pickNumberInRange(1, 9)
+    } while (randomNumber100 == randomNumber10)
 
-    do{
-        randomNumber1 = Randoms.pickNumberInRange(1,9)
-    }while(randomNumber100 == randomNumber1 || randomNumber1 == randomNumber10)
+    do {
+        randomNumber1 = Randoms.pickNumberInRange(1, 9)
+    } while (randomNumber100 == randomNumber1 || randomNumber1 == randomNumber10)
 
-    val Number = 100*randomNumber100+10*randomNumber10+randomNumber1
-
-    return Number
+    return 100 * randomNumber100 + 10 * randomNumber10 + randomNumber1
 
 }
 
@@ -107,7 +105,7 @@ fun checkStrikeBall( ){
     if(strike == 0 && ball == 0 ){
         println("낫싱")
     }else if(strike == 0) {
-        println(" ${ball}볼")
+        println("${ball}볼")
     }else if(ball == 0){
         println("${strike}스트라이크")
     }else{
