@@ -5,13 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    var isRestart : Boolean
     do {
-        isRestart = playNumberBaseball()
-    } while (isRestart)
+        startNumberBaseball()
+    } while (restartNumberBaseball())
 }
 
-fun playNumberBaseball(): Boolean {
+private fun startNumberBaseball() {
     val answerNumber = createRandomAnswerNumber().toString()
     do {
         print("숫자를 입력해주세요 : ")
@@ -25,19 +24,22 @@ fun playNumberBaseball(): Boolean {
         printBallCount(ballCount)
 
     } while (true)
+}
 
+private fun restartNumberBaseball(): Boolean {
     println("3스트라이크")
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
     val userInputRestart = Console.readLine().trim()
-    if (isRestart(userInputRestart)) {
+    validationUserInputRestart(userInputRestart)
+    if (userInputRestart == "1") {
         return true
     }
     return false
 }
 
-fun createRandomAnswerNumber(): Int {
+private fun createRandomAnswerNumber(): Int {
     val randomNumbers = mutableListOf<Int>()
     while (randomNumbers.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -48,9 +50,9 @@ fun createRandomAnswerNumber(): Int {
     return randomNumbers[0] * 100 + randomNumbers[1] * 10 + randomNumbers[2]
 }
 
-fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
-    var strike = 0
+private fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
     var ball = 0
+    var strike = 0
     for (index in answerNumber.indices) {
         if (answerNumber[index] == userInputNumber[index]) {
             strike++
@@ -64,7 +66,7 @@ fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> 
     return Pair(ball, strike)
 }
 
-fun printBallCount(ballCount: Pair<Int, Int>) {
+private fun printBallCount(ballCount: Pair<Int, Int>) {
     val ball = ballCount.first
     val strike = ballCount.second
     if (ball == 0 && strike == 0) {
@@ -82,15 +84,7 @@ fun printBallCount(ballCount: Pair<Int, Int>) {
     println("${ball}볼 ${strike}스트라이크")
 }
 
-fun isRestart(userInputRestart: String): Boolean {
-    validationUserInputRestart(userInputRestart)
-    if (userInputRestart == "1") {
-        return true
-    }
-    return false
-}
-
-fun validationUserInputNumber(userInputNumber: String) {
+private fun validationUserInputNumber(userInputNumber: String) {
     if (userInputNumber.isEmpty()) {
         throw IllegalArgumentException("입력값이 비었습니다.")
     }
@@ -111,7 +105,7 @@ fun validationUserInputNumber(userInputNumber: String) {
     }
 }
 
-fun validationUserInputRestart(userInput: String) {
+private fun validationUserInputRestart(userInput: String) {
     if (userInput != "1" && userInput != "2") {
         throw IllegalArgumentException("1 또는 2의 값을 입력하세요.")
     }
