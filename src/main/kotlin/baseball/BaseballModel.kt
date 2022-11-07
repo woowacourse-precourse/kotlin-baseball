@@ -10,7 +10,7 @@ class BaseballModel {
     private var computerNum: List<Int> = emptyList<Int>()
     var resultString = ""
     var isEnded = false
-    val inputChecker: InputChecker = InputChecker()
+    private val inputChecker: InputChecker = InputChecker()
 
     init {
         computerNum = makeRandomNum()
