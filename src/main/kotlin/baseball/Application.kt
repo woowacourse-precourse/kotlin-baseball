@@ -64,7 +64,7 @@ fun getUserNumber(): String {
         }
         userNumber.add(userInput[index])
     }
-    return userNumber.toString()
+    return userNumber.joinToString("")
 }
 
 fun compareWithAnswer(answer: String, userNumber: String): Pair<Int, Int> {
