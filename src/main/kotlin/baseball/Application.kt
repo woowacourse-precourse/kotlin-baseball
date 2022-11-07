@@ -28,8 +28,9 @@ fun printFirstStartMessage() {
 }
 
 fun getUserNumber(): String {
-    val userNumber = mutableListOf<Char>()
+    print("숫자를 입력해주세요 : ")
     val userInput = Console.readLine().toString()
+    val userNumber = mutableListOf<Char>()
 
     // 사용자의 입력이 세 자리 수가 아닌 경우
     if (userInput.length != 3) {
