@@ -1,8 +1,13 @@
 # 미션 - 숫자 야구
 
 ## 🔍 구현할 기능 목록
+### ✅ 기능 요구사항
 #### 프로그램  
 - 1에서 9까지 서로 다른 임의의 수 3개를 정한다.  
+```TEXT
+  - 중복된 숫자가 없도록 함
+```  
+
 #### 플레이어  
 - 3자리 수를 입력한다.
 ```TEXT
@@ -23,10 +28,9 @@
 ```TEXT
 - 1, 2 외의 다른 숫자가 입력된 경우  
 - 문자가 입력된 경우  
-```
+```  
 
-
-## ✅ 구현할 기능 목록
+### ✅ 프로그래밍 요구사항
 #### 요구사항
 - 코틀린 코드 컨벤션을 지키면서 프로그래밍한다  
 - 1 <= indent depth && indent depth <= 2 이다.  
@@ -37,7 +41,7 @@
   - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 readLine()을 활용한다.
 
-## 최종 구현안, 함수명
+### 🎉 최종 구현안 함수명
 - 컴퓨터에게 랜덤 숫자 3개 받기 -> randomThreeNumber()  
 - 게임시작 -> gameStart()
   - 사용자 입력 숫자(유효성 체크) -> guessNumber()
