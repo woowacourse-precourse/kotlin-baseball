@@ -9,7 +9,7 @@ const val ZERO_COUNT = 0
 const val FULL_COUNT = 3
 const val RE_GAME = "2"
 const val END_GAME = "1"
-const val INVAILD_NUMBER = "유효한 수가 아닙니다."
+const val INVALID_NUMBER = "유효한 수가 아닙니다."
 
 fun gameStart() {
     while (true) {
@@ -25,7 +25,7 @@ private fun reGame(): Boolean {
     return when (Console.readLine()) {
         RE_GAME -> true
         END_GAME -> false
-        else -> throw IllegalArgumentException(INVAILD_NUMBER)
+        else -> throw IllegalArgumentException(INVALID_NUMBER)
     }
 }
 
