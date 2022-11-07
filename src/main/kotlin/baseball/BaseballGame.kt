@@ -75,8 +75,10 @@ class BaseballGame {
         if (isGameOver(inputResult)) {
             _inOutput.printEndMessage()
 
-            createOpponentData()
-            return continueGame(_inOutput.inputContinueData())
+            if(continueGame(_inOutput.inputContinueData()))
+                createOpponentData()
+            else
+                return false
         }
         return true
     }
