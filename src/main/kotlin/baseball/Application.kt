@@ -6,7 +6,7 @@ fun main() {
     TODO("프로그램 구현")
 }
 
-private fun setRandomNumber(): MutableList<Int> {
+private fun setRandomNumber():String {
     val computer: MutableList<Int> = mutableListOf()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -14,7 +14,7 @@ private fun setRandomNumber(): MutableList<Int> {
             computer.add(randomNumber)
         }
     }
-    return computer
+    return computer.joinToString("")
 }
 
 private fun getNumberOfStrike(computer: String, user: String): Int {
