@@ -153,4 +153,16 @@ while (computer.size() < 3) {
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.  
+
+---
+
+## 기능 목룍
+
+- "숫자 야구 게임을 시작합니다." 출력, 게임 함수 실행
+- 임의의 수 설정
+- "숫자를 입력해주세요:" 출력 후, 3자리 숫자 입력 받기.
+- 숫자가 서로 다른 3자리 수가 아니거나 각 자릿수에 0이 있으면, IllegalArgumentException 발생 후 종료
+- 입력 받은 숫자와 임의의 수 3개를 비교하는 함수를 이용해 비교하고 결과 출력
+- 3개의 숫자 다 맞출 때까지 반복 후 게임 종료
+- 재시작 여부 확인 후 게임 재시작 또는 종료
