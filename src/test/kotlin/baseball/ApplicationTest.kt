@@ -48,6 +48,12 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트(서로 다른 수를 입력하지 않은 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("111") }
+        }
+    }
     override fun runMain() {
         main()
     }
