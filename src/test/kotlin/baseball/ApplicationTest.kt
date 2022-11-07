@@ -16,6 +16,37 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `스트라이크 0개 찾기`(){
+        val computer = listOf<Int>(1,4,8)
+        val user = listOf<Int>(9,8,4)
+        val result = findStrike(computer,user)
+        assertThat(result).isEqualTo(0)
+    }
+    @Test
+    fun `스트라이크 1개 찾기`(){
+        val computer = listOf<Int>(1,8,3)
+        val user = listOf<Int>(2,8,9)
+        val result = findStrike(computer,user)
+        assertThat(result).isEqualTo(1)
+    }
+
+    @Test
+    fun `스트라이크 2개 찾기`(){
+        val computer = listOf<Int>(1,2,3)
+        val user = listOf<Int>(4,2,3)
+        val result = findStrike(computer,user)
+        assertThat(result).isEqualTo(2)
+    }
+
+    @Test
+    fun `스트라이크 3개 찾기`(){
+        val computer = listOf<Int>(5,6,9)
+        val user = listOf<Int>(5,6,9)
+        val result = findStrike(computer,user)
+        assertThat(result).isEqualTo(3)
+    }
+
+    @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
             {
