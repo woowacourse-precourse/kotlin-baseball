@@ -13,10 +13,12 @@ fun main() {
         var userInput = Console.readLine()
         println(userInput)
         checkNumberException(userInput)
+
+        searchNothingCase(userInput, computerNumber)
     }
 }
 
-fun makeRandomNumber(length: Int) : MutableList<Int> {
+fun makeRandomNumber(length: Int) : String {
     var noOverlapRandomNumber = mutableListOf<Int>()
 
     while (noOverlapRandomNumber.size < 3){
@@ -25,7 +27,7 @@ fun makeRandomNumber(length: Int) : MutableList<Int> {
             noOverlapRandomNumber.add(randNum)
         }
     }
-    return noOverlapRandomNumber
+    return noOverlapRandomNumber.joinToString("")
 }
 
 fun checkNumberException(userInput: String){
@@ -43,6 +45,14 @@ fun checkNumberException(userInput: String){
         }
         else{
             throw IllegalArgumentException("IllegalAccessException. 프로그램을 종료합니다.")
+        }
+    }
+}
+
+fun searchNothingCase(userNum: String, computerNum: String){
+    for (i in userNum){
+        if (i !in computerNum){
+            println("낫싱")
         }
     }
 }
