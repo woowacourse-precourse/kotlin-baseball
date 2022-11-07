@@ -14,6 +14,6 @@ object ExceptionHandler {
     }
 
     fun throwFinishCode(code: String): Nothing {
-        TODO()
+        throw IllegalArgumentException("code=$code, 코드를 잘못 입력하셨습니다.")
     }
 }
