@@ -1,5 +1,6 @@
 package baseball.game
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 object Provider {
@@ -19,6 +20,8 @@ object Provider {
     }
 
     fun readLine(): String {
-        TODO()
+        return Console.readLine().also {
+            println(it)
+        }
     }
 }
