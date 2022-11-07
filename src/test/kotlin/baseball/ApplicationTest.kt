@@ -51,6 +51,19 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `1이나 2가 아닌 숫자 입력 시 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheckOneNum("0") }
+        }
+    }
+
+    @Test
+    fun `1이나 2가 아닌 문자를 입력 시 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>{ inputErrorCheckOneNum("a")}
+        }
+    }
+    @Test
     fun `스트라이크 0개 찾기`(){
         val computer = listOf<Int>(1,4,8)
         val user = listOf<Int>(9,8,4)

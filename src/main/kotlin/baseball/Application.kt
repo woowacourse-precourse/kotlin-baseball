@@ -13,13 +13,13 @@ fun main() {
 }
 
 fun startOrEnd(): Int {
-    val oneOrTwo = Console.readLine().toInt()
+    val oneOrTwo = Console.readLine()
     inputErrorCheckOneNum(oneOrTwo)
-    return oneOrTwo
+    return oneOrTwo.toInt()
 }
 
-fun inputErrorCheckOneNum(oneOrTwo:Int){
-    if(oneOrTwo !in 1..2){
+fun inputErrorCheckOneNum(oneOrTwo:String){
+    if(oneOrTwo.toInt() !in 1..2){
         throw IllegalArgumentException()
     }
 }
