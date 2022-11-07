@@ -1,13 +1,19 @@
 package baseball
 
-class BaseballGameProcessor(private val user: User, private val computer: Computer) {
-    fun baseballGameProcess() {
+import camp.nextstep.edu.missionutils.Console
+
+//interface
+class BaseballGameProcessor(
+    private val user: User,
+    private val computer: Computer,
+) : BaseballGameReferee {
+    fun processBaseballGame() {
         ScreenManipulator.printGameStart()
         while (true) {
             val guessedNumbers = processGuessNumbers()
             val strikeCount = processCount(guessedNumbers)
 
-            when (BaseballGameReferee.decideEachTurn(strikeCount)) {
+            when (decideEachTurn(strikeCount)) {
                 GameStatus.TERMINATE -> break
                 GameStatus.NEW_GAME -> computer.generateNewRandomNumbers()
                 GameStatus.ERROR -> throw IllegalArgumentException("입력 오류입니다.")
@@ -46,5 +52,27 @@ class BaseballGameProcessor(private val user: User, private val computer: Comput
         }
 
         return guessedNumbers.toList()
+    }
+
+    override fun decideEachTurn(strikeCount: Int): GameStatus {
+        if (strikeCount == 3) {
+            return checkPlayAgain()
+        }
+
+        return GameStatus.CONTINUE
+    }
+
+    override fun checkPlayAgain(): GameStatus {
+        return when (Console.readLine()) {
+            "1" -> GameStatus.NEW_GAME
+            "2" -> {
+                ScreenManipulator.screenClose()
+                GameStatus.TERMINATE
+            }
+            else -> {
+                ScreenManipulator.screenClose()
+                GameStatus.ERROR
+            }
+        }
     }
 }
