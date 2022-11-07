@@ -75,6 +75,26 @@ class BaseBallGameTest : NsTest() {
         getElement = method.invoke(baseBallGame, *parameters)
         assertThat(getElement).isEqualTo(BaseBallGame.Score(2, 0))
     }
+
+    @Test
+    fun `printScore 메서드출력 결과 확인`() {
+        val baseBallGame = BaseBallGame()
+        val method = baseBallGame.javaClass.getDeclaredMethod("printScore", BaseBallGame.Score::class.java)
+        method.isAccessible = true
+
+        val parameters = arrayOfNulls<Any>(1)
+
+        listOf(
+            BaseBallGame.Score(1, 1),
+            BaseBallGame.Score(1, 0),
+            BaseBallGame.Score(0, 1),
+            BaseBallGame.Score(0, 0)
+        ).forEach {
+            parameters[0] = it
+            method.invoke(baseBallGame, *parameters)
+        }
+        assertThat(output()).containsSequence("1볼 1스트라이크\n", "1스트라이크\n", "1볼\n", "낫싱")
+    }
     override fun runMain() {
         main()
     }
