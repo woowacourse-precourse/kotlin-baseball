@@ -20,7 +20,14 @@ class BaseballGame private constructor(
     }
 
     private fun startGame(computerNumber: String) {
-        TODO()
+        do {
+            val userNumber = Message.requestUserNumber(readUserNumber)
+
+            val (ball, strike) = compare(computerNumber, userNumber)
+
+            Message.showHint(ball, strike)
+
+        } while (strike < 3)
     }
 
     private fun compare(computer: String, user: String): Pair<Int, Int> {
