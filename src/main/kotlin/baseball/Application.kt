@@ -10,12 +10,17 @@ fun main() {
 
 fun startOrEnd(): Boolean {
     val oneOrTwo = Console.readLine().toInt()
-    //inputErrorCheckOneNum(oneOrTwo)
+    inputErrorCheckOneNum(oneOrTwo)
     if(oneOrTwo == 1)
         return true
     return false
 }
 
+fun inputErrorCheckOneNum(oneOrTwo:Int){
+    if(oneOrTwo !in 1..2){
+        throw IllegalArgumentException()
+    }
+}
 
 fun playBaseBall(){
     val computer = randomThreeNumber()
