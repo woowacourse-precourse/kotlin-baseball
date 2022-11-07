@@ -12,7 +12,21 @@ fun main() {
         // 게임 진행, 3스트라이크일 경우 true 리턴
         val finishGame = gameStart(computer)
 
+        // 게임 시작 or 종료
+        if (restartOrFinish(finishGame)) break
+    }
+}
 
+// 게임 시작 or 종료
+private fun restartOrFinish(finish: Boolean): Boolean {
+    if (!finish) return false
+
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return when (val choice = Console.readLine()) {
+        "1" -> false
+        "2" -> true
+        else -> throw IllegalArgumentException("게임 새로 시작, 종료 조건에 맞지 않음 : $choice")
     }
 }
 
