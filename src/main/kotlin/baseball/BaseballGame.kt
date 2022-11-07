@@ -3,26 +3,29 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 
 class BaseballGame(var computerNumbers: ComputerNumbers) {
-
     fun start() {
-        printStartString()
-        printInputString()
+        var processStatus = BaseballSetting.START_OR_RESTART.number
+        BaseballStatement.printStart()
 
-        val userInput = Console.readLine()
-        checkValidInput(userInput)
+        while(processStatus == BaseballSetting.START_OR_RESTART.number){
+            BaseballStatement.printInput()
+            val userInput = Console.readLine()
+            checkValidInput(userInput)
 
+            var result = getResult(userInput)
+        }
+    }
 
+    private fun getResult(userInput: String): Int{
+        val strikeAndBall = computerNumbers.compareToUserInput(userInput)
+        BaseballStatement.printResult(strike = strikeAndBall.first, ball = strikeAndBall.second)
+        return strikeAndBall.first
     }
 
     private fun checkValidInput(userInput: String){
         if(userInput.length != BaseballSetting.DIGIT_NUMBER.number
-                || !isNumberString(userInput)) throw IllegalArgumentException()
+                || !userInput.isNumberString()) throw IllegalArgumentException()
     }
 
-    private fun isNumberString(string: String) = string.all { it.isDigit() }
-
-    private fun printStartString() = BaseballString.START.print()
-
-    private fun printInputString() = BaseballString.INPUT.print()
-
+    private fun String.isNumberString() = this.all { it.isDigit() }
 }
