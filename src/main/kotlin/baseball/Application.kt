@@ -45,7 +45,11 @@ fun checkBall(answer: ArrayList<Int>, user: ArrayList<Int>):Int{
     return ballCountNum
 }
 
-
+fun checkNothing(answer: ArrayList<Int>, user: ArrayList<Int>){
+    for(i in 0 until answer.size)
+        if(!user.contains(answer[i]))
+            println("낫싱")
+}
 
 
 
