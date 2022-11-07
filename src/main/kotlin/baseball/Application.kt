@@ -2,12 +2,15 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun main(){
 
+fun main() {
+    setGameStartMessage()
+    getUserInput()
+    printResultMessage()
 }
 
 
-fun setRandomAnswer(): ArrayList<Int>{
+fun setRandomAnswer(): ArrayList<Int> {
     var answer = arrayListOf<Int>()
 
     while (answer.size < 3) {
@@ -18,37 +21,47 @@ fun setRandomAnswer(): ArrayList<Int>{
     return answer
 }
 
-fun setGameStartMessage(){
+fun setGameStartMessage() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
-fun getUserInput() : String? {
+fun getUserInput(): MutableList<Int> {
     println("숫자를 입력해주세요 :")
-    return camp.nextstep.edu.missionutils.Console.readLine()
+    return camp.nextstep.edu.missionutils.Console.readLine().map { it.digitToInt() }.toMutableList()
 }
 
-fun checkStrike(answer: ArrayList<Int>, user: ArrayList<Int>): Int {
+fun checkStrike(answer: ArrayList<Int>, user: MutableList<Int>) {
     var strikeCountNum = 0
     for (i in 0 until answer.size)
         if (answer[i] == user[i])
             strikeCountNum += 1
 
-    return strikeCountNum
+    if (strikeCountNum > 0)
+        println("${strikeCountNum}+스트라이크")
 }
 
-fun checkBall(answer: ArrayList<Int>, user: ArrayList<Int>):Int{
-    var ballCountNum =0
-    for(i in 0 until answer.size)
-        if(answer[i]!=user[i] && user.contains(answer[i]))
-            ballCountNum +=1
-
-    return ballCountNum
+fun checkBall(answer: ArrayList<Int>, user: MutableList<Int>) {
+    var ballCountNum = 0
+    for (i in 0 until answer.size)
+        if (answer[i] != user[i] && user.contains(answer[i]))
+            ballCountNum += 1
+    if (ballCountNum > 0)
+        println("${ballCountNum}+볼")
 }
 
-fun checkNothing(answer: ArrayList<Int>, user: ArrayList<Int>){
-    for(i in 0 until answer.size)
-        if(!user.contains(answer[i]))
+fun checkNothing(answer: ArrayList<Int>, user: MutableList<Int>) {
+    for (i in 0 until answer.size)
+        if (!user.contains(answer[i]))
             println("낫싱")
+}
+
+fun printResultMessage() {
+    val answer = setRandomAnswer()
+    val user = getUserInput()
+
+    checkBall(answer, user)
+    checkStrike(answer, user)
+    checkNothing(answer, user)
 }
 
 
