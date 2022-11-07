@@ -6,18 +6,18 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
 
     println("숫자 야구 게임을 시작합니다.")
-    BaseballGame(getComputerInput())
+    BaseballGame(createComputerInput())
         .mainGame()
 }
 
 
 class BaseballGame(computer: String) {
-    private val computerInput: String = getComputerInput()
+    private var computerInput = computer
 
     fun mainGame() {
         var start = true
         while (start) {
-            val userInput = makeUserInput()
+            val userInput = createUserInput()
             val gameOver = (strike(userInput) == 3)
 
             checkCriteria(userInput)
@@ -28,9 +28,9 @@ class BaseballGame(computer: String) {
         }
     }
 
-    fun makeUserInput(): String {
+    fun createUserInput(): String {
         print("숫자를 입력해주세요 : ")
-        val userInput = readLine()!!
+        val userInput: String = readLine()!!
 
         if (userInput.length > 3) {
             throw IllegalArgumentException("잘못된 값을 입력했습니다.")
@@ -44,6 +44,7 @@ class BaseballGame(computer: String) {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
         val inputNumber: String = readLine()!!
         if (inputNumber == "1") {
+            computerInput = createComputerInput()
             return true
         }
         return false
@@ -92,9 +93,11 @@ class BaseballGame(computer: String) {
         }
         return ballCount
     }
+
+
 }
 
-fun getComputerInput(): String {
+fun createComputerInput(): String {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -104,4 +107,3 @@ fun getComputerInput(): String {
     }
     return computer.joinToString("")
 }
-
