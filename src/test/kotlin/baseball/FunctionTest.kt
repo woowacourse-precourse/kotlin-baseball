@@ -90,6 +90,50 @@ class FunctionTest : NsTest() {
     }
 
     @Test
+    fun `유저 입력값 및 랜덤 값 비교 정답인 경우`() {
+        val correct = isUserAnswerWrong("123", "123")
+        assertThat(correct).isEqualTo(false)
+        output().contains("3스트라이크")
+        output().contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        output().contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    }
+
+    @Test
+    fun `유저 입력값 및 랜덤 값 비교 오답 1`() {
+        val incorrect = isUserAnswerWrong("123", "456")
+        assertThat(incorrect).isEqualTo(true)
+        output().contains("낫싱")
+    }
+
+    @Test
+    fun `유저 입력값 및 랜덤 값 비교 오답 2`() {
+        val incorrect = isUserAnswerWrong("123", "554")
+        assertThat(incorrect).isEqualTo(true)
+        assertThat(output()).contains("낫싱")
+    }
+
+    @Test
+    fun `유저 입력값 및 랜덤 값 비교 오답 3`() {
+        val incorrect = isUserAnswerWrong("123", "154")
+        assertThat(incorrect).isEqualTo(true)
+        assertThat(output()).contains("1스트라이크")
+    }
+
+    @Test
+    fun `유저 입력값 및 랜덤 값 비교 오답 4`() {
+        val incorrect = isUserAnswerWrong("123", "354")
+        assertThat(incorrect).isEqualTo(true)
+        assertThat(output()).contains("1볼")
+    }
+
+    @Test
+    fun `유저 입력값 및 랜덤 값 비교 오답 5`() {
+        val incorrect = isUserAnswerWrong("123", "913")
+        assertThat(incorrect).isEqualTo(true)
+        assertThat(output()).contains("1볼 1스트라이크")
+    }
+
+    @Test
     fun `정답 맞춘 후 재시작`() {
         System.setIn("1".byteInputStream())
         val quitCode = isContinuedNewGame()
