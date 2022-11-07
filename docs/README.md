@@ -120,3 +120,11 @@ BaseballGame.Builder()
 
 게임 종료/재시작 코드를 잘못 입력하였을 때 위 함수를 호출하여 `IllegalArgumentException` 를 발생시킨다
 
+<br/>
+
+## [Provider::class](/src/main/kotlin/baseball/game/Provider.kt)
+
+- `pickComputerRandomNumber()`
+    - `camp.nextstep.edu.missionutils.Randoms`를 활용하여 컴퓨터 랜덤 숫자 뽑기
+- `readUserNumber()`
+    - `camp.nextstep.edu.missionutils.Console`을 활용하여 유저 숫자 입력 받기
