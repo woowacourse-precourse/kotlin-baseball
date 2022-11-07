@@ -18,9 +18,9 @@
 |playGame| | | main에서 게임 실행을 위해 호출하는 함수|
 | makeRandomNumberList |  | MutableList<Int> | 컴퓨터로 하여금 랜덤한 세자리 숫자 발생시킴 |
 | getUserNumberList | String (input) | MutableList<Int> | 사용자가 입력한 값 리스트로 반환 <br/>- 잘못된 입력 예외 발생(checkExceptionOnNumbers) |
-| isHavingDuplicatedNumber | Int |  | 중복된 숫자가 포함되어있으면 오류 발생 |
+| isHavingDuplicatedNumber | String |  | 중복된 숫자가 포함되어있으면 오류 발생 |
 | isInteger | String |  | 입력한 형태가 숫자가 아닌 형태면 오류 발생 |
-| isNumberOfDigitsCorrect | Int |  | 입력한 숫자 자리수가 다르면 오류 발생 |
+| isNumberOfDigitsCorrect | String |  | 입력한 숫자 자리수가 다르면 오류 발생 |
 | checkExceptionOnNumbers | String (input) | | 입력값 관련 예외 사항들 (위의 3가지 함수) 검사
 | isGameGonnaRestart | | Boolean | main에서 재시작 여부를 묻기 위해 호출하는 함수
 - +) 예외 관련 함수들은 `ExceptionCheckList` 파일에서 관리하기

@@ -7,3 +7,11 @@ fun isInteger(input: String) {
         throw IllegalArgumentException("숫자가 아닌 문자를 입력했습니다.")
     }
 }
+
+fun isHavingDuplicatedNumber(input: String) {
+    for(x in input) {
+        if(input.count { it == x } > 1) {
+            throw IllegalArgumentException("중복된 숫자가 있습니다.")
+        }
+    }
+}
