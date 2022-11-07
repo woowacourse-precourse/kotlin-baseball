@@ -9,10 +9,25 @@ fun main() {
 class Game() {
     private val gamePrinter = Printer()
     private val computer = Computer()
+    private val user = User()
+    private val referee = Referee()
 
     private fun standbyPhase() {
         gamePrinter.showStartMessage()
         computer.createComputerNumbers()
+    }
+
+    private fun mainPhase() {
+        var isGamePlaying: Boolean = true
+        while (isGamePlaying) {
+            gamePrinter.showInputMessage()
+            user.enterUserNumbers()
+
+            val refereeDecision = referee.decideGameEnd(computer.computerNumbers, user.userNumbers)
+            gamePrinter.showCountingMessage(refereeDecision.ballCount, refereeDecision.strikeCount)
+
+            isGamePlaying = !refereeDecision.isStrikeOut
+        }
     }
 }
 
