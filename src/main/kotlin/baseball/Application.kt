@@ -28,3 +28,16 @@ private fun getNumberOfStrike(computer: String, user: String): Int {
     }
     return numberOfStrike
 }
+
+private fun getNumberOfBall(computer: String, user: String): Int {
+    val computerNumber: List<String> = computer.split("")
+    val userNumber: List<String> = user.split("")
+    var numberOfBall = 0
+    for(i in 1..3){
+        if(computerNumber.contains(userNumber[i]) && computerNumber[i] != userNumber[i]){
+            numberOfBall++
+        }
+    }
+    return numberOfBall
+}
+
