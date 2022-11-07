@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class BaseBallGame {
@@ -20,6 +21,13 @@ class BaseBallGame {
         return answerList.joinToString("")
     }
 
+    private fun inputUserGuess(): String {
+        val guess = Console.readLine()
+        if (checkValidGuess(guess).not()) {
+            throw IllegalArgumentException("exception")
+        }
+        return guess
+    }
     private fun checkValidGuess(guess: String) = guessRegex.matches(guess) && guess.toSet().size == 3
 
     private fun printGuide() {
