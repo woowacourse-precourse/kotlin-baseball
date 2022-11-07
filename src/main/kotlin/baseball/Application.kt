@@ -57,11 +57,12 @@ private fun userNumberInputExceptionCheck(inputString: String?): Boolean {
         return true
     }
 
-    val digitDuplicatedCheckList = mutableListOf<Boolean>(false, false, false, false, false, false, false, false, false, false)
+    val digitDuplicatedCheckList =
+        mutableListOf<Boolean>(false, false, false, false, false, false, false, false, false, false)
     for (code in inputString.toList().map { it.code }) {
         if (!isValidUserNumber(code)) return true
-        if (digitDuplicatedCheckList[code-48]) return true
-        digitDuplicatedCheckList[code-48] = true
+        if (digitDuplicatedCheckList[code - 48]) return true
+        digitDuplicatedCheckList[code - 48] = true
     }
 
     return false
