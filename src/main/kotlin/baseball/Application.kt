@@ -15,11 +15,13 @@ fun main() {
         println(userInput)
         checkNumberException(userInput)
 
-        if (searchNothingCase(userInput, computerNumber)) {
+        var (isNothing, userindexIncomputerNum) = searchNothingCase(userInput, computerNumber)
+
+        if (isNothing) {
             println("낫싱")
         } else {
-            println("컴퓨터 숫자에 포함된 숫자가 존재")
-            TODO("낫싱이 아닌 경우")
+            println("${userInput}의 ${userindexIncomputerNum} 인덱스는 computerNumber에 존재")
+            TODO("스트라이크/볼 판단")
         }
     }
 }
@@ -27,7 +29,7 @@ fun main() {
 fun makeRandomNumber(length: Int): String {
     var noOverlapRandomNumber = mutableListOf<Int>()
 
-    while (noOverlapRandomNumber.size < 3) {
+    while (noOverlapRandomNumber.size < length) {
         var randNum = Randoms.pickNumberInRange(1, 9)
         if (randNum !in noOverlapRandomNumber) {
             noOverlapRandomNumber.add(randNum)
@@ -53,12 +55,14 @@ fun checkNumberException(userInput: String) {
     }
 }
 
-fun searchNothingCase(userNum: String, computerNum: String): Boolean {
+fun searchNothingCase(userNum: String, computerNum: String): Pair<Boolean, MutableList<Int>> {
     var isNothing = true
-    for (i in userNum) {
-        if (i in computerNum) {
+    var userindexIncomputerNum = mutableListOf<Int>()
+    for (i in userNum.indices) {
+        if (userNum[i] in computerNum) {
             isNothing = false
+            userindexIncomputerNum.add(i)
         }
     }
-    return isNothing
+    return Pair(isNothing, userindexIncomputerNum)
 }
