@@ -12,6 +12,7 @@ fun playGame(){
             computer.add(randomNumber)
         }
     }
+    getUserNumber()
 
     message(computer)
     print("3개의 숫자를 모두 맞히셨습니다!")
@@ -30,7 +31,26 @@ fun nextGame(){
         println("게임을 종료합니다!")
 }
 
+fun message():String{
+    //판단 및 메시지 출력
+}
 
+fun getUserNumber(): String? {
+    //사용자 숫자 입력하기
+
+    println("숫자를 입력해주세요 :")
+    val user = readLine()
+
+    //예외처리
+    if(user.isNullOrEmpty() ||user.length!=3)
+        throw IllegalArgumentException()
+
+    for (i in user) {
+        if (i !in '0'..'9')
+            throw IllegalArgumentException()
+    }
+    return user
+}
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
