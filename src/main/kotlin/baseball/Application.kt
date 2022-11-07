@@ -1,17 +1,19 @@
 package baseball
 
 val consoleManager = ConsoleManager()
-lateinit var answer: String
 fun main() {
-
+    launchApplication()
+}
+fun launchApplication() {
+    var userInputOfConsole: String
     do{
         startBaseballGame()
 
         consoleManager.writeLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n")
 
-        answer = consoleManager.readLine()
-        validateReStartInput(answer)
-    } while(answer == "1")
+        userInputOfConsole = consoleManager.readLine()
+        validateReStartInput(userInputOfConsole)
+    } while(userInputOfConsole == "1")
 }
 
 fun startBaseballGame() {
