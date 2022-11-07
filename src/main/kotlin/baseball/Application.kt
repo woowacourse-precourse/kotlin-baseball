@@ -23,6 +23,10 @@ fun inputNumber() : String{ // 잘못 입력했을 시 IllegalArgumentException�
     */
     print("숫자를 입력해주세요 : ")
     var user = readLine()
+    if (user.length!=3){
+        throw IllegalArgumentException("3자리를 입력해야함")
+    }
+
     return user.toString()
 }
 
