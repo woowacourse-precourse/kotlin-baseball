@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
 
-internal class BaseballModelTest {
+class BaseballModelTest {
 
     private lateinit var baseballModel: BaseballModel
 
@@ -30,8 +30,8 @@ internal class BaseballModelTest {
                 checkBalls(case)
                 setResultString()
                 assertThat(resultString).isEqualTo(testResults[idx])
-                assertThat(strikeCnt).isEqualTo(testStrikes[idx])
-                assertThat(ballCnt).isEqualTo(testBalls[idx])
+                assertThat(ballResult.strikeCnt).isEqualTo(testStrikes[idx])
+                assertThat(ballResult.ballCnt).isEqualTo(testBalls[idx])
                 clearGame()
             }
         }
@@ -47,8 +47,8 @@ internal class BaseballModelTest {
 
         with(baseballModel) {
             testResults.forEachIndexed { idx, case ->
-                strikeCnt = testStrikes[idx]
-                ballCnt = testBalls[idx]
+                ballResult.strikeCnt = testStrikes[idx]
+                ballResult.ballCnt = testBalls[idx]
                 setResultString()
                 assertThat(resultString).isEqualTo(case)
             }
