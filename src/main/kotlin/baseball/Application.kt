@@ -71,7 +71,7 @@ fun main() {
 
     var Continue = 1
 
-    while(Continue == 1) {
+    while (Continue == 1) {
 
         val input = readLine()?.toCharArray()
         if (input != null) {
@@ -82,6 +82,15 @@ fun main() {
         val ComputerChar = changeToChar(ComputerNum)
         var strike_ball = countCorrect(ComputerChar, input)
 
+        if (strike_ball[0] == 0 && strike_ball[1] == 0) {
+            print("낫싱")
+        } else if (strike_ball[0] == 0) {
+            print("${strike_ball[1]}볼")
+        } else if (strike_ball[1] == 0) {
+            print("${strike_ball[0]}스트라이크")
+        } else {
+            print("${strike_ball[0]}스트라이크 ${strike_ball[1]}볼")
+        }
 
 
     }
