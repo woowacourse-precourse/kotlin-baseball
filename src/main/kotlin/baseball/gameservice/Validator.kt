@@ -21,7 +21,7 @@ object Validator {
     /** 3STRIKE인 경우 게임을 계속 진행할지에 대한 입력이 규칙에 적합한지 확인하는 함수 **/
     fun checkContinuingIsValid(userInput:String): Boolean {
         when(userInput){
-            !in "1", "2" -> return false
+            !in arrayOf("1", "2") -> return false
         }
         return true
     }
