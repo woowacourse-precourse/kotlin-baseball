@@ -17,7 +17,7 @@ class BaseballModel {
     }
 
     fun calculateBalls(userInput: String) {
-        checkBasballIsCorrectNumber(userInput)
+        checkBallInput(userInput)
         userInput.forEachIndexed { idx, numStr ->
             val number = numStr.toNumber()
             if (number == computerNum[idx]) {
@@ -49,7 +49,7 @@ class BaseballModel {
     fun clearGame() = ballResult.clear()
 
     fun checkEndedNumber(userInput: String) = inputChecker.checkEndedNumber(userInput)
-    fun checkBasballIsCorrectNumber(userNum: String) = inputChecker.checkBasballNumber(userNum)
+    fun checkBallInput(userNum: String) = inputChecker.checkBasballNumber(userNum)
 
     private fun reGame() {
         computerNum = makeRandomNum()

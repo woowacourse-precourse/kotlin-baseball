@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
 
+/**
+ * BaseballModel의 기능이 잘 작동하는지 단위 테스트를 정의
+ */
 class BaseballModelTest {
 
     private lateinit var baseballModel: BaseballModel
@@ -37,7 +40,7 @@ class BaseballModelTest {
     }
 
     @Test
-    fun `setResultString메소드에서 스트라이크 볼에 따른 올바른 값을 반환하는지 체크`() {
+    fun `getResultString메소드에서 스트라이크 볼에 따른 올바른 값을 반환하는지 체크`() {
         val testResults = listOf<String>(
             "1볼 2스트라이크", "3볼", "2스트라이크", "낫싱"
         )
@@ -53,6 +56,17 @@ class BaseballModelTest {
         }
     }
 
+    @Test
+    fun `makeRandomNum 메소드가 50번의 테스트에서 각각 다른 세자릿 수를 반환하는지 테스트`() {
+        for (i in 0 until 50) {
+            val testNumber = baseballModel.makeRandomNum()
+            assertThat(testNumber.size).isEqualTo(3)
+            testNumber.forEach { num ->
+                assertThat(testNumber.count { it == num }).isLessThan(2)
+            }
+        }
+    }
+
     @Nested
     inner class UserInputTest {
         @Test
@@ -62,7 +76,7 @@ class BaseballModelTest {
                 assertThrows<IllegalArgumentException>(
                     "$case 3자리가 아니거나, 숫자가 아닌 값"
                 ) {
-                    baseballModel.checkBasballIsCorrectNumber(case)
+                    baseballModel.checkBallInput(case)
                 }
             }
         }
@@ -74,7 +88,7 @@ class BaseballModelTest {
                 assertThrows<IllegalArgumentException>(
                     "$case 3자리가 아니거나, 숫자가 아닌 값"
                 ) {
-                    baseballModel.checkBasballIsCorrectNumber(case)
+                    baseballModel.checkBallInput(case)
                 }
             }
         }
@@ -86,7 +100,7 @@ class BaseballModelTest {
                 assertThrows<IllegalArgumentException>(
                     "$case 각각 다른 3자리 숫자가 아님"
                 ) {
-                    baseballModel.checkBasballIsCorrectNumber(case)
+                    baseballModel.checkBallInput(case)
                 }
             }
         }
