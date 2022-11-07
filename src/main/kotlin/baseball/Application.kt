@@ -45,7 +45,7 @@ fun checkInputUserNumber(userInputNumber: String?) {
     for (userInputNumberWord in userInputNumber) checkOverlapInputNumber.add(userInputNumberWord.toString())
 
     checkInputMessagePatten(inputNumberStandard, checkOverlapInputNumber)
-
+    if (checkOverlapInputNumber.size !=3) throw IllegalArgumentException()
     if (checkOverlapInputNumber.distinct().size != 3) throw IllegalArgumentException()
 
 }
@@ -71,6 +71,18 @@ fun checkBall(
     ball -= strike
     return ball
 }
+
+fun printResult(strike: Int, ball: Int) {
+
+    return when {
+        1 <= strike && 1 <= ball -> println("$ball" + "볼" + " " + "$strike" + "스트라이크")
+        1 <= strike && ball == 0 -> println(("$strike" + "스트라이크"))
+        strike == 0 && 1 <= ball -> println("$ball" + "볼")
+        else -> println("낫싱")
+    }
+}
+
+
 
 fun checkInputMessagePatten(standard: String, checkOverlap: MutableList<String>) {
     val pattern: Pattern = Pattern.compile(standard)
