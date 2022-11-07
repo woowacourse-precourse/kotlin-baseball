@@ -22,13 +22,30 @@ private fun gameStart(computer: String): Boolean {
         // 사용자 입력 숫자
         val userNumber = guessNumber()
 
-        // 사용자에게 받은 숫자 체크(볼, 스트라이크, 예외사항)
+        // 사용자에게 받은 숫자 체크(볼, 스트라이크, 낫싱, 예외사항)
         val (ball, strike) = userNumberCheck(userNumber, computer)
+
+        // 사용자 숫자 결과 출력
+        println(userNumberCheckResult(ball, strike))
 
     }
 }
 
-// 사용자에게 받은 숫자 체크(볼, 스트라이크, 예외사항)
+// 사용자 숫자 체크 결과 출력
+private fun userNumberCheckResult(ball: Int, strike: Int): String {
+    // 아무것도 해당 없을 경우, 볼 카운트, 스트라이크 카운트
+    val resultArray = mutableListOf<String>()
+    if (ball == 0 && strike == 0) resultArray.add("낫싱")
+    if (ball != 0) resultArray.add("${ball}볼")
+    if (strike != 0) resultArray.add("${strike}스트라이크")
+    // 예외
+    if (resultArray.size == 0) throw IllegalArgumentException("undefined error")
+
+    return resultArray.joinToString(" ")
+}
+
+
+// 사용자에게 받은 숫자 체크(볼, 스트라이크, 낫싱, 예외사항)
 private fun userNumberCheck(number: String, computer: String): Pair<Int, Int> {
     var ball = 0    // 볼 카운트
     var strike = 0  // 스트라이크 카운트
