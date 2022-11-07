@@ -16,7 +16,16 @@ class BaseballModel {
     }
 
     fun checkBalls(userInput: String) {
-        TODO("사용자 인풋에 따른 스트라이크 볼 체크")
+        userInput.forEachIndexed { idx, numStr ->
+            val number = numStr.toNumber()
+            if (number == computerNum[idx]) {
+                strikeCnt++
+                return@forEachIndexed
+            }
+            if (computerNum.contains(number)) {
+                ballCnt++
+            }
+        }
     }
 
     fun setResultString() {
