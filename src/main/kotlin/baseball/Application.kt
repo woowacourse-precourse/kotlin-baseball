@@ -10,7 +10,7 @@ fun main() {
     } while (isContinuedNewGame())
 }
 
-private fun getComputerNumber(): String {
+fun getComputerNumber(): String {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -21,15 +21,15 @@ private fun getComputerNumber(): String {
     return computer.joinToString("")
 }
 
-private fun startNewGame() {
+fun startNewGame() {
     val computerNumber = getComputerNumber()
     do {
         val inputString = getUserPredictionNumber()
         validateInputString(inputString, false)
     } while (isUserAnswerWrong(computerNumber, inputString))
 }
-
-private fun getUserPredictionNumber(): String {
+ 
+fun getUserPredictionNumber(): String {
     print("숫자를 입력해주세요 : ")
     val inputString = Console.readLine()
     println(inputString)
@@ -37,7 +37,7 @@ private fun getUserPredictionNumber(): String {
     return inputString
 }
 
-private fun validateInputString(inputString: String, isNewGameCheckInputString: Boolean) {
+fun validateInputString(inputString: String, isNewGameCheckInputString: Boolean) {
     if (isNewGameCheckInputString && isContinuedNewGameCheckInputError(inputString))
         throw IllegalArgumentException("User New Game Continue Check Input Error")
 
@@ -45,7 +45,7 @@ private fun validateInputString(inputString: String, isNewGameCheckInputString: 
         throw IllegalArgumentException("User Prediction Input Error")
 }
 
-private fun isContinuedNewGameCheckInputError(inputString: String): Boolean {
+fun isContinuedNewGameCheckInputError(inputString: String): Boolean {
     if (isNotInteger(inputString))
         return true
 
@@ -55,7 +55,7 @@ private fun isContinuedNewGameCheckInputError(inputString: String): Boolean {
     return true
 }
 
-private fun isPredictionInputError(inputString: String): Boolean {
+fun isPredictionInputError(inputString: String): Boolean {
     if (isNotInteger(inputString))
         return true
     if (containsZeroDigit(inputString))
@@ -73,7 +73,7 @@ private fun isPredictionInputError(inputString: String): Boolean {
     return false
 }
 
-private fun isNotInteger(string: String): Boolean {
+fun isNotInteger(string: String): Boolean {
     return try {
         string.toInt()
         false
@@ -82,8 +82,8 @@ private fun isNotInteger(string: String): Boolean {
     }
 }
 
-private fun containsZeroDigit(string: String): Boolean = string.contains("0")
-private fun isUserAnswerWrong(computerNumber: String, inputNumber: String): Boolean {
+fun containsZeroDigit(string: String): Boolean = string.contains("0")
+fun isUserAnswerWrong(computerNumber: String, inputNumber: String): Boolean {
     var ballCount = 0
     var strikeCount = 0
 
@@ -102,7 +102,7 @@ private fun isUserAnswerWrong(computerNumber: String, inputNumber: String): Bool
     return isWrongNumber(ballCount, strikeCount)
 }
 
-private fun isWrongNumber(ballCount: Int, strikeCount: Int): Boolean {
+fun isWrongNumber(ballCount: Int, strikeCount: Int): Boolean {
     if (strikeCount == 3) {
         println("3스트라이크")
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
@@ -123,7 +123,7 @@ private fun isWrongNumber(ballCount: Int, strikeCount: Int): Boolean {
     return true
 }
 
-private fun isContinuedNewGame(): Boolean {
+fun isContinuedNewGame(): Boolean {
     val userContinueNewGameInput = Console.readLine()
     println(userContinueNewGameInput)
     validateInputString(userContinueNewGameInput, true)
