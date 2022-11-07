@@ -39,6 +39,38 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Nested
+    inner class Function3Test {
+        @Test
+        fun `isNum 메서드가 숫자로 이루어진 스트링값을 입력받았을 때 true 반환`() {
+            val strings = listOf("abc", "1")
+            assertThat(isNum(strings[0])).isEqualTo(false)
+            assertThat(isNum(strings[1])).isEqualTo(true)
+        }
+
+        @Test
+        fun `isThreeLength 메서드가 3자리 스트링값을 입력받았을 때 true 반환`() {
+            val strings = listOf("가나다", "12")
+            assertThat(isThreeLength(strings[0])).isEqualTo(true)
+            assertThat(isThreeLength(strings[1])).isEqualTo(false)
+        }
+
+        @Test
+        fun `isDuplicate 메서드가 중복이 없는 스트링값을 입력받았을 때 true 반환`() {
+            val strings = listOf("12", "112", "abcda")
+            assertThat(isDuplicate(strings[0])).isEqualTo(true)
+            assertThat(isDuplicate(strings[1])).isEqualTo(false)
+            assertThat(isDuplicate(strings[2])).isEqualTo(false)
+        }
+
+        @Test
+        fun `numToList 메서드가 입력받은 수를 리스트로 반환`() {
+            val numbers = "12345"
+            val numList = listOf(1, 2, 3, 4, 5)
+            assertThat(numToList(numbers)).isEqualTo(numList)
+        }
+    }
+
     override fun runMain() {
         main()
     }
