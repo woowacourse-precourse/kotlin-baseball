@@ -2,7 +2,7 @@ package baseball
 
 class Calculator(
     private val userInput: String,
-    private val answer: String
+    private val answer: String = Computer.randomNumber
 ) {
 
     lateinit var ballAndStrike: Pair<Int, Int>
