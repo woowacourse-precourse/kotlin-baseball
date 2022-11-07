@@ -47,7 +47,8 @@ fun playGame(computerNumber: List<Int>) {
     while (!answer) {
         val userNumber = getUserNumber()
         val hint = getHint(computerNumber, userNumber)
-        answer = printHint(hint)
+        printHint(hint)
+        answer = checkAnswer(hint)
     }
 }
 
@@ -125,24 +126,27 @@ fun countBall(computerNumber: List<Int>, userNumber: Int): Int {
     return 0
 }
 
-fun printHint(hint: List<Int>): Boolean {
+fun printHint(hint: List<Int>) {
     val strike = hint[0]
     val ball = hint[1]
 
-    var answer = false
-
     when {
         strike == 0 && ball == 0 -> println(NOTHING)
-        strike == 3 -> {
-            println("$strike$STRIKE")
-            println(SUCCESS_MESSAGE)
-            answer = true
-            restartOrEndGame()
-        }
-
+        strike == 3 -> println("$strike$STRIKE")
         strike == 0 -> println("$ball$BALL")
         ball == 0 -> println("$strike$STRIKE")
         else -> println("$ball$BALL $strike$STRIKE")
+    }
+}
+
+fun checkAnswer(hint: List<Int>): Boolean {
+    val strike = hint[0]
+
+    var answer = false
+    if (strike == 3) {
+        println(SUCCESS_MESSAGE)
+        answer = true
+        restartOrEndGame()
     }
 
     return answer
