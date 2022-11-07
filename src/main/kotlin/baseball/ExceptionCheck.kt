@@ -9,8 +9,6 @@ class ExceptionCheck {
 
         if(input.length != 3){
             throw IllegalArgumentException("자릿수 오류 발생")
-        }else{
-            println("3자리 수 입력값임")
         }
 
     }
@@ -20,8 +18,6 @@ class ExceptionCheck {
         if(input.contains("0")){
             throw IllegalArgumentException("잘못된 숫자 입력 오류 발생")
 
-        }else{
-            println("입력값에 0 없음")
         }
 
     }
@@ -34,8 +30,6 @@ class ExceptionCheck {
 
         if(inputList.size != inputList.distinct().count()){
             throw IllegalArgumentException("중복 숫자 입력 오류 발생")
-        }else{
-            println("입력값에 중복 문자 없음")
         }
 
 

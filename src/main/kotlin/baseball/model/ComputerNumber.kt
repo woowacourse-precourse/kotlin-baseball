@@ -5,18 +5,19 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class ComputerNumber {
 
-    var ComputerList = ArrayList<Int>()
 
 
-    fun setComputerNumber() {
+
+    fun setComputerNumber() : String{
         var ComputerSet = HashSet<Int>()
 
         while (ComputerSet.size < 3) {
+
             ComputerSet.add(getComputerNumber());
         }
 
-        ComputerList = ArrayList(ComputerSet)
-
+        val computerNumber = ComputerSet.joinToString("")
+        return computerNumber
     }
 
     fun getComputerNumber(): Int {
