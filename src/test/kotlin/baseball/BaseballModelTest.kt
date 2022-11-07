@@ -37,6 +37,23 @@ internal class BaseballModelTest {
         }
     }
 
+    @Test
+    fun `setResultString메소드에서 스트라이크 볼에 따른 올바른 값을 반환하는지 체크`() {
+        val testResults = listOf<String>(
+            "1볼 2스트라이크", "3볼", "2스트라이크", "낫싱"
+        )
+        val testStrikes = listOf<Int>(2, 0, 2, 0)
+        val testBalls = listOf<Int>(1, 3, 0, 0)
+
+        with(baseballModel) {
+            testResults.forEachIndexed { idx, case ->
+                strikeCnt = testStrikes[idx]
+                ballCnt = testBalls[idx]
+                setResultString()
+                assertThat(resultString).isEqualTo(case)
+            }
+        }
+    }
 
     @Nested
     inner class UserInputTest {
