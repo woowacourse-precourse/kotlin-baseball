@@ -30,6 +30,8 @@ class BaseBallGame {
     }
     private fun checkValidGuess(guess: String) = guessRegex.matches(guess) && guess.toSet().size == 3
 
+    private fun checkGameOver(score: Score) = score.strike == 3
+
     private fun gradeGuess(answer: String, guess: String): Score {
         val score = Score(0, 0)
 
