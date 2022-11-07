@@ -47,6 +47,21 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `볼 0개 찾기`(){
+        val computer = listOf<Int>(1,3,5)
+        val user = listOf<Int>(2,4,6)
+        val result = findBall(computer,user)
+        assertThat(result).isEqualTo(0)
+    }
+    @Test
+    fun `볼 3개 찾기`(){
+        val computer = listOf<Int>(4,5,6)
+        val user = listOf<Int>(6,4,5)
+        val result = findBall(computer,user)
+        assertThat(result).isEqualTo(3)
+    }
+
+    @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
             {
