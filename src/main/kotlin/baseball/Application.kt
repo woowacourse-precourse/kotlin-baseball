@@ -1,10 +1,8 @@
 package baseball
-
 import camp.nextstep.edu.missionutils.Randoms
 
-
 fun compareList(userInputToInt: List<Int>, computerList: List<Int>): Boolean {
-    if (userInputToInt.equals(computerList)) {
+    if (userInputToInt == computerList) {
         return true
     }
     return false
@@ -13,13 +11,13 @@ fun compareList(userInputToInt: List<Int>, computerList: List<Int>): Boolean {
 
 fun startgame(){
     println("숫자 야구 게임을 시작합니다.")
-    println("숫자를 입력해주세요 : ")
 
     var userInputList = userInputToInt()
     var computerList = createComputerList()
 
     while (!compareList(userInputList, computerList)){
         notThreeStrike(userInputList, computerList)
+        userInputList = userInputToInt()
     }
 
     println("3스트라이크\n" +
@@ -28,7 +26,8 @@ fun startgame(){
 
 fun notThreeStrike(userInputList: List<Int>, computerList: List<Int>) {
     var strike = 0
-    for (i in 0..1) {
+    val userInputsize:Int = userInputList.size
+    for (i in 0 until userInputsize) {
         strike  += strikeCheck(i, userInputList, computerList)
     }
     var ball = 0
@@ -37,22 +36,12 @@ fun notThreeStrike(userInputList: List<Int>, computerList: List<Int>) {
     }
     ball -= strike
 
-    printres(ball, strike)
-//    if(ball!=0 && strike != 0){
-//        println("${ball}볼${strike}스트라이크")
-//    }else if(ball == 0 && strike != 0){
-//        println("${strike}스트라이크")
-//    }else if(ball != 0 && strike == 0){
-//        println("${ball}볼")
-//    }else{
-//        println("낫싱")
-//    }
-
+    printResult(ball, strike)
 }
 
-fun printres(ball: Int, strike: Int) {
+fun printResult(ball: Int, strike: Int) {
     if(ball!=0 && strike != 0){
-        println("${ball}볼${strike}스트라이크")
+        println("${ball}볼 ${strike}스트라이크")
     }else if(ball == 0 && strike != 0){
         println("${strike}스트라이크")
     }else if(ball != 0 && strike == 0){
@@ -70,10 +59,10 @@ fun ballCheck(userIn : Int, computerList: List<Int>): Int{
 }
 
 fun strikeCheck(i: Int, userInputList: List<Int>, computerList: List<Int>) : Int{
-    if(userInputList[i] == computerList[i]){
-        return 1
+    return if(userInputList[i] == computerList[i]){
+        1
     }else{
-        return 0
+        0
     }
 }
 
@@ -83,6 +72,8 @@ fun main() {
     var menu : Int? = readLine()?.toInt()
     while(restart(menu)) {
         startgame()
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        menu = readLine()?.toInt()
     }
 
 }
@@ -105,15 +96,16 @@ fun restart(menu: Int?): Boolean {
 }
 
 fun createComputerList() : List<Int> {
-    var computer : List<Int> = mutableListOf()
-    for (i in 1..3)
-        computer.plus(Randoms.pickNumberInRange(1, 9))
-    return computer
+    var computer = mutableSetOf<Int>()
+    while (computer.size < 3)
+        computer+=Randoms.pickNumberInRange(1, 9)
+    return computer.toList()
 }
 
 fun userInputToInt() : List<Int> {
-    var userInput : Int? = readLine()?.toInt()
-    var inputs : List<Int> = emptyList()
+    print("숫자를 입력해주세요 : ")
+    var userInput : Int? = readLine()!!.toIntOrNull()
+    var inputs : List<Int> = listOf()
 
    if(!userInputCheck(userInput)){
        println("유효하지 않은 입력입니다.")
@@ -121,20 +113,39 @@ fun userInputToInt() : List<Int> {
 
     while (userInput!! > 0){
         var tmp = userInput % 10
+        inputs += tmp
         userInput /= 10
-        inputs.plus(tmp)
     }
 
-    return inputs
+    if(!setCheck(inputs)){
+        println("유효하지 않은 입력입니다.")
+    }
+
+
+    return inputs.reversed()
+}
+
+fun setCheck(inputs: List<Int>): Boolean {
+    val setList = inputs.toSet().toList()
+    return if(inputs == setList){
+        true
+    }else{
+        throw IllegalArgumentException("숫자는 세 개 이하의 중복되지 않은 정수여야 합니다.")
+        false
+    }
 }
 
 fun userInputCheck(userInput: Int?): Boolean {
-    if (userInput !in 0..100){
-        throw IllegalArgumentException("숫자는 세자리 이하의 정수여야 합니다.")
+    if (userInput !in 0..999){
+        throw IllegalArgumentException("숫자는 세 개 이하의 중복되지 않은 정수여야 합니다.")
         return false
+    }else if(userInput !is Int){
+        throw IllegalArgumentException("숫자는 세 개 이하의 중복되지 않은 정수여야 합니다.")
+        return false
+    }else{
+        return true
     }
 
-    return userInput is Int
 }
 
 fun menuCheck(menu: Int?): Boolean {
