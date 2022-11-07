@@ -1,5 +1,6 @@
 package study
 
+import baseball.getBallCount
 import baseball.getRandomNumber
 import baseball.getStrikeCount
 import baseball.isValidNumber
@@ -58,7 +59,7 @@ class StringTest {
     }
 
     @Test
-    fun `정답 숫자 유요한 숫자인지 확인`() {
+    fun `정답 숫자 유효한 숫자인지 확인`() {
         val number = getRandomNumber()
         val result = isValidNumber(number)
         assertThat(result).isEqualTo(true)
@@ -67,6 +68,12 @@ class StringTest {
     @Test
     fun `스트라이크 개수 판별`() {
         val result = getStrikeCount("123", "125")
+        assertThat(result).isEqualTo(2)
+    }
+
+    @Test
+    fun `볼 개수 판별`() {
+        val result = getBallCount("123", "132")
         assertThat(result).isEqualTo(2)
     }
 }
