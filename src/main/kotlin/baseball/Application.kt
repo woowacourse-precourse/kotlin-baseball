@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 var restartInput = 0
 fun main() {
     printGameStart()
+    startGame()
+}
 
+fun startGame() {
     do {
         val computerNumber = generateComputerNumber()
         playGame(computerNumber)
