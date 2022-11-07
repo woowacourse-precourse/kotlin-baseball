@@ -1,5 +1,10 @@
 package baseball
 
+import baseball.src.Game
+import baseball.src.printStartMessage
+
 fun main() {
-    TODO("프로그램 구현")
+    printStartMessage()
+    Game().startGame()
+    Game().gameRestart()
 }
