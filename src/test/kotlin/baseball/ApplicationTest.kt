@@ -271,6 +271,15 @@ class ApplicationTest : NsTest() {
         assertThat(computer.isWin(win)).isEqualTo(true)
     }
 
+    @Test
+    fun `게임 종료 안내`() {
+        val guide = Guide()
+
+        guide.gameOver()
+
+        assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    }
+
     override fun runMain() {
         main()
     }
