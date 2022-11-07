@@ -1,9 +1,33 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console as cs
 
 fun main() {
-    TODO("프로그램 구현")
+    var guessing = true
+
+    println("숫자 야구 게임을 시작합니다.")
+    while(guessing){
+        val computerNumber = createComputerNum()
+        var gamePlaying = true
+
+        while (gamePlaying){
+            print("숫자를 입력해주세요:")
+            val guessNumber = cs.readLine()
+            isInputNumeric(guessNumber)
+            val guessDigit = separateNumberIntoDigit(guessNumber)
+            val countResult = countStrikeAndBall(computerNumber, guessDigit)
+            val strike = countResult[0]
+            val ball = countResult[1]
+
+            gamePlaying = printScore(strike, ball)
+        }
+
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val continueGame = cs.readLine()
+        guessing = continueOrEndGame(continueGame)
+    }
 }
 
 
