@@ -30,7 +30,8 @@ class Baseball {
                 println("$ball$BALL_MESSAGE ")
             if (strike != 0)
                 println("$strike$STRIKE_MESSAGE")
-            
+            if (strike == 3)
+                return true
         }
         return false
     }
