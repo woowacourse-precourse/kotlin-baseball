@@ -177,11 +177,41 @@ class ApplicationTest : NsTest() {
         val predeterminedInput = PredeterminedInput(expected)
 
         val result = mutableListOf<String>()
-        for(index in expected.indices) {
+        for (index in expected.indices) {
             result.add(predeterminedInput.get())
         }
 
         assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun `사용자 입력 유효성 검사`() {
+        val predeterminedInput = PredeterminedInput(listOf("123", "1234", "1", "2", "3"))
+        val numbersValidator = listOf(
+            StringLengthVerifier(3),
+            OneToNineOnlyVerifier(),
+            NoSameCharacterVerifier(),
+        )
+        val choiceValidator = listOf(
+            StringLengthVerifier(1),
+            ValidChoiceVerifier(listOf("1", "2")),
+        )
+
+        assertDoesNotThrow { predeterminedInput.validCheck(predeterminedInput.get(), numbersValidator) }
+        assertThrows<IllegalArgumentException> {
+            predeterminedInput.validCheck(
+                predeterminedInput.get(),
+                numbersValidator,
+            )
+        }
+        assertDoesNotThrow { predeterminedInput.validCheck(predeterminedInput.get(), choiceValidator) }
+        assertDoesNotThrow { predeterminedInput.validCheck(predeterminedInput.get(), choiceValidator) }
+        assertThrows<IllegalArgumentException> {
+            predeterminedInput.validCheck(
+                predeterminedInput.get(),
+                choiceValidator,
+            )
+        }
     }
 
     override fun runMain() {
