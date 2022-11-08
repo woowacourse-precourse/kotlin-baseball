@@ -1,3 +1,7 @@
 package baseball
 
-class ComputerPlayer
+class ComputerPlayer(private val computerSelectedNumber: ComputerRandomNumber) : Player {
+    override fun getSelectedNumber(): String {
+        return computerSelectedNumber.randomNumber
+    }
+}
