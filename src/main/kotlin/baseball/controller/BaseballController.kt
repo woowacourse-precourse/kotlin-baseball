@@ -13,36 +13,39 @@ class BaseballController {
     var strike_count = 0
     var exit = false
 
-
     fun run() {
         //게임 시작 문구
         gameStartPhrases()
 
         //컴퓨터에게 랜덤값 받기
-
+        answer = computerNumber.setComputerNumber()
 
         while (!exit){
-            answer = computerNumber.setComputerNumber()
-            println(answer)
-            playGame()
-            println(exit)
+            resetResult()
 
+            val inputNumber = input.InputAnswer()
+            checkAnswer(answer, inputNumber)
+            checkResult()
+
+            if(strike_count == 3){
+
+                var restartNum = input.InputRestart()
+
+                if(restartNum == "1"){
+                    answer = computerNumber.setComputerNumber()
+                    //println(answer)
+                }
+
+                if(restartNum == "2"){
+                    exit = true
+                }
+            }
         }
-
-
     }
     fun gameStartPhrases() {
         println("숫자 야구 게임을 시작합니다.")
     }
 
-    fun playGame(){
-
-        while (strike_count != 3){
-            resetResult()
-            checkResult()
-        }
-
-    }
     fun resetResult(){
         strike_count = 0
         ball_count = 0
@@ -51,32 +54,13 @@ class BaseballController {
 
     fun checkResult() {
 
-        val inputNumber = input.InputAnswer()
-        checkAnswer(answer, inputNumber)
-
         if (strike_count == 3) {
             println("3스트라이크")
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-            resetResult()
-
-            var restartNum = input.InputRestart()
-
-            if(restartNum == "1"){
-                answer = computerNumber.setComputerNumber()
-                println(answer)
-            }
-
-            if(restartNum == "2"){
-                exit = true
-            }
-
-            // return 생각 , 함수 연결 때문인듯
 
         }
-
         if (nothing_count == 3) {
             println("낫싱")
-
         }
 
         val sb = StringBuilder()
@@ -106,6 +90,4 @@ class BaseballController {
             }
         }
     }
-
-
 }
