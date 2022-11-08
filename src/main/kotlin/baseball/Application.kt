@@ -83,9 +83,7 @@ fun input(Computer: MutableList<Int>){
     while(true) {
         val input = readLine()!!.toString()
         var input_array : Array<Int> = arrayOf(1,2,3)
-        if (input != null) {
-             input_array = checkTrue(input)
-        } else throw IllegalArgumentException("입력 값이 없습니다.");
+        input_array = checkTrue(input)
 
         val strike_ball = countCorrect(Computer, input_array)
 
@@ -106,8 +104,9 @@ fun main() {
        input(ComputerNum)
 
         println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
-        var input_again = readLine()
-        if(input_again == "2") {
+        var input_again = readLine()!!.toInt()
+        if(input_again !=2 ||input_again !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
+        if(input_again == 2) {
             Continue = 0
             println("게임종료")
         }
