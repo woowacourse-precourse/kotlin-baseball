@@ -2,11 +2,12 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 
-class Game() {
-    private val gamePrinter = Printer()
-    private val computer = Computer()
-    private val user = User()
-    private val referee = Referee()
+class Game(
+    private val gamePrinter: Printer,
+    private val computer: Computer,
+    private val user: User,
+    private val referee: Referee
+) {
 
     fun play() {
         var isGamePlaying: Boolean = true
