@@ -11,9 +11,10 @@ class Exception {
         if (numList.distinct().size != 3)
             throw IllegalArgumentException("중복되는 숫자 존재")
     }
-    
-    fun isValidEndNum(num : Int){
-        if(num !in 1..2)
+
+    fun isValidEndNum(num : String){
+        val regex = Regex("^[1-2]\$")
+        if(!regex.matches(num))
             throw IllegalArgumentException("1 또는 2의 숫자가 아닙니다.")
     }
 }

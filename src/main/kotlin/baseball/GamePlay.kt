@@ -75,10 +75,10 @@ class GamePlay {
     private fun baseballGameEnd() {
         PrintMessage().showEndMessage()
 
-        val endNum = readLine()!!.toInt()
+        val endNum = readLine()!!
         Exception().isValidEndNum(endNum)
 
-        if (endNum == 1)
+        if (endNum == "1")
             baseballGameStart()
     }
 }
