@@ -63,6 +63,28 @@ class ApplicationTest : NsTest() {
         assertThat(getResultString(1,2)).isEqualTo("1볼 2스트라이크")
     }
 
+    @Test
+    fun `1판만 플레이하고 게임 종료하는 경우 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("135", "2")
+                assertThat(output())
+                    .contains("3스트라이크")
+            },
+            1, 3, 5
+        )
+    }
+
+    @Test
+    fun `게임 종료 후 1과 2가 아닌 다른 문자 넣는 예외 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                assertThrows<IllegalArgumentException> { runException("246", "135", "8") }
+            },
+            1, 3, 5
+        )
+    }
+
     override fun runMain() {
         main()
     }
