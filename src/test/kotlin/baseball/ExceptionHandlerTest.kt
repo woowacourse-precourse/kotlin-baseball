@@ -76,6 +76,23 @@ class ExceptionHandlerTest {
         }
     }
 
+    @Nested
+    @DisplayName("재시작(1)/종료(2) 코드 테스트")
+    inner class RestartOrFinishCode {
+
+        @Test
+        fun `올바른 코드`() {
+            assertThat(ExceptionHandler.isRestartCode(Message.RESTART_CODE)).isEqualTo(true)
+            assertThat(ExceptionHandler.isRestartCode(Message.FINISH_CODE)).isEqualTo(false)
+        }
+
+        @Test
+        fun `잘못된 코드`() {
+            throwIllegalArgumentException { ExceptionHandler.isRestartCode("0") }
+            throwIllegalArgumentException { ExceptionHandler.isRestartCode("3") }
+        }
+    }
+
     private fun throwIllegalArgumentException(executable: () -> Unit) {
         assertSimpleTest { assertThrows<IllegalArgumentException>(executable) }
     }
