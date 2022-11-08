@@ -16,7 +16,7 @@ fun GameStart() {
     computerNumber = makeRandomNumber(3)
 
     while (true) {
-        if (!isPlay){
+        if (!isPlay) {
             break
         }
         print("숫자를 입력해주세요 : ")
