@@ -154,3 +154,14 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+# 기능 목록
+- 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 랜덤으로 생성하여 문제를 출제한다.
+- 플레이어가 생각하는 답을 입력받는다.
+- 플레이어가 입력한 숫자가 세자리인지, 그리고 각기 다른 수로 구성되어 있는지 확인한 후 아니라면 IllegalArgumentException을 발생시킨다.
+- 답이 문제와 얼마나 일치하는지 비교한다.
+- 조건에 따라 스트라이크, 볼, 낫싱을 출력한다.
+- 문제를 맞출 때 까지 문답을 반복한다.
+- 문제를 맞출 경우 게임을 종료한다.
+- 게임이 종료될 경우 게임 재시작 또는 완전 종료를 고르게 한다.
+- 사용자가 잘못된 값을 입력하면 IllegalArgumentException을 발생시킨 후 애플리케이션을 종료한다.
