@@ -7,23 +7,26 @@ fun main() {
     start_message()
     while(true) {
         val computer= make_random_three_number()
-
-        while(true) {
-            var input=input_three_number()
-            val input_split=number_split(input)
-
-            input_exception(input_split)
-
-            val ball_and_strike= make_strike_ball(input_split,computer)
-
-            print_strike_ball(ball_and_strike)
-
-            if(answer_and_gameover(ball_and_strike)){ break }
-        }
+        play_game(computer)
         question_message()
         val num= question_answer()
         if(game_or_quit(num)){ continue }
         else{ break }
+    }
+}
+
+fun play_game(computer: List<Int>){
+    while(true) {
+        var input=input_three_number()
+        val input_split=number_split(input)
+
+        input_exception(input_split)
+
+        val ball_and_strike= make_strike_ball(input_split,computer)
+
+        print_strike_ball(ball_and_strike)
+
+        if(answer_and_gameover(ball_and_strike)){ break }
     }
 }
 
@@ -60,6 +63,7 @@ fun input_exception(input_split: List<Int>){
 
     if(input_split_set.size!=3){ throw IllegalArgumentException() }
     else if(input_split.size!=3){ throw IllegalArgumentException() }
+    else if(0 in input_split){throw IllegalArgumentException()}
 }
 
 fun make_strike_ball(input_split: List<Int>, computer:List<Int>):List<Int>{
