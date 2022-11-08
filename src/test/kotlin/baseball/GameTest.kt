@@ -126,20 +126,20 @@ class GameTest : NsTest() {
         @Test
         fun case1() {
             val input = "1"
-            assertFalse(game.restartOrEndBaseball(input))
+            assertTrue(InputValidation(input).restartNumberExceptionCheck())
         }
 
         @Test
         fun case2() {
             val input = "2"
-            assertTrue(game.restartOrEndBaseball(input))
+            assertTrue(InputValidation(input).restartNumberExceptionCheck())
         }
 
         @Test
         fun case3() {
             val input = "3"
             assertThrows<IllegalArgumentException> {
-                game.restartOrEndBaseball(input)
+                InputValidation(input).restartNumberExceptionCheck()
             }
         }
     }
