@@ -75,4 +75,7 @@ fun askRestart() {
     chooseStartOrEnd = Console.readLine().toInt()
 
     if (chooseStartOrEnd == 1) makeComputerChoose()
+    else if (chooseStartOrEnd != 1 && chooseStartOrEnd != 2) {
+        throw IllegalArgumentException("1(새로 시작), 2(종료)만 입력할 수 있습니다.")
+    }
 }
