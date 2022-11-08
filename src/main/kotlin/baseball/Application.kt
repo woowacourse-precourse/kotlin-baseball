@@ -101,7 +101,7 @@ fun main() {
 
         println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
         var input_again = Console.readLine()!!.toInt()
-        if(input_again !=2 ||input_again !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
+        if(input_again !=2 &&input_again !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
         if(input_again == 2) {
             Continue = 0
             println("게임 종료")
