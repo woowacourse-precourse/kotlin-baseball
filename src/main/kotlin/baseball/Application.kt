@@ -20,9 +20,7 @@ fun main() {
             ONGOING_INPUT -> {
                 print(ONGOING_INPUT_PHRASE)
                 stepUserInput = camp.nextstep.edu.missionutils.Console.readLine()
-                if (!checkInputLength(stepUserInput, 3)) throw IllegalArgumentException("입력된 숫자의 길이가 적절치 않습니다.")
-                if (!isInputTypeNumber(stepUserInput)) throw IllegalArgumentException("입력이 숫자타입이 아닙니다")
-                if (!checkDuplicatePartInInput(stepUserInput)) throw IllegalArgumentException("중복된 숫자가 입력되었습니다.")
+                checkAppropriateOngoingInput(stepUserInput)
             }
             RESTART_INPUT -> {
             }
@@ -53,3 +51,9 @@ private fun checkInputLength(userInput: String, expectedLength: Int): Boolean = 
 private fun checkDuplicatePartInInput(userInput: String): Boolean = userInput.length == userInput.toSet().size
 
 private fun checkValidateRestartInput(userInput: String): Boolean = userInput == "1" || userInput == "2"
+
+private fun checkAppropriateOngoingInput(userInput: String) {
+    if (!checkInputLength(userInput, 3)) throw IllegalArgumentException("입력된 숫자의 길이가 적절치 않습니다.")
+    if (!isInputTypeNumber(userInput)) throw IllegalArgumentException("입력이 숫자타입이 아닙니다")
+    if (!checkDuplicatePartInInput(userInput)) throw IllegalArgumentException("중복된 숫자가 입력되었습니다.")
+}
