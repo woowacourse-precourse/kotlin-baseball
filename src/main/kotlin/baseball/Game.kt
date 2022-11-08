@@ -68,7 +68,7 @@ class Game {
             else -> throw RuntimeException("Result.toString: ${result[BALL_IDX]}$BALL ${result[STRIKE_IDX]}$STRIKE")
         }
 
-        fun allMatched() = result[STRIKE_IDX] == 3
+        fun allMatched() = result[STRIKE_IDX] == 3 && result[BALL_IDX] == 0
 
         companion object {
             private const val BALL_IDX = 0
