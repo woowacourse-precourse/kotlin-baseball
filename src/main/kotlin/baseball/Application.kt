@@ -2,12 +2,25 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val gameStart = 0
+const val gameInProgress = 1
+const val gameScoreCount = 2
+const val gameScoreNothing = 3
+const val gameEnd = 4
+const val gameReplay = 5
+var ballCount = 0
+
+
 fun main() {
+
+    val comNum = createRandomNum()
+    val userNum = createUserNum()
+
 
     printState(1)
     println(createRandomNum())
     println(createUserNum())
-
+    println(ballCount(userNum, comNum))
 }
 
 fun createRandomNum(): MutableList<Int> {
@@ -32,18 +45,13 @@ fun createUserNum(): List<Int> {
     return readLine()!!.map { it.digitToInt() }
 }
 
-//fun createUserNumList(userNum: Int?): MutableList<Int> {
-//    var userNum = userNum
-//    val userNumList = mutableListOf<Int>()
-//
-//    while (userNum != 0 && userNum != null) {
-//        userNumList.add(userNum % 10)
-//        userNum /= 10
-//    }
-//
-//    return userNumList
-//}
+fun ballCount(userNum: List<Int>, comNum: List<Int>) {
+    ballCount = 0
 
-const val gameStart = 0
-const val gameInProgress = 1
-const val gameEnd = 2
+    for (element in userNum) {
+        if (comNum.contains(element)) {
+            ballCount++
+        }
+    }
+}
+
