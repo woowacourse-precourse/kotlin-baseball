@@ -26,7 +26,7 @@ class BaseballGame(private val humanPlayer: Player, private var computerPlayer: 
     private fun judgeHumanSelectedNumber(): String {
         val humanSelectedNumber = humanPlayer.getSelectedNumber()
         val computerSelectedNumber = computerPlayer.getSelectedNumber()
-        var result = ""
+        var result: String
         var strikeCount = 0
         var ballCount = 0
 
