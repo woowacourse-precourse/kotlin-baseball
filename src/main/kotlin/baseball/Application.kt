@@ -6,14 +6,24 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 fun main() {
-    var computerRandomNumber = createComputerRandomNumber()
     println("숫자 야구 게임을 시작합니다.")
-    while (true) {
+    gameStart()
 
-
+}
+fun judgeStrikeAndBallCount(computerRandomNumber: String) : Int {
+    val userNumber=inputUserNumber()
+    val strike=checkStrike(userNumber, computerRandomNumber)
+    printResult(checkStrike(userNumber, computerRandomNumber), checkBall(userNumber, computerRandomNumber,strike ))
+    return strike
+}
+fun gameStart(){
+    val computerRandomNumber = createComputerRandomNumber()
+    var strike=0
+    while (strike !=3) strike = judgeStrikeAndBallCount(computerRandomNumber)
+    when (setUpGameOver(strike)) {
+        "1" -> gameStart()
     }
 }
-
 fun createComputerRandomNumber(): String {
 
     val computerNumStringList = mutableListOf<String>()
@@ -38,15 +48,12 @@ fun inputUserNumber(): String {
 fun checkInputUserNumber(userInputNumber: String?) {
     val checkOverlapInputNumber = mutableListOf<String>()
     val inputNumberStandard = "^[1-9]*$"
-
     //중복체크
     userInputNumber ?: throw IllegalArgumentException()
-
     for (userInputNumberWord in userInputNumber) checkOverlapInputNumber.add(userInputNumberWord.toString())
 
     checkInputMessagePatten(inputNumberStandard, checkOverlapInputNumber)
-    if (checkOverlapInputNumber.size !=3) throw IllegalArgumentException()
-    if (checkOverlapInputNumber.distinct().size != 3) throw IllegalArgumentException()
+    if (checkOverlapInputNumber.size !=3||checkOverlapInputNumber.distinct().size != 3) throw IllegalArgumentException()
 
 }
 
@@ -59,7 +66,6 @@ fun checkStrike(userInputNumber: String,
     return strike
 }
 
-//ball 수
 fun checkBall(
         userInputNumber: String,
         computerRandomNumber: String,
@@ -67,7 +73,6 @@ fun checkBall(
     var ball = 0
     for (userInputNumberWord in userInputNumber)
         if (computerRandomNumber.contains(userInputNumberWord)) ball++
-
     ball -= strike
     return ball
 }
