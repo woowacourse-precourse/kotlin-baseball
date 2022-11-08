@@ -1,7 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-
 
 fun main() {
     Baseball().game()
@@ -25,7 +25,7 @@ class Baseball {
 
 
     private fun restartBoolean(): Boolean {
-        val input = readLine()?.toInt()
+        val input = Console.readLine().toInt()
         if ((input != 1) and (input != 2)) {
             printState(gameReplay)
         }
@@ -89,7 +89,7 @@ class Baseball {
     }
 
     private fun getUserNum(): List<Int> {
-        val userNum = readLine()!!.map { it.digitToInt() }
+        val userNum = Console.readLine().map { it.digitToInt() }
 
         inputException(userNum)
         return userNum
