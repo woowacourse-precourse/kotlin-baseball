@@ -42,13 +42,17 @@ class Referee(
             is ResultType.NothingResult -> printNothingPhrase()
             is ResultType.CorrectResult -> {
                 printWinGamePhrase()
-                when (player.inputExitCode()) {
-                    "1" -> this.startGame()
-                    "2" ->  {
-                        printExitGamePhrase()
-                        curGameStateCode = QUIT_STATE_CODE
-                    }
-                }
+                askRetry()
+            }
+        }
+    }
+
+    private fun askRetry() {
+        when (player.inputExitCode()) {
+            "1" -> this.startGame()
+            "2" ->  {
+                printExitGamePhrase()
+                curGameStateCode = QUIT_STATE_CODE
             }
         }
     }
