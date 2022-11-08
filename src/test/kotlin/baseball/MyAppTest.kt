@@ -21,13 +21,13 @@ class MyAppTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트2`() {
+    fun `예외 테스트(입력 중복 검출)`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("113") }
         }
     }
     @Test
-    fun `예외 테스트3`() {
+    fun `예외 테스트3(입력 0 검출)`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("120") }
         }
