@@ -21,9 +21,35 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `바로 3스트라이크`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("531", "2")
+                assertThat(output())
+                    .contains("3스트라이크", "게임 종료")
+            },
+            5, 3, 1
+        )
+    }
+
+    @Test
+    fun `자릿수 예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Test
+    fun `중복 숫자 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("122") }
+        }
+    }
+
+    @Test
+    fun `문자 입력 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("@LI") }
         }
     }
 
