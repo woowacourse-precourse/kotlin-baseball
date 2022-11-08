@@ -13,9 +13,6 @@ enum class BaseballString(val string: String) {
     STRIKE("스트라이크") {
         override fun print(strike: Int, ball: Int) = println("$strike$string")
     },
-    BALL_AND_STRIKE("") {
-        override fun print(strike: Int, ball: Int) = println("$ball${BALL.string} $strike${STRIKE.string}")
-    },
     NOTHING("낫싱") {
         override fun print(strike: Int, ball: Int) = println(string)
     },

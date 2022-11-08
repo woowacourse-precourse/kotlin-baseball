@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Console
 class BaseballGame(var computerNumbers: ComputerNumbers) {
     fun start() {
         var processStatus = BaseballSetting.START_OR_RESTART.number
-        BaseballStatement.printStart()
+        BaseballString.START.print()
 
         while(processStatus == BaseballSetting.START_OR_RESTART.number){
-            BaseballStatement.printInput()
+            BaseballString.INPUT.print()
             val userInput = Console.readLine()
             checkValidInput(userInput)
 
@@ -16,13 +16,13 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
             processStatus = processByResult(result)
         }
 
-        BaseballStatement.printQuit()
+        BaseballString.QUIT.print()
     }
 
     private fun processByResult(result: Int): Int{
         return when(result){
             BaseballSetting.DIGIT_NUMBER.number -> {
-                BaseballStatement.printSuccess()
+                BaseballString.SUCCESS.print()
                 decideRestartOrQuit()
             }
             else -> BaseballSetting.START_OR_RESTART.number
@@ -30,7 +30,7 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
     }
 
     private fun decideRestartOrQuit(): Int{
-        BaseballStatement.printRestartOrQuit()
+        BaseballString.RESTART_OR_QUIT.print()
         return when(val userInput = Console.readLine().toInt()){
             BaseballSetting.QUIT.number-> {
                 userInput
@@ -44,9 +44,9 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
     }
 
     private fun getResult(userInput: String): Int{
-        val strikeAndBall = computerNumbers.compareToUserInput(userInput)
-        BaseballStatement.printResult(strike = strikeAndBall.first, ball = strikeAndBall.second)
-        return strikeAndBall.first
+        val baseballResult = computerNumbers.compareToUserInput(userInput)
+        println(baseballResult)
+        return baseballResult.strike
     }
 
     private fun checkValidInput(userInput: String){

@@ -1,18 +1,16 @@
 package baseball
 
 class ComputerNumbers(private val computerNumberMap: Map<Int, Int>) {
-    fun compareToUserInput(userInput: String): Pair<Int, Int> {
-        var totalStrike = 0
-        var totalBall = 0
+    fun compareToUserInput(userInput: String): BaseballResult {
+        val baseballResult = BaseballResult(0, 0)
         for (i in userInput.indices) {
-            val (strike, ball) = countStrikeAndBall(number = userInput[i].digitToInt(), index = i)
-            totalStrike += strike
-            totalBall += ball
+            baseballResult.plus(
+                countStrikeAndBall(number = userInput[i].digitToInt(), index = i))
         }
-        return totalStrike to totalBall
+        return baseballResult
     }
 
-    fun countStrikeAndBall(number: Int, index: Int): Pair<Int, Int> {
+    fun countStrikeAndBall(number: Int, index: Int): BaseballResult {
         var strike = 0
         var ball = 0
         when {
@@ -21,6 +19,6 @@ class ComputerNumbers(private val computerNumberMap: Map<Int, Int>) {
             computerNumberMap.containsKey(number)
                     && computerNumberMap[number] != index -> ball++
         }
-        return strike to ball
+        return BaseballResult(ball, strike)
     }
 }
