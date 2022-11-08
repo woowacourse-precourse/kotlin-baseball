@@ -19,7 +19,6 @@ fun main() {
 
 fun playGame() {
     val game = Game()
-    println(game.computerNumber)
 
     while (game.strike != THREE_STRIKE) {
         game.resetScore()

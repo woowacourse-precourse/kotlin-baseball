@@ -1,29 +1,14 @@
 package baseball.domain
 
-import camp.nextstep.edu.missionutils.Randoms
-
 class Game(var strike: Int = 0, var ball: Int = 0) {
 
-    val computerNumber = mutableListOf<Int>()
-
-    init {
-        generateComputerNumber()
-    }
-
-    private fun generateComputerNumber() {
-        while (computerNumber.size < 3) {
-            val randomNumber = Randoms.pickNumberInRange(1, 9)
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber)
-            }
-        }
-    }
+    private val answerNumbers = ComputerNumbers()
 
     fun compareNumbers(userNumber: List<Int>) {
         userNumber.onEachIndexed { index, number ->
-            if (number == computerNumber[index]) {
+            if (number == answerNumbers[index]) {
                 strike += 1
-            } else if (computerNumber.contains(number)) {
+            } else if (answerNumbers.contains(number)) {
                 ball += 1
             }
         }
