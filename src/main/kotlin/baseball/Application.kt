@@ -9,6 +9,15 @@ fun main() {
 
 }
 
+fun checkStrike(computer : List<Int>, user : List<Int>): Int {
+    var strike = 0
+    for(i in 0..2){
+        if(computer[i] == user[i]){
+            strike++
+        }
+    }
+    return strike
+}
 fun checkBall(computer : List<Int>, user : List<Int>): Int {
     var ball = 0
     val intersectNumber = computer.toSet().intersect(user.toSet())
