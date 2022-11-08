@@ -34,8 +34,10 @@ fun playerNumber() : List<Int>{
     return player
 }
 
-fun inputError() {
-
+fun inputError(player: Array<Int>) {
+    if (player.contains(0) || player.toSet().size != 3 || player.size != 3) {
+        throw IllegalArgumentException("올바른 값을 입력하세요")
+    }
 }
 
 data class Score(var strike_count : Int, var ball_count : Int)
@@ -56,6 +58,7 @@ fun startGame() {
 }
 fun runningGame(computer : List<Int>) {
     var player : List<Int> = playerNumber()
+    inputError(player)
     var (strike_count, ball_count) = compareNum(computer,player)
 
     if( strike_count == 3) {
