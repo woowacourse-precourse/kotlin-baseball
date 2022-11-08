@@ -101,8 +101,10 @@ fun inputRangeCheck(inputList: List<Int>){
         }
     }
 }
-fun duplicateCheck(inputList: List<Int>): Boolean {
-    return inputList.size != inputList.distinct().count()
+fun duplicateCheck(inputList: List<Int>) {
+    if (inputList.size != inputList.distinct().count()){
+        throw IllegalArgumentException()
+    }
 }
 
 fun userInputNumber(): MutableList<Int> {
@@ -115,9 +117,7 @@ fun userInputNumber(): MutableList<Int> {
         userInputList[i] = userInputNumber[i].digitToInt()
     }
 
-    if (duplicateCheck(userInputList)) {
-        throw IllegalArgumentException()
-    }
+    duplicateCheck(userInputList)
     inputRangeCheck(userInputList)
 
     return userInputList
