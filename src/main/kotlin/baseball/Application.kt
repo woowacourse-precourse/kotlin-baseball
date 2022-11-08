@@ -7,13 +7,19 @@ fun main() {
     startGame()
     var computerList = mutableListOf<Int>()
     var inputNumberList = mutableListOf<Int>()
-    var restartFlag : Int
+    var restartFlag : Int = 1
 
     while(true){
-        computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
-        println(computerList.toString())
-
+        if(restartFlag == 1){
+            computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
+            restartFlag = 0
+        }
+        else if(restartFlag == 2){
+            break
+        }
         inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
+
+        println(computerList.toString())
         println(inputNumberList.toString())
 
         var strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
