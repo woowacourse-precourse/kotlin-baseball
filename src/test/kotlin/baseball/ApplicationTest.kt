@@ -88,6 +88,13 @@ class ApplicationTest : NsTest() {
         assertThat(getBallCount(num1,num2) == 1)
     }
 
+    @Test
+    fun `strike count 테스트`(){
+        var num1 = 123
+        var num2 = 129
+        assertThat(getStrikeCount(num1,num2) == 2)
+    }
+
     override fun runMain() {
         main()
     }

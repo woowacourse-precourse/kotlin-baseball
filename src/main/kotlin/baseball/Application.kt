@@ -77,8 +77,21 @@ fun getBallCount(input: Int, resultNum: Int): Int {
     return numCnt.count { it == 2 }
 }
 
+fun getStrikeCount(input: Int, resultNum: Int): Int {
+    var tempInput = input
+    var tempResultNum = resultNum
+    var strikeCnt = 0
+    while (tempInput > 0) {
+        if (tempInput % 10 == tempResultNum % 10) strikeCnt++
+        tempInput /= 10
+        tempResultNum /= 10
+    }
+    return strikeCnt
+}
+
 fun matchNumber(input: Int, resultNum: Int): Boolean {
     println(getBallCount(input, resultNum))
+    println(getStrikeCount(input, resultNum))
     //todo
     return false
 }
