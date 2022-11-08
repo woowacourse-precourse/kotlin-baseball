@@ -7,14 +7,14 @@ import org.junit.jupiter.api.assertThrows
 
 class OngoingInputExceptionTest: NsTest() {
     @Test
-    fun `커스텀 예외 테스트 ONGOING_INPUT 일떄 숫자가 아닌입력`() {
+    fun `커스텀 예외 테스트 ONGOING_INPUT 일떄 숫자가 아닌입력(특수문자 포함)`() {
         Assertions.assertSimpleTest {
             assertThrows<IllegalArgumentException>("입력이 숫자타입이 아닙니다") { runException("!34") }
         }
     }
 
     @Test
-    fun `커스텀 예외 테스트 ONGOING_INPUT 일떄 숫자가 아닌입력2`() {
+    fun `커스텀 예외 테스트 ONGOING_INPUT 일떄 숫자가 아닌입력(알파벳 포함)`() {
         Assertions.assertSimpleTest {
             assertThrows<IllegalArgumentException>("입력이 숫자타입이 아닙니다") { runException("a23") }
         }
