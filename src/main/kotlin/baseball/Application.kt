@@ -11,10 +11,10 @@ import camp.nextstep.edu.missionutils.Randoms
 * 게임 내용 구현
 * */
 
-const val RESULT_NUM_RANGE = 3
+const val RESULT_NUM_LENGTH = 3
 
 fun validateRange() {
-    if (RESULT_NUM_RANGE !in 1..9) throw IllegalArgumentException()
+    if (RESULT_NUM_LENGTH !in 1..9) throw IllegalArgumentException()
 }
 
 fun getResultNum(): Int {
@@ -32,7 +32,7 @@ fun getResultNum(): Int {
 fun getResultRange(): Pair<Int, Int> {
     var start = 0
     var end = 0
-    repeat(RESULT_NUM_RANGE) {
+    repeat(RESULT_NUM_LENGTH) {
         start = start * 10 + 1
         end = end * 10 + 9
     }
@@ -108,7 +108,7 @@ fun play(resultNum: Int) {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine().mappingInputNumber()
         if (matchNumber(input, resultNum)) {
-            println("${RESULT_NUM_RANGE}개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println("${RESULT_NUM_LENGTH}개의 숫자를 모두 맞히셨습니다! 게임 종료")
             break
         }
     }
