@@ -21,9 +21,23 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 테스트 - 숫자가 세 자리 초과인 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 숫자가 세 자리 미만인 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 중복된 숫자가 있는 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("122") }
         }
     }
 
