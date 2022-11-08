@@ -6,7 +6,14 @@ import java.lang.IllegalArgumentException
 import kotlin.contracts.contract
 
 fun main() {
-
+    var stop = false
+    println("숫자 야구 게임을 시작합니다.")
+    while (!stop) {
+        val computerNumbers = getRandomNumbers()
+        print("숫자를 입력해주세요 : ")
+        println(computerNumbers)
+        stop = baseballGame(computerNumbers)
+    }
 }
 
 // Randoms의 APi의 pickUniqueNumbersInRange 사용법 (.pickNumberInRange 사용하여 구현해야되서 주석 처리)
@@ -81,7 +88,7 @@ fun chooseToRestartOrStop(readInputString: String): Boolean {
 fun baseballGame(computerNumbers: MutableList<Int>): Boolean {
     var stop: Boolean
     while (true) {
-        val playerNumbers = validateInputString(readInputString())
+        var playerNumbers = validateInputString(readInputString())
         val baseballResult = getBaseballResult(computerNumbers, playerNumbers)
         println(baseballResult)
         if (baseballResult == "3스트라이크") {
