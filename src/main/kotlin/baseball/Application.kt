@@ -32,7 +32,15 @@ fun startGame(){
 }
 
 fun makeNumber(): List<Int>{
-    return Randoms.pickUniqueNumbersInRange(1, 9, 3)
+    val computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer
+//    return Randoms.pickUniqueNumbersInRange(1, 9, 3)
 }
 
 fun getInput(): List<Int>{
