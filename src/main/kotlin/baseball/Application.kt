@@ -1,5 +1,9 @@
+
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    val humanPlayer: Player = HumanPlayer()
+    val computerPlayer: Player = ComputerPlayer(ComputerRandomNumber())
+    val baseballGame = BaseballGame(humanPlayer, computerPlayer)
+    baseballGame.startBaseballGame()
 }

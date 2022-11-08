@@ -154,3 +154,55 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+### 기능 목록
+
+- 컴퓨터의 랜덤한 3자리 수를 구하는 클래스 구현(class name: ComputerRandomNumber)
+    - 변수
+        - 3자리 난수 생성에 사용되는 난수 최소값
+        - 3자리 난수 생성에 사용되는 난수 최대값
+    - randomNumber 초기화해주는 기능
+    - 3자리 난수를 만들어 반환하는 기능
+    - 만든 3자리 난수를 문자열에 저장하는 기능
+- 컴퓨터, 사람 플레이어에 대한 인터페이스 구현(interface name: Player)
+    - 플레이어들이 사용할 수를 가져온다
+    - 사람이 입력한 수를 검증하는 기능
+        - 입력한 수의 각 자리수의 숫자가 달라야 함
+        - 3자리 자연수 형태여야 함
+    - 입력한 숫자가 3자리 자연수 형태가 아니라면 IllegalArgumentException을 발생시키는 함수
+- 컴퓨터 플레이어 정보에 대한 클래스 구현(class name: ComputerPlayer)
+    - 컴퓨터의 난수를 가져오는 기능
+- 사람 플레이어 정보에 대한 클래스 구현(class name: HumanPlayer)
+    - 사람이 정한 3자리 자연수 저장하는 기능
+    - 사람이 정한 3자리 자연수 가져오는 기능
+    - IllegalArgumentException이 발생하면 "유효하지 않은 숫자형식입니다."을 출력하는 기능
+- 숫자야구개임이 수행되는 클래스 구현(class name: BaseballGame)
+    - 변수
+        - 사람 플레이어가 3자리 수를 모두 맞추었을때 반환되는 String 변수
+        - 사람 플레이어의 추측이 틀렸을때 반환되는 String 변수
+        - 게임 재시작함을 의미하는 사람플레이어의 입력
+        - 게임 끝을 의미하는 사람플레이어의 입력
+    - 숫자야구게임이 시작하는 기능
+    - 사람 플레이어가 숫자를 정하는 기능
+        - 사용자가 적절한 형태를 입력하지 않으면 IllegalArgumentException 발생시키는 기능
+    - 숫자야구게임을 재시작할지 또는 끝낼지를 결정하는 기능
+        - 사람플레이어가 1을 입력하면 재시작
+        - 사람플레이어가 2를 입력하면 종료
+        - 다른 값 입력시 IllegalArgumentException 발생
+    - 사람플레이어와 컴퓨터플레어이가 고른 수를 비교해서 결과를 출력하는 기능
+        - 고른 수가 맞다면 CORRECT_ANSWER를 반환
+        - 고른 수가 틀리면 WRONG_ANSWER를 반환
+    - 사람 플레이어가 고른 수에서 볼의 갯수에 대한 결과를 만드는 기능
+        - 볼이 없으면 빈 문자열을 반환
+    - 사람 플레이어가 고른 수에서 스트라이크 갯수에 대한 결과를 만드는 기능
+        - 스트라이크가 없으면 빈 문자열을 반환
+- ComputerRandomNumber 클래스 Test하는 클래스 구현(class name: ComputerRandomNumberTest)
+    - randomNumber에 3자리 난수가 생성됐는지 테스트
+- ComputerPlayer 클래스 Test하는 클래스 구현(class name: ComputerPlayerTest)
+    - ComputerRandomNumber 인스턴스를 인자로 넘긴 ComputerPlayer의 인스턴스가 3자리 난수를 생성하는지 테스트
+- HumanPlayer 클래스 Test하는 클래스 구현(class name: HumanPlayerTest)
+    - 3자리 자연수이면 정상적으로 humanSelectedNumber에 값을 할당하는지 테스트
+    - 3자리 자연수가 아니라면 IllegalArgumentException이 발생하고 애플리케이션이 종료하는지 테스트
+- BaseballGame 클래스 Test하는 클래스 구현(class name: BaseballGameTest)
+    - 컴퓨터 난수, 사람 플레이어가 고른 값이 값이 3자리 자연수인지 테스트
+    - 3자리 자연수가 아니면 IllegalArgumentException을 발생시키고 애플리케이션을 종료하는지 테스트
