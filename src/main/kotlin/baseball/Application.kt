@@ -5,8 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun pickNumbers(): List<Char> {
     var numbers = ""
-    for (i in 1..3) {
-        numbers += Randoms.pickNumberInRange(1, 9).toString()
+    while (numbers.length != 3) {
+        val number = Randoms.pickNumberInRange(1, 9).toString()
+        if(!numbers.contains(number)) {
+            numbers += number
+        }
     }
     return numbers.toList()
 }
