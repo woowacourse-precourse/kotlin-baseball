@@ -13,7 +13,7 @@ fun main() {
 }
 
 private fun printWelcomeMessage() {
-    println("숫자 야구 게임을 시작합니다.")
+    println(Message.WELCOME.message)
 }
 
 private fun playNewBaseball() {
@@ -42,7 +42,7 @@ private fun getNumbers(): List<Int> {
 }
 
 private fun printRequestForInputMessage() {
-    print("숫자를 입력해주세요 : ")
+    print(Message.REQUEST_FOR_INPUT.message)
 }
 
 private fun getUserNumbers(): List<Int> {
@@ -54,17 +54,17 @@ private fun parseInputString(inputString: String?): List<Int> {
     val numbers = mutableListOf<Int>()
     inputString?.forEach {
         if (hasIllegalCharacter(it)) {
-            throw IllegalArgumentException("Character in InputString is out of range")
+            throw IllegalArgumentException(Message.ILLEGAL_CHARACTER.message)
         }
         val number = it.toNumber()
         if (numbers.contains(number)) {
-            throw IllegalArgumentException("Duplicated numbers")
+            throw IllegalArgumentException(Message.ILLEGAL_DUPLICATED_NUMBERS.message)
         }
         numbers.add(number)
-    } ?: throw IllegalArgumentException("InputString is null")
+    } ?: throw IllegalArgumentException(Message.ILLEGAL_INPUT_NULL.message)
 
     if (numbers.size != 3) {
-        throw IllegalArgumentException("Numbers.size not 3")
+        throw IllegalArgumentException(Message.ILLEGAL_SIZE.message)
     }
     return numbers
 }
@@ -89,7 +89,7 @@ private fun getBallCount(numbers: List<Int>, userNumbers: List<Int>): List<Int> 
 }
 
 private fun printGameFinishedMessage() {
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println(Message.GAME_FINISHED.message)
 }
 
 private fun printBallCount(ballCount: List<Int>) {
@@ -126,5 +126,16 @@ private fun getIntentForNewBaseball(): Boolean {
 }
 
 private fun printNewGameMessage() {
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    println(Message.NEW_GAME.message)
+}
+
+enum class Message(val message: String) {
+    WELCOME("숫자 야구 게임을 시작합니다."),
+    REQUEST_FOR_INPUT("숫자를 입력해주세요 : "),
+    ILLEGAL_CHARACTER("Character in InputString is out of range"),
+    ILLEGAL_DUPLICATED_NUMBERS("Duplicated numbers"),
+    ILLEGAL_INPUT_NULL("InputString is null"),
+    ILLEGAL_SIZE("Numbers.size not 3"),
+    GAME_FINISHED("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
+    NEW_GAME("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 }
