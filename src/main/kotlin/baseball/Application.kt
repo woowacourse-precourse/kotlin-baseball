@@ -4,9 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 lateinit var computerNum: ArrayList<Int>
+lateinit var userNum: Array<Int>
+var chooseStartOrEnd = 1
 
 fun main() {
     gameStart()
+
+    while (chooseStartOrEnd == 1) {
+        userInput()
+    }
 }
 
 fun gameStart() {
@@ -22,4 +28,15 @@ fun makeComputerChoose(): ArrayList<Int> {
     }
 
     return computerNum
+}
+
+fun userInput() {
+    print("숫자를 입력해주세요. : ")
+    userNum = splitNum(Console.readLine().toInt())
+}
+
+fun splitNum(wholeNum: Int): Array<Int> {
+    val splitedNum = wholeNum.toString().chunked(1)
+
+    return splitedNum.map { it.toInt() }.toTypedArray()
 }
