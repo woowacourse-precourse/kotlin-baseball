@@ -115,6 +115,5 @@ fun checkError(inputNumber: String): Boolean{
 
 fun askRestart(): Int{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    val restartFlag = Console.readLine().toInt()
-    return restartFlag
+    return Console.readLine().toInt()
 }
