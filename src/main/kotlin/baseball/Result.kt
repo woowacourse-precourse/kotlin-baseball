@@ -3,9 +3,14 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 
 class Result {
+    companion object{
+        const val RESTART_GAME = 1
+        const val QUIT_GAME = 2
+    }
+
     var ball = 0
     var strike = 0
-    var chooseGameNum = 1
+    var chooseGameNum = RESTART_GAME
 
     fun getScore(computerNum: String, playerNum: String) {
         ball = 0
@@ -49,7 +54,7 @@ class Result {
     }
 
     private fun checkChooseGameNum() {
-        if (chooseGameNum != 1 && chooseGameNum != 2) {
+        if (chooseGameNum != RESTART_GAME && chooseGameNum != QUIT_GAME) {
             throw IllegalArgumentException("1이나 2를 입력해주세요.")
         }
     }

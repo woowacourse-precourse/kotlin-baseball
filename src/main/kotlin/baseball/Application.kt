@@ -10,7 +10,7 @@ fun doGame() {
 
     println("숫자 야구 게임을 시작합니다.")
 
-    while (result.chooseGameNum == 1) {
+    while (result.chooseGameNum == Result.RESTART_GAME) {
         var computerNum = number.getComputerNum()
         var playerNum = ""
 
