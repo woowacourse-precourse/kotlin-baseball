@@ -9,6 +9,17 @@ fun main() {
 
 }
 
+//정답을 랜덤으로 생성
+fun setComputerNumber(): MutableList<Int> {
+    val computer = mutableListOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer
+}
 
 class UserNumber(){
     var userNumber= mutableListOf<Int>()
