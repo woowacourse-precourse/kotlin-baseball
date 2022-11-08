@@ -23,6 +23,7 @@ fun baseballGame() {
         val user = userInput()
         if (calcScore(user, computer)) break
     }
+    restartGame()
 }
 
 fun generateRandomNumber(): List<Int> {
@@ -94,5 +95,14 @@ fun showResult(ball: Int, strike: Int) {
         strike > 0 && ball == 0 -> println("${strike}스트라이크")
         strike == 0 && ball > 0 -> println("${ball}볼")
         strike == 0 && ball == 0 -> println("낫싱")
+    }
+}
+
+fun restartGame() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    when (Console.readLine().toInt()) {
+        RESTART -> baseballGame()
+        EXIT -> println("숫자 야구 게임을 종료합니다.")
+        else -> throw IllegalArgumentException()
     }
 }
