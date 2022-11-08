@@ -1,6 +1,8 @@
 package baseball
 
 import baseball.GameState.ONGOING_STATE
+import baseball.InputState.ONGOING_INPUT
+import baseball.InputState.RESTART_INPUT
 import baseball.NumberBaseBallGamePhrases.START_PHRASE
 import java.util.regex.Pattern
 
@@ -8,8 +10,15 @@ fun main() {
     printStartGameString()
     val gameState = ONGOING_STATE
     val randomNumberList = getRandomNumberList(3)
+    val inputState = ONGOING_INPUT
 
     while (gameState == ONGOING_STATE) {
+        when (inputState) {
+            ONGOING_INPUT -> {
+            }
+            RESTART_INPUT -> {
+            }
+        }
     }
 }
 
