@@ -10,6 +10,9 @@ import baseball.NumberBaseBallGamePhrases.START_PHRASE
 import camp.nextstep.edu.missionutils.Console.readLine
 import java.util.regex.Pattern
 
+const val BALL = 0
+const val STRIKE = 1
+
 fun main() {
     printStartGamePhrase()
     var gameState = ONGOING_STATE
@@ -18,6 +21,7 @@ fun main() {
 
     while (gameState == ONGOING_STATE) {
         lateinit var stepUserInput: String
+        val stepScoreList = mutableListOf(0, 0)
 
         when (inputState) {
             ONGOING_INPUT -> {
