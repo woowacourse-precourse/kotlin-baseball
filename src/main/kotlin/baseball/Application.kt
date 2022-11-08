@@ -14,8 +14,18 @@ fun playBall() {
         printInputUserNumber()
         val userNumber = inputUserNumber()
         inputExceptionCheck(userNumber)
-
+        val end = compareGameValues(computerNumber, userNumber)
+        if (end) break
     }
+}
+
+fun compareGameValues(computerNumber: List<Int>, input: String): Boolean {
+    val userNumber = userNumberToList(input)
+    val strike = strikeCount(computerNumber, userNumber)
+    val ball = ballCount(computerNumber, userNumber)
+    printCompareResult(strike, ball)
+    if (strike == 3) return true
+    return false
 }
 
 fun strikeCount(computer: List<Int>, user: List<Int>): Int = computer.filterIndexed { idx, value ->
