@@ -60,10 +60,41 @@ fun countCorrect(computer:MutableList<Char>,input:CharArray):MutableList<Int>{
 
 fun changeToChar(get : MutableList<Int>):MutableList<Char>{
     var getToChar = mutableListOf<Char>()
-    for(i in 0..2){
+    for(i in 0 until 3){
         getToChar[i] = (get[i]+48).toChar()
     }
     return getToChar
+}
+
+fun print(strike_ball: MutableList<Int>) : Int{
+    if (strike_ball[0] == 0 && strike_ball[1] == 0) {
+        println("낫싱")
+        return 0
+    } else if (strike_ball[0] == 0) {
+        println("${strike_ball[1]}볼")
+        return 0
+    } else if (strike_ball[1] == 0) {
+        println("${strike_ball[0]}스트라이크")
+        return 0
+    } else {
+        print("${strike_ball[1]}볼 ${strike_ball[0]}스트라이크")
+        return 1
+    }
+}
+
+fun input(Computer: MutableList<Char>):Int{
+    while(true) {
+        val input = readLine()?.toCharArray()
+        if (input != null) {
+            checkTrue(input)
+        } else throw IllegalArgumentException("입력 값이 없습니다.");
+        var strike_ball = countCorrect(Computer, input)
+
+        if (print(strike_ball) == 1)
+            return 0
+
+    }
+
 }
 
 
@@ -72,37 +103,17 @@ fun main() {
     var Continue = 1
 
     while (Continue == 1) {
-
-        val input = readLine()?.toCharArray()
-        if (input != null) {
-            checkTrue(input)
-        } else throw IllegalArgumentException("입력 값이 없습니다.");
-
         val ComputerNum = random()
         val ComputerChar = changeToChar(ComputerNum)
-        var strike_ball = countCorrect(ComputerChar, input)
 
-        if (strike_ball[0] == 0 && strike_ball[1] == 0) {
-            println("낫싱")
-        } else if (strike_ball[0] == 0) {
-            println("${strike_ball[1]}볼")
-        } else if (strike_ball[1] == 0) {
-            println("${strike_ball[0]}스트라이크")
-        } else {
-            print("${strike_ball[1]}볼 ${strike_ball[0]}스트라이크")
-            println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
-           var input_again = readLine()
-            if(input_again == "2") {
-                Continue = 0
-                println("게임종료")
-            }
+        var input = input(ComputerChar)
 
-
+        println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
+        var input_again = readLine()
+        if(input_again == "2") {
+            Continue = 0
+            println("게임종료")
         }
-
-
-
-
     }
 
 }
