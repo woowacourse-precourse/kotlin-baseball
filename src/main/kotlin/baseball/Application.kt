@@ -16,7 +16,10 @@ package baseball
     8. 재시작할 경우, 서로 다른 임의의 수 3개를 다시 만들어낸다.
  */
 fun main() {
-    TODO("프로그램 구현")
+//    TODO("프로그램 구현")
+    //2. 플레이어의 입력 값을 받는다
+     val playerNums = readLine()
+
 }
 
 //1. 1에서 9까지의 서로 다른 임의의 수 3개를 무작위로 만들어내는 함수
@@ -29,3 +32,4 @@ fun produceRandomNums() : List<Int> {
 
     return randomNums
 }
+
