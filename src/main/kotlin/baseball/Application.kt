@@ -36,21 +36,21 @@ fun getInput(): List<Int>{
     return returnNumber
 }
 
-fun countBall(computerNumber: String, inputNumber: String): Int{
+fun countBall(computerNumberList: List<Int>, inputNumberList: List<Int>): Int{
     var ballCnt = 0
-    for(n in computerNumber){
-        if(inputNumber.contains(n)){
+    for(n in computerNumberList){
+        if(inputNumberList.contains(n)){
             ballCnt++
         }
     }
     return ballCnt
 }
 
-fun countStrike(computerNumber: String, inputNumber: String): Int{
+fun countStrike(computerNumberList: List<Int>, inputNumberList: List<Int>): Int{
     var strikeCnt = 0
-    for(i in computerNumber.indices){
-        val num = computerNumber.get(i)
-        val index = inputNumber.indexOf(num)
+    for(i in computerNumberList.indices){
+        val num = computerNumberList[i]
+        val index = inputNumberList.indexOf(num)
 
         if(i == index){
             strikeCnt++
