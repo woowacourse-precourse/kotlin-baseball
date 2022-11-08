@@ -16,7 +16,7 @@ class User {
         return guessNumbers
     }
 
-    fun isGuessInputException(guessInput: List<Int>): Boolean {
+    private fun isGuessInputException(guessInput: List<Int>): Boolean {
         if (guessInput.size != ANSWER_COUNT) {
             return true
         }
