@@ -19,9 +19,6 @@ fun main() {
         }
         inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
 
-        println(computerList.toString())
-        println(inputNumberList.toString())
-
         var strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
         var balls = countBall(computerList, inputNumberList) - strikes  // 볼 개수
 
@@ -110,7 +107,19 @@ fun checkError(inputNumber: String): Boolean{
     if(inputNumber.length != 3){
         return false
     }
+    if(checkSame(inputNumber)){
+        return false
+    }
     return true
+}
+
+fun checkSame(inputNumber: String): Boolean {
+    if(inputNumber[0] == inputNumber[1]
+            || inputNumber[0] == inputNumber[2]
+            || inputNumber[1] == inputNumber[2]){
+        return true
+    }
+    return false
 }
 
 fun askRestart(): Int{
