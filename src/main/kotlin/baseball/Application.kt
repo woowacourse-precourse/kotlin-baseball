@@ -30,9 +30,7 @@ fun playNumberBaseballGame(){
         val (strike,ball) = countStrikeBall(answerNumberArray,userInputArray)
         val result = printStrikeBall(strike,ball)
         println(result)
-        if(strike==3)
-            break
-    }while(true)
+    }while(strike!=3)
 }
 
 fun makeAnswerNumber():List<Int>{
@@ -61,9 +59,7 @@ fun checkNumberValid(num: List<Int>):Boolean{
 fun makeNumToList(num:Int):List<Int>{
     var n = num
     val numArray = mutableListOf<Int>()
-    while(true){
-        if(n==0)
-            break
+    while(n>0){
         numArray.add(n%10)
         n/=10
     }
