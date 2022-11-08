@@ -7,6 +7,7 @@ import java.lang.IllegalArgumentException
 fun main() {
     printStartMessage()
     playNumBaseball()
+    checkContinue()
 }
 
 fun printStartMessage() = "숫자 야구 게임을 시작합니다."
@@ -68,7 +69,6 @@ fun isSatisfyConditions(numbers: String): Boolean {
 }
 
 fun enterNumbers(): String {
-    print("\n숫자를 입력해주세요 : ")
     return Console.readLine()
 }
 
@@ -85,10 +85,11 @@ fun numbersToList(numbers: String): MutableList<Int> {
 }
 
 fun getUserNumbers(): MutableList<Int> {
+    print("\n숫자를 입력해주세요 : ")
     val numbers = enterNumbers()
 
     return if (isSatisfyConditions(numbers)) numbersToList(numbers)
-        else throw IllegalArgumentException("수를 잘못 입력하였습니다.")
+    else throw IllegalArgumentException("수를 잘못 입력하였습니다.")
 }
 
 fun addStrikeCount(computerNum: Int, userNum: Int): Int = if (computerNum == userNum) 1 else 0
@@ -163,8 +164,18 @@ fun playNumBaseball() {
 fun isRestartNum(number: Int) = number in 1..2
 
 fun getRestartNum(): Int {
+    print("\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n")
     val number = enterNumbers().toInt()
 
     if (isRestartNum(number)) return number
     else throw IllegalArgumentException("수를 잘못 입력하셨습니다.")
+}
+
+fun checkContinue() {
+    var restartNum = getRestartNum()
+
+    while (restartNum == 1) {
+        playNumBaseball()
+        restartNum = getRestartNum()
+    }
 }
