@@ -37,6 +37,13 @@ fun computerRandom() : MutableList<Int> {
     return computer
 }
 
+//예외처리 함수
+fun exeption(number : String) {
+    if (number.length >= 4 || number.isEmpty() || number.length == 1 || number.length == 2){
+        throw IllegalArgumentException("잘못된 값을 입력")
+    }
+}
+
 //player 숫자 입력
 fun inputPlayer() : MutableList<Int> {
     //플레이어 3개 숫자 입력
@@ -45,6 +52,8 @@ fun inputPlayer() : MutableList<Int> {
 
     //input 메서드
     var number= Console.readLine()
+
+    exeption(number)
 
     playerString = number.split("").toMutableList() //입력받은 숫자 쪼개는 거 구현하고 있었음 이어서 하셈 미래의 현지~!
     playerString.removeAt(playerString.size-1)
