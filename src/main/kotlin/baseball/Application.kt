@@ -44,6 +44,10 @@ fun inputExceptionCheck(userNumber: String) {
     }
 }
 
+fun userNumberSizeCheck(number: List<Int>): Boolean = number.size != 3
+
+fun userNumberOverlapCheck(number: List<Int>): Boolean = number.size != number.toSet().size
+
 fun setComputerNumber(): List<Int> {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
