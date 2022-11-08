@@ -18,6 +18,9 @@ package baseball
 fun main() {
 //    TODO("프로그램 구현")
     //2. 플레이어의 입력 값을 받는다
+    println("숫자 야구 게임을 시작합니다.")
+    print("숫자를 입력해주세요 : ")
+
     var playerNumsString = readLine()
     var playerNumsInt = mutableListOf<Int>()
 
@@ -74,7 +77,6 @@ fun getGameResult(playerNums : List<Int>, answerNums : List<Int>){
     else if(strike == 3)
         println("3스트라이크\n" +
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-
 
 }
 
