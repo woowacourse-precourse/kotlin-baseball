@@ -39,7 +39,42 @@ fun produceRandomNums() : List<Int> {
 }
 
 //3. 플레이어의 입력 값에 대한 결과를 출력한다
-fun getResult(playerNums : List<Int>) : String {
+fun getGameResult(playerNums : List<Int>, answerNums : List<Int>){
+
+    val firstPNum = playerNums[0]
+    val secondPNums = playerNums[1]
+    val thirdPNums = playerNums[2]
+
+    var strike = 0; var ball = 0;
+
+        if(answerNums[0] == firstPNum)
+            strike += 1
+        else if(answerNums[1] == firstPNum || answerNums[2] == firstPNum)
+            ball += 1
+
+        if(answerNums[1] == secondPNums)
+            strike += 1
+        else if(answerNums[0] == secondPNums || answerNums[2] == secondPNums)
+            ball += 1
+
+        if(answerNums[2] == thirdPNums)
+            strike += 1
+        else if(answerNums[0] == thirdPNums || answerNums[1] == thirdPNums)
+            ball += 1
+
+
+    if(strike != 3 && ball > 0 && strike > 0)
+        println("$ball + 볼 + $strike + 스트라이크")
+    else if(strike != 3 && ball > 0 && strike == 0)
+        println("$ball + 볼")
+    else if(strike != 3 && ball == 0 && strike > 0)
+        println("$strike+ 스트라이크")
+    else if(strike == 0 && ball == 0)
+        println("낫싱")
+    else if(strike == 3)
+        println("3스트라이크\n" +
+                "3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+
 
 }
 
