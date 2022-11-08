@@ -8,7 +8,6 @@ import java.util.regex.Pattern
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     gameStart()
-
 }
 fun judgeStrikeAndBallCount(computerRandomNumber: String) : Int {
     val userNumber=inputUserNumber()
