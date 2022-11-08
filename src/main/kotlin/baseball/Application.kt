@@ -12,6 +12,7 @@ import baseball.NumberBaseBallGamePhrases.START_PHRASE
 import baseball.NumberBaseBallGamePhrases.STRIKE_PHRASE
 import baseball.NumberBaseBallGamePhrases.THREE_STRIKE_PHRASE
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import java.util.regex.Pattern
 
 const val BALL = 0
@@ -80,12 +81,12 @@ private fun printScore(stepScoreList: List<Int>) {
 }
 
 private fun getRandomNumberString(stringLength: Int): String {
-    val candidateNumberList = mutableListOf<Int>().apply { addAll(1..9) }
     var randomNumberString = ""
-    for (i in 1..stringLength) {
-        val stageNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInList(candidateNumberList)
-        candidateNumberList.remove(stageNumber)
-        randomNumberString += stageNumber
+    while (randomNumberString.length < stringLength) {
+        val stageNumber = pickNumberInRange(1, 9)
+        if (stageNumber.toString() !in randomNumberString) {
+            randomNumberString += stageNumber
+        }
     }
 
     return randomNumberString
