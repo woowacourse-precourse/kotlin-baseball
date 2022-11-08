@@ -38,6 +38,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+
+    @Test
+    fun `중복 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("112") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
