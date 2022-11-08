@@ -15,10 +15,10 @@ object OutputView {
         } else if (game.strike == NOTHING && game.ball == NOTHING) {
             println("낫싱")
         }
-        else if(game.strike == NOTHING && game.ball != NOTHING){
+        else if(game.strike == NOTHING){
             println("${game.ball}볼")
         }
-        else if (game.strike != NOTHING && game.ball == NOTHING){
+        else if (game.ball == NOTHING){
             println("${game.strike}스트라이크")
         }
         else {
