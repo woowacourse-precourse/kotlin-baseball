@@ -31,6 +31,37 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `숫자의 개수가 2개일 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("23") }
+        }
+    }
+
+    @Test
+    fun `중복 숫자가 있을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("233") }
+        }
+    }
+
+    @Test
+    fun `숫자가 아닌 문자가 있을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("2_3") }
+        }
+    }
+
+    @Test
+    fun `입력 숫자의 범위를 벗어났을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("012") }
+        }
+    }
+
+
+
+
     override fun runMain() {
         main()
     }
