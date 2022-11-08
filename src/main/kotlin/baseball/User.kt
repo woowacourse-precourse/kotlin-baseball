@@ -8,7 +8,7 @@ class User {
         print(INPUT_USER_MESSAGE)
         val input = Console.readLine().toCharArray()
 
-        if (!checkSize(input) || !checkNumber(input))
+        if (!checkSize(input) || !checkNumber(input) || !checkRepeat(input))
             throw IllegalArgumentException()
 
         for (i in input)
@@ -26,6 +26,12 @@ class User {
 
     private fun checkSize(input: CharArray): Boolean {
         if (input.size != 3)
+            return false
+        return true
+    }
+
+    private fun checkRepeat(input: CharArray): Boolean {
+        if (input.size != input.distinct().count())
             return false
         return true
     }
