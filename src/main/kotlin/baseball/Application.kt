@@ -27,12 +27,23 @@ fun main() {
      * */
 
     /**
-     * 예외처리 리스트
+     * 예외처리 리스트: 서로 다른 3개 숫자
      * 1. 숫자로만 구성되어야 함
      * 2. 길이는 3
      * 3. 모두 다른 숫자여야 함
      * */
 
+    /**
+     * 예외처리 리스트: 재시작 or 종료 상태 결정 숫자
+     * 1. 숫자로만 구성되어야 함
+     * 2. 길이는 1
+     * 3. 1 혹은 2여야 함
+     * */
+
+    playBaseballGame()
+}
+
+fun playBaseballGame() {
     /** 게임 시작 문구 출력 */
     println("숫자 야구 게임을 시작합니다.")
 
@@ -53,9 +64,9 @@ fun main() {
             val inputNumber = Console.readLine()
 
             /** 예외처리 및 프로그램 종료 */
-            validateNumber(inputNumber)
-            validateLength(inputNumber)
-            validateRepeat(inputNumber)
+            validateInputNumberDigit(inputNumber)
+            validateInputNumberLength(inputNumber)
+            validateInputNumberRepeat(inputNumber)
 
             /** 입력 받은 숫자를 잘라서 리스트에 보관 */
             val listOfInputNumber: MutableList<Int> = mutableListOf()
@@ -64,22 +75,13 @@ fun main() {
             }
             println()
 
-            /**
-             * 생성한 숫자와 입력받은 숫자가 동일하며 위치도 같은지 확인
-             * 생성한 숫자와 입력받은 숫자가 동일한 숫자를 포함하고 있는지 확인
-             * */
+            /** checkBothNumbers: 생성된 숫자와 입력된 숫자를 비교하여 스트라이크, 볼 수 판단 */
             val resultOfCheckBothNumbers = checkBothNumbers(listOfCreatedNumber, listOfInputNumber)
 
             /** 확인 결과 출력 */
             println(resultOfCheckBothNumbers)
 
-            /**
-             * 확인 결과가 3스트라이크 아닐경우 3번으로 돌아감
-             * 3스트라이크면 게임종료 텍스트 출력 및 게임 재시작 혹은 종료 출력
-             * 예외처리 및 프로그램 종료
-             * 재시작을 누르면 2번으로 복귀
-             * 종료를 누르면 프로그램 종료
-             * */
+            /** checkGameStatus: 3스트라이크인지 아닌지 확인. 3스트라이크면 숫자 입력받아 재시작 혹은 종료 판단 */
             gameStatusFlag = checkGameStatus(resultOfCheckBothNumbers)
         }
         if (gameStatusFlag == END) {
@@ -92,12 +94,28 @@ fun main() {
     println("게임 종료")
 }
 
+/**
+ * 확인 결과가 3스트라이크 아닐경우 3번으로 돌아감
+ *
+ * 3스트라이크면 게임종료 텍스트 출력 및 게임 재시작 혹은 종료 출력
+ *
+ * 예외처리 및 프로그램 종료
+ *
+ * 재시작을 누르면 2번으로 복귀
+ *
+ * 종료를 누르면 프로그램 종료
+ * */
 fun checkGameStatus(resultOfCheckBothNumbers: String): Int {
     if (resultOfCheckBothNumbers == "3스트라이크") {
         println("3개의 숫자를 모두 맞히셨습니다. 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         val inputStatusNumber = Console.readLine()
-        validateStatusNumber(inputStatusNumber)
+
+        /** 예외처리 및 프로그램 종료 */
+        validateStatusNumberDigit(inputStatusNumber)
+        validateStatusNumberLength(inputStatusNumber)
+        validateStatusNumberCorrect(inputStatusNumber)
+
         return inputStatusNumber.toInt()
     }
     return IN_GAME
@@ -114,36 +132,11 @@ fun createRandomNumber(): List<Int> {
     return listOfCreatedNumber.toList()
 }
 
-fun validateStatusNumber(inputStatusNumber: String) {
-    if (!inputStatusNumber.all { it.isDigit() }) {
-        throw IllegalArgumentException("입력한 문자열이 숫자가 아닙니다.")
-    }
-    if (inputStatusNumber.length > 1) {
-        throw IllegalArgumentException("입력한 문자열의 길이가 1보다 큽니다.")
-    }
-}
-
-fun validateNumber(inputNumber: String) {
-    if (!inputNumber.all { it.isDigit() }) {
-        throw IllegalArgumentException("입력한 문자열이 숫자가 아닙니다.")
-    }
-}
-
-fun validateLength(inputNumber: String) {
-    if (inputNumber.length != 3) {
-        throw IllegalArgumentException("입력한 문자열의 길이가 3이 아닙니다.")
-    }
-}
-
-fun validateRepeat(inputNumber: String) {
-    if ((inputNumber[0] == inputNumber[1]) or
-        (inputNumber[1] == inputNumber[2]) or
-        (inputNumber[0] == inputNumber[2])
-    ) {
-        throw java.lang.IllegalArgumentException("입력한 문자열에 중복이 있습니다.")
-    }
-}
-
+/**
+ * 생성한 숫자와 입력받은 숫자가 동일하며 위치도 같은지 확인
+ *
+ * 생성한 숫자와 입력받은 숫자가 동일한 숫자를 포함하고 있는지 확인
+ * */
 fun checkBothNumbers(listOfCreatedNumber: List<Int>, listOfInputNumber: List<Int>): String {
     var result = ""
     var ball = 0
@@ -175,3 +168,50 @@ fun checkBothNumbers(listOfCreatedNumber: List<Int>, listOfInputNumber: List<Int
     result += ball.toString() + "볼" + " " + strike.toString() + "스트라이크"
     return result
 }
+
+/**
+ * 게임 재시작 or 종료 시 입력되는 숫자 예외처리 함수들
+ * */
+fun validateStatusNumberDigit(inputStatusNumber: String) {
+    if (!inputStatusNumber.all { it.isDigit() }) {
+        throw IllegalArgumentException("입력한 문자열이 숫자가 아닙니다.")
+    }
+}
+
+fun validateStatusNumberLength(inputStatusNumber: String) {
+    if (inputStatusNumber.length > 1) {
+        throw IllegalArgumentException("입력한 문자열의 길이가 1보다 큽니다.")
+    }
+}
+
+fun validateStatusNumberCorrect(inputStatusNumber: String) {
+    if ((inputStatusNumber != "1") and (inputStatusNumber != "2")) {
+        throw IllegalArgumentException("입력한 문자열이 1 혹은 2가 아닙니다.")
+    }
+}
+
+/**
+ * 게임 중 입력되는 서로다른 3가지 숫자 예외처리 함수들
+ * */
+fun validateInputNumberDigit(inputNumber: String) {
+    if (!inputNumber.all { it.isDigit() }) {
+        throw IllegalArgumentException("입력한 문자열이 숫자가 아닙니다.")
+    }
+}
+
+fun validateInputNumberLength(inputNumber: String) {
+    if (inputNumber.length != 3) {
+        throw IllegalArgumentException("입력한 문자열의 길이가 3이 아닙니다.")
+    }
+}
+
+fun validateInputNumberRepeat(inputNumber: String) {
+    if ((inputNumber[0] == inputNumber[1]) or
+        (inputNumber[1] == inputNumber[2]) or
+        (inputNumber[0] == inputNumber[2])
+    ) {
+        throw java.lang.IllegalArgumentException("입력한 문자열에 중복이 있습니다.")
+    }
+}
+
+
