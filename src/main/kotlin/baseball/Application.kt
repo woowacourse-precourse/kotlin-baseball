@@ -7,7 +7,7 @@ fun pickNumbers(): List<Char> {
     var numbers = ""
     while (numbers.length != 3) {
         val number = Randoms.pickNumberInRange(1, 9).toString()
-        if(!numbers.contains(number)) numbers += number
+        if (!numbers.contains(number)) numbers += number
     }
     return numbers.toList()
 }
