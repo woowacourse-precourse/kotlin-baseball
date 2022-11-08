@@ -23,6 +23,13 @@ class BaseballGame(private val humanPlayer: Player, private var computerPlayer: 
         humanPlayer.setSelectedNumber(selectedNumber)
     }
 
+    private fun makeBallResult(ballCount: Int): String {
+        if (ballCount <= 0) {
+            return ""
+        }
+        return "${ballCount}볼 "
+    }
+
     companion object {
         const val CORRECT_ANSWER = "3스트라이크"
         const val WRONG_ANSWER = ""
