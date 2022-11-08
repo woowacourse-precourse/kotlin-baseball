@@ -39,6 +39,12 @@ fun checkInput(input: String) {
     if(input.length != 3)  {
         finishWithException()
     }
+
+    for(c in input) {
+        if(!c.isDigit()) {
+            finishWithException()
+        }
+    }
 }
 
 fun finishWithException() {
