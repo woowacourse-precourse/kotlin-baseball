@@ -21,11 +21,54 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `세 자릿수 초과 예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
+
+    @Test
+    fun `세 자릿수 미만 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12") }
+        }
+    }
+
+    @Test
+    fun `0 입력 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("106") }
+        }
+    }
+
+    @Test
+    fun `중복 숫자 입력 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("776") }
+        }
+    }
+
+    @Test
+    fun `숫자 이외의 값 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("h%#") }
+        }
+    }
+
+    @Test
+    fun `공백 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(" ") }
+        }
+    }
+
+    @Test
+    fun `null 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(null) }
+        }
+    }
+
 
     override fun runMain() {
         main()
