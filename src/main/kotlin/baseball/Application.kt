@@ -22,6 +22,11 @@ fun cptChooseRandomNum():List<Int>{ // 컴퓨터가 서로 다른 랜덤한 수 
 fun userChooseNum():List<Char>{ // 사용자가 서로 다른 수 3개를 입력하게 하는 함수
     print("숫자를 입력해주세요 : ")
     val userGuessNum = readLine()!!.toList()
+    val userGuessNumString = userGuessNum.toString()
+
+    if(userGuessNumString.toIntOrNull() != null || userGuessNum.size != 3 || userGuessNum.distinct().size != 3){
+        throw IllegalArgumentException()
+    }
 
     return userGuessNum
 }
