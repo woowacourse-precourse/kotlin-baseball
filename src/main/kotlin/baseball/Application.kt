@@ -40,7 +40,7 @@ fun restartBoolean(): Boolean {
 
 fun compareNum() {
     printState(gameStart)
-    val comNum = createRandomNum()
+    val comNum = getComNum()
 
     while (true) {
         printState(gameInProgress)
@@ -59,7 +59,7 @@ fun compareNum() {
     printState(gameEnd)
 }
 
-fun createRandomNum(): MutableList<Int> {
+fun getComNum(): MutableList<Int> {
     val computerNum = mutableListOf<Int>()
     while (computerNum.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
