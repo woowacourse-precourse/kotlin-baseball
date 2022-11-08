@@ -13,7 +13,15 @@ fun main() {
 
         playerGuess(computer)
 
+        var gameControl = replayOrQuit()
 
+        if (gameControl == 1){
+            continue
+        }
+        if (gameControl == 2){
+            println("게임 종료")
+            break
+        }
     }
 }
 
@@ -143,3 +151,9 @@ fun playerGuess(computer: MutableList<Int>) {
     }
 }
 
+fun replayOrQuit () : Int {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    var gameControl = Console.readLine().toInt()
+
+    return gameControl
+}
