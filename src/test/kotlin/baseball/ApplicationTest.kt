@@ -27,6 +27,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `컴퓨터가 설정한 조건에 따라 숫자를 선택했는지`() {
+        assertThat(makeComputerChoose())
+            .hasSize(3)
+            .doesNotContain(0)
+    }
+
     override fun runMain() {
         main()
     }
