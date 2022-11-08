@@ -17,7 +17,7 @@ fun main() {
 }
 
 fun printStartNotice() {
-    print("숫자 야구 게임을 시작합니다.")
+    print("숫자 야구 게임을 시작합니다.\n")
 }
 
 fun createAnswer(): MutableList<Int> {
@@ -46,8 +46,10 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
             print("${balls}볼 ")
         }
         if (struck != 0) {
-            print("${struck}스트라이크\n")
+            print("${struck}스트라이크")
         }
+
+        print("\n")
 
         if (struck == 3) {
             print(
