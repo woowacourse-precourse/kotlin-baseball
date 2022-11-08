@@ -19,6 +19,7 @@ class Computer {
                 generatedNumbers.add(eachNumber)
             }
         }
+        println(generatedNumbers)
         randomNumbers = generatedNumbers.toList()
     }
 }
