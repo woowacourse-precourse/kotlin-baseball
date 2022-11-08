@@ -56,4 +56,26 @@ class BaseballGameTest {
         }
     }
 
+    @Test
+    fun `3스트라이크인 경우`(){
+        val result = strikeCheck(mutableListOf(1,2,3), mutableListOf(1,2,3))
+        assertThat(result).isEqualTo(3)
+    }
+
+    @Test
+    fun `1스트라이크인 2볼인 경우`(){
+        val strike = strikeCheck(mutableListOf(1,2,5), mutableListOf(1,5,2))
+        val ball = ballCheck(mutableListOf(1,2,5), mutableListOf(1,5,2))
+        assertThat(strike).isEqualTo(1)
+        assertThat(ball).isEqualTo(2)
+    }
+
+    @Test
+    fun `낫싱`(){
+        val strike = strikeCheck(mutableListOf(1,2,3), mutableListOf(4,5,6))
+        val ball = ballCheck(mutableListOf(1,2,3), mutableListOf(4,5,6))
+        assertThat(strike).isEqualTo(0)
+        assertThat(ball).isEqualTo(0)
+    }
+
 }
