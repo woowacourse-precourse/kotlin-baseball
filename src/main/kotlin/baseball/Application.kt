@@ -45,7 +45,7 @@ fun validateNumInRange(num: Int) {
 }
 
 fun String.mappingExitCode(): Boolean {
-    if(this.isBlank()) throw IllegalArgumentException()
+    if (this.isBlank()) throw IllegalArgumentException()
     return when (this[0]) {
         '1' -> false
         '2' -> true
@@ -53,23 +53,45 @@ fun String.mappingExitCode(): Boolean {
     }
 }
 
-fun String.mappingInputNumber(): Int{
-    return try{
+fun String.mappingInputNumber(): Int {
+    return try {
         val ret = this.toInt()
         validateNumInRange(ret)
         ret
-    }catch (e: Exception){
+    } catch (e: Exception) {
         throw IllegalArgumentException()
     }
 }
 
-fun play(resultNum: Int){
+
+fun getBallCount(input: Int, resultNum: Int): Int {
+    var tempInput = input
+    var tempResultNum = resultNum
+    val numCnt = IntArray(10)
+    while (tempInput > 0) {
+        numCnt[tempInput % 10]++
+        numCnt[tempResultNum % 10]++
+        tempInput /= 10
+        tempResultNum /= 10
+    }
+    return numCnt.count { it == 2 }
+}
+
+fun matchNumber(input: Int, resultNum: Int): Boolean {
+    println(getBallCount(input, resultNum))
+    //todo
+    return false
+}
+
+fun play(resultNum: Int) {
     println("숫자야구 게임을 시작합니다")
     val chance = 3
     repeat(chance) {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine().mappingInputNumber()
-        println("ok")
+        if (matchNumber(input, resultNum)) {
+            return@repeat
+        }
     }
     println("게임 종료")
 }
@@ -78,6 +100,7 @@ fun main() {
     var exit = false
     while (!exit) {
         val resultNum = getResultNum()
+        println(resultNum)
         play(resultNum)
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         exit = Console.readLine().mappingExitCode()

@@ -81,6 +81,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `ball count 테스트`(){
+        var num1 = 123
+        var num2 = 289
+        assertThat(getBallCount(num1,num2) == 1)
+    }
+
     override fun runMain() {
         main()
     }
