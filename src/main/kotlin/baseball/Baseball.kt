@@ -43,7 +43,7 @@ class Baseball {
         return false
     }
 
-    private fun printBaseballCount(ballCount: Int, strikeCount: Int) {
+    fun printBaseballCount(ballCount: Int, strikeCount: Int) {
         if (strikeCount == 0 && ballCount == 0)
             println(NOTING_MESSAGE)
         else if (ballCount != 0 && strikeCount == 0)
