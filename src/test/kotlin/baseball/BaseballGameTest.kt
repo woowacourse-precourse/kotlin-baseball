@@ -36,5 +36,25 @@ internal class BaseballGameTest {
                 }
             )
         }
+
+        @DisplayName("3자리 자연수가 아니면 IllegalArgumentException을 발생시키고 애플리케이션을 종료한다")
+        @ParameterizedTest
+        @CsvSource(value = ["-100", "99 9 ", "1000", "12.3", "a.8"])
+        fun playerSelectedWrongNumber(humanSelectedNumber: String?) {
+            val humanPlayer: Player = HumanPlayer()
+            val computerPlayer: Player = ComputerPlayer(ComputerRandomNumber())
+            val invalidInput = Assertions.assertThrows(
+                IllegalArgumentException::class.java
+            ) { humanPlayer.setSelectedNumber(humanSelectedNumber!!) }
+            Assertions.assertEquals("유효하지 않은 숫자형식입니다.", invalidInput.message)
+            Assertions.assertAll(
+                Executable {
+                    Assertions.assertFalse(computerPlayer.getSelectedNumber().isEmpty())
+                },
+                Executable {
+                    Assertions.assertEquals(computerPlayer.getSelectedNumber().length, 3)
+                }
+            )
+        }
     }
 }
