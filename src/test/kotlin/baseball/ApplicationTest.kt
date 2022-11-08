@@ -14,10 +14,17 @@ class ApplicationTest : NsTest() {
             {
                 run("246", "135", "1", "597", "589", "2")
                 assertThat(output())
-                    .contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료")
+                    .contains("낫싱", "0볼 3스트라이크", "1볼 1스트라이크", "0볼 3스트라이크", "게임종료")
             },
             1, 3, 5, 5, 8, 9
         )
+    }
+
+    @Test
+    fun `예외 테스트 4_1~9 사이의 숫자가 아닌 다른 값이 입력된 경우 2_숫자가 아닌 문자가 포함된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12a") }
+        }
     }
 
     @Test
