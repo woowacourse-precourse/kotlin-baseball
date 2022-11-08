@@ -1,10 +1,13 @@
 package study
 
+import baseball.view.main
+import camp.nextstep.edu.missionutils.test.Assertions
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class StringTest {
+class StringTest: NsTest() {
     @Test
     fun `split 메서드로 주어진 값을 구분`() {
         val input = "1,2"
@@ -40,5 +43,42 @@ class StringTest {
         assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
             input[5]
         }
+    }
+
+    @Test
+    fun `게임 테스트`() {
+        Assertions.assertRandomNumberInRangeTest(
+            {
+                run("132", "651", "615", "1", "312", "213", "123", "2")
+                assertThat(output())
+                    .contains("1볼", "2볼 1스트라이크", "3스트라이크", "3볼", "2볼 1스트라이크", "3스트라이크", "게임 종료")
+            },
+            6, 1, 5, 1, 2, 3
+        )
+    }
+
+    @Test
+    fun `타입 예외 테스트`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("asd") }
+        }
+    }
+
+    @Test
+    fun `중복 예외 테스트`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("111") }
+        }
+    }
+
+    @Test
+    fun `부분 중복 예외 테스트`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("212") }
+        }
+    }
+
+    override fun runMain() {
+        main()
     }
 }
