@@ -1,52 +1,41 @@
-package baseball.controller
+package baseball.utils
 
-import baseball.ExceptionType
-import baseball.view.Printer.printExceptionPhraseAndQuitProcess
-import baseball.view.Printer.printGameResult
-import baseball.gameResult
-import baseball.isNotDuplicated
-import baseball.isNotException
-import baseball.utils.Phrase
-import kotlin.system.exitProcess
+import baseball.utils.Constant.ACTIVE_STATE_CODE
+import baseball.utils.Constant.CNT_NUMBER
+import baseball.utils.Constant.MIN_NUMBER
+import baseball.utils.Constant.QUIT_STATE_CODE
 
-class Validator(
-    private val userInput: String,
-    private val exceptionType: ExceptionType
-) {
+object Validator {
+    fun isValidAnswerNumber(input: String): Boolean {
+        return input.isNotException(ExceptionType.GameException) && input.isNotDuplicated()
+    }
 
-    fun validateUserInput() {
-        when(exceptionType) {
-            is ExceptionType.GameException -> {
-                try {
-                    if (
-                        userInput.isNotException(exceptionType) &&
-                        userInput.isNotDuplicated()
-                    ) {
-                        printGameResult(userInput.gameResult())
-                    } else {
-                        throw IllegalArgumentException()
-                    }
-                } catch (ex: IllegalArgumentException) {
-                    printExceptionPhraseAndQuitProcess()
-                }
-            }
-            is ExceptionType.RetryException -> {
-                try {
-                    if (userInput.isNotException(exceptionType)) {
-                        when (userInput) {
-                            "1" -> Referee.gameStart()
-                            "2" -> {
-                                println(Phrase.exitGame)
-                                exitProcess(0)
-                            }
-                        }
-                    } else {
-                        throw IllegalArgumentException()
-                    }
-                } catch (ex: IllegalArgumentException) {
-                    printExceptionPhraseAndQuitProcess()
-                }
-            }
+    fun isValidExitCode(input: String): Boolean {
+        return input.isNotException(ExceptionType.RetryException)
+    }
+}
+private fun String.isNotDuplicated(): Boolean {
+    val setOfUserInput = mutableSetOf<Int>()
+    this.map { it.digitToInt() }.forEach {
+        setOfUserInput.add(it)
+    }
+    return setOfUserInput.size == CNT_NUMBER
+}
+
+private fun String.isNotException(
+    exceptionType: ExceptionType
+): Boolean {
+    return when (exceptionType) {
+        is ExceptionType.GameException -> {
+            if (this.isEmpty() || this.length > CNT_NUMBER) {
+                false
+            } else this.all { Character.isDigit(it) } && this.length == CNT_NUMBER
+        }
+
+        is ExceptionType.RetryException -> {
+            if (this.isEmpty() || this.length > MIN_NUMBER) {
+                false
+            } else this.all { Character.isDigit(it) } && this.length == MIN_NUMBER && (this == ACTIVE_STATE_CODE || this == QUIT_STATE_CODE)
         }
     }
 }
