@@ -73,7 +73,7 @@ fun inputUserNumbers(): MutableList<Int> {
         it.digitToInt()
     }.toMutableList()
 
-    if (userNumbers.size != userNumbers.toSet().size || userNumbers.size != 3) {
+    if (userNumbers.size != userNumbers.toSet().size || userNumbers.size != 3 || userNumbers.contains(0)) {
         throw IllegalArgumentException()
     }
 
