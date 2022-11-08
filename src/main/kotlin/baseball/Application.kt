@@ -10,9 +10,10 @@ fun main() {
 
 fun startBaseball() {
     val computerNumbers = mutableListOf<Int>()
+    val userNumbers = mutableListOf<Int>()
     inputComputerNumbers(computerNumbers)
     while (true) {
-        val userNumbers = inputUserNumbers()
+        inputUserNumbers(userNumbers)
         val gameComplete = checkUserNumbers(userNumbers, computerNumbers)
         if (gameComplete) break
     }
@@ -33,6 +34,7 @@ fun checkUserNumbers(
     printUserCount(strikeCount, ballCount)
 
     if (strikeCount == 3) return true
+    userNumbers.clear()
     return false
 }
 
@@ -65,19 +67,17 @@ fun restartGameCheck() {
     }
 }
 
-fun inputUserNumbers(): MutableList<Int> {
+fun inputUserNumbers(userNumbers: MutableList<Int>) {
     print("숫자를 입력해주세요 : ")
     val input = Console.readLine()
     //예외 사항 : 정수 인지* , 길이가 3인지 , 중복된 숫자는 없는지
-    val userNumbers = input.map {
-        it.digitToInt()
+    input.map {
+        userNumbers.add(it.digitToInt())
     }.toMutableList()
 
     if (userNumbers.size != userNumbers.toSet().size || userNumbers.size != 3 || userNumbers.contains(0)) {
         throw IllegalArgumentException()
     }
-
-    return userNumbers
 }
 
 fun inputComputerNumbers(numbers: MutableList<Int>) {
