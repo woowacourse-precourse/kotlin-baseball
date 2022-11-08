@@ -78,10 +78,9 @@ fun matchNumber(input: Int, resultNum: Int): Boolean {
         tempInput /= 10
         tempResultNum /= 10
     }
-
-    val ballCnt = numCnt.count { it == 2 && !strikeList[it] }
+    val ballCnt = numCnt.count { it == 2 && !strikeList[numCnt[it]] }
     val strikeCnt = strikeList.count { it }
-
+    println("$ballCnt ${strikeCnt}")
     //todo
     return false
 }
