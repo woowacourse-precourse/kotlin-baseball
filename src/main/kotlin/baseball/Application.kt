@@ -27,3 +27,19 @@ fun playerNumber() : List<Int>{
     return player
 }
 
+fun inputError() {
+
+}
+
+data class Score(var strike_count : Int, var ball_count : Int)
+fun compareNum(computer : List<Int>, player : List<Int>) : Score{
+    var strike_count : Int = 0
+    var ball_count : Int = 0
+    for (i in 0..2){
+        if(computer[i] == player[i]) strike_count += 1
+        else if(player.contains(computer[i])) ball_count += 1
+    }
+
+    return Score(strike_count, ball_count)
+}
+
