@@ -18,7 +18,12 @@ package baseball
 fun main() {
 //    TODO("프로그램 구현")
     //2. 플레이어의 입력 값을 받는다
-     val playerNums = readLine()
+    var playerNumsString = readLine()
+    var playerNumsInt = mutableListOf<Int>()
+
+    playerNumsString?.forEach {
+        playerNumsInt.add(Character.getNumericValue(it))
+    }
 
 }
 
@@ -31,5 +36,10 @@ fun produceRandomNums() : List<Int> {
         randomNums += range.random()
 
     return randomNums
+}
+
+//3. 플레이어의 입력 값에 대한 결과를 출력한다
+fun getResult(playerNums : List<Int>) : String {
+
 }
 
