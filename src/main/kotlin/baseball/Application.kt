@@ -2,8 +2,15 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+
+
+var is_continue : Int = 1
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
+    while(is_continue == 1){
+        startGame()
+
+    }
 }
 
 fun computerNumber() : List<Int>{
@@ -43,21 +50,24 @@ fun compareNum(computer : List<Int>, player : List<Int>) : Score{
     return Score(strike_count, ball_count)
 }
 
-fun runningGame() {
-
+fun startGame() {
     var computer : List<Int> = computerNumber()
+    runningGame(computer)
+}
+fun runningGame(computer : List<Int>) {
     var player : List<Int> = playerNumber()
-
-    val (strike_count, ball_count) = compareNum(computer,player)
+    var (strike_count, ball_count) = compareNum(computer,player)
 
     if( strike_count == 3) {
         gameOver()
-    }else if(strike_count == 3 && ball_count == 0){
+    }else if(strike_count == 0 && ball_count == 0){
         println("낫싱")
+        runningGame(computer)
     }else{
-        if(ball_count != 0) print("$ball_count 볼")
-        if(strike_count != 0) print("$strike_count 스트라이크")
+        if(ball_count != 0) print("${ball_count}볼")
+        if(strike_count != 0) print("${strike_count}스트라이크")
         println()
+        runningGame(computer)
     }
 
 }
@@ -66,9 +76,6 @@ fun gameOver() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
-    val is_continue = Console.readLine()!!.toInt()
-    when (is_continue){
-        1 -> runningGame()
-        2 -> System.runFinalization()
-    }
+    is_continue = Console.readLine()!!.toInt()
+
 }
