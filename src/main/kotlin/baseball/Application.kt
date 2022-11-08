@@ -17,16 +17,7 @@ package baseball
  */
 fun main() {
 //    TODO("프로그램 구현")
-    //2. 플레이어의 입력 값을 받는다
     println("숫자 야구 게임을 시작합니다.")
-    print("숫자를 입력해주세요 : ")
-
-    var playerNumsString = readLine()
-    var playerNumsInt = mutableListOf<Int>()
-
-    playerNumsString?.forEach {
-        playerNumsInt.add(Character.getNumericValue(it))
-    }
 
 }
 
@@ -43,6 +34,19 @@ fun produceRandomNums() : List<Int> {
 
 //3. 플레이어의 입력 값에 대한 결과를 출력한다
 fun getGameResult(playerNums : List<Int>, answerNums : List<Int>){
+
+    //2. 플레이어의 입력 값을 받는다
+
+    while(true){
+
+    print("숫자를 입력해주세요 : ")
+
+    var playerNumsString = readLine()
+    var playerNumsInt = mutableListOf<Int>()
+
+    playerNumsString?.forEach {
+        playerNumsInt.add(Character.getNumericValue(it))
+    }
 
     val firstPNum = playerNums[0]
     val secondPNums = playerNums[1]
@@ -74,9 +78,14 @@ fun getGameResult(playerNums : List<Int>, answerNums : List<Int>){
         println("$strike+ 스트라이크")
     else if(strike == 0 && ball == 0)
         println("낫싱")
-    else if(strike == 3)
+    else if(strike == 3){
         println("3스트라이크\n" +
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        break
+    }
 
+    }
 }
+
+
 
