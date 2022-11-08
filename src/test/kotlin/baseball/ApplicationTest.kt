@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.io.InputStream
 
 class ApplicationTest : NsTest() {
     @Test
@@ -98,6 +99,12 @@ class ApplicationTest : NsTest() {
         }
     }
     @Test
+    fun `널값이 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(null) }
+        }
+    }
+    @Test
     fun `중복된 숫자가 포함된 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("112") }
@@ -106,7 +113,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `게임 종료 입력값이 1이 아닌 경우`() {
         assertSimpleTest {
-            System.setIn("123".byteInputStream())
+            System.setIn(InputStream.nullInputStream())
             assertThrows<IllegalArgumentException> { getGameResult(Pair(0,3)) }
         }
 

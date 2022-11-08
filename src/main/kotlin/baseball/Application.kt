@@ -32,9 +32,9 @@ fun createRandomValue(): List<Int> {
 
 fun createInputValue(): List<Int> {
     print("숫자를 입력해주세요: ")
-    val input = readLine()
+    val input = readLine() ?: throw IllegalArgumentException("null")
 
-    if (isValid(input!!))
+    if (isValid(input))
         return input.map { it.digitToInt() }
 
     throw IllegalArgumentException("입력값이 서로 다른 3자리의 수가 아니므로 게임을 종료합니다.")
@@ -88,7 +88,7 @@ fun getGameResult(compared: Pair<Int, Int>): String {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
 
-    when(readLine()!!){
+    when(readLine() ?: throw IllegalArgumentException("null")){
         "1" -> return "SUCCESS"
         "2" -> return "EXIT"
     }
