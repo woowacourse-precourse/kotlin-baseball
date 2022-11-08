@@ -2,8 +2,8 @@ package baseball.game
 
 object Message {
 
-    private const val RESTART_CODE = "1"
-    private const val FINISH_CODE = "2"
+    const val RESTART_CODE = "1"
+    const val FINISH_CODE = "2"
 
     fun showStartGame() {
         println("숫자 야구 게임을 시작합니다.")
@@ -33,18 +33,10 @@ object Message {
             게임을 새로 시작하려면 $RESTART_CODE, 종료하려면 ${FINISH_CODE}를 입력하세요.
         """.trimIndent())
 
-        return checkFinishCode(read())
+        return ExceptionHandler.isRestartCode(read())
     }
 
     fun showFinishGame() {
         println("게임 종료")
-    }
-
-    private fun checkFinishCode(code: String): Boolean {
-        return when (code) {
-            RESTART_CODE -> true
-            FINISH_CODE -> false
-            else -> ExceptionHandler.throwFinishCode(code)
-        }
     }
 }
