@@ -31,11 +31,11 @@
 
 ### 💻 SEQ3
   - **종료조건** `3개의 숫자를 모두 맞히는 경우`
-    - [ ] **출력** `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
-    - [ ] **출력** `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
-      - [ ] **if 1 입력**  : goto  ⌨️SEQ1.
-      - [ ] **if 2 입력**  : program termination
-      - [ ] **else** : `TODO` Exception occurred
+    - [x] **출력** `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
+    - [x] **출력** `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
+      - [x] **if 1 입력**  : goto  ⌨️SEQ1.
+      - [x] **if 2 입력**  : program termination
+      - [x] **else** : `TODO` Exception occurred
   - **비종료조건**
     - [ ] goto  ⌨️SEQ1.사용자입력
 
@@ -52,7 +52,7 @@
     <BLANK LINE>
     <footer>
     ```
-    
+
 - **Coding Convention**
   - [Kotlin 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/kotlin) 가이드를 준수
   - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다.
