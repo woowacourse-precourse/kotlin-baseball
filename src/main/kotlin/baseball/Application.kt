@@ -5,6 +5,10 @@ import kotlin.system.exitProcess
 
 fun main() {
     while (true) {
+        printStartNotice()
+        val answer = createAnswer()
+
+        simulateGame(answer)
     }
 }
 
@@ -24,3 +28,24 @@ fun createAnswer(): MutableList<Int> {
     return answer
 }
 
+fun simulateGame() {
+    while (true) {
+        val input = readLine()
+        checkInput(input!!)
+    }
+}
+
+fun checkInput(input: String) {
+    if(input.length != 3)  {
+        finishWithException()
+    }
+}
+
+fun finishWithException() {
+    try {
+        throw IllegalArgumentException()
+    } catch (e: Exception) {
+        e.printStackTrace()
+        exitProcess(0)
+    }
+}
