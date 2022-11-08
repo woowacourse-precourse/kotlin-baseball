@@ -10,7 +10,7 @@ class InputNumber {
 }
 
 private fun showInputMessage() {
-    print("숫자를 입력해주세요: ")
+    print(PrintText.REQUEST_INPUT)
 }
 
 private fun validNumber(targetNumber: String) {
@@ -23,8 +23,8 @@ private fun validNumber(targetNumber: String) {
 
 private fun enterNumber(): String {
     return Console.readLine().trim().apply {
-        if (length != 3 || !all { it.isDigit() } || isBlank() || contains("0")) {
-            throw IllegalArgumentException("올바르지 않은 입력값입니다.")
+        if (length != 3 || !all { it.isDigit() } || isBlank() || contains(PrintText.EXCEPTION_NUMBER)) {
+            throw IllegalArgumentException(PrintText.INVALID_INPUT)
         }
     }
 }
