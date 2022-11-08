@@ -63,6 +63,24 @@ fun String.mappingInputNumber(): Int {
     }
 }
 
+fun matchResult(ballCnt: Int, strikeCnt: Int): Boolean{
+    when{
+        ballCnt == 0 && strikeCnt == 0 ->{
+            println("낫싱")
+        }
+        strikeCnt == 0 ->{
+            println("${ballCnt}볼")
+        }
+        ballCnt == 0 ->{
+            println("${strikeCnt}스트라이크")
+        }
+        else ->{
+            println("${ballCnt}볼 ${strikeCnt}스트라이크")
+        }
+    }
+    return strikeCnt == 3
+}
+
 fun matchNumber(input: Int, resultNum: Int): Boolean {
 
     var tempInput = input
@@ -80,19 +98,18 @@ fun matchNumber(input: Int, resultNum: Int): Boolean {
     }
     val ballCnt = numCnt.count { it == 2 && !strikeList[numCnt[it]] }
     val strikeCnt = strikeList.count { it }
-    println("$ballCnt ${strikeCnt}")
-    //todo
-    return false
+    return matchResult(ballCnt, strikeCnt)
 }
 
 fun play(resultNum: Int) {
     println("숫자야구 게임을 시작합니다")
     val chance = 3
-    repeat(chance) {
+    for(i in 0 until chance) {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine().mappingInputNumber()
         if (matchNumber(input, resultNum)) {
-            return@repeat
+            println("${RESULT_NUM_RANGE}개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            break
         }
     }
     println("게임 종료")
