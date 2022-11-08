@@ -22,6 +22,7 @@ build/
 *.iws
 *.iml
 *.ipr
+*.class
 out/
 
 ### NetBeans ###
