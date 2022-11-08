@@ -8,7 +8,16 @@ var strike :Int = 0
 var ball : Int = 0
 val inputnum : Array<Int?> = arrayOfNulls<Int>(3)
 val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
-
+fun main(args : ArrayList<String>) :Int
+{
+    playinggame()
+    var doplay : Int = 0
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    doplay = readLine()!!.toInt()
+    if (doplay == 1) playinggame()
+    if (doplay == 2) return 0;
+    return 0;
+}
 fun playinggame() : Int
 {
     val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
