@@ -11,7 +11,7 @@ fun main() {
 
         do{
             var user = userChooseNum()
-            baseballGame(computer, user)
+            countForHint(computer, user)
         }while(user.toString() != computer.toString())
 
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
@@ -44,7 +44,7 @@ fun userChooseNum():List<Char>{ // 사용자가 서로 다른 수 3개를 입력
     return userGuessNum
 }
 
-fun baseballGame(computer:List<Int>, user:List<Char>){ // 힌트 기능을 구현하는 함수
+fun countForHint(computer:List<Int>, user:List<Char>){ // 힌트 기능을 구현하는 함수
     var strike = 0
     var ball = 0
 
