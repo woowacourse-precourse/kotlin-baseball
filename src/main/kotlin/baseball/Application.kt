@@ -27,10 +27,13 @@ fun main() {
 
 fun playGame() {
     val computerNumberList = makeRandomNumberList()
-    // 반복
-    val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
-    val resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
-    printResult(resultOfGame)
+
+    var resultOfGame = Pair(0, 0)
+    while(resultOfGame.first != NUM_DIGITS) {
+        val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
+        resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
+        printResult(resultOfGame)
+    }
 }
 
 fun getResultOfGame(
