@@ -45,6 +45,22 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Nested
+    inner class UserTest {
+        @Test
+        fun `유저가 입력한 숫자의 길이 테스트`() {
+            val result = inputUserNumberExceptionCheck(mutableListOf(3, 2, 1))
+            assertThat(result).isEqualTo(false)
+        }
+
+        @Test
+        fun `유저가 입력한 숫자 중복 테스트`() {
+            val result = inputUserNumberExceptionCheck(mutableListOf(3, 2, 2))
+            assertThat(result).isEqualTo(true)
+        }
+    }
+
+
 
 
     override fun runMain() {
