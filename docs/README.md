@@ -2,14 +2,14 @@
 
 ### ⌨️ SEQ1
 - **사용자입력** : `@datatype : String`
-  - [ ] 입력 안내문 : `숫자를 입력해주세요 : `
-  - [ ] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
+  - [x] 입력 안내문 : `숫자를 입력해주세요 : `
+  - [x] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
     - 허용 : **서로 다른 3자리수**
     - 예외처리
-      - [ ] `입력 값 @datatype` `IllegalArgumentException`
-      - [ ] 입력 값 범위 : `1~9`
-      - [ ] 입력 값 중복 : `서로 다른 수`
-      - [ ] 입력 자리 수 : `3자리`
+      - [x] `입력 값 @datatype` `IllegalArgumentException`
+      - [x] 입력 값 범위 : `1~9`
+      - [x] 입력 값 중복 : `서로 다른 수`
+      - [x] 입력 자리 수 : `3자리`
 
 - **컴퓨터 3자리 수** : `@datatype : String`
   - [ ] 3자리수 생성
