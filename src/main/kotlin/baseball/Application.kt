@@ -69,15 +69,27 @@ fun getBaseballResult(computerNumbers: MutableList<Int>, playerNumbers: MutableL
 fun chooseToRestartOrStop(readInputString: String): Boolean {
     var stop = false
     val continueOrStop = validateInputString(
-            readInputString,
-            stringLengthToSpecify = 1,
-            inputStartNumber = 1,
-            inputEndNumber = 2
-        )
+        readInputString, stringLengthToSpecify = 1, inputStartNumber = 1, inputEndNumber = 2
+    )
     if (continueOrStop.first() == 2) {
-            println("게임 종료")
-            stop = true
+        println("게임 종료")
+        stop = true
+    }
+    return stop
+}
+
+fun baseballGame(computerNumbers: MutableList<Int>): Boolean {
+    var stop: Boolean
+    while (true) {
+        val playerNumbers = validateInputString(readInputString())
+        val baseballResult = getBaseballResult(computerNumbers, playerNumbers)
+        println(baseballResult)
+        if (baseballResult == "3스트라이크") {
+            println("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.")
+            stop = chooseToRestartOrStop(readInputString())
+            break
         }
+    }
     return stop
 }
 
