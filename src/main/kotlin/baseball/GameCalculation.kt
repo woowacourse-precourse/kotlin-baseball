@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun calculateBaseballAndThreeNumberStatus(answerBaseballNumber: String, inputThreeNumber: String): List<Int> {
 
     val countStrikeAndBall: MutableList<Int> = mutableListOf(0, 0)
@@ -40,4 +42,17 @@ fun printBaseballStatus(baseballStatus: List<Int>) {
 
         else -> println("${baseballStatus[1]}볼 ${baseballStatus[0]}스트라이크")
     }
+}
+
+fun generateRandomBaseballNumber() : String {
+
+    val randomNumberList: MutableList<Int> = mutableListOf()
+
+    while (randomNumberList.size < 3) {
+        val tmp_randomNumber = Randoms.pickNumberInRange(1, 9)
+
+        if (!randomNumberList.contains(tmp_randomNumber)) randomNumberList.add(tmp_randomNumber)
+    }
+
+    return "${randomNumberList[0]}${randomNumberList[1]}${randomNumberList[2]}"
 }
