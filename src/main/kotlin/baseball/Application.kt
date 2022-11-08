@@ -6,7 +6,12 @@ import camp.nextstep.edu.missionutils.Console
 lateinit var computerNum: ArrayList<Int>
 
 fun main() {
+    gameStart()
+}
 
+fun gameStart() {
+    println("숫자 야구 게임을 시작합니다.")
+    makeComputerChoose()
 }
 
 fun makeComputerChoose(): ArrayList<Int> {
