@@ -21,11 +21,11 @@ fun main() {
     //난수 생성
     val answerNums = produceRandomNums().toList()
     //게임 결과 출력
-    getGameResult(answerNums)
+    countStrikeBall(answerNums)
 
     while (decisionEndGame() == 1){
         val secondAnswer = produceRandomNums().toList()
-        getGameResult(secondAnswer)
+        countStrikeBall(secondAnswer)
     }
 
 }
@@ -47,8 +47,19 @@ fun produceRandomNums() : Set<Int> {
     return randomNums
 }
 
+fun stringToIntList( stringNums : String ) : List<Int>{
+
+    var playerNumsInt = mutableListOf<Int>()
+
+    stringNums.forEach {
+        playerNumsInt.add(Character.getNumericValue(it))
+    }
+
+    return playerNumsInt
+}
+
 //3. 플레이어의 입력 값에 대한 결과를 출력한다
-fun getGameResult(answerNums : List<Int>){
+fun countStrikeBall(answerNums : List<Int>){
 
     //2. 플레이어의 입력 값을 받는다
 
@@ -57,11 +68,9 @@ fun getGameResult(answerNums : List<Int>){
     print("숫자를 입력해주세요 : ")
 
     var playerNumsString = readLine()
-    var playerNumsInt = mutableListOf<Int>()
+    var playerNumsInt = listOf<Int>()
 
-    playerNumsString?.forEach {
-        playerNumsInt.add(Character.getNumericValue(it))
-    }
+    playerNumsInt = playerNumsString?.let { stringToIntList(it) }!!
 
     val firstPNum = playerNumsInt[0]
     val secondPNums = playerNumsInt[1]
