@@ -38,6 +38,18 @@ class BaseballGameTest : NsTest() {
         }
     }
     
+    @Test
+    fun `게임 끝나고 숫자 입력시 1 또는 2가 아니면 Exception 테스트`() {
+        camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Exception().isValidEndNum("3")
+                Exception().isValidEndNum("4")
+                Exception().isValidEndNum("a")
+                Exception().isValidEndNum("12")
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
