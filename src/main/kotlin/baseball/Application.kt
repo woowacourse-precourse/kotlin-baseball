@@ -13,20 +13,19 @@ fun main() {
         if(restartFlag == 1){
             computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
             restartFlag = 0
-            println(computerList)
         }
         else if(restartFlag == 2){
             break
         }
         inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
 
-        var strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
-        var balls = countBall(computerList, inputNumberList) - strikes  // 볼 개수
+        val strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
+        val balls = countBall(computerList, inputNumberList) - strikes  // 볼 개수
 
         printResult(strikes, balls)     // 결과 출력
 
         if(isGameOver(strikes)){        // 3스트라이크의 경우
-            restartFlag = askRestart()  // 재시작 물어봄
+            restartFlag = askRestart()  // 재시작 여부 확인
         }
     }
 }
