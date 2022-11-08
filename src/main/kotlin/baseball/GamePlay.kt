@@ -5,7 +5,15 @@ import camp.nextstep.edu.missionutils.Randoms
 class GamePlay {
     fun baseballGameStart() {
         val computerNum = setComputerNum()
-        compareUserNumAndComputerNum(computerNum)
+        var isGameOver = false
+
+        while (!isGameOver) {
+            val userNum = getNum()
+            isGameOver = compareUserNumAndComputerNum(computerNum, userNum)
+        }
+
+        baseballGameEnd()
+
     }
 
     private fun setComputerNum(): List<Int> {
@@ -19,27 +27,28 @@ class GamePlay {
         return computer
     }
 
-    private fun compareUserNumAndComputerNum(computer: List<Int>) {
-        val userNum = getNum()
+    private fun compareUserNumAndComputerNum(computer: List<Int>, user: List<Int>): Boolean {
         var ballCount = 0
         var strikeCount = 0
 
-        userNum.forEach {
+        user.forEach {
             if (computer.contains(it))
                 ballCount++
         }
         for (i in 0..2) {
-            if (computer[i] == userNum[i])
+            if (computer[i] == user[i])
                 strikeCount++
         }
         ballCount -= strikeCount
+        println(computer)
 
         PrintMessage().printResult(ballCount, strikeCount)
 
-        if (strikeCount != 3) {
-            compareUserNumAndComputerNum(computer)
+        if (strikeCount == 3) {
+            return true
         }
 
+        return false
 
     }
 
@@ -63,15 +72,13 @@ class GamePlay {
         return userNumList.reversed()
     }
 
-    fun baseballGameEnd(): Boolean {
+    private fun baseballGameEnd() {
         PrintMessage().showEndMessage()
 
         val endNum = readLine()!!.toInt()
         Exception().isValidEndNum(endNum)
 
-        if(endNum == 2)
-            return false
-
-        return true
+        if (endNum == 1)
+            baseballGameStart()
     }
 }
