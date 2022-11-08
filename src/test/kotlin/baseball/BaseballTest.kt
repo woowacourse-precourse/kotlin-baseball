@@ -34,6 +34,17 @@ class BaseballTest : NsTest() {
         assertThat(output().toString().trim()).isEqualTo("낫싱")
     }
 
+    @Test
+    fun `종료 할 때 1또는 2를 입력하지 않을 경우`() {
+        assertRandomNumberInRangeTest(
+            {
+                assertThrows<IllegalArgumentException> { runException("123", "12") }
+            },
+            1, 2, 3
+        )
+    }
+
+
     override fun runMain() {
         main()
     }
