@@ -1,5 +1,12 @@
 package baseball
 
+import baseball.Message.*
+import baseball.RestartDecision.*
+
 fun main() {
-    TODO("프로그램 구현")
+    println(WELCOME.message)
+    do {
+        gameStart()
+        println(REQUEST_DECISION_ABOUT_RESTART.message)
+    } while (readAnswerAboutRestart() == YES)
 }
