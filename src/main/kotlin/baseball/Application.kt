@@ -119,12 +119,7 @@ fun findChar(inputNumber: String): Boolean{
 }
 
 fun findZero(inputNumber: String): Boolean{
-    for(i in inputNumber){
-        if(i.digitToIntOrNull() == 0){
-            return true
-        }
-    }
-    return false
+    return inputNumber.contains('0')
 }
 
 fun matchLength(inputNumber: String): Boolean{
@@ -132,12 +127,7 @@ fun matchLength(inputNumber: String): Boolean{
 }
 
 fun findSame(inputNumber: String): Boolean {
-    if(inputNumber[0] == inputNumber[1]
-            || inputNumber[0] == inputNumber[2]
-            || inputNumber[1] == inputNumber[2]){
-        return true
-    }
-    return false
+    return inputNumber.toList().distinct().size == 3
 }
 
 fun askRestart(): Int{
