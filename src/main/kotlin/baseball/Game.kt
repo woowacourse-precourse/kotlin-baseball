@@ -7,6 +7,7 @@ fun gameStart() {
     while (true) {
         print(Message.REQUEST_INPUT_NUMBER.message)
         val answer = enteredAnswer()
+        println(createHint(computerNumber, answer))
     }
 }
 
@@ -22,3 +23,21 @@ fun createComputerNumber(): String {
 
     return computerNumber.joinToString("")
 }
+
+fun createHint(computerNumber: String, answer: String): String {
+    val ball = ballCount(computerNumber, answer)
+    val strike = strikeCount(computerNumber, answer)
+
+    return when {
+        ball == 0 && strike == 0 -> "낫싱"
+        ball != 0 && strike == 0 -> "${ball}볼"
+        ball == 0 && strike != 0 -> "${strike}스트라이크"
+        else -> "${ball}볼 ${strike}스트라이크"
+    }
+}
+
+fun ballCount(computerNumber: String, answer: String): Int =
+    computerNumber.count { answer.contains(it) && answer.indexOf(it) != computerNumber.indexOf(it) }
+
+fun strikeCount(computerNumber: String, answer: String): Int =
+    computerNumber.count { answer.contains(it) && answer.indexOf(it) == computerNumber.indexOf(it) }
