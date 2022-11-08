@@ -7,8 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms
 * 입력 예외 처리
 *   resultNum 입력
 *   inputNum, exitCode 입력
-* 게임 구현
-* 종료 및 재시작 구현
+* 종료 및 재시작 구현 (게임 틀)
+* 게임 내용 구현
 * */
 
 const val RESULT_NUM_RANGE = 3
@@ -63,6 +63,23 @@ fun String.mappingInputNumber(): Int{
     }
 }
 
+fun play(resultNum: Int){
+    println("숫자야구 게임을 시작합니다")
+    val chance = 3
+    repeat(chance) {
+        print("숫자를 입력해주세요 : ")
+        val input = Console.readLine().mappingInputNumber()
+        println("ok")
+    }
+    println("게임 종료")
+}
+
 fun main() {
-    val resultNum = getResultNum()
+    var exit = false
+    while (!exit) {
+        val resultNum = getResultNum()
+        play(resultNum)
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        exit = Console.readLine().mappingExitCode()
+    }
 }
