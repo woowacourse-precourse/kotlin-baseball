@@ -35,3 +35,4 @@ private fun checkInputLength(userInput: String, expectedLength: Int): Boolean = 
 
 private fun checkDuplicatePartInInput(userInput: String): Boolean = userInput.length == userInput.toSet().size
 
+private fun checkValidateRestartInput(userInput: String): Boolean = userInput == "1" || userInput == "2"
