@@ -5,10 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
 
-    var computer = cptChooseRandomNum()
+    var gameOnOff = 1
+    while(gameOnOff == 1){
+        var computer = cptChooseRandomNum()
 
-    var user = userChooseNum()
-    baseballGame(computer, user)
+        do{
+            var user = userChooseNum()
+            baseballGame(computer, user)
+        }while(user.toString() != computer.toString())
+
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        gameOnOff = readLine()!!.toInt()
+    }
 }
 
 fun cptChooseRandomNum():List<Int>{ // 컴퓨터가 서로 다른 랜덤한 수 3개를 뽑게 하는 함수
