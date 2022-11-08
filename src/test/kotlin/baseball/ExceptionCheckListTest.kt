@@ -16,7 +16,7 @@ class ExceptionCheckListTest {
     @Test
     fun `중복된 숫자가 존재하면 예외 발생`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { isHavingDuplicatedNumber("01232") }
+            assertThrows<IllegalArgumentException> { isHavingDuplicated("01232") }
         }
     }
 

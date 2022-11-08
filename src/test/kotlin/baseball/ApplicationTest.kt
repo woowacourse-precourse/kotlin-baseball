@@ -36,7 +36,7 @@ class ApplicationTest : NsTest() {
     fun `사용자가 입력한 숫자 자리수로 끊어서 리스트로 변환`() {
         val input = "123"
         val result = mutableListOf(1, 2, 3)
-        assertThat(getPlayerNumberList(input)).isEqualTo(result)
+        assertThat(getPlayerNumbers(input)).isEqualTo(result)
     }
 
     @Nested
@@ -46,7 +46,7 @@ class ApplicationTest : NsTest() {
             val computer = mutableListOf(3, 5, 7)
             val player = mutableListOf(3, 7, 4)
             val result = Pair(1, 1)
-            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+            assertThat(getResult(computer, player)).isEqualTo(result)
         }
 
         @Test
@@ -54,7 +54,7 @@ class ApplicationTest : NsTest() {
             val computer = mutableListOf(3, 5, 7)
             val player = mutableListOf(5, 7, 3)
             val result = Pair(0, 3)
-            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+            assertThat(getResult(computer, player)).isEqualTo(result)
         }
 
         @Test
@@ -62,7 +62,7 @@ class ApplicationTest : NsTest() {
             val computer = mutableListOf(3, 5, 7)
             val player = mutableListOf(3, 5, 7)
             val result = Pair(3, 0)
-            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+            assertThat(getResult(computer, player)).isEqualTo(result)
         }
 
         @Test
@@ -70,7 +70,7 @@ class ApplicationTest : NsTest() {
             val computer = mutableListOf(3, 5, 7)
             val player = mutableListOf(1, 2, 4)
             val result = Pair(0, 0)
-            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+            assertThat(getResult(computer, player)).isEqualTo(result)
         }
     }
 }
