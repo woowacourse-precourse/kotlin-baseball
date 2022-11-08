@@ -149,6 +149,7 @@ fun isThreeStrike(inningResult: String) = inningResult == "3스트라이크"
 
 fun playNumBaseball() {
     val computerNum = getComputerNumbers()
+    print(computerNum)
     var userNum = getUserNumbers()
     var inningResult = getInningResult(computerNum, userNum)
 
@@ -157,4 +158,13 @@ fun playNumBaseball() {
         inningResult = getInningResult(computerNum, userNum)
     }
     print("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+}
+
+fun isRestartNum(number: Int) = number in 1..2
+
+fun getRestartNum(): Int {
+    val number = enterNumbers().toInt()
+
+    if (isRestartNum(number)) return number
+    else throw IllegalArgumentException("수를 잘못 입력하셨습니다.")
 }
