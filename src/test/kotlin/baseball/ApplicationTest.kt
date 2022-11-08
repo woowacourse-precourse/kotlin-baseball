@@ -28,33 +28,19 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `난수 자릿수 테스트`() {
-        assertThat(getComputerNumbers().size).isEqualTo(3)
-    }
-
-    @Test
-    fun `난수 범위 확인 테스트`(){
-        val list: List<Int> = getComputerNumbers()
-
-        for (i in 0..2) {
-            assertThat(list[i]).isBetween(0, 9)
-        }
-    }
-
-    @Test
-    fun `난수 중복 테스트`() {
-        val list: List<Int> = getComputerNumbers()
-
-        for (i in 0..2) {
-            assertThat(list.count { it == list[i] }).isEqualTo(1)
-        }
+    fun `3자리인지, 1~9사이 인지, 중복은 없는지 난수 테스트`() {
+        val numList = getComputerNumbers()
+        assertThat(numList)
+            .hasSize(3)
+            .allMatch { it in 1..9 }
+            .isEqualTo(numList.distinct())
     }
 
     @Test
     fun `사용자 입력 예외 테스트`() {
         assertThrows<IllegalArgumentException>{
             checkPlayerInput("1234")
-            checkPlayerInput("abc")
+            checkPlayerInput("a12")
             checkPlayerInput("121")
         }
     }
