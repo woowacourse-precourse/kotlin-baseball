@@ -1,7 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class BallNStrikeTest {
@@ -28,7 +28,5 @@ class BallNStrikeTest {
         var answer4= listOf<Int>(3,0)
         var result4=getBallAndStrike(comNum,userNum4)
         Assertions.assertThat(result4).isEqualTo(answer4)
-
     }
-
 }
