@@ -76,14 +76,10 @@ fun printHint(input: String, answer: String) {
     var ball = 0
 
     for (i in answer.indices) {
-        for (j in input.indices) {
-            if (answer[i] == input[j]) {
-                if (i == j) { // 같은 숫자가 같은 자리에 있으면 스트라이크
-                    strike++
-                } else { // 같은 숫자가 다른 자리에 있으면 볼
-                    ball++
-                }
-            }
+        when(compareEachDigit(input, i, answer)){
+            "strike" -> strike++
+            "ball" -> ball++
+            else -> continue
         }
     }
 
@@ -94,4 +90,12 @@ fun printHint(input: String, answer: String) {
         else if (ball != 0) println("${ball}볼")
         else println("낫싱") // 같은 숫자가 아예 없으면 낫싱
     }
+}
+
+fun compareEachDigit(input: String, i: Int, answer: String): String {
+    for (j in input.indices) {
+        if (answer[i] == input[j] && i == j) return "strike"
+        else if(answer[i] == input[j]) return "ball"
+    }
+    return "nothing"
 }
