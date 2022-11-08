@@ -5,7 +5,21 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.IllegalArgumentException
 
 fun main() {
-    TODO("프로그램 구현")
+   TODO("프로그램 구현")
+}
+
+private fun playGame() {
+    val computerNumber = setRandomNumber()
+    while (true) {
+        print("숫자를 입력해주세요 : ")
+        val userNumber = getUserNumber()
+        printGameResult(computerNumber, userNumber)
+        println("")
+        if (getNumberOfStrike(computerNumber, userNumber) == 3) {
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            break
+        }
+    }
 }
 
 private fun getUserNumber(): String {
