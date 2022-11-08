@@ -68,10 +68,8 @@ fun getNum(): List<Int> {
     val tempNum = readLine()!!
     var userNum: Int
 
-    if (isInValidNum(tempNum))
-        throw IllegalArgumentException("Error")
-    else
-        userNum = tempNum.toInt()
+    isInValidNum(tempNum)
+    userNum = tempNum.toInt()
 
     val userNumList = mutableListOf<Int>()
 
@@ -80,18 +78,20 @@ fun getNum(): List<Int> {
         userNum /= 10
     }
 
-    if(userNumList.distinct().size != 3)
-        throw IllegalArgumentException("중복되는 숫자 존재")
+    isDistinctNum(userNumList)
 
     return userNumList.reversed()
 }
 
-fun isInValidNum(userNum: String): Boolean {
+fun isInValidNum(userNum: String) {
     val regex = Regex("^[1-9]{3}\$")
-    if (regex.matches(userNum))
-        return false
+    if (!regex.matches(userNum))
+        throw IllegalArgumentException("Error")
+}
 
-    return true
+fun isDistinctNum(numList : List<Int>) {
+    if(numList.distinct().size != 3)
+        throw IllegalArgumentException("중복되는 숫자 존재")
 }
 
 fun baseballGameEnd(): Boolean {
