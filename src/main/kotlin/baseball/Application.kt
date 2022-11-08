@@ -43,11 +43,11 @@ fun stringToIntList(stringNums: String): List<Int> {
     return playerNumsInt
 }
 
-fun getInputIntegerError(playerNums: String): Boolean {
+fun getInputIntegerError(playerNums: String) {
     val intergerChar = '1'..'9'
-    return playerNums.all {
-        it in intergerChar
-    }
+    if (playerNums.all {
+            it in intergerChar
+        }) throw IllegalArgumentException("숫자만 입력해주세요.")
 }
 
 fun getInputLenError(playerNums: String) {
@@ -73,12 +73,7 @@ fun countStrikeBall(answerNums: List<Int>) {
         print("숫자를 입력해주세요 : ")
 
         var playerNumsString = readLine()
-        if (playerNumsString != null) {
-            inputIsInteger = getInputIntegerError(playerNumsString)
-        }
-        if (inputIsInteger == false) {
-            throw IllegalArgumentException("숫자만 입력해주세요.")
-        }
+
         if (playerNumsString != null) {
             getInputLenError(playerNumsString)
         }
