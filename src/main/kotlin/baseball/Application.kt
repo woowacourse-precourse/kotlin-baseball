@@ -12,7 +12,6 @@ fun main() {
                 computer.add(randomNumber)
             }
         }
-        println(computer)
         while(true) {
             print("숫자를 입력해주세요 : ")
             var input = readLine()!!.toInt()
