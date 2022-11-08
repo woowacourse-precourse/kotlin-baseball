@@ -20,7 +20,7 @@ const val STRIKE = 1
 fun main() {
     printStartGamePhrase()
     var gameState = ONGOING_STATE
-    val randomNumberString = getRandomNumberString(3)
+    var randomNumberString = getRandomNumberString(3)
     var inputState = ONGOING_INPUT
     lateinit var processedPairByCalcIsNothing: Pair<MutableList<Int>, Boolean>
 
@@ -39,6 +39,7 @@ fun main() {
                 val gameStateInput = readLine()
                 checkAppropriateRestartInput(gameStateInput)
                 gameState = getGameState(gameStateInput)
+                randomNumberString = getRandomNumberString(3)
                 inputState = ONGOING_INPUT
                 continue
             }
