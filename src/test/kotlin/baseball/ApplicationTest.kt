@@ -56,6 +56,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `결과 출력 테스트`() {
+        assertThat(printResult(1, 1)).isEqualTo("1볼 1스트라이크")
+        assertThat(printResult(0, 1)).isEqualTo("1볼")
+        assertThat(printResult(1, 0)).isEqualTo("1스트라이크")
+        assertThat(printResult(0, 0)).isEqualTo("낫싱")
+    }
+
     override fun runMain() {
         main()
     }
