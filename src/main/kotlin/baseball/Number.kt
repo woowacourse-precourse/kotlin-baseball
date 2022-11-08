@@ -25,6 +25,7 @@ class Number {
     fun getPlayerNum(): String {
         print("숫자를 입력해주세요 : ")
         var playerNum = Console.readLine()
+
         checkNum(playerNum)
         return playerNum
     }

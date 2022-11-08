@@ -13,11 +13,13 @@ fun doGame() {
     while (result.chooseGameNum == 1) {
         var computerNum = number.getComputerNum()
         var playerNum = ""
+
         while (playerNum != computerNum) {
             playerNum = number.getPlayerNum()
             result.getScore(computerNum, playerNum)
             result.printResult(result.ball, result.strike)
         }
+
         result.gameAgainOrExit()
     }
 }
