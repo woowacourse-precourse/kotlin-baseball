@@ -10,6 +10,7 @@ fun main() {
 
 fun playBall() {
     val computerNumber = setComputerNumber()
+    println(computerNumber)
     while (true) {
         printInputUserNumber()
         val userNumber = inputUserNumber()
@@ -18,16 +19,19 @@ fun playBall() {
         if (end) break
     }
     printEndGameText()
-    val input = inputUserNumber()
-    inputExceptionCheck(input)
-    restartCheck(input)
+    try {
+        val input = inputUserNumber().toInt()
+        restartCheck(input)
+    } catch (e: Exception) {
+        throw IllegalArgumentException()
+    }
+
 }
 
-fun restartCheck(input: String) {
-    val number = input.toInt()
-    if (number == 1) {
+fun restartCheck(input: Int) {
+    if (input == 1) {
         playBall()
-    } else if (number != 2) {
+    } else if (input != 2) {
         throw IllegalArgumentException()
     }
 }
