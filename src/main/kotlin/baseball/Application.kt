@@ -21,7 +21,7 @@ const val STRIKE = 1
 fun main() {
     printStartGamePhrase()
     var gameState = ONGOING_STATE
-    var randomNumberString = getRandomNumberString(3)
+    var randomNumberString = getRandomNumberString(3, gameState)
     var inputState = ONGOING_INPUT
     lateinit var processedPairByCalcIsNothing: Pair<MutableList<Int>, Boolean>
 
@@ -40,7 +40,7 @@ fun main() {
                 val gameStateInput = readLine()
                 checkAppropriateRestartInput(gameStateInput)
                 gameState = getGameState(gameStateInput)
-                randomNumberString = getRandomNumberString(3)
+                randomNumberString = getRandomNumberString(3, gameState)
                 inputState = ONGOING_INPUT
                 continue
             }
@@ -88,15 +88,19 @@ private fun printScore(stepScoreList: List<Int>) {
     println(stepScoreList[BALL].toString() + BALL_PHRASE + " " + stepScoreList[STRIKE].toString() + STRIKE_PHRASE)
 }
 
-private fun getRandomNumberString(stringLength: Int): String {
+private fun getRandomNumberString(stringLength: Int, gameState: GameState): String {
     var randomNumberString = ""
-    while (randomNumberString.length < stringLength) {
-        val stageNumber = pickNumberInRange(1, 9)
-        if (stageNumber.toString() !in randomNumberString) {
-            randomNumberString += stageNumber
+    when (gameState) {
+        ONGOING_STATE -> {
+            while (randomNumberString.length < stringLength) {
+                val stageNumber = pickNumberInRange(1, 9)
+                if (stageNumber.toString() !in randomNumberString) {
+                    randomNumberString += stageNumber
+                }
+            }
         }
+        END_STATE -> randomNumberString = ""
     }
-
     return randomNumberString
 }
 
