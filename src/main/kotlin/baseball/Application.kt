@@ -1,5 +1,7 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    println(START_MESSAGE)
+    val play = Baseball()
+    play.playGame()
 }
