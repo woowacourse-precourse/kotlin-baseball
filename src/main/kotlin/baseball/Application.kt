@@ -26,13 +26,16 @@ fun main() {
 
 fun restartBoolean(): Boolean {
     val input = readLine()?.toInt()
-    printState(gameReplay)
+    if ((input != 1) and (input != 2)) {
+        printState(gameReplay)
+    }
 
     return when (input) {
         1 -> true
         2 -> false
         else -> restartBoolean()
     }
+
 }
 
 fun compareNum() {
@@ -42,17 +45,17 @@ fun compareNum() {
     println("컴퓨터 리스트 : $comNum")
 
     while (true) {
-        printState(1)
+        printState(gameInProgress)
         val userNum = createUserNum()
 
         ballCount(userNum, comNum)
         strikeCount(userNum, comNum)
-        printState(2)
+        printState(gameScoreCount)
 
         if (strikeCount == 3) break
     }
 
-    printState(4)
+    printState(gameEnd)
 }
 
 fun createRandomNum(): MutableList<Int> {
