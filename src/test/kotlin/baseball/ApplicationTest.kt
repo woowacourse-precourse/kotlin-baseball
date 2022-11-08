@@ -31,8 +31,8 @@ class ApplicationTest : NsTest() {
     @Nested
     inner class Function2Test {
         @Test
-        fun `getComputerNum 메서드로 서로 다른 3자리 수의 리스트 반환`() {
-            val numbers = getComputerNum()
+        fun `getComputerNumbers 메서드로 서로 다른 3자리 수의 리스트 반환`() {
+            val numbers = getComputerNumbers()
             assertThat(numbers)
                     .hasSize(3)
                     .doesNotHaveDuplicates()
@@ -57,17 +57,18 @@ class ApplicationTest : NsTest() {
 
         @Test
         fun `isNotDuplicate 메서드가 중복이 없는 스트링값을 입력받았을 때 true 반환`() {
-            val strings = listOf("12", "112", "abcda")
+            val strings = listOf("12", "122", "112", "abcda")
             assertThat(isNotDuplicate(strings[0])).isEqualTo(true)
             assertThat(isNotDuplicate(strings[1])).isEqualTo(false)
             assertThat(isNotDuplicate(strings[2])).isEqualTo(false)
+            assertThat(isNotDuplicate(strings[3])).isEqualTo(false)
         }
 
         @Test
-        fun `numToList 메서드가 입력받은 수를 리스트로 반환`() {
+        fun `numbersToList 메서드가 입력받은 수를 리스트로 반환`() {
             val numbers = "12345"
             val numList = listOf(1, 2, 3, 4, 5)
-            assertThat(numToList(numbers)).isEqualTo(numList)
+            assertThat(numbersToList(numbers)).isEqualTo(numList)
         }
     }
 
