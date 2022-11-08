@@ -8,6 +8,22 @@ fun main() {
     TODO("프로그램 구현")
 }
 
+private fun checkValidInput(userInput: String): String {
+    if (!checkValidLength(userInput)) {
+        print("게임 종료")
+        throw IllegalArgumentException("입력 길이가 유효하지 않습니다.")
+    } else if (!checkDuplicatedNumbers(userInput)) {
+        print("게임 종료")
+        throw IllegalArgumentException("중복된 숫자가 존재합니다.")
+    } else {
+        return userInput
+    }
+}
+
+private fun checkValidLength(userInput: String) = (userInput.length == 3)
+
+private fun checkDuplicatedNumbers(userInput: String) = (userInput.length == userInput.toSet().size)
+
 private fun startNewGame(): Boolean {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     return when (Console.readLine()) {
