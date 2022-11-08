@@ -14,21 +14,26 @@ const val STRING_START_GAME = "숫자 야구 게임을 시작합니다."
 const val STRING_INPUT_NUMBER = "숫자를 입력해주세요 : "
 const val STRING_WIN_GAME = "${NUM_DIGITS}개의 숫자를 모두 맞히셨습니다! 게임 종료"
 const val STRING_ASK_RESTART = "게임을 새로 시작하려면 ${WORD_RESTART_GAME}, 종료하려면 ${WORD_END_GAME}를 입력하세요."
+const val STRING_END_GAME = "게임을 종료합니다.."
 
 fun main() {
     var isRunningGame = true
 
+    println(STRING_START_GAME)
      while(isRunningGame) {
         playGame()
         isRunningGame = isGameGonnaRestart()
      }
+
+    println(STRING_END_GAME)
 }
 
 fun playGame() {
     val computerNumberList = makeRandomNumberList()
-
     var resultOfGame = Pair(0, 0)
+
     while(resultOfGame.first != NUM_DIGITS) {
+        print(STRING_INPUT_NUMBER)
         val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
         resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
         printResult(resultOfGame)
@@ -95,6 +100,7 @@ fun printResult(result: Pair<Int, Int>) {
 }
 
 fun isGameGonnaRestart(): Boolean {
+    println(STRING_ASK_RESTART)
     return when(readLine()) {
         WORD_RESTART_GAME -> true
         WORD_END_GAME -> false
