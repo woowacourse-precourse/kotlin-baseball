@@ -24,6 +24,15 @@ fun playinggame() : Int
     if (print_message() == 0) return (0);
     return -1;
 }
+fun inputIllegal(inputnum : Array<Int?>) : Int
+{
+    if (inputnum.size != 3)                                                                     throw IllegalArgumentException("3자리 수가 아닙니다.");
+    inputnum.forEach { 
+        if (it !in 1..9)                                                                        throw IllegalArgumentException("1~9 사이 수를 입력해주세요.")
+    }                      
+    if (inputnum[0]==inputnum[1] || inputnum[0]==inputnum[2] || inputnum[1]==inputnum[2])       throw IllegalArgumentException("중복된 값 입니다.")
+    return(0);
+}
 fun make_answer(comAnswer: Array<Int>) 
 {
     val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
