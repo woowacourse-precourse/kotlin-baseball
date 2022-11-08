@@ -8,8 +8,10 @@ class GamePlay {
         var isGameOver = false
 
         while (!isGameOver) {
-            val userNum = getUserNumAndReturnList()
-            isGameOver = compareUserNumAndComputerNum(computerNum, userNum)
+            print("숫자를 입력해주세요 : ")
+            val userNum = readLine()!!
+            val userNumList = getUserNumAndReturnList(userNum)
+            isGameOver = compareUserNumAndComputerNum(computerNum, userNumList)
         }
 
         baseballGameEnd()
@@ -52,13 +54,11 @@ class GamePlay {
 
     }
 
-    fun getUserNumAndReturnList(): List<Int> {
-        print("숫자를 입력해주세요 : ")
-        val tempNum = readLine()!!
+    fun getUserNumAndReturnList(num : String): List<Int> {
         var userNum: Int = 0
 
-        Exception().isInValidNum(tempNum)
-        userNum = tempNum.toInt()
+        Exception().isInValidNum(num)
+        userNum = num.toInt()
 
         val userNumList = mutableListOf<Int>()
 
