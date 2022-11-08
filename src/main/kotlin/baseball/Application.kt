@@ -19,10 +19,7 @@ fun GameStart() {
         if (!isPlay) {
             break
         }
-        print("숫자를 입력해주세요 : ")
-        userNumber = Console.readLine()
-        println(userNumber)
-        checkNumberException()
+        getPlayerNumber()
 
         var (isNothing, userindexIncomputerNum) = searchNothingCase()
 
@@ -43,6 +40,13 @@ fun makeRandomNumber(length: Int): String {
     }
 
     return noOverlapRandomNumber.joinToString("")
+}
+
+fun getPlayerNumber(){
+    print("숫자를 입력해주세요 : ")
+    userNumber = Console.readLine()
+    println(userNumber)
+    checkNumberException()
 }
 
 fun checkNumberException() {
