@@ -7,10 +7,7 @@ import baseball.game.service.GameService
 import baseball.player.Player
 import baseball.game.validator.InputValidator
 
-class Game (
-    private val computer: Computer,
-    private val player: Player,
-): GameService {
+class Game (private val computer: Computer, private val player: Player): GameService {
     private val inputValidator = InputValidator
     private val ballStrikeProcessor = BallStrikeProcessor
     private var gameStateCode = GAME_ACTIVE_CODE
@@ -26,7 +23,10 @@ class Game (
             inputValidator.validateGameInput(input = numberOfPlayer)
 
             // 볼 or 스트라이크 처리 후 결과 판단
-            ballStrikeProcessor.processBallStrike(numberOfComputer = computer.numberOfComputer, numberOfPlayer = numberOfPlayer)
+            ballStrikeProcessor.processBallStrike(
+                numberOfComputer = computer.numberOfComputer,
+                numberOfPlayer = numberOfPlayer
+            )
             assessResult()
         } while (isActiveGameState())
     }
