@@ -6,9 +6,13 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import kotlin.IllegalArgumentException
+import kotlin.Suppress
 
 @Suppress("NonAsciiCharacters")
 class ApplicationTest : NsTest() {
+
+    private val game = Game()
 
     @Test
     fun `생성된 숫자가 1부터 9사이의 중복없는 3자리 숫자인지 검사`() {
@@ -26,7 +30,7 @@ class ApplicationTest : NsTest() {
 
         for (idx in inputs.indices) {
             try {
-                validatePlayInput(inputs[idx])
+                game.validateUserInput(inputs[idx])
             } catch (e: IllegalArgumentException) {
                 assertThat(expects[idx]).isFalse
             }
@@ -58,7 +62,7 @@ class ApplicationTest : NsTest() {
         )
 
         for (idx in inputs.indices) {
-            val digits = splitUserInput(inputs[idx])
+            val digits = game.splitUserInput(inputs[idx])
             assertThat(digits)
                 .isEqualTo(expects[idx])
         }
@@ -85,7 +89,7 @@ class ApplicationTest : NsTest() {
         )
 
         for (idx in users.indices) {
-            val result = Result(computer, users[idx])
+            val result = Game.Result(computer, users[idx])
             assertThat(result.toString())
                 .isEqualTo(expects[idx])
         }
