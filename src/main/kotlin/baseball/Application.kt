@@ -26,7 +26,7 @@ fun k_Baseball(comp : MutableList<Int>) : Int{
     print("숫자를 입력해주세요 : ")
     var num : Int = readLine()!!.toInt()
     if (num in 0 .. 999) num
-    else throw IllegalArgumentException("ERROR")
+    else throw IllegalArgumentException("ERROR!")
     val list = mutableListOf<Int>()
     var str = 0
     var ball = 0
