@@ -9,6 +9,10 @@ fun main() {
 
 }
 
+fun gameStart() {
+    println("숫자 야구 게임을 시작합니다.")
+}
+
 fun gameOver() {
 
     val result = Console.readLine().toInt()
@@ -21,6 +25,8 @@ fun gameOver() {
 
         RESTART -> {
             val computerNewInput = computerNumber()
+
+            gameStart()
             gamePlay(computerNewInput)
         }
 
