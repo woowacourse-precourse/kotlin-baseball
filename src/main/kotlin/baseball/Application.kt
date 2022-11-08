@@ -83,6 +83,8 @@ fun getBallCount(answer: MutableList<Int>, input: String): Int {
             count += isEqualNumber(answer[i], input[i] - '0')
         }
     }
+
+    return count
 }
 
 fun isEqualNumber(num1: Int, num2: Int): Int {
