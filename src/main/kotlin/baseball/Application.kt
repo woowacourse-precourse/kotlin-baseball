@@ -4,6 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms
 
 const val NUM_DIGITS = 3
 
+const val WORD_BALL = "볼"
+const val WORD_STRIKE = "스트라이크"
+const val WORD_NOTHING = "낫싱"
+const val WORD_RESTART_GAME = 1
+const val WORD_END_GAME = 2
+
+const val STRING_START_GAME = "숫자 야구 게임을 시작합니다."
+const val STRING_INPUT_NUMBER = "숫자를 입력해주세요 : "
+const val STRING_WIN_GAME = "${NUM_DIGITS}개의 숫자를 모두 맞히셨습니다! 게임 종료"
+const val STRING_ASK_RESTART = "게임을 새로 시작하려면 ${WORD_RESTART_GAME}, 종료하려면 ${WORD_END_GAME}를 입력하세요."
+
 fun main() {
     var isRunningGame = true
 
