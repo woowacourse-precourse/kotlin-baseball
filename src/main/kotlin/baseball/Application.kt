@@ -12,6 +12,7 @@ fun main() {
 
     while (chooseStartOrEnd == 1) {
         userInput()
+        checkUserInputForm(userNum)
     }
 }
 
@@ -39,4 +40,10 @@ fun splitNum(wholeNum: Int): Array<Int> {
     val splitedNum = wholeNum.toString().chunked(1)
 
     return splitedNum.map { it.toInt() }.toTypedArray()
+}
+
+fun checkUserInputForm(userNumArray: Array<Int>) {
+    if (userNumArray.toSet().size != 3 || userNumArray.size != 3 || userNumArray.contains(0)) {
+        throw IllegalArgumentException("1~9로만 이루어진, 서로 다른 3자리의 수를 입력하세요.")
+    }
 }
