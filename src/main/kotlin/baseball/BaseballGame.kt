@@ -1,12 +1,13 @@
 package baseball
 
+import baseball.BaseballSetting.*
 import camp.nextstep.edu.missionutils.Console
 
 class BaseballGame(var computerNumbers: ComputerNumbers) {
     fun start() {
-        var processStatus = BaseballSetting.START_OR_RESTART.number
+        var processStatus = START_OR_RESTART.number
         BaseballString.START.print()
-        while (processStatus == BaseballSetting.START_OR_RESTART.number) {
+        while (processStatus == START_OR_RESTART.number) {
             BaseballString.INPUT.print()
             val userInput = Console.readLine()
             checkValidInput(userInput)
@@ -18,21 +19,19 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
 
     private fun processByResult(result: Int): Int {
         return when (result) {
-            BaseballSetting.DIGIT_NUMBER.number -> {
+            DIGIT_NUMBER.number -> {
                 BaseballString.SUCCESS.print()
                 decideRestartOrQuit()
             }
-            else -> BaseballSetting.START_OR_RESTART.number
+            else -> START_OR_RESTART.number
         }
     }
 
     private fun decideRestartOrQuit(): Int {
         BaseballString.RESTART_OR_QUIT.print()
         return when (val userInput = Console.readLine().toInt()) {
-            BaseballSetting.QUIT.number -> {
-                userInput
-            }
-            BaseballSetting.START_OR_RESTART.number -> {
+            QUIT.number -> userInput
+            START_OR_RESTART.number -> {
                 resetComputerNumbers()
                 userInput
             }
@@ -47,15 +46,17 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
     }
 
     private fun checkValidInput(userInput: String) {
-        if (userInput.length != BaseballSetting.DIGIT_NUMBER.number
-            || !userInput.isNumberString()
-        ) throw IllegalArgumentException()
+        if (userInput.length != DIGIT_NUMBER.number ||
+            !userInput.isNumberString()
+        ) {
+            throw IllegalArgumentException()
+        }
     }
 
     fun String.isNumberString() = this.all { it.isDigit() }
 
     private fun resetComputerNumbers() {
         computerNumbers =
-            ComputerNumbers(RandomNumberGenerator.nDigitMap(BaseballSetting.DIGIT_NUMBER.number))
+            ComputerNumbers(RandomNumberGenerator.nDigitMap(DIGIT_NUMBER.number))
     }
 }

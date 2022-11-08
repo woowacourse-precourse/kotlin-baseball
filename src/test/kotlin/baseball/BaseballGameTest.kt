@@ -26,7 +26,8 @@ class BaseballGameTest : NsTest() {
 
     @Test
     fun `checkValidInput 메서드를 사용해 사용자 입력이 올바르지 않으면 IllegalArgumentException 예외 발생`() {
-        val method = baseballGame.javaClass.getDeclaredMethod("checkValidInput", String::class.java)
+        val method =
+            baseballGame.javaClass.getDeclaredMethod("checkValidInput", String::class.java)
         method.isAccessible = true
 
         val input = "1234"
@@ -54,11 +55,13 @@ class BaseballGameTest : NsTest() {
     fun `decideRestartOrQuit 메서드를 통해 재시작 입력을 받았을 때 컴퓨터가 생각하는 숫자를 변경`() {
         val beforeComputerNumbers = baseballGame.computerNumbers
         run("${BaseballSetting.START_OR_RESTART.number}")
-        assertThat(beforeComputerNumbers === baseballGame.computerNumbers).isEqualTo(false)
+        assertThat(beforeComputerNumbers === baseballGame.computerNumbers)
+            .isEqualTo(false)
     }
 
     override fun runMain() {
-        val method = baseballGame.javaClass.getDeclaredMethod("decideRestartOrQuit")
+        val method =
+            baseballGame.javaClass.getDeclaredMethod("decideRestartOrQuit")
         method.isAccessible = true
         method.invoke(baseballGame)
     }

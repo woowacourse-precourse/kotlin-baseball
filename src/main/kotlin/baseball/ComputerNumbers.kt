@@ -15,10 +15,10 @@ class ComputerNumbers(private val computerNumberMap: Map<Int, Int>) {
         var strike = 0
         var ball = 0
         when {
-            computerNumberMap.containsKey(number)
-                    && computerNumberMap[number] == index -> strike++
-            computerNumberMap.containsKey(number)
-                    && computerNumberMap[number] != index -> ball++
+            computerNumberMap.containsKey(number) &&
+                    computerNumberMap[number] == index -> strike++
+            computerNumberMap.containsKey(number) &&
+                    computerNumberMap[number] != index -> ball++
         }
         return BaseballResult(ball, strike)
     }

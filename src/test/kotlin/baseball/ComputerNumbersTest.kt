@@ -21,7 +21,11 @@ class ComputerNumbersTest {
             computerNumbers.countStrikeAndBall(number = input.first, index = input.second)
         }
         assertThat(result)
-            .contains(BaseballResult(0, 0), BaseballResult(1, 0), BaseballResult(0, 1))
+            .contains(
+                BaseballResult(0, 0),
+                BaseballResult(1, 0),
+                BaseballResult(0, 1)
+            )
     }
 
     @Test
@@ -31,6 +35,10 @@ class ComputerNumbersTest {
             computerNumbers.compareToUserInput(userInput = input)
         }
         assertThat(result)
-            .contains(BaseballResult(0, 0), BaseballResult(0, 3), BaseballResult(1, 1))
+            .contains(
+                BaseballResult(0, 0),
+                BaseballResult(0, 3),
+                BaseballResult(1, 1)
+            )
     }
 }
