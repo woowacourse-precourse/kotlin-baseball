@@ -70,6 +70,31 @@ class BaseballGame(private val humanPlayer: Player, private var computerPlayer: 
         return "${ballCount}볼 "
     }
 
+    private fun selectRestartOrTerminate(): Boolean {
+        println(CORRECT_ANSWER)
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
+        val humanPlayerOpinion: String = Console.readLine()
+        if (humanPlayerOpinion == RESTART_GAME) {
+            computerPlayer = ComputerPlayer(ComputerRandomNumber())
+        }
+        return when (humanPlayerOpinion) {
+            RESTART_GAME -> {
+                println("숫자 야구 게임을 시작합니다.")
+                true
+            }
+
+            TERMINATE_GAME -> {
+                println("숫자 야구 게임을 종료합니다.")
+                false
+            }
+
+            else -> {
+                throw IllegalArgumentException()
+            }
+        }
+    }
+
     companion object {
         const val CORRECT_ANSWER = "3스트라이크"
         const val WRONG_ANSWER = ""
