@@ -40,6 +40,15 @@ class ApplicationTest : NsTest() {
             .isEqualTo("[1, 2, 3]")
     }
 
+    @Test
+    fun `사용자 입력 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12345") }
+            assertThrows<IllegalArgumentException> { runException("4566") } // set으로 바꾸면 size가 3이 되지만 네자리수인 수
+            assertThrows<IllegalArgumentException> { runException("607") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
