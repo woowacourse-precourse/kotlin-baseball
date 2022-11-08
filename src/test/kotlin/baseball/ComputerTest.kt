@@ -1,7 +1,9 @@
 package baseball
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
@@ -12,6 +14,17 @@ private const val STRIKE_MESSAGE = "스트라이크"
 private val output = ByteArrayOutputStream()
 
 class ComputerTest {
+    @BeforeEach
+    fun setUpOutputStream() {
+        System.setOut(PrintStream(output))
+    }
+
+    @AfterEach
+    fun resetOutputStream() {
+        System.setOut(System.out)
+        output.reset()
+    }
+
     @Test
     fun `랜덤 생성 숫자 자리수 확인`() {
         assertThat(answer.size).isEqualTo(3)
@@ -60,12 +73,6 @@ class ComputerTest {
             computer = Computer()
             computer.generateAnswer()
             answer = computer.testGetAnswer()
-        }
-
-        @BeforeAll
-        @JvmStatic
-        internal fun setUpOutputStream() {
-            System.setOut(PrintStream(output))
         }
     }
 }
