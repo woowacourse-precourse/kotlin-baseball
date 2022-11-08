@@ -9,14 +9,14 @@ class NumberBaseballGame {
     private var exit = false
     private val inputVerifier = InputVerifier()
 
-    fun startGame(computer: MutableList<Int>) {
+    fun start(computer: MutableList<Int>) {
         println("숫자 야구 게임을 시작합니다.")
 
         pickRandomNumber(computer)
 
         while (!exit) {
             print("숫자를 입력해주세요 : ")
-            val player = playerInput()
+            val player = getPlayerInput()
 
             resetScore()
             calculateScore(computer, player)
@@ -37,7 +37,7 @@ class NumberBaseballGame {
         }
     }
 
-    private fun playerInput(): List<Int> {
+    private fun getPlayerInput(): List<Int> {
         val input = Console.readLine().map { it.digitToInt() }
         return inputVerifier.playerNumber(input)
     }
@@ -83,7 +83,7 @@ class NumberBaseballGame {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
 
-        when (exitInput()) {
+        when (getExitInput()) {
             1 -> {
                 computer.clear()
                 pickRandomNumber(computer)
@@ -95,7 +95,7 @@ class NumberBaseballGame {
         }
     }
 
-    private fun exitInput(): Int {
+    private fun getExitInput(): Int {
         val input = Console.readLine().toInt()
         return inputVerifier.exitNumber(input)
     }
