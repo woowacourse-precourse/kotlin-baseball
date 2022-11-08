@@ -4,7 +4,7 @@ import baseball.common.MAX_NUMBER_SIZE
 import baseball.game.END_CODE
 import baseball.game.RESTART_CODE
 
-class InputValidator {
+object InputValidator {
 
     /** 사용자가 입력한 숫자야구 값을 검증하는 함수 **/
     fun validateGameInput(input: String) {

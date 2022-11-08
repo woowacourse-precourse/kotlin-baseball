@@ -11,8 +11,8 @@ class Game (
     private val computer: Computer,
     private val player: Player,
 ): GameService {
-    private val inputValidator = InputValidator()
-    private val ballStrikeProcessor = BallStrikeProcessor()
+    private val inputValidator = InputValidator
+    private val ballStrikeProcessor = BallStrikeProcessor
     private var gameStateCode = GAME_ACTIVE_CODE
 
     override fun start() {

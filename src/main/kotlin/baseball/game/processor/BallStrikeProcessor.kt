@@ -7,7 +7,7 @@ import baseball.game.OUTPUT_NOTHING_MESSAGE
 import baseball.game.OUTPUT_STRIKE_MESSAGE
 import baseball.game.ballstate.BallState
 
-class BallStrikeProcessor {
+object BallStrikeProcessor {
     private val ballStates = MutableList(MAX_NUMBER_SIZE) { BallState.OUT }
 
     /** 숫자를 비교해서 볼, 스트라이크로 처리하는 함수 **/
