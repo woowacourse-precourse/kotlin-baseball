@@ -9,6 +9,7 @@ fun main() {
     println("숫자 야구 게임을 시작합니다.")
     gameStart()
 }
+/**스트라이크와 볼수를 판단하는 기능**/
 fun judgeStrikeAndBallCount(computerRandomNumber: String) : Int {
     val userNumber=inputUserNumber()
     val strike=checkStrike(userNumber, computerRandomNumber)
@@ -18,10 +19,13 @@ fun judgeStrikeAndBallCount(computerRandomNumber: String) : Int {
 fun gameStart(){
     val computerRandomNumber = createComputerRandomNumber()
     var strike=0
+
     while (strike !=3) strike = judgeStrikeAndBallCount(computerRandomNumber)
+
     when (setUpGameOver(strike)) {
         "1" -> gameStart()
     }
+
 }
 fun createComputerRandomNumber(): String {
 
@@ -33,14 +37,16 @@ fun createComputerRandomNumber(): String {
             computerNumStringList.add(randomNumber.toString())
         }
     }
-    return computerNumStringList
-            .joinToString("")
+
+    return computerNumStringList.joinToString("")
 }
 
 fun inputUserNumber(): String {
     print("숫자를 입력해주세요 : ")
+
     val userInputNumber = Console.readLine()
     checkInputUserNumber(userInputNumber)
+
     return userInputNumber.toString()
 }
 
@@ -52,13 +58,14 @@ fun checkInputUserNumber(userInputNumber: String?) {
     for (userInputNumberWord in userInputNumber) checkOverlapInputNumber.add(userInputNumberWord.toString())
 
     checkInputMessagePatten(inputNumberStandard, checkOverlapInputNumber)
+
     if (checkOverlapInputNumber.size !=3||checkOverlapInputNumber.distinct().size != 3) throw IllegalArgumentException()
 
 }
 
-fun checkStrike(userInputNumber: String,
-                computerRandomNumber: String): Int {
+fun checkStrike(userInputNumber: String,computerRandomNumber: String): Int {
     var strike = 0
+
     for (index in userInputNumber.indices)
         if (userInputNumber[index] == computerRandomNumber[index]) strike++
 
@@ -69,10 +76,14 @@ fun checkBall(
         userInputNumber: String,
         computerRandomNumber: String,
         strike: Int): Int {
+
     var ball = 0
+
     for (userInputNumberWord in userInputNumber)
         if (computerRandomNumber.contains(userInputNumberWord)) ball++
+
     ball -= strike
+
     return ball
 }
 
@@ -91,9 +102,12 @@ fun setUpGameOver(strike: Int): String? {
     if (strike == 3) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+
         val userInputGameOverMessage = Console.readLine()
+
         checkInputGameOverMessage(userInputGameOverMessage)
         println(userInputGameOverMessage)
+
         return userInputGameOverMessage
     }
     return null
@@ -102,6 +116,7 @@ fun setUpGameOver(strike: Int): String? {
 fun checkInputGameOverMessage(userInputGameOverMessage: String?) {
     val checkOverlapInputResultContinue = mutableListOf<String>()
     val inputGameOverNumStandard = "^[1-2]*$"
+
     userInputGameOverMessage ?: throw IllegalArgumentException()
 
     for (userContinueWord in userInputGameOverMessage) checkOverlapInputResultContinue.add(userContinueWord.toString())
@@ -111,7 +126,7 @@ fun checkInputGameOverMessage(userInputGameOverMessage: String?) {
     if (userInputGameOverMessage.length != 1) throw IllegalArgumentException()
 
 }
-
+/**입력받은 것이 숫자인지 확인하는 기능**/
 fun checkInputMessagePatten(standard: String, checkOverlap: MutableList<String>) {
     val pattern: Pattern = Pattern.compile(standard)
 
