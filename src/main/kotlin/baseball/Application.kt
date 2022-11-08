@@ -3,6 +3,10 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
+    baseballGame()
+}
+
+fun baseballGame(){
     println("숫자 야구 게임을 시작합니다.")
 
     var gameOnOff = 1
