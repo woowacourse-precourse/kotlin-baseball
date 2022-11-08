@@ -43,3 +43,21 @@ fun compareNum(computer : List<Int>, player : List<Int>) : Score{
     return Score(strike_count, ball_count)
 }
 
+fun runningGame() {
+
+    var computer : List<Int> = computerNumber()
+    var player : List<Int> = playerNumber()
+
+    val (strike_count, ball_count) = compareNum(computer,player)
+
+    if( strike_count == 3) {
+        // game_over()
+    }else if(strike_count == 3 && ball_count == 0){
+        println("낫싱")
+    }else{
+        if(ball_count != 0) print("$ball_count 볼")
+        if(strike_count != 0) print("$strike_count 스트라이크")
+        println()
+    }
+
+}
