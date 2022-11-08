@@ -85,21 +85,16 @@ fun Compare_Exception (Compare_List : List<Int>): Boolean {
     return Compare_List[0] == 0 || Compare_List[1] == 0
 }
 
-fun Print_Result (Result_List : List<Int>) : String{
+fun Print_Result (Result_List : List<Int>) : String {
     if (Result_List[2] >= 1)
         print("낫싱")
-
-    else if (Result_List[1] != 0){
+    else if (Result_List[1] != 0) {
         Result += Result_List[1].toChar() + "볼"
         print(Result)
-    }
-
-    else if (Result_List[0] > 0 && Result_List[0] < 3){
+    } else if (Result_List[0] > 0 && Result_List[0] < 3) {
         Result += Result_List[0].toChar() + "스트라이크"
         print(Result)
-    }
-
-    else if (Result_List[0] == 3)
+    } else if (Result_List[0] == 3)
         Result = "3스트라이크 \n 3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 
     return Result.toString()
