@@ -77,6 +77,14 @@ private fun printThreeStrikePhrase() {
 }
 
 private fun printScore(stepScoreList: List<Int>) {
+    if (stepScoreList[BALL] == 0) {
+        println(stepScoreList[STRIKE].toString() + STRIKE_PHRASE)
+        return
+    }
+    if (stepScoreList[STRIKE] == 0) {
+        println(stepScoreList[BALL].toString() + BALL_PHRASE)
+        return
+    }
     println(stepScoreList[BALL].toString() + BALL_PHRASE + " " + stepScoreList[STRIKE].toString() + STRIKE_PHRASE)
 }
 
