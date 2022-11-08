@@ -43,39 +43,39 @@ fun checkCorrect(now : Int, input:Array<Int>):Int{
 }
 
 fun countCorrect(computer:MutableList<Int>,input:Array<Int>):MutableList<Int>{
-    var strike_ball = mutableListOf<Int>()
-    strike_ball.add(0)
-    strike_ball.add(0)
-    strike_ball[0] = 0
-    strike_ball[1] = 0
+    var strikeBall = mutableListOf<Int>()
+    strikeBall.add(0)
+    strikeBall.add(0)
+    strikeBall[0] = 0
+    strikeBall[1] = 0
 
     for(i in 0 until 3){
        var same = checkCorrect(computer[i],input);
-        if(same == i) strike_ball[0]++
-        else if(same != -1) strike_ball[1]++
+        if(same == i) strikeBall[0]++
+        else if(same != -1) strikeBall[1]++
         }
 
-    return strike_ball
+    return strikeBall
 }
 
 
-fun print(strike_ball: MutableList<Int>) : Int{
-    if (strike_ball[0] == 0 && strike_ball[1] == 0) {
+fun print(strikeBall: MutableList<Int>) : Int{
+    if (strikeBall[0] == 0 && strikeBall[1] == 0) {
         println("낫싱")
         return 0
     }
-    else if (strike_ball[0] ==3) {
+    else if (strikeBall[0] ==3) {
         println("3스트라이크")
         return 1
     }
-    else if (strike_ball[0] == 0) {
-        println("${strike_ball[1]}볼")
+    else if (strikeBall[0] == 0) {
+        println("${strikeBall[1]}볼")
         return 0
-    } else if (strike_ball[1] == 0) {
-        println("${strike_ball[0]}스트라이크")
+    } else if (strikeBall[1] == 0) {
+        println("${strikeBall[0]}스트라이크")
         return 0
     } else {
-        println("${strike_ball[1]}볼 ${strike_ball[0]}스트라이크")
+        println("${strikeBall[1]}볼 ${strikeBall[0]}스트라이크")
         return 0
     }
 }
@@ -83,27 +83,27 @@ fun print(strike_ball: MutableList<Int>) : Int{
 fun input(Computer: MutableList<Int>){
     while(true) {
         val input = Console.readLine()!!.toString()
-        var input_array : Array<Int> = checkTrue(input)
-        val strike_ball = countCorrect(Computer, input_array)
-        if (print(strike_ball) == 1) break
+        var inputArray : Array<Int> = checkTrue(input)
+        val strikeBall = countCorrect(Computer, inputArray)
+        if (print(strikeBall) == 1) break
     }
 }
 
 //메인
 fun main() {
 
-    var Continue = 1
+    var continueGame = 1
 
-    while (Continue == 1) {
-        val ComputerNum = random()
+    while (continueGame == 1) {
+        val computerNum = random()
 
-       input(ComputerNum)
+       input(computerNum)
 
         println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
-        var input_again = Console.readLine()!!.toInt()
-        if(input_again !=2 &&input_again !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
-        if(input_again == 2) {
-            Continue = 0
+        var inputAgain = Console.readLine()!!.toInt()
+        if(inputAgain !=2 &&inputAgain !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
+        if(inputAgain == 2) {
+            continueGame = 0
             println("게임 종료")
         }
     }
