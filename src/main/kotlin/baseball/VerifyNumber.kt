@@ -1,21 +1,8 @@
 package baseball
 
-import baseball.VerifyNumber.Companion.BALL
-import baseball.VerifyNumber.Companion.NOTHING
-import baseball.VerifyNumber.Companion.STRIKE
-
 class VerifyNumber {
     fun verify(strikeCount: Int, ballCount: Int): Boolean {
         return verifyNumber(strikeCount, ballCount)
-    }
-
-    companion object {
-        const val BALL = "볼"
-        const val STRIKE = "스트라이크"
-        const val NOTHING = "낫싱"
-        const val FINISH_GAME = "게임 종료"
-        const val RESTART_COMMAND = "1"
-        const val FINISH_COMMAND = "2"
     }
 }
 
@@ -32,13 +19,13 @@ private fun verifyNumber(strikeCount: Int, ballCount: Int): Boolean {
 private fun showResultMessage(strikeCount: Int, ballCount: Int) {
     return with(StringBuilder()) {
         if (ballCount != 0) {
-            append("${ballCount}${BALL} ")
+            append("${ballCount}${PrintText.BALL} ")
         }
         if (strikeCount != 0) {
-            append("${strikeCount}${STRIKE}")
+            append("${strikeCount}${PrintText.STRIKE}")
         }
         if (isEmpty()) {
-            append(NOTHING)
+            append(PrintText.NOTHING)
         }
         makeMessage(this)
     }
