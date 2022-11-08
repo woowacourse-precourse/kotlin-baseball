@@ -9,13 +9,10 @@ fun main() {
     var inputNumberList = mutableListOf<Int>()
     var restartFlag : Int = 1
 
-    while(true){
+    while(restartFlag != 2){
         if(restartFlag == 1){
             computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
             restartFlag = 0
-        }
-        else if(restartFlag == 2){
-            break
         }
         inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
 
@@ -46,7 +43,6 @@ fun getInput(): List<Int>{
         throw IllegalArgumentException("잘못된 입력입니다.")
     }
 
-    inputNumber.toList()
     for(i in inputNumber){
         returnNumber.add(i.digitToInt())
     }
