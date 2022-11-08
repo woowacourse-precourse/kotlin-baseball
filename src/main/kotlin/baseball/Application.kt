@@ -30,3 +30,14 @@ fun userChooseNum():List<Char>{ // 사용자가 서로 다른 수 3개를 입력
 
     return userGuessNum
 }
+
+fun baseballGame(computer:List<Int>, user:List<Char>){ // 힌트 기능을 구현하는 함수
+    var strike = 0
+    var ball = 0
+
+    for(i in 0..2){
+        var userGuessNumber = user[i].toString().toInt()
+        if(computer.contains(userGuessNumber) && userGuessNumber == computer[i]) strike++
+        else if(computer.contains(userGuessNumber) && userGuessNumber != computer[i]) ball++
+    }
+}
