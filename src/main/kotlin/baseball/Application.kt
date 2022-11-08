@@ -34,9 +34,10 @@ fun inputNumber(): String {
         "9" to 9
     )
     var onlyNum = mutableListOf<Int>()
+    var user = ""
 
     print("숫자를 입력해주세요 : ")
-    var user = readLine()
+    user = readLine()
 
     for (num in 0 until user.length) {
         if (numList.contains(user[num].toString())) {
@@ -108,9 +109,10 @@ fun startgame() { //게임 시작 문구 출력 (최초 한번만 실행)
 }
 
 fun askRegame(): Int { // 게임을 새로 시작할것인지 묻는 메서드
+    var restart = 0
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    var restart = readLine().toInt()
+    restart = readLine().toInt()
     if (restart != 1 && restart != 2){
         throw IllegalArgumentException("1,2 외 입력하였음")
     }
