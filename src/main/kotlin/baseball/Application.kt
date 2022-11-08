@@ -13,11 +13,24 @@ fun playBall() {
     while (true) {
         printInputUserNumber()
         val userNumber = inputUserNumber()
+        inputExceptionCheck(userNumber)
+
     }
 }
 
 fun inputUserNumber(): String = Console.readLine()
 
+
+fun inputExceptionCheck(userNumber: String) {
+    val numberList = userNumberToList(userNumber)
+    val sizeException = userNumberSizeCheck(numberList)
+    val overLapException = userNumberOverlapCheck(numberList)
+    val rangeException = userNumberRangeException(numberList)
+
+    if (sizeException || overLapException || rangeException) {
+        throw IllegalArgumentException()
+    }
+}
 
 fun setComputerNumber(): List<Int> {
     val computer = mutableListOf<Int>()
