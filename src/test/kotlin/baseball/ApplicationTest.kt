@@ -26,7 +26,7 @@ class ApplicationTest : NsTest() {
             {
                 run("246", "135", "2")
                 assertThat(output())
-                    .contains("낫싱", "3스트라이크","게임종료")
+                    .contains("낫싱", "3스트라이크","게임 종료")
             },
             1, 3, 5
         )

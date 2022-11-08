@@ -2,8 +2,6 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
-import org.mockito.internal.matchers.Null
-import java.util.*
 
 fun checkTrue(input : String) : Array<Int>{
     var inputNum = input.toIntOrNull()
@@ -48,6 +46,8 @@ fun countCorrect(computer:MutableList<Int>,input:Array<Int>):MutableList<Int>{
     var strike_ball = mutableListOf<Int>()
     strike_ball.add(0)
     strike_ball.add(0)
+    strike_ball[0] = 0
+    strike_ball[1] = 0
 
     for(i in 0 until 3){
        var same = checkCorrect(computer[i],input);
