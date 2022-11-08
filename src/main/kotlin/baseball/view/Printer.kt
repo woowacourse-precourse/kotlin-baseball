@@ -1,6 +1,14 @@
-package baseball
+package baseball.view
 
-import kotlin.system.exitProcess
+import baseball.utils.Constant.INPUT_MESSAGE
+import baseball.utils.Constant.QUIT_GAME_MESSAGE
+import baseball.utils.Constant.RESULT_BALL_AND_STRIKE_MESSAGE
+import baseball.utils.Constant.RESULT_BALL_MESSAGE
+import baseball.utils.Constant.RESULT_NOTHING_MESSAGE
+import baseball.utils.Constant.RESULT_STRIKE_MESSAGE
+import baseball.utils.Constant.RETRY_GAME_MESSAGE
+import baseball.utils.Constant.START_GAME_MESSAGE
+import baseball.utils.Constant.WIN_GAME_MESSAGE
 
 object Printer {
 
@@ -8,91 +16,61 @@ object Printer {
      * 콘솔창에 "숫자 야구 게임을 시작합니다." 출력
      */
     fun printGameStartPhrase() {
-        println(Phrase.startGame)
+        println(START_GAME_MESSAGE)
     }
 
     /**
      * 콘솔창에 "숫자를 입력해주세요 : " 출력
      */
     fun printGuidelinePhrase() {
-        print(Phrase.askPlayerToEnterNumber)
+        print(INPUT_MESSAGE)
     }
 
     /**
      * 콘솔창에 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 출력
      */
     fun printRetryPhrase() {
-        println(Phrase.askPlayerToRetryGame)
-    }
-
-    /**
-     * 콘솔창에 "예외가 발생되어 프로그램을 종료합니다." 출력
-     * 그리고 프로그램 종료
-     */
-    fun printExceptionPhraseAndQuitProcess() {
-        println(Phrase.exceptionIsThrownAndQuitProcess)
-        exitProcess(0)
+        println(RETRY_GAME_MESSAGE)
     }
 
     /**
      * 콘솔창에 "게임을 종료합니다." 출력
      * 그리고 프로그램 종료
      */
-    fun printExitGamePhraseAndQuitProcess() {
-        println(Phrase.exitGame)
-        exitProcess(0)
+    fun printExitGamePhrase() {
+        println(QUIT_GAME_MESSAGE)
     }
 
     /**
      * 콘솔창에 "낫싱" 출력
      */
     fun printNothingPhrase() {
-        println(Phrase.nothing)
+        println(RESULT_NOTHING_MESSAGE)
     }
 
     /**
      * 콘솔창에 "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력
      */
     fun printWinGamePhrase() {
-        println(Phrase.winGameAndExitGame)
+        println(WIN_GAME_MESSAGE)
     }
 
-    fun printGameResult(
-        resultType: GameResultType
-    ) {
-        when (resultType) {
-            is GameResultType.NormalResult -> printNormalResult(resultType.ball, resultType.strike)
-            is GameResultType.NothingResult -> printNothingPhrase()
-            is GameResultType.CorrectResult -> {
-                printCorrectResult()
-                askRetry()
-            }
-        }
-    }
-
-    private fun printNormalResult(
+    fun printNormalResult(
         ballNumber: Int,
         strikeNumber: Int
     ) {
+
         if (ballNumber != 0 && strikeNumber != 0) {
-            println("${ballNumber}볼 ${strikeNumber}스트라이크")
-        } else {
-            if (ballNumber == 0) {
-                println("${strikeNumber}스트라이크")
-            } else if (strikeNumber == 0) {
-                println("${ballNumber}볼")
-            }
+            println(RESULT_BALL_AND_STRIKE_MESSAGE.format(ballNumber, strikeNumber))
+        } else if (ballNumber == 0 && strikeNumber != 0) {
+            println(RESULT_STRIKE_MESSAGE.format(strikeNumber))
+        } else if (ballNumber != 0 && strikeNumber == 0) {
+            println(RESULT_BALL_MESSAGE.format(ballNumber))
         }
     }
 
-    private fun printCorrectResult() {
+    fun printCorrectResult() {
         println("3스트라이크")
-        printWinGamePhrase()
-    }
-
-    private fun askRetry() {
-        printRetryPhrase()
-        Validator(userInput = readln().trim(), ExceptionType.RetryException).validateUserInput()
     }
 
 }
