@@ -19,7 +19,7 @@ class ComputerNumbersTest{
         val inputList = listOf(2 to 0, 1 to 1, 3 to 1)
         val result = inputList.map { input ->
             computerNumbers.countStrikeAndBall(number = input.first, index = input.second) }
-        assertThat(result).isEqualTo(listOf(0 to 0, 0 to 1, 1 to 0))
+        assertThat(result).isEqualTo(listOf(BaseballResult(0, 0), BaseballResult(1, 0), BaseballResult(0, 1)))
     }
 
     @Test
@@ -28,6 +28,6 @@ class ComputerNumbersTest{
         val result = inputList.map { input ->
             computerNumbers.compareToUserInput(userInput = input)
         }
-        assertThat(result).isEqualTo(listOf(0 to 0, 3 to 0, 1 to 1))
+        assertThat(result).isEqualTo(listOf(BaseballResult(0, 0), BaseballResult(0, 3), BaseballResult(1, 1)))
     }
 }
