@@ -24,6 +24,15 @@ fun countBaseballScore(randomNumber: List<Int>, userNumber: String) {
     }
 
     ball -= strike
+
+    val message = when {
+        ball == 0 && strike == 0 -> "낫싱"
+        strike == 3 -> "${strike}스트라이크\n ${strike}개의 숫자를 모두 맞히셨습니다! 게임 종료"
+        ball > 0 || strike > 0 -> "${ball}볼 ${strike}스트라이크"
+        else -> ""
+    }
+
+    println(message)
 }
 
 
