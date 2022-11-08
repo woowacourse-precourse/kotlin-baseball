@@ -19,11 +19,21 @@ fun main() {
 //    TODO("프로그램 구현")
     println("숫자 야구 게임을 시작합니다.")
     //난수 생성
+    val answerNums = produceRandomNums().toList()
     //게임 결과 출력
+    getGameResult(answerNums)
+
+    while (decisionEndGame() == 1){
+        val secondAnswer = produceRandomNums().toList()
+        getGameResult(secondAnswer)
+    }
+
+}
+
+fun decisionEndGame() : Int? {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    val decisionEndGame = readLine()
-    //1 일시 다시, 난수 생성 후 게임 결과 출력
-    //2 프로그램 종료
+    val decisionInt = readLine()?.toInt()
+    return decisionInt
 }
 
 //1. 1에서 9까지의 서로 다른 임의의 수 3개를 무작위로 만들어내는 함수
@@ -38,7 +48,7 @@ fun produceRandomNums() : Set<Int> {
 }
 
 //3. 플레이어의 입력 값에 대한 결과를 출력한다
-fun getGameResult(playerNums : List<Int>, answerNums : List<Int>){
+fun getGameResult(answerNums : List<Int>){
 
     //2. 플레이어의 입력 값을 받는다
 
@@ -53,9 +63,9 @@ fun getGameResult(playerNums : List<Int>, answerNums : List<Int>){
         playerNumsInt.add(Character.getNumericValue(it))
     }
 
-    val firstPNum = playerNums[0]
-    val secondPNums = playerNums[1]
-    val thirdPNums = playerNums[2]
+    val firstPNum = playerNumsInt[0]
+    val secondPNums = playerNumsInt[1]
+    val thirdPNums = playerNumsInt[2]
 
     var strike = 0; var ball = 0;
 
