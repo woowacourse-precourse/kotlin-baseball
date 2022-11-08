@@ -100,24 +100,38 @@ fun isGameOver(strikeCnt: Int): Boolean{
 }
 
 fun checkError(inputNumber: String): Boolean{
-    for(i in inputNumber){
-        if(i.digitToIntOrNull() == null){
-            return false
-        }
-        if(i.digitToIntOrNull() == 0){
-            return false
-        }
-    }
-    if(inputNumber.length != 3){
-        return false
-    }
-    if(checkSame(inputNumber)){
+    if(findChar(inputNumber)
+            || findZero(inputNumber)
+            || findSame(inputNumber)
+            || !matchLength(inputNumber)){
         return false
     }
     return true
 }
 
-fun checkSame(inputNumber: String): Boolean {
+fun findChar(inputNumber: String): Boolean{
+    for(i in inputNumber) {
+        if (i.digitToIntOrNull() == null) {
+            return true
+        }
+    }
+    return false
+}
+
+fun findZero(inputNumber: String): Boolean{
+    for(i in inputNumber){
+        if(i.digitToIntOrNull() == 0){
+            return true
+        }
+    }
+    return false
+}
+
+fun matchLength(inputNumber: String): Boolean{
+    return inputNumber.length == 3
+}
+
+fun findSame(inputNumber: String): Boolean {
     if(inputNumber[0] == inputNumber[1]
             || inputNumber[0] == inputNumber[2]
             || inputNumber[1] == inputNumber[2]){
