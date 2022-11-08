@@ -25,6 +25,28 @@ fun calculatePoint(inputNumber:Int, computerNum: MutableList<Int>):Int {
     return result
 }
 
+fun printPointAndIsGameDone(point:Int):Boolean {
+    val strike:Int = point / 10
+    val ball:Int = point % 10
+    if(ball != 0) {
+        print("${ball}볼 ")
+    }
+    if(strike != 0) {
+        print("${strike}스트라이크")
+    }
+
+    if(ball == 0 && strike == 0) {
+        println("낫싱")
+    } else {
+        println()
+    }
+
+    if(strike == 3) {
+        return true
+    }
+    return false
+}
+
 fun pickComputerNumber():MutableList<Int> {
     val computerNum:MutableList<Int> = mutableListOf()
     while(computerNum.size < 3) {
