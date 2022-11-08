@@ -8,6 +8,7 @@ fun main() {
     printStartMessage()
     val computerNum = getComputerNum()
     val userNum = getUserNum()
+    print(getInningResult(computerNum, userNum))
 }
 
 fun printStartMessage() = "숫자 야구 게임을 시작합니다."
@@ -78,6 +79,51 @@ fun numToList(numbers: String): MutableList<Int> {
 fun getUserNum(): MutableList<Int> {
     val numbers = enterNum()
 
-    if (isSatisfyConditions(numbers)) return numToList(numbers)
-    else throw IllegalArgumentException("수를 잘못 입력하였습니다.")
+    return if (isSatisfyConditions(numbers)) numToList(numbers)
+        else throw IllegalArgumentException("수를 잘못 입력하였습니다.")
+}
+
+fun getStrikeCount(
+        computerNum: MutableList<Int>,
+        userNum: MutableList<Int>
+): Int {
+    var strikeCount = 0
+
+    for (i in userNum.indices)
+        if (computerNum[i] == userNum[i]) strikeCount++
+
+    return strikeCount
+}
+
+fun getBallCount(
+        computerNum: MutableList<Int>,
+        userNum: MutableList<Int>
+): Int{
+    var ballCount = 0
+
+    for (i in userNum.indices)
+        if (computerNum.contains(userNum[i])) ballCount++
+
+    return ballCount
+}
+
+fun getBallStrikeMessage(ballCount: Int, strikeCount: Int): String {
+    return if (ballCount > 0 && strikeCount > 0)
+        "${ballCount}볼 ${strikeCount}스트라이크"
+    else if (ballCount > 0)
+        "${ballCount}볼"
+    else if (strikeCount > 0)
+        "${strikeCount}스트라이크"
+    else "낫싱"
+}
+
+fun getInningResult(
+        computerNum: MutableList<Int>,
+        userNum: MutableList<Int>
+): String {
+    val strikeCount = getStrikeCount(computerNum, userNum)
+    // 볼 카운트에 스트라이크가 포함되므로, 중복되는 스트라이크 카운트를 한 번 빼준다.
+    val ballCount = getBallCount(computerNum, userNum) - strikeCount
+
+    return getBallStrikeMessage(ballCount, strikeCount)
 }
