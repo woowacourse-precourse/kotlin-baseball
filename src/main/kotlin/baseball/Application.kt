@@ -1,5 +1,8 @@
 package baseball
 
+import java.util.Random
+
 fun main() {
-    TODO("프로그램 구현")
+    val myNumbers = List(3) { Random().nextInt(9) }
+
 }
