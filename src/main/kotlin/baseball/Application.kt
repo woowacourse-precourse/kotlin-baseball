@@ -48,6 +48,38 @@ fun inputPlayer() : MutableList<Int> {
     return playerInt
 }
 
+//스트라이크 기능 함수
+fun strike(computer : MutableList<Int>, player : MutableList<Int>) : Int {
+    var count = 0
+
+    for (i in (0..2)){
+        if (computer[i] == player[i]){
+            count += 1
+        }
+    }
+    return count
+}
+
+//볼 기능 함수
+fun ball(computer : MutableList<Int>, player : MutableList<Int>) : Int {
+    var count = 0
+
+    for (i in (0..2)){
+        for (j in (0..2)){
+            count += ballcompare(i, j, computer, player)
+        }
+    }
+    return count
+}
+//ballcompare 함수
+fun ballcompare (i : Int, j : Int, computer: MutableList<Int>, player: MutableList<Int>) : Int {
+    var count = 0
+    if (computer[i] == player[j]){  //인덴트 문제 3
+        count = 1
+    }
+    return count
+}
+
 //사용자가 답을 맞추는 함수
 fun playerGuess(computer: MutableList<Int>) {
     var strike : Int
@@ -56,6 +88,10 @@ fun playerGuess(computer: MutableList<Int>) {
     while (true){
         //입력
         var player = inputPlayer()
+
+        //strike, ball 확인
+        strike = strike(computer, player)
+        ball = ball(computer, player) - strike
 
     }
 }
