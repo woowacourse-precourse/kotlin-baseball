@@ -3,12 +3,11 @@ package baseball
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions
+
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class InputTest : NsTest(){
-    val gl = GameLogic()
 
     @Test
     fun `중복된 숫자`() {
@@ -44,6 +43,14 @@ class InputTest : NsTest(){
                 runException("1234")
             }
         }
+    }
+
+    @Test
+    fun `게임 진행 관련 key값이 잘못 입력`(){
+        assertRandomNumberInRangeTest({
+                assertThrows<IllegalArgumentException> { runException("135", "0")}
+            },1, 3, 5
+        )
     }
     override fun runMain() {
         main()
