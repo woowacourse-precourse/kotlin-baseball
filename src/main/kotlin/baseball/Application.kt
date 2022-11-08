@@ -21,8 +21,8 @@ fun inputNumber(): String {
     2. 숫자 외 입력
     3. 길이가 3이 되지 않을때
     */
-    var num_list = mutableListOf<String>()
-    var num_map = mutableMapOf(
+    var numList = mutableListOf<String>()
+    var numMap = mutableMapOf(
         "1" to 1,
         "2" to 2,
         "3" to 3,
@@ -33,20 +33,20 @@ fun inputNumber(): String {
         "8" to 8,
         "9" to 9
     )
-    var onlynum = mutableListOf<Int>()
+    var onlyNum = mutableListOf<Int>()
 
     print("숫자를 입력해주세요 : ")
     var user = readLine()
 
     for (num in 0 until user.length) {
-        if (num_list.contains(user[num].toString())) {
+        if (numList.contains(user[num].toString())) {
             continue
         }
-        num_list.add(user[num].toString())
+        numList.add(user[num].toString())
     }
     for (Intcheck in 0 until user.length) {
-        if (num_map.containsKey(user[Intcheck].toString())) {
-            onlynum.add(user[Intcheck].digitToInt())
+        if (numMap.containsKey(user[Intcheck].toString())) {
+            onlyNum.add(user[Intcheck].digitToInt())
         }
     }
 
@@ -55,11 +55,11 @@ fun inputNumber(): String {
         throw IllegalArgumentException("숫자 3자리를 입력해야함")
     }
     //1. 같은 숫자 두번 이상 입력
-    else if (num_list.size < 3) {
+    else if (numList.size < 3) {
         throw IllegalArgumentException("같은 숫자 두번 이상 입력")
     }
     //2. 숫자 외 입력
-    else if (onlynum.size < 3) {
+    else if (onlyNum.size < 3) {
         throw IllegalArgumentException("숫자 외 입력하였음")
     }
 
@@ -72,19 +72,19 @@ fun ballOrStrike(randomNumber: String, inputNumber: String): String {
     var ballcnt = 0
     var strike = "스트라이크"
     var strikecnt = 0
-    var com_num = mutableListOf<Char>()
-    var my_num = mutableListOf<Char>()
+    var comNum = mutableListOf<Char>()
+    var myNum = mutableListOf<Char>()
 
     for (com in 0 until randomNumber.length) {
-        com_num.add(randomNumber[com])
+        comNum.add(randomNumber[com])
     }
     for (user in 0 until inputNumber.length) {
-        my_num.add(inputNumber[user])
+        myNum.add(inputNumber[user])
     }
     for (i in 0 until randomNumber.length) {
-        if (my_num.contains(com_num[i]) && my_num[i] == com_num[i]) {
+        if (myNum.contains(comNum[i]) && myNum[i] == comNum[i]) {
             strikecnt += 1
-        } else if (my_num.contains(com_num[i]) && my_num[i] != com_num[i]) {
+        } else if (myNum.contains(comNum[i]) && myNum[i] != comNum[i]) {
             ballcnt += 1
         }
     }
