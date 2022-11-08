@@ -18,23 +18,21 @@ fun main() {
 
     while (gameCoin) {
         compareNum()
-        printState(5)
-        gameCoin = startBoolean()
+        printState(gameReplay)
+        gameCoin = restartBoolean()
     }
 }
 
-fun startBoolean(): Boolean {
+
+fun restartBoolean(): Boolean {
     val input = readLine()?.toInt()
-    printState(5)
+    printState(gameReplay)
 
-    if (input == 1) {
-        return true
+    return when (input) {
+        1 -> true
+        2 -> false
+        else -> restartBoolean()
     }
-    if (input == 2) {
-        return false
-    }
-
-    return startBoolean()
 }
 
 fun compareNum() {
@@ -83,7 +81,7 @@ fun createUserNum(): List<Int> {
 
 
     val userNum = readLine()!!.map { it.digitToInt() }
-    gameSetException(userNum)
+    inputException(userNum)
     return userNum
 }
 
@@ -108,7 +106,7 @@ fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
     }
 }
 
-fun gameSetException(userNum: List<Int>) {
+fun inputException(userNum: List<Int>) {
 
     if (userNum.contains(0)) throw IllegalArgumentException("1 ~ 9 사이의 숫자만 입력가능합니다.")
     if (userNum.size != 3) throw IllegalArgumentException("1 ~ 9 사이의 숫자, 3개를 입력해야합니다.")
