@@ -75,6 +75,10 @@ fun inputUserNumbers(userNumbers: MutableList<Int>) {
         userNumbers.add(it.digitToInt())
     }.toMutableList()
 
+    inputUserNumberExceptionCheck(userNumbers)
+}
+
+fun inputUserNumberExceptionCheck(userNumbers: MutableList<Int>) {
     if (userNumbers.size != userNumbers.toSet().size || userNumbers.size != 3 || userNumbers.contains(0)) {
         throw IllegalArgumentException()
     }
