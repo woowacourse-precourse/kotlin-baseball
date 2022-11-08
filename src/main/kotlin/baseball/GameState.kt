@@ -1,5 +1,6 @@
 package baseball
 
-enum class GameState {
-    ONGOING_STATE, END_STATE
+enum class GameState(val stateNumber: String) {
+    ONGOING_STATE("1"),
+    END_STATE("2")
 }

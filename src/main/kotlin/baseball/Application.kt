@@ -1,5 +1,6 @@
 package baseball
 
+import baseball.GameState.END_STATE
 import baseball.GameState.ONGOING_STATE
 import baseball.InputState.ONGOING_INPUT
 import baseball.InputState.RESTART_INPUT
@@ -11,9 +12,9 @@ import java.util.regex.Pattern
 
 fun main() {
     printStartGamePhrase()
-    val gameState = ONGOING_STATE
+    var gameState = ONGOING_STATE
     val randomNumberList = getRandomNumberList(3)
-    val inputState = ONGOING_INPUT
+    var inputState = ONGOING_INPUT
 
     while (gameState == ONGOING_STATE) {
         lateinit var stepUserInput: String
@@ -28,6 +29,9 @@ fun main() {
                 printRestartInputPhrase()
                 val gameStateInput = readLine()
                 checkAppropriateRestartInput(gameStateInput)
+                gameState = getGameState(gameStateInput)
+                inputState = ONGOING_INPUT
+                continue
             }
         }
     }
@@ -75,4 +79,12 @@ private fun checkAppropriateRestartInput(userInput: String) {
     if (!checkInputLength(userInput, 1)) throw IllegalArgumentException("입력된 숫자의 길이가 적절치 않습니다.")
     if (!isInputTypeNumber(userInput)) throw IllegalArgumentException("입력이 숫자타입이 아닙니다")
     if (!checkValidateRestartInput(userInput)) throw IllegalArgumentException("적절하지 못한 숫자가 입력되었습니다")
+}
+
+private fun getGameState(userInput: String): GameState {
+    when (userInput) {
+        ONGOING_STATE.stateNumber -> return ONGOING_STATE
+        END_STATE.stateNumber -> return END_STATE
+    }
+    throw IllegalStateException("RESTART_INPUT 관련 예외처리에서 거르지 못한 예외가 있음")
 }
