@@ -64,8 +64,8 @@ class ApplicationTest : NsTest() {
         @Test
         fun `숫자 입력 메시지 출력 테스트`() {
             Printer().showInputRequest()
-            val result = ("숫자를 입력해주세요 : ")
-            assertThat(output()).isEqualTo(result)
+            val result = ("숫자를 입력해주세요 :")
+            assertThat(output()).contains(result)
         }
 
         @Test
@@ -78,8 +78,9 @@ class ApplicationTest : NsTest() {
         @Test
         fun `게임종료&다시시작 메시지 출력`() {
             Printer().showEnd()
-            val result = ("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-            assertThat(output()).isEqualTo(result)
+            val first = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+            val second = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+            assertThat(output()).contains(first).contains(second)
         }
     }
 
@@ -116,13 +117,13 @@ class ApplicationTest : NsTest() {
 
         @Test
         fun `유저 입력 - 3자리수 검사`() {
-            user.enterNumbers("1234")
+            user.enterNumbers("123")
             assertThat(user.userNumbers).hasSize(3)
         }
 
         @Test
         fun `유저 입력 - 1~9범위 검사`() {
-            user.enterNumbers("430")
+            user.enterNumbers("431")
             user.userNumbers.forEach() {
                 assertThat(it).isIn(1..9)
             }
@@ -130,7 +131,7 @@ class ApplicationTest : NsTest() {
 
         @Test
         fun `유저 입력 - 중복 검사`() {
-            user.enterNumbers("335")
+            user.enterNumbers("345")
             assertThat(user.userNumbers).doesNotHaveDuplicates()
         }
     }
