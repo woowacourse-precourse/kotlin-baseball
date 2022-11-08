@@ -82,6 +82,14 @@ class BaseballGameTest : NsTest() {
         Assertions.assertThat(GamePlay().compareUserNumAndComputerNum(computerList4, userList4)).isEqualTo(true)
     }
 
+    @Test
+    fun `스트라이크와 볼의 개수를 정확히 출력하는지 테스트`() {
+        Assertions.assertThat(PrintMessage().printResult(0, 0)).isEqualTo("낫싱")
+        Assertions.assertThat(PrintMessage().printResult(2, 1)).isEqualTo("2볼 1스트라이크")
+        Assertions.assertThat(PrintMessage().printResult(3, 0)).isEqualTo("3볼")
+        Assertions.assertThat(PrintMessage().printResult(0, 2)).isEqualTo("2스트라이크")
+    }
+
     override fun runMain() {
         main()
     }
