@@ -15,9 +15,11 @@ fun endOrReplay() {
     val input = readLine()
 
     if (input == "1") {
+        println(1)
         playBaseballGame()
     }
     else if (input == "2") {
+        println(2)
         println("숫자 야구 게임을 종료합니다.")
     }
 }
@@ -68,7 +70,9 @@ fun countBaseballScore(randomNumber: List<String>, userNumber: String): Boolean 
 
 
 fun getUserNumber(): String {
+    print("숫자를 입력해주세요 : ")
     val userNumber = readLine()
+    println(userNumber)
 
     if(isInvalidNumber(userNumber)) {
         throw IllegalArgumentException()
