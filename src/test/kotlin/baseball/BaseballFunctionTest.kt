@@ -9,7 +9,7 @@ import java.lang.IllegalArgumentException
 
 class BaseballFunctionTest {
     @Test
-    fun `randomStartNumber~randomEndNumber 까지의 각기 다른 무작위수 randomsLength개를 가진 mutableList 반환`() {
+    fun `randomStartNumber~randomEndNumber 까지의 각기 다른 무작위 수 randomsLength개를 가진 mutableList 반환`() {
         val randomNumbers = getRandomNumbers()
         assertAll("getRandomNumbers가 정확히 구현되어 있는지 검사",
             { assertThat(randomNumbers.distinct().size).isEqualTo(randomNumbers.size) },
@@ -18,7 +18,7 @@ class BaseballFunctionTest {
     }
 
     @Test
-    fun `inputStartNumber~inputEndNumber 까지의 각기 다른 무작위수 stringLengthToSpecify개를 바르게 입력시 mutableList 반환 틀리게 입력시 IllegalArgumentException를 반환`() {
+    fun `inputStartNumber~inputEndNumber 까지의 각기 다른 무작위 수 stringLengthToSpecify개를 바르게 입력 시 mutableList 반환 틀리게 입력시 IllegalArgumentException를 반환`() {
         Assertions.assertSimpleTest {
             assertThrows<IllegalArgumentException> { validateInputString("1234") }
             assertThrows<IllegalArgumentException> { validateInputString("1a4") }
@@ -53,10 +53,10 @@ class BaseballFunctionTest {
     @Test
     fun `게임에서 승리 하였을시 계속할지 그만둘지 선택하는 기능`() {
 
-        val stopExample1 = chooseToContinueOrStop("3스트라이크", "1")
-        val stopExample2 = chooseToContinueOrStop("3스트라이크", "2")
+        val stopExample1 = chooseToRestartOrStop("1")
+        val stopExample2 = chooseToRestartOrStop( "2")
 
-        assertAll("getBaseballResult가 정확히 구현되어 있는지 검사",
+        assertAll("chooseToRestartOrStop이 정확히 구현되어 있는지 검사",
             { assertThat(stopExample1).isEqualTo(false) },
             { assertThat(stopExample2).isEqualTo(true) })
     }
