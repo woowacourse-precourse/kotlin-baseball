@@ -13,6 +13,18 @@ class MyGameTest : NsTest() {
         }
     }
 
+
+    @Test
+    fun `사용자 입력 숫자가 3자리 수 인지 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("23") }
+        }
+    }
+
+
+
+
+
     override fun runMain() {
         main()
     }
