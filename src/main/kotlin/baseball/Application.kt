@@ -6,7 +6,6 @@ import kotlin.collections.List as List1
 
 fun main() {
     //TODO("프로그램 구현")
-
     println("숫자 야구 게임을 시작합니다.")
     var select = 1
     while (true)
@@ -31,7 +30,6 @@ fun main() {
 fun union(anum: MutableList<Int>): Int
 {
     var result = 0
-
     while(true) {
         println("숫자를 입력해주세요 : ")
         var unum = userselectnumber()
@@ -44,8 +42,6 @@ fun union(anum: MutableList<Int>): Int
                 println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
                 result = readLine()!!.toInt()
                 return result
-
-
             }
             else if (scount == 0 && bcount == 0)
             {
@@ -64,7 +60,6 @@ fun union(anum: MutableList<Int>): Int
                 println("${bcount}볼")
             }
     }
-
 }
 
 
@@ -89,7 +84,6 @@ fun userselectnumber(): MutableList<Int> {
         usernumber.add(readLine()!!.toInt())
         var userNumStr = usernumber.joinToString("")
         userNumStr = userNumStr.chunked(1).toString()
-
         var firstnum = userNumStr[1].code
         firstnum = Character.getNumericValue(firstnum)
         userNumStrInt.add(firstnum)
@@ -100,13 +94,11 @@ fun userselectnumber(): MutableList<Int> {
         thirdnum = Character.getNumericValue(thirdnum)
         userNumStrInt.add(thirdnum)
         println("")
-
         if (userNumStrInt[0] == userNumStrInt[1] || userNumStrInt[0] == userNumStrInt[2] || userNumStrInt[1] == userNumStrInt[2])
         {
 
             throw IllegalArgumentException()
         }
-
         if (userNumStr.length == 9)
         {
             break
@@ -115,9 +107,7 @@ fun userselectnumber(): MutableList<Int> {
         {
             throw IllegalArgumentException()
         }
-
     }
-
     return userNumStrInt
 }
 
