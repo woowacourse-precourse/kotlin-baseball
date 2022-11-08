@@ -13,13 +13,22 @@ class MyGameTest : NsTest() {
         }
     }
 
-
     @Test
     fun `사용자 입력 숫자가 3자리 수 인지 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("23") }
         }
     }
+
+
+    @Test
+    fun `사용자 입력 숫자가 3자리 수 중 중복된 숫자가 있는지 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("191") }
+        }
+    }
+
+
 
 
 
