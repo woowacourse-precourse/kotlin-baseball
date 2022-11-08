@@ -2,21 +2,14 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-const val gameStart = 0
-const val gameInProgress = 1
-const val gameScoreCount = 2
-const val gameScoreNothing = 3
-const val gameEnd = 4
-const val gameReplay = 5
-var ballCount = 0
-var strikeCount = 0
-
 
 fun main() {
     Baseball().game()
 }
 
 class Baseball {
+    var ballCount = 0
+    var strikeCount = 0
 
     fun game() {
         var gameCoin = true
@@ -119,5 +112,14 @@ class Baseball {
         if (userNum.contains(0)) throw IllegalArgumentException("1 ~ 9 사이의 숫자만 입력가능합니다.")
         if (userNum.size != 3) throw IllegalArgumentException("1 ~ 9 사이의 숫자, 3개를 입력해야합니다.")
         if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
+    }
+
+    companion object {
+        const val gameStart = 0
+        const val gameInProgress = 1
+        const val gameScoreCount = 2
+        const val gameScoreNothing = 3
+        const val gameEnd = 4
+        const val gameReplay = 5
     }
 }
