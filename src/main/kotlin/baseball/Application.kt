@@ -8,7 +8,11 @@ fun main() {
         printStartNotice()
         val answer = createAnswer()
 
-        simulateGame(answer)
+        val isContinue = simulateGame(answer)
+
+        if(!isContinue) {
+            break
+        }
     }
 }
 
@@ -28,11 +32,13 @@ fun createAnswer(): MutableList<Int> {
     return answer
 }
 
-fun simulateGame(answer: MutableList<Int>) {
+fun simulateGame(answer: MutableList<Int>): Boolean {
     while (true) {
         print("숫자를 입력해주세요 : ")
+
         val input = readLine()
         checkInput(input!!)
+
         val struck = getStrikeCount(answer, input)
         val balls = getBallCount(answer, input)
 
@@ -49,7 +55,17 @@ fun simulateGame(answer: MutableList<Int>) {
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
             )
         }
+
+        val isContinue = readLine()
+
+        if(readLine() == "2") {
+            return true
+        } else {
+            break
+        }
     }
+
+    return false
 }
 
 fun checkInput(input: String) {
