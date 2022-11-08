@@ -15,10 +15,10 @@
  - inputNum function - 숫자입력 함수
  - result function - 결과 함수
  - answer function - 정답 함수
- - gameProgress function - 게임진행 함수
 
 ### GameLogic class - 게임로직 클래스
  - gameStart function - 게임초기화 함수
  - comparison function - 비교 함수
  - userNumToList function - 유저넘버리스트 함수
  - userInput function - 유저입력 함수
+ - gameProgress function - 게임진행 함수
