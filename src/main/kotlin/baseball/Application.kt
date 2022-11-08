@@ -18,6 +18,18 @@ fun playBall() {
     }
 }
 
+fun strikeCount(computer: List<Int>, user: List<Int>): Int = computer.filterIndexed { idx, value ->
+    value == user[idx]
+}.size
+
+fun ballCount(computer: List<Int>, user: List<Int>): Int = computer.filterIndexed { idx, value ->
+    user.contains(value) && value != user[idx]
+}.size
+
+fun userNumberToList(number: String): List<Int> = number.map {
+    it.digitToInt()
+}
+
 fun inputUserNumber(): String = Console.readLine()
 
 
