@@ -32,3 +32,6 @@ private fun getRandomNumberList(listLength: Int): MutableList<Int> {
 private fun isInputTypeNumber(userInput: String): Boolean = Pattern.matches("^[0-9]+$", userInput)
 
 private fun checkInputLength(userInput: String, expectedLength: Int): Boolean = userInput.length == expectedLength
+
+private fun checkDuplicatePartInInput(userInput: String): Boolean = userInput.length == userInput.toSet().size
+
