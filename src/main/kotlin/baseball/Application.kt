@@ -50,7 +50,11 @@ class Baseball {
 
             if ((ballCount == 0) and (strikeCount == 0)) {
                 printState(gameScoreNothing)
-            } else printState(gameScoreCount)
+            } else if (ballCount == 0) {
+                printState(strikeCount)
+            } else if (strikeCount == 0) {
+                printState(ballCount)
+            } else printState(gameSumCount)
 
             if (strikeCount == 3) break
         }
@@ -73,9 +77,11 @@ class Baseball {
         when (state) {
             gameStart -> println("숫자 야구 게임을 시작합니다.")
             gameInProgress -> print("숫자를 입력해주세요 : ")
-            gameScoreCount -> println("${ballCount}볼 ${strikeCount}스트라이크")
+            gameBallCount -> println("${ballCount}볼")
+            gameStrikeCount -> println("${strikeCount}스트라이크")
+            gameSumCount -> println("${ballCount}볼 ${strikeCount}스트라이크")
             gameScoreNothing -> println("낫싱")
-            gameEnd -> println("게임종료")
+            gameEnd -> println("게임 종료")
             gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         }
     }
@@ -117,9 +123,11 @@ class Baseball {
     companion object {
         const val gameStart = 0
         const val gameInProgress = 1
-        const val gameScoreCount = 2
-        const val gameScoreNothing = 3
-        const val gameEnd = 4
-        const val gameReplay = 5
+        const val gameBallCount = 2
+        const val gameStrikeCount = 3
+        const val gameSumCount = 4
+        const val gameScoreNothing = 5
+        const val gameEnd = 6
+        const val gameReplay = 7
     }
 }
