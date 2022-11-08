@@ -2,6 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.util.Collections.max
@@ -22,7 +23,7 @@ class FunctionTest : NsTest() {
     @Test
     fun `문자열 입력값 리스트로 변환`() {
         val input = stringInputToList("123")
-        assertThat(input).containsExactly(1, 2, 3)
+        assertThat(input).isEqualTo(listOf<Int>(1, 2, 3))
     }
 
     @Test
@@ -70,24 +71,27 @@ class FunctionTest : NsTest() {
         assertThrows<IllegalArgumentException> { askQuitOrNot("12") }
     }
 
-    @Test
-    fun `입력값 길이가 3이 아닌 예외 테스트`() {
-        assertThrows<IllegalArgumentException> { checkException("98") }
-    }
+    @Nested
+    inner class InputExceptionTest() {
+        @Test
+        fun `입력값 길이가 3이 아닌 예외 테스트`() {
+            assertThrows<IllegalArgumentException> { checkException("98") }
+        }
 
-    @Test
-    fun `입력값이 숫자가 아닌 예외 테스트`() {
-        assertThrows<IllegalArgumentException> { checkException("1ab") }
-    }
+        @Test
+        fun `입력값이 숫자가 아닌 예외 테스트`() {
+            assertThrows<IllegalArgumentException> { checkException("1ab") }
+        }
 
-    @Test
-    fun `입력값에 0이 들어가는 예외 테스트`() {
-        assertThrows<IllegalArgumentException> { checkException("803") }
-    }
+        @Test
+        fun `입력값에 0이 들어가는 예외 테스트`() {
+            assertThrows<IllegalArgumentException> { checkException("803") }
+        }
 
-    @Test
-    fun `입력값에 중복값이 들어가는 예외 테스트`() {
-        assertThrows<IllegalArgumentException> { checkException("141") }
+        @Test
+        fun `입력값에 중복값이 들어가는 예외 테스트`() {
+            assertThrows<IllegalArgumentException> { checkException("141") }
+        }
     }
 
     override fun runMain() {
