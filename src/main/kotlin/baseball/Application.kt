@@ -43,7 +43,7 @@ fun checkStrike(answer: ArrayList<Int>, user: MutableList<Int>) {
             strikeCountNum += 1
 
     if (strikeCountNum > 0)
-        println("${strikeCountNum}+스트라이크")
+        println("${strikeCountNum}스트라이크")
 }
 
 fun checkBall(answer: ArrayList<Int>, user: MutableList<Int>) {
@@ -52,7 +52,7 @@ fun checkBall(answer: ArrayList<Int>, user: MutableList<Int>) {
         if (answer[i] != user[i] && user.contains(answer[i]))
             ballCountNum += 1
     if (ballCountNum > 0)
-        println("${ballCountNum}+볼")
+        println("${ballCountNum}볼")
 }
 
 fun checkNothing(answer: ArrayList<Int>, user: MutableList<Int>) {
