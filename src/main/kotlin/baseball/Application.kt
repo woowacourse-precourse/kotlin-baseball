@@ -13,6 +13,7 @@ fun main() {
         if(restartFlag == 1){
             computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
             restartFlag = 0
+            println(computerList)
         }
         else if(restartFlag == 2){
             break
@@ -130,9 +131,9 @@ fun findSame(inputNumber: String): Boolean {
 
 fun askRestart(): Int{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    val restart = Console.readLine().toInt()
-    if(restart == 1 || restart == 2){
-        return restart
+    val restart = Console.readLine()
+    if(restart == "1" || restart == "2"){
+        return restart.toInt()
     }
     throw IllegalArgumentException("잘못된 입력입니다.")
 }
