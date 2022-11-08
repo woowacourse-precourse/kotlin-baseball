@@ -9,7 +9,7 @@ fun main() {
 
 fun playGame() {
     val answer = getComputerNumber()
-    //println(answer)
+    println(answer)
     startGuessing(answer)
 }
 
@@ -22,11 +22,7 @@ fun getComputerNumber(): String {
             computer.add(randomNumber)
         }
     }
-    var result = ""
-    for (item in computer) {
-        result += item
-    }
-    return result
+    return computer.joinToString("")
 }
 
 fun startGuessing(answer: String) {
@@ -64,12 +60,9 @@ fun printHint(input: String, answer: String) {
     var strike = 0
     var ball = 0
 
-    for (i in answer.indices) {
-        when(compareEachDigit(input, i, answer)){
-            "strike" -> strike++
-            "ball" -> ball++
-            else -> continue
-        }
+    for(i in answer.indices){
+        if(input[i] == answer[i]) strike++
+        else if(input.contains(answer[i])) ball++
     }
 
     if (strike != 0 && ball != 0) {
@@ -79,14 +72,6 @@ fun printHint(input: String, answer: String) {
         else if (ball != 0) println("${ball}볼")
         else println("낫싱") // 같은 숫자가 아예 없으면 낫싱
     }
-}
-
-fun compareEachDigit(input: String, i: Int, answer: String): String {
-    for (j in input.indices) {
-        if (answer[i] == input[j] && i == j) return "strike"
-        else if(answer[i] == input[j]) return "ball"
-    }
-    return "nothing"
 }
 
 fun gameOver() {
