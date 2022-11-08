@@ -34,44 +34,38 @@ class Game {
         }
     }
 
-    fun splitUserInput(input: String) =
-        input.toList()
-            .map { it.digitToInt() }
+    fun splitUserInput(input: String) = input
+        .toList()
+        .map { it.digitToInt() }
 
     class Result(computers: List<Int>, users: List<Int>) {
         private val result = compare(computers, users)
 
         private fun compare(computers: List<Int>, users: List<Int>): IntArray {
             val ballStrikeCnt = intArrayOf(0, 0)
-            for (idx in users.indices) {
-                val userNum = users[idx]
+            for ((idx, userNum) in users.withIndex()) {
+                val comNum = computers[idx]
 
-                if (userNum == computers[idx]) {
-                    ballStrikeCnt[STRIKE_IDX] += 1
-                } else if (computers.contains(userNum)) {
-                    ballStrikeCnt[BALL_IDX] += 1
+                // 스트라이크
+                if (userNum == comNum) {
+                    result[STRIKE_IDX] += 1
+                    continue
+                }
+
+                // 볼
+                if (userNum in computers) {
+                    result[BALL_IDX] += 1
                 }
             }
             return ballStrikeCnt
         }
 
-        override fun toString(): String {
-            if (result[BALL_IDX] == 0 && result[STRIKE_IDX] == 0) {
-                return NOTHING
-            }
-
-            var str = ""
-            if (result[BALL_IDX] != 0) {
-                str += "${result[BALL_IDX]}$BALL"
-                if (result[STRIKE_IDX] != 0) {
-                    str += " "
-                }
-            }
-            if (result[STRIKE_IDX] != 0) {
-                str += "${result[STRIKE_IDX]}$STRIKE"
-            }
-
-            return str
+        override fun toString() = when {
+            result.all { it == 0 } -> NOTHING
+            result[BALL_IDX] != 0 && result[STRIKE_IDX] == 0 -> "${result[BALL_IDX]}$BALL"
+            result[BALL_IDX] == 0 && result[STRIKE_IDX] != 0 -> "${result[STRIKE_IDX]}$STRIKE"
+            result[BALL_IDX] != 0 && result[STRIKE_IDX] != 0 -> "${result[BALL_IDX]}$BALL ${result[STRIKE_IDX]}$STRIKE"
+            else -> throw RuntimeException("Result.toString: ${result[BALL_IDX]}$BALL ${result[STRIKE_IDX]}$STRIKE")
         }
 
         fun allMatched() = result[STRIKE_IDX] == 3
