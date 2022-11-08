@@ -40,6 +40,13 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `중복 숫자 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("122") }
+        }
+    }
+
+    @Test
     fun `문자 입력 예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("@LI") }
