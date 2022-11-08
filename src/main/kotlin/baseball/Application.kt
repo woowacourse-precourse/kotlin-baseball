@@ -19,7 +19,7 @@ fun baseballGame() {
     val computer = generateRandomNumber()
 
     while (true) {
-
+        val user = userInput()
     }
 }
 
@@ -32,4 +32,15 @@ fun generateRandomNumber(): List<Int> {
         }
     }
     return computer
+}
+
+private fun userInput(): List<Int> {
+    println("숫자를 입력해주세요 : ")
+    val input = Console.readLine()
+    val intArray = mutableListOf<Int>()
+
+    for (element in input) {
+        intArray.add(element.toString().toInt())
+    }
+    return intArray
 }
