@@ -8,7 +8,21 @@ fun main() {
     //play()
 
 }
+fun play(){
+    var playing = true
+    while(playing){
+        var Correct=false
+        var computerNumber = setComputerNumber()
 
+        while(!Correct){
+            var userNumber = UserNumber()
+            userNumber.setInputNumber()
+            Correct = checkResult(computerNumber,userNumber.userNumber)
+        }
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        playing = checkReplay()
+    }
+}
 fun checkReplay(): Boolean {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
     var replay = Console.readLine()
