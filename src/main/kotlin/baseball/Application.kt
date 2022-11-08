@@ -20,6 +20,7 @@ fun main() {
         for (eachNumber in userNum) checkStrikeOrBall(eachNumber)
         checkResult(strike, ball)
         if (userWin) askRestart()
+        else printResult(strike, ball)
     }
 }
 
@@ -78,4 +79,15 @@ fun askRestart() {
     else if (chooseStartOrEnd != 1 && chooseStartOrEnd != 2) {
         throw IllegalArgumentException("1(새로 시작), 2(종료)만 입력할 수 있습니다.")
     }
+}
+
+fun printResult(s: Int, b: Int): String {
+    lateinit var finalResult: String
+    if (s > 0 && b > 0) finalResult = "%d볼 %d스트라이크".format(b, s)
+    else if (s == 0 && b > 0) finalResult = "%d볼".format(b)
+    else if (s > 0 && b == 0) finalResult = "%d스트라이크".format(s)
+    else if (s == 0 && b == 0) finalResult = "낫싱"
+
+    println(finalResult)
+    return finalResult
 }
