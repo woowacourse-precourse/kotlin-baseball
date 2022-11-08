@@ -5,7 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.IllegalArgumentException
 
 fun main() {
-   TODO("프로그램 구현")
+    var startNewGame = true
+    println("숫자 야구 게임을 시작합니다.")
+
+    while (startNewGame) {
+        playGame()
+        startNewGame = startNewGame()
+    }
 }
 
 private fun playGame() {
