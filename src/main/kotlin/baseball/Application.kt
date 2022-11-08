@@ -32,23 +32,24 @@ fun simulateGame(answer: MutableList<Int>) {
     while (true) {
         val input = readLine()
         checkInput(input!!)
+        val struck = getStrikeCount(answer, input)
     }
 }
 
 fun checkInput(input: String) {
-    if(input.length != 3)  {
+    if (input.length != 3) {
         finishWithException()
     }
 
     val count = mutableSetOf<Int>()
-    for(c in input) {
-        if(!c.isDigit()) {
+    for (c in input) {
+        if (!c.isDigit()) {
             finishWithException()
             count.add(c - '0')
         }
     }
 
-    if(count.size != 3) {
+    if (count.size != 3) {
         finishWithException()
     }
 }
@@ -60,4 +61,16 @@ fun finishWithException() {
         e.printStackTrace()
         exitProcess(0)
     }
+}
+
+fun getStrikeCount(answer: MutableList<Int>, input: String): Int {
+    var count = 0
+
+    for(i in 0..2) {
+        if(answer[i] == input[i] - '0') {
+            count++
+        }
+    }
+
+    return count
 }
