@@ -1,3 +1,6 @@
 package baseball
 
-class HumanPlayer
+class HumanPlayer : Player {
+
+    private var humanSelectedNumber: String = ""
+}
