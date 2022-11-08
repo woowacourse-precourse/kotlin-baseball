@@ -152,15 +152,5 @@ while (computer.size() < 3) {
   시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
-    - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
+  - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
-
-## ✔ 구현기능 세분화
-1. 게임시작 기능
-2. 숫자를 생성하는 기능
-3. 사용자에게 입력을 받는 기능 
-4. 입력받은 숫자 중 볼의 개수 판단 : countBall → return Int
-5. 입력받은 숫자 중 스트라이크의 개수 판단 : countStrike → return Int
-6. 볼과 스트라이크의 결과를 출력하는 기능 : printResult
-7. 게임 종료를 판단하는 기능 : isGameOver → return Boolean
-8. 예외 처리(잘못된 값을 입력한 경우) : 자리수 2이하 4이상, 음수 입력, 문자입력,
