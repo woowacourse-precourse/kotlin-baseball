@@ -1,4 +1,4 @@
-package baseball
+package baseball.utils
 
 sealed class ResultType {
     data class NormalResult(
