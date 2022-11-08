@@ -11,38 +11,32 @@ import camp.nextstep.edu.missionutils.Randoms
 * 게임 내용 구현
 * */
 
-const val RESULT_NUM_RANGE = 3
+const val RESULT_NUM_LENGTH = 3
 
 fun validateRange() {
-    if (RESULT_NUM_RANGE !in 1..9) throw IllegalArgumentException()
+    if (RESULT_NUM_LENGTH !in 1..9) throw IllegalArgumentException()
+}
+
+fun validateNumInRange(input: String) {
+    if(input.length != RESULT_NUM_LENGTH) throw IllegalArgumentException()
 }
 
 fun getResultNum(): Int {
 
     validateRange()
-
-    val (start, end) = getResultRange()
-    val resultNum = Randoms.pickNumberInRange(start, end)
-
-    validateNumInRange(resultNum)
-
+    var resultNum = 0
+    val used = BooleanArray(10)
+    var len = RESULT_NUM_LENGTH
+    while(len>0){
+        val num = Randoms.pickNumberInRange(1,9)
+        if(used[num]) continue
+        resultNum = resultNum*10 + num
+        used[num] = true
+        len--
+    }
     return resultNum
 }
 
-fun getResultRange(): Pair<Int, Int> {
-    var start = 0
-    var end = 0
-    repeat(RESULT_NUM_RANGE) {
-        start = start * 10 + 1
-        end = end * 10 + 9
-    }
-    return Pair(start, end)
-}
-
-fun validateNumInRange(num: Int) {
-    val (start, end) = getResultRange()
-    if (num !in start..end) throw IllegalArgumentException()
-}
 
 fun String.mappingExitCode(): Boolean {
     if (this.isBlank()) throw IllegalArgumentException()
@@ -56,7 +50,7 @@ fun String.mappingExitCode(): Boolean {
 fun String.mappingInputNumber(): Int {
     return try {
         val ret = this.toInt()
-        validateNumInRange(ret)
+        validateNumInRange(this)
         ret
     } catch (e: Exception) {
         throw IllegalArgumentException()
@@ -108,7 +102,7 @@ fun play(resultNum: Int) {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine().mappingInputNumber()
         if (matchNumber(input, resultNum)) {
-            println("${RESULT_NUM_RANGE}개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println("${RESULT_NUM_LENGTH}개의 숫자를 모두 맞히셨습니다! 게임 종료")
             break
         }
     }
@@ -119,7 +113,6 @@ fun main() {
     var exit = false
     while (!exit) {
         val resultNum = getResultNum()
-        println(resultNum)
         play(resultNum)
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         exit = Console.readLine().mappingExitCode()
