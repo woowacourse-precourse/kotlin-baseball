@@ -54,18 +54,21 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
             )
-        }
 
-        val isContinue = readLine()
-
-        if (readLine() == "2") {
-            return true
-        } else {
             break
         }
     }
 
-    return false
+    val isContinue = readLine()
+
+    checkFinishInput(isContinue!!)
+    return readLine() == "1"
+}
+
+fun checkFinishInput(isContinue: String) {
+    if(!(isContinue == "1" || isContinue == "2")) {
+        finishWithException()
+    }
 }
 
 fun checkInput(input: String) {
