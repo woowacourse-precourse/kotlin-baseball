@@ -74,7 +74,9 @@ fun printState(state: Int) {
 }
 
 fun createUserNum(): List<Int> {
-    return readLine()!!.map { it.digitToInt() }
+    val userNum = readLine()!!.map { it.digitToInt() }
+    exceptionHandling(userNum)
+    return userNum
 }
 
 fun ballCount(userNum: List<Int>, comNum: List<Int>) {
@@ -96,4 +98,9 @@ fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
             ballCount--
         }
     }
+}
+
+fun exceptionHandling(userNum: List<Int>) {
+    if (userNum.size != 3) throw IllegalArgumentException("3개의 숫자만 입력해주십시오.")
+
 }
