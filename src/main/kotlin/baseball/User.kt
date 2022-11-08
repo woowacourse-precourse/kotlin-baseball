@@ -18,7 +18,7 @@ class User {
 
     private fun checkNumber(input: CharArray): Boolean {
         for (i in input) {
-            if (!i.isDigit())
+            if (!i.isDigit()||i=='0')
                 return false
         }
         return true
