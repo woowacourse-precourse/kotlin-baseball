@@ -8,7 +8,7 @@ class GamePlay {
         var isGameOver = false
 
         while (!isGameOver) {
-            val userNum = getNum()
+            val userNum = getUserNumAndReturnList()
             isGameOver = compareUserNumAndComputerNum(computerNum, userNum)
         }
 
@@ -52,7 +52,7 @@ class GamePlay {
 
     }
 
-    private fun getNum(): List<Int> {
+    fun getUserNumAndReturnList(): List<Int> {
         print("숫자를 입력해주세요 : ")
         val tempNum = readLine()!!
         var userNum: Int = 0
