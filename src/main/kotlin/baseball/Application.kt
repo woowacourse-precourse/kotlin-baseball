@@ -23,7 +23,7 @@ fun main() {
 
     while (gameState == ONGOING_STATE) {
         lateinit var stepUserInput: String
-        val stepScoreList = mutableListOf(0, 0)
+        var stepScoreList = mutableListOf(0, 0)
 
         when (inputState) {
             ONGOING_INPUT -> {
@@ -43,6 +43,8 @@ fun main() {
 
         processedPairByCalcIsNothing = calcIsNothing(stepUserInput, randomNumberString)
         if (processedPairByCalcIsNothing.second) continue
+
+        stepScoreList = calcStepScoreList(stepUserInput, randomNumberString, processedPairByCalcIsNothing.first)
     }
 }
 
@@ -111,4 +113,18 @@ private fun calcIsNothing(userInput: String, randomNumberString: String): Pair<M
     if (nothingState) println(NOTHING_PHRASE)
 
     return Pair(scoreCandidateList, nothingState)
+}
+
+private fun calcStepScoreList(
+    userInput: String,
+    randomNumberString: String,
+    scoreCandidateList: MutableList<Int>
+): MutableList<Int> {
+    val stepScoreList = mutableListOf(0, 0)
+    for (scoreCandidateIndex in scoreCandidateList) {
+        if (userInput[scoreCandidateIndex] == randomNumberString[scoreCandidateIndex]) stepScoreList[STRIKE] += 1
+        else stepScoreList[BALL] += 1
+    }
+
+    return stepScoreList
 }
