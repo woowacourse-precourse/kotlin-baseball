@@ -1,7 +1,9 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -33,6 +35,19 @@ class MyGameTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("13a") }
         }
+    }
+
+
+    @Test
+    fun `게임 1회 후 사용자 입력 2이후 게임 완전 종료 테스트`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("135", "246", "879", "2")
+                assertThat(output())
+                    .contains("낫싱", "3스트라이크", "게임 종료")
+            },
+            8, 7, 9
+        )
     }
 
 
