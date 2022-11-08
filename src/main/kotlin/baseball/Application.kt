@@ -10,6 +10,11 @@ fun main() {
 
     val inputNumberList = getInput()
     println(inputNumberList.toString())
+
+    val strikes = countStrike(computerList, inputNumberList)
+    val balls = countBall(computerList, inputNumberList) - strikes
+
+    printResult(strikes, balls)
 }
 
 fun startGame(){
@@ -63,13 +68,13 @@ fun printResult(strikeCnt: Int, ballCnt: Int){
         println("낫싱")
     }
     else if(strikeCnt == 0){
-        println(ballCnt.toString() + "볼")
+        println("${ballCnt}볼")
     }
     else if(ballCnt == 0){
-        println(strikeCnt.toString() + "스트라이크")
+        println("${strikeCnt}스트라이크")
     }
     else{
-        println(ballCnt.toString() + "볼 " + strikeCnt.toString() + "스트라이크")
+        println("${ballCnt}볼 ${strikeCnt}스트라이크")
     }
 }
 fun isGameOver(){}
