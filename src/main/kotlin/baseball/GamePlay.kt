@@ -66,18 +66,12 @@ class GamePlay {
     fun baseballGameEnd(): Boolean {
         PrintMessage().showEndMessage()
 
-        return when (readLine()!!.toInt()) {
-            1 -> {
-                true
-            }
+        val endNum = readLine()!!.toInt()
+        Exception().isValidEndNum(endNum)
 
-            2 -> {
-                false
-            }
+        if(endNum == 2)
+            return false
 
-            else -> {
-                throw IllegalArgumentException("Error")
-            }
-        }
+        return true
     }
 }
