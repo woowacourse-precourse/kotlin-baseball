@@ -10,9 +10,14 @@ fun main() {
 
 fun playBall() {
     val computerNumber = setComputerNumber()
+    while (true) {
+        printInputUserNumber()
+        val userNumber = inputUserNumber()
+    }
 }
 
-fun printPlayBallText() = println("숫자 야구 게임을 시작합니다.")
+fun inputUserNumber(): String = Console.readLine()
+
 
 fun setComputerNumber(): List<Int> {
     val computer = mutableListOf<Int>()
@@ -24,3 +29,7 @@ fun setComputerNumber(): List<Int> {
     }
     return computer
 }
+
+fun printPlayBallText() = println("숫자 야구 게임을 시작합니다.")
+
+fun printInputUserNumber() = print("숫자를 입력해 주세요 : ")
