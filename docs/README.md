@@ -12,9 +12,9 @@
       - [x] 입력 자리 수 : `3자리`
 
 - **컴퓨터 3자리 수** : `@datatype : String`
-  - [ ] 3자리수 생성
-  - [ ] 난수생성 `camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()`
-    - 서로 다른 수
+  - [x] 3자리수 생성
+  - [x] 난수생성 `camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()`
+  - [x] 서로 다른 수
 
 - **게임시작 문구 출력**
   - [x] `숫자 야구 게임을 시작합니다.`
@@ -37,7 +37,7 @@
       - [x] **if 2 입력**  : program termination
       - [x] **else** : `TODO` Exception occurred
   - **비종료조건**
-    - [ ] goto  ⌨️SEQ1.사용자입력
+    - [x] goto  ⌨️SEQ1.사용자입력
 
 
 ---

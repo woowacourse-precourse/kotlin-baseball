@@ -7,9 +7,19 @@ fun main() {
         // TODO()
         println("숫자 야구 게임을 시작합니다.")
         val userNum = getUserInput()
+        val computerNum = getComputerInput()
 
         if(getEndloopCondition()) break
     }
+}
+
+fun getComputerInput(): String {
+    var ComputeNum = ""
+    while(ComputeNum.length < 3){
+        val num = Randoms.pickNumberInRange(1, 9)
+        if(!ComputeNum.contains(num.toString())) ComputeNum.plus(num.toString())
+    }
+    return ComputeNum
 }
 
 fun isValidateInput(userNum: String): String {
