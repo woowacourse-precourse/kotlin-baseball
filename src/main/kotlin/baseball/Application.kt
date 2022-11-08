@@ -28,7 +28,7 @@ fun checkTrue(input : String) : Array<Int>{
 
 fun random():MutableList<Int>{
     val computer = mutableListOf<Int>()
-    while (computer.size < 3) {
+    while (computer.count() < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber)
@@ -36,6 +36,7 @@ fun random():MutableList<Int>{
     }
     return computer
 }
+
 fun checkCorrect(now : Int, input:Array<Int>):Int{
     for(i in 0 until 3){
         if(now == input[i]) return i
@@ -82,15 +83,10 @@ fun print(strike_ball: MutableList<Int>) : Int{
 fun input(Computer: MutableList<Int>){
     while(true) {
         val input = readLine()!!.toString()
-        var input_array : Array<Int> = arrayOf(1,2,3)
-        input_array = checkTrue(input)
-
+        var input_array : Array<Int> = checkTrue(input)
         val strike_ball = countCorrect(Computer, input_array)
-
         if (print(strike_ball) == 1) return
-
     }
-
 }
 
 //메인
