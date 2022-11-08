@@ -7,6 +7,11 @@ const val RESTART = 1
 const val EXIT = 2
 fun main() {
 
+    val computer = computerNumber()
+
+    gameStart()
+    gamePlay(computer)
+
 }
 
 fun gameStart() {
