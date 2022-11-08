@@ -21,9 +21,29 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `숫자 아닌 값 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("abcde") }
+        }
+    }
+
+    @Test
+    fun `999보다 큰 숫자 입력 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+    @Test
+    fun `111보다 작은 숫자 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("85") }
+        }
+    }
+
+    @Test
+    fun `중복되는 숫자 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("155") }
         }
     }
 
