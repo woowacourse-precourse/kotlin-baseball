@@ -53,15 +53,19 @@ fun getUserNumber(): String {
     print("숫자를 입력해주세요: ")
     val input = readLine()!!
 
-    // 3자리 수가 아니거나 1~9까지의 범위를 벗어나면 예외 발생
-    if (input.length == 3) {
-        for (item in input) {
-            if (item.digitToInt() !in 1..9)
-                throw IllegalArgumentException()
-        }
-    }else{
+    // 3자리 수가 아닌 경우
+    if (input.length != 3)
         throw IllegalArgumentException()
+
+    // 1~9까지의 범위를 벗어난 경우
+    for (item in input) {
+        if (item.digitToInt() !in 1..9)
+            throw IllegalArgumentException()
     }
+
+    // 중복된 수를 입력한 경우
+    if(input[0] == input[1] || input[0] == input[2] || input[1] == input[2])
+        throw IllegalArgumentException()
 
     return input
 }
@@ -70,6 +74,7 @@ fun getUserNumber(): String {
 fun printHint(input: String, answer: String) {
     var strike = 0
     var ball = 0
+
     for (i in answer.indices) {
         for (j in input.indices) {
             if (answer[i] == input[j]) {
