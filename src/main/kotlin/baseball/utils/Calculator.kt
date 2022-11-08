@@ -1,7 +1,7 @@
-package baseball.controller
+package baseball.utils
 
-import baseball.Constant.CNT_NUMBER
-import baseball.Constant.DEFAULT_NUMBER
+import baseball.utils.Constant.CNT_NUMBER
+import baseball.utils.Constant.DEFAULT_NUMBER
 import baseball.model.Computer
 
 class Calculator(
