@@ -29,7 +29,7 @@ class GamePlay {
         return computer
     }
 
-    private fun compareUserNumAndComputerNum(computer: List<Int>, user: List<Int>): Boolean {
+     fun compareUserNumAndComputerNum(computer: List<Int>, user: List<Int>): Boolean {
         var ballCount = 0
         var strikeCount = 0
 
@@ -44,7 +44,7 @@ class GamePlay {
         ballCount -= strikeCount
         println(computer)
 
-        PrintMessage().printResult(ballCount, strikeCount)
+        println(PrintMessage().printResult(ballCount, strikeCount))
 
         if (strikeCount == 3) {
             return true
