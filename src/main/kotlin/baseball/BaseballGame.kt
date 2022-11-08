@@ -17,15 +17,16 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
         BaseballString.QUIT.print()
     }
 
-    private fun processByResult(result: Int): Int {
-        return when (result) {
+    private fun processByResult(result: Int): Int =
+        when (result) {
             DIGIT_NUMBER.number -> {
                 BaseballString.SUCCESS.print()
                 decideRestartOrQuit()
             }
             else -> START_OR_RESTART.number
         }
-    }
+
+
 
     private fun decideRestartOrQuit(): Int {
         BaseballString.RESTART_OR_QUIT.print()

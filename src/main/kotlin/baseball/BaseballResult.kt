@@ -1,8 +1,8 @@
 package baseball
 
 data class BaseballResult(var ball: Int, var strike: Int) {
-    override fun toString(): String {
-        return when {
+    override fun toString(): String =
+        when {
             ball == 0 && strike == 0 ->
                 BaseballString.NOTHING.string
             ball != 0 && strike == 0 ->
@@ -12,7 +12,7 @@ data class BaseballResult(var ball: Int, var strike: Int) {
             else ->
                 "$ball${BaseballString.BALL.string} $strike${BaseballString.STRIKE.string}"
         }
-    }
+
 
     operator fun plus(baseballResult: BaseballResult) {
         ball += baseballResult.ball
