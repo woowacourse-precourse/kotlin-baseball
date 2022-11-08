@@ -19,6 +19,7 @@ fun main() {
 
         for (eachNumber in userNum) checkStrikeOrBall(eachNumber)
         checkResult(strike, ball)
+        if (userWin) askRestart()
     }
 }
 
@@ -67,4 +68,11 @@ fun checkResult(s: Int, b: Int) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         userWin = true
     }
+}
+
+fun askRestart() {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    chooseStartOrEnd = Console.readLine().toInt()
+
+    if (chooseStartOrEnd == 1) makeComputerChoose()
 }
