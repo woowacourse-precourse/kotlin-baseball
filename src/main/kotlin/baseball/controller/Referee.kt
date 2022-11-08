@@ -7,7 +7,6 @@ import baseball.model.Computer
 import baseball.model.Computer.generateRandomNumber
 import baseball.utils.Calculator
 import baseball.view.Player
-import baseball.view.Printer.printCorrectResult
 import baseball.view.Printer.printExitGamePhrase
 import baseball.view.Printer.printGameStartPhrase
 import baseball.view.Printer.printNormalResult
@@ -42,7 +41,6 @@ class Referee(
             is ResultType.NormalResult -> printNormalResult(gameResultType.ball, gameResultType.strike)
             is ResultType.NothingResult -> printNothingPhrase()
             is ResultType.CorrectResult -> {
-                printCorrectResult()
                 printWinGamePhrase()
                 when (player.inputExitCode()) {
                     "1" -> this.startGame()
