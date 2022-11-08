@@ -33,6 +33,21 @@ fun inputIllegal(inputnum : Array<Int?>) : Int
     if (inputnum[0]==inputnum[1] || inputnum[0]==inputnum[2] || inputnum[1]==inputnum[2])       throw IllegalArgumentException("중복된 값 입니다.")
     return(0);
 }
+fun checknum() : Pair<Int, Int>
+{
+    var ball = 0;
+    var strike = 0;
+    for (i in 0..3 step(1))
+        for (j in 0..3 step(1)) checknum02(i, j)
+    return Pair(ball,strike)
+}
+fun checknum02(i, j) : Pair<Int, Int>
+{
+    if (comAnswer[i] == inputnum[j]){
+        if (i == j) strike++;
+        else ball++;
+    }
+}
 fun make_answer(comAnswer: Array<Int>) 
 {
     val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
