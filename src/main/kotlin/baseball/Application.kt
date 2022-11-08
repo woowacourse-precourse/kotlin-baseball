@@ -2,6 +2,12 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val SIZE_LIMIT = 3
+const val MIN_VALUE = 1
+const val MAX_VALUE = 9
+const val RESTART = 1
+const val FINISH = 2
+
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     playGame()
@@ -16,8 +22,8 @@ fun playGame() {
 // 컴퓨터의 랜덤 숫자 생성
 fun getComputerNumber(): String {
     val computer = mutableListOf<Int>()
-    while (computer.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
+    while (computer.size < SIZE_LIMIT) {
+        val randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE)
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber)
         }
@@ -39,17 +45,18 @@ fun getUserNumber(): String {
     val input = readLine()!!
 
     // 3자리 수가 아닌 경우
-    if (input.length != 3)
+    if (input.length != SIZE_LIMIT)
         throw IllegalArgumentException()
 
     // 1~9까지의 범위를 벗어난 경우
     for (item in input) {
-        if (item.digitToInt() !in 1..9)
+        if (item.digitToInt() !in MIN_VALUE..MAX_VALUE)
             throw IllegalArgumentException()
     }
 
-    // 서로 다른 수가 아닌 경우
-    if(input[0] == input[1] || input[0] == input[2] || input[1] == input[2])
+    // 중복된 숫자가 있는 경우
+    val list = input.toList()
+    if(list.toSet().size != list.size)
         throw IllegalArgumentException()
 
     return input
@@ -59,7 +66,6 @@ fun getUserNumber(): String {
 fun printHint(input: String, answer: String) {
     var strike = 0
     var ball = 0
-
     for(i in answer.indices){
         if(input[i] == answer[i]) strike++
         else if(input.contains(answer[i])) ball++
@@ -79,8 +85,8 @@ fun gameOver() {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     when(readLine()!!.toInt()) {
-        1 -> playGame() // 새로운 랜덤 숫자 생성
-        2 -> return // 완전히 종료
+        RESTART -> playGame()
+        FINISH -> return
         else -> throw IllegalArgumentException()
     }
 }
