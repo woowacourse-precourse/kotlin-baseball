@@ -77,6 +77,12 @@ fun getInputLenError(playerNums: String){
     }
 }
 
+fun getInputDuplicateError(playerNums: List<Int>){
+    if(playerNums.distinct().size < 3){
+        throw IllegalArgumentException("서로 다른 수를 입력해주세요.")
+    }
+}
+
 //3. 플레이어의 입력 값에 대한 결과를 출력한다
 fun countStrikeBall(answerNums : List<Int>){
 
@@ -96,12 +102,14 @@ fun countStrikeBall(answerNums : List<Int>){
         throw IllegalArgumentException("숫자만 입력해주세요.")
     }
     if (playerNumsString != null) {
-        getInputIntegerError(playerNumsString)
+        getInputLenError(playerNumsString)
     }
 
     var playerNumsInt = listOf<Int>()
 
     playerNumsInt = playerNumsString?.let { stringToIntList(it) }!!
+
+    getInputDuplicateError(playerNumsInt)
 
     val firstPNum = playerNumsInt[0]
     val secondPNums = playerNumsInt[1]
