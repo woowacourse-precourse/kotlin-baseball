@@ -35,8 +35,7 @@ fun startGame(){
 }
 
 fun makeNumber(): List<Int>{
-    val computerList = Randoms.pickUniqueNumbersInRange(1, 9, 3)
-    return computerList
+    return Randoms.pickUniqueNumbersInRange(1, 9, 3)
 }
 
 fun getInput(): List<Int>{
