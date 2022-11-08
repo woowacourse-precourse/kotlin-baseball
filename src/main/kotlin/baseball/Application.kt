@@ -6,10 +6,7 @@ import java.lang.IllegalArgumentException
 
 fun main() {
     printStartMessage()
-    val computerNum = getComputerNumbers()
-    val userNum = getUserNumbers()
-    print(getInningResult(computerNum, userNum))
-
+    playNumBaseball()
 }
 
 fun printStartMessage() = "숫자 야구 게임을 시작합니다."
@@ -143,5 +140,20 @@ fun getInningResult(
     // 볼 카운트에 스트라이크가 포함되므로, 중복되는 스트라이크 카운트를 한 번 빼준다.
     val ballCount = getBallCount(computerNum, userNum) - strikeCount
 
+    print(getBallStrikeMessage(ballCount, strikeCount))
+
     return getBallStrikeMessage(ballCount, strikeCount)
+}
+
+fun playNumBaseball() {
+    val computerNum = getComputerNumbers()
+    var userNum = getUserNumbers()
+    var inningResult = getInningResult(computerNum, userNum)
+
+    while (inningResult != "3스트라이크"){
+        userNum = getUserNumbers()
+        inningResult = getInningResult(computerNum, userNum)
+        if (inningResult == "3스트라이크") break
+    }
+    print("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
