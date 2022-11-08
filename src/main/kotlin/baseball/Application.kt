@@ -1,5 +1,8 @@
 package baseball
 
+import baseball.process.BaseballGameProcessor
+
 fun main() {
-    TODO("프로그램 구현")
+    val baseballGameProcessor = BaseballGameProcessor(User(), Computer())
+    baseballGameProcessor.processBaseballGame()
 }
