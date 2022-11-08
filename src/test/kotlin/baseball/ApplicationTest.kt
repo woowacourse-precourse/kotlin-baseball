@@ -34,6 +34,12 @@ class ApplicationTest : NsTest() {
             .doesNotContain(0)
     }
 
+    @Test
+    fun `사용자가 입력한 숫자를 올바른 형태로 split 했는지`() {
+        assertThat(java.util.Arrays.toString(splitNum(123)))
+            .isEqualTo("[1, 2, 3]")
+    }
+
     override fun runMain() {
         main()
     }
