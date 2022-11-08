@@ -68,7 +68,7 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
     val isContinue = readLine()
 
     checkFinishInput(isContinue!!)
-    return readLine() == "1"
+    return isContinue == "1"
 }
 
 fun checkFinishInput(isContinue: String) {
