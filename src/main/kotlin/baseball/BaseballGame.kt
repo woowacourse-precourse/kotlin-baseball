@@ -23,6 +23,39 @@ class BaseballGame(private val humanPlayer: Player, private var computerPlayer: 
         humanPlayer.setSelectedNumber(selectedNumber)
     }
 
+    private fun judgeHumanSelectedNumber(): String {
+        val humanSelectedNumber = humanPlayer.getSelectedNumber()
+        val computerSelectedNumber = computerPlayer.getSelectedNumber()
+        var result = ""
+        var strikeCount = 0
+        var ballCount = 0
+
+        for (idx in 0 until 3) {
+            val humanSingleNumber = humanSelectedNumber[idx]
+            val computerSingleNumber = computerSelectedNumber[idx]
+            if (humanSingleNumber == computerSingleNumber) {
+                strikeCount++
+            }
+        }
+        if (strikeCount == 3) {
+            return CORRECT_ANSWER
+        }
+        for (humanIdx in 0 until 3) {
+            val singleNumber = humanSelectedNumber[humanIdx]
+            if ((computerSelectedNumber.contains(singleNumber.toString())) &&
+                (computerSelectedNumber.indexOf(singleNumber) != humanIdx)
+            ) {
+                ballCount++
+            }
+        }
+        result = makeBallResult(ballCount) + makeStrikeResult(strikeCount)
+        if (result.isEmpty()) {
+            result = "낫싱"
+        }
+        println(result)
+        return WRONG_ANSWER
+    }
+
     private fun makeStrikeResult(strikeCount: Int): String {
         if (strikeCount <= 0) {
             return ""
