@@ -25,7 +25,7 @@ fun playNumberBaseballGame(){
         println("숫자를 입력해주세요 : ")
         val userInput = Console.readLine()
         val userInputArray = makeNumToList(userInput.toInt())
-        if(!checkValidNumber(userInputArray))
+        if(!checkNumberValid(userInputArray))
             throw IllegalArgumentException()
         val (strike,ball) = countStrikeBall(answerNumberArray,userInputArray)
         val result = printStrikeBall(strike,ball)
@@ -46,7 +46,7 @@ fun makeAnswerNumber():List<Int>{
     return answerNumberArray
 }
 
-fun checkValidNumber(num: List<Int>):Boolean{
+fun checkNumberValid(num: List<Int>):Boolean{
 
     if(num.distinct().size != 3)
         return false
