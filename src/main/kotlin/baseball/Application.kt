@@ -13,16 +13,29 @@ var strikeCount = 0
 
 
 fun main() {
+    printState(0)
+
+    compareNum()
+    printState(5)
+}
+
+fun compareNum() {
 
     val comNum = createRandomNum()
-    val userNum = createUserNum()
+    println("컴퓨터 리스트 : $comNum")
 
+    while (true) {
+        printState(1)
+        val userNum = createUserNum()
 
-    printState(1)
-    println(createRandomNum())
-    println(createUserNum())
-    println(ballCount(userNum, comNum))
-    println(strikeCount(userNum, comNum))
+        ballCount(userNum, comNum)
+        strikeCount(userNum, comNum)
+        printState(2)
+
+        if (strikeCount == 3) break
+    }
+
+    printState(4)
 }
 
 fun createRandomNum(): MutableList<Int> {
@@ -39,7 +52,11 @@ fun createRandomNum(): MutableList<Int> {
 fun printState(state: Int) {
     when (state) {
         gameStart -> println("숫자 야구 게임을 시작합니다.")
-        gameInProgress -> println("숫자를 입력해주세요 : ")
+        gameInProgress -> print("숫자를 입력해주세요 : ")
+        gameScoreCount -> println("{$ballCount}볼 {$strikeCount}스트라이크")
+        gameScoreNothing -> println("낫싱")
+        gameEnd -> println("3개의 숫자를 모두 맞히셨습니다! 게임종료")
+        gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     }
 }
 
