@@ -9,7 +9,7 @@ fun main() {
 
 fun playGame() {
     val answer = getComputerNumber()
-    println(answer)
+    //println(answer)
     startGuessing(answer)
 }
 
@@ -38,17 +38,6 @@ fun startGuessing(answer: String) {
     gameOver()
 }
 
-fun gameOver() {
-    println("3스트라이크")
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    when(readLine()!!.toInt()) {
-        1 -> playGame() // 새로운 랜덤 숫자 생성
-        2 -> return // 완전히 종료
-        else -> throw IllegalArgumentException()
-    }
-}
-
 fun getUserNumber(): String {
     print("숫자를 입력해주세요: ")
     val input = readLine()!!
@@ -63,7 +52,7 @@ fun getUserNumber(): String {
             throw IllegalArgumentException()
     }
 
-    // 중복된 수를 입력한 경우
+    // 서로 다른 수가 아닌 경우
     if(input[0] == input[1] || input[0] == input[2] || input[1] == input[2])
         throw IllegalArgumentException()
 
@@ -98,4 +87,15 @@ fun compareEachDigit(input: String, i: Int, answer: String): String {
         else if(answer[i] == input[j]) return "ball"
     }
     return "nothing"
+}
+
+fun gameOver() {
+    println("3스트라이크")
+    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    when(readLine()!!.toInt()) {
+        1 -> playGame() // 새로운 랜덤 숫자 생성
+        2 -> return // 완전히 종료
+        else -> throw IllegalArgumentException()
+    }
 }

@@ -23,8 +23,17 @@ class ApplicationTest : NsTest() {
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
+            assertThrows<IllegalArgumentException> {
+                runException("1234") // 3자리수가 아닌 경우
+                runException("0")    // 1~9까지의 범위를 벗어난 경우
+                runException("222")  // 서로 다른 수가 아닌 경우
+            }
         }
+    }
+
+    @Test
+    fun `힌트 출력 테스트`() {
+
     }
 
     override fun runMain() {
