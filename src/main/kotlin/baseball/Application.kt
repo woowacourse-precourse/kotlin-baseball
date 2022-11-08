@@ -63,35 +63,25 @@ fun String.mappingInputNumber(): Int {
     }
 }
 
+fun matchNumber(input: Int, resultNum: Int): Boolean {
 
-fun getBallCount(input: Int, resultNum: Int): Int {
     var tempInput = input
     var tempResultNum = resultNum
     val numCnt = IntArray(10)
+    val strikeList = BooleanArray(10)
     while (tempInput > 0) {
         numCnt[tempInput % 10]++
         numCnt[tempResultNum % 10]++
+        if (tempInput % 10 == tempResultNum % 10) {
+            strikeList[tempInput % 10] = true
+        }
         tempInput /= 10
         tempResultNum /= 10
     }
-    return numCnt.count { it == 2 }
-}
 
-fun getStrikeCount(input: Int, resultNum: Int): Int {
-    var tempInput = input
-    var tempResultNum = resultNum
-    var strikeCnt = 0
-    while (tempInput > 0) {
-        if (tempInput % 10 == tempResultNum % 10) strikeCnt++
-        tempInput /= 10
-        tempResultNum /= 10
-    }
-    return strikeCnt
-}
+    val ballCnt = numCnt.count { it == 2 && !strikeList[it] }
+    val strikeCnt = strikeList.count { it }
 
-fun matchNumber(input: Int, resultNum: Int): Boolean {
-    println(getBallCount(input, resultNum))
-    println(getStrikeCount(input, resultNum))
     //todo
     return false
 }
