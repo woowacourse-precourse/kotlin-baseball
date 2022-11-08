@@ -10,11 +10,11 @@ class GamePrint {
         gl.gameStart()
         result()
     }
-    fun inputNum(){
+    private fun inputNum(){
         print("숫자를 입력해주세요 : ")
         gl.userInput()
     }
-    fun result(){
+    private fun result(){
         inputNum()
         val ballCnt = gl.comparison()["ball"]
         val strikeCnt = gl.comparison()["strike"]
