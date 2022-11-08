@@ -16,11 +16,9 @@ object BallStrikeProcessor {
         numberOfComputer.forEachIndexed { computerIndex, computerNum ->
             if (computerNum == numberOfPlayer[computerIndex]) { // Strike
                 ballStates[computerIndex] = BallState.STRIKE
-            }
-            else if (numberOfPlayer.contains(computerNum)) { // Ball
+            } else if (numberOfPlayer.contains(computerNum)) { // Ball
                 ballStates[computerIndex] = BallState.BALL
-            }
-            else {
+            } else {
                 ballStates[computerIndex] = BallState.OUT
             }
         }

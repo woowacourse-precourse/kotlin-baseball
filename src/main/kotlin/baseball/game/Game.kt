@@ -7,7 +7,7 @@ import baseball.game.service.GameService
 import baseball.player.Player
 import baseball.game.validator.InputValidator
 
-class Game (private val computer: Computer, private val player: Player): GameService {
+class Game(private val computer: Computer, private val player: Player) : GameService {
     private val inputValidator = InputValidator
     private val ballStrikeProcessor = BallStrikeProcessor
     private var gameStateCode = GAME_ACTIVE_CODE
@@ -76,5 +76,7 @@ class Game (private val computer: Computer, private val player: Player): GameSer
         return
     }
 
-    private fun printMessage(message: String) { print(message) }
+    private fun printMessage(message: String) {
+        print(message)
+    }
 }

@@ -16,7 +16,7 @@ object InputValidator {
     /** 사용자가 입력한 게임 종료 여부 값을 검증하는 함수 **/
     fun validateEndInput(input: String) {
         (input.isDigit() && input.isCorrectRange()).let { isCorrectInput ->
-            if(!isCorrectInput) throw java.lang.IllegalArgumentException()
+            if (!isCorrectInput) throw java.lang.IllegalArgumentException()
         }
     }
 
