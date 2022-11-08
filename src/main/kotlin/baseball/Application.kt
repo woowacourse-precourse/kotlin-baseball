@@ -9,7 +9,7 @@ const val FINISH = 2
 var randomNum = 0
 
 fun main() {
-    println("숫자 야구 게임을 시작합니다.")
+    printStartText()
     makeRandomNumber()
 
     while (true) {
@@ -19,6 +19,10 @@ fun main() {
             else -> throw IllegalArgumentException("1 또는 2를 입력하세요.")
         }
     }
+}
+
+private fun printStartText(){
+    println("숫자 야구 게임을 시작합니다.")
 }
 
 private fun makeRandomNumber() {
