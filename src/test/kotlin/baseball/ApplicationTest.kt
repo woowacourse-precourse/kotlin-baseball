@@ -28,6 +28,12 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `적은 숫자`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12") }
+        }
+    }
+    @Test
     fun `숫자가 아닐때`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("asd") }
