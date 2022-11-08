@@ -1,5 +1,8 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    val numberBaseballGame = NumberBaseballGame()
+    val computer = mutableListOf<Int>()
+
+    numberBaseballGame.start(computer)
 }
