@@ -59,7 +59,7 @@ fun validationUserNumber(userNumber: MutableList<Char>, userInput: String) {
 
     for (index in userInput.indices) {
         // 사용자의 입력이 숫자가 아닌 경우
-        if (userInput[index] < '0' || userInput[index] > '9') {
+        if (userInput[index] < '1' || userInput[index] > '9') {
             throw IllegalArgumentException("You can enter only a number")
         }
         // 사용자의 입력이 같은 숫자를 포함하는 경우
