@@ -51,9 +51,9 @@ private fun getUserNumbers(): List<Int> {
     return parseInputString(inputString)
 }
 
-private fun parseInputString(inputString: String?): List<Int> {
+private fun parseInputString(inputString: String): List<Int> {
     val numbers = mutableListOf<Int>()
-    inputString?.forEach {
+    inputString.forEach {
         if (it.hasIllegalCharacter()) {
             throw IllegalArgumentException(Message.ILLEGAL_CHARACTER.message)
         }
@@ -62,7 +62,7 @@ private fun parseInputString(inputString: String?): List<Int> {
             throw IllegalArgumentException(Message.ILLEGAL_DUPLICATED_NUMBERS.message)
         }
         numbers.add(number)
-    } ?: throw IllegalArgumentException(Message.ILLEGAL_INPUT_NULL.message)
+    }
 
     if (numbers.size != 3) {
         throw IllegalArgumentException(Message.ILLEGAL_SIZE.message)
@@ -135,7 +135,6 @@ enum class Message(val message: String) {
     REQUEST_FOR_INPUT("숫자를 입력해주세요 : "),
     ILLEGAL_CHARACTER("Character in InputString is out of range"),
     ILLEGAL_DUPLICATED_NUMBERS("Duplicated numbers"),
-    ILLEGAL_INPUT_NULL("InputString is null"),
     ILLEGAL_SIZE("Numbers.size not 3"),
     ILLEGAL_INTENT("Intent can be only 1 or 2"),
     GAME_FINISHED("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
