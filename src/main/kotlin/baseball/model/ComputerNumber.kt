@@ -5,10 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class ComputerNumber {
 
-
-
-
-    fun setComputerNumber() : String{
+    fun setComputerNumber(): String {
 
         var ComputerSet = HashSet<Int>()
 

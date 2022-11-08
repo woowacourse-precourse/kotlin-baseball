@@ -14,65 +14,52 @@ class BaseballController {
     var exit = false
 
     fun run() {
-        //게임 시작 문구
-        gameStartPhrases()
+
+        input.gameStartPhrases()
 
         //컴퓨터에게 랜덤값 받기
         answer = computerNumber.setComputerNumber()
 
-        while (!exit){
+        while (!exit) {
             resetResult()
 
             val inputNumber = input.InputAnswer()
             checkAnswer(answer, inputNumber)
             checkResult()
-
-            if(strike_count == 3){
-
-                var restartNum = input.InputRestart()
-
-                if(restartNum == "1"){
-                    answer = computerNumber.setComputerNumber()
-                    //println(answer)
-                }
-
-                if(restartNum == "2"){
-                    exit = true
-                }
-            }
+            restart()
         }
     }
-    fun gameStartPhrases() {
-        println("숫자 야구 게임을 시작합니다.")
-    }
 
-    fun resetResult(){
+    //스트라이크 , 볼 , 낫싱 카운트를 초기화
+    fun resetResult() {
         strike_count = 0
         ball_count = 0
         nothing_count = 0
     }
 
+    //입력에 대한 결과를 출력하는 함수
     fun checkResult() {
+        val sb = StringBuilder()
 
         if (strike_count == 3) {
             println("3스트라이크")
-            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println(input.endGame)
 
         }
         if (nothing_count == 3) {
-            println("낫싱")
+            println(input.nothing)
         }
 
-        val sb = StringBuilder()
         if (ball_count > 0) {
-            sb.append(ball_count).append("볼 ")
+            sb.append(ball_count).append(input.ball)
         }
-        if (strike_count > 0) {
-            sb.append(strike_count).append("스트라이크")
+        if (strike_count > 0 && strike_count != 3) {
+            sb.append(strike_count).append(input.strike)
         }
         println(sb)
     }
 
+    //입력에 대해 카운트를 계산하는 함수
     fun checkAnswer(answer: String, input: String) {
 
         for (i in 0 until answer.length) {
@@ -87,6 +74,21 @@ class BaseballController {
 
             if (answer.contains(input[i]) && (answer[i] == input[i])) {
                 strike_count++
+            }
+        }
+    }
+    //종료 후 재 시작 여부를 묻는 함수
+    fun restart() {
+        if (strike_count == 3) {
+
+            var restartNum = input.InputRestart()
+
+            if (restartNum == "1") {
+                answer = computerNumber.setComputerNumber()
+            }
+
+            if (restartNum == "2") {
+                exit = true
             }
         }
     }
