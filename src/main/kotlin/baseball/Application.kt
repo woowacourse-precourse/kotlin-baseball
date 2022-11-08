@@ -3,11 +3,33 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+const val RESTART = 1
+const val EXIT = 2
 fun main() {
 
 }
 
+fun gameOver() {
 
+    val result = Console.readLine().toInt()
+
+    println("result : $result")
+    when (result) {
+        EXIT -> {
+            println("게임 종료")
+        }
+
+        RESTART -> {
+            val computerNewInput = computerNumber()
+            gamePlay(computerNewInput)
+        }
+
+        else -> {
+            throw IllegalArgumentException("${RESTART}나 ${EXIT}를 입력해야 합니다.")
+        }
+    }
+
+}
 fun gamePlay(computer: MutableList<Int>) {
 
     while (true) {
@@ -18,6 +40,7 @@ fun gamePlay(computer: MutableList<Int>) {
         if (gameResult(user, computer) == 3) {
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
             println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            gameOver()
             break
         }
     }
