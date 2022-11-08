@@ -10,7 +10,7 @@ fun main() {
 
         val isContinue = simulateGame(answer)
 
-        if(!isContinue) {
+        if (!isContinue) {
             break
         }
     }
@@ -58,7 +58,7 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
 
         val isContinue = readLine()
 
-        if(readLine() == "2") {
+        if (readLine() == "2") {
             return true
         } else {
             break
@@ -77,8 +77,8 @@ fun checkInput(input: String) {
     for (c in input) {
         if (!c.isDigit()) {
             finishWithException()
-            count.add(c - '0')
         }
+        count.add(c - '0')
     }
 
     if (count.size != 3) {
