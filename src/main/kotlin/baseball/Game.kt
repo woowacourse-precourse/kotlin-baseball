@@ -48,13 +48,13 @@ class Game {
 
                 // 스트라이크
                 if (userNum == comNum) {
-                    result[STRIKE_IDX] += 1
+                    ballStrikeCnt[STRIKE_IDX] += 1
                     continue
                 }
 
                 // 볼
                 if (userNum in computers) {
-                    result[BALL_IDX] += 1
+                    ballStrikeCnt[BALL_IDX] += 1
                 }
             }
             return ballStrikeCnt
