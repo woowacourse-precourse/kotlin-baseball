@@ -44,7 +44,7 @@ fun getInput(): List<Int>{
     print("숫자를 입력해주세요 : ")
     val returnNumber = mutableListOf<Int>()
     val inputNumber = Console.readLine()
-    if(!checkError(inputNumber)){
+    if(checkError(inputNumber)){
         throw IllegalArgumentException("잘못된 입력입니다.")
     }
 
@@ -104,9 +104,9 @@ fun checkError(inputNumber: String): Boolean{
             || findZero(inputNumber)
             || findSame(inputNumber)
             || !matchLength(inputNumber)){
-        return false
+        return true
     }
-    return true
+    return false
 }
 
 fun findChar(inputNumber: String): Boolean{
