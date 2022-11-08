@@ -24,11 +24,17 @@ fun main() {
 }
 
 fun startBoolean(): Boolean {
-    return when (readLine()?.toInt()) {
-        1 -> true
-        2 -> false
-        else -> throw IllegalArgumentException("1, 2가 아닌 다른 수가 입력되었습니다.")
+    val input = readLine()?.toInt()
+    printState(5)
+
+    if (input == 1) {
+        return true
     }
+    if (input == 2) {
+        return false
+    }
+
+    return startBoolean()
 }
 
 fun compareNum() {
@@ -74,8 +80,10 @@ fun printState(state: Int) {
 }
 
 fun createUserNum(): List<Int> {
+
+
     val userNum = readLine()!!.map { it.digitToInt() }
-    exceptionHandling(userNum)
+    gameSetException(userNum)
     return userNum
 }
 
@@ -100,8 +108,9 @@ fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
     }
 }
 
-fun exceptionHandling(userNum: List<Int>) {
-    if (userNum.size != 3) throw IllegalArgumentException("3개의 숫자만 입력해주십시오.")
-    if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
+fun gameSetException(userNum: List<Int>) {
 
+    if (userNum.contains(0)) throw IllegalArgumentException("1 ~ 9 사이의 숫자만 입력가능합니다.")
+    if (userNum.size != 3) throw IllegalArgumentException("1 ~ 9 사이의 숫자, 3개를 입력해야합니다.")
+    if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
 }
