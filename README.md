@@ -157,32 +157,79 @@ while (computer.size() < 3) {
 
 ---
 
-## 기능 목록
+## 📝 기능 목록
 
-### <목표> 
+### <목표>
+
 함수를 분리하고, 각 함수별로 테스트를 작성하는 것에 익숙해지는 것을 목표로 두기
 
 ### <기능 목록 작성>
 
-1. 컴퓨터가 서로 다른 세개의 수 만든다.
-<br/> - camp.nextstep.edu.missionutils에서 제공하는 Randoms API 사용
-<br/>
-<br/>
+1. 컴퓨터가 서로 다른 세개의 수를 만든다.
+
+```kotlin
+fun make3RandomNumber(): MutableList<Int>
+```
+
+- camp.nextstep.edu.missionutils에서 제공하는 Randoms API 사용
+  <br/>
+  <br/>
+
 2. 사용자가 서로 다른 세개의 수를 입력한다.
-<br/> 2 - 1. 만약 숫자가 3개가 아니면 예외 던진다.
-<br/> 2 - 2. 만약 중복 되는 숫자가 있으면 예외 던진다.
-<br/> 2 - 3. 만약 숫자가 아니면 예외 던진다.
-<br/>
-<br/>
-3. 세개의 수에 대해서 스트라이크, 볼, 낫싱 등 결과를 출력한다.
-<br/> 3 - 1. 스트라이크 : 같은 수가 같은 자리에 있을 때
-<br/> 3 - 2. 볼 : 다른 자리에 있을 때 
-<br/> 3 - 3. 낫싱 : 같은 수가 전혀 없을 때
-<br/>
-<br/>
-4. 답을 맞힐때까지 2,3번 과정을 반복한다.
-<br/>
-<br/>
-5. 답을 맞히면(3스트라이크면) 종료 문구 출력 후 게임을 재시작 할건지 묻는다.
-<br/>1이 입력되면 1번부터 다시 반복하고, 2가 입력되면 프로그램을 종료한다. 
-<br/>다른 답변이 들어오면 예외를 던진다.
+
+- camp.nextstep.edu.missionutils에서 제공하는 Console API 사용
+
+```kotlin
+fun checkValidInput(input: String)
+```
+
+- 사용자가 입력한 수를 검사한다.
+  <br/>단, 다음 조건에서 IllegalArgumentException 예외를 던진다.
+    - 숫자가 3개가 아닌 경우
+    - 중복 되는 숫자가 있는 경우
+    - 숫자가 아닌 경우
+      <br/>
+      <br/>
+
+3. 사용자가 입력한 수와 컴퓨터의 수를 비교해서 볼, 스트라이크 개수를 계산한다.
+
+```kotlin
+fun countBallStrike(playerNumber: List<Int>, computerNumber: List<Int>): List<Int>
+```
+
+- 스트라이크 : 같은 수가 같은 자리에 있을 때
+- 볼 : 다른 자리에 있을 때
+- 낫싱 : 같은 수가 전혀 없을 때
+  <br/>
+  <br/>
+
+4. 볼, 스트라이크 개수에 따라 결과를 리턴한다.
+
+```kotlin
+fun getGameResult(playerNumber: List<Int>, computerNumber: List<Int>): String
+```
+
+   <br/>
+5. 답을 맞힐때까지(3스트라이크가 될 때까지) 2,3번 과정을 반복한다.
+   <br/>
+   <br/>
+6. 답을 맞히면(3스트라이크면) 게임을 중단한다.
+
+```kotlin
+fun checkCorrectAnswer(gameResult: String): Boolean
+```
+
+- 게임 결과가 정답 인지(3스트라이크인지) 검사 하여 정답일 경우 종료 문구 출력 후 true를 반환하여 while문을 중단한다.
+  <br/>
+  <br/>
+
+7. 사용자에게 재시작 입력을 받는다.
+
+```kotlin
+fun askRestart(): Boolean
+```
+
+- 재시작 입력 문구를 출력하고 사용자가 입력한 수를 검사한다.
+    - 1이 입력되면 true를 반환하여 1번 기능부터 while문을 다시 반복한다.
+    - 2가 입력되면 false를 반환하여 while문이 중단되고 프로그램을 종료한다.
+    - 그 외 답변이 들어오면 IllegalArgumentException 예외를 던진다.
