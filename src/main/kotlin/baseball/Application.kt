@@ -9,8 +9,8 @@ fun main() {
     countStrikeBall(answerNums)
 
     while (decisionEndGame() == 1){
-        val secondAnswer = produceRandomNums().toList()
-        countStrikeBall(secondAnswer)
+        val _answerNums = produceRandomNums().toList()
+        countStrikeBall(_answerNums)
     }
 
 }
