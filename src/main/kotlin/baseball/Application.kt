@@ -2,6 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+import java.lang.IllegalArgumentException
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
@@ -24,6 +25,8 @@ fun Retry(num : Int) : Boolean{
 fun k_Baseball(comp : MutableList<Int>) : Int{
     print("숫자를 입력해주세요 : ")
     var num : Int = readLine()!!.toInt()
+    if (num in 0 .. 999) num
+    else throw IllegalArgumentException("ERROR")
     val list = mutableListOf<Int>()
     var str = 0
     var ball = 0
