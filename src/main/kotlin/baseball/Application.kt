@@ -6,6 +6,19 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
 
 }
+
+fun userInputNumber(): MutableList<Int> {
+
+    val userInputList = MutableList(3) { 0 }
+    val userInputNumber = Console.readLine()
+
+    for (i in 0..2) {
+        userInputList[i] = userInputNumber[i].digitToInt()
+    }
+
+    return userInputList
+}
+
 fun computerNumber(): MutableList<Int> {
     // 1부터 9까지의 랜덤한 3가지 수 생성
     val computer = mutableListOf<Int>()
