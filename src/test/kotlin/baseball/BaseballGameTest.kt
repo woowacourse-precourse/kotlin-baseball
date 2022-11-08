@@ -24,6 +24,20 @@ class BaseballGameTest : NsTest() {
         }
     }
 
+    @Test
+    fun `유저의 입력의 각 자리수의 숫자가 중복이면 Exception 테스트`() {
+        camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
+            val inputList1 = listOf<Int>(1, 1, 5)
+            val inputList2 = listOf<Int>(4, 2, 2)
+            val inputList3 = listOf<Int>(8, 3, 8)
+            assertThrows<IllegalArgumentException> {
+                Exception().isDistinctNum(inputList1)
+                Exception().isDistinctNum(inputList2)
+                Exception().isDistinctNum(inputList3)
+            }
+        }
+    }
+    
     override fun runMain() {
         main()
     }
