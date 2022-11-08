@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
@@ -36,7 +37,7 @@ fun numberGenerator(): MutableList<Int> {
 
 fun playerInput(): String {
     print("숫자를 입력해주세요 : ")
-    return readLine()!!
+    return Console.readLine()!!
 }
 
 fun playerInputToList(playerInputString:String) : MutableList<Int>{
@@ -119,6 +120,6 @@ fun gameMenu(menu:Int):Boolean{
 
 fun menuInput(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    return readLine()!!.toIntOrNull() ?: throw IllegalArgumentException()
+    return Console.readLine()!!.toIntOrNull() ?: throw IllegalArgumentException()
 }
 
