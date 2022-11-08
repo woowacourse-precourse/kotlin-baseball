@@ -45,7 +45,7 @@ fun validateNumInRange(num: Int) {
 }
 
 fun String.mappingExitCode(): Boolean {
-    if(this.isBlank()) throw IllegalArgumentException()
+    if (this.isBlank()) throw IllegalArgumentException()
     return when (this[0]) {
         '1' -> false
         '2' -> true
@@ -53,23 +53,64 @@ fun String.mappingExitCode(): Boolean {
     }
 }
 
-fun String.mappingInputNumber(): Int{
-    return try{
+fun String.mappingInputNumber(): Int {
+    return try {
         val ret = this.toInt()
         validateNumInRange(ret)
         ret
-    }catch (e: Exception){
+    } catch (e: Exception) {
         throw IllegalArgumentException()
     }
 }
 
-fun play(resultNum: Int){
+fun matchResult(ballCnt: Int, strikeCnt: Int): Boolean{
+    when{
+        ballCnt == 0 && strikeCnt == 0 ->{
+            println("낫싱")
+        }
+        strikeCnt == 0 ->{
+            println("${ballCnt}볼")
+        }
+        ballCnt == 0 ->{
+            println("${strikeCnt}스트라이크")
+        }
+        else ->{
+            println("${ballCnt}볼 ${strikeCnt}스트라이크")
+        }
+    }
+    return strikeCnt == 3
+}
+
+fun matchNumber(input: Int, resultNum: Int): Boolean {
+
+    var tempInput = input
+    var tempResultNum = resultNum
+    val numCnt = IntArray(10)
+    val strikeList = BooleanArray(10)
+    while (tempInput > 0) {
+        numCnt[tempInput % 10]++
+        numCnt[tempResultNum % 10]++
+        if (tempInput % 10 == tempResultNum % 10) {
+            strikeList[tempInput % 10] = true
+        }
+        tempInput /= 10
+        tempResultNum /= 10
+    }
+    val ballCnt = numCnt.count { it == 2 && !strikeList[numCnt[it]] }
+    val strikeCnt = strikeList.count { it }
+    return matchResult(ballCnt, strikeCnt)
+}
+
+fun play(resultNum: Int) {
     println("숫자야구 게임을 시작합니다")
     val chance = 3
-    repeat(chance) {
+    for(i in 0 until chance) {
         print("숫자를 입력해주세요 : ")
         val input = Console.readLine().mappingInputNumber()
-        println("ok")
+        if (matchNumber(input, resultNum)) {
+            println("${RESULT_NUM_RANGE}개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            break
+        }
     }
     println("게임 종료")
 }
@@ -78,6 +119,7 @@ fun main() {
     var exit = false
     while (!exit) {
         val resultNum = getResultNum()
+        println(resultNum)
         play(resultNum)
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         exit = Console.readLine().mappingExitCode()
