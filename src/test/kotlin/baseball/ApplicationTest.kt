@@ -49,6 +49,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `게임 종료 이후 질문에서 잘못된 값을 입력했는지`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("5") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
