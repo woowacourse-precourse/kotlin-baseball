@@ -1,3 +1,6 @@
 package baseball
 
-interface Player
+interface Player {
+
+    fun getSelectedNumber(): String
+}
