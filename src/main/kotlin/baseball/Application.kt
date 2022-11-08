@@ -128,3 +128,5 @@ private fun calcStepScoreList(
 
     return stepScoreList
 }
+
+private fun checkThreeStrike(stepScoreList: List<Int>): Boolean = stepScoreList[STRIKE] == 3
