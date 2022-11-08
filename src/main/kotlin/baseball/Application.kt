@@ -47,6 +47,17 @@ fun printPointAndIsGameDone(point:Int):Boolean {
     return false
 }
 
+fun isFinishGame():Boolean {
+    val isFinish:Int = readLine()?.toInt() ?: 0
+    if(isFinish == 1) {
+        return false
+    }
+    if(isFinish == 2) {
+        return true
+    }
+    throw IllegalArgumentException()
+}
+
 fun pickComputerNumber():MutableList<Int> {
     val computerNum:MutableList<Int> = mutableListOf()
     while(computerNum.size < 3) {
