@@ -7,8 +7,8 @@ const val NUM_DIGITS = 3
 const val WORD_BALL = "볼"
 const val WORD_STRIKE = "스트라이크"
 const val WORD_NOTHING = "낫싱"
-const val WORD_RESTART_GAME = 1
-const val WORD_END_GAME = 2
+const val WORD_RESTART_GAME = "1"
+const val WORD_END_GAME = "2"
 
 const val STRING_START_GAME = "숫자 야구 게임을 시작합니다."
 const val STRING_INPUT_NUMBER = "숫자를 입력해주세요 : "
@@ -18,11 +18,10 @@ const val STRING_ASK_RESTART = "게임을 새로 시작하려면 ${WORD_RESTART_
 fun main() {
     var isRunningGame = true
 
-    // while(isRunningGame) {
+     while(isRunningGame) {
         playGame()
-
-        // 재시작 여부 묻는 코드 추가 예정
-    // }
+        isRunningGame = isGameGonnaRestart()
+     }
 }
 
 fun playGame() {
@@ -93,4 +92,12 @@ fun printResult(result: Pair<Int, Int>) {
         print(WORD_NOTHING)
     }
     println()
+}
+
+fun isGameGonnaRestart(): Boolean {
+    return when(readLine()) {
+        WORD_RESTART_GAME -> true
+        WORD_END_GAME -> false
+        else -> throw IllegalArgumentException("종료 선택 옵션에 없는 명령어를 입력하였습니다.")
+    }
 }
