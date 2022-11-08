@@ -18,3 +18,10 @@ fun cptChooseRandomNum():List<Int>{ // 컴퓨터가 서로 다른 랜덤한 수 
 
     return computer
 }
+
+fun userChooseNum():List<Char>{ // 사용자가 서로 다른 수 3개를 입력하게 하는 함수
+    print("숫자를 입력해주세요 : ")
+    val userGuessNum = readLine()!!.toList()
+
+    return userGuessNum
+}
