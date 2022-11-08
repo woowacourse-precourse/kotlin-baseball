@@ -30,6 +30,7 @@ fun playGame() {
     // 반복
     val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
     val resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
+    printResult(resultOfGame)
 }
 
 fun getResultOfGame(
@@ -70,4 +71,23 @@ fun makeRandomNumberList(): MutableList<Int> {
     }
 
     return randomNumberList
+}
+
+fun printResult(result: Pair<Int, Int>) {
+    if(result.first == NUM_DIGITS) {
+        println("${NUM_DIGITS}${WORD_STRIKE}")
+        println(STRING_WIN_GAME)
+        return
+    }
+
+    if(result.second != 0) {
+        print("${result.second}${WORD_BALL} ")
+    }
+    if(result.first != 0) {
+        print("${result.first}${WORD_STRIKE}")
+    }
+    if(result.first + result.second == 0) {
+        print(WORD_NOTHING)
+    }
+    println()
 }
