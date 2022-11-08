@@ -50,6 +50,11 @@ fun main() {
         stepScoreList = calcStepScoreList(stepUserInput, randomNumberString, processedPairByCalcIsNothing.first)
 
         printScore(stepScoreList)
+
+        if (checkThreeStrike(stepScoreList)) {
+            printThreeStrikePhrase()
+            inputState = RESTART_INPUT
+        }
     }
 }
 
