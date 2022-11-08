@@ -75,13 +75,18 @@ fun inputUserNumbers(userNumbers: MutableList<Int>) {
         userNumbers.add(it.digitToInt())
     }.toMutableList()
 
-    inputUserNumberExceptionCheck(userNumbers)
-}
+    val exception = inputUserNumberExceptionCheck(userNumbers)
 
-fun inputUserNumberExceptionCheck(userNumbers: MutableList<Int>) {
-    if (userNumbers.size != userNumbers.toSet().size || userNumbers.size != 3 || userNumbers.contains(0)) {
+    if (exception) {
         throw IllegalArgumentException()
     }
+}
+
+fun inputUserNumberExceptionCheck(userNumbers: MutableList<Int>): Boolean {
+    if (userNumbers.size != userNumbers.toSet().size || userNumbers.size != 3 || userNumbers.contains(0)) {
+        return true
+    }
+    return false
 }
 
 fun inputComputerNumbers(numbers: MutableList<Int>) {
