@@ -12,7 +12,18 @@ class BaseballGameTest : NsTest() {
         val result = listOf<Int>(1, 2, 3)
         Assertions.assertThat(GamePlay().getUserNumAndReturnList(input)).isEqualTo(result)
     }
-    
+
+    @Test
+    fun `유저의 입력의 각 자리수가 1~9의 숫자가 아니면 Exception 테스트`() {
+        camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Exception().isInValidNum("103")
+                Exception().isInValidNum("14a")
+                Exception().isInValidNum("1")
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
