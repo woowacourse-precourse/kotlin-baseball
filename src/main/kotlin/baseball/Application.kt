@@ -8,8 +8,8 @@ fun main() {
 }
 
 class Baseball {
-    var ballCount = 0
-    var strikeCount = 0
+    private var ballCount = 0
+    private var strikeCount = 0
 
     fun game() {
         var gameCoin = true
