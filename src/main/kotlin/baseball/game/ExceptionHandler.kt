@@ -13,7 +13,10 @@ object ExceptionHandler {
         return number
     }
 
-    fun throwFinishCode(code: String): Nothing {
-        throw IllegalArgumentException("code=$code, 코드를 잘못 입력하셨습니다.")
+    fun isRestartCode(code: String): Boolean {
+        if (code != Message.RESTART_CODE && code != Message.FINISH_CODE)
+            throw IllegalArgumentException("code=$code, 코드를 잘못 입력하셨습니다.")
+
+        return code == Message.RESTART_CODE
     }
 }
