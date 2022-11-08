@@ -23,6 +23,7 @@ class ExceptionCheck {
     }
 
     fun checkOverlap(input: String) {
+        inputList.clear()
 
         for (i in 0 until input.length){
             inputList.add(input[i].toString())
@@ -32,6 +33,13 @@ class ExceptionCheck {
             throw IllegalArgumentException("중복 숫자 입력 오류 발생")
         }
 
+    }
+
+    fun checkRestart(input: String) {
+
+        if(input != "1" && input != "2"){
+            throw IllegalArgumentException("재시작은 1 , 종료는 2를 입력해주세요")
+        }
 
     }
 }

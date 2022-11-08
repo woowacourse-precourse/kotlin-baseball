@@ -16,7 +16,7 @@ class BaseBallTest {
     fun 컴퓨터_숫자_검증() {
 
         println(computernumber.setComputerNumber())
-        assertEquals(computernumber.setComputerNumber(), 3)
+        assertEquals(computernumber.setComputerNumber().length, 3)
     }
 
     @Test

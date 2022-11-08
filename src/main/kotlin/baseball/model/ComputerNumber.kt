@@ -9,7 +9,10 @@ class ComputerNumber {
 
 
     fun setComputerNumber() : String{
+
         var ComputerSet = HashSet<Int>()
+
+        ComputerSet.clear()
 
         while (ComputerSet.size < 3) {
 
