@@ -9,6 +9,25 @@ fun main() {
 
 }
 
+fun checkResult(computer : List<Int>, user : List<Int>): Boolean {
+    if(checkNothing(computer,user)){
+        println("낫싱")
+        return false
+    }
+    var strike = checkStrike(computer, user)
+    var ball = checkBall(computer, user)-strike
+    if(strike==3){
+        println("${strike}스트라이크")
+        return true
+    }
+    if(strike==0){
+        println("${ball}볼")
+        return false
+    }
+    println("${ball}볼 ${strike}스트라이크")
+    return false
+}
+
 fun checkStrike(computer : List<Int>, user : List<Int>): Int {
     var strike = 0
     for(i in 0..2){
