@@ -4,6 +4,7 @@ class Game  {
     companion object {
         var count: Int = 0
         val message = ConsoleMessage()
+        val userNumber = UserNumber()
     }
 
     fun playBaseball(): Boolean {
@@ -11,18 +12,17 @@ class Game  {
         val endTheGame: Boolean
         startBaseball()
         val computerRandomNumber = ComputerNumber().makeComputerBaseball()
-        val userNumber = UserNumber()
         while (true) {
+            message.inputMessage()
             success = inputJudge(userNumber.inputNum(), computerRandomNumber)
             if (success) {
-                endTheGame = restartOrEndBaseball(userNumber.inputNum())
+                endTheGame = restartOrEndBaseball()
                 return endTheGame
             }
         }
     }
 
     private fun inputJudge(inputNumber: String, computerRandomNumber: List<Int>): Boolean {
-        message.inputMessage()
         if (InputValidation(inputNumber).inputNumberExceptionCheck()) {
             val inputNumberToList = inputNumber.map { it.digitToInt() }.toList()
             val strikeOrBall = Judgement(inputNumberToList, computerRandomNumber).judgeTheBall()
@@ -56,8 +56,9 @@ class Game  {
         }
     }
 
-    fun restartOrEndBaseball(inputNumber: String): Boolean {
+    fun restartOrEndBaseball(): Boolean {
         message.successRestartMessage()
+        val inputNumber= userNumber.inputNum()
         if (InputValidation(inputNumber).restartNumberExceptionCheck()) {
             if (inputNumber.toInt() == 1) {
                 count += 1
