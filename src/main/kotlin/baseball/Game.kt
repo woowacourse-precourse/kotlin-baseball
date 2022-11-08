@@ -1,14 +1,16 @@
 package baseball
 
+import baseball.Message.*
 import camp.nextstep.edu.missionutils.Randoms
 
 fun gameStart() {
     val computerNumber = createComputerNumber()
-    while (true) {
-        print(Message.REQUEST_INPUT_NUMBER.message)
+    do {
+        print(REQUEST_INPUT_NUMBER.message)
         val answer = enteredAnswer()
         println(createHint(computerNumber, answer))
-    }
+    } while (computerNumber != answer)
+    println(FINISH.message)
 }
 
 fun createComputerNumber(): String {

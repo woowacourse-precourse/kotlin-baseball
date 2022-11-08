@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.test.Assertions.*
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -78,6 +80,7 @@ internal class `Game 파일의` {
         inner class `볼의 개수는 1 이상이고 스트라이크의 개수가 0이라면` {
             private val computerNumber = "123"
             private val answer = "234"
+
             @Test
             fun `볼의 개수만 알려주는 힌트를 반환한다`() {
                 val hint = createHint(computerNumber, answer)
@@ -90,6 +93,7 @@ internal class `Game 파일의` {
         inner class `볼의 개수는 0이고 스트라이크의 개수가 1 이상이라면` {
             private val computerNumber = "123"
             private val answer = "145"
+
             @Test
             fun `스트라이크의 개수만 알려주는 힌트를 반환한다`() {
                 val hint = createHint(computerNumber, answer)
@@ -109,6 +113,28 @@ internal class `Game 파일의` {
 
                 assertThat(hint).contains("볼", "스트라이크")
             }
+        }
+    }
+
+    @Nested
+    inner class `gameStart 메소드는` : NsTest() {
+
+        @Nested
+        inner class `사용자가 컴퓨터의 숫자를 맞추면` {
+
+            @Test
+            fun `게임 종료 문구를 출력 후 게임이 끝난다`() {
+                assertRandomNumberInRangeTest(
+                    {
+                        run("123")
+                        assertThat(output()).contains(Message.FINISH.message)
+                    }, 1, 2, 3
+                )
+            }
+        }
+
+        override fun runMain() {
+            gameStart()
         }
     }
 }
