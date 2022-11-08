@@ -12,6 +12,22 @@ fun pickComputerNumber():MutableList<Int> {
     return computerNum
 }
 
+fun playGame(computerNum: MutableList<Int>) {
+    while(true) {
+        print("숫자를 입력해주세요 : ")
+        val inputNumber:Int = readLine()?.toInt()?:-1
+        if(inputNumber == -1) {
+            throw IllegalArgumentException()
+        }
+        if(inputNumber <= 100 || inputNumber >= 1000) {
+            throw IllegalArgumentException()
+        }
+        val point:Int = calculatePoint(inputNumber, computerNum)
+        if(printPointAndIsGameDone(point)) {
+            return
+        }
+    }
+}
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
