@@ -8,5 +8,5 @@ class StartGame {
 }
 
 private fun showStartMessage() {
-    println("숫자 야구 게임을 시작합니다.")
+    println(PrintText.START_MESSAGE)
 }
