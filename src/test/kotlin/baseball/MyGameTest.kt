@@ -51,6 +51,18 @@ class MyGameTest : NsTest() {
     }
 
 
+    @Test
+    fun `게임 1회 후 사용자 입력 1이후, 게임 재개 테스트`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("135", "246", "879", "1", "312", "123", "2")
+                assertThat(output())
+                    .contains("낫싱", "3스트라이크", "3볼", "게임 종료")
+            },
+            8, 7, 9, 1, 2, 3
+        )
+    }
+
 
 
 
