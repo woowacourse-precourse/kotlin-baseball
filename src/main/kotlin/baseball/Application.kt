@@ -7,6 +7,23 @@ fun main() {
 
 }
 
+
+fun gamePlay(computer: MutableList<Int>) {
+
+    while (true) {
+
+        val user = userInputNumber()
+        println("숫자를 입력해주세요 : $user")
+
+        if (gameResult(user, computer) == 3) {
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+            println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+            break
+        }
+    }
+
+}
+
 fun gameResult(userInput: MutableList<Int>, computerInput: MutableList<Int>): Int {
 
     var strikeCount = 0
