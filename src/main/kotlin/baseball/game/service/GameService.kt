@@ -1,4 +1,4 @@
-package baseball.game
+package baseball.game.service
 
 interface GameService {
     fun start()

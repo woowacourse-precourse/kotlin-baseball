@@ -6,7 +6,6 @@ const val SUCCESS_GAME_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다 !
 const val CONTINUE_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n"
 const val END_GAME_MESSAGE = "게임을 완전히 종료합니다.\n"
 
-
 const val INPUT_MESSAGE = "숫자를 입력해주세요 : "
 
 const val OUTPUT_BALL_MESSAGE = "%d볼\n"

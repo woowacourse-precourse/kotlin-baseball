@@ -3,6 +3,7 @@ package baseball.game
 import baseball.common.MAX_NUMBER_SIZE
 import baseball.computer.Computer
 import baseball.game.processor.BallStrikeProcessor
+import baseball.game.service.GameService
 import baseball.player.Player
 import baseball.game.validator.InputValidator
 
@@ -20,6 +21,7 @@ class Game (
         do {
             printMessage(message = INPUT_MESSAGE)
 
+            // TODO 함수로 빼기, 밑에 중복 코드있음
             // 사용자가 숫자 입력
             val numberOfPlayer = player.enterNumber()
             inputValidator.validateGameInput(input = numberOfPlayer)

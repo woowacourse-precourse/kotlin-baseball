@@ -20,6 +20,7 @@ class InputValidator {
         }
     }
 
+    // TODO string에 대한 확장함수로 빼기
     private fun isDigit(input: String): Boolean =
         input.all { eachChar -> eachChar.isDigit() && eachChar.code != 48 }
 
