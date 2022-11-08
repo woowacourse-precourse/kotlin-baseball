@@ -24,7 +24,7 @@ fun playGame() {
     while (game.strike != THREE_STRIKE) {
         game.resetScore()
         val userNumber = InputView.inputExpectingNumber()
-        game.compare(userNumber)
+        game.compareNumbers(userNumber)
         OutputView.printResult(game)
     }
 }

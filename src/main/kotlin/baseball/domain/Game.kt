@@ -19,7 +19,7 @@ class Game(var strike: Int = 0, var ball: Int = 0) {
         }
     }
 
-    fun compare(userNumber: List<Int>) {
+    fun compareNumbers(userNumber: List<Int>) {
         userNumber.onEachIndexed { index, number ->
             if (number == computerNumber[index]) {
                 strike += 1
