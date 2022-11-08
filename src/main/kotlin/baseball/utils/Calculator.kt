@@ -1,4 +1,8 @@
-package baseball
+package baseball.controller
+
+import baseball.Constant.CNT_NUMBER
+import baseball.Constant.DEFAULT_NUMBER
+import baseball.model.Computer
 
 class Calculator(
     private val userInput: String,
@@ -9,8 +13,8 @@ class Calculator(
         private set
 
     fun countBallAndStrike() {
-        var ballCount = 0
-        var strikeCount = 0
+        var ballCount = DEFAULT_NUMBER
+        var strikeCount = DEFAULT_NUMBER
 
         userInput.forEachIndexed { index, userNum ->
             if (userNum != answer[index] &&
@@ -18,7 +22,7 @@ class Calculator(
             ) ballCount++
         }
 
-        for (idx in 0 until 3) {
+        repeat(CNT_NUMBER) { idx ->
             if (userInput[idx] == answer[idx]) strikeCount++
         }
 

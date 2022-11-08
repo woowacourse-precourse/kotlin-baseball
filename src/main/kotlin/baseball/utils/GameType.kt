@@ -1,12 +1,12 @@
 package baseball
 
-sealed class GameResultType {
+sealed class ResultType {
     data class NormalResult(
         val ball: Int,
         val strike: Int
-    ) : GameResultType()
-    object NothingResult : GameResultType()
-    object CorrectResult : GameResultType()
+    ) : ResultType()
+    object NothingResult : ResultType()
+    object CorrectResult : ResultType()
 }
 
 sealed class ExceptionType {

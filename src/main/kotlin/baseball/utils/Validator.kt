@@ -1,7 +1,12 @@
-package baseball
+package baseball.controller
 
-import baseball.Printer.printExceptionPhraseAndQuitProcess
-import baseball.Printer.printGameResult
+import baseball.ExceptionType
+import baseball.view.Printer.printExceptionPhraseAndQuitProcess
+import baseball.view.Printer.printGameResult
+import baseball.gameResult
+import baseball.isNotDuplicated
+import baseball.isNotException
+import baseball.utils.Phrase
 import kotlin.system.exitProcess
 
 class Validator(
