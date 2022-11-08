@@ -21,7 +21,7 @@ fun main() {
     }
 }
 
-private fun printStartText(){
+private fun printStartText() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
@@ -83,17 +83,14 @@ private fun getBallAndStrike(inputNum: Int): Pair<Int, Int> {
 }
 
 private fun printResult(pair: Pair<Int, Int>) {
-    when (pair) {
-        Pair(1, 0) -> println("1볼")
-        Pair(1, 1) -> println("1볼 1스트라이크")
-        Pair(1, 2) -> println("1볼 2스트라이크")
-        Pair(2, 0) -> println("2볼")
-        Pair(2, 1) -> println("2볼 1스트라이크")
-        Pair(3, 0) -> println("3볼")
-        Pair(0, 0) -> println("낫싱")
-        Pair(0, 1) -> println("1스트라이크")
-        Pair(0, 2) -> println("2스트라이크")
-        Pair(0, 3) -> println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+    val ball = pair.first
+    val strike = pair.second
+    when {
+        strike > 0 && ball > 0 -> println("${ball}볼 ${strike}스트라이크")
+        strike == 3 && ball == 0 -> println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        strike > 0 && ball == 0 -> println("${strike}스트라이크")
+        strike == 0 && ball > 0 -> println("${ball}볼")
+        strike == 0 && ball == 0 -> println("낫싱")
     }
 }
 
