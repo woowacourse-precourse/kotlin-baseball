@@ -50,12 +50,13 @@ fun checknum() : Pair<Int, Int>
         for (j in 0..3 step(1)) checknum02(i, j)
     return Pair(ball,strike)
 }
-fun checknum02(i, j) : Pair<Int, Int>
+fun checknum02(i : Int, j :Int) : Pair<Int, Int>
 {
     if (comAnswer[i] == inputnum[j]){
         if (i == j) strike++;
         else ball++;
     }
+    return Pair(ball,strike)
 }
 fun print_message() : Int
 {
