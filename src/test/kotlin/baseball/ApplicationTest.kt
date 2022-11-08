@@ -47,6 +47,18 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `스트라이크 볼 체크`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("251", "152","529","429", "246", "135", "415","934", "215", "2")
+                assertThat(output())
+                    .contains("2볼 1스트라이크", "3볼", "2볼", "1볼", "1스트라이크", "1볼 1스트라이크", "2스트라이크", "낫싱", "3스트라이크", "게임 종료")
+            },
+            2,1,5
+        )
+    }
+
     override fun runMain() {
         main()
     }
