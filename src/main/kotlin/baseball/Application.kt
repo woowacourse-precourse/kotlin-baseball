@@ -60,6 +60,10 @@ private fun printRestartInputPhrase() {
     println(RESTART_INPUT_PHRASE)
 }
 
+private fun printThreeStrikePhrase() {
+    println(THREE_STRIKE_PHRASE)
+}
+
 private fun getRandomNumberString(stringLength: Int): String {
     val candidateNumberList = mutableListOf<Int>().apply { addAll(1..9) }
     var randomNumberString = ""
