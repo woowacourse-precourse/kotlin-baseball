@@ -6,16 +6,13 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
     fun start() {
         var processStatus = BaseballSetting.START_OR_RESTART.number
         BaseballString.START.print()
-
         while(processStatus == BaseballSetting.START_OR_RESTART.number){
             BaseballString.INPUT.print()
             val userInput = Console.readLine()
             checkValidInput(userInput)
-
             var result = getResult(userInput)
             processStatus = processByResult(result)
         }
-
         BaseballString.QUIT.print()
     }
 
@@ -54,11 +51,10 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
             || !userInput.isNumberString()) throw IllegalArgumentException()
     }
 
-    private fun String.isNumberString() = this.all { it.isDigit() }
+    fun String.isNumberString() = this.all { it.isDigit() }
 
     private fun resetComputerNumbers(){
         computerNumbers =
             ComputerNumbers(RandomNumberGenerator.nDigitMap(BaseballSetting.DIGIT_NUMBER.number))
     }
-
 }
