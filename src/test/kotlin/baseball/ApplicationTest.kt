@@ -84,6 +84,41 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    /* 함수별 테스트, 위에 포함되는 테스트는 제외함 */
+    @Test
+    fun `pickNumbersSizeTest`() {
+        val result = pickNumbers()
+        assertThat(result.size).isEqualTo(3)
+    }
+
+    @Test
+    fun `pickNumbersDifferentEachTest`() {
+        val result = pickNumbers()
+        var isCorrect = true
+        for (i in 0..2) {
+            isCorrect = result.count { it == result[i] } == 1
+        }
+        assertThat(isCorrect).isEqualTo(true)
+    }
+    @Test
+    fun `pickNumberRangeTest`() {
+        val result = pickNumbers()
+        var isCorrect = true
+        for (i in 0..2) {
+            isCorrect = result[i].isDigit()
+        }
+        assertThat(isCorrect).isEqualTo(true)
+    }
+    @Test
+    fun `judgeNumbersTest`() {
+        val result = judgeNumbers(listOf('1','2','3'), listOf('2','1','3'))
+        assertThat(result).isEqualTo(listOf(2, 1))
+    }
+    @Test
+    fun `printResult`() {
+        printResult(listOf(1, 1))
+        assertThat(output()).contains("1볼 1스트라이크")
+    }
     override fun runMain() {
         main()
     }
