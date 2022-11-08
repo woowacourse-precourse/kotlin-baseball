@@ -2,13 +2,12 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val  RESTART = 1
+const val GAME_CLOSE = 2
 class Controller {
     private val view = View()
     private var user = User()
     private var computer = mutableListOf<Int>()
-    private val reStart = 1
-    private val gameClose = 2
-
 
     fun gameStart() {
         generateComputer()
@@ -17,7 +16,7 @@ class Controller {
     }
 
     private fun playGame() {
-        while (user.inputData != gameClose) {
+        while (user.inputData != GAME_CLOSE) {
             view.printInput()
             user.inputNum = getInputFormUser()
             verificationNumber(user.inputNum)
@@ -33,7 +32,7 @@ class Controller {
         view.printStartOrEnd()
         user.inputData = getInputFormUser()
         verificationQuitNumber(user.inputData)
-        if (user.inputData == reStart) {
+        if (user.inputData == RESTART) {
             computer.clear()
             generateComputer()
         }
