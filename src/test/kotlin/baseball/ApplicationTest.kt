@@ -53,6 +53,37 @@ class ApplicationTest : NsTest() {
             2, 4, 6, 3, 7, 9
         )
     }
+    @Test
+    fun `예외 테스트 00 : 3자리수가 아닌 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+    @Test
+    fun `예외 테스트 01 : 같은 수가 들어온 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1134") }
+        }
+    }
+    @Test
+    fun `예외 테스트 02 : 1~9사이 수가 아닌 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("034") }
+        }
+    }
+    @Test
+    fun `예외 테스트 03 : 숫자가 아닌 문자열이 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12a") }
+        }
+    }
+    @Test
+    fun `예외 테스트 04 : 게임종료시 1 OR 2 이외의 값이 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("4") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
