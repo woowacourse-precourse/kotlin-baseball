@@ -17,6 +17,9 @@ fun endOrReplay() {
     if (input == "1") {
         playBaseballGame()
     }
+    else if (input == "2") {
+        println("숫자 야구 게임을 종료합니다.")
+    }
 }
 
 fun playBaseballGame() {
