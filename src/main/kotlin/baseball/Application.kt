@@ -19,6 +19,7 @@ fun main() {
     var gameState = ONGOING_STATE
     val randomNumberString = getRandomNumberString(3)
     var inputState = ONGOING_INPUT
+    lateinit var processedPairByCalcIsNothing: Pair<MutableList<Int>, Boolean>
 
     while (gameState == ONGOING_STATE) {
         lateinit var stepUserInput: String
@@ -39,6 +40,9 @@ fun main() {
                 continue
             }
         }
+
+        processedPairByCalcIsNothing = calcIsNothing(stepUserInput, randomNumberString)
+        if (processedPairByCalcIsNothing.second) continue
     }
 }
 
