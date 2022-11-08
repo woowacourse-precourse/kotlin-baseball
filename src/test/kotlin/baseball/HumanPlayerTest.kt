@@ -22,5 +22,16 @@ class HumanPlayerTest {
                 Executable { Assertions.assertEquals(humanPlayer.getSelectedNumber().length, 3) }
             )
         }
+
+        @DisplayName("3자리 자연수가 아니라면 IllegalArgumentException이 발생하고 애플리케이션이 종료된다")
+        @ParameterizedTest
+        @CsvSource(value = ["-123", "91 4", "1000", "45.6", "test"])
+        fun humanPlayerSelectedWrongNumber(selectedNumber: String?) {
+            val humanPlayer: Player = HumanPlayer()
+            val invalidInput = Assertions.assertThrows(
+                IllegalArgumentException::class.java
+            ) { humanPlayer.setSelectedNumber(selectedNumber!!) }
+            Assertions.assertEquals("유효하지 않은 숫자형식입니다.", invalidInput.message)
+        }
     }
 }
