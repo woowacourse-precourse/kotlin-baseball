@@ -49,6 +49,10 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
             print("${struck}스트라이크")
         }
 
+        if(balls == 0 && struck == 0) {
+            print("낫싱")
+    싱   }
+
         print("\n")
 
         if (struck == 3) {
