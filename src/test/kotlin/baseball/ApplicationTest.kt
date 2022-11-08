@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -24,16 +25,49 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
-                runException("1234") // 3자리수가 아닌 경우
+                runException("1234") // 3자리 수가 아닌 경우
                 runException("0")    // 1~9까지의 범위를 벗어난 경우
-                runException("222")  // 서로 다른 수가 아닌 경우
+                runException("dfs")  // 문자가 포함된 경우
+                runException("222")  // 중복된 숫자가 있는 경우
             }
         }
     }
 
     @Test
-    fun `힌트 출력 테스트`() {
+    fun `컴퓨터의 랜덤 숫자 생성`() {
 
+    }
+
+    @Test
+    fun `사용자로부터 입력 받기`() {
+
+    }
+
+    @Nested
+    inner class HintTest {
+        @Test
+        fun case1() {
+            val input = "123"
+            val answer = "341"
+            val result = "2볼"
+            assertThat(getHint(input, answer)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val input = "962"
+            val answer = "169"
+            val result = "1볼 1스트라이크"
+            assertThat(getHint(input, answer)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val input = "345"
+            val answer = "145"
+            val result = "2스트라이크"
+            assertThat(getHint(input, answer)).isEqualTo(result)
+        }
     }
 
     override fun runMain() {
