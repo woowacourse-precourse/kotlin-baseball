@@ -32,7 +32,7 @@ fun produceRandomNums() : Set<Int> {
     return computer
 }
 
-fun stringToIntList( stringNums : String ) : List<Int>{
+fun stringToIntList(stringNums: String) : List<Int>{
 
     var playerNumsInt = mutableListOf<Int>()
 
@@ -43,7 +43,7 @@ fun stringToIntList( stringNums : String ) : List<Int>{
     return playerNumsInt
 }
 
-fun getInputIntegerError(playerNums : String) : Boolean{
+fun getInputIntegerError(playerNums: String) : Boolean{
     val intergerChar = '1'..'9'
     return playerNums.all{
         it in intergerChar
@@ -65,7 +65,7 @@ fun getInputDuplicateError(playerNums: List<Int>){
     }
 }
 
-fun countStrikeBall(answerNums : List<Int>){
+fun countStrikeBall(answerNums: List<Int>){
 
     var inputIsInteger = false
 
@@ -116,7 +116,7 @@ fun countStrikeBall(answerNums : List<Int>){
     }
 }
 
-fun printStrikeBall(strike : Int, ball : Int){
+fun printStrikeBall(strike: Int, ball: Int){
     if(strike != 3 && ball > 0 && strike > 0)
         println("${ball}볼 ${strike}스트라이크")
 
