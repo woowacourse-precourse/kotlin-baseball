@@ -37,9 +37,35 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `getResultNum 테스트`() {
+        val resultNum = getResultNum()
+        assertThat(
+            resultNum.toString().length == resultNum.toString().toCharArray().distinct().size
+        )
+    }
+
+    @Test
+    fun `matchResult 테스트`(){
+        val list = arrayOf(
+            Pair(0, 0),
+            Pair(0, 2),
+            Pair(2, 0),
+            Pair(3, 0),
+            Pair(0, 3),
+        )
+        val result = arrayOf(
+            false, false, false, false, true
+        )
+        for (i in list.indices) {
+            val (ballCnt, strikeCnt) = list[i]
+            assertThat(matchResult(ballCnt, strikeCnt) == result[i])
+        }
+    }
+
+    @Test
     fun `exit code validation 테스트`() {
         val input = "abc"
-        when{
+        when {
             input.isBlank() -> assertThrows<IllegalArgumentException> { input.mappingExitCode() }
             input[0] == '1' -> assertThat(!input.mappingExitCode())
             input[1] == '2' -> assertThat(input.mappingExitCode())
@@ -51,16 +77,15 @@ class ApplicationTest : NsTest() {
     fun `input number validation 테스트`() {
         val input = "9999"
         try {
-            when{
+            when {
                 input.isBlank() -> assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
                 input.length == RESULT_NUM_LENGTH -> assertThat(input.mappingInputNumber())
                 else -> assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
         }
     }
-
 
 
     override fun runMain() {
