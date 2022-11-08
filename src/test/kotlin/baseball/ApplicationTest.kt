@@ -61,6 +61,21 @@ class ApplicationTest : NsTest() {
         assertThat(getHint(computerNumber, userNumber)).isEqualTo(hint)
     }
 
+    @Test
+    fun `모든 문자열 출력 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("123", "456", "135", "1", "789", "589", "2")
+                assertThat(output()).contains(
+                    "숫자 야구 게임을 시작합니다.",
+                    "숫자를 입력해주세요 : ",
+                    "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+                )
+            }, 1, 3, 5, 5, 8, 9
+        )
+    }
+
     override fun runMain() {
         main()
     }
