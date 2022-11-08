@@ -2,6 +2,16 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+fun pickComputerNumber():MutableList<Int> {
+    val computerNum:MutableList<Int> = mutableListOf()
+    while(computerNum.size < 3) {
+        val pickedNumber = Randoms.pickNumberInRange(1,9)
+        if(computerNum.contains(pickedNumber)) continue
+        else computerNum.add(pickedNumber)
+    }
+    return computerNum
+}
+
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
