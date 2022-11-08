@@ -8,6 +8,11 @@ fun main() {
     TODO("프로그램 구현")
 }
 
+private fun getUserNumber(): String {
+    val userNumber = Console.readLine()
+    return checkValidInput(userNumber)
+}
+
 private fun checkValidInput(userInput: String): String {
     if (!checkValidLength(userInput)) {
         print("게임 종료")
