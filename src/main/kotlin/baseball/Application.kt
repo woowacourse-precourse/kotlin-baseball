@@ -39,10 +39,8 @@ fun restartBoolean(): Boolean {
 }
 
 fun compareNum() {
-    printState(0)
-
+    printState(gameStart)
     val comNum = createRandomNum()
-    println("컴퓨터 리스트 : $comNum")
 
     while (true) {
         printState(gameInProgress)
@@ -50,7 +48,10 @@ fun compareNum() {
 
         ballCount(userNum, comNum)
         strikeCount(userNum, comNum)
-        printState(gameScoreCount)
+
+        if ((ballCount == 0) and (strikeCount == 0)) {
+            printState(gameScoreNothing)
+        } else printState(gameScoreCount)
 
         if (strikeCount == 3) break
     }
@@ -81,9 +82,8 @@ fun printState(state: Int) {
 }
 
 fun createUserNum(): List<Int> {
-
-
     val userNum = readLine()!!.map { it.digitToInt() }
+
     inputException(userNum)
     return userNum
 }
@@ -110,7 +110,6 @@ fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
 }
 
 fun inputException(userNum: List<Int>) {
-
     if (userNum.contains(0)) throw IllegalArgumentException("1 ~ 9 사이의 숫자만 입력가능합니다.")
     if (userNum.size != 3) throw IllegalArgumentException("1 ~ 9 사이의 숫자, 3개를 입력해야합니다.")
     if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
