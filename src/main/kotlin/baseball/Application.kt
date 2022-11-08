@@ -102,5 +102,6 @@ fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
 
 fun exceptionHandling(userNum: List<Int>) {
     if (userNum.size != 3) throw IllegalArgumentException("3개의 숫자만 입력해주십시오.")
+    if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
 
 }
