@@ -18,7 +18,18 @@ fun playBall() {
         if (end) break
     }
     printEndGameText()
+    val input = inputUserNumber()
+    inputExceptionCheck(input)
+    restartCheck(input)
+}
 
+fun restartCheck(input: String) {
+    val number = input.toInt()
+    if (number == 1) {
+        playBall()
+    } else if (number != 2) {
+        throw IllegalArgumentException()
+    }
 }
 
 fun compareGameValues(computerNumber: List<Int>, input: String): Boolean {
