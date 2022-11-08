@@ -162,7 +162,7 @@ while (computer.size() < 3) {
         - 숫자 게임을 시작하는 안내 메시지 콘솔창에 출력하기
     - 숫자 입력 안내 메시지 콘솔창에 출력하기
     - 사용자에게 입력값 받기(class:UserNumber)
-        - 사용자 입력값의 유효성 검사하기(class:InputValidator)
+        - 사용자 입력값의 유효성 검사하기(class:InputValidaton)
             - 문자를 정수형으로 바꿀 수 없거나
             - 입력값의 길이가 3이 아니거나
             - 중복된 값이 있거나
@@ -184,5 +184,5 @@ while (computer.size() < 3) {
             - 게임 성공 문구 출력하기
             - 게임 재시작을 원한다면 1, 게임 종료를 원한다면 2를 입력하라는 안내 문구 출력
             - 사용자에게 입력값 받기
-                - 사용자 입력값의 유효성 검사하기(class:InputValidator)
+                - 사용자 입력값의 유효성 검사하기(class:InputValidaton)
                 - 게임을 재시작하거나 게임 종료
