@@ -11,6 +11,8 @@ fun main() {
         //컴퓨터 랜덤 3자리 수 뽑기
         val computer = computerRandom()
 
+        playerGuess(computer)
+
     }
 }
 
@@ -24,5 +26,37 @@ fun computerRandom() : MutableList<Int> {
         }
     }
     return computer
+}
+
+//player 숫자 입력
+fun inputPlayer() : MutableList<Int> {
+    //플레이어 3개 숫자 입력
+    var playerString: MutableList<String>
+    var playerInt = mutableListOf<Int>()
+
+    //input 메서드
+    var number= Console.readLine()
+
+    playerString = number.split("").toMutableList() //입력받은 숫자 쪼개는 거 구현하고 있었음 이어서 하셈 미래의 현지~!
+    playerString.removeAt(playerString.size-1)
+    playerString.removeAt(0)
+
+    for (i in (0 until playerString.size)){
+        playerInt.add(playerString[i].toInt())
+    }
+
+    return playerInt
+}
+
+//사용자가 답을 맞추는 함수
+fun playerGuess(computer: MutableList<Int>) {
+    var strike : Int
+    var ball : Int
+
+    while (true){
+        //입력
+        var player = inputPlayer()
+
+    }
 }
 
