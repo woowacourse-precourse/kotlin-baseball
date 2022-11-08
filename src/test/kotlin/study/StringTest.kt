@@ -6,6 +6,7 @@ import org.junit.jupiter.api.assertThrows
 
 class StringTest {
     @Test
+    //commit (branch check)
     fun `split 메서드로 주어진 값을 구분`() {
         val input = "1,2"
         val result = input.split(",")
