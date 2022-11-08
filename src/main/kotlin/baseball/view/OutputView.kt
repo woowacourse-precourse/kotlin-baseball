@@ -3,6 +3,9 @@ package baseball.view
 import baseball.domain.Game
 
 object OutputView {
+    const val THREE_STRIKE = 3
+    private const val NOTHING = 0
+
     fun printStaringMent(): Unit = print("숫자 야구 게임을 시작합니다.")
 
     fun printResult(game: Game){
@@ -15,8 +18,4 @@ object OutputView {
             println("${game.strike} 스트라이크 ${game.ball} 볼")
         }
     }
-
-
-    const val THREE_STRIKE = 3
-    private const val NOTHING = 0
 }
