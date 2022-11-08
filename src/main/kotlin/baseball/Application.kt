@@ -10,7 +10,6 @@ fun main() {
 
 fun playBall() {
     val computerNumber = setComputerNumber()
-    println(computerNumber)
     while (true) {
         printInputUserNumber()
         val userNumber = inputUserNumber()
