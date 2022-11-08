@@ -21,6 +21,7 @@ fun baseballGame() {
 
     while (true) {
         val user = userInput()
+        if (calcScore(user, computer)) break
     }
 }
 
@@ -68,4 +69,19 @@ fun throwNumberLengthException(input: String) {
 
 fun throwNumberDuplicationException(input: String) {
     if (input[0] == input[1] || input[0] == input[2] || input[1] == input[2]) throw IllegalArgumentException()
+}
+
+fun calcScore(user: List<Int>, computer: List<Int>): Boolean {
+    var ball = 0
+    var strike = 0
+
+    for (i in user.indices) {
+        if (computer.contains(user[i]) && user[i] == computer[i]) strike++
+        if (computer.contains(user[i]) && user[i] != computer[i]) ball++
+    }
+    if (strike == 3) {
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        return true
+    }
+    return false
 }
