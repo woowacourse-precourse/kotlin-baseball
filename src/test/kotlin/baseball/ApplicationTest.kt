@@ -9,42 +9,7 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `입력값데이터타입1`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException(null) }
-        }
-    }
-
-    @Test
-    fun `입력값데이터타입2`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("12a") }
-        }
-    }
-
-    @Test
-    fun `입력값범위`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("120") }
-        }
-    }
-
-    @Test
-    fun `입력중복`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("122") }
-        }
-    }
-
-    @Test
-    fun `!입력3자리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
-        }
-    }
-
-    @Test
-    fun `게임종료 후 재시작 if 1`() {
+    fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
             {
                 run("246", "135", "1", "597", "589", "2")
@@ -56,25 +21,10 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `게임종료 if 2`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("135", "2")
-                assertThat(output())
-                    .contains("3스트라이크", "게임 종료")
-            },
-            1, 3, 5
-        )
-    }
-
-    @Test
-    fun `게임종료 else`() {
-        assertRandomNumberInRangeTest(
-            {
-                assertThrows<IllegalArgumentException> { runException("135", "3") }
-            },
-            1, 3, 5
-        )
+    fun `예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1234") }
+        }
     }
 
     override fun runMain() {
