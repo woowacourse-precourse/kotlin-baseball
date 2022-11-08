@@ -21,6 +21,7 @@ fun playerInput():String {
     return playerAnswer
 }
 fun playerInputToList(playerInputString:String) : MutableList<Int>{
+    playerInputString.toIntOrNull() ?: throw IllegalArgumentException()
     val playerInputSplit = playerInputString.chunked(1).map { it.toInt() }.toIntArray()
     val playerInputList : MutableList<Int> = mutableListOf()
     for(count in 0..2) playerInputList.add(count,playerInputSplit[count])
