@@ -20,6 +20,7 @@ while(true){
         ball = 0
     var inputNumber:String=readLine()
     var userNumber = inputNumber.chunked(1)
+    val result:list0f<Int>(resultCalculation(userNumber:List0f,computerNumber:List0f,strike:Int,ball:Int))
 
     }while()
 }
@@ -31,4 +32,17 @@ fun random(computerNumber:List0f){
     if (!computerNumber.contains(randomNumber)) {
         return computerNumber.add(randomNumber)
     }
+}
+
+fun resultCalculation(userNumber:List0f,computerNumber:List0f,strike:Int,ball:Int){
+    for ( i in 0..2 ){
+        if (userNumber[i]==computerNumber[i]){
+            strike++
+        }
+        else if(userNumber[i]!=computerNumber[i]&&userNumber.contains(computerNumber)){
+            ball++
+        }
+    }
+    val result : ListOf<Int>(strike,ball)
+    return result
 }
