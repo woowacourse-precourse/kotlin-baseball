@@ -68,9 +68,4 @@ object Printer {
             println(RESULT_BALL_MESSAGE.format(ballNumber))
         }
     }
-
-    fun printCorrectResult() {
-        println("3스트라이크")
-    }
-
 }
