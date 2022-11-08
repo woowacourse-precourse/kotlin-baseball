@@ -17,32 +17,26 @@ fun validateRange() {
     if (RESULT_NUM_LENGTH !in 1..9) throw IllegalArgumentException()
 }
 
+fun validateNumInRange(input: String) {
+    if(input.length != RESULT_NUM_LENGTH) throw IllegalArgumentException()
+}
+
 fun getResultNum(): Int {
 
     validateRange()
-
-    val (start, end) = getResultRange()
-    val resultNum = Randoms.pickNumberInRange(start, end)
-
-    validateNumInRange(resultNum)
-
+    var resultNum = 0
+    val used = BooleanArray(10)
+    var len = RESULT_NUM_LENGTH
+    while(len>0){
+        val num = Randoms.pickNumberInRange(1,9)
+        if(used[num]) continue
+        resultNum = resultNum*10 + num
+        used[num] = true
+        len--
+    }
     return resultNum
 }
 
-fun getResultRange(): Pair<Int, Int> {
-    var start = 0
-    var end = 0
-    repeat(RESULT_NUM_LENGTH) {
-        start = start * 10 + 1
-        end = end * 10 + 9
-    }
-    return Pair(start, end)
-}
-
-fun validateNumInRange(num: Int) {
-    val (start, end) = getResultRange()
-    if (num !in start..end) throw IllegalArgumentException()
-}
 
 fun String.mappingExitCode(): Boolean {
     if (this.isBlank()) throw IllegalArgumentException()
@@ -56,7 +50,7 @@ fun String.mappingExitCode(): Boolean {
 fun String.mappingInputNumber(): Int {
     return try {
         val ret = this.toInt()
-        validateNumInRange(ret)
+        validateNumInRange(this)
         ret
     } catch (e: Exception) {
         throw IllegalArgumentException()
@@ -119,7 +113,6 @@ fun main() {
     var exit = false
     while (!exit) {
         val resultNum = getResultNum()
-        println(resultNum)
         play(resultNum)
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         exit = Console.readLine().mappingExitCode()

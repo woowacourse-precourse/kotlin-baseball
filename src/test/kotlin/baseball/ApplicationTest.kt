@@ -1,12 +1,10 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
@@ -30,29 +28,12 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `resultNum 범위 테스트`() {
-        var start = 0
-        var end = 0
-        repeat(RESULT_NUM_RANGE) {
-            start = start * 10 + 1
-            end = end * 10 + 9
-        }
-        assertThat(getResultRange() == Pair(start, end))
-    }
-
-    @Test
     fun `range validation 테스트`() {
-        if (RESULT_NUM_RANGE in 1..9) {
+        if (RESULT_NUM_LENGTH in 1..9) {
             assertThat(validateRange())
         } else {
             assertThrows<IllegalArgumentException> { validateRange() }
         }
-    }
-
-    @Test
-    fun `resultNum range validation 테스트`() {
-        val (start, end) = getResultRange()
-        assertThat(getResultNum() in start..end)
     }
 
     @Test
@@ -69,11 +50,10 @@ class ApplicationTest : NsTest() {
     @Test
     fun `input number validation 테스트`() {
         val input = "9999"
-        val (start, end) = getResultRange()
         try {
             when{
                 input.isBlank() -> assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
-                input.toInt() in start .. end -> assertThat(input.mappingInputNumber())
+                input.length == RESULT_NUM_LENGTH -> assertThat(input.mappingInputNumber())
                 else -> assertThrows<IllegalArgumentException> { input.mappingInputNumber() }
             }
         }catch (e: Exception){
