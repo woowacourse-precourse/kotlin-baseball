@@ -13,6 +13,7 @@ class Baseball {
 
     fun game() {
         var gameCoin = true
+        printState(gameStart)
 
         while (gameCoin) {
             compareNum()
@@ -38,7 +39,6 @@ class Baseball {
     }
 
     private fun compareNum() {
-        printState(gameStart)
         val comNum = getComNum()
 
         while (true) {
@@ -50,7 +50,6 @@ class Baseball {
 
             if ((ballCount == 0) and (strikeCount == 0)) {
                 printState(gameScoreNothing)
-
             } else if ((ballCount == 0) and (strikeCount > 0)) {
                 printState(gameStrikeCount)
 
@@ -84,7 +83,7 @@ class Baseball {
             gameStrikeCount -> println("${strikeCount}스트라이크")
             gameSumCount -> println("${ballCount}볼 ${strikeCount}스트라이크")
             gameScoreNothing -> println("낫싱")
-            gameEnd -> println("게임 종료")
+            gameEnd -> println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
             gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         }
     }
