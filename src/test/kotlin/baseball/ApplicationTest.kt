@@ -59,7 +59,7 @@ class ApplicationTest : NsTest() {
     fun `3개의 숫자를 모두 맞힐 경우`() {
         assertRandomNumberInRangeTest(
             {
-                run( "135","2")
+                run( "123","2")
                 assertThat(output())
                     .contains("3스트라이크", "게임 종료")
             },
