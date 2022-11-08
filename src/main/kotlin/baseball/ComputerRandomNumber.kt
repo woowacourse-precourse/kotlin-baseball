@@ -7,6 +7,11 @@ class ComputerRandomNumber {
     private var _randomNumber: String = ""
     val randomNumber: String
         get() = _randomNumber
+
+    init {
+        _randomNumber = makeRandomNumber()
+    }
+
     private fun makeRandomNumber(): String {
         val usedNumber = MutableList(10) { false }
         var randomNumber = ""
