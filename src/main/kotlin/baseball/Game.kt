@@ -1,11 +1,12 @@
 package baseball
 
-class Game  {
+class Game {
     companion object {
         var count: Int = 0
-        val message = ConsoleMessage()
-        val userNumber = UserNumber()
     }
+
+    private val userNumber = UserNumber()
+    private val message = ConsoleMessage()
 
     fun playBaseball(): Boolean {
         var success: Boolean
@@ -58,7 +59,7 @@ class Game  {
 
     fun restartOrEndBaseball(): Boolean {
         message.successRestartMessage()
-        val inputNumber= userNumber.inputNum()
+        val inputNumber = userNumber.inputNum()
         if (InputValidation(inputNumber).restartNumberExceptionCheck()) {
             if (inputNumber.toInt() == 1) {
                 count += 1
