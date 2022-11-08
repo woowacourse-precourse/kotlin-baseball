@@ -62,7 +62,12 @@ fun print(strike_ball: MutableList<Int>) : Int{
     if (strike_ball[0] == 0 && strike_ball[1] == 0) {
         println("낫싱")
         return 0
-    } else if (strike_ball[0] == 0) {
+    }
+    else if (strike_ball[0] ==3) {
+        println("3스트라이크")
+        return 1
+    }
+    else if (strike_ball[0] == 0) {
         println("${strike_ball[1]}볼")
         return 0
     } else if (strike_ball[1] == 0) {
@@ -70,7 +75,7 @@ fun print(strike_ball: MutableList<Int>) : Int{
         return 0
     } else {
         print("${strike_ball[1]}볼 ${strike_ball[0]}스트라이크")
-        return 1
+        return 0
     }
 }
 
