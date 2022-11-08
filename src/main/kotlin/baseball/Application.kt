@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
+    //start_message()
     while(true) {
         val computer = mutableListOf<Int>()
         while (computer.size < 3) {
@@ -12,6 +13,8 @@ fun main() {
                 computer.add(randomNumber)
             }
         }
+        //val computer= random_three_number()
+
         while(true) {
             print("숫자를 입력해주세요 : ")
             var input = readLine()!!.toInt()
@@ -24,13 +27,17 @@ fun main() {
             }
             val input_split = input_split_temp.reversed()
             val input_split_set=input_split.toSet()
-            try{
-                if(input_split_set.size!=3){
-                    throw IllegalArgumentException()
-                }
-            }catch (e:IllegalArgumentException){
-                return
+//            try{
+//                if(input_split_set.size!=3){
+//                    throw IllegalArgumentException()
+//                }
+//            }catch (e:IllegalArgumentException){
+//                return
+//            }
+            if(input_split_set.size!=3){
+                throw IllegalArgumentException()
             }
+
 
             val ball_and_strike = mutableListOf<Int>(0, 0)
             // ball_and_strike[0] => ball
@@ -67,12 +74,15 @@ fun main() {
         else if(num==1){
             continue
         }
+//        else{
+//            try{
+//                throw IllegalArgumentException()
+//            }catch (e:IllegalArgumentException){
+//                return
+//            }
+//        }
         else{
-            try{
-                throw IllegalArgumentException()
-            }catch (e:IllegalArgumentException){
-                return
-            }
+            throw IllegalArgumentException()
         }
 
     }
