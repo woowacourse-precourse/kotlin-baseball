@@ -82,6 +82,7 @@ fun print(strikeBall: MutableList<Int>) : Int{
 
 fun input(Computer: MutableList<Int>){
     while(true) {
+        println("숫자를 입력해주세요")
         val input = Console.readLine()!!.toString()
         var inputArray : Array<Int> = checkTrue(input)
         val strikeBall = countCorrect(Computer, inputArray)
@@ -91,6 +92,7 @@ fun input(Computer: MutableList<Int>){
 
 //메인
 fun main() {
+    println("숫자 야구 게임을 시작합니다.")
 
     var continueGame = 1
 
@@ -99,12 +101,12 @@ fun main() {
 
        input(computerNum)
 
-        println("모든 수를 맞히셨습니다. 계속하려면 1, 종료하려면 2를 눌러주세요")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         var inputAgain = Console.readLine()!!.toInt()
         if(inputAgain !=2 &&inputAgain !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
         if(inputAgain == 2) {
             continueGame = 0
-            println("게임 종료")
         }
     }
 
