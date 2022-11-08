@@ -130,5 +130,9 @@ fun findSame(inputNumber: String): Boolean {
 
 fun askRestart(): Int{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    return Console.readLine().toInt()
+    val restart = Console.readLine().toInt()
+    if(restart == 1 || restart == 2){
+        return restart
+    }
+    throw IllegalArgumentException("잘못된 입력입니다.")
 }
