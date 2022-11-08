@@ -19,7 +19,15 @@ class ApplicationTest : NsTest() {
             1, 3, 5, 5, 8, 9
         )
     }
-
+    @Test
+    fun `게임 재시작 질문에서 잘못된 값 입력 시 테스트`() {
+        assertRandomNumberInRangeTest(
+                {
+                    assertThrows<IllegalArgumentException> { runException("246", "135", "3") }
+                },
+                1, 3, 5
+        )
+    }
 
     /* 입력한 숫자가 조건에 부합하는지 검사 - 3자리인가? */
     @Test

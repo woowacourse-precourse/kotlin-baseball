@@ -7,9 +7,7 @@ fun pickNumbers(): List<Char> {
     var numbers = ""
     while (numbers.length != 3) {
         val number = Randoms.pickNumberInRange(1, 9).toString()
-        if(!numbers.contains(number)) {
-            numbers += number
-        }
+        if(!numbers.contains(number)) numbers += number
     }
     return numbers.toList()
 }
@@ -72,5 +70,6 @@ fun main() {
         gameMain()
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         isContinue = Console.readLine().toInt()
+        if (isContinue != 1 && isContinue != 2) throw IllegalArgumentException("1 또는 2를 입력하세요")
     } while (isContinue == 1)
 }
