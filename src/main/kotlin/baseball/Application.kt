@@ -8,6 +8,23 @@ fun main() {
     TODO("프로그램 구현")
 }
 
+private fun startNewGame(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    return when (Console.readLine()) {
+        "1" -> {
+            true
+        }
+        "2" -> {
+            print("게임 종료")
+            false
+        }
+        else -> {
+            print("게임 종료")
+            false
+        }
+    }
+}
+
 private fun setRandomNumber(): String {
     val computer: MutableList<Int> = mutableListOf()
     while (computer.size < 3) {
