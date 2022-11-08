@@ -22,42 +22,9 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `게임 테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("132", "651", "615", "1", "312", "213", "123","2")
-                assertThat(output())
-                    .contains("1볼", "2볼 1스트라이크", "3스트라이크", "3볼", "2볼 1스트라이크", "3스트라이크", "게임 종료")
-            },
-            6, 1,  5, 1, 2, 3
-        )
-    }
-
-    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
-        }
-    }
-
-    @Test
-    fun `타입 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("asd") }
-        }
-    }
-
-    @Test
-    fun `중복 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("111") }
-        }
-    }
-
-    @Test
-    fun `부분 중복 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("212") }
         }
     }
 
