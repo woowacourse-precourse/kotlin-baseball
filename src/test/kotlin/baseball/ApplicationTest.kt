@@ -54,7 +54,44 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Nested
+    inner class UserNumTest {
+        @Test
+        fun `입력값 테스트 - 숫자가 아닐 경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("qa") }
+            }
+        }
 
+        @Test
+        fun `입력값 테스트 - 1 ~ 9 범위 밖일 경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("043") }
+            }
+        }
+
+        @Test
+        fun `입력값 테스트 - 입력값이 3개가 아닐경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("15") }
+            }
+        }
+
+        @Test
+        fun `입력값 테스트 - 중복값이 존재할 경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("515") }
+            }
+        }
+
+        @Test
+        fun `입력값 테스트 - 빈 값일 경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException(" ") }
+            }
+        }
+
+    }
 
     override fun runMain() {
         main()
