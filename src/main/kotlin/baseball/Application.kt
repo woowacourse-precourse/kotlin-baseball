@@ -79,9 +79,20 @@ fun calcScore(user: List<Int>, computer: List<Int>): Boolean {
         if (computer.contains(user[i]) && user[i] == computer[i]) strike++
         if (computer.contains(user[i]) && user[i] != computer[i]) ball++
     }
+    showResult(ball, strike)
+
     if (strike == 3) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         return true
     }
     return false
+}
+
+fun showResult(ball: Int, strike: Int) {
+    when {
+        strike > 0 && ball > 0 -> println("${ball}볼 ${strike}스트라이크")
+        strike > 0 && ball == 0 -> println("${strike}스트라이크")
+        strike == 0 && ball > 0 -> println("${ball}볼")
+        strike == 0 && ball == 0 -> println("낫싱")
+    }
 }
