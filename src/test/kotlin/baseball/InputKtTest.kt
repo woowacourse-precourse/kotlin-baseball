@@ -13,11 +13,7 @@ import java.io.ByteArrayInputStream
 internal class `Input 파일의` {
 
     @Nested
-    inner class `enteredAnswer 메소드는` : NsTest() {
-
-        override fun runMain() {
-            enteredAnswer()
-        }
+    inner class `readAnswer 메소드는` : NsTest() {
 
         @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
@@ -66,10 +62,14 @@ internal class `Input 파일의` {
             @Test
             fun `입력한 값을 반환한다`() {
                 System.setIn(ByteArrayInputStream(input.toByteArray()))
-                val answer = enteredAnswer()
+                val answer = readAnswer()
 
                 assertThat(answer).isEqualTo(input)
             }
+        }
+
+        override fun runMain() {
+            readAnswer()
         }
     }
 }

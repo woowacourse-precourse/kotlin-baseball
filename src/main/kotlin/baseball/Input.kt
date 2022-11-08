@@ -3,7 +3,7 @@ package baseball
 import baseball.Message.*
 import camp.nextstep.edu.missionutils.Console
 
-fun enteredAnswer(): String {
+fun readAnswer(): String {
     val answer = Console.readLine()
     validateAnswer(answer)
     return answer

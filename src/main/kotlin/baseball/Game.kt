@@ -7,7 +7,7 @@ fun gameStart() {
     val computerNumber = createComputerNumber()
     do {
         print(REQUEST_INPUT_NUMBER.message)
-        val answer = enteredAnswer()
+        val answer = readAnswer()
         println(createHint(computerNumber, answer))
     } while (computerNumber != answer)
     println(FINISH.message)
