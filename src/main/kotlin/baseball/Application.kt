@@ -25,7 +25,7 @@ private fun printStartText() {
     println("숫자 야구 게임을 시작합니다.")
 }
 
-private fun makeRandomNumber() {
+fun makeRandomNumber() {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -55,11 +55,11 @@ private fun inputGuessNumber(): Int {
 
 private fun isRightInput(num: Int) = isThreeDigitNum(num) && !existZero(num) && isDifferentNum(num)
 
-private fun isThreeDigitNum(num: Int) = num in (100..999)
+fun isThreeDigitNum(num: Int) = num in (100..999)
 
-private fun existZero(num: Int) = num.toString().contains('0')
+fun existZero(num: Int) = num.toString().contains('0')
 
-private fun isDifferentNum(num: Int): Boolean {
+fun isDifferentNum(num: Int): Boolean {
     val set = mutableSetOf<Char>()
     num.toString().map {
         set.add(it)
@@ -82,7 +82,7 @@ private fun getBallAndStrike(inputNum: Int): Pair<Int, Int> {
     return Pair(ball, strike)
 }
 
-private fun printResult(pair: Pair<Int, Int>) {
+fun printResult(pair: Pair<Int, Int>) {
     val ball = pair.first
     val strike = pair.second
     when {
@@ -94,7 +94,7 @@ private fun printResult(pair: Pair<Int, Int>) {
     }
 }
 
-private fun inputRestartOrFinishNum(): Int {
+fun inputRestartOrFinishNum(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val num = Console.readLine().toInt()
     if (num == RESTART) makeRandomNumber()
