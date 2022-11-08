@@ -32,13 +32,46 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun testGame3() {
+        assertRandomNumberInRangeTest(
+            {
+                run( "456", "2")
+                assertThat(output())
+                    .contains("3스트라이크","게임 종료")
+            },
+            4,5,6
+        )
+    }
 
     @Test
-    fun errorTest() {
+    fun errorTestOverThree() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
+
+    @Test
+    fun errorTestNotInt() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("안녕하세요") }
+        }
+    }
+
+    @Test
+    fun errorContainZero() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("012") }
+        }
+    }
+
+    @Test
+    fun errorSame() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("112") }
+        }
+    }
+
 
     override fun runMain() {
         main()
