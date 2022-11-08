@@ -21,6 +21,8 @@ fun main() {
         checkResult(strike, ball)
         if (userWin) askRestart()
         else printResult(strike, ball)
+
+        resetResult()
     }
 }
 
@@ -90,4 +92,10 @@ fun printResult(s: Int, b: Int): String {
 
     println(finalResult)
     return finalResult
+}
+
+fun resetResult() {
+    strike = 0
+    ball = 0
+    userWin = false
 }
