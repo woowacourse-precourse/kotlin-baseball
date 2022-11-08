@@ -93,7 +93,12 @@ fun countStrikeBall(answerNums : List<Int>){
         else if(answerNums[0] == thirdPNums || answerNums[1] == thirdPNums)
             ball += 1
 
+        printStrikeBall(strike, ball)
+        if(strike == 3) break
+    }
+}
 
+fun printStrikeBall(strike : Int, ball : Int){
     if(strike != 3 && ball > 0 && strike > 0)
         println("$ball + 볼 + $strike + 스트라이크")
     else if(strike != 3 && ball > 0 && strike == 0)
@@ -102,12 +107,11 @@ fun countStrikeBall(answerNums : List<Int>){
         println("$strike+ 스트라이크")
     else if(strike == 0 && ball == 0)
         println("낫싱")
-    else if(strike == 3){
-        println("3스트라이크\n" +
-                "3개의 숫자를 모두 맞히셨습니다! 게임 종료")
-        break
-    }
-
+    else if(strike == 3) {
+        println(
+            "3스트라이크\n" +
+                    "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+        )
     }
 }
 
