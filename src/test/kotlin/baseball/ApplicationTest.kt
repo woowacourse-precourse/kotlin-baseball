@@ -27,6 +27,12 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `숫자범위이상`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("103") }
+        }
+    }
     override fun runMain() {
         main()
     }
