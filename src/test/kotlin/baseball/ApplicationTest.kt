@@ -68,6 +68,15 @@ class ApplicationTest : NsTest() {
             val result = "2스트라이크"
             assertThat(getHint(input, answer)).isEqualTo(result)
         }
+
+        @Test
+        fun case4() {
+            val input = "345"
+            val answer = "298"
+            val result = "낫싱"
+            assertThat(getHint(input, answer)).isEqualTo(result)
+        }
+
     }
 
     override fun runMain() {
