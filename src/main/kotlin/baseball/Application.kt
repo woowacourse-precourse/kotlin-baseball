@@ -5,10 +5,8 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     while(true){
-        //게임 시작 문구
         println("숫자 야구 게임을 시작합니다.")
 
-        //컴퓨터 랜덤 3자리 수 뽑기
         val computer = computerRandom()
 
         playerGuess(computer)
@@ -25,7 +23,6 @@ fun main() {
     }
 }
 
-//컴퓨터 랜덤 3자리 수 뽑기
 fun computerRandom() : MutableList<Int> {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
@@ -37,20 +34,16 @@ fun computerRandom() : MutableList<Int> {
     return computer
 }
 
-//예외처리 함수
 fun exeption(number : String) {
     if (number.length >= 4 || number.isEmpty() || number.length == 1 || number.length == 2){
         throw IllegalArgumentException("잘못된 값을 입력")
     }
 }
 
-//player 숫자 입력
 fun inputPlayer() : MutableList<Int> {
-    //플레이어 3개 숫자 입력
     var playerString: MutableList<String>
     var playerInt = mutableListOf<Int>()
 
-    //input 메서드
     var number= Console.readLine()
 
     exeption(number)
@@ -66,7 +59,6 @@ fun inputPlayer() : MutableList<Int> {
     return playerInt
 }
 
-//스트라이크 기능 함수
 fun strike(computer : MutableList<Int>, player : MutableList<Int>) : Int {
     var count = 0
 
@@ -78,7 +70,6 @@ fun strike(computer : MutableList<Int>, player : MutableList<Int>) : Int {
     return count
 }
 
-//볼 기능 함수
 fun ball(computer : MutableList<Int>, player : MutableList<Int>) : Int {
     var count = 0
 
@@ -89,7 +80,7 @@ fun ball(computer : MutableList<Int>, player : MutableList<Int>) : Int {
     }
     return count
 }
-//ballcompare 함수
+
 fun ballcompare (i : Int, j : Int, computer: MutableList<Int>, player: MutableList<Int>) : Int {
     var count = 0
     if (computer[i] == player[j]){  //인덴트 문제 3
@@ -98,21 +89,17 @@ fun ballcompare (i : Int, j : Int, computer: MutableList<Int>, player: MutableLi
     return count
 }
 
-//판단
 fun judgeAndPrint (strike : Int, ball : Int) : Int {
     var control = 0
 
-    //낫싱일 때
     if (strike == 0 && ball == 0){
         println("낫싱")
     }
 
-    //볼만 있을 때
     if (strike == 0 && ball != 0){
         println(ball.toString() + "볼")
     }
 
-    //스트라이크만 있을 때
     if (strike != 0 && ball == 0 ){
         //맞춰서 게임 종료
         if (strike == 3 ){
@@ -126,7 +113,6 @@ fun judgeAndPrint (strike : Int, ball : Int) : Int {
         }
     }
 
-    //볼 스트라이크 둘다 있을 때
     if (strike != 0 && ball != 0){
         println(ball.toString() + "볼 " + strike.toString() + "스트라이크")
     }
@@ -134,23 +120,18 @@ fun judgeAndPrint (strike : Int, ball : Int) : Int {
     return control
 }
 
-//사용자가 답을 맞추는 함수
 fun playerGuess(computer: MutableList<Int>) {
     var strike : Int
     var ball : Int
 
     while (true){
-        //입력
         var player = inputPlayer()
 
-        //strike, ball 확인
         strike = strike(computer, player)
         ball = ball(computer, player) - strike
 
-        //strike, ball 출력
         var control = judgeAndPrint(strike, ball)
 
-        //게임 종료 및 재시작
         if (control == 0){
             continue
         }
