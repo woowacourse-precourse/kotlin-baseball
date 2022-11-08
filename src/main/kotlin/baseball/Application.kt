@@ -48,6 +48,28 @@ fun checknum02(i, j) : Pair<Int, Int>
         else ball++;
     }
 }
+fun print_message() : Int
+{
+    var doplay : Int = 0
+
+    if (strike == 3)
+    {
+        println("$strike 스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임종료")
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
+        doplay = readLine()!!.toInt()
+        if (doplay == 2) return (0)
+        else playinggame()
+    }
+    if (strike == 0 && ball > 0 && ball <= 3)
+        println("$ball 볼")
+    if (ball == 0 && strike > 0 && strike <= 3)
+        println("$strike 스트라이크")
+    if (strike == 0 && ball == 0)
+        println("낫싱")
+    println("$ball 볼 $strike 스트라이크")
+    return 1;
+}
 fun make_answer(comAnswer: Array<Int>) 
 {
     val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
