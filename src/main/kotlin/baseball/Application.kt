@@ -49,6 +49,8 @@ fun strikeBallCheck(Answer : MutableList<Int>,Input : MutableList<Int>) : Int{
         }
     }
     if (Strike==3){
+        print("$Strike")
+        println("스트라이크")
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     } else if(Strike!=0 && Ball==0){
         print("$Strike")
