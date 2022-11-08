@@ -17,6 +17,10 @@ fun printStartMessage() {
 
 fun baseballGame() {
     val computer = generateRandomNumber()
+
+    while (true) {
+
+    }
 }
 
 fun generateRandomNumber(): List<Int> {
