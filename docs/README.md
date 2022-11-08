@@ -18,11 +18,11 @@
 
 | 함수 | 매개변수 | 반환형 | 내용 |
 | --- | --- | --- | --- |
-|playGame| | | main에서 게임 실행을 위해 호출하는 함수|
-| makeRandomNumberList |  | MutableList`<Int>` | 컴퓨터로 하여금 랜덤한 세자리 숫자 발생시킴 |
-| getPlayerNumberList | String (input) | MutableList`<Int>` | 사용자가 입력한 값 리스트로 반환 <br/>- 잘못된 입력 예외 발생(checkExceptionOnNumbers) |
-| isGameGonnaRestart | | Boolean | main에서 재시작 여부를 묻기 위해 호출하는 함수
-| getResultOfGame | MutableList`<Int>`, MutableList`<Int>` | Pair`<Int,Int>` | 사용자와 컴퓨터의 숫자들을 비교, 스트라이크와 볼의 개수 계산
+| playGame| | | main에서 게임 실행을 위해 호출하는 함수|
+| makeRandomNumbers |  | MutableList`<Int>` | 컴퓨터로 하여금 랜덤한 세자리 숫자 발생시킴 |
+| getPlayerNumbers | String (input) | MutableList`<Int>` | 사용자가 입력한 값 리스트로 반환 <br/>- 잘못된 입력 예외 발생(checkExceptionOnNumbers) |
+| isRestart | | Boolean | main에서 재시작 여부를 묻기 위해 호출하는 함수
+| getResult | MutableList`<Int>`, MutableList`<Int>` | Pair`<Int,Int>` | 사용자와 컴퓨터의 숫자들을 비교, 스트라이크와 볼의 개수 계산
 | printResult | Pair`<Int, Int>` | | 결과를 출력하는 함수
 
 <br/>
@@ -31,7 +31,7 @@
   
   | 함수 | 매개변수 | 반환형 | 내용 |
   | --- | --- | --- | --- |
-  | isHavingDuplicatedNumber | String |  | 중복된 숫자가 포함되어있으면 오류 발생 |
+  | isHavingDuplicated | String |  | 중복된 숫자가 포함되어있으면 오류 발생 |
   | isInteger | String |  | 입력한 형태가 숫자가 아닌 형태면 오류 발생 |
   | isNumberOfDigitsCorrect | String |  | 입력한 숫자 자리수가 다르면 오류 발생 |
   | checkExceptionOnNumbers | String (input) | | 입력값 관련 예외 사항들 (위의 3가지 함수) 각각 호출해서 검사 <br/> - 오류 우선순위 순으로 함수 호출

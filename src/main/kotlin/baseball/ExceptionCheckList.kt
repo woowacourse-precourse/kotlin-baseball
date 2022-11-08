@@ -2,7 +2,7 @@ package baseball
 
 fun checkExceptionOnNumbers(input: String) {
     isInteger(input)
-    isHavingDuplicatedNumber(input)
+    isHavingDuplicated(input)
     isNumberOfDigitsCorrect(input)
 }
 
@@ -14,7 +14,7 @@ fun isInteger(input: String) {
     }
 }
 
-fun isHavingDuplicatedNumber(input: String) {
+fun isHavingDuplicated(input: String) {
     for(x in input) {
         if(input.count { it == x } > 1) {
             throw IllegalArgumentException("중복된 숫자가 있습니다.")

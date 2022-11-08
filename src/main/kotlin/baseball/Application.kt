@@ -17,30 +17,30 @@ const val STRING_ASK_RESTART = "게임을 새로 시작하려면 ${WORD_RESTART_
 const val STRING_END_GAME = "게임을 종료합니다.."
 
 fun main() {
-    var isRunningGame = true
+    var isRunning = true
 
     println(STRING_START_GAME)
-    while (isRunningGame) {
+    while (isRunning) {
         playGame()
-        isRunningGame = isGameGonnaRestart()
+        isRunning = isRestart()
     }
 
     println(STRING_END_GAME)
 }
 
 fun playGame() {
-    val computerNumberList = makeRandomNumberList()
-    var resultOfGame = Pair(0, 0)
+    val computerNumbers = makeRandomNumbers()
+    var result = Pair(0, 0)
 
-    while (resultOfGame.first != NUM_DIGITS) {
+    while (result.first != NUM_DIGITS) {
         print(STRING_INPUT_NUMBER)
-        val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
-        resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
-        printResult(resultOfGame)
+        val playerNumbers = readLine()?.let { getPlayerNumbers(it) }
+        result = getResult(computerNumbers, playerNumbers!!)
+        printResult(result)
     }
 }
 
-fun getResultOfGame(
+fun getResult(
     computerNumberList: MutableList<Int>,
     playerNumberList: MutableList<Int>
 ): Pair<Int, Int> {
@@ -55,29 +55,29 @@ fun getResultOfGame(
     return Pair(numberOfStrike, numberOfBall)
 }
 
-fun getPlayerNumberList(input: String): MutableList<Int> {
+fun getPlayerNumbers(input: String): MutableList<Int> {
 
     checkExceptionOnNumbers(input)
 
-    val userNumberList = mutableListOf<Int>()
+    val userNumbers = mutableListOf<Int>()
     for (digit in 0 until NUM_DIGITS) {
-        userNumberList.add(input[digit].digitToInt())
+        userNumbers.add(input[digit].digitToInt())
     }
 
-    return userNumberList
+    return userNumbers
 }
 
-fun makeRandomNumberList(): MutableList<Int> {
-    val randomNumberList = mutableListOf<Int>()
+fun makeRandomNumbers(): MutableList<Int> {
+    val randomNumbers = mutableListOf<Int>()
 
-    while (randomNumberList.size < NUM_DIGITS) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!randomNumberList.contains(randomNumber)) {
-            randomNumberList.add(randomNumber)
+    while (randomNumbers.size < NUM_DIGITS) {
+        val number = Randoms.pickNumberInRange(1, 9)
+        if (!randomNumbers.contains(number)) {
+            randomNumbers.add(number)
         }
     }
 
-    return randomNumberList
+    return randomNumbers
 }
 
 fun printResult(result: Pair<Int, Int>) {
@@ -99,7 +99,7 @@ fun printResult(result: Pair<Int, Int>) {
     println()
 }
 
-fun isGameGonnaRestart(): Boolean {
+fun isRestart(): Boolean {
     println(STRING_ASK_RESTART)
 
     return when (readLine()) {
