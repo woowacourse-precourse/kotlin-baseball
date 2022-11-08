@@ -47,8 +47,12 @@ fun getUserNumber(): String {
     print("숫자를 입력해주세요 : ")
     val userInput = Console.readLine().toString()
     val userNumber = mutableListOf<Char>()
+    validationUserNumber(userNumber, userInput)
+    return userNumber.joinToString("")
+}
 
-    // 사용자의 입력이 세 자리 수가 아닌 경우
+fun validationUserNumber(userNumber: MutableList<Char>, userInput: String) {
+    // 사용자의 입력이 세 글자가 아닌경우
     if (userInput.length != 3) {
         throw IllegalArgumentException("You can enter only a three-digit number")
     }
@@ -64,7 +68,6 @@ fun getUserNumber(): String {
         }
         userNumber.add(userInput[index])
     }
-    return userNumber.joinToString("")
 }
 
 fun compareWithAnswer(answer: String, userNumber: String): Pair<Int, Int> {
