@@ -1,5 +1,11 @@
 package baseball
 
+import baseball.controller.Referee
+import baseball.utils.Validator
+import baseball.view.Player
+
 fun main() {
-    Referee.gameStart()
+    val player = Player(validator = Validator)
+    val referee = Referee(player)
+    referee.startGame()
 }
