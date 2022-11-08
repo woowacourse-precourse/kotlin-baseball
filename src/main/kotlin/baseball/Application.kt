@@ -5,16 +5,26 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     startGame()
-    val computerList = makeNumber()
-    println(computerList.toString())
+    var computerList = mutableListOf<Int>()
+    var inputNumberList = mutableListOf<Int>()
+    var restartFlag : Int
 
-    val inputNumberList = getInput()
-    println(inputNumberList.toString())
+    while(true){
+        computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
+        println(computerList.toString())
 
-    val strikes = countStrike(computerList, inputNumberList)
-    val balls = countBall(computerList, inputNumberList) - strikes
+        inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
+        println(inputNumberList.toString())
 
-    printResult(strikes, balls)
+        var strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
+        var balls = countBall(computerList, inputNumberList) - strikes  // 볼 개수
+
+        printResult(strikes, balls)     // 결과 출력
+
+        if(isGameOver(strikes)){        // 3스트라이크의 경우
+            restartFlag = askRestart()  // 재시작 물어봄
+        }
+    }
 }
 
 fun startGame(){
@@ -75,9 +85,12 @@ fun printResult(strikeCnt: Int, ballCnt: Int){
     }
     else{
         println("${ballCnt}볼 ${strikeCnt}스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 }
-fun isGameOver(){}
+fun isGameOver(strikeCnt: Int): Boolean{
+    return strikeCnt == 3
+}
 
 fun checkError(inputNumber: String): Boolean{
     for(i in inputNumber){
@@ -92,4 +105,10 @@ fun checkError(inputNumber: String): Boolean{
         return false
     }
     return true
+}
+
+fun askRestart(): Int{
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val restartFlag = Console.readLine().toInt()
+    return restartFlag
 }
