@@ -1,6 +1,7 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     printWelcomeMessage()
@@ -46,7 +47,7 @@ private fun printRequestForInputMessage() {
 }
 
 private fun getUserNumbers(): List<Int> {
-    val inputString = readLine()
+    val inputString = Console.readLine()
     return parseInputString(inputString)
 }
 
@@ -115,7 +116,7 @@ private fun printBallCount(ballCount: List<Int>) {
 
 private fun getIntentForNewBaseball(): Boolean {
     printNewGameMessage()
-    val input = readLine()
+    val input = Console.readLine()
     if (input == "1") {
         return true
     }
