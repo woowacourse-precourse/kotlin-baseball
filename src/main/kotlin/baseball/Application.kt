@@ -9,6 +9,7 @@ fun main() {
 
     do {
         val computerNumber = createComputerNumber()
+
         do {
             print("숫자를 입력해주세요 : ")
             val input = Console.readLine()
@@ -16,13 +17,13 @@ fun main() {
 
             val isNothing = checkNothing(inputNumber, computerNumber)
             printResult(isNothing, inputNumber, computerNumber)
-
         } while (computerNumber != inputNumber)
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         val answer = Console.readLine()
         val isQuit = askQuitOrNot(answer)
+
     } while (isQuit)
 
 }
