@@ -1,5 +1,14 @@
 package baseball
 
+import baseball.computer.Computer
+import baseball.game.Game
+import baseball.player.Player
+
+
 fun main() {
-    TODO("프로그램 구현")
+    val computer = Computer()
+    val player = Player()
+
+    val baseballGame = Game(computer = computer, player = player)
+    baseballGame.play()
 }
