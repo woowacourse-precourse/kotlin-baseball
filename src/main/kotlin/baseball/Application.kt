@@ -13,104 +13,111 @@ var strikeCount = 0
 
 
 fun main() {
-
-    var gameCoin = true
-
-    while (gameCoin) {
-        compareNum()
-        printState(gameReplay)
-        gameCoin = restartBoolean()
-    }
+    Baseball().game()
 }
 
+class Baseball {
 
-fun restartBoolean(): Boolean {
-    val input = readLine()?.toInt()
-    if ((input != 1) and (input != 2)) {
-        printState(gameReplay)
+    fun game() {
+        var gameCoin = true
+
+        while (gameCoin) {
+            compareNum()
+            printState(gameReplay)
+            gameCoin = restartBoolean()
+        }
+
     }
 
-    return when (input) {
-        1 -> true
-        2 -> false
-        else -> restartBoolean()
+
+    private fun restartBoolean(): Boolean {
+        val input = readLine()?.toInt()
+        if ((input != 1) and (input != 2)) {
+            printState(gameReplay)
+        }
+
+        return when (input) {
+            1 -> true
+            2 -> false
+            else -> restartBoolean()
+        }
+
     }
 
-}
+    private fun compareNum() {
+        printState(gameStart)
+        val comNum = getComNum()
 
-fun compareNum() {
-    printState(gameStart)
-    val comNum = getComNum()
+        while (true) {
+            printState(gameInProgress)
+            val userNum = getUserNum()
 
-    while (true) {
-        printState(gameInProgress)
-        val userNum = getUserNum()
+            ballCount(userNum, comNum)
+            strikeCount(userNum, comNum)
 
-        ballCount(userNum, comNum)
-        strikeCount(userNum, comNum)
+            if ((ballCount == 0) and (strikeCount == 0)) {
+                printState(gameScoreNothing)
+            } else printState(gameScoreCount)
 
-        if ((ballCount == 0) and (strikeCount == 0)) {
-            printState(gameScoreNothing)
-        } else printState(gameScoreCount)
+            if (strikeCount == 3) break
+        }
 
-        if (strikeCount == 3) break
+        printState(gameEnd)
     }
 
-    printState(gameEnd)
-}
+    private fun getComNum(): MutableList<Int> {
+        val computerNum = mutableListOf<Int>()
+        while (computerNum.size < 3) {
+            val randomNumber = Randoms.pickNumberInRange(1, 9)
+            if (!computerNum.contains(randomNumber)) {
+                computerNum.add(randomNumber)
+            }
+        }
+        return computerNum
+    }
 
-fun getComNum(): MutableList<Int> {
-    val computerNum = mutableListOf<Int>()
-    while (computerNum.size < 3) {
-        val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if (!computerNum.contains(randomNumber)) {
-            computerNum.add(randomNumber)
+    private fun printState(state: Int) {
+        when (state) {
+            gameStart -> println("숫자 야구 게임을 시작합니다.")
+            gameInProgress -> print("숫자를 입력해주세요 : ")
+            gameScoreCount -> println("$ballCount 볼 $strikeCount 스트라이크")
+            gameScoreNothing -> println("낫싱")
+            gameEnd -> println("3개의 숫자를 모두 맞히셨습니다! 게임종료")
+            gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         }
     }
-    return computerNum
-}
 
-fun printState(state: Int) {
-    when (state) {
-        gameStart -> println("숫자 야구 게임을 시작합니다.")
-        gameInProgress -> print("숫자를 입력해주세요 : ")
-        gameScoreCount -> println("$ballCount 볼 $strikeCount 스트라이크")
-        gameScoreNothing -> println("낫싱")
-        gameEnd -> println("3개의 숫자를 모두 맞히셨습니다! 게임종료")
-        gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    private fun getUserNum(): List<Int> {
+        val userNum = readLine()!!.map { it.digitToInt() }
+
+        inputException(userNum)
+        return userNum
     }
-}
 
-fun getUserNum(): List<Int> {
-    val userNum = readLine()!!.map { it.digitToInt() }
+    private fun ballCount(userNum: List<Int>, comNum: List<Int>) {
+        ballCount = 0
 
-    inputException(userNum)
-    return userNum
-}
-
-fun ballCount(userNum: List<Int>, comNum: List<Int>) {
-    ballCount = 0
-
-    for (element in userNum) {
-        if (comNum.contains(element)) {
-            ballCount++
+        for (element in userNum) {
+            if (comNum.contains(element)) {
+                ballCount++
+            }
         }
     }
-}
 
-fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
-    strikeCount = 0
+    private fun strikeCount(userNum: List<Int>, comNum: List<Int>) {
+        strikeCount = 0
 
-    for (index in userNum.indices) {
-        if (userNum[index] == comNum[index]) {
-            strikeCount++
-            ballCount--
+        for (index in userNum.indices) {
+            if (userNum[index] == comNum[index]) {
+                strikeCount++
+                ballCount--
+            }
         }
     }
-}
 
-fun inputException(userNum: List<Int>) {
-    if (userNum.contains(0)) throw IllegalArgumentException("1 ~ 9 사이의 숫자만 입력가능합니다.")
-    if (userNum.size != 3) throw IllegalArgumentException("1 ~ 9 사이의 숫자, 3개를 입력해야합니다.")
-    if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
+    private fun inputException(userNum: List<Int>) {
+        if (userNum.contains(0)) throw IllegalArgumentException("1 ~ 9 사이의 숫자만 입력가능합니다.")
+        if (userNum.size != 3) throw IllegalArgumentException("1 ~ 9 사이의 숫자, 3개를 입력해야합니다.")
+        if (userNum.distinct().size != 3) throw IllegalArgumentException("중복값이 존재합니다.")
+    }
 }
