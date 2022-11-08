@@ -23,7 +23,6 @@ fun createRandomNumber(): String{ //랜덤 숫자 생성
         }
     }
     return computer.joinToString("")
-    println(computer.toString())
 }
 fun callException(){//예외 처리
     return throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
