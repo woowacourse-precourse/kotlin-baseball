@@ -1,9 +1,11 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.system.exitProcess
 
 fun main() {
-
+    while (true) {
+    }
 }
 
 fun printStartNotice() {
@@ -21,3 +23,4 @@ fun createAnswer(): MutableList<Int> {
     }
     return answer
 }
+
