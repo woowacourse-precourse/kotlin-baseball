@@ -8,6 +8,7 @@ lateinit var userNum: Array<Int>
 var chooseStartOrEnd = 1
 var strike = 0
 var ball = 0
+var userWin = false
 
 fun main() {
     gameStart()
@@ -17,6 +18,7 @@ fun main() {
         checkUserInputForm(userNum)
 
         for (eachNumber in userNum) checkStrikeOrBall(eachNumber)
+        checkResult(strike, ball)
     }
 }
 
@@ -56,5 +58,13 @@ fun checkStrikeOrBall(partOfMyNum: Int) {
     if (computerNum.contains(partOfMyNum)) {
         if (userNum.indexOf(partOfMyNum) == computerNum.indexOf(partOfMyNum)) strike += 1
         else ball += 1
+    }
+}
+
+fun checkResult(s: Int, b: Int) {
+    if (s == 3 && b == 0) {
+        println("3스트라이크")
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        userWin = true
     }
 }
