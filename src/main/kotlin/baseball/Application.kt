@@ -5,17 +5,35 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     startGame()
+    val computerList = makeNumber()
+    println(computerList.toString())
+
+    val inputNumberList = getInput()
+    println(inputNumberList.toString())
 }
 
 fun startGame(){
     println("숫자 야구 게임을 시작합니다.")
-    val computerList = makeNumber()
-    println(computerList.toString())
 }
 
 fun makeNumber(): List<Int>{
     val computerList = Randoms.pickUniqueNumbersInRange(1, 9, 3)
     return computerList
+}
+
+fun getInput(): List<Int>{
+    print("숫자를 입력해주세요 : ")
+    val returnNumber = mutableListOf<Int>()
+    val inputNumber = Console.readLine()
+    if(!checkError(inputNumber)){
+        throw IllegalArgumentException("잘못된 입력입니다.")
+    }
+
+    inputNumber.toList()
+    for(i in inputNumber){
+        returnNumber.add(i.digitToInt())
+    }
+    return returnNumber
 }
 
 fun countBall(computerNumber: String, inputNumber: String): Int{
@@ -55,3 +73,18 @@ fun printResult(strikeCnt: Int, ballCnt: Int){
     }
 }
 fun isGameOver(){}
+
+fun checkError(inputNumber: String): Boolean{
+    for(i in inputNumber){
+        if(i.digitToIntOrNull() == null){
+            return false
+        }
+        if(i.digitToIntOrNull() == 0){
+            return false
+        }
+    }
+    if(inputNumber.length != 3){
+        return false
+    }
+    return true
+}
