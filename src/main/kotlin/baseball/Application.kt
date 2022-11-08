@@ -16,7 +16,24 @@ fun main() {
 
 fun playGame() {
     val computerNumberList = makeRandomNumberList()
+    // 반복
     val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
+    val resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
+}
+
+fun getResultOfGame(
+    computerNumberList: MutableList<Int>,
+    playerNumberList: MutableList<Int>
+): Pair<Int, Int> {
+
+    val numberOfStrike = playerNumberList.count {
+        playerNumberList.indexOf(it) == computerNumberList.indexOf(it)
+    }
+    val numberOfBall = playerNumberList.count {
+        computerNumberList.contains(it)
+    } - numberOfStrike
+
+    return Pair(numberOfStrike, numberOfBall)
 }
 
 fun getPlayerNumberList(input: String): MutableList<Int> {

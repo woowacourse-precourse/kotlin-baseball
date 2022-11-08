@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -36,5 +37,40 @@ class ApplicationTest : NsTest() {
         val input = "123"
         val result = mutableListOf(1, 2, 3)
         assertThat(getPlayerNumberList(input)).isEqualTo(result)
+    }
+
+    @Nested
+    inner class GettingResultTest {
+        @Test
+        fun case1() {
+            val computer = mutableListOf(3, 5, 7)
+            val player = mutableListOf(3, 7, 4)
+            val result = Pair(1, 1)
+            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val computer = mutableListOf(3, 5, 7)
+            val player = mutableListOf(5, 7, 3)
+            val result = Pair(0, 3)
+            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val computer = mutableListOf(3, 5, 7)
+            val player = mutableListOf(3, 5, 7)
+            val result = Pair(3, 0)
+            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val computer = mutableListOf(3, 5, 7)
+            val player = mutableListOf(1, 2, 4)
+            val result = Pair(0, 0)
+            assertThat(getResultOfGame(computer, player)).isEqualTo(result)
+        }
     }
 }
