@@ -2,6 +2,29 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
+fun calculatePoint(inputNumber:Int, computerNum: MutableList<Int>):Int {
+    val input0:Int = inputNumber / 100
+    val input1:Int = inputNumber % 100 / 10
+    val input2:Int = inputNumber % 10
+    var result = 0
+    if(computerNum[0] == input0) {
+        result += 10
+    }else if(computerNum.contains(input0)) {
+        result += 1
+    }
+    if(computerNum[1] == input1) {
+        result += 10
+    }else if(computerNum.contains(input1)) {
+        result += 1
+    }
+    if(computerNum[2] == input2) {
+        result += 10
+    }else if(computerNum.contains(input2)) {
+        result += 1
+    }
+    return result
+}
+
 fun pickComputerNumber():MutableList<Int> {
     val computerNum:MutableList<Int> = mutableListOf()
     while(computerNum.size < 3) {
