@@ -6,6 +6,10 @@ class Exception {
 
         if (!regex.matches(userNumber))
             throw IllegalArgumentException("유효한 3자리 숫자가 아닙니다.")
+
+        if (userNumber.toList().count() != userNumber.toSet().count()) {
+            throw IllegalArgumentException("서로 다른 3자리 숫자가 아닙니다.")
+        }
     }
 
     fun isInvalidTrigger(trigger: String) {
