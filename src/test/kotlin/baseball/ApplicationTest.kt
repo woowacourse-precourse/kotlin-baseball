@@ -71,6 +71,45 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Nested
+    inner class Function4Test {
+        @Test
+        fun `getStrikeCount 메서드로 스트라이크 카운트 반환`() {
+            val computerNum = mutableListOf(1,5,3)
+            val userNum = mutableListOf(1,5,9)
+
+            assertThat(getStrikeCount(computerNum, userNum)).isEqualTo(2)
+        }
+
+        @Test
+        fun `getBallCount 메서드로 볼 카운트 반환`() {
+            val computerNum = mutableListOf(1, 3, 5)
+            val userNum = mutableListOf(1, 5, 9)
+
+            assertThat(getBallCount(computerNum, userNum)).isEqualTo(2)
+        }
+
+        @Test
+        fun `getBallStrikeMessage 메서드가 경우에 따라 볼, 스트라이크, 낫싱 문구 반환`() {
+            assertThat(getBallStrikeMessage(0, 2)).isEqualTo("2스트라이크")
+            assertThat(getBallStrikeMessage(0, 0)).isEqualTo("낫싱")
+        }
+
+        @Test
+        fun `getInningResult 메서드로 경우에 맞는 결과 반환`() {
+            val userNums = listOf(
+                    mutableListOf(3, 2, 4),
+                    mutableListOf(5, 2, 8),
+                    mutableListOf(9, 8, 7)
+            )
+            val computerNum = mutableListOf(1, 2, 3)
+            val answers = listOf("1볼 1스트라이크", "1스트라이크", "낫싱")
+            assertThat(getInningResult(computerNum, userNums[0])).isEqualTo(answers[0])
+            assertThat(getInningResult(computerNum, userNums[1])).isEqualTo(answers[1])
+            assertThat(getInningResult(computerNum, userNums[2])).isEqualTo(answers[2])
+        }
+    }
+
     override fun runMain() {
         main()
     }
