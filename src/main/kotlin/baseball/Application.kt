@@ -13,6 +13,7 @@ fun main() {
 
         playerGuess(computer)
 
+
     }
 }
 
@@ -80,6 +81,42 @@ fun ballcompare (i : Int, j : Int, computer: MutableList<Int>, player: MutableLi
     return count
 }
 
+//판단
+fun judgeAndPrint (strike : Int, ball : Int) : Int {
+    var control = 0
+
+    //낫싱일 때
+    if (strike == 0 && ball == 0){
+        println("낫싱")
+    }
+
+    //볼만 있을 때
+    if (strike == 0 && ball != 0){
+        println(ball.toString() + "볼")
+    }
+
+    //스트라이크만 있을 때
+    if (strike != 0 && ball == 0 ){
+        //맞춰서 게임 종료
+        if (strike == 3 ){
+            println(strike.toString() + "스트라이크")
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+
+            control = 1
+        }
+        if (strike != 3){
+            println(strike.toString() + "스트라이크")
+        }
+    }
+
+    //볼 스트라이크 둘다 있을 때
+    if (strike != 0 && ball != 0){
+        println(ball.toString() + "볼 " + strike.toString() + "스트라이크")
+    }
+
+    return control
+}
+
 //사용자가 답을 맞추는 함수
 fun playerGuess(computer: MutableList<Int>) {
     var strike : Int
@@ -93,6 +130,16 @@ fun playerGuess(computer: MutableList<Int>) {
         strike = strike(computer, player)
         ball = ball(computer, player) - strike
 
+        //strike, ball 출력
+        var control = judgeAndPrint(strike, ball)
+
+        //게임 종료 및 재시작
+        if (control == 0){
+            continue
+        }
+        if (control == 1){
+            break
+        }
     }
 }
 
