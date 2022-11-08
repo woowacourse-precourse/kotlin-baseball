@@ -20,12 +20,12 @@ fun main() {
 
         when (inputState) {
             ONGOING_INPUT -> {
-                print(ONGOING_INPUT_PHRASE)
+                printOngoingInputPhrase()
                 stepUserInput = readLine()
                 checkAppropriateOngoingInput(stepUserInput)
             }
             RESTART_INPUT -> {
-                println(RESTART_INPUT_PHRASE)
+                printRestartInputPhrase()
                 val gameStateInput = readLine()
                 checkAppropriateRestartInput(gameStateInput)
             }
@@ -35,6 +35,14 @@ fun main() {
 
 private fun printStartGamePhrase() {
     println(START_PHRASE)
+}
+
+private fun printOngoingInputPhrase() {
+    print(ONGOING_INPUT_PHRASE)
+}
+
+private fun printRestartInputPhrase() {
+    println(RESTART_INPUT_PHRASE)
 }
 
 private fun getRandomNumberList(listLength: Int): MutableList<Int> {
