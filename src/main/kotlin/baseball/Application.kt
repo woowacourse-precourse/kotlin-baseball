@@ -102,7 +102,7 @@ fun isGameOver(strikeCnt: Int): Boolean{
 fun checkError(inputNumber: String): Boolean{
     if(findChar(inputNumber)
             || findZero(inputNumber)
-            || findSame(inputNumber)
+            || !findSame(inputNumber)
             || !matchLength(inputNumber)){
         return true
     }
