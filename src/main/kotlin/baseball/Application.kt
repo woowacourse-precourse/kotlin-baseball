@@ -5,16 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     startGame()
-    var computerList = mutableListOf<Int>()
-    var inputNumberList = mutableListOf<Int>()
+    var computerList = listOf<Int>()
+    var inputNumberList = listOf<Int>()
     var restartFlag : Int = 1
 
     while(restartFlag != 2){
         if(restartFlag == 1){
-            computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
+            computerList = makeNumber()     // 랜덤수 생성
             restartFlag = 0
         }
-        inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
+        inputNumberList = getInput()        // 사용자 입력
 
         val strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
         val balls = countBall(computerList, inputNumberList) - strikes  // 볼 개수
@@ -62,11 +62,8 @@ fun countBall(computerNumberList: List<Int>, inputNumberList: List<Int>): Int{
 fun countStrike(computerNumberList: List<Int>, inputNumberList: List<Int>): Int{
     var strikeCnt = 0
     for(i in computerNumberList.indices){
-        val num = computerNumberList[i]
-        val index = inputNumberList.indexOf(num)
-
-        if(i == index){
-            strikeCnt++
+        if(computerNumberList[i] == inputNumberList[i]){
+            strikeCnt++;
         }
     }
     return strikeCnt
