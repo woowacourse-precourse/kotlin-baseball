@@ -11,21 +11,21 @@ class CheckRestart {
 }
 
 private fun showFinishMessage(strike: Int) {
-    println("${strike}${VerifyNumber.STRIKE}")
-    println("3개의 숫자를 모두 맞히셨습니다! ${VerifyNumber.FINISH_GAME}")
-    println("게임을 새로시작하시려면 ${VerifyNumber.RESTART_COMMAND}, 종료하려면 ${VerifyNumber.FINISH_COMMAND}를 입력하세요.")
+    println("${strike}${PrintText.STRIKE}")
+    println(PrintText.FINISH_MESSAGE)
+    println(PrintText.RESTART_MESSAGE)
 }
 
 private fun checkGameRestart(command: String) {
     when (command) {
-        VerifyNumber.RESTART_COMMAND -> {
+        PrintText.RESTART_COMMAND -> {
             CreateNumber().create()
         }
-        VerifyNumber.FINISH_COMMAND -> {
+        PrintText.FINISH_COMMAND -> {
             return
         }
         else -> {
-            throw IllegalArgumentException("올바르지 않은 입력값입니다.")
+            throw IllegalArgumentException(PrintText.INVALID_INPUT)
         }
     }
 }
