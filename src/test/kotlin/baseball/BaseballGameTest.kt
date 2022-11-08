@@ -14,7 +14,7 @@ internal class BaseballGameTest {
     internal inner class HumanPlayerSelectedNumber {
         @DisplayName("3자리 자연수이면 값을 할당한다")
         @ParameterizedTest
-        @CsvSource(value = ["120", "777", "1000", "34"])
+        @CsvSource(value = ["123", "456", "789"])
         fun playerSelectedRightNumber(humanSelectedNumber: String) {
             val humanPlayer: Player = HumanPlayer()
             val computerPlayer: Player = ComputerPlayer(ComputerRandomNumber())
