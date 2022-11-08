@@ -50,15 +50,18 @@ class Baseball {
 
             if ((ballCount == 0) and (strikeCount == 0)) {
                 printState(gameScoreNothing)
-            } else if (ballCount == 0) {
-                printState(strikeCount)
-            } else if (strikeCount == 0) {
-                printState(ballCount)
-            } else printState(gameSumCount)
 
+            } else if ((ballCount == 0) and (strikeCount > 0)) {
+                printState(gameStrikeCount)
+
+            } else if ((strikeCount == 0) and (ballCount > 0)) {
+                printState(gameBallCount)
+
+            } else {
+                printState(gameSumCount)
+            }
             if (strikeCount == 3) break
         }
-
         printState(gameEnd)
     }
 
