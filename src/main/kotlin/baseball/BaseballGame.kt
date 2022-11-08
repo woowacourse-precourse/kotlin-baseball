@@ -16,6 +16,13 @@ class BaseballGame(private val humanPlayer: Player, private var computerPlayer: 
         }
     }
 
+    @Throws(IllegalArgumentException::class)
+    private fun humanSelectedNumber() {
+        print("숫자를 입력해주세요 : ")
+        val selectedNumber = Console.readLine()
+        humanPlayer.setSelectedNumber(selectedNumber)
+    }
+
     companion object {
         const val CORRECT_ANSWER = "3스트라이크"
         const val WRONG_ANSWER = ""
