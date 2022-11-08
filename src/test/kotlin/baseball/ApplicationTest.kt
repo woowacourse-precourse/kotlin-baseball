@@ -27,6 +27,28 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자가 숫자가 아닌 값을 입력했을 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("=-[") }
+        }
+    }
+
+    @Test
+    fun `사용자가 3보다 적거나 많은 수의 값을 입력했을 경우` () {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1") }
+            assertThrows<IllegalArgumentException> { runException("12345") }
+        }
+    }
+
+    @Test
+    fun `사용자가 입력한 값 중 중복 값이 포함되었을 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("112") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
