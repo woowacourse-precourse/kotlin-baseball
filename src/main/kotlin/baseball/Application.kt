@@ -58,3 +58,21 @@ fun setComputerNumber(): List<Int> {
 fun printPlayBallText() = println("숫자 야구 게임을 시작합니다.")
 
 fun printInputUserNumber() = print("숫자를 입력해 주세요 : ")
+
+
+fun printCompareResult(strike: Int, ball: Int) {
+    when {
+        strike == 0 && ball == 0 -> {
+            println("낫싱")
+        }
+        strike > 0 && ball == 0 -> {
+            println("${strike}스트라이크")
+        }
+        strike == 0 && ball > 0 -> {
+            println("${ball}볼")
+        }
+        strike > 0 && ball > 0 -> {
+            println("${ball}볼 ${strike}스트라이크")
+        }
+    }
+}
