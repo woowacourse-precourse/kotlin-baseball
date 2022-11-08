@@ -6,11 +6,46 @@ fun main() {
     while(true){
         // TODO()
         println("숫자 야구 게임을 시작합니다.")
-        val userNum = getUserInput()
         val computerNum = getComputerInput()
-
+        startGame(computerNum)
         if(getEndloopCondition()) break
     }
+}
+
+fun startGame(computerNum: String) {
+    while(true){
+        val userNum = getUserInput()
+        val strike = getStrike(computerNum, userNum)
+        val ball = getBall(computerNum, userNum)
+        printScore(strike, ball)
+        if(strike == 3) break
+    }
+}
+
+fun printScore(strike: Int, ball: Int) {
+    when{
+        strike == 3 -> println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        ball == 0 && strike == 0 -> println("낫싱")
+        ball != 0 && strike == 0 -> println("${ball}볼")
+        ball == 0 && strike != 0 -> println("${strike}스트라이크")
+        else -> println("${ball}볼 ${strike}스트라이크")
+    }
+}
+
+fun getBall(computerNum: String, userNum: String): Int {
+    var ball = 0
+    for(i in 0..2){
+        if (computerNum.contains(char = userNum[i]) && computerNum[i] != userNum[i]) ball++
+    }
+    return ball
+}
+
+fun getStrike(computerNum: String, userNum: String): Int {
+    var strike = 0
+    for(i in 0..2){
+        if(computerNum[i] == userNum[i]) strike++
+    }
+    return strike
 }
 
 fun getComputerInput(): String {
@@ -44,7 +79,6 @@ fun getUserInput(): String {
 }
 
 fun getEndloopCondition(): Boolean {
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     val input = Console.readLine()
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     when (input) {
