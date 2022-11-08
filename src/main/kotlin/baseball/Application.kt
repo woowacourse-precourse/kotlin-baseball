@@ -19,7 +19,7 @@ fun playGame() {
     startGuessing(answer)
 }
 
-// todo: 컴퓨터의 랜덤 숫자 생성
+// 컴퓨터의 랜덤 숫자 생성
 fun getComputerNumber(): String {
     val computer = mutableListOf<Int>()
     while (computer.size < SIZE_LIMIT) {
@@ -41,7 +41,7 @@ fun startGuessing(answer: String) {
     gameOver()
 }
 
-// todo: 사용자로부터 서로 다른 3자리 수 입력 받기
+// 사용자로부터 서로 다른 3자리 수 입력 받기
 fun getUserNumber(): String {
     print("숫자를 입력해주세요: ")
     val input = readLine()!!
@@ -84,7 +84,7 @@ fun getHint(input: String, answer: String): String {
     return hint
 }
 
-// todo: 정답을 맞힌 경우, 게임 재시작 or 종료
+// 정답을 맞힌 경우, 게임 재시작 or 종료
 fun gameOver() {
     println("3스트라이크")
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
