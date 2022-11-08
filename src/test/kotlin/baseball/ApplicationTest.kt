@@ -26,7 +26,15 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
-
+    @Test
+    fun `재시작 값이 1이나 2가 아닐때`() {
+        assertRandomNumberInRangeTest(
+            {
+                assertThrows<IllegalArgumentException> { runException("246", "135","3")}
+            },
+            1, 3, 5
+        )
+    }
     @Test
     fun `적은 숫자`() {
         assertSimpleTest {
