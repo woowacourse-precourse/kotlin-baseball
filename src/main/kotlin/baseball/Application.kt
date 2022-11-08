@@ -10,7 +10,7 @@ fun main() {
     } while (restartNumberBaseball())
 }
 
-private fun startNumberBaseball() {
+fun startNumberBaseball() {
     val answerNumber = createRandomAnswerNumber().toString()
     do {
         print("숫자를 입력해주세요 : ")
@@ -26,7 +26,7 @@ private fun startNumberBaseball() {
     } while (true)
 }
 
-private fun restartNumberBaseball(): Boolean {
+fun restartNumberBaseball(): Boolean {
     println("3스트라이크")
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
@@ -39,7 +39,7 @@ private fun restartNumberBaseball(): Boolean {
     return false
 }
 
-private fun createRandomAnswerNumber(): Int {
+fun createRandomAnswerNumber(): Int {
     val randomNumbers = mutableListOf<Int>()
     while (randomNumbers.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -50,7 +50,7 @@ private fun createRandomAnswerNumber(): Int {
     return randomNumbers[0] * 100 + randomNumbers[1] * 10 + randomNumbers[2]
 }
 
-private fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
+fun getBallCount(userInputNumber: String, answerNumber: String): Pair<Int, Int> {
     var ball = 0
     var strike = 0
     for (index in answerNumber.indices) {
@@ -66,7 +66,7 @@ private fun getBallCount(userInputNumber: String, answerNumber: String): Pair<In
     return Pair(ball, strike)
 }
 
-private fun printBallCount(ballCount: Pair<Int, Int>) {
+fun printBallCount(ballCount: Pair<Int, Int>) {
     val ball = ballCount.first
     val strike = ballCount.second
     if (ball == 0 && strike == 0) {
@@ -84,7 +84,7 @@ private fun printBallCount(ballCount: Pair<Int, Int>) {
     println("${ball}볼 ${strike}스트라이크")
 }
 
-private fun validationUserInputNumber(userInputNumber: String) {
+fun validationUserInputNumber(userInputNumber: String) {
     if (userInputNumber.isEmpty()) {
         throw IllegalArgumentException("입력값이 비었습니다.")
     }
@@ -105,7 +105,7 @@ private fun validationUserInputNumber(userInputNumber: String) {
     }
 }
 
-private fun validationUserInputRestart(userInput: String) {
+fun validationUserInputRestart(userInput: String) {
     if (userInput != "1" && userInput != "2") {
         throw IllegalArgumentException("1 또는 2의 값을 입력하세요.")
     }
