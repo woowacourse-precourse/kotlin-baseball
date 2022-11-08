@@ -40,7 +40,7 @@
     - 종료 : 2
 
 ## MVC 구조
-<img src="https://user-images.githubusercontent.com/39490416/200239440-765eba47-e8f2-4bf7-a9bb-4426947d2ee2.png" width="500" height="280"/>
+<img src="https://user-images.githubusercontent.com/39490416/200502030-87653fde-5000-4d0e-8119-3e5b183b0f99.png" width="500" height="280"/>
 
 - Controller
     - BaseBallController : 게임 플레이관련 컨트롤러
