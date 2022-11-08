@@ -20,8 +20,8 @@ class ApplicationTest : NsTest() {
         )
     }
 
-    @Test
-    fun `예외 테스트`() {
+
+    @Test fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
@@ -30,4 +30,5 @@ class ApplicationTest : NsTest() {
     override fun runMain() {
         main()
     }
+
 }
