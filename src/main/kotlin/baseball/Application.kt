@@ -9,6 +9,16 @@ fun main() {
 
 }
 
+fun checkReplay(): Boolean {
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요")
+    var replay = Console.readLine()
+    checkValidReplay(replay.toInt())
+    if(replay.toInt()==1){
+        return true
+    }
+    return false
+
+}
 fun checkValidReplay(replay : Int){
     if(replay != 1 && replay != 2){
         throw throw IllegalArgumentException("input only 1 or 2")
