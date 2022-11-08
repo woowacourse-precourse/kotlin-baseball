@@ -1,28 +1,25 @@
 package baseball
 
 class Judgement(val clientNumber: List<Int>, val computerNumber: List<Int>) {
+    val strikeOrBall: MutableList<Int> = mutableListOf(0, 0)
 
     fun judgeTheBall(): MutableList<Int> {
-        val strikeOrBall: MutableList<Int> = mutableListOf(0, 0)
         for (number in clientNumber) {
             if (computerNumber.contains(number)) {
-                val judge = getScore(number, clientNumber.indexOf(number), computerNumber)
-                judgement(judge, strikeOrBall)
+                getScore(number, clientNumber.indexOf(number), computerNumber)
             }
         }
         return strikeOrBall
     }
 
-    fun getScore(clientNumber: Int, clientNumberIndex: Int, computerNumber: List<Int>): String {
+    fun getScore(clientNumber: Int, clientNumberIndex: Int, computerNumber: List<Int>) {
         if (clientNumberIndex == computerNumber.indexOf(clientNumber)) {
-            return "strike"
+            strikeOrBall[0]++
         }
-        return "ball"
+        if (clientNumberIndex != computerNumber.indexOf(clientNumber)) {
+            strikeOrBall[1]++
+        }
     }
 
-    fun judgement(judge: String, strikeOrBall: MutableList<Int>) {
-        if (judge == "strike") strikeOrBall[0]++
-        if (judge == "ball") strikeOrBall[1]++
-    }
 
 }
