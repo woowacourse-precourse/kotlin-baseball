@@ -66,12 +66,12 @@ fun strikeBallCheck(Answer : MutableList<Int>,Input : MutableList<Int>) : Int{
     return Strike
 }
 fun gameMenu(menu:Int):Boolean{
-    when (menu) {
+    return when (menu) {
         1 -> {
-            return true
+            true
         }
         2 -> {
-            return false
+            false
         }
         else -> {
             throw IllegalArgumentException()
@@ -80,7 +80,7 @@ fun gameMenu(menu:Int):Boolean{
 }
 fun menuInput(): Int {
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-    return readLine()!!.toInt()
+    return readLine()!!.toIntOrNull() ?: throw IllegalArgumentException()
 }
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
