@@ -54,7 +54,7 @@ private fun getUserNumbers(): List<Int> {
 private fun parseInputString(inputString: String?): List<Int> {
     val numbers = mutableListOf<Int>()
     inputString?.forEach {
-        if (hasIllegalCharacter(it)) {
+        if (it.hasIllegalCharacter()) {
             throw IllegalArgumentException(Message.ILLEGAL_CHARACTER.message)
         }
         val number = it.toNumber()
@@ -70,8 +70,8 @@ private fun parseInputString(inputString: String?): List<Int> {
     return numbers
 }
 
-private fun hasIllegalCharacter(char: Char): Boolean =
-    char.code < '1'.code || char.code > '9'.code
+private fun Char.hasIllegalCharacter(): Boolean =
+    this.code < '1'.code || this.code > '9'.code
 
 private fun Char.toNumber() = this.code - '0'.code
 
