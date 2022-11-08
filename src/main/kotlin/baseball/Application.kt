@@ -34,7 +34,7 @@ fun playerNumber() : List<Int>{
     return player
 }
 
-fun inputError(player: Array<Int>) {
+fun inputError(player: List<Int>) {
     if (player.contains(0) || player.toSet().size != 3 || player.size != 3) {
         throw IllegalArgumentException("올바른 값을 입력하세요")
     }
