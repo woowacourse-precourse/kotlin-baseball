@@ -1,5 +1,5 @@
 package baseball
 
 fun main() {
-    printWelcomeMessage()
+    println(Message.WELCOME)
 }

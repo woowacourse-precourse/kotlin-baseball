@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun gameStart() {
     val computerNumber = createComputerNumber()
     while (true) {
-        printMessageAskingForInputNumber()
+        print(Message.REQUEST_INPUT_NUMBER)
     }
 }
 
