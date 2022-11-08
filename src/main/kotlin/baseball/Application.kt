@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 /*
 기능 목록
     1. 1에서 9까지의 서로 다른 임의의 수 3개를 무작위로 만들어낸다.
@@ -38,13 +40,14 @@ fun decisionEndGame() : Int? {
 
 //1. 1에서 9까지의 서로 다른 임의의 수 3개를 무작위로 만들어내는 함수
 fun produceRandomNums() : Set<Int> {
-    val range = (1..9)
-    val randomNums = mutableSetOf<Int>()
-
-    for(i in 1..3)
-        randomNums.add(range.random())
-
-    return randomNums
+    val computer = mutableSetOf<Int>()
+    while (computer.size < 3) {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber)
+        }
+    }
+    return computer
 }
 
 fun stringToIntList( stringNums : String ) : List<Int>{
@@ -101,12 +104,16 @@ fun countStrikeBall(answerNums : List<Int>){
 fun printStrikeBall(strike : Int, ball : Int){
     if(strike != 3 && ball > 0 && strike > 0)
         println("$ball + 볼 + $strike + 스트라이크")
+
     else if(strike != 3 && ball > 0 && strike == 0)
         println("$ball + 볼")
+
     else if(strike != 3 && ball == 0 && strike > 0)
         println("$strike+ 스트라이크")
+
     else if(strike == 0 && ball == 0)
         println("낫싱")
+
     else if(strike == 3) {
         println(
             "3스트라이크\n" +
