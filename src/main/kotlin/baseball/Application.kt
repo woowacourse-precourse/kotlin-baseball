@@ -49,9 +49,9 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
             print("${struck}스트라이크")
         }
 
-        if(balls == 0 && struck == 0) {
+        if (balls == 0 && struck == 0) {
             print("낫싱")
-       }
+        }
 
         print("\n")
 
@@ -72,7 +72,7 @@ fun simulateGame(answer: MutableList<Int>): Boolean {
 }
 
 fun checkFinishInput(isContinue: String) {
-    if(!(isContinue == "1" || isContinue == "2")) {
+    if (!(isContinue == "1" || isContinue == "2")) {
         finishWithException()
     }
 }
@@ -91,6 +91,10 @@ fun checkInput(input: String) {
     }
 
     if (count.size != 3) {
+        finishWithException()
+    }
+
+    if (count.contains(0)) {
         finishWithException()
     }
 }
@@ -129,11 +133,11 @@ fun getBallCount(answer: MutableList<Int>, input: String): Int {
 }
 
 fun isBall(answer: MutableList<Int>, input: String, num1: Int, num2: Int): Int {
-    if(num1 == num2) {
+    if (num1 == num2) {
         return 0
     }
 
-    return if(answer[num1] == input[num2] - '0') {
+    return if (answer[num1] == input[num2] - '0') {
         1
     } else {
         0
