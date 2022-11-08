@@ -7,13 +7,34 @@ fun main() {
 
 }
 
+fun inputErrorCheck(input: String) {
+
+    if (input.length != 3) {
+        println(input.length)
+        throw IllegalArgumentException()
+    }
+
+    if ( (input.toInt() < 1) || (input.toInt() > 9) ){
+        throw IllegalArgumentException()
+    }
+}
+
+fun duplicateCheck(inputList: List<Int>): Boolean {
+    return inputList.size != inputList.distinct().count()
+}
+
 fun userInputNumber(): MutableList<Int> {
 
     val userInputList = MutableList(3) { 0 }
     val userInputNumber = Console.readLine()
 
+    inputErrorCheck(userInputNumber)
     for (i in 0..2) {
         userInputList[i] = userInputNumber[i].digitToInt()
+    }
+
+    if (duplicateCheck(userInputList)) {
+        throw IllegalArgumentException()
     }
 
     return userInputList
