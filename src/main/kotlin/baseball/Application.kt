@@ -68,7 +68,7 @@ fun gameOver() {
 
     val is_continue = Console.readLine()!!.toInt()
     when (is_continue){
-        1 -> main()
+        1 -> runningGame()
         2 -> System.runFinalization()
     }
 }
