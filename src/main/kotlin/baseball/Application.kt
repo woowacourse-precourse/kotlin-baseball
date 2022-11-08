@@ -1,11 +1,19 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console.readLine
 
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
-    setRandomNumber()
+    println(setRandomNumber())
+    println(getUserNumber())
 }
+
+
+fun getUserNumber(): String {
+    return readLine()
+}
+
 
 fun setRandomNumber(): List<Int> {
     val baseballNumber = mutableListOf<Int>()
