@@ -91,14 +91,11 @@ private fun printScore(stepScoreList: List<Int>) {
 private fun getRandomNumberString(stringLength: Int, gameState: GameState): String {
     var randomNumberString = ""
     when (gameState) {
-        ONGOING_STATE -> {
+        ONGOING_STATE ->
             while (randomNumberString.length < stringLength) {
                 val stageNumber = pickNumberInRange(1, 9)
-                if (stageNumber.toString() !in randomNumberString) {
-                    randomNumberString += stageNumber
-                }
+                if (stageNumber.toString() !in randomNumberString) randomNumberString += stageNumber
             }
-        }
         END_STATE -> randomNumberString = ""
     }
     return randomNumberString
