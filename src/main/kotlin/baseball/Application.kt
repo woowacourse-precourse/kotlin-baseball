@@ -18,16 +18,21 @@ package baseball
 fun main() {
 //    TODO("프로그램 구현")
     println("숫자 야구 게임을 시작합니다.")
-
+    //난수 생성
+    //게임 결과 출력
+    println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+    val decisionEndGame = readLine()
+    //1 일시 다시, 난수 생성 후 게임 결과 출력
+    //2 프로그램 종료
 }
 
 //1. 1에서 9까지의 서로 다른 임의의 수 3개를 무작위로 만들어내는 함수
-fun produceRandomNums() : List<Int> {
+fun produceRandomNums() : Set<Int> {
     val range = (1..9)
-    val randomNums = mutableListOf<Int>()
+    val randomNums = mutableSetOf<Int>()
 
     for(i in 1..3)
-        randomNums += range.random()
+        randomNums.add(range.random())
 
     return randomNums
 }
