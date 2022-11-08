@@ -4,11 +4,12 @@ import baseball.resources.*
 import baseball.domain.Computer
 import baseball.domain.Match
 import baseball.domain.Player
+import baseball.util.RandomGenerate
 import baseball.view.View
 import java.lang.IllegalArgumentException
 
 class BaseballGame {
-    private val computer = Computer()
+    private val computer = Computer(RandomGenerate())
     private val player = Player()
     private val match = Match()
     private val view = View()
