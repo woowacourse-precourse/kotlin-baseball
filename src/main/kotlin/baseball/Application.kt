@@ -11,6 +11,10 @@ fun main() {
 
 
 fun getUserNumber(): String {
+    val userNumber = readLine()
+    if(isInvalidNumber(userNumber)) {
+        throw IllegalArgumentException()
+    }
     return readLine()
 }
 
@@ -24,4 +28,10 @@ fun setRandomNumber(): List<Int> {
         }
     }
     return baseballNumber
+}
+
+
+fun isInvalidNumber(userNumber : String) : Boolean{
+    val regex = Regex("^[0-9]{3}\$")
+    return !regex.matches(userNumber)
 }
