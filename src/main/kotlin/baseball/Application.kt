@@ -123,7 +123,7 @@ private fun getIntentForNewBaseball(): Boolean {
     if (input == "2") {
         return false
     }
-    return getIntentForNewBaseball()
+    throw IllegalArgumentException(Message.ILLEGAL_INTENT.message)
 }
 
 private fun printNewGameMessage() {
@@ -137,6 +137,7 @@ enum class Message(val message: String) {
     ILLEGAL_DUPLICATED_NUMBERS("Duplicated numbers"),
     ILLEGAL_INPUT_NULL("InputString is null"),
     ILLEGAL_SIZE("Numbers.size not 3"),
+    ILLEGAL_INTENT("Intent can be only 1 or 2"),
     GAME_FINISHED("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     NEW_GAME("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 }
