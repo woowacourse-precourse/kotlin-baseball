@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+
     @Test
     fun `게임종료 후 재시작`() {
         assertRandomNumberInRangeTest(
@@ -44,6 +45,20 @@ class ApplicationTest : NsTest() {
     fun `중복되는 숫자 입력 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("155") }
+        }
+    }
+
+    @Test
+    fun `재시작 체크`() {
+        assertThrows<IllegalArgumentException> {
+            assertRandomNumberInRangeTest(
+                {
+                    run("352", "3")
+
+
+                },
+                3,5,2
+            )
         }
     }
 
