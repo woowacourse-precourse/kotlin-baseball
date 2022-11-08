@@ -95,7 +95,7 @@ internal class `Input 파일의` {
                 System.setIn(ByteArrayInputStream(input.toByteArray()))
                 val answer = readAnswerAboutRestart()
 
-                assertThat(answer).isEqualTo(Restart.YES)
+                assertThat(answer).isEqualTo(RestartDecision.YES)
             }
         }
 
@@ -108,7 +108,7 @@ internal class `Input 파일의` {
                 System.setIn(ByteArrayInputStream(input.toByteArray()))
                 val answer = readAnswerAboutRestart()
 
-                assertThat(answer).isEqualTo(Restart.NO)
+                assertThat(answer).isEqualTo(RestartDecision.NO)
             }
         }
 
