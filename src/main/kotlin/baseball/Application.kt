@@ -16,7 +16,7 @@ const val STRIKE = 1
 fun main() {
     printStartGamePhrase()
     var gameState = ONGOING_STATE
-    val randomNumberList = getRandomNumberList(3)
+    val randomNumberString = getRandomNumberString(3)
     var inputState = ONGOING_INPUT
 
     while (gameState == ONGOING_STATE) {
@@ -53,16 +53,16 @@ private fun printRestartInputPhrase() {
     println(RESTART_INPUT_PHRASE)
 }
 
-private fun getRandomNumberList(listLength: Int): MutableList<Int> {
+private fun getRandomNumberString(stringLength: Int): String {
     val candidateNumberList = mutableListOf<Int>().apply { addAll(1..9) }
-    val randomNumberList = mutableListOf<Int>()
-    for (i in 1..listLength) {
+    var randomNumberString = ""
+    for (i in 1..stringLength) {
         val stageNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInList(candidateNumberList)
         candidateNumberList.remove(stageNumber)
-        randomNumberList.add(stageNumber)
+        randomNumberString += stageNumber
     }
 
-    return randomNumberList
+    return randomNumberString
 }
 
 private fun isInputTypeNumber(userInput: String): Boolean = Pattern.matches("^[0-9]+$", userInput)
