@@ -138,9 +138,6 @@ fun makeRandomNum(): List<Int> {
 fun isValidNum(answer: Int): Boolean { //사용자 입력 검사 함수
     var answerList = answer.toString().toList()
 
-    if (!(answer is Int)) {
-        return false
-    }
     if (answer <= 0) {
         return false
     }
