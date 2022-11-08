@@ -1,0 +1,3 @@
+package baseball
+
+class ComputerRandomNumberTest
