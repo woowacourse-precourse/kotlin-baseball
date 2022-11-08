@@ -75,7 +75,7 @@ fun print(strike_ball: MutableList<Int>) : Int{
         println("${strike_ball[0]}스트라이크")
         return 0
     } else {
-        print("${strike_ball[1]}볼 ${strike_ball[0]}스트라이크")
+        println("${strike_ball[1]}볼 ${strike_ball[0]}스트라이크")
         return 0
     }
 }
@@ -85,7 +85,7 @@ fun input(Computer: MutableList<Int>){
         val input = readLine()!!.toString()
         var input_array : Array<Int> = checkTrue(input)
         val strike_ball = countCorrect(Computer, input_array)
-        if (print(strike_ball) == 1) return
+        if (print(strike_ball) == 1) break
     }
 }
 
