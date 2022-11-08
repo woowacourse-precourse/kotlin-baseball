@@ -16,7 +16,12 @@ class FunctionTest : NsTest() {
         assertThat(result).isEqualTo(user.intputToList())
 
     }
-
+    @Test
+    fun `중복되는 입력 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("114") }
+        }
+    }
 
 
 
