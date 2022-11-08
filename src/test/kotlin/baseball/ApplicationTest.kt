@@ -39,9 +39,9 @@ class ApplicationTest : NsTest() {
     @Test
     fun `사용자 입력 예외 테스트`() {
         assertThrows<IllegalArgumentException>{
-            checkPlayerInput("1234")
-            checkPlayerInput("a12")
-            checkPlayerInput("121")
+            validatePlayerInput("1234")
+            validatePlayerInput("a12")
+            validatePlayerInput("121")
         }
     }
 
@@ -49,8 +49,8 @@ class ApplicationTest : NsTest() {
     fun `스트라이크 판정 테스트`() {
         val computer: List<Int> = listOf(1, 2, 3)
 
-        assertThat(checkStrike(computer, listOf(1, 2, 3))).isEqualTo(false)
-        assertThat(checkStrike(computer, listOf(2, 1, 3))).isEqualTo(true)
+        assertThat(checkStrikes(computer, listOf(1, 2, 3))).isEqualTo(false)
+        assertThat(checkStrikes(computer, listOf(2, 1, 3))).isEqualTo(true)
     }
 
     @Test
