@@ -4,6 +4,7 @@ import baseball.GameState.END_STATE
 import baseball.GameState.ONGOING_STATE
 import baseball.InputState.ONGOING_INPUT
 import baseball.InputState.RESTART_INPUT
+import baseball.NumberBaseBallGamePhrases.NOTHING_PHRASE
 import baseball.NumberBaseBallGamePhrases.ONGOING_INPUT_PHRASE
 import baseball.NumberBaseBallGamePhrases.RESTART_INPUT_PHRASE
 import baseball.NumberBaseBallGamePhrases.START_PHRASE
@@ -91,4 +92,19 @@ private fun getGameState(userInput: String): GameState {
         END_STATE.stateNumber -> return END_STATE
     }
     throw IllegalStateException("RESTART_INPUT 관련 예외처리에서 거르지 못한 예외가 있음")
+}
+
+private fun calcIsNothing(userInput: String, randomNumberString: String): Pair<MutableList<Int>, Boolean> {
+    var nothingState = true
+    val scoreCandidateList = mutableListOf<Int>()
+
+    for (eachNumberIndex in userInput.indices) {
+        if (userInput[eachNumberIndex] in randomNumberString) {
+            nothingState = false
+            scoreCandidateList.add(eachNumberIndex)
+        }
+    }
+    if (nothingState) println(NOTHING_PHRASE)
+
+    return Pair(scoreCandidateList, nothingState)
 }
