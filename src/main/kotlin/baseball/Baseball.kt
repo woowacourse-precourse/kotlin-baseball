@@ -37,20 +37,27 @@ class Baseball {
         val strike = checkStrike(computerList, userList)
         val ball = checkBall(computerList, userList) - strike
 
-        if (strike == 0 && ball == 0)
-            println(NOTING_MESSAGE)
-        else {
-            if (ball != 0)
-                println("$ball$BALL_MESSAGE ")
-            if (strike != 0)
-                println("$strike$STRIKE_MESSAGE")
-            if (strike == 3) {
-                println(CHECK_CONTINUE_MESSAGE)
-                return checkContinue()
-            }
+        printBaseballCount(ball, strike)
+        if (strike == 3) {
+            println(GAME_OVER_MESSAGE)
+            println(CHECK_CONTINUE_MESSAGE)
+            return checkContinue()
         }
+
         return false
     }
+
+    private fun printBaseballCount(ballCount: Int, strikeCount: Int) {
+        if (strikeCount == 0 && ballCount == 0)
+            println(NOTING_MESSAGE)
+        else if (ballCount != 0 && strikeCount == 0)
+            println("$ballCount$BALL_MESSAGE")
+        else if (ballCount != 0)
+            print("$ballCount$BALL_MESSAGE ")
+        if (strikeCount != 0)
+            println("$strikeCount$STRIKE_MESSAGE")
+    }
+
 
     private fun checkStrike(computerList: MutableList<Int>, userList: MutableList<Int>): Int {
         var strike = 0
