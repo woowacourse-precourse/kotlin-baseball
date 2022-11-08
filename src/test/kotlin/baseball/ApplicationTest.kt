@@ -22,10 +22,29 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `입력 값이 3개의 숫자가 아닌 경우 예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Test
+    fun `입력 값이 숫자가 아닌 경우 예외 테스트`() {
+        assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("abc") }
+        }
+    }
+
+    @Test
+    fun `입력 값에 0이 포함되는 경우 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("012") }
+        }
+    }
+
+    @Test
+    fun `입력 값에 중복된 숫자가 있는 경우 예외 테스트`() {
+        assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("112") }
         }
     }
@@ -62,7 +81,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `모든 문자열 출력 테스트`() {
+    fun `문자열 출력 테스트`() {
         assertRandomNumberInRangeTest(
             {
                 run("123", "456", "135", "1", "789", "589", "2")
