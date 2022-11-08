@@ -24,7 +24,9 @@ class Baseball {
 
     private fun checkContinue(): Boolean {
         val input = Console.readLine()
-        if(input=="2") {
+        if (!(input == "1" || input == "2"))
+            throw IllegalArgumentException()
+        if (input == "2") {
             return true
         }
         computer.makeComputerList()
