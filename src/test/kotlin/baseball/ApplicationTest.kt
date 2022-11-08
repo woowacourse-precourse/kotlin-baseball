@@ -26,7 +26,33 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
-
+    @Test
+    fun `재시작 값이 1이나 2가 아닐때`() {
+        assertRandomNumberInRangeTest(
+            {
+                assertThrows<IllegalArgumentException> { runException("246", "135","3")}
+            },
+            1, 3, 5
+        )
+    }
+    @Test
+    fun `적은 숫자`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("12") }
+        }
+    }
+    @Test
+    fun `숫자가 아닐때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("asd") }
+        }
+    }
+    @Test
+    fun `숫자범위이상`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("103") }
+        }
+    }
     override fun runMain() {
         main()
     }
