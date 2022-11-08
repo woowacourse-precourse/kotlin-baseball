@@ -2,8 +2,8 @@
 
 ### ⌨️ SEQ1
 - **사용자입력** : `@datatype : String`
-  - [ ] 입력 안내문 : `숫자를 입력해주세요 : `
-  - [ ] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
+  - [x] 입력 안내문 : `숫자를 입력해주세요 : `
+  - [x] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
     - 허용 : **서로 다른 3자리수**
     - 예외처리
       - [ ] `입력 값 @datatype` `IllegalArgumentException`

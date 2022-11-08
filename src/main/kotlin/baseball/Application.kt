@@ -6,11 +6,16 @@ fun main() {
     while(true){
         // TODO()
         println("숫자 야구 게임을 시작합니다.")
+        val userNum = getUserInput()
 
         if(getEndloopCondition()) break
     }
 }
 
+fun getUserInput(): String {
+    println("숫자를 입력해주세요 : ")
+    return Console.readLine()
+}
 
 fun getEndloopCondition(): Boolean {
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
