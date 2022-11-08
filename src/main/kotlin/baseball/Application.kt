@@ -80,6 +80,9 @@ fun getNum(): List<Int> {
         userNum /= 10
     }
 
+    if(userNumList.distinct().size != 3)
+        throw IllegalArgumentException("중복되는 숫자 존재")
+
     return userNumList.reversed()
 }
 
