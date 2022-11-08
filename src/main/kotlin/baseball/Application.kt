@@ -4,10 +4,13 @@ import baseball.GameState.END_STATE
 import baseball.GameState.ONGOING_STATE
 import baseball.InputState.ONGOING_INPUT
 import baseball.InputState.RESTART_INPUT
+import baseball.NumberBaseBallGamePhrases.BALL_PHRASE
 import baseball.NumberBaseBallGamePhrases.NOTHING_PHRASE
 import baseball.NumberBaseBallGamePhrases.ONGOING_INPUT_PHRASE
 import baseball.NumberBaseBallGamePhrases.RESTART_INPUT_PHRASE
 import baseball.NumberBaseBallGamePhrases.START_PHRASE
+import baseball.NumberBaseBallGamePhrases.STRIKE_PHRASE
+import baseball.NumberBaseBallGamePhrases.THREE_STRIKE_PHRASE
 import camp.nextstep.edu.missionutils.Console.readLine
 import java.util.regex.Pattern
 
@@ -45,6 +48,8 @@ fun main() {
         if (processedPairByCalcIsNothing.second) continue
 
         stepScoreList = calcStepScoreList(stepUserInput, randomNumberString, processedPairByCalcIsNothing.first)
+
+        printScore(stepScoreList)
     }
 }
 
@@ -62,6 +67,10 @@ private fun printRestartInputPhrase() {
 
 private fun printThreeStrikePhrase() {
     println(THREE_STRIKE_PHRASE)
+}
+
+private fun printScore(stepScoreList: List<Int>) {
+    println(stepScoreList[BALL].toString() + BALL_PHRASE + " " + stepScoreList[STRIKE].toString() + STRIKE_PHRASE)
 }
 
 private fun getRandomNumberString(stringLength: Int): String {
