@@ -4,7 +4,6 @@ class CountNumber {
     fun count(targetNumber: String, inputNumber: String): Boolean {
         return checkNumber(targetNumber, inputNumber)
     }
-
 }
 
 private fun checkNumber(targetNumber: String, inputNumber: String):Boolean {
