@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    gameStartText()
+    printGameStartText()
     startBaseball()
 }
 
@@ -90,4 +90,4 @@ fun inputComputerNumbers(numbers: MutableList<Int>) {
     println("computer : $numbers")
 }
 
-fun gameStartText() = println("숫자 야구 게임을 시작합니다.")
+fun printGameStartText() = println("숫자 야구 게임을 시작합니다.")
