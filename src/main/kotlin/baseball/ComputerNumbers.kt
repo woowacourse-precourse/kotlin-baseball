@@ -5,7 +5,8 @@ class ComputerNumbers(private val computerNumberMap: Map<Int, Int>) {
         val baseballResult = BaseballResult(0, 0)
         for (i in userInput.indices) {
             baseballResult.plus(
-                countStrikeAndBall(number = userInput[i].digitToInt(), index = i))
+                countStrikeAndBall(number = userInput[i].digitToInt(), index = i)
+            )
         }
         return baseballResult
     }

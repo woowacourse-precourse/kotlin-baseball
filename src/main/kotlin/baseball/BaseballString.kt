@@ -25,7 +25,7 @@ enum class BaseballString(val string: String) {
     ILLEGAL_ARGUMENT("잘못된 값을 입력하여 게임을 종료합니다.") {
         override fun print(strike: Int, ball: Int) = println(string)
     },
-    QUIT("숫자 야구 게임을 종료합니다."){
+    QUIT("숫자 야구 게임을 종료합니다.") {
         override fun print(strike: Int, ball: Int) = println(string)
     };
 

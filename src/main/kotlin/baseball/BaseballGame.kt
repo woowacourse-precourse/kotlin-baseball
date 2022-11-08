@@ -6,7 +6,7 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
     fun start() {
         var processStatus = BaseballSetting.START_OR_RESTART.number
         BaseballString.START.print()
-        while(processStatus == BaseballSetting.START_OR_RESTART.number){
+        while (processStatus == BaseballSetting.START_OR_RESTART.number) {
             BaseballString.INPUT.print()
             val userInput = Console.readLine()
             checkValidInput(userInput)
@@ -16,8 +16,8 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
         BaseballString.QUIT.print()
     }
 
-    private fun processByResult(result: Int): Int{
-        return when(result){
+    private fun processByResult(result: Int): Int {
+        return when (result) {
             BaseballSetting.DIGIT_NUMBER.number -> {
                 BaseballString.SUCCESS.print()
                 decideRestartOrQuit()
@@ -26,10 +26,10 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
         }
     }
 
-    private fun decideRestartOrQuit(): Int{
+    private fun decideRestartOrQuit(): Int {
         BaseballString.RESTART_OR_QUIT.print()
-        return when(val userInput = Console.readLine().toInt()){
-            BaseballSetting.QUIT.number-> {
+        return when (val userInput = Console.readLine().toInt()) {
+            BaseballSetting.QUIT.number -> {
                 userInput
             }
             BaseballSetting.START_OR_RESTART.number -> {
@@ -40,20 +40,21 @@ class BaseballGame(var computerNumbers: ComputerNumbers) {
         }
     }
 
-    private fun getResult(userInput: String): Int{
+    private fun getResult(userInput: String): Int {
         val baseballResult = computerNumbers.compareToUserInput(userInput)
         println(baseballResult)
         return baseballResult.strike
     }
 
-    private fun checkValidInput(userInput: String){
-        if(userInput.length != BaseballSetting.DIGIT_NUMBER.number
-            || !userInput.isNumberString()) throw IllegalArgumentException()
+    private fun checkValidInput(userInput: String) {
+        if (userInput.length != BaseballSetting.DIGIT_NUMBER.number
+            || !userInput.isNumberString()
+        ) throw IllegalArgumentException()
     }
 
     fun String.isNumberString() = this.all { it.isDigit() }
 
-    private fun resetComputerNumbers(){
+    private fun resetComputerNumbers() {
         computerNumbers =
             ComputerNumbers(RandomNumberGenerator.nDigitMap(BaseballSetting.DIGIT_NUMBER.number))
     }
