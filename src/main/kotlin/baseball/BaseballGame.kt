@@ -36,9 +36,7 @@ class BaseballGame {
         val userNumber = Console.readLine()
         println(userNumber)
 
-        if (Exception().isInvalidNumber(userNumber)) {
-            throw IllegalArgumentException()
-        }
+        Exception().isInvalidBaseballNumber(userNumber)
 
         return userNumber
     }
@@ -48,6 +46,8 @@ class BaseballGame {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         val input = Console.readLine()
+
+        Exception().isInvalidTrigger(input)
 
         if (input == "1") {
             println(1)

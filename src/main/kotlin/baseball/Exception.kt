@@ -1,9 +1,17 @@
 package baseball
 
 class Exception {
-    fun isInvalidNumber(userNumber: String): Boolean {
+    fun isInvalidBaseballNumber(userNumber: String) {
         val regex = Regex("^[0-9]{3}\$")
 
-        return !regex.matches(userNumber)
+        if (!regex.matches(userNumber))
+            throw IllegalArgumentException("유효한 3자리 숫자가 아닙니다.")
+    }
+
+    fun isInvalidTrigger(trigger: String) {
+        val regex = Regex("^[1-2]\$")
+
+        if (!regex.matches(trigger))
+            throw IllegalArgumentException("1 또는 2가 아닙니다.")
     }
 }
