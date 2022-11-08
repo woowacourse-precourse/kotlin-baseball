@@ -103,7 +103,6 @@ fun finishWithException() {
     try {
         throw IllegalArgumentException()
     } catch (e: Exception) {
-        e.printStackTrace()
         exitProcess(0)
     }
 }
