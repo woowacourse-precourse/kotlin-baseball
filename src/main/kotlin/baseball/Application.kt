@@ -20,10 +20,10 @@ fun main() {
     var isRunningGame = true
 
     println(STRING_START_GAME)
-     while(isRunningGame) {
+    while (isRunningGame) {
         playGame()
         isRunningGame = isGameGonnaRestart()
-     }
+    }
 
     println(STRING_END_GAME)
 }
@@ -32,7 +32,7 @@ fun playGame() {
     val computerNumberList = makeRandomNumberList()
     var resultOfGame = Pair(0, 0)
 
-    while(resultOfGame.first != NUM_DIGITS) {
+    while (resultOfGame.first != NUM_DIGITS) {
         print(STRING_INPUT_NUMBER)
         val playerNumberList = readLine()?.let { getPlayerNumberList(it) }
         resultOfGame = getResultOfGame(computerNumberList, playerNumberList!!)
@@ -60,7 +60,7 @@ fun getPlayerNumberList(input: String): MutableList<Int> {
     checkExceptionOnNumbers(input)
 
     val userNumberList = mutableListOf<Int>()
-    for(digit in 0 until NUM_DIGITS) {
+    for (digit in 0 until NUM_DIGITS) {
         userNumberList.add(input[digit].digitToInt())
     }
 
@@ -70,9 +70,9 @@ fun getPlayerNumberList(input: String): MutableList<Int> {
 fun makeRandomNumberList(): MutableList<Int> {
     val randomNumberList = mutableListOf<Int>()
 
-    while(randomNumberList.size < NUM_DIGITS) {
+    while (randomNumberList.size < NUM_DIGITS) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
-        if(!randomNumberList.contains(randomNumber)) {
+        if (!randomNumberList.contains(randomNumber)) {
             randomNumberList.add(randomNumber)
         }
     }
@@ -81,19 +81,19 @@ fun makeRandomNumberList(): MutableList<Int> {
 }
 
 fun printResult(result: Pair<Int, Int>) {
-    if(result.first == NUM_DIGITS) {
+    if (result.first == NUM_DIGITS) {
         println("${NUM_DIGITS}${WORD_STRIKE}")
         println(STRING_WIN_GAME)
         return
     }
 
-    if(result.second != 0) {
+    if (result.second != 0) {
         print("${result.second}${WORD_BALL} ")
     }
-    if(result.first != 0) {
+    if (result.first != 0) {
         print("${result.first}${WORD_STRIKE}")
     }
-    if(result.first + result.second == 0) {
+    if (result.first + result.second == 0) {
         print(WORD_NOTHING)
     }
     println()
@@ -101,7 +101,8 @@ fun printResult(result: Pair<Int, Int>) {
 
 fun isGameGonnaRestart(): Boolean {
     println(STRING_ASK_RESTART)
-    return when(readLine()) {
+
+    return when (readLine()) {
         WORD_RESTART_GAME -> true
         WORD_END_GAME -> false
         else -> throw IllegalArgumentException("종료 선택 옵션에 없는 명령어를 입력하였습니다.")
