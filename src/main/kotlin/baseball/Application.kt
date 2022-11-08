@@ -9,6 +9,13 @@ fun main() {
 
 }
 
+fun checkNothing(computer : List<Int>, user : List<Int>): Boolean {
+    val intersectNumber = computer.toSet().intersect(user.toSet())
+    if(intersectNumber.size==0){
+        return true
+    }
+    return false
+}
 //정답을 랜덤으로 생성
 fun setComputerNumber(): MutableList<Int> {
     val computer = mutableListOf<Int>()
