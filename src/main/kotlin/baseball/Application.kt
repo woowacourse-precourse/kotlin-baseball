@@ -9,6 +9,12 @@ fun main() {
 
 }
 
+fun checkBall(computer : List<Int>, user : List<Int>): Int {
+    var ball = 0
+    val intersectNumber = computer.toSet().intersect(user.toSet())
+    ball = intersectNumber.size
+    return ball
+}
 fun checkNothing(computer : List<Int>, user : List<Int>): Boolean {
     val intersectNumber = computer.toSet().intersect(user.toSet())
     if(intersectNumber.size==0){
