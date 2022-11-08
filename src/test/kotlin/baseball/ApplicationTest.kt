@@ -22,7 +22,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `유효하지 않은 입력 값에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
                 runException("1234") // 3자리 수가 아닌 경우
@@ -31,16 +31,6 @@ class ApplicationTest : NsTest() {
                 runException("222")  // 중복된 숫자가 있는 경우
             }
         }
-    }
-
-    @Test
-    fun `컴퓨터의 랜덤 숫자 생성`() {
-
-    }
-
-    @Test
-    fun `사용자로부터 입력 받기`() {
-
     }
 
     @Nested
@@ -76,6 +66,21 @@ class ApplicationTest : NsTest() {
             val result = "낫싱"
             assertThat(getHint(input, answer)).isEqualTo(result)
         }
+
+    }
+
+    @Test
+    fun `컴퓨터의 랜덤 숫자 생성`() {
+
+    }
+
+    @Test
+    fun `사용자로부터 입력 받기`() {
+
+    }
+
+    @Test
+    fun `입력값에 따라 게임 재시작 혹은 종료`() {
 
     }
 

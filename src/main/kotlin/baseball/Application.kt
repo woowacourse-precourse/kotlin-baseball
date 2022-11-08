@@ -15,11 +15,11 @@ fun main() {
 
 fun playGame() {
     val answer = getComputerNumber()
-    println(answer)
+    //println(answer)
     startGuessing(answer)
 }
 
-// 컴퓨터의 랜덤 숫자 생성
+// todo: 컴퓨터의 랜덤 숫자 생성
 fun getComputerNumber(): String {
     val computer = mutableListOf<Int>()
     while (computer.size < SIZE_LIMIT) {
@@ -31,15 +31,17 @@ fun getComputerNumber(): String {
     return computer.joinToString("")
 }
 
+// 정답을 맞힐 때까지 반복해서 힌트 출력
 fun startGuessing(answer: String) {
     var input = getUserNumber()
     while(input != answer){
-        printHint(input, answer)
+        println(getHint(input, answer))
         input = getUserNumber()
     }
     gameOver()
 }
 
+// todo: 사용자로부터 서로 다른 3자리 수 입력 받기
 fun getUserNumber(): String {
     print("숫자를 입력해주세요: ")
     val input = readLine()!!
@@ -48,7 +50,7 @@ fun getUserNumber(): String {
     if (input.length != SIZE_LIMIT)
         throw IllegalArgumentException()
 
-    // 1~9까지의 범위를 벗어난 경우
+    // 1~9까지의 범위를 벗어난 경우 (문자 포함)
     for (item in input) {
         if (item.digitToInt() !in MIN_VALUE..MAX_VALUE)
             throw IllegalArgumentException()
@@ -63,7 +65,7 @@ fun getUserNumber(): String {
 }
 
 // 스트라이크, 볼, 낫싱 결과 출력
-fun printHint(input: String, answer: String) {
+fun getHint(input: String, answer: String): String {
     var strike = 0
     var ball = 0
     for(i in answer.indices){
@@ -71,15 +73,18 @@ fun printHint(input: String, answer: String) {
         else if(input.contains(answer[i])) ball++
     }
 
-    if (strike != 0 && ball != 0) {
-        println("${ball}볼 ${strike}스트라이크")
+    val hint = if (strike != 0 && ball != 0) {
+        "${ball}볼 ${strike}스트라이크"
     } else {
-        if (strike != 0) println("${strike}스트라이크")
-        else if (ball != 0) println("${ball}볼")
-        else println("낫싱") // 같은 숫자가 아예 없으면 낫싱
+        if (strike != 0) "${strike}스트라이크"
+        else if (ball != 0) "${ball}볼"
+        else "낫싱"
     }
+
+    return hint
 }
 
+// todo: 정답을 맞힌 경우, 게임 재시작 or 종료
 fun gameOver() {
     println("3스트라이크")
     println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
