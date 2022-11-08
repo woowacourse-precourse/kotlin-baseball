@@ -13,11 +13,13 @@ fun main() {
         if(restartFlag == 1){
             computerList = makeNumber() as MutableList<Int>     // 랜덤수 생성
             restartFlag = 0
+            println(computerList)
         }
         else if(restartFlag == 2){
             break
         }
         inputNumberList = getInput() as MutableList<Int>    // 사용자 입력
+        println(inputNumberList)
 
         var strikes = countStrike(computerList, inputNumberList)        // 스트라이크 개수
         var balls = countBall(computerList, inputNumberList) - strikes  // 볼 개수
@@ -87,11 +89,14 @@ fun printResult(strikeCnt: Int, ballCnt: Int){
     }
     else{
         println("${ballCnt}볼 ${strikeCnt}스트라이크")
-        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 }
 fun isGameOver(strikeCnt: Int): Boolean{
-    return strikeCnt == 3
+    if(strikeCnt == 3){
+        println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        return true
+    }
+    return false
 }
 
 fun checkError(inputNumber: String): Boolean{
