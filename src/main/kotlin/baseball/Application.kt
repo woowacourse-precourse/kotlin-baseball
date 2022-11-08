@@ -10,5 +10,5 @@ fun main() {
     val player = Player()
 
     val baseballGame = Game(computer = computer, player = player)
-    baseballGame.start()
+    baseballGame.play()
 }

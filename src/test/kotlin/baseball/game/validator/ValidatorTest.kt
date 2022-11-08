@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ValidatorTest {
-    private val inputValidator = InputValidator()
+    private val inputValidator = InputValidator
 
     @Test
     fun `게임 입력이 3자리 수가 아니면 예외 발생`() {

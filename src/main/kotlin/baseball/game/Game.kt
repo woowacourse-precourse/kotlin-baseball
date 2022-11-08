@@ -15,7 +15,7 @@ class Game (
     private val ballStrikeProcessor = BallStrikeProcessor
     private var gameStateCode = GAME_ACTIVE_CODE
 
-    override fun start() {
+    override fun play() {
         printMessage(message = START_GAME_MESSAGE)
 
         do {

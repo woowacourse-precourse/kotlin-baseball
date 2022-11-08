@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class ProcessorTest {
-    private val ballStrikeProcessor = BallStrikeProcessor()
+    private val ballStrikeProcessor = BallStrikeProcessor
 
     @Test
     fun `모두 스트라이크인 경우 테스트`() {

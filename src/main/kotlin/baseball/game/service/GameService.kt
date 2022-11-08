@@ -1,7 +1,7 @@
 package baseball.game.service
 
 interface GameService {
-    fun start()
+    fun play()
     fun restart()
     fun end()
 }
