@@ -44,7 +44,7 @@ fun compareNum() {
 
     while (true) {
         printState(gameInProgress)
-        val userNum = createUserNum()
+        val userNum = getUserNum()
 
         ballCount(userNum, comNum)
         strikeCount(userNum, comNum)
@@ -81,7 +81,7 @@ fun printState(state: Int) {
     }
 }
 
-fun createUserNum(): List<Int> {
+fun getUserNum(): List<Int> {
     val userNum = readLine()!!.map { it.digitToInt() }
 
     inputException(userNum)
