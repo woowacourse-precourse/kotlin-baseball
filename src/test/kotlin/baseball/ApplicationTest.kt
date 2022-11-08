@@ -14,8 +14,6 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `게임종료 후 재시작`() {
-        testAnswerList = mutableListOf<String>("135", "589")
-
         assertRandomNumberInRangeTest(
             {
                 run("246", "135", "1", "597", "589", "2")
@@ -28,8 +26,6 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `예외 테스트`() {
-        testAnswerList = mutableListOf<String>("1234")
-
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
         }
