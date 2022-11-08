@@ -16,7 +16,6 @@ class Computer {
 
     private fun createRandomNumber() {
         do {
-            // Randoms.pickUniqueNumbersInRange()
             val randomNumber = Randoms.pickNumberInRange(MIN_OF_NUMBER, MAX_OF_NUMBER)
             _numberOfComputer.add(randomNumber)
         } while (_numberOfComputer.size < MAX_NUMBER_SIZE)

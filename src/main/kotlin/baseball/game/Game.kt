@@ -21,7 +21,6 @@ class Game (
         do {
             printMessage(message = INPUT_MESSAGE)
 
-            // TODO 함수로 빼기, 밑에 중복 코드있음
             // 사용자가 숫자 입력
             val numberOfPlayer = player.enterNumber()
             inputValidator.validateGameInput(input = numberOfPlayer)

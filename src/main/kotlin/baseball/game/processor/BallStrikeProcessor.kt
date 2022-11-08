@@ -13,15 +13,15 @@ object BallStrikeProcessor {
     /** 숫자를 비교해서 볼, 스트라이크로 처리하는 함수 **/
     fun processBallStrike(numberOfComputer: String, numberOfPlayer: String) {
 
-        numberOfComputer.forEachIndexed { cIdx, computerNum ->
-            if (computerNum == numberOfPlayer[cIdx]) { // Strike
-                ballStates[cIdx] = BallState.STRIKE
+        numberOfComputer.forEachIndexed { computerIndex, computerNum ->
+            if (computerNum == numberOfPlayer[computerIndex]) { // Strike
+                ballStates[computerIndex] = BallState.STRIKE
             }
             else if (numberOfPlayer.contains(computerNum)) { // Ball
-                ballStates[cIdx] = BallState.BALL
+                ballStates[computerIndex] = BallState.BALL
             }
             else {
-                ballStates[cIdx] = BallState.OUT
+                ballStates[computerIndex] = BallState.OUT
             }
         }
     }
