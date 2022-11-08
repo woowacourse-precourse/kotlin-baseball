@@ -91,11 +91,16 @@ fun inputErrorCheck(input: String) {
         throw IllegalArgumentException()
     }
 
-    if ( (input.toInt() < 1) || (input.toInt() > 9) ){
-        throw IllegalArgumentException()
-    }
 }
 
+fun inputRangeCheck(inputList: List<Int>){
+
+    for (i in 0..2){
+        if (inputList[i] < 1 || inputList[i] > 9){
+            throw IllegalArgumentException()
+        }
+    }
+}
 fun duplicateCheck(inputList: List<Int>): Boolean {
     return inputList.size != inputList.distinct().count()
 }
@@ -113,6 +118,7 @@ fun userInputNumber(): MutableList<Int> {
     if (duplicateCheck(userInputList)) {
         throw IllegalArgumentException()
     }
+    inputRangeCheck(userInputList)
 
     return userInputList
 }
