@@ -13,10 +13,10 @@ class HumanPlayerTest {
     internal inner class HumanPlayerSelectedNumber {
         @DisplayName("3자리 자연수이면 정상적으로 humanSelectedNumber에 값을 할당한다")
         @ParameterizedTest
-        @CsvSource(value = ["120", "777", "1000", "34"])
-        fun humanPlayerSelectedRightNumber(selectedNumber: String?) {
+        @CsvSource(value = ["123", "456", "789"])
+        fun humanPlayerSelectedRightNumber(selectedNumber: String) {
             val humanPlayer: Player = HumanPlayer()
-            humanPlayer.setSelectedNumber(selectedNumber!!)
+            humanPlayer.setSelectedNumber(selectedNumber)
             Assertions.assertAll(
                 Executable { Assertions.assertFalse(humanPlayer.getSelectedNumber().isEmpty()) },
                 Executable { Assertions.assertEquals(humanPlayer.getSelectedNumber().length, 3) }
