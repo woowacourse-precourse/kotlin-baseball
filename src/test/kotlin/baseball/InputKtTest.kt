@@ -72,4 +72,48 @@ internal class `Input 파일의` {
             readAnswer()
         }
     }
+
+    @Nested
+    inner class `readAnswerAboutRestart 메소드는` : NsTest() {
+
+        @Nested
+        inner class `사용자가 콘솔에 1 또는 2 이외의 값을 입력하면` {
+            private val input = "3"
+
+            @Test
+            fun `IllegalArgumentException 예외를 던진다`() {
+                assertThatThrownBy { run(input) }.isInstanceOf(IllegalArgumentException::class.java)
+            }
+        }
+
+        @Nested
+        inner class `사용자가 콘솔에 1을 입력하면` {
+            private val input = "1"
+
+            @Test
+            fun `Restart의 YES를 반환한다`() {
+                System.setIn(ByteArrayInputStream(input.toByteArray()))
+                val answer = readAnswerAboutRestart()
+
+                assertThat(answer).isEqualTo(Restart.YES)
+            }
+        }
+
+        @Nested
+        inner class `사용자가 콘솔에 2를 입력하면` {
+            private val input = "2"
+
+            @Test
+            fun `Restart의 NO를 반환한다`() {
+                System.setIn(ByteArrayInputStream(input.toByteArray()))
+                val answer = readAnswerAboutRestart()
+
+                assertThat(answer).isEqualTo(Restart.NO)
+            }
+        }
+
+        override fun runMain() {
+            readAnswerAboutRestart()
+        }
+    }
 }

@@ -16,3 +16,17 @@ private fun validateAnswer(answer: String) {
         !answer.all { answer.count { c -> c == it } == 1 } -> throw IllegalArgumentException(INVALID_ANSWER.message)
     }
 }
+
+fun readAnswerAboutRestart(): Restart {
+    val answer = Console.readLine()
+    validateAnswerAboutRestart(answer)
+    return when (answer) {
+        "1" -> Restart.YES
+        else -> Restart.NO
+    }
+}
+
+private fun validateAnswerAboutRestart(answer: String) {
+    if (!(answer == "1" || answer == "2"))
+        throw IllegalArgumentException(INVALID_ANSWER_ABOUT_REPLAY.message)
+}
