@@ -13,13 +13,26 @@ var strikeCount = 0
 
 
 fun main() {
-    printState(0)
 
-    compareNum()
-    printState(5)
+    var gameCoin = true
+
+    while (gameCoin) {
+        compareNum()
+        printState(5)
+        gameCoin = startBoolean()
+    }
+}
+
+fun startBoolean(): Boolean {
+    return when (readLine()?.toInt()) {
+        1 -> true
+        2 -> false
+        else -> throw IllegalArgumentException("1, 2가 아닌 다른 수가 입력되었습니다.")
+    }
 }
 
 fun compareNum() {
+    printState(0)
 
     val comNum = createRandomNum()
     println("컴퓨터 리스트 : $comNum")
@@ -53,7 +66,7 @@ fun printState(state: Int) {
     when (state) {
         gameStart -> println("숫자 야구 게임을 시작합니다.")
         gameInProgress -> print("숫자를 입력해주세요 : ")
-        gameScoreCount -> println("{$ballCount}볼 {$strikeCount}스트라이크")
+        gameScoreCount -> println("$ballCount 볼 $strikeCount 스트라이크")
         gameScoreNothing -> println("낫싱")
         gameEnd -> println("3개의 숫자를 모두 맞히셨습니다! 게임종료")
         gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
