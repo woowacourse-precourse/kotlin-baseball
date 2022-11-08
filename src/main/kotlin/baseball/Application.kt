@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Console.readLine
 import java.util.regex.Pattern
 
 fun main() {
-    printStartGameString()
+    printStartGamePhrase()
     val gameState = ONGOING_STATE
     val randomNumberList = getRandomNumberList(3)
     val inputState = ONGOING_INPUT
@@ -33,7 +33,7 @@ fun main() {
     }
 }
 
-private fun printStartGameString() {
+private fun printStartGamePhrase() {
     println(START_PHRASE)
 }
 
