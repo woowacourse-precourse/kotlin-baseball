@@ -23,6 +23,13 @@ class BaseballGame(private val humanPlayer: Player, private var computerPlayer: 
         humanPlayer.setSelectedNumber(selectedNumber)
     }
 
+    private fun makeStrikeResult(strikeCount: Int): String {
+        if (strikeCount <= 0) {
+            return ""
+        }
+        return "${strikeCount}스트라이크"
+    }
+
     private fun makeBallResult(ballCount: Int): String {
         if (ballCount <= 0) {
             return ""
