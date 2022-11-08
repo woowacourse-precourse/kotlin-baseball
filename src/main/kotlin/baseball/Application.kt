@@ -61,16 +61,32 @@ fun stringToIntList( stringNums : String ) : List<Int>{
     return playerNumsInt
 }
 
+fun getInputError(playerNums : String) : Boolean{
+    val intergerChar = '1'..'9'
+    return playerNums.all{
+        it in intergerChar
+    }
+}
+
 //3. 플레이어의 입력 값에 대한 결과를 출력한다
 fun countStrikeBall(answerNums : List<Int>){
 
     //2. 플레이어의 입력 값을 받는다
+
+    var inputIsInteger = false
 
     while(true){
 
     print("숫자를 입력해주세요 : ")
 
     var playerNumsString = readLine()
+    if (playerNumsString != null) {
+        inputIsInteger = getInputError(playerNumsString)
+    }
+    if (inputIsInteger == false){
+        throw IllegalArgumentException("숫자만 입력해주세요.")
+    }
+
     var playerNumsInt = listOf<Int>()
 
     playerNumsInt = playerNumsString?.let { stringToIntList(it) }!!
