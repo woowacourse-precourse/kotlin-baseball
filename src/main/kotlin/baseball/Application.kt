@@ -66,11 +66,29 @@ fun finishWithException() {
 fun getStrikeCount(answer: MutableList<Int>, input: String): Int {
     var count = 0
 
-    for(i in 0..2) {
-        if(answer[i] == input[i] - '0') {
+    for (i in 0..2) {
+        if (answer[i] == input[i] - '0') {
             count++
         }
     }
 
     return count
+}
+
+fun getBallCount(answer: MutableList<Int>, input: String): Int {
+    var count = 0
+
+    for (i in 0..2) {
+        for (j in 0..2) {
+            count += isEqualNumber(answer[i], input[i] - '0')
+        }
+    }
+}
+
+fun isEqualNumber(num1: Int, num2: Int): Int {
+    if (num1 == num2) {
+        return 1
+    } else {
+        return 2
+    }
 }
