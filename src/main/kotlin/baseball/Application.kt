@@ -42,6 +42,9 @@ fun playerInput(): String {
 
 fun playerInputToList(playerInputString:String) : MutableList<Int>{
     playerInputString.toIntOrNull()?: throw IllegalArgumentException()
+    if (playerInputString.length != 3){
+        throw IllegalArgumentException()
+    }
     val playerInputSplit = playerInputString.chunked(1).map { it.toInt() }.toIntArray()
     val playerInputList : MutableList<Int> = mutableListOf()
     for(count in 0..2) playerInputList.add(count,playerInputSplit[count])
@@ -49,9 +52,6 @@ fun playerInputToList(playerInputString:String) : MutableList<Int>{
 }
 
 fun playerInputValidCheck(CheckList : MutableList<Int>){
-    if (CheckList.size != 3){
-        throw IllegalArgumentException()
-    }
     if(CheckList[0]==CheckList[1]){
         throw IllegalArgumentException()
     }
