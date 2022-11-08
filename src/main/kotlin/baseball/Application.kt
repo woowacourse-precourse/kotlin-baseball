@@ -32,6 +32,10 @@ fun userNumberToList(number: String): List<Int> = number.map {
 
 fun inputUserNumber(): String = Console.readLine()
 
+fun userNumberRangeException(numberList: List<Int>): Boolean {
+    if (numberList.isEmpty() || numberList.contains(0)) return true
+    return false
+}
 
 fun inputExceptionCheck(userNumber: String) {
     val numberList = userNumberToList(userNumber)
