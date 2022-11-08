@@ -1,0 +1,24 @@
+### 기능목록
+- exception
+    - digit 1~9
+    - do not same number
+    - allowed only 3 0f number
+        - ->if not uper option "IllegalArgumentException"
+- game rule
+    - strike, ball, nothing
+        - strike : same number same position
+        - ball : same number wrong position
+        - nothing : wrong number wrong position
+- playing game
+    - making random number
+    - check the input number
+    - check up the number that is valid
+    - check up the answer
+    - intputnumber compare with program number
+    - check amswer using a funtion
+    - if the wrong number, repeat the game
+    - print the check point
+- after the game
+    - give the option to user, starting the new game or exit the game
+        - press '1' repeat the game
+        - press '2' exit the game

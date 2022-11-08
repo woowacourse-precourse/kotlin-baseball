@@ -1,5 +1,102 @@
 package baseball
+import kotlin.text.toInt
+import kotlin.io.println
+import kotlin.collections.mutableListOf
+import camp.nextstep.edu.missionutils.Randoms
 
-fun main() {
-    TODO("í”„ë¡œê·¸ë¨ êµ¬í˜„")
+var strike :Int = 0
+var ball : Int = 0
+val inputnum : Array<Int?> = arrayOfNulls<Int>(3)
+val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
+fun main(args : ArrayList<String>) :Int
+{
+    playinggame()
+    var doplay : Int = 0
+    println("°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.")
+    doplay = readLine()!!.toInt()
+    if (doplay == 1) playinggame()
+    if (doplay == 2) return 0;
+    return 0;
+}
+fun playinggame() : Int
+{
+    val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
+    println("¼ıÀÚ ¾ß±¸ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.")
+    var i : Int = 0
+    println("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä : ")
+    val inputnum : Array<Int?> = arrayOfNulls<Int>(3)
+    inputnum[2] = i % 10
+    inputnum[1] = i % 10
+    inputnum[0] = i % 10
+    inputIllegal(inputnum)
+    val (strike, ball) = checknum();
+    if (print_message() == 0) return (0);
+    return -1;
+}
+fun inputIllegal(inputnum : Array<Int?>) : Int
+{
+    if (inputnum.size != 3)                                                                     throw IllegalArgumentException("3ÀÚ¸® ¼ö°¡ ¾Æ´Õ´Ï´Ù.");
+    inputnum.forEach { 
+        if (it !in 1..9)                                                                        throw IllegalArgumentException("1~9 »çÀÌ ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+    }                      
+    if (inputnum[0]==inputnum[1] || inputnum[0]==inputnum[2] || inputnum[1]==inputnum[2])       throw IllegalArgumentException("Áßº¹µÈ °ª ÀÔ´Ï´Ù.")
+    return(0);
+}
+fun checknum() : Pair<Int, Int>
+{
+    var ball = 0;
+    var strike = 0;
+    for (i in 0..3 step(1))
+        for (j in 0..3 step(1)) checknum02(i, j)
+    return Pair(ball,strike)
+}
+fun checknum02(i : Int, j :Int) : Pair<Int, Int>
+{
+    if (comAnswer[i] == inputnum[j]){
+        if (i == j) strike++;
+        else ball++;
+    }
+    return Pair(ball,strike)
+}
+fun print_message() : Int
+{
+    var doplay : Int = 0
+
+    if (strike == 3)
+    {
+        println("$strike ½ºÆ®¶óÀÌÅ©")
+        println("3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓÁ¾·á")
+        println("°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä")
+        doplay = readLine()!!.toInt()
+        if (doplay == 2) return (0)
+        else playinggame()
+    }
+    if (strike == 0 && ball > 0 && ball <= 3)
+        println("$ball º¼")
+    if (ball == 0 && strike > 0 && strike <= 3)
+        println("$strike ½ºÆ®¶óÀÌÅ©")
+    if (strike == 0 && ball == 0)
+        println("³´½Ì")
+    println("$ball º¼ $strike ½ºÆ®¶óÀÌÅ©")
+    return 1;
+}
+fun make_answer(comAnswer: Array<Int>) 
+{
+    val comAnswer : Array<Int?> = arrayOfNulls<Int>(3)
+    var switch = BooleanArray(10)
+    for (i in switch.indices)
+    {
+        switch[i] = false 
+    }
+    var w =0 
+    while(w<3)
+    {   
+        var r = (Math.random() * 10).toInt()
+        if(switch[r]==false)
+        {
+            switch[r] =true 
+            comAnswer[w] = r + 1 
+            w++
+        }
+    }
 }
