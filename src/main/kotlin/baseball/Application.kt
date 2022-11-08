@@ -9,6 +9,11 @@ fun main() {
 
 }
 
+fun checkValidReplay(replay : Int){
+    if(replay != 1 && replay != 2){
+        throw throw IllegalArgumentException("input only 1 or 2")
+    }
+}
 fun checkResult(computer : List<Int>, user : List<Int>): Boolean {
     if(checkNothing(computer,user)){
         println("낫싱")
