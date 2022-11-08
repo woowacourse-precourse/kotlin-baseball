@@ -2,7 +2,7 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun main() {
+fun main(){
     println("숫자 야구 게임을 시작합니다.")
 
     val answerNums = produceRandomNums().toList()
@@ -15,13 +15,13 @@ fun main() {
 
 }
 
-fun decisionEndGame() : Int? {
+fun decisionEndGame(): Int?{
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
     val decisionInt = readLine()?.toInt()
     return decisionInt
 }
 
-fun produceRandomNums() : Set<Int> {
+fun produceRandomNums(): Set<Int>{
     val computer = mutableSetOf<Int>()
     while (computer.size < 3) {
         val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -32,7 +32,7 @@ fun produceRandomNums() : Set<Int> {
     return computer
 }
 
-fun stringToIntList(stringNums: String) : List<Int>{
+fun stringToIntList(stringNums: String): List<Int>{
 
     var playerNumsInt = mutableListOf<Int>()
 
@@ -43,7 +43,7 @@ fun stringToIntList(stringNums: String) : List<Int>{
     return playerNumsInt
 }
 
-fun getInputIntegerError(playerNums: String) : Boolean{
+fun getInputIntegerError(playerNums: String): Boolean{
     val intergerChar = '1'..'9'
     return playerNums.all{
         it in intergerChar
