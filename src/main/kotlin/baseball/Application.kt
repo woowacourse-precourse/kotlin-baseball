@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Console
 lateinit var computerNum: ArrayList<Int>
 lateinit var userNum: Array<Int>
 var chooseStartOrEnd = 1
+var strike = 0
+var ball = 0
 
 fun main() {
     gameStart()
@@ -13,6 +15,8 @@ fun main() {
     while (chooseStartOrEnd == 1) {
         userInput()
         checkUserInputForm(userNum)
+
+        for (eachNumber in userNum) checkStrikeOrBall(eachNumber)
     }
 }
 
@@ -45,5 +49,12 @@ fun splitNum(wholeNum: Int): Array<Int> {
 fun checkUserInputForm(userNumArray: Array<Int>) {
     if (userNumArray.toSet().size != 3 || userNumArray.size != 3 || userNumArray.contains(0)) {
         throw IllegalArgumentException("1~9로만 이루어진, 서로 다른 3자리의 수를 입력하세요.")
+    }
+}
+
+fun checkStrikeOrBall(partOfMyNum: Int) {
+    if (computerNum.contains(partOfMyNum)) {
+        if (userNum.indexOf(partOfMyNum) == computerNum.indexOf(partOfMyNum)) strike += 1
+        else ball += 1
     }
 }
