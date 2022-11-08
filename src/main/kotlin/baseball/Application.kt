@@ -3,7 +3,12 @@ package baseball
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    TODO("프로그램 구현")
+    println("숫자 야구 게임을 시작합니다.")
+
+    var computer = cptChooseRandomNum()
+
+    var user = userChooseNum()
+    baseballGame(computer, user)
 }
 
 fun cptChooseRandomNum():List<Int>{ // 컴퓨터가 서로 다른 랜덤한 수 3개를 뽑게 하는 함수
