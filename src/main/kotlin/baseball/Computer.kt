@@ -19,6 +19,14 @@ class Computer {
         }
     }
 
+    fun testGetAnswer(): ArrayList<Int> {
+        return answer
+    }
+
+    fun testSetAnswer(numbers: ArrayList<Int>) {
+        answer = numbers
+    }
+
     fun compareGuessAndAnswer(userGuess: List<Int>): Boolean {
         val strikeCount = countStrike(userGuess)
         val ballCount = countBall(userGuess)
