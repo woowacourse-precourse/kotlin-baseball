@@ -73,7 +73,7 @@ class Baseball {
         when (state) {
             gameStart -> println("숫자 야구 게임을 시작합니다.")
             gameInProgress -> print("숫자를 입력해주세요 : ")
-            gameScoreCount -> println("$ballCount 볼 $strikeCount 스트라이크")
+            gameScoreCount -> println("${ballCount}볼 ${strikeCount}스트라이크")
             gameScoreNothing -> println("낫싱")
             gameEnd -> println("3개의 숫자를 모두 맞히셨습니다! 게임종료")
             gameReplay -> println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
