@@ -48,7 +48,6 @@ class Controller {
                 computer.add(randomNumber)
             }
         }
-
     }
 
     private fun getInputFormUser(): Int {
@@ -56,9 +55,31 @@ class Controller {
     }
 
     private fun verificationNumber(inputNum: Int): Unit {
-        if (inputNum !in 100..999) {
+        if (isIncorrectRange(inputNum)) {
             throw IllegalArgumentException("User entered an incorrect value")
         }
+        if (isIncludeSameNumber(inputNum)) {
+            throw IllegalArgumentException("User entered an incorrect value")
+        }
+    }
+
+    private fun isIncludeSameNumber(num: Int): Boolean {
+        val stringNum: String = num.toString()
+        var setNum = mutableSetOf<Char>()
+        for (i in stringNum.indices) {
+            setNum.add(stringNum[i])
+        }
+        if (stringNum.length == setNum.size) {
+            return false
+        }
+        return true
+    }
+
+    private fun isIncorrectRange(num: Int): Boolean {
+        if (num !in 100..999) {
+            return true
+        }
+        return false
     }
 
     private fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): Unit {
@@ -68,8 +89,6 @@ class Controller {
             user.strike += increaseStrike(computer, i, inputNum)
             user.ball += increaseBall(computer, i, inputNum)
         }
-
-
     }
 
     private fun increaseStrike(computer: List<Int>, comIndex: Int, inputNum: List<Int>): Int {
@@ -85,11 +104,9 @@ class Controller {
         if (computer[comIndex] == inputNum[0] && comIndex != 0) {
             result++
         }
-
         if (computer[comIndex] == inputNum[1] && comIndex != 1) {
             result++
         }
-
         if (computer[comIndex] == inputNum[2] && comIndex != 2) {
             result++
         }
@@ -115,7 +132,6 @@ class Controller {
         if (strike == 0 && ball == 0) {
             view.printNothing()
         }
-
     }
 
     private fun verificationQuitNumber(quitNum: Int): Unit {
