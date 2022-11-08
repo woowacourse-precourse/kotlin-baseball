@@ -45,14 +45,8 @@ fun compareUserNumAndComputerNum(computer: List<Int>) {
 
     ballCount -= strikeCount
 
-    if (ballCount == 0 && strikeCount == 0)
-        println("낫싱")
-    else if (ballCount == 0)
-        println("${strikeCount}스트라이크")
-    else if (strikeCount == 0)
-        println("${ballCount}볼")
-    else if (ballCount != 0 && strikeCount != 0)
-        println("${ballCount}볼 ${strikeCount}스트라이크")
+    printResult(ballCount, strikeCount)
+
 
     println(computer)
 
@@ -112,6 +106,16 @@ fun baseballGameEnd(): Boolean {
     }
 }
 
+fun printResult(ball : Int, strike : Int){
+    if (ball == 0 && strike == 0)
+        println("낫싱")
+    else if (ball == 0)
+        println("${strike}스트라이크")
+    else if (strike == 0)
+        println("${ball}볼")
+    else if (ball != 0 && strike != 0)
+        println("${ball}볼 ${strike}스트라이크")
+}
 fun showStartMessage() {
     println("숫자 야구 게임을 시작합니다.")
 }
