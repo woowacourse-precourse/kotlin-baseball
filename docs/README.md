@@ -31,3 +31,6 @@ https://gist.github.com/stephenparish/9941e89d80e2bc58a153
 
 https://kotlinlang.org/docs/coding-conventions.html
 
+## JUnit 5 for Kotlin Developers
+
+https://www.baeldung.com/kotlin/junit-5-kotlin
