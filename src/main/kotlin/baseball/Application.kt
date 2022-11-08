@@ -115,12 +115,15 @@ fun printGameOver() {
 
 fun restartOrQuit(): Boolean {
     val inputNumber = Console.readLine().toInt()
-    if (inputNumber != 1 && inputNumber != 2) {
-        throw IllegalArgumentException("You can only enter 1 or 2")
-    }
+    validationRestartOrQuit(inputNumber)
     if (inputNumber == 1) {
         return true
     }
-    println("게임 종료")
     return false
+}
+
+fun validationRestartOrQuit(inputNumber: Int) {
+    if (inputNumber != 1 && inputNumber != 2) {
+        throw IllegalArgumentException("You can only enter 1 or 2")
+    }
 }
