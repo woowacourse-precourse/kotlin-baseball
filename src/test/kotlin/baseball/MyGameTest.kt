@@ -28,6 +28,13 @@ class MyGameTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자 입력 값이 모두 숫자인지 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("13a") }
+        }
+    }
+
 
 
 
