@@ -145,15 +145,16 @@ fun getInningResult(
     return getBallStrikeMessage(ballCount, strikeCount)
 }
 
+fun isThreeStrike(inningResult: String) = inningResult == "3스트라이크"
+
 fun playNumBaseball() {
     val computerNum = getComputerNumbers()
     var userNum = getUserNumbers()
     var inningResult = getInningResult(computerNum, userNum)
 
-    while (inningResult != "3스트라이크"){
+    while (!isThreeStrike(inningResult)){
         userNum = getUserNumbers()
         inningResult = getInningResult(computerNum, userNum)
-        if (inningResult == "3스트라이크") break
     }
     print("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")
 }
