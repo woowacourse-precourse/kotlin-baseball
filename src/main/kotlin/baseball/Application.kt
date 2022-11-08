@@ -7,6 +7,32 @@ fun main() {
 
 }
 
+fun gameResult(userInput: MutableList<Int>, computerInput: MutableList<Int>): Int {
+
+    var strikeCount = 0
+    var ballCount = 0
+
+    for (i in 0..2) {
+        if (computerInput[i] == userInput[i]) {
+            strikeCount++
+        } else if (computerInput.contains(userInput[i])) {
+            ballCount++
+        }
+    }
+
+    if ((strikeCount != 0) && (ballCount != 0)) {
+        println("${ballCount}볼 ${strikeCount}스트라이크")
+    } else if (strikeCount != 0) {
+        println("${strikeCount}스트라이크")
+    } else if (ballCount != 0) {
+        println("${ballCount}볼")
+    } else {
+        println("낫싱")
+    }
+
+    return strikeCount
+}
+
 fun inputErrorCheck(input: String) {
 
     if (input.length != 3) {
