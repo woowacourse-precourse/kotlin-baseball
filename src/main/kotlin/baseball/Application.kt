@@ -104,7 +104,7 @@ fun main() {
         if(input_again !=2 ||input_again !=1) throw IllegalArgumentException("1또는 2를 입력하여야 합니다.")
         if(input_again == 2) {
             Continue = 0
-            println("게임종료")
+            println("게임 종료")
         }
     }
 
