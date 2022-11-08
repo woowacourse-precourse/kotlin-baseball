@@ -6,6 +6,7 @@ fun gameStart() {
     val computerNumber = createComputerNumber()
     while (true) {
         print(Message.REQUEST_INPUT_NUMBER)
+        val answer = enteredAnswer()
     }
 }
 
