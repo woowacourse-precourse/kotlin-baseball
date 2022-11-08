@@ -3,6 +3,8 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 
 class Game {
+
+    // 게임 종료 시 실행됨, 게임 종료 여부 판단 후 불린 값 리턴
     var onEnd: () -> Boolean = { true }
 
     fun playWith(computer: List<Int>): Boolean {
