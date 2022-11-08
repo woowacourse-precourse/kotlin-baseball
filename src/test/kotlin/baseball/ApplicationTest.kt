@@ -21,9 +21,30 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `허용된 것보다 더 긴 입력`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("1234") }
+        }
+    }
+
+    @Test
+    fun `허용된 것보다 더 짧은 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1") }
+        }
+    }
+
+    @Test
+    fun `0이 포함된 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("104") }
+        }
+    }
+
+    @Test
+    fun `중복된 숫자가 포함된 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("111") }
         }
     }
 
