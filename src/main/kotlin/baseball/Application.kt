@@ -18,11 +18,9 @@ import camp.nextstep.edu.missionutils.Randoms
     8. 재시작할 경우, 서로 다른 임의의 수 3개를 다시 만들어낸다.
  */
 fun main() {
-//    TODO("프로그램 구현")
     println("숫자 야구 게임을 시작합니다.")
-    //난수 생성
+
     val answerNums = produceRandomNums().toList()
-    //게임 결과 출력
     countStrikeBall(answerNums)
 
     while (decisionEndGame() == 1){
@@ -38,7 +36,6 @@ fun decisionEndGame() : Int? {
     return decisionInt
 }
 
-//1. 1에서 9까지의 서로 다른 임의의 수 3개를 무작위로 만들어내는 함수
 fun produceRandomNums() : Set<Int> {
     val computer = mutableSetOf<Int>()
     while (computer.size < 3) {
@@ -83,10 +80,7 @@ fun getInputDuplicateError(playerNums: List<Int>){
     }
 }
 
-//3. 플레이어의 입력 값에 대한 결과를 출력한다
 fun countStrikeBall(answerNums : List<Int>){
-
-    //2. 플레이어의 입력 값을 받는다
 
     var inputIsInteger = false
 
