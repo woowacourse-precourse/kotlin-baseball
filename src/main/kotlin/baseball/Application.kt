@@ -6,9 +6,10 @@ import java.lang.IllegalArgumentException
 
 fun main() {
     printStartMessage()
-    val computerNum = getComputerNum()
-    val userNum = getUserNum()
+    val computerNum = getComputerNumbers()
+    val userNum = getUserNumbers()
     print(getInningResult(computerNum, userNum))
+
 }
 
 fun printStartMessage() = "숫자 야구 게임을 시작합니다."
@@ -22,7 +23,7 @@ fun addNotDuplicateNum(
     if (!numbers.contains(number)) numbers.add(number)
 }
 
-fun getComputerNum(): MutableList<Int> {
+fun getComputerNumbers(): MutableList<Int> {
     val numbers = mutableListOf<Int>()
 
     while (numbers.size != 3) {
@@ -44,11 +45,21 @@ fun isNum(string: String): Boolean {
 
 fun isThreeLength(string: String) = string.length == 3
 
+fun addSameCharCount(char1: Char, char2: Char) = if (char1 == char2) 1 else 0
+
 fun isNotDuplicate(string: String): Boolean {
     var result = true
 
-    for (i in 1 until string.length)
-        if (string[0] == string[i]) result = false
+    for (i in string.indices){
+        var charCount = 0
+
+        for (j in i until string.length)
+            charCount += addSameCharCount(string[i], string[j])
+        if (charCount > 1){
+            result = false
+            break
+        }
+    }
 
     return result
 }
@@ -59,12 +70,12 @@ fun isSatisfyConditions(numbers: String): Boolean {
             isNotDuplicate(numbers)
 }
 
-fun enterNum(): String {
+fun enterNumbers(): String {
     print("\n숫자를 입력해주세요 : ")
     return Console.readLine()
 }
 
-fun numToList(numbers: String): MutableList<Int> {
+fun numbersToList(numbers: String): MutableList<Int> {
     val result = mutableListOf<Int>()
 
     for (i in numbers.indices)
@@ -76,33 +87,40 @@ fun numToList(numbers: String): MutableList<Int> {
     return result
 }
 
-fun getUserNum(): MutableList<Int> {
-    val numbers = enterNum()
+fun getUserNumbers(): MutableList<Int> {
+    val numbers = enterNumbers()
 
-    return if (isSatisfyConditions(numbers)) numToList(numbers)
+    return if (isSatisfyConditions(numbers)) numbersToList(numbers)
         else throw IllegalArgumentException("수를 잘못 입력하였습니다.")
 }
 
+fun addStrikeCount(computerNum: Int, userNum: Int): Int = if (computerNum == userNum) 1 else 0
+
 fun getStrikeCount(
-        computerNum: MutableList<Int>,
-        userNum: MutableList<Int>
+        computerNumbers: MutableList<Int>,
+        userNumbers: MutableList<Int>
 ): Int {
     var strikeCount = 0
 
-    for (i in userNum.indices)
-        if (computerNum[i] == userNum[i]) strikeCount++
+    for (i in userNumbers.indices)
+        strikeCount += addStrikeCount(computerNumbers[i], userNumbers[i])
 
     return strikeCount
 }
 
+fun addBallCount(
+        computerNumbers: MutableList<Int>,
+        userNum: Int
+): Int = if (computerNumbers.contains(userNum)) 1 else 0
+
 fun getBallCount(
-        computerNum: MutableList<Int>,
-        userNum: MutableList<Int>
+        computerNumbers: MutableList<Int>,
+        userNumbers: MutableList<Int>
 ): Int{
     var ballCount = 0
 
-    for (i in userNum.indices)
-        if (computerNum.contains(userNum[i])) ballCount++
+    for (i in userNumbers.indices)
+        ballCount += addBallCount(computerNumbers, userNumbers[i])
 
     return ballCount
 }
