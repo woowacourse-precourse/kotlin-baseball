@@ -28,7 +28,7 @@ fun createAnswer(): MutableList<Int> {
     return answer
 }
 
-fun simulateGame() {
+fun simulateGame(answer: MutableList<Int>) {
     while (true) {
         val input = readLine()
         checkInput(input!!)
@@ -40,10 +40,16 @@ fun checkInput(input: String) {
         finishWithException()
     }
 
+    val count = mutableSetOf<Int>()
     for(c in input) {
         if(!c.isDigit()) {
             finishWithException()
+            count.add(c - '0')
         }
+    }
+
+    if(count.size != 3) {
+        finishWithException()
     }
 }
 
