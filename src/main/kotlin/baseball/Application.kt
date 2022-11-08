@@ -91,7 +91,7 @@ fun inputComputerNumbers(numbers: MutableList<Int>) {
             numbers.add(randomNumber)
         }
     }
-    println("computer : $numbers")
+//    println("computer : $numbers")
 }
 
 fun printGameStartText() = println("숫자 야구 게임을 시작합니다.")
