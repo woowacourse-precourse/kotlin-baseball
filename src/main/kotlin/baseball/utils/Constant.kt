@@ -17,5 +17,5 @@ object Constant {
     const val RESULT_BALL_MESSAGE = "%d볼"
     const val RESULT_STRIKE_MESSAGE = "%d스트라이크"
     const val RESULT_BALL_AND_STRIKE_MESSAGE = "%d볼 %d스트라이크"
-    const val WIN_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+    const val WIN_GAME_MESSAGE = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 }
