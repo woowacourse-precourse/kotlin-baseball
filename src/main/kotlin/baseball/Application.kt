@@ -90,7 +90,10 @@ fun matchNumber(input: Int, resultNum: Int): Boolean {
         tempInput /= 10
         tempResultNum /= 10
     }
-    val ballCnt = numCnt.count { it == 2 && !strikeList[numCnt[it]] }
+    val ballCnt = numCnt
+        .filterIndexed { idx, it ->
+            !strikeList[idx] && it >= 2
+        }.size
     val strikeCnt = strikeList.count { it }
     return matchResult(ballCnt, strikeCnt)
 }
