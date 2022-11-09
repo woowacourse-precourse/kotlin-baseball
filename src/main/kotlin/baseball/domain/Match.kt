@@ -7,17 +7,10 @@ class Match(
     private var strike: Int = ZERO,
     private var hint: String = NULL,
 ) {
-    private lateinit var playerNumber: String
-    private lateinit var computerNumber: String
-    private var ballCheck = mutableSetOf<Char>()
 
     fun startWith(computerNumber: String, playerNumber: String) {
         initializeScore()
-
-        this.computerNumber = computerNumber
-        this.playerNumber = playerNumber
-
-        matchTwoPlayers()
+        matchTwoPlayers(computerNumber, playerNumber)
     }
 
     private fun initializeScore() {
@@ -26,8 +19,8 @@ class Match(
         hint = NULL
     }
 
-    private fun matchTwoPlayers() {
-        ballCheck.clear()
+    private fun matchTwoPlayers(computerNumber: String, playerNumber: String) {
+        val ballCheck = mutableSetOf<Char>()
 
         playerNumber.forEachIndexed { index, number ->
             if (number == computerNumber[index]) {
