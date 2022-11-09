@@ -19,6 +19,8 @@ fun startNumberBaseball() {
         val userInputNumber = Console.readLine().trim()
         validationUserInputNumber(userInputNumber)
         if (userInputNumber == answerNumber) {
+            println("3스트라이크")
+            println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
             break
         }
 
@@ -29,10 +31,7 @@ fun startNumberBaseball() {
 }
 
 fun restartNumberBaseball(): Boolean {
-    println("3스트라이크")
-    println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-
     val userInputRestart = Console.readLine().trim()
     validationUserInputRestart(userInputRestart)
     if (userInputRestart == RESTART) {
