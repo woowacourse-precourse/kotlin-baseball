@@ -2,7 +2,7 @@ package baseball.view
 
 import camp.nextstep.edu.missionutils.Console
 
-class View {
+object View {
     fun inputPlayerNumber(): String {
         return Console.readLine()
     }
