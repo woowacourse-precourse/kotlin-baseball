@@ -3,6 +3,8 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+const val RESTART = "1"
+
 fun main() {
     println("숫자 야구 게임을 시작합니다.")
     do {
@@ -33,7 +35,7 @@ fun restartNumberBaseball(): Boolean {
 
     val userInputRestart = Console.readLine().trim()
     validationUserInputRestart(userInputRestart)
-    if (userInputRestart == "1") {
+    if (userInputRestart == RESTART) {
         return true
     }
     return false
