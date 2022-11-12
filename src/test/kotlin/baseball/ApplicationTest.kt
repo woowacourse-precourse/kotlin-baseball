@@ -59,7 +59,7 @@ class ApplicationTest : NsTest() {
             val ballCount = Pair(1, 2)
             val result = "1볼 2스트라이크"
             printBallCount(ballCount)
-            assertThat(output()).contains(result)
+            assertThat(output()).isEqualTo(result)
         }
 
         @Test
@@ -67,7 +67,7 @@ class ApplicationTest : NsTest() {
             val ballCount = Pair(3, 0)
             val result = "3볼"
             printBallCount(ballCount)
-            assertThat(output()).contains(result)
+            assertThat(output()).isEqualTo(result)
         }
 
         @Test
@@ -75,7 +75,7 @@ class ApplicationTest : NsTest() {
             val ballCount = Pair(0, 2)
             val result = "2스트라이크"
             printBallCount(ballCount)
-            assertThat(output()).contains(result)
+            assertThat(output()).isEqualTo(result)
         }
 
         @Test
@@ -83,7 +83,7 @@ class ApplicationTest : NsTest() {
             val ballCount = Pair(0, 0)
             val result = "낫싱"
             printBallCount(ballCount)
-            assertThat(output()).contains(result)
+            assertThat(output()).isEqualTo(result)
         }
 
         @Test
