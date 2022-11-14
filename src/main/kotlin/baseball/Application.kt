@@ -51,7 +51,7 @@ fun inputUserNumber(): String {
     return when (numbers.size) {
         DIGIT_LENGTH -> input
 
-        else -> throw IllegalArgumentException()
+        else -> throw IllegalArgumentException("1-9 사이의 중복되지 않은 수를 입력하세요.")
     }
 }
 
@@ -88,6 +88,6 @@ fun restartGame() {
 
         END -> return
 
-        else -> throw IllegalArgumentException()
+        else -> throw IllegalArgumentException("1-2 중 하나의 숫자만 입력하세요.")
     }
 }
