@@ -47,7 +47,7 @@ fun inputUserNumber(): String {
     val input = Console.readLine()
     val numbers = input.toCharArray().filter { number ->
         number in '1'..'9'
-    }
+    }.distinct()
     return when (numbers.size) {
         DIGIT_LENGTH -> input
 
