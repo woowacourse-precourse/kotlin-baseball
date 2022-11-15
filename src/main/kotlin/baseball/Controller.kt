@@ -41,7 +41,7 @@ class Controller {
     }
 
 
-    private fun generateComputer(): Unit {
+    private fun generateComputer() {
 
         while (computer.size < 3) {
             val randomNumber = Randoms.pickNumberInRange(1, 9)
@@ -55,7 +55,7 @@ class Controller {
         return Console.readLine()!!.toInt()
     }
 
-    private fun verificationNumber(inputNum: Int): Unit {
+    private fun verificationNumber(inputNum: Int){
         if (isIncorrectRange(inputNum)) {
             throw IllegalArgumentException("User entered an incorrect value")
         }
@@ -83,7 +83,7 @@ class Controller {
         return false
     }
 
-    private fun counteStrikeBall(computer: List<Int>, inputNum: List<Int>): Unit {
+    private fun counteStrikeBall(computer: List<Int>, inputNum: List<Int>){
         user.strike = 0
         user.ball = 0
         for (i in computer.indices) {
@@ -114,7 +114,7 @@ class Controller {
         return result
     }
 
-    private fun printResult(): Unit {
+    private fun printResult() {
         val strike: Int = user.strike
         val ball: Int = user.ball
         if (strike > 0 || ball > 0) {
@@ -135,7 +135,7 @@ class Controller {
         }
     }
 
-    private fun verificationQuitNumber(quitNum: Int): Unit {
+    private fun verificationQuitNumber(quitNum: Int) {
         if (quitNum !in 1..2) {
             throw IllegalArgumentException("User entered an incorrect value")
         }
