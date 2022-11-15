@@ -1,9 +1,11 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-const val  RESTART = 1
+const val RESTART = 1
 const val GAME_CLOSE = 2
+
 class Controller {
     private val view = View()
     private var user = User()
@@ -20,7 +22,7 @@ class Controller {
             view.printInput()
             user.inputNum = getInputFormUser()
             verificationNumber(user.inputNum)
-            countingStrikeBall(computer, user.intputToList())
+            counteStrikeBall(computer, user.intputToList())
             printResult()
             if (user.strike == 3) {
                 askStartOrEnd()
@@ -50,7 +52,7 @@ class Controller {
     }
 
     private fun getInputFormUser(): Int {
-        return readLine()!!.toInt()
+        return Console.readLine()!!.toInt()
     }
 
     private fun verificationNumber(inputNum: Int): Unit {
@@ -81,10 +83,10 @@ class Controller {
         return false
     }
 
-    private fun countingStrikeBall(computer: List<Int>, inputNum: List<Int>): Unit {
+    private fun counteStrikeBall(computer: List<Int>, inputNum: List<Int>): Unit {
         user.strike = 0
         user.ball = 0
-        for (i in 0..2) {
+        for (i in computer.indices) {
             user.strike += increaseStrike(computer, i, inputNum)
             user.ball += increaseBall(computer, i, inputNum)
         }

@@ -1,7 +1,7 @@
 package baseball
 
 class User {
-    var strike: Int =0
+    var strike: Int = 0
     var ball: Int = 0
     var inputData: Int = 1
     var inputNum: Int = 123
