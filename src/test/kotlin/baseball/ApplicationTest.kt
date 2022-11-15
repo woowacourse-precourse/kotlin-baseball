@@ -1,17 +1,17 @@
 package baseball
 
+import baseball.DomainService.sendGameResult
+import baseball.DomainService.checkBothNumbers
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     /** fun createRandomNumber test */
     @Test
     fun `난수 생성`() {
-        val createList = createRandomNumber()
+        val createList = applicationService.createRandomNumber()
         assertThat(createList).hasSize(3)
         print(createList.toString())
     }
@@ -22,7 +22,7 @@ class ApplicationTest : NsTest() {
         val listOfCreatedNumber: List<Int> = listOf(1, 3, 5)
         val listOfInputNumber: List<Int> = listOf(2, 4, 6)
         val result = "낫싱"
-        assertThat(checkBothNumbers(listOfCreatedNumber, listOfInputNumber)).isEqualTo(result)
+        assertThat(sendGameResult(checkBothNumbers(listOfCreatedNumber, listOfInputNumber))).isEqualTo(result)
     }
 
     @Test
@@ -49,27 +49,7 @@ class ApplicationTest : NsTest() {
         assertThat(checkBothNumbers(listOfCreatedNumber, listOfInputNumber)).isEqualTo(result)
     }
 
-    /** fun validate test */
-    @Test
-    fun `예외 처리 길이`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
-        }
-    }
 
-    @Test
-    fun `예외 처리 숫자`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("a12") }
-        }
-    }
-
-    @Test
-    fun `예외 처리 중복`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("113") }
-        }
-    }
 
     /** entire app test */
     @Test
@@ -86,5 +66,9 @@ class ApplicationTest : NsTest() {
 
     override fun runMain() {
         main()
+    }
+
+    companion object {
+        private val applicationService = ApplicationService
     }
 }
