@@ -2,6 +2,8 @@ package baseball
 
 import camp.nextstep.edu.missionutils.Console
 
+private const val RESTART_INPUT_ERROR = "1, 2가 아닌 다른 수가 입력되었습니다."
+
 class Game(
     private val gamePrinter: Printer,
     private val computer: Computer,
@@ -41,7 +43,7 @@ class Game(
         return when (Console.readLine()) {
             CONTINUE -> true
             FINISH -> false
-            else -> throw IllegalArgumentException("1, 2가 아닌 다른 수가 입력되었습니다.")
+            else -> throw IllegalArgumentException(RESTART_INPUT_ERROR)
         }
     }
 
