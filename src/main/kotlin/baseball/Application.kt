@@ -17,8 +17,8 @@ fun main() {
 
 private fun startGame() {
     val answerList = RandomInput().getRandomNumberList()
-    while(true) {
-        if(Compare().checkBallAndStrike(UserInput().getUserInput(), answerList)) {
+    while (true) {
+        if (Compare().checkBallAndStrike(UserInput().getUserInput(), answerList)) {
             checkWantPlayAgain()
             break
         }
@@ -26,20 +26,22 @@ private fun startGame() {
 }
 
 private fun checkWantPlayAgain() {
-    var userInput: String
     while (true) {
-        PrintForm().printWannaRetry()
-        userInput = Console.readLine()
-        if (!Regex().checkInputIsNumber(userInput)) {
-            PrintForm().printWrongInput()
-            return
-        }
-        if (userInput.toInt() in USER_WANT_PLAY_AGAIN..USER_DONT_WANT_PLAY_AGAIN) {
+        val userRetryInput = compareRetryInput()
+        if (userRetryInput?.toInt() == USER_WANT_PLAY_AGAIN) {
+            startGame()
             break
         }
-        PrintForm().printWrongInput()
     }
-    if (userInput.toInt() == USER_WANT_PLAY_AGAIN) {
-        startGame()
+}
+
+private fun compareRetryInput(): String? {
+    PrintForm().printWannaRetry()
+    var userInput: String = Console.readLine()
+    return if (Regex().checkInputIsNumber(userInput) && userInput.toInt() in USER_WANT_PLAY_AGAIN..USER_DONT_WANT_PLAY_AGAIN) {
+        userInput
+    } else {
+        PrintForm().printWrongInput()
+        null
     }
 }
