@@ -1,9 +1,6 @@
 package baseball
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
-import java.lang.IllegalArgumentException
-import java.util.regex.Pattern
 
 const val INPUT_LENGTH_STANDARD = 3
 const val GAME_CLEAR = 3
@@ -13,7 +10,7 @@ const val MIN_NUMBER = 1
 const val MAX_NUMBER = 9
 
 fun main() {
-    println("숫자 야구 게임을 시작합니다.")
+    PrintForm().printPlayGame()
     startGame()
 
 }
@@ -61,37 +58,35 @@ private fun checkStrikeCount(userInputEach: Int, userInputPosition: Int, answerL
 
 private fun printResult(strikeCount: Int, ballCount: Int) {
     if (strikeCount == 0 && ballCount == 0) {
-        println("낫싱")
+        PrintForm().printNothing()
     }
     if (strikeCount == GAME_CLEAR) {
-        println("${strikeCount}스트라이크")
-        print("${strikeCount}개의 숫자를 모두 맞히셨습니다! ")
-        println("게임 종료")
+        PrintForm().printWhen3Strike(strikeCount)
     }
     if (strikeCount in 1 until INPUT_LENGTH_STANDARD && ballCount in 1 until INPUT_LENGTH_STANDARD) {
-        println("${ballCount}볼 ${strikeCount}스트라이크")
+        PrintForm().printStrikeAndBall(ballCount, strikeCount)
     }
     if (strikeCount in 1 until INPUT_LENGTH_STANDARD && ballCount == 0) {
-        println("${strikeCount}스트라이크")
+        PrintForm().printOnlyStrike(strikeCount)
     }
     if (strikeCount == 0 && ballCount in 1..INPUT_LENGTH_STANDARD) {
-        println("${ballCount}볼")
+        PrintForm().printOnlyBall(ballCount)
     }
 }
 
 private fun checkWantPlayAgain() {
     var userInput: String
     while (true) {
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        PrintForm().printWannaRetry()
         userInput = Console.readLine()
         if (!Regex().checkInputIsNumber(userInput)) {
-            println("잘못된 값이 입력되었습니다. 다시 입력해주세요.")
+            PrintForm().printWrongInput()
             return
         }
         if (userInput.toInt() in USER_WANT_PLAY_AGAIN..USER_DONT_WANT_PLAY_AGAIN) {
             break
         }
-        println("잘못된 값이 입력되었습니다. 다시 입력해주세요.")
+        PrintForm().printWrongInput()
     }
     if (userInput.toInt() == USER_WANT_PLAY_AGAIN) {
         startGame()
