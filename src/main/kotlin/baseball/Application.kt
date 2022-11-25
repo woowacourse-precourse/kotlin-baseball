@@ -21,42 +21,13 @@ fun main() {
 private fun startGame() {
     val answerList = RandomInput().getRandomNumberList()
     while(true) {
-        if(checkBallAndStrike(getUserInput(), answerList)) {
+        if(checkBallAndStrike(UserInput().getUserInput(), answerList)) {
             checkWantPlayAgain()
             break
         }
     }
 }
 
-private fun getUserInput(): List<Int> {
-    print("숫자를 입력해주세요 : ")
-    val input = Console.readLine()
-    return checkInputRegex(input)
-}
-
-private fun checkInputRegex(input: String): List<Int> {
-    val inputToList = input.split("").filter { it != "" }
-
-    if (!checkInputIsNumber(input)) {
-        throw IllegalArgumentException()
-    }
-    if (input.length != INPUT_LENGTH_STANDARD) {
-        throw IllegalArgumentException()
-    }
-    if (!Regex().checkNumberIsContained("User", null, convertStringListToIntList(inputToList))) {
-        print("contain")
-        throw IllegalArgumentException()
-    }
-    return convertStringListToIntList(inputToList)
-}
-
-private fun checkInputIsNumber(number: String): Boolean {
-    return Pattern.matches("^[1-9]*$", number)
-}
-
-private fun convertStringListToIntList(targetList: List<String>): List<Int> {
-    return targetList.map { it.toInt() }
-}
 
 private fun checkBallAndStrike(userInputList: List<Int>, answerList: List<Int>): Boolean {
     var strikeCount = 0
@@ -113,7 +84,7 @@ private fun checkWantPlayAgain() {
     while (true) {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         userInput = Console.readLine()
-        if (!checkInputIsNumber(userInput)) {
+        if (!Regex().checkInputIsNumber(userInput)) {
             println("잘못된 값이 입력되었습니다. 다시 입력해주세요.")
             return
         }
