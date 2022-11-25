@@ -18,59 +18,10 @@ fun main() {
 private fun startGame() {
     val answerList = RandomInput().getRandomNumberList()
     while(true) {
-        if(checkBallAndStrike(UserInput().getUserInput(), answerList)) {
+        if(Compare().checkBallAndStrike(UserInput().getUserInput(), answerList)) {
             checkWantPlayAgain()
             break
         }
-    }
-}
-
-
-private fun checkBallAndStrike(userInputList: List<Int>, answerList: List<Int>): Boolean {
-    var strikeCount = 0
-    var ballCount = 0
-
-    for (userInputPosition in userInputList.indices) {
-        ballCount += checkBallCount(userInputList[userInputPosition], userInputPosition, answerList)
-        strikeCount += checkStrikeCount(userInputList[userInputPosition], userInputPosition, answerList)
-    }
-    printResult(strikeCount, ballCount)
-    return strikeCount == GAME_CLEAR
-}
-
-private fun checkBallCount(userInputEach: Int, userInputPosition: Int, answerList: List<Int>): Int {
-    for (answerPosition in answerList.indices) {
-        if (answerList[answerPosition] == userInputEach && userInputPosition != answerPosition) {
-            return 1
-        }
-    }
-    return 0
-}
-
-private fun checkStrikeCount(userInputEach: Int, userInputPosition: Int, answerList: List<Int>): Int {
-    for (answerPosition in answerList.indices) {
-        if (answerList[answerPosition] == userInputEach && userInputPosition == answerPosition) {
-            return 1
-        }
-    }
-    return 0
-}
-
-private fun printResult(strikeCount: Int, ballCount: Int) {
-    if (strikeCount == 0 && ballCount == 0) {
-        PrintForm().printNothing()
-    }
-    if (strikeCount == GAME_CLEAR) {
-        PrintForm().printWhen3Strike(strikeCount)
-    }
-    if (strikeCount in 1 until INPUT_LENGTH_STANDARD && ballCount in 1 until INPUT_LENGTH_STANDARD) {
-        PrintForm().printStrikeAndBall(ballCount, strikeCount)
-    }
-    if (strikeCount in 1 until INPUT_LENGTH_STANDARD && ballCount == 0) {
-        PrintForm().printOnlyStrike(strikeCount)
-    }
-    if (strikeCount == 0 && ballCount in 1..INPUT_LENGTH_STANDARD) {
-        PrintForm().printOnlyBall(ballCount)
     }
 }
 
