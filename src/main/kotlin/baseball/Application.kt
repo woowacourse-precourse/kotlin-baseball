@@ -19,39 +19,13 @@ fun main() {
 }
 
 private fun startGame() {
-    val answerList = getRandomNumberList()
+    val answerList = RandomInput().getRandomNumberList()
     while(true) {
         if(checkBallAndStrike(getUserInput(), answerList)) {
             checkWantPlayAgain()
             break
         }
     }
-}
-
-private fun getRandomNumberList(): List<Int> {
-    val randomList = mutableListOf<Int>()
-    while (randomList.size < INPUT_LENGTH_STANDARD) {
-        val newRandomNum = getEachRandomNumber()
-        if (!checkNumberIsContained("Rand", newRandomNum, randomList)) {
-            randomList.add(newRandomNum)
-        }
-    }
-    return randomList
-}
-
-private fun getEachRandomNumber(): Int {
-    return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
-}
-
-private fun checkNumberIsContained(type: String, number: Int?, numberList: List<Int>): Boolean {
-    var mReturn = false
-    if (type == "User") {
-        mReturn = numberList.distinct().size == numberList.size //Set 사용 검토!
-    }
-    if (type == "Rand") {
-        mReturn = numberList.contains(number)
-    }
-    return mReturn
 }
 
 private fun getUserInput(): List<Int> {
@@ -69,7 +43,7 @@ private fun checkInputRegex(input: String): List<Int> {
     if (input.length != INPUT_LENGTH_STANDARD) {
         throw IllegalArgumentException()
     }
-    if (!checkNumberIsContained("User", null, convertStringListToIntList(inputToList))) {
+    if (!Regex().checkNumberIsContained("User", null, convertStringListToIntList(inputToList))) {
         print("contain")
         throw IllegalArgumentException()
     }
