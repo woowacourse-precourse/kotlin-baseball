@@ -1,5 +1,4 @@
-<img alt="Design" height="1440" src="image/design.jpg" width="748"/>
-
+![Design](../image/design.jpg)
 ## 기능 명세
 - 서로 다른 3자리의 수를 입력 받아야 한다.
 - 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 수를 입력 받아야 한다.

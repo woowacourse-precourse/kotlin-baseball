@@ -1,15 +1,20 @@
 package baseball
 
+import baseball.game.Baseball
+import baseball.model.AnswerBoard
+import baseball.model.Computer
+import baseball.view.User
 import camp.nextstep.edu.missionutils.Randoms
 
 
 fun main() {
 
-    println("숫자 야구 게임을 시작합니다.")
-    Baseball(createComputerInput())
-        .playGame()
+    val answerBoard = AnswerBoard()
+    val user = User()
+    val computer = Computer()
+    val baseball = Baseball(answerBoard, user, computer)
+    baseball.play()
 }
-
 
 class Baseball(computer: String) {
     private var computerInput = computer
@@ -45,6 +50,7 @@ class Baseball(computer: String) {
     }
 
 
+    // 완료
     private fun checkCriteria(userInput: String) {
         when (ball(userInput)) {
             NONE_BALL -> {
@@ -68,7 +74,7 @@ class Baseball(computer: String) {
             THREE_BALL -> println("${ball(userInput)}볼")
         }
     }
-
+    // 완료
     fun strike(userInput: String): Int {
         var strikeCount = 0
         for (index in userInput.indices) {
@@ -78,7 +84,7 @@ class Baseball(computer: String) {
         return strikeCount
 
     }
-
+    // 완료
     fun ball(userInput: String): Int {
         var ballCount = 0
         for (index in userInput.indices) {
@@ -91,7 +97,7 @@ class Baseball(computer: String) {
 
 
 }
-
+// 완료
 private fun createComputerInput(): String {
     val computer = mutableListOf<Int>()
     while (computer.size < 3) {
@@ -103,7 +109,7 @@ private fun createComputerInput(): String {
     return computer.joinToString("")
 }
 
-
+// 완료
 fun createUserInput(): String {
     print("숫자를 입력해주세요 : ")
     val userInput: String = readLine()!!
