@@ -1,4 +1,4 @@
-<img alt="design.jpg" src="./image/design.jpg"/>
+![Design](./image/design.jpg)
 
 ## 기능 명세
 - 서로 다른 3자리의 수를 입력 받아야 한다.
