@@ -16,16 +16,17 @@ class InputValidateTest {
     }
     @ParameterizedTest
     @ValueSource(strings = ["", "1234","23"])
-    fun `입력한 숫자가 3자리수가 아닐 경우 예외 발생 `(numbers: String) {
+    fun `입력한 숫자가 3자리수가 아닐 경우 예외 발생 `(input: String) {
         assertThrows<IllegalArgumentException>() {
-            inputValidate.baseballNumbersForm(numbers)
+            inputValidate.baseballNumbersForm(input)
         }
     }
     @ParameterizedTest
     @ValueSource(strings = ["021", "a34","^a3"])
-    fun `입력한 숫자가 각각 1 부터 9까지가 아닐 경우 예외 발생 `(numbers: String) {
+    fun `입력한 숫자가 각각 1 부터 9까지가 아닐 경우 예외 발생 `(input: String) {
         assertThrows<IllegalArgumentException>() {
-            inputValidate.baseballNumbersForm(numbers)
+            inputValidate.baseballNumbersForm(input)
         }
     }
+
 }
