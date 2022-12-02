@@ -21,4 +21,11 @@ class InputValidateTest {
             inputValidate.baseballNumbersForm(numbers)
         }
     }
+    @ParameterizedTest
+    @ValueSource(strings = ["021", "a34","^a3"])
+    fun `입력한 숫자가 각각 1 부터 9까지가 아닐 경우 예외 발생 `(numbers: String) {
+        assertThrows<IllegalArgumentException>() {
+            inputValidate.baseballNumbersForm(numbers)
+        }
+    }
 }
