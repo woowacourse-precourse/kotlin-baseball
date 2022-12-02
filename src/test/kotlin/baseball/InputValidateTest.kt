@@ -15,10 +15,10 @@ class InputValidateTest {
         inputValidate = InputValidate()
     }
     @ParameterizedTest
-    @ValueSource(ints = [10, -3, 123])
-    fun `입력값이 1 부터 9까지 숫자인지 테스트 `(number: Int) {
+    @ValueSource(strings = ["", "1234","23"])
+    fun `입력한 숫자가 3자리수가 아닐 경우 예외 발생 `(numbers: String) {
         assertThrows<IllegalArgumentException>() {
-            InputValidate.numbersRange(number)
+            inputValidate.baseballNumbersForm(numbers)
         }
     }
 }
