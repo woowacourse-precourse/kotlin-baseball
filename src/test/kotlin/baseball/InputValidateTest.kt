@@ -29,4 +29,12 @@ class InputValidateTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["133", "911","777"])
+    fun `입력한 숫자의 중복값이 있을 경우 예외 발생 `(input: String) {
+        assertThrows<IllegalArgumentException>() {
+            inputValidate.duplicateBaseballNumbers(input)
+        }
+    }
+
 }
