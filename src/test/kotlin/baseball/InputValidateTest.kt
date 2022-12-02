@@ -14,4 +14,11 @@ class InputValidateTest {
     fun setup() {
         inputValidate = InputValidate()
     }
+    @ParameterizedTest
+    @ValueSource(ints = [10, -3, 123])
+    fun `입력값이 1 부터 9까지 숫자인지 테스트 `(number: Int) {
+        assertThrows<IllegalArgumentException>() {
+            InputValidate.numbersRange(number)
+        }
+    }
 }
