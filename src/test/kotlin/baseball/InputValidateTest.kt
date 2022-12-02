@@ -12,6 +12,6 @@ class InputValidateTest {
 
     @BeforeEach
     fun setup() {
-        val inputValidate: InputValidate()
+        inputValidate = InputValidate()
     }
 }
