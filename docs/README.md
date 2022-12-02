@@ -1,19 +1,20 @@
 # 🚀 기능 구현 목록
 
-- 1 부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 기능
-  - 1 부터 9까지만 입력 가능하다
-  - 서로 다른수를 입력해야 한다
-  - 3 자리만 입력되어야 한다
-- 1 부터  9까지 서로 다른 수로 이루어진 3자리의 수 반환 기능
-  - 1 부터 9까지만 반환 가능하다
-  - 서로 다른수를 반환해야 한다
-  - 3 자리만 반환 되어야 한다
-- 입력한 수와 반환한 수를 비교하여 결과를 출력하는 기능
-  - 같은 수가 같은 자리에 있으면 스트라이크
-  - 다른 자리에 있으면 볼
-  - 같은 수가 전혀 없으면 낫싱
+- 1 부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 기능 InputView # inputNumbers()
+  - 1 부터 9까지만 입력 가능하다 InputValidate # numbersRange()
+  - 서로 다른수를 입력해야 한다 InputValidate # numbersOverlap()
+  - 3 자리만 입력되어야 한다 InputValidate # numbersSize()
+- 1 부터  9까지 서로 다른 수로 이루어진 3자리의 수 반환 기능 NumberGenerator # createRandomNumbers()
+  - 1 부터 9까지만 반환 가능하다 RandomNumbersValidate # numbersRange()
+  - 서로 다른수를 반환해야 한다 RandomNumbersValidate # numbersOverlap()
+  - 3 자리만 반환 되어야 한다 RandomNumbersValidate # numbersSize()
+- 입력한 수와 반환한 수를 비교하여 결과를 출력하는 기능 OutputView # compareResult()
+  - 같은 수가 같은 자리에 있으면 스트라이크 Judgment # strike()
+  - 다른 자리에 있으면 볼 Judgment # ball()
+  - 같은 수가 전혀 없으면 낫싱 Judgment # nothing()
 
-- 게임이 종료될때까지 반복하는 기능 
-  - 3개의 숫자가 모두 스트라이크일 경우 승리
-  - 승리시 게임  종료
-  - 게임 실패시 번호 맞추는 기능만 반복
+- 야구 게임 기능 PlayGame # init()
+  - 3개의 숫자가 모두 스트라이크일 경우 승리 PlayGame # win()
+  - 게임 실패시 기능 반복 PlayGame # fail()
+  - 게임 다시 시작 PlayGame # restart()
+  - 게임 종료 PlayGame # end()
