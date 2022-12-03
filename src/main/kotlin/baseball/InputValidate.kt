@@ -9,6 +9,7 @@ class InputValidate {
         val input = input.toCharArray()
         require(input.size == input.distinct().size ) { println("숫자의 중복이 없도록 입력해주세요.")}
     }
+
     companion object {
         const val BASEBALL_NUMBERS_FORM = "^[1-9]{3}\$"
     }
