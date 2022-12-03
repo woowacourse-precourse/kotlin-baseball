@@ -4,10 +4,10 @@
   - 1 부터 9까지만 입력 가능하다 InputValidate # baseballNumbersForm()
   - 서로 다른수를 입력해야 한다 InputValidate # duplicateBaseballNumbers()
   - 3 자리만 입력되어야 한다 InputValidate # baseballNumbersForm()
-- 1 부터  9까지 서로 다른 수로 이루어진 3자리의 수 반환 기능 NumberGenerator # createRandomNumbers()
-  - 1 부터 9까지만 반환 가능하다 RandomNumbersValidate # numbersRange()
-  - 서로 다른수를 반환해야 한다 RandomNumbersValidate # numbersOverlap()
-  - 3 자리만 반환 되어야 한다 RandomNumbersValidate # numbersSize()
+- 1 부터 9까지 서로 다른 수로 이루어진 3자리의 수 반환 기능 NumberGenerator # createBaseballNumbers()
+  - 1 부터 9까지만 반환 가능하다 
+  - 서로 다른수를 반환해야 한다 
+  - 3 자리만 반환 되어야 한다 
 - 입력한 수와 반환한 수를 비교하여 결과를 출력하는 기능 OutputView # compareResult()
   - 같은 수가 같은 자리에 있으면 스트라이크 Judgment # strike()
   - 다른 자리에 있으면 볼 Judgment # ball()
