@@ -1,6 +1,6 @@
 # 🚀 기능 구현 목록
 
-- 1 부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 기능 InputView # inputNumbers()
+- 1 부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 기능 InputView # inputBaseballNumbers()
   - 1 부터 9까지만 입력 가능하다 InputValidate # baseballNumbersForm()
   - 서로 다른수를 입력해야 한다 InputValidate # duplicateBaseballNumbers()
   - 3 자리만 입력되어야 한다 InputValidate # baseballNumbersForm()
