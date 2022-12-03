@@ -2,7 +2,7 @@
 
 - 1 부터 9까지 서로 다른 수로 이루어진 3자리의 수 입력 기능 InputView # inputNumbers()
   - 1 부터 9까지만 입력 가능하다 InputValidate # baseballNumbersForm()
-  - 서로 다른수를 입력해야 한다 InputValidate # numbersOverlap()
+  - 서로 다른수를 입력해야 한다 InputValidate # duplicateBaseballNumbers()
   - 3 자리만 입력되어야 한다 InputValidate # baseballNumbersForm()
 - 1 부터  9까지 서로 다른 수로 이루어진 3자리의 수 반환 기능 NumberGenerator # createRandomNumbers()
   - 1 부터 9까지만 반환 가능하다 RandomNumbersValidate # numbersRange()
