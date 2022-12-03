@@ -10,4 +10,9 @@ class Judgment {
         return "${strikeCount}스트라이크"
     }
 
+    companion object {
+        const val INITIALIZE_COUNT = 0
+        const val STRIKE = "스트라이크"
+    }
+
 }
