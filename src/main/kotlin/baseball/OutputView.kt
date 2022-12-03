@@ -1,0 +1,5 @@
+package baseball
+
+class OutputView {
+
+}
