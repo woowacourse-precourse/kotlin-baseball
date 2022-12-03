@@ -7,6 +7,7 @@ class Judgment {
         inputNumbers.forEachIndexed { index, number ->
             if (createNumbers[index] == number) strikeCount++
         }
+        if (strikeCount == INITIALIZE_COUNT) return ""
         return strikeCount.toString() + STRIKE
     }
 
