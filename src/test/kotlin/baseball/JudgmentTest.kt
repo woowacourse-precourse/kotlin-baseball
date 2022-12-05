@@ -28,13 +28,13 @@ class JudgmentTest {
 
     @ParameterizedTest
     @CsvSource(
-        "3,1,2,3볼",
-        "1,3,2,2볼",
-        "1,2,3,''"
+        "3,1,2,3",
+        "1,3,2,2",
+        "1,2,3,0"
     )
-    fun `볼 테스트`(number1: Int, number2: Int, number3: Int, expectedResult: String) {
+    fun `볼 테스트`(number1: Int, number2: Int, number3: Int, ballCount: Int) {
         val countBallResult = judgment.countBall(inputNumbers, listOf<Int>(number1, number2, number3))
-        Assertions.assertThat(countBallResult).isEqualTo(expectedResult)
+        Assertions.assertThat(countBallResult).isEqualTo(ballCount)
     }
 
 }
