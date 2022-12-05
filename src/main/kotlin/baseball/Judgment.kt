@@ -10,18 +10,16 @@ class Judgment {
         return strikeCount
     }
 
-    fun countBall(inputNumbers: List<Int>, createNumbers: List<Int>): String {
+    fun countBall(inputNumbers: List<Int>, createNumbers: List<Int>): Int {
         var ballCount = INITIALIZE_COUNT
         inputNumbers.forEachIndexed { index, number ->
             if (createNumbers[index] != number && createNumbers.contains(number)) ballCount++
         }
-        if (ballCount == INITIALIZE_COUNT) return ""
-        return ballCount.toString() + BALL
+        return ballCount
     }
 
     companion object {
         const val INITIALIZE_COUNT = 0
-        const val BALL = "볼"
     }
 
 }
