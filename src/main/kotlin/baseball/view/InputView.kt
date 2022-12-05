@@ -1,11 +1,15 @@
 package baseball.view
 
+import camp.nextstep.edu.missionutils.Console
+
 class InputView {
-    fun readNumbers():List<Int>{
-     return listOf()
+    fun readNumbers(): List<Int> {
+        val input = Console.readLine()
+        return input.map { it.toString().toInt() }.toMutableList()
     }
 
     fun readRetry():Int{
-        return 0
+        val input = Console.readLine().toInt()
+        return input
     }
 }
