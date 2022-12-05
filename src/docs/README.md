@@ -31,19 +31,15 @@
     - readNumbers()
     - readRetry()
 - OutputView
-    - printBall()
-    - printStrike()
     - printBallStrike()
-    - printGameStart()
-    - printPleaseInput()
-    - printCorrect()
+    - printMessage()
 
 ### Model
+- NumberGenerator
+    - generate()
 - RandomNumberGenerator
     - generate()
-- RandomThreeNumberGenerator
-    - generate()
-- MakeNumbers
+- BaseballMaker
     - make()
 
 # 예외 처리 목록
