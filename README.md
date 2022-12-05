@@ -206,3 +206,5 @@ while (computer.size() < 3) {
 - BaseballGame 클래스 Test하는 클래스 구현(class name: BaseballGameTest)
     - 컴퓨터 난수, 사람 플레이어가 고른 값이 값이 3자리 자연수인지 테스트
     - 3자리 자연수가 아니면 IllegalArgumentException을 발생시키고 애플리케이션을 종료하는지 테스트
+- Refactoring
+  - trailing commas 추가
