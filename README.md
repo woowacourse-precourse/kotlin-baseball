@@ -208,3 +208,5 @@ while (computer.size() < 3) {
     - 3자리 자연수가 아니면 IllegalArgumentException을 발생시키고 애플리케이션을 종료하는지 테스트
 - Refactoring
   - trailing commas 추가
+  - 클래스 프로퍼티 코딩컨벤션 지키기
+  - 함수 매개변수 코딩컨벤션 지키기
