@@ -4,7 +4,7 @@ import baseball.message.GameMessage.NOTHING
 
 class OutputView {
 
-    fun printBallStrike(ball: Int, strike: Int) {
+    fun printBallStrike(strike: Int, ball: Int) {
         when {
             ball == 0 && strike ==0 -> println(NOTHING)
             ball > 0 && strike == 0 -> println("${ball}볼")
