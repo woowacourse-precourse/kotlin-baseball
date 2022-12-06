@@ -26,12 +26,14 @@ class BaseballGame {
     }
 
     private fun playGame() {
-        val numbers = BaseballMaker(RandomNumberGenerator()).makeBaseball()
-        val player = Player(numbers)
+        val computerNumbers = BaseballMaker(RandomNumberGenerator()).makeBaseball()
         var gameResult = hashMapOf(Pair("Strike", 0), Pair("Ball", 0))
         while (gameResult["Strike"] != 3) {
             outputView.printMessage(PLEASE_INPUT)
+            val userNumbers = InputView().readNumbers()
+            val player = Player(userNumbers,computerNumbers)
             gameResult = player.guess()
+            gameResult["Strike"]?.let { gameResult["Ball"]?.let { it1 -> outputView.printBallStrike(it, it1) } }
         }
     }
 
