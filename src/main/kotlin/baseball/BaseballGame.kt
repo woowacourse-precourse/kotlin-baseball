@@ -3,7 +3,10 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
-class BaseballGame(private val humanPlayer: Player, private var computerPlayer: Player) {
+class BaseballGame(
+    private val humanPlayer: Player,
+    private var computerPlayer: Player,
+) {
 
     fun startBaseballGame() {
         var restartGame = true
