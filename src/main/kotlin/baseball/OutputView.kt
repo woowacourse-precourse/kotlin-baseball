@@ -7,6 +7,10 @@ class OutputView {
         println("숫자 야구 게임을 시작합니다")
     }
 
+    private fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>) =
+        judgment.countStrike(inputNumbers, createNumbers) == 3
+
+
     fun judgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) {
         val ball = judgment.countBall(inputNumbers, createNumbers)
         val strike = judgment.countStrike(inputNumbers, createNumbers)
