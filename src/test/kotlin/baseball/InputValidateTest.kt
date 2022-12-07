@@ -45,4 +45,12 @@ class InputValidateTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["12", "123","21"])
+    fun `입력한 숫자가 한개가 아닐시 예외 발생 `(input: String) {
+        assertThrows<IllegalArgumentException>() {
+            inputValidate.restartNumber(input)
+        }
+    }
+
 }
