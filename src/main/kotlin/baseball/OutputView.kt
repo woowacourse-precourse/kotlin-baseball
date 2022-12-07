@@ -6,7 +6,9 @@ class OutputView {
     private val inputView: InputView = InputView()
 
     init {
-        println("숫자 야구 게임을 시작합니다")
+        println("숫자 야구 게임을 시작합니다.")
+        baseballGame()
+        restartGame()
     }
 
     private fun baseballGame() {
@@ -34,7 +36,7 @@ class OutputView {
         val ball = judgment.countBall(inputNumbers, createNumbers)
         val strike = judgment.countStrike(inputNumbers, createNumbers)
         var compareResult = ""
-        if(strike+ball == 0) compareResult = "낫씽"
+        if(strike+ball == 0) compareResult = "낫싱"
         if(ball != 0) compareResult += "${ball}볼 "
         if(strike != 0)  compareResult += "${strike}스트라이크"
         println(compareResult)
