@@ -32,4 +32,15 @@ class OutputViewTest {
         outputView.judgementResult(inputNumbers, listOf<Int>(number1, number2, number3))
         Assertions.assertThat(outputStream.toString().trim()).isEqualTo(outputResult)
     }
+
+    @ParameterizedTest
+    @CsvSource(
+        "1,2,3,true",
+        "1,2,4,false",
+    )
+    fun `스트라이크의 개수가 3인지 확인하는 기능 테스트`(number1: Int, number2: Int, number3: Int, testResult: Boolean) {
+        val isThreeStrike = outputView.isThreeStrike(inputNumbers, listOf<Int>(number1, number2, number3))
+        Assertions.assertThat(isThreeStrike).isEqualTo(testResult)
+
+    }
 }
