@@ -37,4 +37,12 @@ class InputValidateTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["5", "ㅁ","!"])
+    fun `입력한 숫자가 1 또는 2가 아닐시 예외 발생 `(input: String) {
+        assertThrows<IllegalArgumentException>() {
+            inputValidate.restartNumber(input)
+        }
+    }
+
 }
