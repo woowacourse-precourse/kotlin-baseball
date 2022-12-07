@@ -20,6 +20,12 @@ class OutputView {
             }
         }
     }
+
+    private fun restartGame() {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        val restartNumber = inputView.inputRestartNumber()
+        if(restartNumber == 1) baseballGame()
+    }
     fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>) =
         judgment.countStrike(inputNumbers, createNumbers) == 3
 
