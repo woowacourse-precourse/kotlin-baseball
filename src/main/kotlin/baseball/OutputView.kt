@@ -3,6 +3,10 @@ package baseball
 class OutputView {
     private val judgment:Judgment = Judgment()
 
+    init {
+        println("숫자 야구 게임을 시작합니다")
+    }
+
     fun judgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) {
         val ball = judgment.countBall(inputNumbers, createNumbers)
         val strike = judgment.countStrike(inputNumbers, createNumbers)
