@@ -25,11 +25,11 @@ class OutputView {
     private fun restartGame() {
         println(OutputMessage.QUESTION_RETRY.message)
         val restartNumber = inputView.inputRestartNumber()
-        if (restartNumber == 1) baseballGame()
+        if (restartNumber == RESTART_NUMBER) baseballGame()
     }
 
     fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
-        if (judgment.countStrike(inputNumbers, createNumbers) == 3) {
+        if (judgment.countStrike(inputNumbers, createNumbers) == MAX_COUNT) {
             println(OutputMessage.THREE_STRIKE.message)
             return true
         }
@@ -41,9 +41,9 @@ class OutputView {
         val ball = judgment.countBall(inputNumbers, createNumbers)
         val strike = judgment.countStrike(inputNumbers, createNumbers)
         var compareResult = INITIAL_COMPARE_RESULT
-        if (strike + ball == 0) compareResult = NOTHING
-        if (ball != 0) compareResult += "$ball$BALL_TEXT"
-        if (strike != 0) compareResult += "$strike$STRIKE_TEXT"
+        if (strike + ball == NO_COUNT) compareResult = NOTHING
+        if (ball != NO_COUNT) compareResult += "$ball$BALL_TEXT"
+        if (strike != NO_COUNT) compareResult += "$strike$STRIKE_TEXT"
         println(compareResult)
     }
 
@@ -52,5 +52,8 @@ class OutputView {
         const val INITIAL_COMPARE_RESULT = ""
         const val BALL_TEXT = "볼 "
         const val STRIKE_TEXT = "스트라이크"
+        const val NO_COUNT = 0
+        const val MAX_COUNT = 3
+        const val RESTART_NUMBER = 1
     }
 }
