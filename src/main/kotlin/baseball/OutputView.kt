@@ -5,12 +5,6 @@ class OutputView {
     private val numberGenerator: NumberGenerator = NumberGenerator()
     private val inputView: InputView = InputView()
 
-    init {
-        println(OutputMessage.GAME_START.message)
-        baseballGame()
-        restartGame()
-    }
-
      fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         var gameLoop = true
