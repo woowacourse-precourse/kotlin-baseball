@@ -6,7 +6,7 @@ class OutputView {
     private val inputView: InputView = InputView()
 
     init {
-        println(OutputMessage.GAME_START)
+        println(OutputMessage.GAME_START.message)
         baseballGame()
         restartGame()
     }
@@ -14,17 +14,18 @@ class OutputView {
     private fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         while (true) {
-            println(OutputMessage.INPUT_NUMBERS)
-            judgementResult(inputView.inputBaseballNumbers(), createNumbers)
-            if (isThreeStrike(inputView.inputBaseballNumbers(), createNumbers)) {
-                println(OutputMessage.THREE_STRIKE)
+            println(OutputMessage.INPUT_NUMBERS.message)
+            val inputNumbers = inputView.inputBaseballNumbers()
+            judgementResult(inputNumbers, createNumbers)
+            if (isThreeStrike(inputNumbers, createNumbers)) {
+                println(OutputMessage.THREE_STRIKE.message)
                 break
             }
         }
     }
 
     private fun restartGame() {
-        println(OutputMessage.QUESTION_RETRY)
+        println(OutputMessage.QUESTION_RETRY.message)
         val restartNumber = inputView.inputRestartNumber()
         if (restartNumber == 1) baseballGame()
     }
