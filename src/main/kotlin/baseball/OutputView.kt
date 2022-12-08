@@ -5,6 +5,10 @@ class OutputView {
     private val numberGenerator: NumberGenerator = NumberGenerator()
     private val inputView: InputView = InputView()
 
+    fun gameStart(){
+        println(OutputMessage.GAME_START.message)
+    }
+
      fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         var gameLoop = true
