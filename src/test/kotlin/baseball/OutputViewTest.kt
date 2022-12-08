@@ -26,7 +26,7 @@ class OutputViewTest {
         "3,1,2,3볼",
         "3,7,9,1볼",
         "1,3,4,1볼 1스트라이크",
-        "6,9,5,낫씽"
+        "6,9,5,낫싱"
     )
     fun `숫자 야구 게임 판정 결과 테스트`(number1: Int, number2: Int, number3: Int, outputResult: String) {
         outputView.judgementResult(inputNumbers, listOf<Int>(number1, number2, number3))
