@@ -16,7 +16,7 @@ class InputValidate {
 
     companion object {
         const val BASEBALL_NUMBERS_FORM = "^[1-9]{3}\$"
-        const val RESTART_NUMBER_FORM = "^[1-2]{1}\$"
+        const val RESTART_NUMBER_FORM = "^[1-2]\$"
     }
 
 }
