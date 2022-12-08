@@ -37,10 +37,17 @@ class OutputView {
     fun judgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) {
         val ball = judgment.countBall(inputNumbers, createNumbers)
         val strike = judgment.countStrike(inputNumbers, createNumbers)
-        var compareResult = ""
-        if (strike + ball == 0) compareResult = "낫싱"
-        if (ball != 0) compareResult += "${ball}볼 "
-        if (strike != 0) compareResult += "${strike}스트라이크"
+        var compareResult = INITIAL_COMPARE_RESULT
+        if (strike + ball == 0) compareResult = NOTHING
+        if (ball != 0) compareResult += "$ball$BALL_TEXT"
+        if (strike != 0) compareResult += "$strike$STRIKE_TEXT"
         println(compareResult)
+    }
+
+    companion object {
+        const val NOTHING = "낫싱"
+        const val INITIAL_COMPARE_RESULT = ""
+        const val BALL_TEXT= "볼 "
+        const val STRIKE_TEXT = "스트라이크"
     }
 }
