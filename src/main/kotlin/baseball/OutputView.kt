@@ -14,6 +14,7 @@ class OutputView {
     private fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         while (true) {
+            println("숫자를 입력해주세요 : ")
             val inputNumbers = inputView.inputBaseballNumbers()
             judgementResult(inputNumbers, createNumbers)
             if (isThreeStrike(inputNumbers, createNumbers)) {
