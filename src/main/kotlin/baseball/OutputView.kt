@@ -13,14 +13,12 @@ class OutputView {
 
     private fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
-        while (true) {
+        var gameLoop = true
+        while (gameLoop) {
             println(OutputMessage.INPUT_NUMBERS.message)
             val inputNumbers = inputView.inputBaseballNumbers()
             judgementResult(inputNumbers, createNumbers)
-            if (isThreeStrike(inputNumbers, createNumbers)) {
-                println(OutputMessage.THREE_STRIKE.message)
-                break
-            }
+            gameLoop = !isThreeStrike(inputNumbers, createNumbers)
         }
     }
 
@@ -30,8 +28,13 @@ class OutputView {
         if (restartNumber == 1) baseballGame()
     }
 
-    fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>) =
-        judgment.countStrike(inputNumbers, createNumbers) == 3
+    fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
+        if (judgment.countStrike(inputNumbers, createNumbers) == 3) {
+            println(OutputMessage.THREE_STRIKE.message)
+            return true
+        }
+        return false
+    }
 
 
     fun judgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) {
@@ -47,7 +50,7 @@ class OutputView {
     companion object {
         const val NOTHING = "낫싱"
         const val INITIAL_COMPARE_RESULT = ""
-        const val BALL_TEXT= "볼 "
+        const val BALL_TEXT = "볼 "
         const val STRIKE_TEXT = "스트라이크"
     }
 }
