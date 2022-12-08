@@ -1,4 +1,6 @@
-package baseball
+package baseball.view
+
+import baseball.ErrorMessage
 
 class InputValidate {
     fun baseballNumbersForm(input: String) {

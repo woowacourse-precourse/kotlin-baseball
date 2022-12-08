@@ -1,4 +1,8 @@
-package baseball
+package baseball.view
+
+import baseball.model.Judgment
+import baseball.model.NumberGenerator
+import baseball.OutputMessage
 
 class OutputView {
     private val judgment: Judgment = Judgment()
