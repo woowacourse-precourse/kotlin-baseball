@@ -9,4 +9,8 @@ class OutputView {
         println(OutputMessage.GAME_START.message)
     }
 
+    fun inputNumbers(){
+        println(OutputMessage.INPUT_NUMBERS.message)
+    }
+
 }
