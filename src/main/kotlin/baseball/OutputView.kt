@@ -11,7 +11,7 @@ class OutputView {
         restartGame()
     }
 
-    private fun baseballGame() {
+     fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         var gameLoop = true
         while (gameLoop) {
@@ -22,7 +22,7 @@ class OutputView {
         }
     }
 
-    private fun restartGame() {
+     fun restartGame() {
         println(OutputMessage.QUESTION_RETRY.message)
         val restartNumber = inputView.inputRestartNumber()
         if (restartNumber == RESTART_NUMBER) baseballGame()
