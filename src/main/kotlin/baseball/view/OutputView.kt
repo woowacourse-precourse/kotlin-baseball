@@ -12,5 +12,8 @@ class OutputView {
     fun inputNumbers(){
         println(OutputMessage.INPUT_NUMBERS.message)
     }
+    fun judgementResult(compareResult:String) {
+        println(compareResult)
+    }
 
 }
