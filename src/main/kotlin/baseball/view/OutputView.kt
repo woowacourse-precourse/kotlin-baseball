@@ -12,8 +12,13 @@ class OutputView {
     fun inputNumbers(){
         println(OutputMessage.INPUT_NUMBERS.message)
     }
+
     fun judgementResult(compareResult:String) {
         println(compareResult)
+    }
+
+    fun winGame() {
+        println(OutputMessage.THREE_STRIKE.message)
     }
 
 }
