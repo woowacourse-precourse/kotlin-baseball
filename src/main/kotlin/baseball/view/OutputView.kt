@@ -21,4 +21,8 @@ class OutputView {
         println(OutputMessage.THREE_STRIKE.message)
     }
 
+    fun restartGame(){
+        println(OutputMessage.QUESTION_RETRY.message)
+    }
+
 }
