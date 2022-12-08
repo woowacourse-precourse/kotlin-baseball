@@ -6,7 +6,7 @@ class OutputView {
     private val inputView: InputView = InputView()
 
     init {
-        println("숫자 야구 게임을 시작합니다.")
+        println(OutputMessage.GAME_START)
         baseballGame()
         restartGame()
     }
@@ -14,17 +14,17 @@ class OutputView {
     private fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         while (true) {
-            println("숫자를 입력해주세요 : ")
+            println(OutputMessage.INPUT_NUMBERS)
             judgementResult(inputView.inputBaseballNumbers(), createNumbers)
             if (isThreeStrike(inputView.inputBaseballNumbers(), createNumbers)) {
-                println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+                println(OutputMessage.THREE_STRIKE)
                 break
             }
         }
     }
 
     private fun restartGame() {
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        println(OutputMessage.QUESTION_RETRY)
         val restartNumber = inputView.inputRestartNumber()
         if (restartNumber == 1) baseballGame()
     }
