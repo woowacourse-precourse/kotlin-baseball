@@ -26,6 +26,12 @@ class BaseballActivity {
         }
     }
 
+    private fun restartGame() {
+        outputView.restartGame()
+        val restartNumber = inputView.inputRestartNumber()
+        if (restartNumber == RESTART_NUMBER) baseballGame()
+    }
+
     private fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
         if (judgment.countStrike(inputNumbers, createNumbers) == MAX_COUNT) {
             outputView.winGame()
@@ -51,5 +57,6 @@ class BaseballActivity {
         const val STRIKE_TEXT = "스트라이크"
         const val NO_COUNT = 0
         const val MAX_COUNT = 3
+        const val RESTART_NUMBER = 1
     }
 }
