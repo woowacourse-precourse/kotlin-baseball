@@ -48,5 +48,18 @@ class JudgmentTest {
         Assertions.assertThat(isThreeStrike).isEqualTo(expectValue)
     }
 
+    @ParameterizedTest
+    @CsvSource(
+        "1,2,3,3스트라이크",
+        "1,6,5,1스트라이크",
+        "3,1,2,3볼",
+        "3,7,9,1볼",
+        "1,3,4,1볼 1스트라이크",
+        "6,9,5,낫싱"
+    )
+    fun `판정 결과 테스트`(number1: Int, number2: Int, number3: Int, expectValue: String) {
+        val judgementResult = judgment.getJudgementResult(inputNumbers, listOf<Int>(number1, number2, number3))
+        Assertions.assertThat(judgementResult).isEqualTo(expectValue)
+    }
 
 }
