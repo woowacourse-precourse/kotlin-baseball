@@ -21,9 +21,9 @@ class JudgmentTest {
         "1,2,5,2",
         "6,9,5,0"
     )
-    fun `스트라이크 테스트`(number1: Int, number2: Int, number3: Int, strikeCount: Int) {
+    fun `스트라이크 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Int) {
         val countStrikeResult = judgment.countStrike(inputNumbers, listOf<Int>(number1, number2, number3))
-        Assertions.assertThat(countStrikeResult).isEqualTo(strikeCount)
+        Assertions.assertThat(countStrikeResult).isEqualTo(expectValue)
     }
 
     @ParameterizedTest
@@ -32,9 +32,9 @@ class JudgmentTest {
         "1,3,2,2",
         "1,2,3,0"
     )
-    fun `볼 테스트`(number1: Int, number2: Int, number3: Int, ballCount: Int) {
+    fun `볼 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Int) {
         val countBallResult = judgment.countBall(inputNumbers, listOf<Int>(number1, number2, number3))
-        Assertions.assertThat(countBallResult).isEqualTo(ballCount)
+        Assertions.assertThat(countBallResult).isEqualTo(expectValue)
     }
 
     @ParameterizedTest
