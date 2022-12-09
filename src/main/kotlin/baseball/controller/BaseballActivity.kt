@@ -26,7 +26,7 @@ class BaseballActivity {
             outputView.inputNumbers()
             val inputNumbers = inputView.inputBaseballNumbers()
             outputView.winGame(judgment.isThreeStrike(inputNumbers, createNumbers))
-            outputView.judgementResult(judgment.getJudgementResult(inputNumbers, createNumbers))
+            outputView.judgementResult(judgment.getTotalResult(inputNumbers, createNumbers))
         } while (!judgment.isThreeStrike(inputNumbers, createNumbers))
         restartGame()
     }

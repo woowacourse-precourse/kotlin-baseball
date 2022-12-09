@@ -23,7 +23,7 @@ class Judgment {
     fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean =
         getStrikeResult(inputNumbers, createNumbers) == THREE_STRIKE
 
-    fun getJudgementResult(inputNumbers: List<Int>, createNumbers: List<Int>): String {
+    fun getTotalResult(inputNumbers: List<Int>, createNumbers: List<Int>): String {
         val judgmentResult =
             listOf(getBallResult(inputNumbers, createNumbers), getStrikeResult(inputNumbers, createNumbers))
                 .filter { result -> result != EMPTY_RESULT }
