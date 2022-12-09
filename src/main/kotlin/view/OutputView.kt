@@ -16,7 +16,7 @@ enum class OutputMessage(val message : String){
     }
 
     fun getStrikeBall(strike : Int, ball : Int) : String{
-        return ball.toString() + BALL.message + strike.toString() + STRIKE.message
+        return ball.toString() + BALL.message + " " +strike.toString() + STRIKE.message
     }
 
 }
