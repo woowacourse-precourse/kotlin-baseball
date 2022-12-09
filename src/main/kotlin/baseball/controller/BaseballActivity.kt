@@ -20,14 +20,18 @@ class BaseballActivity {
         outputView.gameStart()
     }
 
+    private fun winGame(isWin : Boolean) {
+        outputView.winGame(isWin)
+    }
+
     private fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
         do {
             outputView.inputNumbers()
             val inputNumbers = inputView.inputBaseballNumbers()
-            outputView.winGame(judgment.isThreeStrike(inputNumbers, createNumbers))
             outputView.judgementResult(judgment.getTotalResult(inputNumbers, createNumbers))
-        } while (!judgment.isThreeStrike(inputNumbers, createNumbers))
+            winGame(judgment.isThreeStrike(inputNumbers, createNumbers))
+        } while (judgment.isThreeStrike(inputNumbers, createNumbers))
         restartGame()
     }
 

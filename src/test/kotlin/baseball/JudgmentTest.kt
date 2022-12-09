@@ -58,7 +58,7 @@ class JudgmentTest {
         "6,9,5,낫싱"
     )
     fun `판정 결과 테스트`(number1: Int, number2: Int, number3: Int, expectValue: String) {
-        val judgementResult = judgment.getJudgementResult(inputNumbers, listOf<Int>(number1, number2, number3))
+        val judgementResult = judgment.getTotalResult(inputNumbers, listOf<Int>(number1, number2, number3))
         Assertions.assertThat(judgementResult).isEqualTo(expectValue)
     }
 
