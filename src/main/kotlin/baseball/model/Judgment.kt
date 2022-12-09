@@ -2,43 +2,42 @@ package baseball.model
 
 class Judgment {
 
-    fun countStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Int {
+    fun getStrikeResult(inputNumbers: List<Int>, createNumbers: List<Int>): String {
         var strikeCount = INITIALIZE_COUNT
         inputNumbers.forEachIndexed { index, number ->
             if (createNumbers[index] == number) strikeCount++
         }
-        return strikeCount
+        if (strikeCount != NO_COUNT) return strikeCount.toString() + STRIKE_TEXT
+        return EMPTY_RESULT
     }
 
-    fun countBall(inputNumbers: List<Int>, createNumbers: List<Int>): Int {
+    fun getBallResult(inputNumbers: List<Int>, createNumbers: List<Int>): String {
         var ballCount = INITIALIZE_COUNT
         inputNumbers.forEachIndexed { index, number ->
             if (createNumbers[index] != number && createNumbers.contains(number)) ballCount++
         }
-        return ballCount
+        if (ballCount != NO_COUNT) return ballCount.toString() + BALL_TEXT
+        return EMPTY_RESULT
     }
 
     fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean =
-        countStrike(inputNumbers, createNumbers) == MAX_COUNT
+        getStrikeResult(inputNumbers, createNumbers) == THREE_STRIKE
 
     fun getJudgementResult(inputNumbers: List<Int>, createNumbers: List<Int>): String {
-        val ball = countBall(inputNumbers, createNumbers)
-        val strike = countStrike(inputNumbers, createNumbers)
-        var compareResult = INITIAL_COMPARE_RESULT
-        if (strike + ball == NO_COUNT) compareResult = NOTHING
-        if (ball != NO_COUNT) compareResult += "$ball${BALL_TEXT}"
-        if (strike != NO_COUNT) compareResult += "$strike${STRIKE_TEXT}"
-        return compareResult
+        val judgmentResult =
+            listOf(getBallResult(inputNumbers, createNumbers), getStrikeResult(inputNumbers, createNumbers)).joinToString(SPACE)
+        if (judgmentResult.trim() == EMPTY_RESULT) return NOTHING
+        return judgmentResult
     }
-
 
     companion object {
         const val INITIALIZE_COUNT = 0
         const val NOTHING = "낫싱"
-        const val INITIAL_COMPARE_RESULT = ""
-        const val BALL_TEXT = "볼 "
+        const val EMPTY_RESULT = ""
+        const val SPACE = " "
+        const val BALL_TEXT = "볼"
         const val STRIKE_TEXT = "스트라이크"
         const val NO_COUNT = 0
-        const val MAX_COUNT = 3
+        const val THREE_STRIKE = "3스트라이크"
     }
 }

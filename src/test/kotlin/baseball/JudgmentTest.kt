@@ -10,32 +10,32 @@ class JudgmentTest {
     private val inputNumbers = listOf<Int>(1, 2, 3)
     private lateinit var judgment: Judgment
 
-    @BeforeEach
-    fun setup() {
-        judgment = Judgment()
-    }
-
-    @ParameterizedTest
-    @CsvSource(
-        "1,2,3,3",
-        "1,2,5,2",
-        "6,9,5,0"
-    )
-    fun `스트라이크 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Int) {
-        val countStrikeResult = judgment.countStrike(inputNumbers, listOf<Int>(number1, number2, number3))
-        Assertions.assertThat(countStrikeResult).isEqualTo(expectValue)
-    }
-
-    @ParameterizedTest
-    @CsvSource(
-        "3,1,2,3",
-        "1,3,2,2",
-        "1,2,3,0"
-    )
-    fun `볼 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Int) {
-        val countBallResult = judgment.countBall(inputNumbers, listOf<Int>(number1, number2, number3))
-        Assertions.assertThat(countBallResult).isEqualTo(expectValue)
-    }
+//    @BeforeEach
+//    fun setup() {
+//        judgment = Judgment()
+//    }
+//
+//    @ParameterizedTest
+//    @CsvSource(
+//        "1,2,3,3",
+//        "1,2,5,2",
+//        "6,9,5,0"
+//    )
+//    fun `스트라이크 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Int) {
+//        val countStrikeResult = judgment.countStrike(inputNumbers, listOf<Int>(number1, number2, number3))
+//        Assertions.assertThat(countStrikeResult).isEqualTo(expectValue)
+//    }
+//
+//    @ParameterizedTest
+//    @CsvSource(
+//        "3,1,2,3",
+//        "1,3,2,2",
+//        "1,2,3,0"
+//    )
+//    fun `볼 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Int) {
+//        val countBallResult = judgment.countBall(inputNumbers, listOf<Int>(number1, number2, number3))
+//        Assertions.assertThat(countBallResult).isEqualTo(expectValue)
+//    }
 
     @ParameterizedTest
     @CsvSource(
