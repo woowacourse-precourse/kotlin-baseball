@@ -11,7 +11,7 @@ class BaseballActivity {
     private val judgment: Judgment = Judgment()
     private val numberGenerator = NumberGenerator()
 
-    init {
+    fun baseballGameExecute() {
         gameStart()
         baseballGame()
         restartGame()
@@ -38,7 +38,7 @@ class BaseballActivity {
         if (restartNumber == RESTART_NUMBER) baseballGame()
     }
 
-    private fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
+    fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
         if (judgment.countStrike(inputNumbers, createNumbers) == MAX_COUNT) {
             outputView.winGame()
             return true
@@ -46,7 +46,7 @@ class BaseballActivity {
         return false
     }
 
-    private fun getJudgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) : String {
+    fun getJudgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) : String {
         val ball = judgment.countBall(inputNumbers, createNumbers)
         val strike = judgment.countStrike(inputNumbers, createNumbers)
         var compareResult = INITIAL_COMPARE_RESULT
