@@ -3,7 +3,8 @@ package Exception
 enum class ExceptionMessage(val message : String){
     RANGE_ERROR("[ERROR] 숫자는 3자리 수 여야합니다."),
     NOT_NUMBER_ERROR("[ERROR] 숫자를 입력해야 합니다."),
-    DUPLICATE_ERROR("[ERROR] 숫자는 중복될 수 없습니다.")
+    DUPLICATE_ERROR("[ERROR] 숫자는 중복될 수 없습니다."),
+    CHOOSE_ERROR("[ERROR] 1 또는 2를 입력해 주세요.")
 
 }
 
@@ -11,17 +12,26 @@ enum class ExceptionMessage(val message : String){
 class InputException {
 
     fun checkException(input : String){
-        NotNumberException(input)
-        RangeException(input)
+        notNumberException(input)
+        rangeException(input)
         duplicateException(input)
     }
-    fun RangeException(input : String){
+
+    fun chooseException(input : String){
+        notNumberException(input)
+        val inputNum = input.toInt()
+        if (!(inputNum == 1 || inputNum == 2)){
+            throw IllegalArgumentException(ExceptionMessage.CHOOSE_ERROR.message)
+        }
+    }
+
+    private fun rangeException(input : String){
         if(input.length != 3){
             throw IllegalArgumentException(ExceptionMessage.RANGE_ERROR.message)
         }
     }
 
-    fun NotNumberException(input : String){
+    private fun notNumberException(input : String){
         for (i in input.indices){
             if (!input[i].isDigit()){
                 throw IllegalArgumentException(ExceptionMessage.NOT_NUMBER_ERROR.message)
@@ -29,7 +39,7 @@ class InputException {
         }
     }
 
-    fun duplicateException(input : String){
+    private fun duplicateException(input : String){
         var numList = mutableListOf<Char>()
         for (i in input.indices){
             numList.add(input[i])

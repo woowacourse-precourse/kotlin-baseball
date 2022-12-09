@@ -13,13 +13,13 @@ class Controller {
 
     fun game(){
         outputView.showStart()
+        inputView.showInput()
         ballOrStrike(computer.makeRandomList())
     }
 
     private fun ballOrStrike(computerList : List<Int>){
         while(true){
             println(computerList)
-            inputView.showInput()
             val playerList = player.makeNumList()
             val strikeBall = computer.compareList(computerList, playerList)
             outputView.showBaseballMessage(strikeBall)
@@ -32,6 +32,7 @@ class Controller {
 
     private fun gameRestartOrFinish(){
         inputView.showRestartOrFinish()
+        player.chooseRestartOrEnd()
 
     }
 }

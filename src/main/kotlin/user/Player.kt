@@ -16,8 +16,10 @@ class Player {
         return numList
     }
 
-    fun chooseRestartOrEnd(){
+    fun chooseRestartOrEnd() : Int{
         val input = Console.readLine()
+        inputException.chooseException(input)
+        return input.toInt()
     }
 
 }
