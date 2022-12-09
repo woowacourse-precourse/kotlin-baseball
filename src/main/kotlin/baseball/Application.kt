@@ -3,5 +3,5 @@ package baseball
 import baseball.controller.BaseballActivity
 
 fun main() {
-    BaseballActivity()
+    BaseballActivity().baseballGameExecute()
 }

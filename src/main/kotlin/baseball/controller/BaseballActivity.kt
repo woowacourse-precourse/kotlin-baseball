@@ -14,23 +14,21 @@ class BaseballActivity {
     fun baseballGameExecute() {
         gameStart()
         baseballGame()
-        restartGame()
     }
 
-    private fun gameStart(){
+    private fun gameStart() {
         outputView.gameStart()
     }
 
     private fun baseballGame() {
         val createNumbers = numberGenerator.createBaseballNumbers()
-        var gameLoop = true
-        while (gameLoop) {
+        do {
             outputView.inputNumbers()
             val inputNumbers = inputView.inputBaseballNumbers()
-            outputView.winGame(judgment.isThreeStrike(inputNumbers,createNumbers))
+            outputView.winGame(judgment.isThreeStrike(inputNumbers, createNumbers))
             outputView.judgementResult(judgment.getJudgementResult(inputNumbers, createNumbers))
-            gameLoop = !judgment.isThreeStrike(inputNumbers, createNumbers)
-        }
+        } while (!judgment.isThreeStrike(inputNumbers, createNumbers))
+        restartGame()
     }
 
     private fun restartGame() {
