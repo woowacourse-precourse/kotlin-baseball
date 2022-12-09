@@ -1,7 +1,5 @@
 package baseball.view.validate
 
-import baseball.ErrorMessage
-
 class InputValidate {
     fun baseballNumbersForm(input: String) {
         require(BASEBALL_NUMBERS_FORM.toRegex().matches(input)) { println(ErrorMessage.BASEBALL_NUMBERS_FORM.message) }
