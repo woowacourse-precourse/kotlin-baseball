@@ -9,11 +9,12 @@
   - 서로 다른수를 반환해야 한다 
   - 3 자리만 반환 되어야 한다 
 - 입력한 수와 반환한 수를 비교하여 결과를 출력하는 기능 OutputView # judgementResult()
-  - 같은 수가 같은 자리에 있는 스트라이크의 개수를 구합니다 Judgment # countStrike()
-  - 다른 자리에 있는 볼의 개수를 구합니다 Judgment # countBall
-  - 같은 수가 전혀 없으면 낫싱 OutputView # judgementResult
+  - 같은 수가 같은 자리에 있는 스트라이크의 개수를 구해 결과를 반환합니다 Judgment # getStrikeResult()
+  - 다른 자리에 있는 볼의 개수를 구해 결과를 반환합니다 Judgment # getBallResult
+  - 같은 수가 전혀 없으면 낫싱 Judgment # getTotalResult
+  - 판정의 전체 결과를 반환합니다 Judgment # getTotalResult
 
-- 야구 게임 기능 PlayGame # init()
-  - 3개의 숫자가 모두 스트라이크일 경우 승리 OutputView # isThreeStrike()
-  - 게임 진행 OutputView # baseballGame()
-  - 게임 다시 시작 또는 종료 OutputView # restartGame()
+- 야구 게임 기능 BaseballActivity # baseballGameExecute
+  - 3개의 숫자가 모두 스트라이크일 경우 승리 Judgment # winGame()
+  - 게임 진행 BaseballActivity # baseballGame()
+  - 게임 다시 시작 또는 종료 BaseballActivity # restartGame()
