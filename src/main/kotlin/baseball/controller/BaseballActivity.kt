@@ -15,7 +15,13 @@ class BaseballActivity {
         outputView.gameStart()
     }
 
-
+    private fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
+        if (judgment.countStrike(inputNumbers, createNumbers) == MAX_COUNT) {
+            outputView.winGame()
+            return true
+        }
+        return false
+    }
 
     private fun getJudgementResult(inputNumbers: List<Int>, createNumbers: List<Int>) : String {
         val ball = judgment.countBall(inputNumbers, createNumbers)
@@ -33,5 +39,6 @@ class BaseballActivity {
         const val BALL_TEXT = "볼 "
         const val STRIKE_TEXT = "스트라이크"
         const val NO_COUNT = 0
+        const val MAX_COUNT = 3
     }
 }
