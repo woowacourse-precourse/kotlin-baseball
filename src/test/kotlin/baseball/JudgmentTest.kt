@@ -37,4 +37,16 @@ class JudgmentTest {
         Assertions.assertThat(countBallResult).isEqualTo(ballCount)
     }
 
+    @ParameterizedTest
+    @CsvSource(
+        "3,1,2,false",
+        "1,3,2,false",
+        "1,2,3,true"
+    )
+    fun `3스트라이크 인지 테스트`(number1: Int, number2: Int, number3: Int, expectValue: Boolean) {
+        val isThreeStrike = judgment.isThreeStrike(inputNumbers, listOf<Int>(number1, number2, number3))
+        Assertions.assertThat(isThreeStrike).isEqualTo(expectValue)
+    }
+
+
 }
