@@ -10,4 +10,8 @@ class BaseballActivity {
     private val inputView: InputView = InputView()
     private val judgment: Judgment = Judgment()
     private val numberGenerator = NumberGenerator()
+
+    private fun gameStart(){
+        outputView.gameStart()
+    }
 }
