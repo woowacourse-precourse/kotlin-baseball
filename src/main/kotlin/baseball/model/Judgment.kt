@@ -25,8 +25,10 @@ class Judgment {
 
     fun getJudgementResult(inputNumbers: List<Int>, createNumbers: List<Int>): String {
         val judgmentResult =
-            listOf(getBallResult(inputNumbers, createNumbers), getStrikeResult(inputNumbers, createNumbers)).joinToString(SPACE)
-        if (judgmentResult.trim() == EMPTY_RESULT) return NOTHING
+            listOf(getBallResult(inputNumbers, createNumbers), getStrikeResult(inputNumbers, createNumbers))
+                .filter { result -> result != EMPTY_RESULT }
+                .joinToString(SPACE)
+        if (judgmentResult == EMPTY_RESULT) return NOTHING
         return judgmentResult
     }
 
