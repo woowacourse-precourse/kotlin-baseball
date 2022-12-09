@@ -1,7 +1,7 @@
 package controller
 
 import domain.Computer
-import domain.Player
+import user.Player
 import view.InputView
 import view.OutputView
 
@@ -16,14 +16,22 @@ class Controller {
         ballOrStrike(computer.makeRandomList())
     }
 
-    fun ballOrStrike(computer : List<Int>){
+    private fun ballOrStrike(computerList : List<Int>){
         while(true){
-            println(computer)
+            println(computerList)
             inputView.showInput()
             val playerList = player.makeNumList()
-            val pairInfo = player.compareList(computer, playerList)
-            outputView.showBaseballMessage(pairInfo)
-
+            val strikeBall = computer.compareList(computerList, playerList)
+            outputView.showBaseballMessage(strikeBall)
+            if (computer.validateGameEnd(strikeBall.first)){
+                outputView.showGameEnd()
+                gameRestartOrFinish()
+            }
         }
+    }
+
+    private fun gameRestartOrFinish(){
+        inputView.showRestartOrFinish()
+
     }
 }

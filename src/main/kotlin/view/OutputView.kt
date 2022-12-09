@@ -4,7 +4,9 @@ enum class OutputMessage(val message : String){
     GAME_START("숫자 야구 게임을 시작합니다."),
     STRIKE("스트라이크"),
     BALL("볼"),
-    NOTHING("낫싱");
+    NOTHING("낫싱"),
+    GAME_END("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
 
 
     fun getStrike(strike : Int) : String{
@@ -39,6 +41,10 @@ class OutputView {
             println(OutputMessage.STRIKE.getStrike(strike))
         }
         else println(OutputMessage.NOTHING.message)
+    }
+
+    fun showGameEnd(){
+        println(OutputMessage.GAME_END.message)
     }
 
 }

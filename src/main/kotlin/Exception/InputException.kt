@@ -11,8 +11,8 @@ enum class ExceptionMessage(val message : String){
 class InputException {
 
     fun checkException(input : String){
-        RangeException(input)
         NotNumberException(input)
+        RangeException(input)
         duplicateException(input)
     }
     fun RangeException(input : String){

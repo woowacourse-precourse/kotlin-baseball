@@ -13,4 +13,20 @@ class Computer {
         }
         return computer
     }
+
+    fun compareList(computer : List<Int>, playerList : List<Int>) : Pair<Int, Int>{
+        var strike = 0
+        var ball = 0
+        for ((index, num) in playerList.withIndex()){
+            if (computer.contains(num) && computer[index] == playerList[index]){
+                strike++
+            }
+            else if(computer.contains(num) && computer[index] != playerList[index]) {
+                ball++
+            }
+        }
+        return Pair(strike, ball)
+    }
+
+    fun validateGameEnd(strike : Int) : Boolean = (strike == 3)
 }
