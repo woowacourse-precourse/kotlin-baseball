@@ -14,8 +14,8 @@ class OutputView {
         println(compareResult)
     }
 
-    fun winGame() {
-        println(OutputMessage.THREE_STRIKE.message)
+    fun winGame(win:Boolean) {
+        if (win) println(OutputMessage.THREE_STRIKE.message)
     }
 
     fun restartGame(){
