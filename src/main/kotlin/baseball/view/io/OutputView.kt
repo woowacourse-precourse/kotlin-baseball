@@ -1,4 +1,4 @@
-package baseball.view
+package baseball.view.io
 
 import baseball.model.Judgment
 import baseball.model.NumberGenerator

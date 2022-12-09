@@ -1,6 +1,6 @@
 package baseball.controller
 
-import baseball.view.OutputView
+import baseball.view.io.OutputView
 
 class BaseballActivity {
     private val outputView: OutputView = OutputView()
