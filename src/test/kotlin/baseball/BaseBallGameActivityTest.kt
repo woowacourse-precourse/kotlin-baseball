@@ -11,4 +11,11 @@ class BaseBallGameActivityTest {
     private val inputNumbers = listOf<Int>(1, 2, 3)
     private val outputStream: OutputStream = ByteArrayOutputStream()
 
+    @BeforeEach
+    fun setup() {
+        baseballActivity = BaseballActivity()
+        System.setOut(PrintStream(outputStream))
+    }
+
+
 }
