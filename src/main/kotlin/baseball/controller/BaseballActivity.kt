@@ -15,6 +15,17 @@ class BaseballActivity {
         outputView.gameStart()
     }
 
+    private fun baseballGame() {
+        val createNumbers = numberGenerator.createBaseballNumbers()
+        var gameLoop = true
+        while (gameLoop) {
+            outputView.inputNumbers()
+            val inputNumbers = inputView.inputBaseballNumbers()
+            outputView.judgementResult(getJudgementResult(inputNumbers, createNumbers))
+            gameLoop = !isThreeStrike(inputNumbers, createNumbers)
+        }
+    }
+
     private fun isThreeStrike(inputNumbers: List<Int>, createNumbers: List<Int>): Boolean {
         if (judgment.countStrike(inputNumbers, createNumbers) == MAX_COUNT) {
             outputView.winGame()
