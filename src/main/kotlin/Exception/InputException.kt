@@ -3,7 +3,7 @@ package Exception
 enum class ExceptionMessage(val message : String){
     RANGE_ERROR("[ERROR] 숫자는 3자리 수 여야합니다."),
     NOT_NUMBER_ERROR("[ERROR] 숫자를 입력해야 합니다."),
-    DUPLICATE_ERROR("[ERROR] ")
+    DUPLICATE_ERROR("[ERROR] 숫자는 중복될 수 없습니다.")
 
 }
 
@@ -34,7 +34,7 @@ class InputException {
         for (i in input.indices){
             numList.add(input[i])
         }
-        for (i in numList.indices - 1){
+        for (i in 0 until numList.size - 1){
             if (numList[i] == numList[i+1]){
                 throw IllegalArgumentException(ExceptionMessage.DUPLICATE_ERROR.message)
             }
