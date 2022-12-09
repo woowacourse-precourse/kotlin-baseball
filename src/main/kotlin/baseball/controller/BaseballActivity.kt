@@ -11,6 +11,12 @@ class BaseballActivity {
     private val judgment: Judgment = Judgment()
     private val numberGenerator = NumberGenerator()
 
+    init {
+        gameStart()
+        baseballGame()
+        restartGame()
+    }
+
     private fun gameStart(){
         outputView.gameStart()
     }
