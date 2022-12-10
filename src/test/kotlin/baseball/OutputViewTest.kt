@@ -30,4 +30,15 @@ class OutputViewTest {
         Assertions.assertThat(outputStream.toString().trim()).isEqualTo(expectValue)
     }
 
+    @ParameterizedTest
+    @CsvSource(
+        "TDD방법론은,TDD방법론은",
+        "오히려,오히려" ,
+        "프로젝트 개발 경험이 적을수록 유용한거 같다,프로젝트 개발 경험이 적을수록 유용한거 같다"
+    )
+    fun `판정의 결과를 출력하는 기능 테스트`(outputText: String, expectValue: String) {
+        outputView.judgementResult(outputText)
+        Assertions.assertThat(outputStream.toString().trim()).isEqualTo(expectValue)
+    }
+
 }
