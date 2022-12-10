@@ -26,13 +26,21 @@ class Controller {
             if (computer.validateGameEnd(strikeBall.first)){
                 outputView.showGameEnd()
                 gameRestartOrFinish()
+                break
             }
         }
     }
 
     private fun gameRestartOrFinish(){
         inputView.showRestartOrFinish()
-        player.chooseRestartOrEnd()
+        val chooseNum = player.chooseRestartOrEnd()
+
+        if (chooseNum == 1){
+            game()
+        }
+        else if (chooseNum == 2){
+            return
+        }
 
     }
 }
