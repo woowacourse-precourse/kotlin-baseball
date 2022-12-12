@@ -3,6 +3,8 @@ package baseball.controller
 import baseball.domain.BaseballGame
 import baseball.domain.BaseballData
 import baseball.domain.Referee
+import baseball.util.Constant.EXIT
+import baseball.util.Constant.RESTART
 import baseball.view.InputView
 import baseball.view.OutputView
 
@@ -52,12 +54,12 @@ class BaseballController {
 
     private fun performCommand(command: String) {
         when (command) {
-            "1" -> {
+            RESTART -> {
                 BaseballData.gameState = true
                 gameStart()
             }
 
-            "2" -> return
+            EXIT -> return
         }
     }
 }
