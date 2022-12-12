@@ -1,16 +1,18 @@
 package baseball
 
-import camp.nextstep.edu.missionutils.Randoms
-import camp.nextstep.edu.missionutils.Console
+import baseball.controller.BaseballController
 
-var computerNumber = ""
+/*var computerNumber = ""
 var userNumber = ""
-var isPlay = true
+var isPlay = true*/
 
 fun main() {
-    GameStart()
-}
+    var baseballController = BaseballController()
+    baseballController.gameStart()
+    //GameStart()
 
+}
+/*
 fun GameStart() {
     println("숫자 야구 게임을 시작합니다.")
     computerNumber = makeRandomNumber(3)
@@ -119,6 +121,6 @@ fun GameOverMessage() {
         "2" -> isPlay = false
         else -> throw IllegalArgumentException()
     }
-}
+}*/
 
 
