@@ -1,6 +1,7 @@
 package baseball
 
 import baseball.util.Validator.check3digitNum
+import baseball.util.Validator.checkCommand
 import baseball.view.InputView
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
@@ -41,6 +42,14 @@ class InputTest {
     fun `플레이어가 1~9사이 숫자를 입력하지 않으면 예외 발생`(input: String) {
         assertThrows<IllegalArgumentException> {
             check3digitNum(input)
+        }
+    }
+
+    @ValueSource(strings = ["0", "a", "12"])
+    @ParameterizedTest
+    fun `플레이어가 1또는 2를 입력하지 않으면 예외 발생`(input: String) {
+        assertThrows<IllegalArgumentException> {
+            checkCommand(input)
         }
     }
 }
