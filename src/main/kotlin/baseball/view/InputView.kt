@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun inputNumber(): String {
-        var number: String
+        val number: String
         try {
             number = Console.readLine()
             check3digitNum(number)
