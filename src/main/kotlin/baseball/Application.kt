@@ -42,7 +42,7 @@ fun makeRandomNumber(length: Int): String {
     return noOverlapRandomNumber.joinToString("")
 }
 
-fun getPlayerNumber(){
+fun getPlayerNumber() {
     print("숫자를 입력해주세요 : ")
     userNumber = Console.readLine()
     println(userNumber)
