@@ -42,6 +42,6 @@ class BaseballController {
     }
     private fun printResult() {
         outputView.printResult()
-
+        inputView.inputCommand()
     }
 }

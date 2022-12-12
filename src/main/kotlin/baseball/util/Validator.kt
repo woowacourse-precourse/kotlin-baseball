@@ -1,7 +1,7 @@
 package baseball.util
 
 object Validator {
-    fun check3digitNum(num: String): Boolean {
+    fun check3digitNum(num: String) {
         var number = num.toMutableList()
 
         // 3자리 수가 아닌 경우 예외 처리
@@ -25,6 +25,14 @@ object Validator {
                 throw IllegalArgumentException("1~9 사이 숫자를 입력해주세요.")
             }
         }
-        return true
+    }
+
+    fun checkCommand(command: String) {
+        if (command.length != 1) {
+            throw IllegalArgumentException("1 또는 2를 입력해주세요.")
+        }
+        if (command != "1" || command != "2") {
+            throw IllegalArgumentException("1 또는 2를 입력해주세요.")
+        }
     }
 }
