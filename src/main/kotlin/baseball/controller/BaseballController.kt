@@ -20,25 +20,30 @@ class BaseballController {
         }
         printResult()
     }
+
     private fun generateComputerNumber() {
         val baseball = BaseballGame()
         val computerNumber = baseball.generateNumber()
         BaseballData.computerNumber = computerNumber
         println(computerNumber) // 제거
     }
+
     private fun printCompareResult() {
         val (ball, strike) = compareResult()
         outputView.printCompareResult(ball, strike)
         checkLastGame(ball, strike)
     }
+
     private fun compareResult(): Pair<Int, Int> {
         val baseballGame = BaseballGame()
         return baseballGame.compareNumber(BaseballData.userNumber, BaseballData.computerNumber)
     }
+
     private fun checkLastGame(ball: Int, strike: Int) {
         val referee = Referee()
         BaseballData.gameState = referee.continueGame(ball, strike)
     }
+
     private fun printResult() {
         outputView.printResult()
         val command = inputView.inputCommand()
@@ -46,11 +51,12 @@ class BaseballController {
     }
 
     private fun performCommand(command: String) {
-        when(command) {
+        when (command) {
             "1" -> {
                 BaseballData.gameState = true
                 gameStart()
             }
+
             "2" -> return
         }
     }

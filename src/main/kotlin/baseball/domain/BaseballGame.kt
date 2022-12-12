@@ -26,7 +26,7 @@ class BaseballGame {
         var ball = 0
         var strike = 0
         for ((i, num) in player.withIndex()) {
-            if (num in computer){
+            if (num in computer) {
                 when (num.isStrike(i, computer)) {
                     true -> strike++
                     false -> ball++
