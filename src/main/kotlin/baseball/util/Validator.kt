@@ -15,8 +15,6 @@ object Validator {
         // 중복된 숫자가 있는 경우 예외 처리
         while (number.size != 0) {
             var first = number.removeFirst()
-            println(first)
-            println(number)
             if (first in number) {
                 throw IllegalArgumentException("중복되지 않은 숫자를 입력해주세요.")
             }
