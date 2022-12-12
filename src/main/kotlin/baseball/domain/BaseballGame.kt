@@ -26,9 +26,11 @@ class BaseballGame {
         var ball = 0
         var strike = 0
         for ((i, num) in player.withIndex()) {
-            when (num.isStrike(i, computer)) {
-                true -> strike++
-                false -> ball++
+            if (num in computer){
+                when (num.isStrike(i, computer)) {
+                    true -> strike++
+                    false -> ball++
+                }
             }
         }
         return Pair(ball, strike)

@@ -2,6 +2,7 @@ package baseball.controller
 
 import baseball.domain.BaseballGame
 import baseball.domain.BaseballData
+import baseball.domain.Referee
 import baseball.view.InputView
 import baseball.view.OutputView
 
@@ -12,9 +13,12 @@ class BaseballController {
     fun gameStart() {
         outputView.printGameStart()
         generateComputerNumber()
-        outputView.printInputNumber()
-        BaseballData.userNumber = inputView.inputNumber()
-        printCompareResult()
+        while (BaseballData.gameState) {
+            outputView.printInputNumber()
+            BaseballData.userNumber = inputView.inputNumber()
+            printCompareResult()
+        }
+        printResult()
     }
 
     private fun generateComputerNumber() {
@@ -23,16 +27,21 @@ class BaseballController {
         BaseballData.computerNumber = computerNumber
         println(computerNumber) // 제거
     }
-
+    private fun printCompareResult() {
+        val (ball, strike) = compareResult()
+        outputView.printCompareResult(ball, strike)
+        checkLastGame(ball, strike)
+    }
     private fun compareResult(): Pair<Int, Int> {
         val baseballGame = BaseballGame()
         return baseballGame.compareNumber(BaseballData.userNumber, BaseballData.computerNumber)
     }
-
-    private fun printCompareResult() {
-        val (ball, strike) = compareResult()
-        outputView.printCompareResult(ball, strike)
+    private fun checkLastGame(ball: Int, strike: Int) {
+        val referee = Referee()
+        BaseballData.gameState = referee.continueGame(ball, strike)
     }
+    private fun printResult() {
+        outputView.printResult()
 
-
+    }
 }
