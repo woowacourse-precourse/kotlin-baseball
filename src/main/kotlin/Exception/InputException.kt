@@ -25,13 +25,13 @@ class InputException {
         }
     }
 
-    private fun rangeException(input : String){
+    fun rangeException(input : String){
         if(input.length != 3){
             throw IllegalArgumentException(ExceptionMessage.RANGE_ERROR.message)
         }
     }
 
-    private fun notNumberException(input : String){
+    fun notNumberException(input : String){
         for (i in input.indices){
             if (!input[i].isDigit()){
                 throw IllegalArgumentException(ExceptionMessage.NOT_NUMBER_ERROR.message)
@@ -39,7 +39,7 @@ class InputException {
         }
     }
 
-    private fun duplicateException(input : String){
+    fun duplicateException(input : String){
         var numList = mutableListOf<Char>()
         for (i in input.indices){
             numList.add(input[i])
