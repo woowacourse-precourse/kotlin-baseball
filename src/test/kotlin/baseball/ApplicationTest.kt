@@ -38,6 +38,11 @@ class ApplicationTest : NsTest() {
             OutputView().showBaseballMessage(Pair(3,0))
             assertThat(output()).contains("3스트라이크")
         }
+        @Test
+        fun `게임 검사 결과3`(){
+            OutputView().showBaseballMessage(Pair(1,1))
+            assertThat(output()).contains("1볼 1스트라이크")
+        }
 
     }
 
