@@ -14,7 +14,7 @@ class BaseballController {
         generateComputerNumber()
         outputView.printInputNumber()
         BaseballData.userNumber = inputView.inputNumber()
-        getCompareResult()
+        printCompareResult()
     }
 
     private fun generateComputerNumber() {
@@ -24,9 +24,15 @@ class BaseballController {
         println(computerNumber) // 제거
     }
 
-    private fun getCompareResult() {
+    private fun compareResult(): Pair<Int, Int> {
         val baseballGame = BaseballGame()
-        val (ball, strike) = baseballGame.compareNumber(BaseballData.userNumber, BaseballData.computerNumber)
+        return baseballGame.compareNumber(BaseballData.userNumber, BaseballData.computerNumber)
     }
+
+    private fun printCompareResult() {
+        val (ball, strike) = compareResult()
+        outputView.printCompareResult(ball, strike)
+    }
+
 
 }
