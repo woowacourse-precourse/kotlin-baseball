@@ -20,7 +20,6 @@ class BaseballController {
         }
         printResult()
     }
-
     private fun generateComputerNumber() {
         val baseball = BaseballGame()
         val computerNumber = baseball.generateNumber()
@@ -42,6 +41,17 @@ class BaseballController {
     }
     private fun printResult() {
         outputView.printResult()
-        inputView.inputCommand()
+        val command = inputView.inputCommand()
+        performCommand(command)
+    }
+
+    private fun performCommand(command: String) {
+        when(command) {
+            "1" -> {
+                BaseballData.gameState = true
+                gameStart()
+            }
+            "2" -> return
+        }
     }
 }

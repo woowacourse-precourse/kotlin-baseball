@@ -31,7 +31,7 @@ object Validator {
         if (command.length != 1) {
             throw IllegalArgumentException("1 또는 2를 입력해주세요.")
         }
-        if (command != "1" || command != "2") {
+        if (command !in "1,2") {
             throw IllegalArgumentException("1 또는 2를 입력해주세요.")
         }
     }
