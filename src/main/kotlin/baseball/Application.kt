@@ -90,7 +90,10 @@ fun calcScore(user: List<Int>, computer: List<Int>): Boolean {
         if (computer.contains(user[i]) && user[i] != computer[i]) ball++
     }
     showResult(ball, strike)
+    return isThreeStrike(strike)
+}
 
+fun isThreeStrike(strike: Int): Boolean {
     if (strike == 3) {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
         return true
