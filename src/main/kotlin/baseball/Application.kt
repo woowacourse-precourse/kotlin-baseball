@@ -85,9 +85,9 @@ fun calcScore(user: List<Int>, computer: List<Int>): Boolean {
     var ball = 0
     var strike = 0
 
-    for (i in user.indices) {
-        if (computer.contains(user[i]) && user[i] == computer[i]) strike++
-        if (computer.contains(user[i]) && user[i] != computer[i]) ball++
+    user.forEachIndexed { index, userNumber ->
+        if (computer.contains(userNumber) && userNumber == computer[index]) strike++
+        if (computer.contains(userNumber) && userNumber != computer[index]) ball++
     }
     showResult(ball, strike)
     return isThreeStrike(strike)
