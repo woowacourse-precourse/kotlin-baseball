@@ -3,6 +3,9 @@ package baseball
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+const val FIRST_NUMBER = 0
+const val SECOND_NUMBER = 1
+const val THIRD_NUMBER = 2
 const val RESTART = 1
 const val EXIT = 2
 const val INPUT_LENGTH = 3
@@ -69,7 +72,12 @@ fun throwNumberLengthException(input: String) {
 }
 
 fun throwNumberDuplicationException(input: String) {
-    if (input[0] == input[1] || input[0] == input[2] || input[1] == input[2]) throw IllegalArgumentException()
+    if (input[FIRST_NUMBER] == input[SECOND_NUMBER]
+        || input[SECOND_NUMBER] == input[THIRD_NUMBER]
+        || input[THIRD_NUMBER] == input[FIRST_NUMBER]
+    ) {
+        throw IllegalArgumentException()
+    }
 }
 
 fun calcScore(user: List<Int>, computer: List<Int>): Boolean {
