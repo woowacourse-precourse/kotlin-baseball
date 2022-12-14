@@ -43,19 +43,20 @@ fun generateRandomNumber(): List<Int> {
 private fun userInput(): List<Int> {
     println("숫자를 입력해주세요 : ")
     val input = Console.readLine()
-    val intArray = mutableListOf<Int>()
     checkThrowException(input)
-
-    for (element in input) {
-        intArray.add(element.toString().toInt())
-    }
-    return intArray
+    return convertStringToIntArray(input)
 }
 
 private fun checkThrowException(input: String) {
     throwIsNumberException(input)
     throwNumberLengthException(input)
     throwNumberDuplicationException(input)
+}
+
+private fun convertStringToIntArray(string: String): List<Int> {
+    val intArray = mutableListOf<Int>()
+    string.forEach { intArray.add(it.digitToInt()) }
+    return intArray
 }
 
 fun throwIsNumberException(input: String) {
