@@ -1,5 +1,10 @@
 package baseball
 
 fun main() {
-    TODO("프로그램 구현")
+    Game(
+        gamePrinter = Printer(),
+        computer = Computer(),
+        user = User(),
+        referee = Referee()
+    ).play()
 }
